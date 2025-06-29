@@ -30,7 +30,12 @@ img {
     max-width: 100%;
     padding: 0 1em;
   }
+
+  .responsive-table-wrapper table {
+    font-size: 0.8em;
+  }
 }
+
 
 /* ========== CAPTIONS ========== */
 .caption,

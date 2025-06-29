@@ -3,18 +3,17 @@ project:
   output-dir: docs
 
 website:
-  title: "John Knight"
+  title: "John Knight Stats"
+  site-url: https://johnknightstats.github.io
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - href: posts/index.qmd
-        text: Articles
-      - href: about.qmd
-        text: About
+      - text: "Home"
+        file: index.qmd
+      - text: "Posts"
+        file: posts/index.qmd
 
 format:
   html:
-    toc: true
     theme: cosmo
     css: styles.css
+

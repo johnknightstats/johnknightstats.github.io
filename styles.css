@@ -88,16 +88,29 @@ table th {
 
 /* Wrapper for included HTML tables */
 .responsive-table-wrapper {
-  display: inline-block;
-  width: auto;
-  max-width: 100%;
+  display: block;
+  width: 100%;
   overflow-x: auto;
-  text-align: left; /* Keep table content aligned left inside centered wrapper */
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1em;
 }
 
+.responsive-table-wrapper::after {
+  content: '→';
+  position: absolute;
+  right: 1em;
+  bottom: 0.5em;
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+
 .responsive-table-wrapper table {
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75em; /* adjust to suit */
+  word-break: break-word;
 }
 
 

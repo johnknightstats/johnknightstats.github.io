@@ -4,7 +4,7 @@ image: viz/gerrard_slip.png
 author: "John Knight"
 date: 2025-06-28
 date-format: "D MMMM YYYY"
-description: "Using an Elo-derived simulation model, I ranked the five biggest late-season collapses since World War 2. Liverpool and Manchester United fans may wish to proceed with caution..."
+description: "Using an Elo-derived simulation model, I ranked the five biggest late-season collapses in the English top flight since World War 2. Liverpool and Manchester United fans may wish to proceed with caution..."
 categories: ["football", "statistics"]
 format:
   html:

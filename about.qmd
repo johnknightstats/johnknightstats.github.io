@@ -1,0 +1,8 @@
+---
+title: "About"
+format: html
+---
+
+# About Me
+
+I'm a data scientist and football analytics enthusiast. This site hosts my models, articles, and other experiments.

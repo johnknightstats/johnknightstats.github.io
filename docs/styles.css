@@ -1,0 +1,157 @@
+/* ========== GENERAL IMAGE STYLING ========== */
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+/* ========== IMAGE BLOCK DEFAULT (50%) ========== */
+.image-block {
+  text-align: center;
+  margin: 1em auto;
+  max-width: 50%;
+}
+
+/* Optional override class for 70% width */
+.max-70 {
+  max-width: 70%;
+}
+
+/* Responsive override for mobile: allow full width */
+@media screen and (max-width: 768px) {
+  .image-block,
+  .html-block,
+  .centered-block,
+  .centered-block.max-70,
+  .max-70 {
+    max-width: 100%;
+    padding: 0 1em;
+  }
+}
+
+/* ========== CAPTIONS ========== */
+.caption,
+figcaption,
+.quarto-figure > figcaption,
+.quarto-figure > p.caption,
+.figure-caption,
+.image-block .caption,
+.html-block .caption,
+.centered-block em,
+.image-block em {
+  font-style: italic;
+  font-size: 0.8em;
+  text-align: center;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+
+/* Strong inside captions */
+.quarto-figure > figcaption > strong,
+.quarto-figure > p.caption > strong {
+  display: block;
+  text-align: center;
+}
+
+/* Caption inside .image-block */
+.image-block .caption {
+  font-style: italic;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+  text-align: center;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========== TABLES ========== */
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table th {
+  text-align: center;
+}
+
+/* Wrapper for included HTML tables */
+.responsive-table-wrapper {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  overflow-x: auto;
+  text-align: left; /* Keep table content aligned left inside centered wrapper */
+}
+
+.responsive-table-wrapper table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* === Centered block wrapper === */
+.centered-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em auto;
+  max-width: 100%;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+/* Optional narrower version */
+.max-70 {
+  max-width: 70%;
+}
+
+
+/* Responsive: full width on phones */
+@media screen and (max-width: 768px) {
+  .centered-block,
+  .centered-block.max-70 {
+    max-width: 100%;
+    padding: 0 1em;
+  }
+}
+
+/* Title styling */
+.centered-block .tight-title {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 0.25em; /* tighter */
+  text-align: center;
+}
+
+/* Responsive wrapper for included HTML tables */
+.centered-block .responsive-table-wrapper {
+  margin-top: -10px;
+  margin-bottom: -20px;
+}
+
+.centered-block .responsive-table-wrapper table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Caption (em tag used as caption) */
+.centered-block em,
+.centered-block.max-70 em,
+.image-block em{
+  display: block;
+  font-style: italic;
+  font-size: 0.8em;
+  margin-top: 0.5em;     /* tighter */
+  margin-bottom: 1em;    /* slightly tighter */
+  text-align: center;
+  max-width: 100%;
+}

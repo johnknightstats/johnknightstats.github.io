@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "John Knight"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: posts/index.qmd
+        text: Articles
+      - href: about.qmd
+        text: About
+
+format:
+  html:
+    toc: true
+    theme: cosmo
+    css: styles.css

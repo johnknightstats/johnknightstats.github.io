@@ -30,6 +30,10 @@ img {
     max-width: 100%;
     padding: 0 1em;
   }
+  
+  .responsive-table-wrapper table {
+    font-size: 0.85em;
+  }
 
 }
 
@@ -86,7 +90,6 @@ table th {
 /* Wrapper for included HTML tables */
 .responsive-table-wrapper {
   display: block;
-  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 1em;
@@ -104,9 +107,7 @@ table th {
 
 .responsive-table-wrapper table {
   width: 100%;
-  max-width: 100%;
   border-collapse: collapse;
-  word-break: break-word;
 }
 
 

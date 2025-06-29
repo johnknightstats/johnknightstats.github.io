@@ -187,8 +187,8 @@ It would require seven points from the final three games to guarantee the champi
 
 Alas, a Mourinho defensive masterclass ensued, and the surprising 0-2 defeat to Chelsea, including the now infamous slip by Steven Gerrard to gift Demba Ba the opener, sent Liverpool's odds crashing from **80%** to **48%**.
 
-::: {.centered-block}
-<img src="viz/gerrard_slip.png" style="max-width:50%;" />
+::: {.image-block}
+<img src="viz/gerrard_slip.png" />
 <em>Like it or not, this is one of the iconic Premier League moments.</em>
 :::
 
@@ -268,7 +268,7 @@ United, Liverpool, Liverpool, United. If there’s one thing we can learn about 
 
 We've covered United's 1992 collapse, and it feels appropriate to end with 2012 as those two years nicely bookend the dominant Ferguson era.
 
-I remember watching City fans doing *the Poznan* during their **6-1 win** at Old Trafford and thinking "good for them" - some payback for a lifetime of sitting through garbage while their local rivals win everything. These feelings quickly wear off of course when Abu Dhabi's billions start hoovering up trophies on an annual basis. But it did feel fresh for a short time.
+I remember watching City fans doing *the Poznan* during their **6-1 win** at Old Trafford and thinking "good for them" - some payback for a lifetime of sitting through garbage while their local rivals win everything. These feelings quickly wore off of course when Abu Dhabi's billions started hoovering up trophies on an annual basis. But it did feel fresh for a short time.
 
 The dramatic nature of Sergio Aguero’s injury time winner in the final game has perhaps allowed many of us to forget just what a commanding position United had allowed to slip away. Eight points clear with six games to go, United had a **95%** probability of retaining the Premier League trophy according to the model.
 

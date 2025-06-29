@@ -1,5 +1,6 @@
 ---
 title: "What are the worst league title collapses in English football history?"
+image: viz/gerrard_slip.png
 author: "John Knight"
 date: 2025-06-28
 date-format: "D MMMM YYYY"

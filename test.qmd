@@ -1,0 +1,11 @@
+---
+title: "Minimal Test"
+format: html
+---
+
+::: {.centered-block max-70}
+
+<strong>Hello World</strong>
+<em>This should render inside a styled div.</em>
+
+:::

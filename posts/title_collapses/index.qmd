@@ -37,7 +37,7 @@ For those who are curious about the mathematics and code behind the model, I wil
 - An adjusted negative binomial model was created to generate score probabilities.
 - Club Elo ratings begin in 1940, so only seasons since the Second World War were analysed (sorry, Huddersfield fans).
 - At the end of each match day, standings were calculated and the remainder of the season was simulated 10,000 times.
-- Only teams with **6 or fewer** remaining matches were included - this is about late collapses rather than well-fancied teams having a bad year (also it saves a lot of time running the simulations).
+- Only dates with **6 or fewer** remaining matches were included - this is about late collapses rather than well-fancied teams having a bad year (also it saves a lot of time running the simulations).
 - League tables were calculated according to the correct rules for the time - so that's goal average up to 1976, and 2 points for a win until 1981.
 
 Without further ado, here are the top five teams who had a great chance to be champions, but couldn't do the business:

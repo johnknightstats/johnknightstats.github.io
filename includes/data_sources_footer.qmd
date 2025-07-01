@@ -1,0 +1,11 @@
+> ---
+> **Data Sources**  
+> I gather match data from a variety of public sources. Please check out these excellent websites that make projects like this possible:  
+> - [Club Elo Ratings](https://clubelo.com)
+> - [ESPN](https://espn.com/)
+> - [FBref](https://fbref.com)  
+> - [FotMob](https://fotmob.com/)
+> - [Transfermarkt](https://transfermarkt.com)  
+> - [Understat](https://understat.com)  
+> - [WhoScored](https://whoscored.com/)
+> - [World Football Elo Ratings](https://eloratings.net/)

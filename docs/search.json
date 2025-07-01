@@ -70,6 +70,13 @@
     "text": "About Me\nI’m a data scientist and football analytics enthusiast. This site hosts my models, articles, and other experiments."
   },
   {
+    "objectID": "includes/data_sources_footer.html",
+    "href": "includes/data_sources_footer.html",
+    "title": "John Knight Stats",
+    "section": "",
+    "text": "Data Sources\nI gather match data from a variety of public sources. Please check out these excellent websites that make projects like this possible:\n- Club Elo Ratings - ESPN - FBref\n- FotMob - Transfermarkt\n- Understat\n- WhoScored - World Football Elo Ratings"
+  },
+  {
     "objectID": "posts/index.html",
     "href": "posts/index.html",
     "title": "Articles",

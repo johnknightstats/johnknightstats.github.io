@@ -16,4 +16,3 @@ format:
   html:
     theme: cosmo
     css: styles.css
-    include-after-body: includes/data_sources_footer.qmd

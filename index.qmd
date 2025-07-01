@@ -3,6 +3,4 @@ title: "Welcome"
 format: html
 ---
 
-# Welcome
-
 Hi, I'm John Knight. This is my personal site for writing about data, football analytics, and projects using R and Python.

@@ -16,6 +16,7 @@ execute:
   eval: true
 engine: knitr
 editor: source
+data-footer: true
 
 ---
 

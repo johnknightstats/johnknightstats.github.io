@@ -4,7 +4,7 @@
     "href": "posts/title_collapses/index.html",
     "title": "What are the worst league title collapses in English football history?",
     "section": "",
-    "text": "John Knight\n\n30 June 2025\nUsing an Elo-derived simulation model, I used probability to rank the five biggest late-season collapses since World War 2. Liverpool and Manchester United fans may wish to proceed with caution…\nIn last season’s Eredivisie, Ajax suffered a dramatic late collapse, winning only one of their last five games to blow a nine point lead over PSV.\nIt got me thinking about England, and which teams historically have had the highest probability of winning the league only to fail at the end - and how would we quantify that?\nI decided to create a model that could give the probability on any date of each team becoming champions."
+    "text": "John Knight\n\n30 June 2025\nUsing an Elo-derived simulation model, I used probability to rank the five biggest late-season collapses since World War 2. Fans of Liverpool and Manchester United may wish to proceed with caution…\nIn last season’s Eredivisie, Ajax suffered a dramatic late collapse, winning only one of their last five games to blow a nine point lead over PSV.\nIt got me thinking about England, and which teams historically have had the highest probability of winning the league only to fail at the end - and how would we quantify that?\nI decided to create a model that could give the probability on any date of each team becoming champions."
   },
   {
     "objectID": "posts/title_collapses/index.html#plan-of-attack",

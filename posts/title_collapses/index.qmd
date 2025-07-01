@@ -19,7 +19,7 @@ editor: source
 
 ---
 
-*Using an Elo-derived simulation model, I used probability to rank the five biggest late-season collapses since World War 2. Liverpool and Manchester United fans may wish to proceed with caution...*
+*Using an Elo-derived simulation model, I used probability to rank the five biggest late-season collapses since World War 2. Fans of **Liverpool** and **Manchester United** may wish to proceed with caution...*
 
 ---
 

@@ -127,12 +127,13 @@ ul.task-list li input[type="checkbox"] {
 <p><em>Using an Elo-derived simulation model, I used probability to rank the five biggest late-season collapses since World War 2. Liverpool and Manchester United fans may wish to proceed with caution…</em></p>
 <hr>
 <p>In last season’s Eredivisie, Ajax suffered a dramatic late collapse, winning only one of their last five games to blow a nine point lead over PSV.</p>
-<p>It got me thinking about England, and which teams historically have had the highest probability of winning the league only to fail at the end - and how would we quantify that? I decided to create a model that could give the probability on any date of each team becoming champions.</p>
+<p>It got me thinking about England, and which teams historically have had the highest probability of winning the league only to fail at the end - and how would we quantify that?</p>
+<p>I decided to create a model that could give the probability on any date of each team becoming champions.</p>
 <section id="plan-of-attack" class="level2">
 <h2 class="anchored" data-anchor-id="plan-of-attack">Plan of Attack</h2>
 <p>For those who are curious about the mathematics and code behind the model, I will explain this more fully in a separate article. But here are the basics:</p>
 <ul>
-<li>Daily team ratings were taken from Club Elo<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
+<li>Daily team ratings were taken from <a href="http://clubelo.com/">Club Elo</a>.</li>
 <li>An adjusted negative binomial model was created to generate score probabilities.</li>
 <li>Club Elo ratings begin in 1940, so only seasons since the Second World War were analysed (sorry, Huddersfield fans).</li>
 <li>At the end of each match day, standings were calculated and the remainder of the season was simulated 10,000 times.</li>
@@ -654,7 +655,7 @@ Sheffield Wednesday
 <p>The 1991-1992 season is often seen as the final year of the old era due to the impending rebrand of Football League Division One to the Premier League. But it was also the final year of Manchester United’s long league title drought since the days of Charlton, Best, and Law in 1967.</p>
 <p>With the benefit of hindsight, of course, United’s late collapse in 1992 is a mere footnote beneath the outrageous success of the Alex Ferguson era. But what a collapse it was!</p>
 <p>As the previous year’s champions Arsenal had mounted a disappointing defence of their title and perennial powerhouses Liverpool declined under the disastrous reign of Graeme Souness, the Red Devils found themselves in a commanding position on the 16th of April, two points clear of <strong>Leeds United</strong> with a game in hand.</p>
-<p>Leeds had only been promoted two years beforehand but had finished a creditable 4th in the previous campaign, and boasted one of those great midfields that is still easy to rattle off today: Speed, McAllister, Batty, Strachan. They also signed a chap called <strong>Eric Cantona</strong> from Marseille in January, after he was turned down by Souness at Liverpool and Sheffield Wednesday couldn’t afford his wages.</p>
+<p>Leeds had only been promoted two years beforehand but had finished a creditable 4th in the previous campaign, and boasted one of those great midfields that is still easy to rattle off today: Speed, McAllister, Batty, Strachan. They also signed a chap called <strong>Eric Cantona</strong> from Marseille in January, after he was <a href="https://www.youtube.com/shorts/psOSERL4FDY">turned down</a> by Souness at Liverpool and Sheffield Wednesday <a href="https://www.nytimes.com/athletic/2275771/2020/12/26/eric-cantona-sheffield-wednesday/">couldn’t afford his wages</a>.</p>
 <div class="centered-block max-100">
 <strong class="tight-title"> Division One Table on 16 April 1992<br> <span style="font-weight: normal; font-style: italic; font-size: 85%;">(42-game season)</span> </strong>
 <div class="responsive-table-wrapper">
@@ -872,7 +873,7 @@ Manchester City
 </div>
 <p><em>United were expected to win their first league championship since 1967.</em></p>
 </div>
-<p>The impact of Cantona at Leeds that season is perhaps overstated (he only made 6 starts, scoring twice) but it remains a remarkable fact that Cantona won the title in every season he played in England other than 1994-1995, when he was suspended from January onwards after attacking a supporter at Selhurst Park.</p>
+<p>The impact of Cantona at Leeds that season is perhaps overstated (he only made 6 starts, scoring twice) but it remains a remarkable fact that Cantona won the title in every season he played in England other than 1994-1995, when he was suspended from January onwards after <a href="https://www.youtube.com/watch?v=6eOCxIPkvb8">attacking a supporter</a> at Selhurst Park.</p>
 <p>With five games to go, the model gave Manchester United an <strong>81%</strong> chance of finally ending their barren run, and even after a 1-1 draw at Luton things were still looking good.</p>
 <p>And then the wheels truly came off.</p>
 <div class="centered-block max-70">
@@ -976,7 +977,7 @@ W
 </div>
 <p><em>Adding the league cup final on the 12th, it was a busy April for United.</em></p>
 </div>
-<p>To cap it off, it was hated rivals Liverpool who dealt the fatal blow with a 2-0 win at Anfield that saw Ian Rush finally score his first goal against Manchester United at the 24th attempt!</p>
+<p>To cap it off, it was hated rivals Liverpool who dealt the fatal blow with a 2-0 win at Anfield that saw Ian Rush finally score his first goal against Manchester United at the <a href="https://www.transfermarkt.us/ian-rush/bilanzdetails/spieler/145743/plus/1/gegner/985">24th attempt</a>!</p>
 <div class="centered-block">
 <strong class="tight-title">Final Division One Table 1991-1992</strong>
 <div class="responsive-table-wrapper">
@@ -1152,14 +1153,14 @@ Liverpool
 </div>
 <p><em>A first league title for Leeds since the great Don Revie era.</em></p>
 </div>
-<p>Having won 3-2 at Sheffield United earlier in the day, Leeds were crowned champions on the sofa - literally in this case, as ITV staged a watch party with Cantona, Batty and McAllister in Lee Chapman’s living room. And 33 years later, Howard Wilkinson still remains the last Englishman to manage a title-winning side in England.</p>
+<p>Having won 3-2 at Sheffield United earlier in the day, Leeds were crowned champions on the sofa - literally in this case, as ITV staged a <a href="https://www.yorkshirepost.co.uk/sport/football/leeds-united-92-it-was-a-wonderful-unexpected-achievement-lee-chapman-857981">watch party</a> with Cantona, Batty and McAllister in Lee Chapman’s living room. And 33 years later, Howard Wilkinson still remains the last Englishman to manage a title-winning side in England.</p>
 <div class="image-block">
 <p><img src="viz/chapman_sofa.png" style="margin-bottom: 5px;"> <em>I’m sure Eric was delighted on the inside.</em></p>
 </div>
 </section>
 <section id="liverpool-2013-2014-probability-82.2" class="level2">
 <h2 class="anchored" data-anchor-id="liverpool-2013-2014-probability-82.2">3. Liverpool 2013-2014 (Probability: 82.2%)</h2>
-<p>Although Liverpool have since become regular contenders for the Premier League, the 2014 title challenge came a little bit out of the blue. Still recovering from the disastrous Hicks-Gillett ownership era, the Reds had only finished 7th, 6th, 8th, and 7th in the previous four campaigns.</p>
+<p>Although Liverpool have since become regular contenders for the Premier League, the 2014 title challenge came a little bit out of the blue. Still recovering from the disastrous <a href="https://www.theguardian.com/football/2010/oct/13/liverpool-verdict-hicks-gillett-lose">Hicks-Gillett</a> ownership era, the Reds had only finished 7th, 6th, 8th, and 7th in the previous four campaigns.</p>
 <p>But Liverpool had a few things that clicked together this year. Thanks to a lack of European football and early domestic cup exits away to Arsenal and Man Utd, Brendan Rodgers’ side only played <strong>43</strong> matches all season compared to <strong>57</strong> each for <strong>Man City</strong> and <strong>Chelsea</strong>.</p>
 <p>And up front, the emergence of teenager <strong>Raheem Sterling</strong> alongside <strong>Daniel Sturridge</strong> and the genuinely world class performances of <strong>Luis Suarez</strong> electrified a forward line that had until recently included £35m flop Andy Carroll.</p>
 <div class="centered-block">
@@ -1379,8 +1380,8 @@ Tottenham Hotspur
 </div>
 <p><em>Liverpool closed in on 100 goals and the title.</em></p>
 </div>
-<p>Following the epic 3-2 win over Man City and an away victory at Norwich by the same score, Liverpool found themselves five points clear of Chelsea and nine clear of City, with the model giving them an <strong>82%</strong> probability of lifting a first league title since 1990.</p>
-<p>It would require seven points from the final three games to guarantee the championship, and Liverpool’s prospects were further improved by the fact that Chelsea, with only slim odds of the title themselves and preparing for a crucial Champions League semi-final second leg against Atletico Madrid, decided to rest several key players for the Anfield clash on 27 April (ironically, one of the backups who played as a result was a certain Mohamed Salah).</p>
+<p>Following the epic 3-2 win over Man City and an away victory at Norwich by the same score, Liverpool found themselves five points clear of Chelsea and nine clear of City. The model gave them an <strong>82%</strong> probability of lifting a first league title since 1990.</p>
+<p>It would require seven points from the final three games to guarantee the championship, and Liverpool’s prospects were further improved by the fact that Chelsea, with only slim odds of the title themselves and preparing for a crucial Champions League semi-final second leg against Atletico Madrid, decided to <a href="https://www.bbc.com/sport/football/27121567">rest several key players</a> for the Anfield clash on 27 April (ironically, one of the backups who played as a result was a certain Mohamed Salah).</p>
 <div class="centered-block max-70">
 <p><strong class="tight-title">Premier League Title Race 2013-2014</strong> <img src="viz/li_14_odds.png"> <em>Liverpool’s defeat to Chelsea was a huge blow, but City’s win at Everton was equally pivotal.</em></p>
 </div>
@@ -2517,7 +2518,7 @@ Chelsea
 <p><strong class="tight-title">Premier League Title Race 2011-2012</strong> <img src="viz/mu_12_odds.png"> <em>United opened the door, but City still needed to win all 6 games…which they did.</em></p>
 </div>
 <p>City still faced a tricky visit to Newcastle, who ended up 5th under Alan Pardew for their best finish in a decade. A Yaya Toure brace secured the points, and it now seemed like almost a formality that City would beat relegation-threatened QPR in the final game to seal the league.</p>
-<p>But football can be unpredictable, and QPR found themselves 2-1 up going into injury time, with Joey Barton notably getting sent off and having a meltdown that would result in a 12 match ban.</p>
+<p>But football can be unpredictable, and QPR found themselves 2-1 up going into injury time, after Joey Barton was sent off and had a meltdown that would result in a <a href="https://www.theguardian.com/football/2012/may/23/joey-barton-12-game-ban-fa">12 match ban</a>.</p>
 <p>United did their part, winning at Sunderland, and you all know what happened next of course, with Dzeko equalizing and then Aguero driving home the winner to provoke wild scenes at the Etihad Stadium.</p>
 <p>Remarkably, this means that United’s title-winning probability dropped from <strong>95%</strong> to <strong>12%</strong>, then back up in the 90s with City trailing, and finally back to zero. What a ride!</p>
 <div class="centered-block">
@@ -2616,7 +2617,7 @@ W
 </div>
 <p><em>It’s not the worst finish ever, but it’s enough to lose an 8 point lead.</em></p>
 </div>
-<p>It was also a roller coaster season for City forward Carlos Tevez, formerly of United, who was banished to Argentina following a dispute with Roberto Mancini during a Champions League game in Munich. Eventually the relationship was repaired sufficiently for Tevez to return and start the final six games of the season, with City winning all six.</p>
+<p>It was also a roller coaster season for City forward Carlos Tevez, formerly of United, who was banished to Argentina following a <a href="https://www.mancity.com/news/mens/carlos-tevez-reveals-what-really-happened-in-munich-63790544">dispute with Roberto Mancini</a> during a Champions League game in Munich. Eventually the relationship was repaired sufficiently for Tevez to return and start the final six games of the season, City winning all six.</p>
 <div class="centered-block">
 <strong class="tight-title">Final Premier League Table 2011-2012</strong>
 <div class="responsive-table-wrapper">
@@ -2803,23 +2804,11 @@ Chelsea
 <li>Ipswich Town 1980-1981 (75.7%)</li>
 <li>Leeds United 1970-1971 (73.1%)</li>
 </ol>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li><a href="http://clubelo.com/">Club Elo</a></li>
-</ol>
 
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>1<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

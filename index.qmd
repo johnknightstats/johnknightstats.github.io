@@ -7,7 +7,3 @@ Hi, I'm John Knight. This is my personal site for writing about data, football a
 
 Please bear with me while I add more features and articles!
 
-<p>
-  <a href="mailto:knightjohn2@gmail.com">Email</a> |
-  <a href="https://www.www.linkedin.com/in/john-knight-2477b8269/">LinkedIn</a>
-</p>

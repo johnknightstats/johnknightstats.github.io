@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 resources:
-  - images/jk_headshot_20250701.png
+  - images/
   
 website:
   title: "John Knight Stats"

@@ -9,8 +9,10 @@ website:
     left:
       - text: "Home"
         file: index.qmd
-      - text: "Posts"
+      - text: "Articles"
         file: posts/index.qmd
+      - text: "About"
+        file: about.qmd
 
 format:
   html:

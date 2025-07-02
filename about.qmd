@@ -5,7 +5,7 @@ format: html
 
 # About Me
 
-<img src="images/jk_headshot_20250701.png" alt="John Knight" style="width:140px; border-radius: 50%; margin-bottom: 1rem;">
+<img src="images/jk_headshot_20250701.jpg" alt="John Knight" style="width:140px; border-radius: 50%; margin-bottom: 1rem;">
 
 
 I currently work as a data analyst in healthcare research. I have a BS in Statistics and I am soon to finish my MS in Applied Statistics & Data Science. I am a former professional gambler with a lifelong passion for statistics and sport, in particular football (soccer) and golf. 

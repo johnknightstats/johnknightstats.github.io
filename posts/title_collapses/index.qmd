@@ -1,6 +1,6 @@
 ---
 title: "What are the worst league title collapses in English football history?"
-image: viz/gerrard_slip.png
+image: viz/gerrard_slip_screenshot.png
 author: "John Knight"
 date: 2025-06-30
 date-format: "D MMMM YYYY"
@@ -192,8 +192,8 @@ It would require seven points from the final three games to guarantee the champi
 Alas, a Mourinho defensive masterclass ensued, and the surprising 0-2 defeat to Chelsea, including the now infamous slip by Steven Gerrard to gift Demba Ba the opener, sent Liverpool's odds crashing from **80%** to **48%**.
 
 ::: {.image-block}
-<img src="viz/gerrard_slip.png" />
-<em>Like it or not, this is one of the iconic Premier League moments.</em>
+<img src="viz/gerrard_slip_screenshot.png" />
+<em>One of the iconic Premier League moments.</em>
 :::
 
 Equally shocking was the 3-3 draw away to Crystal Palace from a commanding 3-0 lead late on, but perhaps one of the more overlooked results of this stretch was City's **3-2 victory** away to a strong Everton side who finished on 72 points under Roberto Martinez - still their highest total since winning the league themselves in 1987. 

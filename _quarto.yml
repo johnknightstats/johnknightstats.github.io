@@ -2,6 +2,9 @@ project:
   type: website
   output-dir: docs
 
+resources:
+  - images/jk_headshot_20250701.png
+  
 website:
   title: "John Knight Stats"
   site-url: https://johnknightstats.github.io

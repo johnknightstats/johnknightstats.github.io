@@ -2,7 +2,7 @@
 title: "What are the worst league title collapses in English football history?"
 image: viz/gerrard_slip_screenshot.png
 author: "John Knight"
-date: 2025-06-30
+date: 2025-07-04
 date-format: "D MMMM YYYY"
 description: "Using an Elo-derived simulation model, I ranked the five biggest late-season collapses in the English top flight since World War 2. Liverpool and Manchester United fans may wish to proceed with caution..."
 categories: ["football", "statistics"]

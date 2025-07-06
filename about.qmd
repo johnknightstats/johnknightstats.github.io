@@ -14,5 +14,5 @@ I started this website as a place to collate my various projects and models, and
 
 <p>
   <a href="mailto:knightjohn2@gmail.com">Email</a> |
-  <a href="https://www.linkedin.com/in/john-knight-2477b8269/">LinkedIn</a>
+  <a href="https://www.linkedin.com/in/johnknightstats/">LinkedIn</a>
 </p>

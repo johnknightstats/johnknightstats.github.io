@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Here are some projects from my MS in Applied Statistics & Data Science, and BS in Statistics:\n\nThesis: Time series clustering of 24-hour ambulatory blood pressure using Dynamic Time Warping and Time Warp Edit Distance (In Progress)\nCoffee Ratings Prediction with Data Mining Techniques\nA Logistic Regression Model of Voter Turnout for the 2024 Presidential Election in Hidalgo County, Texas\nTime Series Analysis of Rainfall in the Rio Grande Valley, Texas, 1941-present\nUniversity Football Database Schema\nUsing Statistical Learning Techniques to Predict Winners of NFL Games from Half Time Metrics\nKelly Criterion\nUsing Python to Scrape Soccer Scores and Solve for Optimized Team Ratings\nMeasuring the Effect of Different Grass Types on PGA Tour Putting Performance\nSimulating a Traffic Intersection in Python\nUsing Data Mining to Classify 2020 Presidential Election Outcomes"
+  },
+  {
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Articles",
+    "section": "",
+    "text": "What are the worst league title collapses in English football history?\n\n\nUsing an Elo-derived simulation model, I ranked the five biggest late-season collapses in the English top flight since World War 2. Liverpool and Manchester United fans may wish to proceed with caution…\n\n\n\n\n\nJul 4, 2025\n\n\nJohn Knight\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About Me\n\nI currently work as a data analyst in healthcare research. I have a BS in Statistics and I am soon to finish my MS in Applied Statistics & Data Science. I am a former professional gambler with a lifelong passion for statistics and sport, in particular football (soccer) and golf.\nI started this website as a place to collate my various projects and models, and write about things I find interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to my website!",
+    "section": "",
+    "text": "Hi, I’m John Knight. This is my personal site for writing about data, football analytics, and projects using R and Python.\nPlease bear with me while I add more features and articles!"
+  },
+  {
     "objectID": "posts/title_collapses/index.html",
     "href": "posts/title_collapses/index.html",
     "title": "What are the worst league title collapses in English football history?",
@@ -54,26 +82,5 @@
     "title": "What are the worst league title collapses in English football history?",
     "section": "Honourable mentions",
     "text": "Honourable mentions\n\nEverton 1985-1986 (78.0%)\nWolverhampton Wanderers 1959-1960 (77.9%)\nWest Bromwich Albion 1953-1954 (76.1%)\nIpswich Town 1980-1981 (75.7%)\nLeeds United 1970-1971 (73.1%)\n\n\nData Sources\nI gather match data from a variety of public sources. Please check out these excellent websites:\n\nClub Elo Ratings\nESPN\nFBref\nFotMob\nTransfermarkt\nUnderstat\nWhoScored\nWorld Football Elo Ratings\n\nI welcome feedback! Feel free to contact me at knightjohn2@gmail.com.\n\n© 2025 John Knight. All rights reserved."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to my website!",
-    "section": "",
-    "text": "Hi, I’m John Knight. This is my personal site for writing about data, football analytics, and projects using R and Python.\nPlease bear with me while I add more features and articles!"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About Me\n\nI currently work as a data analyst in healthcare research. I have a BS in Statistics and I am soon to finish my MS in Applied Statistics & Data Science. I am a former professional gambler with a lifelong passion for statistics and sport, in particular football (soccer) and golf.\nI started this website as a place to collate my various projects and models, and write about things I find interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
-  },
-  {
-    "objectID": "posts/index.html",
-    "href": "posts/index.html",
-    "title": "Articles",
-    "section": "",
-    "text": "Welcome to my writing and projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat are the worst league title collapses in English football history?\n\n\nUsing an Elo-derived simulation model, I ranked the five biggest late-season collapses in the English top flight since World War 2. Liverpool and Manchester United fans may wish to proceed with caution…\n\n\n\n\n\nJul 4, 2025\n\n\nJohn Knight\n\n\n\n\n\nNo matching items"
   }
 ]

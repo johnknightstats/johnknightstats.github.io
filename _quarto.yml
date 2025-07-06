@@ -14,6 +14,8 @@ website:
         file: index.qmd
       - text: "Articles"
         file: posts/index.qmd
+      - text: "Projects"
+        file: projects/index.qmd
       - text: "About"
         file: about.qmd
 

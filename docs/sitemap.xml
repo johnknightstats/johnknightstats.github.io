@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://johnknightstats.com/posts/title_collapses/index.html</loc>
-    <lastmod>2025-07-06T16:26:29.369Z</lastmod>
+    <loc>https://johnknightstats.com/projects/index.html</loc>
+    <lastmod>2025-07-06T17:42:25.294Z</lastmod>
   </url>
   <url>
-    <loc>https://johnknightstats.com/index.html</loc>
-    <lastmod>2025-07-02T04:17:45.380Z</lastmod>
+    <loc>https://johnknightstats.com/posts/index.html</loc>
+    <lastmod>2025-07-06T17:39:32.162Z</lastmod>
   </url>
   <url>
     <loc>https://johnknightstats.com/about.html</loc>
     <lastmod>2025-07-06T16:57:21.905Z</lastmod>
   </url>
   <url>
-    <loc>https://johnknightstats.com/posts/index.html</loc>
-    <lastmod>2025-06-29T03:25:51.984Z</lastmod>
+    <loc>https://johnknightstats.com/index.html</loc>
+    <lastmod>2025-07-02T04:17:45.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/posts/title_collapses/index.html</loc>
+    <lastmod>2025-07-06T16:26:29.369Z</lastmod>
   </url>
 </urlset>

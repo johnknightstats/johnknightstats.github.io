@@ -1,0 +1,20 @@
+---
+title: "Projects"
+format: 
+  html:
+    toc: true
+---
+
+Here are some projects from my MS in Applied Statistics & Data Science, and BS in Statistics:
+
+- Thesis: Time series clustering of 24-hour ambulatory blood pressure using Dynamic Time Warping and Time Warp Edit Distance (In Progress)
+- [Coffee Ratings Prediction with Data Mining Techniques](coffee.pdf)
+- [A Logistic Regression Model of Voter Turnout for the 2024 Presidential Election in Hidalgo County, Texas](turnout.pdf)
+- [Time Series Analysis of Rainfall in the Rio Grande Valley, Texas, 1941-present](time_series.pdf)
+- [University Football Database Schema](database.pdf)
+- [Using Statistical Learning Techniques to Predict Winners of NFL Games from Half Time Metrics](nfl.pdf)
+- [Kelly Criterion](kelly_criterion.pdf)
+- [Using Python to Scrape Soccer Scores and Solve for Optimized Team Ratings](soccer_solver.pdf)
+- [Measuring the Effect of Different Grass Types on PGA Tour Putting Performance](golf.pdf)
+- [Simulating a Traffic Intersection in Python](traffic.pdf)
+- [Using Data Mining to Classify 2020 Presidential Election Outcomes](election.pdf)

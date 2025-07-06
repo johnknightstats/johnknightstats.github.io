@@ -199,4 +199,9 @@ h1, h2, h3 {
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 
+.left-image {
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+}
 

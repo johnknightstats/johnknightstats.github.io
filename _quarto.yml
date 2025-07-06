@@ -16,9 +16,8 @@ website:
         file: posts/index.qmd
       - text: "Projects"
         file: projects/index.qmd
-      - text: "About"
-        file: about.qmd
-
+      - text: "Papers"
+        file: papers/index.qmd
 
 format:
   html:

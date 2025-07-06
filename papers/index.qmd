@@ -1,0 +1,22 @@
+---
+title: "Academic Papers"
+format: 
+  html:
+    toc: true
+---
+
+Here are some academic papers I have co-authored:
+
+<p>
+  <a href="https://assets.cureus.com/uploads/original_article/pdf/340418/20250314-119310-6mmrw4.pdf">Hip Fracture Patterns Among Hispanic Seniors: Risk Factors and Implications</a>
+</p>
+
+<p>
+  <a href="https://files.eric.ed.gov/fulltext/EJ1391892.pdf">Math Attitudes and Identity of High
+Schoolers Impacted through Participating in Informal, Near-peer Mentoring</a>
+</p>
+
+<p>
+  <a href="https://par.nsf.gov/servlets/purl/10516577">Exploring High School Students’ Careless or Insufficient Effort Survey Responses when Investigating Attitudes toward Mathematics</a>
+</p>
+

@@ -3,8 +3,6 @@ title: "About"
 format: html
 ---
 
-# About Me
-
 <img src="images/jk_headshot_20250701.jpg" alt="John Knight" style="width:140px; border-radius: 50%; margin-bottom: 1rem;">
 
 

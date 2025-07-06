@@ -8,7 +8,6 @@ description: "Using an Elo-derived simulation model, I ranked the five biggest l
 categories: ["football", "statistics"]
 format:
   html:
-    include-after-body: ../../includes/data_sources_footer.html
     title-block-style: none
     css: styles.css
 execute: 
@@ -16,7 +15,6 @@ execute:
   eval: true
 engine: knitr
 editor: source
-data-footer: true
 
 ---
 

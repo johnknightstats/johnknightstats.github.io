@@ -7,7 +7,7 @@ resources:
   
 website:
   title: "John Knight Stats"
-  site-url: https://johnknightstats.github.io
+  site-url: https://johnknightstats.com
   navbar:
     left:
       - text: "Home"
@@ -17,9 +17,12 @@ website:
       - text: "About"
         file: about.qmd
 
+
 format:
   html:
     theme:
       light: flatly
       dark: darkly
     css: styles.css
+    includes:
+      in-header: counter.html 

@@ -18,6 +18,12 @@ website:
         file: about.qmd
 
 
+posts:
+  listing:
+    type: default
+  page-footer: _article_footer.html
+
+
 format:
   html:
     theme:

@@ -324,3 +324,7 @@ And so City won the title on goal difference, the only time that has happened in
 8. West Bromwich Albion 1953-1954 (76.1%)
 9. Ipswich Town 1980-1981 (75.7%)
 10. Leeds United 1970-1971 (73.1%)
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2025 John Knight. All rights reserved.

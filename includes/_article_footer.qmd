@@ -1,0 +1,16 @@
+::: {.data-footer}
+
+**Data Sources**  
+I gather match data from a variety of public sources. Please check out these excellent websites:
+
+- [Club Elo Ratings](https://clubelo.com)
+- [ESPN](https://www.espn.com/soccer/)
+- [FBref](https://fbref.com)
+- [FotMob](https://fotmob.com)
+- [Transfermarkt](https://transfermarkt.com)
+- [Understat](https://understat.com)
+- [WhoScored](https://whoscored.com)
+- [World Football Elo Ratings](http://eloratings.net/)
+
+I welcome feedback! Feel free to contact me at [knightjohn2@gmail.com](mailto:knightjohn2@gmail.com).
+:::

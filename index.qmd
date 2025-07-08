@@ -6,7 +6,7 @@ format: html
 
 Welcome to my website! 
 
-Some background about me: I am a data analyst currently working in healthcare research, with a bachelor's degree in statistics and a master's in applied statistics & data science that I am due to finish this year. 
+Some background about me: I am a data analyst currently working in healthcare research, with a Bachelor of Science in Statistics and a Master of Science in Applied Statistics and Data Science, which I am due to finish this year.
 
 I have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and I live at the intersection of sport and numbers. This naturally draws me to the gambling industry and I have worked as a professional gambler across many different sports plus poker, as well as working for the betting exchange Betfair in London. More recently I have worked in mathematics education and healthcare as I look to broaden my horizons and explore future avenues.
 

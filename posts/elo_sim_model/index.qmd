@@ -10,7 +10,7 @@ categories: ["football", "statistics"]
 format:
   html:
     title-block-style: none
-    css: styles.css
+    css: ../styles.css
 execute: 
   echo: false
   eval: true
@@ -27,9 +27,11 @@ I hope you enjoyed my recent article looking at the worst league title collapses
 
 Now I will go into a little more depth on the model I used to simulate scores from Elo ratings. There's a bit of mathematics involved, but nothing too heavy.
 
-How did I get the data...
+As mentioned in the original article, daily Elo Ratings were taken from [Club Elo](http://clubelo.com/). FBRef has all results for the [entire history](https://fbref.com/en/comps/9/history/Premier-League-Seasons) of the English top flight, which is pretty cool. I had to create some mappings to link the FBRef team names to the Club Elo ones. You can find all my code and data files for this project in my [GitHub repo](https://github.com/johnknightstats/elo-league-sims).
 
-First some data inspection. 
+Since the Elo ratings only begin in 1940, we will have to ignore results prior to World War 2. Our first task, as always, is to do some data inspection.
+
+I took the decision not to account for varying goal rates in this model, because it adds a fair amount of complexity and I didn't think it would add a huge amount given the task at hand. Nonetheless, it is still interesting to see how the number of goals per game has changed over the last 
 
 ::: {.centered-block .max-70}
 <img src="viz/goals_pg_seasons.png"/>

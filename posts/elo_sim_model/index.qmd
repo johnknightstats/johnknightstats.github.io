@@ -1,0 +1,86 @@
+---
+title: "Building an Elo Simulation Model for Retrospective League Winner Daily Probabilities"
+draft: true
+image: viz/cond_plots.png
+author: "John Knight"
+date: 2025-07-11
+date-format: "D MMMM YYYY"
+description: "Here I show how the model was built"
+categories: ["football", "statistics"]
+format:
+  html:
+    title-block-style: none
+    css: styles.css
+execute: 
+  echo: false
+  eval: true
+engine: knitr
+editor: source
+
+---
+
+*Here I show how the model was built*
+
+---
+
+I hope you enjoyed my recent article looking at the worst league title collapses in English football history. If not, you can read it [here](https://johnknightstats.com/posts/title_collapses/).
+
+Now I will go into a little more depth on the model I used to simulate scores from Elo ratings. There's a bit of mathematics involved, but nothing too heavy.
+
+How did I get the data...
+
+First some data inspection. 
+
+::: {.centered-block .max-70}
+<img src="viz/goals_pg_seasons.png"/>
+:::
+
+::: {.centered-block .max-70}
+<img src="viz/home_suprem_seasons.png"/>
+:::
+
+::: {.centered-block .max-70}
+<img src="viz/elo_mean_seasons.png"/>
+:::
+
+::: {.centered-block .max-70}
+<img src="viz/elo_deciles.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/elo_gam.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/poisson_v_obs.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/poisson_v_nb_v_obs.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/poisson_v_nb_v_obs_10k.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/cond_plots.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/fav_goals_fitted.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/underdog_cond_plots_dispersion_5.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/underdog_cond_plots_fitted_dispersion.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/underdog_cond_pointmass.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/deciles_new.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/wdl.png"/>
+:::
+::: {.centered-block .max-70}
+<img src="viz/model_v_scores.png"/>
+:::
+
+

@@ -1,0 +1,46 @@
+
+### Notes for Elo model article ###
+
+Mean goals scored = 1.42
+Variance = 1.65
+
+(Assumption of Poisson distribution is mean == variance!)
+
+Dispersion parameters:
+
+Fav Goals | Theta
+
+0 | 8.4
+1 | 35.3
+2 | 61.3
+3 | 10000
+
+Dispersion parameters with draw inflation:
+
+0 | 569  | 0.0935
+1 | 14.1 | 0.0496
+2 | 321  | 0.00894
+3 | 198  | 0.00588
+
+
+Order of plots:
+
+goals_pg_seasons
+home_suprem_seasons
+elo_mean_seasons
+
+elo_deciles
+elo_gam
+poisson_v_obs
+poisson_v_nb_v_obs (theta = 10)
+poisson_v_nb_v_obs_10k
+cond_plots
+fav_goals_fitted
+underdog_cond_plots_dispersion_5
+underdog_cond_plots_fitted_dispersion
+underdog_cond_pointmass
+
+deciles_new
+wdl
+model_v_scores
+

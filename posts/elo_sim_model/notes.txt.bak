@@ -1,0 +1,23 @@
+
+### Notes for Elo model article ###
+
+Mean goals scored = 1.42
+Variance = 1.65
+
+(Assumption of Poisson distribution is mean == variance!)
+
+Dispersion parameters:
+
+Fav Goals | Theta
+
+0 | 8.4
+1 | 35.3
+2 | 61.3
+3 | 10000
+
+Dispersion parameters with draw inflation:
+
+0 | 569  | 0.0935
+1 | 14.1 | 0.0496
+2 | 321  | 0.00894
+3 | 198  | 0.00588

@@ -31,15 +31,21 @@ As mentioned in the original article, daily Elo Ratings were taken from [Club El
 
 Since the Elo ratings only begin in 1940, we will have to ignore results prior to World War 2. Our first task, as always, is to do some data inspection.
 
-I took the decision not to account for varying goal rates in this model, because it adds a fair amount of complexity and I didn't think it would add a huge amount given the task at hand. Nonetheless, it is still interesting to see how the number of goals per game has changed over the last 
+I took the decision not to account for varying goal rates in this model, because it adds a fair amount of complexity and I didn't think it would add a huge amount given the task at hand. Nonetheless, it is still interesting to see how the number of goals per game has changed over the last 80 years, especially the huge decrease in the latter half of the 1960s.
 
 ::: {.centered-block .max-70}
 <img src="viz/goals_pg_seasons.png"/>
 :::
 
+We can also take a look at home supremacy in the English top flight through the years. This has shown a steady decrease, presumably due to improved travel and accommodation for away sides. Not many teams traveled with their own chef in the 1950s.
+
+And of course, the 2021 value close to zero helped to answer the question "how much of home advantage is due to the fans?" Answer: a lot.
+
 ::: {.centered-block .max-70}
 <img src="viz/home_suprem_seasons.png"/>
 :::
+
+Finally, we can summarise the mean Elo rating of English top flight teams over the same time period. The overall trend is upward, and it is also notable that the standard deviation (shown by the light blue band) gets wider as time goes on. The spread of team quality, as I'm sure you are aware, is much wider than it used to be.
 
 ::: {.centered-block .max-70}
 <img src="viz/elo_mean_seasons.png"/>

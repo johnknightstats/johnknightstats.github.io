@@ -1,11 +1,11 @@
 ---
-title: "Building an Elo Simulation Model for Retrospective League Winner Daily Probabilities"
+title: "Building a Model to Simulate Football Scores from Elo Ratings"
 draft: true
 image: viz/cond_plots.png
 author: "John Knight"
 date: 2025-07-11
 date-format: "D MMMM YYYY"
-description: "Here I show how the model was built"
+description: "I demonstrate how the Poisson and Negative Binomial distributions compare to actual football scores from the English top flight, and how we can convert Elo ratings into correct score probabilities."
 categories: ["football", "statistics"]
 format:
   html:
@@ -19,13 +19,13 @@ editor: source
 
 ---
 
-*Here I show how the model was built*
+*I demonstrate how the Poisson and Negative Binomial distributions compare to actual football scores from the English top flight, and how we can convert Elo ratings into correct score probabilities.*
 
 ---
 
 I hope you enjoyed my recent article looking at the worst league title collapses in English football history. If not, you can read it [here](https://johnknightstats.com/posts/title_collapses/).
 
-Now I will go into a little more depth on the model I used to simulate scores from Elo ratings. There's a bit of mathematics involved, but nothing too heavy.
+Now I will go into a little more depth on the model I used to simulate scores from Elo ratings.
 
 As mentioned in the original article, daily Elo Ratings were taken from [Club Elo](http://clubelo.com/). FBRef has all results for the [entire history](https://fbref.com/en/comps/9/history/Premier-League-Seasons) of the English top flight, which is pretty cool. I had to create some mappings to link the FBRef team names to the Club Elo ones. You can find all my code and data files for this project in my [GitHub repo](https://github.com/johnknightstats/elo-league-sims).
 
@@ -69,7 +69,7 @@ Clearly if we are going to simulate league tables, we need actual scores rather 
 
 Now let me make it clear at this point, I am not breaking any new ground here. There is a large body of work dedicated to the distribution of football scores going back as far as the 1950s. For further reading I recommend Reep, Maher, Dixon-Coles. But I find it useful and educational to try and build these things yourself step by step, so here we go. I promise to try and keep the maths (math for American readers) as light as possible.
 
-In statistics, when we have an event that will happen some random number of times during a time interval, it is common to use the Poisson distribution. Given that we know the average number of goals scored by teams in our dataset (1.42), we can simply plug that into R's dpois function and it will give us the probability of 0 goals, 1 goal, 2 goals, and so forth. Then we can compare these probabilities with the actual observed relative frequency of each score:
+In statistics, when we have an event that will happen some random number of times during a time interval, it is common to use the Poisson distribution. Given that we know the average number of goals scored by teams in our dataset (1.42), we can simply plug that into R's `dpois` function and it will give us the probability of 0 goals, 1 goal, 2 goals, and so forth. Then we can compare these probabilities with the actual observed relative frequency of each score:
 
 ::: {.centered-block .max-70}
 <img src="viz/poisson_v_obs.png"/>

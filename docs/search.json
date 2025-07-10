@@ -11,7 +11,7 @@
     "href": "posts/index.html",
     "title": "Articles",
     "section": "",
-    "text": "What are the worst league title collapses in English football history?\n\n\nUsing an Elo-derived simulation model, I ranked the five biggest late-season collapses in the English top flight since World War 2. Liverpool and Manchester United fans may wish to proceed with caution…\n\n\n\n\n\nJul 4, 2025\n\n\nJohn Knight\n\n\n\n\n\nNo matching items"
+    "text": "What are the worst league title collapses in English football history?\n\n\nUsing an Elo-derived simulation model, I ranked the five biggest late-season collapses in the English top flight since World War Two. Liverpool and Manchester United fans may wish to proceed with caution.\n\n\n\n\n\nJul 4, 2025\n\n\nJohn Knight\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "papers/index.html",
@@ -32,14 +32,21 @@
     "href": "index.html",
     "title": "John Knight Stats",
     "section": "",
-    "text": "Welcome to my website!\nSome background about me: I am a data analyst currently working in healthcare research, currently finishing up a master’s degree in applied statistics and data science. I have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and I live at the intersection of sport and numbers. This naturally draws me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently I have worked in mathematics education and healthcare as I look to broaden my horizons and explore future avenues.\nI started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack (coming soon!). The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be adding some other sections as I develop the website, such as Tools and Dashboard.\nI’m excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
+    "text": "Welcome to my website!"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "John Knight Stats",
+    "section": "About me",
+    "text": "About me\nI am a data analyst currently working in healthcare research, currently finishing up a master’s degree in applied statistics and data science. I have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and I live at the intersection of sport and numbers. This naturally draws me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently I have worked in mathematics education and healthcare as I look to broaden my horizons and explore future avenues.\nI started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack (coming soon!). The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be adding some other sections as I develop the website, such as Tools and Dashboard.\nI’m excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
   },
   {
     "objectID": "posts/title_collapses/index.html",
     "href": "posts/title_collapses/index.html",
     "title": "What are the worst league title collapses in English football history?",
     "section": "",
-    "text": "John Knight\n\n4 July 2025\nUsing an Elo-derived simulation model, I used probability to rank the five biggest late-season collapses since World War 2. Fans of Liverpool and Manchester United may wish to proceed with caution…\nIn last season’s Eredivisie, Ajax suffered a dramatic late collapse, winning only one of their last five games to blow a nine point lead over PSV.\nIt got me thinking about England, and which teams historically have had the highest probability of winning the league only to fail at the end - and how would we quantify that?\nI decided to create a model that could give the probability on any date of each team becoming champions."
+    "text": "John Knight\n\n4 July 2025\nUsing an Elo-derived simulation model, I used probability to rank the five biggest late-season collapses since World War Two. Fans of Liverpool and Manchester United may wish to proceed with caution.\nIn last season’s Eredivisie, Ajax suffered a dramatic late collapse, winning only one of their last five games to blow a nine point lead over PSV.\nIt got me thinking about England, and which teams historically have had the highest probability of winning the league only to fail at the end - and how would we quantify that?\nI decided to create a model that could give the probability on any date of each team becoming champions."
   },
   {
     "objectID": "posts/title_collapses/index.html#plan-of-attack",

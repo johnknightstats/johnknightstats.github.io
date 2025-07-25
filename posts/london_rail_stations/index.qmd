@@ -1,0 +1,27 @@
+---
+title: "Commuting Times from London Railway Terminals"
+author: "John Knight"
+---
+
+Recently I found myself taking a train from Waterloo to Woking to play a round of golf in Surrey. I couldn't help noticing the fantastic train service to Woking, an abundance of fast trains one after another.
+
+I'm sure this makes Woking a hotbed for London commuters looking to escape the inflated prices in the capital. But how does Woking's train service compare with other London satellite towns?
+
+National Rail has lots of free data relating to train routes and timetables. Using Python, I was able to download and parse this data, then create a map plotting all the overground railway stations served by London terminals (Blackfriars, Cannon Street, Charing Cross, Euston, Fenchurch Street, King's Cross, Liverpool Street, London Bridge, Marylebone, Paddington, St. Pancras, Victoria, Waterloo). 
+
+The dots are colour-coded by the expected number of minutes from a terminal station - green for less time, red for more time.
+
+<iframe src="london_commuter_stations.html" width="100%" height="600px" style="border:none;"></iframe>
+
+How was this calculated? I needed a fair way to incorporate the two aspects of a good train service: 
+(i) The frequency of trains to each station.
+(ii) The journey time of the train.
+
+The method I chose was, suppose you arrive at a London terminal at a random time on a Tuesday between 5:00pm and 7:00pm. You board the next train with the earliest arrival time at your destination. Averaging over all 120 minutes in that time window, what would be the expected number of minutes from arriving at the terminal to reaching your destination?
+
+It goes without saying, the general trend is for stations close to the centre of London to have shorter journey times. You live in Bethnal Green? Great, just turn up at Liverpool Street and you should be there inside 10 minutes.
+
+The more interesting stations are those further out which nonetheless have reasonable expected arrival times. Woking, to the south west of London for those unfamiliar with the home counties, stands out as one of the few solid greens outside the M25.
+
+
+

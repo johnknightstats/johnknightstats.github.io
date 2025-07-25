@@ -2,7 +2,7 @@
 title: "How does scoring rate change in a football match based on time elapsed and game state?"
 image: viz/gerrard_slip_screenshot.png
 author: "John Knight"
-date: 2025-07-21
+date: 2025-07-22
 date-format: "D MMMM YYYY"
 description: "Creating a logistic regression model to predict the chance of scoring a goal in each minute of a football match based on the pre-match odds, current score, minutes elapsed, and any red cards."
 categories: ["football", "statistics"]
@@ -22,7 +22,7 @@ editor: source
 
 ---
 
-When is a team most likely to score? My lazy hypothesis is that the chance of scoring increases as the game goes on, and that teams who are ahead are less likely to score than teams who are behind, as they defend their lead. But what does the data say?
+When is a team most likely to score? My lazy hypothesis is that the chance of scoring increases as the game goes on, and that teams who are ahead are less likely to score than teams who are behind, as they defend their lead. But what do the data say?
 
 I looked at goal times from the big 5 European leagues (England, Spain, Germany, Italy, France) since 2017. Now, a tricky part of goal times in football is injury time. Conventionally, these are often listed as 45' for first half injury time and 90' for second half injury time, so you end up with huge goal totals in these minutes. 
 
@@ -30,7 +30,7 @@ Alternatively, you could try and look at injury time minutes individually; but t
 
 So firstly, here is a summary of the goals in each of the 90 minutes:
 
-::: {.centered-block .max-70}
+::: {.centered-block}
 <img src="viz/mean_goals_by_minute.png"/>
 :::
 
@@ -44,19 +44,19 @@ Here is the same chart but with xG instead of goals. Compared to the previous ch
 
 So why does scoring tend to increase as a game progresses? One obvious factor is that every game starts off at 0-0, so the scores are more likely to be level early in games than late in games. Here is a summary of the scoreline by minute:
 
-::: {.centered-block .max-70}
+::: {.centered-block}
 <img src="viz/game_state_by_minute.png"/>
 :::
 
-As you can see, for almost the entire first half a level scoreline is most common, and thereafter it is more frequently a one-goal lead for either team. If level games generally play a bit tighter and more defensive than games where one team is leading, then that would explain the lower scoring early in games. When we look at a smoothed plot of scoring rate categorised by lead, we can see that teams with a two-goal lead score at the highest rate, followed by teams with a one-goal lead.
+As you can see, for almost the entire first half a level scoreline is most common, and thereafter it is more frequently a one-goal lead for either team. If level games generally play a bit tighter and more defensive than games where one team is leading, then that would explain the lower scoring early in games. When we look at a smoothed plot of scoring rate categorised by lead, we can see that teams with a two-goal lead score at the highest rate, followed by teams with a one-goal lead:
 
-::: {.centered-block .max-70}
+::: {.centered-block}
 <img src="viz/mean_goals_per_minute_by_lead.png"/>
 :::
 
 The problem here is we have an additional factor: the quality of the teams. If a team is leading by two goals, then it is more likely that they are simply much better than their opponent, and hence more likely to score next. So we need to also account for team strength. I divided all teams into quartiles, based on their pre-match bookmaker odds, with quartile 4 being the strongest teams and quartile 1 being the weakest:
 
-::: {.centered-block .max-70}
+::: {.centered-block}
 <img src="viz/mean_goals_per_minute_by_odds.png"/>
 :::
 
@@ -66,8 +66,41 @@ I categorized the current lead with a minimum of "-2 or less" and a maximum of "
 
 I decided to create separate models for the first and second halves, since the shape of some of the plots suggested it may not be a simple linear relationship for 90 minutes. Based on the low scoring in minutes 1, 2, 46 and 47, I also included flag variables for min1 and min2 of each half.
 
-Finally, for each half I trained a second model including interactions between lead and minute, lead and pre-match odds, and between lead and red cards for and against. I compared the simple and interactive models using two methods, a likelihood ratio test and Akaike Information Criterion (AIC) to see which was superior.
+Finally, for each half I trained a second model including interactions between lead and minute, lead and pre-match odds, and between lead and red cards for and against. After inspecting the interaction terms' p-values, plus a likelihood ratio test and Akaike Information Criterion (AIC), it seemed like the simpler model was about the same. If in doubt, always stick with the simpler model!
 
-::: {.centered-block .max-70}
+::: {.centered-block}
+`r paste0('<div class="responsive-table-wrapper">', htmltools::includeHTML("viz/model1.html"), '</div>')`
+:::
+
+<br><br>
+If you aren't familiar with logistic regression results, don't worry too much about the columns other than Coefficient. Intercept is only used when making predictions, otherwise that isn't too relevant. 
+
+Each coefficient represents the associated change in log odds of scoring a goal. Firstly, we can see that teams leading by 1 have a lower coefficient (-0.132) than other scorelines. The first two minutes of the half, as expected, have lower scoring, and then there is a small increase (0.004) for each minute as the half progresses. A red card (-0.766) reduces the chance of scoring more than an opposition red card (0.536) increases it. Predictably, pre-match win probability (1.752) has a strong positive correlation with scoring rate.
+
+::: {.centered-block}
+`r paste0('<div class="responsive-table-wrapper">', htmltools::includeHTML("viz/model2.html"), '</div>')`
+:::
+
+<br><br>
+
+In the second half, the effects of the scorelines are a little more pronounced: a one goal lead has a coefficient of -0.228 compared to -0.132 in the first half. We can also see that the effect of each minute is actually slightly negative now (-0.001).
+
+To demonstrate these results, I used the median of each quartile of pre-match odds and predicted each minute of the game with scorelines of -1, 0, and 1, with no red cards:
+
+::: {.centered-block}
 <img src="viz/combined_predictions_odds_lead.png"/>
 :::
+
+So to summarize our findings:
+
+- Teams are relatively more likely to score when trailing than when level, and more likely to score when level than when leading.
+- In the first half, scoring rate increases as the half progresses, all other things being equal.
+- When the teams come out for the second half, scoring rate jumps higher than it was in the 45th minute, and then decreases slightly as the half progresses.
+
+If we revisit the first plot in this article, the unusually high values between 48 and 58 minutes now make a little more sense. I have added a red line to the plot which now looks like a slight downward trend in the second half, rather than a series of observations above the overall trend:
+
+::: {.centered-block}
+<img src="viz/mean_goals_by_minute_red_line.png"/>
+:::
+
+There are, of course, some limitations to this analysis. Injury time in both halves has been ignored, as have factors like league- or game-specific goal totals. There is also the question of whether goals beget more goals: all other things being equal, does a scoreline of 1-1 tend to predict more goals than a scoreline of 0-0? I may visit these ideas in a future analysis.

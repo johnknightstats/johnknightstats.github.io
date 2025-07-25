@@ -1,0 +1,136 @@
+
+<style>
+.styled-regression-table {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1em;
+}
+.styled-regression-table th, .styled-regression-table td {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  text-align: right;
+}
+.styled-regression-table th {
+  background-color: #f2f2f2;
+}
+.styled-regression-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+</style>
+<h2>Logistic Regression: First Half</h2>
+<table class="dataframe styled-regression-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coefficient</th>
+      <th>Std. Error</th>
+      <th>z-value</th>
+      <th>p-value</th>
+      <th>CI Lower</th>
+      <th>CI Upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-5.080</td>
+      <td>0.055</td>
+      <td>-92.566</td>
+      <td>0.000</td>
+      <td>-5.187</td>
+      <td>-4.972</td>
+    </tr>
+    <tr>
+      <th>Trailing (-1)</th>
+      <td>-0.022</td>
+      <td>0.053</td>
+      <td>-0.417</td>
+      <td>0.677</td>
+      <td>-0.126</td>
+      <td>0.081</td>
+    </tr>
+    <tr>
+      <th>Level (0)</th>
+      <td>-0.047</td>
+      <td>0.050</td>
+      <td>-0.929</td>
+      <td>0.353</td>
+      <td>-0.145</td>
+      <td>0.052</td>
+    </tr>
+    <tr>
+      <th>Leading (1)</th>
+      <td>-0.132</td>
+      <td>0.053</td>
+      <td>-2.497</td>
+      <td>0.013</td>
+      <td>-0.236</td>
+      <td>-0.028</td>
+    </tr>
+    <tr>
+      <th>Leading (2 or more)</th>
+      <td>-0.064</td>
+      <td>0.063</td>
+      <td>-1.022</td>
+      <td>0.307</td>
+      <td>-0.188</td>
+      <td>0.059</td>
+    </tr>
+    <tr>
+      <th>First Min of Half</th>
+      <td>-0.620</td>
+      <td>0.075</td>
+      <td>-8.317</td>
+      <td>0.000</td>
+      <td>-0.767</td>
+      <td>-0.474</td>
+    </tr>
+    <tr>
+      <th>Second Min of Half</th>
+      <td>-0.248</td>
+      <td>0.063</td>
+      <td>-3.968</td>
+      <td>0.000</td>
+      <td>-0.371</td>
+      <td>-0.126</td>
+    </tr>
+    <tr>
+      <th>Minute</th>
+      <td>0.004</td>
+      <td>0.001</td>
+      <td>5.421</td>
+      <td>0.000</td>
+      <td>0.002</td>
+      <td>0.005</td>
+    </tr>
+    <tr>
+      <th>Red Card</th>
+      <td>-0.766</td>
+      <td>0.139</td>
+      <td>-5.507</td>
+      <td>0.000</td>
+      <td>-1.039</td>
+      <td>-0.493</td>
+    </tr>
+    <tr>
+      <th>Opponent Red Card</th>
+      <td>0.536</td>
+      <td>0.073</td>
+      <td>7.354</td>
+      <td>0.000</td>
+      <td>0.393</td>
+      <td>0.679</td>
+    </tr>
+    <tr>
+      <th>Pre-match Win Prob</th>
+      <td>1.752</td>
+      <td>0.038</td>
+      <td>45.761</td>
+      <td>0.000</td>
+      <td>1.677</td>
+      <td>1.827</td>
+    </tr>
+  </tbody>
+</table>

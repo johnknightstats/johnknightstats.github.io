@@ -22,9 +22,9 @@ editor: source
 
 ---
 
-When is a team most likely to score? My lazy hypothesis is that the chance of scoring increases as the game goes on, and that teams who are ahead are less likely to score than teams who are behind, as they defend their lead. But what do the data say?
+When is a football team most likely to score? A simple hypothesis would be that the chance of scoring increases as the game goes on, and that teams who are ahead are less likely to score than teams who are behind as they defend their lead. But what do the data say?
 
-I looked at goal times from the big 5 European leagues (England, Spain, Germany, Italy, France) since 2017. Now, a tricky part of goal times in football is injury time. Conventionally, these are often listed as 45' for first half injury time and 90' for second half injury time, so you end up with huge goal totals in these minutes. 
+I looked at goal times from the big 5 European leagues (England, Spain, Germany, Italy, France) since 2017. Now, a tricky part of goal times in football is injury time. Conventionally, these are often listed as 45' for a goal in first half injury time and 90' for second half injury time, so you naturally end up with larger goal totals in these minutes, which will skew the totals and trends.
 
 Alternatively, you could try and look at injury time minutes individually; but then, how do you know which minutes were actually played, and played in full? I don't currently have that level of detail, so I decided to ignore injury time goals for the purpose of this analysis, guaranteeing that the 90 minutes considered were all played in full.
 

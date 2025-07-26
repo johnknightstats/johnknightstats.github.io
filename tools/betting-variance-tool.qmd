@@ -1,0 +1,16 @@
+---
+title: "Betting Strategy Variance Tool"
+image: betting_variance_thumbnail.png
+format: html
+page-layout: full
+navbar: false
+---
+
+A tool to visualize the variance inherent in betting strategies.
+
+<iframe 
+  src="https://statybara.shinyapps.io/betting_variance/" 
+  width="100%" 
+  height="600" 
+  style="border: 1px solid #ccc; border-radius: 8px;">
+</iframe>

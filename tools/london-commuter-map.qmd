@@ -1,5 +1,6 @@
 ---
 title: "London Commuter Map"
+image: london_map_thumbnail.png
 format: html
 page-layout: full
 navbar: false

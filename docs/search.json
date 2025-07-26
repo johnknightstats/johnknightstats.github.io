@@ -39,7 +39,7 @@
     "href": "index.html#about-me",
     "title": "John Knight Stats",
     "section": "About me",
-    "text": "About me\nI am a data analyst currently working in healthcare research, currently finishing up a master’s degree in applied statistics and data science. I have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and I live at the intersection of sport and numbers. This naturally draws me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently I have worked in mathematics education and healthcare as I look to broaden my horizons and explore future avenues.\nI started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack (coming soon!). The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be adding some other sections as I develop the website, such as Tools and Dashboard.\nI’m excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
+    "text": "About me\nWelcome to my website!\nI’m John Knight, a data analyst currently working in healthcare research and finishing up a master’s degree in applied statistics and data science. I have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and I live at the intersection of sport and numbers. This naturally draws me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently I have worked in mathematics education and healthcare as I look to broaden my horizons and explore future avenues.\nI started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack (coming soon!). The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be adding some other sections as I develop the website, such as Tools and Dashboard.\nI’m excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
   },
   {
     "objectID": "posts/title_collapses/index.html",
@@ -124,5 +124,12 @@
     "title": "London Commuter Map",
     "section": "",
     "text": "Expected travel times from London terminals to surrounding railway stations."
+  },
+  {
+    "objectID": "tools/index.html",
+    "href": "tools/index.html",
+    "title": "Tools",
+    "section": "",
+    "text": "London Commuter Map\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

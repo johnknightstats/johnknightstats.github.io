@@ -6,5 +6,11 @@
       "/posts/game_state/index.html",
       "/posts/title_collapses/index.html"
     ]
+  },
+  {
+    "listing": "/tools/index.html",
+    "items": [
+      "/tools/london-commuter-map.html"
+    ]
   }
 ]

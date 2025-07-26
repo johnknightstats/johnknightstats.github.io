@@ -2,6 +2,8 @@
   {
     "listing": "/posts/index.html",
     "items": [
+      "/posts/london_rail_stations/index.html",
+      "/posts/game_state/index.html",
       "/posts/title_collapses/index.html"
     ]
   }

@@ -18,6 +18,8 @@ website:
         file: projects/index.qmd
       - text: "Papers"
         file: papers/index.qmd
+      - text: "Tools"
+        file: tools/index.qmd
 
 format:
   html:

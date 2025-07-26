@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
+<meta name="dcterms.date" content="2025-07-26">
+<meta name="description" content="Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.">
 
 <title>Commuting Times from London Railway Terminals – John Knight Stats</title>
 <style>
@@ -42,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-57aae3676c5e11e1c0d8cddef165a900.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ac0e2fb55fc2ad2d73d6ac25897d2813.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-57aae3676c5e11e1c0d8cddef165a900.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -272,6 +274,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../papers/index.html"> 
 <span class="menu-text">Papers</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tools/index.qmd"> 
+<span class="menu-text">Tools</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -286,39 +292,61 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Commuting Times from London Railway Terminals</h1></header>
 
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Commuting Times from London Railway Terminals</h1>
-</div>
+<header id="title-block-header">
 
+<p class="author">John Knight</p>
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>John Knight </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
+<p class="date">26 July 2025</p>
 </header>
 
 
-<p>Recently I played golf near Woking, Surrey, and traveled by train from Waterloo. I noticed the frequent fast trains to Woking which must make it a sort of commuter’s dream. This made me curious what other towns around London have a similar train service.</p>
+<p><em>Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.</em></p>
+<hr>
+<p>Recently, I took a train from Waterloo station to <strong>Woking</strong> to play a round of golf in Surrey. I’ve taken this route before, and Woking is a relatively easy place to get to because of the abundance of fast trains departing from Waterloo.</p>
+<div class="image-block">
+<p><img src="woking.png"> <em>Woking: a superstar of the London commuting scene.<br>Picture credit: Kennedy News and Media.</em></p>
+</div>
+<p>No doubt this makes Woking a hotbed for London commuters looking to escape the inflated house prices in the capital. But how does Woking’s train service compare with other London satellite towns?</p>
+<section id="a-project-for-python" class="level3">
+<h3 class="anchored" data-anchor-id="a-project-for-python">A Project for Python</h3>
+<p>I calculated and visualized the travel times to each station in London and the surrounding area using the following steps in <strong>Python</strong>:</p>
+<ol type="1">
+<li>Download free timetable and station data in <strong>JSON</strong> format from <a href="https://datafeeds.networkrail.co.uk/ntrod/">Network Rail</a>.</li>
+<li>Create relational tables for schedules and TIPLOCs (railway codes) in <strong>SQLite</strong>.</li>
+<li>Filter for trains departing from one of the 13 London terminals: <strong>Blackfriars</strong>, <strong>Cannon Street</strong>, <strong>Charing Cross</strong>, <strong>Euston</strong>, <strong>Fenchurch Street</strong>, <strong>King’s Cross</strong>, <strong>Liverpool Street</strong>, <strong>London Bridge</strong>, <strong>Marylebone</strong>, <strong>Paddington</strong>, <strong>St.&nbsp;Pancras</strong>, <strong>Victoria</strong> or <strong>Waterloo</strong>.</li>
+<li>Calculate the mean expected time from a traveller’s arrival at one of the terminals to reaching their destination.</li>
+<li>Visualize the time to each station on a map using the <a href="https://python-visualization.github.io/folium/latest/">folium</a> library, with green representing a shorter time and red a longer time.</li>
+</ol>
+<p>Here is the map:</p>
 <iframe src="london_commuter_stations.html" width="100%" height="600px" style="border:none;">
 </iframe>
+</section>
+<section id="how-was-this-calculated" class="level3">
+<h3 class="anchored" data-anchor-id="how-was-this-calculated">How was this calculated?</h3>
+<p>Let me expand a little more on the calculation of the times. I wanted a fair way to capture both the frequency and the speed of each train service.</p>
+<p>Suppose you arrive at a London terminal at a random time on a Tuesday between 5:00pm and 7:00pm - typical for someone returning from a day’s work or shopping. You board the next available train with the earliest arrival time at your destination. For example, let’s say I arrived at Waterloo at 5:35pm and the next train to Woking was at 5:40pm. If the train then took 24 minutes to reach Woking (6:04pm arrival) my total elapsed time is <strong>29 minutes</strong>.</p>
+<p>I calculated this for each of the 120 minutes (i.e.&nbsp;one simulation per minute) from 5:00pm to 7:00pm and averaged them to get the expected time to each destination.</p>
+</section>
+<section id="observations" class="level3">
+<h3 class="anchored" data-anchor-id="observations">Observations</h3>
+<p>It goes without saying, the general trend is for stations close to the centre of London to have shorter journey times. If you live in <strong>Bethnal Green</strong>, you’re in luck - it’s less than 10 minutes from Liverpool Street.</p>
+<p>Of course, Bethnal Green is hardly cheap nowadays. The more interesting stations are those further outside London which nonetheless have reasonable expected arrival times. Woking, to the south west of London for those unfamiliar with the home counties, stands out as one of the few solid green dots outside the M25 ringroad.</p>
+<p>Moving clockwise around the outside of the M25, we see similar green dots at <strong>Reading</strong>, <strong>St.&nbsp;Albans</strong>, <strong>Harpenden</strong>, <strong>Cheshunt</strong>, <strong>Broxbourne</strong>, <strong>Shenfield</strong>, <strong>Ebbsfleet</strong> and <strong>Sevenoaks</strong>. All these towns have an expected arrival time of less than 33 minutes from arriving at the original station, and might be attractive options for people working in London but looking for more affordable housing.</p>
+<p>Some considerations:</p>
+<ul>
+<li>I’m sure the train service to these towns is no secret, and house prices will be higher as a result.</li>
+<li>Train ticket prices may be higher as you go further outside London.</li>
+<li><strong>London Underground</strong> stations could be added for a more complete picture.</li>
+</ul>
+<p>I may revisit this analysis in future to incorporate house prices, travel cost, and tube stops. Nonetheless, I think it’s an interesting and useful visualization. I hope you agree!</p>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+<p>© 2025 John Knight. All rights reserved.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

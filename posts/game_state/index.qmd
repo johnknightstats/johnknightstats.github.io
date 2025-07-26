@@ -1,6 +1,6 @@
 ---
 title: "How does scoring rate change in a football match based on time elapsed and game state?"
-image: viz/gerrard_slip_screenshot.png
+image: viz/mean_goals_by_minute.png
 author: "John Knight"
 date: 2025-07-22
 date-format: "D MMMM YYYY"
@@ -38,7 +38,7 @@ It seems like we see the expected upward trend, with understandably low totals a
 
 Here is the same chart but with xG instead of goals. Compared to the previous chart, we can see that the trend is almost identical, but the variance is much lower. I will continue using goals for this particular analysis, but it's a good demonstration of why xG is so useful in statistical analysis of football. 
 
-::: {.centered-block .max-70}
+::: {.centered-block}
 <img src="viz/mean_xg_by_minute.png"/>
 :::
 

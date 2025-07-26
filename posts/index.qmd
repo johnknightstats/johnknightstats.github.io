@@ -1,4 +1,9 @@
 ---
 title: "Articles"
-listing: default
+listing:
+  contents: ./
+  sort: "date desc"
+  type: default
+  fields: [title, date, description, image]
+  categories: false
 ---

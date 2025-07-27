@@ -10,7 +10,7 @@ Welcome to my website!
 
 I'm John Knight, a data analyst currently working in healthcare research and finishing up a master's degree in applied statistics and data science. I have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and I live at the intersection of sport and numbers. This naturally draws me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently I have worked in mathematics education and healthcare as I look to broaden my horizons and explore future avenues.
 
-I started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack (coming soon!). The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be adding some other sections as I develop the website, such as Tools and Dashboard. 
+I started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack (coming soon!). The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be building other sections as I develop the website, such as Tools and Dashboard. 
 
 I'm excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.
 

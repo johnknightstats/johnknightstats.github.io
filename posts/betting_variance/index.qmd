@@ -1,0 +1,6 @@
+---
+title: "Variance in betting results"
+author: "John Knight"
+draft: true
+---
+

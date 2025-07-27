@@ -20,6 +20,8 @@ website:
         file: papers/index.qmd
       - text: "Tools"
         file: tools/index.qmd
+      - text: "Dashboards"
+        file: dashboards/index.qmd
 
 format:
   html:

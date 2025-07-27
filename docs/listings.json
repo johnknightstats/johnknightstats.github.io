@@ -9,6 +9,12 @@
     ]
   },
   {
+    "listing": "/dashboards/index.html",
+    "items": [
+      "/dashboards/election-2020-tableau/index.html"
+    ]
+  },
+  {
     "listing": "/tools/index.html",
     "items": [
       "/tools/betting-variance-tool.html",

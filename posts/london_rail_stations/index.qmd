@@ -1,5 +1,5 @@
 ---
-title: "Commuting Times from London Railway Terminals"
+title: "Commuting times from London railway terminals"
 image: woking.png
 author: "John Knight"
 date: 2025-07-26

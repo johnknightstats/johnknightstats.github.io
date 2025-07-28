@@ -110,13 +110,15 @@ To demonstrate these results, I used the median of each quartile of pre-match od
 <img src="viz/combined_predictions_odds_lead.png"/>
 :::
 
-If a strong favourite (white line) was playing against an underdog (dark blue line), we can see that in the second half, if the favourite were trailing by one goal, their probability of scoring in each minute would increase significantly more than the associated decrease in the underdog's chance of scoring. This intuitively feels correct: favourites often ramp up the pressure when chasing an equaliser.
+If a strong favourite (white line) was playing against an underdog (dark blue line), we can see that if the favourite were trailing by one goal in the second half, their probability of scoring in each minute would increase significantly more than the associated decrease in the underdog's chance of scoring. This intuitively feels correct: favourites often ramp up the pressure when chasing an equaliser.
 
-So to summarize our findings:
+### Summary of findings
 
 - Teams are relatively more likely to score when trailing than when level, and more likely to score when level than when leading.
-- In the first half, scoring rate increases as the half progresses, all other things being equal.
-- When the teams come out for the second half, scoring rate jumps higher than it was in the 45th minute, and then gradually decreases as the half progresses.
+- In the first half, scoring rate **increases** as the half progresses, all other things being equal.
+- When the teams come out for the second half, scoring rate jumps higher than it was in the 45th minute, and then gradually **decreases** as the half progresses.
+
+### What about those high values in the 48th-58th minute?
 
 If we revisit the first plot in this article, the unusually high values between 48 and 58 minutes can now be understood. I have added a red line to the plot which now looks like a slight downward trend in the second half, rather than a series of observations above the overall trend:
 
@@ -124,4 +126,13 @@ If we revisit the first plot in this article, the unusually high values between 
 <img src="viz/mean_goals_by_minute_red_line.png"/>
 :::
 
-There are, of course, some limitations to this analysis. Injury time in both halves has been ignored, as have factors like league- or game-specific goal totals. There is also the question of whether goals beget more goals: all other things being equal, does a scoreline of 1-1 tend to predict more goals than a scoreline of 0-0? I may visit these ideas in a future analysis.
+### Limitations
+
+There are, of course, some limitations to this analysis. Injury time in both halves has been ignored, as have factors like league- or game-specific goal totals. There is also the question of whether goals beget more goals: all other things being equal, does a scoreline of 1-1 tend to predict more goals than a scoreline of 0-0?
+
+There is plenty more scope to drill down in a future analysis, but this gives us a nice framework to build on.
+
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2025 John Knight. All rights reserved.

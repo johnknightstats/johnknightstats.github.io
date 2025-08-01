@@ -5,10 +5,10 @@ author: "John Knight"
 date: 2025-07-26
 date-format: "D MMMM YYYY"
 description: "Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package."
-categories: ["football", "statistics"]
+categories: ["transport", "property", "python"]
 format:
   html:
-    title-block-style: none
+    title-block-categories: true
     css: ../../styles.css
 execute: 
   echo: false

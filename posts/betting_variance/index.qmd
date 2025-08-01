@@ -2,5 +2,37 @@
 title: "Variance in betting results"
 author: "John Knight"
 draft: true
+format:
+  html:
+    title-block-categories: true
+    css: ../../styles.css
+categories: ["betting", "statistics"]
 ---
+
+We've all been there. You develop a new betting system, you get off to a hot start and think you have found the Golden Goose - but then the wins dry up, and you end up back at square one.
+
+One of the trickiest parts of gambling is assessing whether or not you have an edge. While it can be easy to get overexcited after some positive early results, there is also a danger of giving up on a system too early because you had some bad luck early on.
+
+It's important to keep thorough records of all your bets, and an essential part of that is to record your estimate of the *true* price for every bet. This enables you to calculate your expected profit after `n` bets, and assess how your actual results are performing relative to expectations.
+
+I created a simple [tool](https://johnknightstats.com/tools/betting-variance-tool.html) that compares two distribution curves after `n` bets: one if the market price is correct, and the other if *your* price is correct.
+
+For example, let's say you are placing $100 bets at decimal odds of 2.0, when you believe the *true* price is 1.8. This means you think there is a 55.6% chance of the bet winning when the market says it is 50%, which is a very solid edge if you can find it.
+
+After 100 bets, the curves look like this:
+
+::: {.centered-block}
+<img src="viz/bets_100.png"/>
+:::
+
+Now, 100 bets is a lot! Especially if it's a system that only throws up a handful of bets a week. This could be several months' work - and yet clearly there is a lot of cross over between the two curves. You could quite easily be losing with a very good system, OR you could be showing a decent profit from pure guesses.
+
+If we increase the number of bets to 1000, the two curves are now a lot more distinct, and the probability of an overall loss IF your 1.8 price is correct is virtually nil.
+
+::: {.centered-block}
+<img src="viz/bets_1000.png"/>
+:::
+
+So this is all great in theory, but what about in practice? Not every bet will be at the same price, with the same edge. And would the distribution really follow a nice smooth bell curve?
+
 

@@ -8,7 +8,7 @@ description: "Creating a logistic regression model to predict the chance of scor
 categories: ["football", "statistics"]
 format:
   html:
-    title-block-style: none
+    title-block-categories: true
     css: ../../styles.css
 execute: 
   echo: false

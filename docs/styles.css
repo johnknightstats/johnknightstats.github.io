@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
 /* ========== GENERAL IMAGE STYLING ========== */
 img {
   width: 100%;
@@ -30,13 +32,11 @@ img {
     max-width: 100%;
     padding: 0 1em;
   }
-  
+
   .responsive-table-wrapper table {
     font-size: 0.85em;
   }
-
 }
-
 
 /* ========== CAPTIONS ========== */
 .caption,
@@ -57,7 +57,6 @@ figcaption,
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
-
 
 /* Strong inside captions */
 .quarto-figure > figcaption > strong,
@@ -104,15 +103,13 @@ table th {
   color: rgba(0, 0, 0, 0.2);
 }
 
-
 .responsive-table-wrapper table {
-  width: max-content; 
-  min-width: 100%;  
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
   font-size: 0.85em;
   white-space: nowrap;
 }
-
 
 /* === Centered block wrapper === */
 .centered-block {
@@ -130,7 +127,6 @@ table th {
   max-width: 70%;
 }
 
-
 /* Responsive: full width on phones */
 @media screen and (max-width: 768px) {
   .centered-block,
@@ -144,7 +140,7 @@ table th {
 .centered-block .tight-title {
   font-weight: bold;
   font-size: 1.1em;
-  margin-bottom: 0.25em; /* tighter */
+  margin-bottom: 0.25em;
   text-align: center;
 }
 
@@ -164,12 +160,12 @@ table th {
 /* Caption (em tag used as caption) */
 .centered-block em,
 .centered-block.max-70 em,
-.image-block em{
+.image-block em {
   display: block;
   font-style: italic;
   font-size: 0.8em;
-  margin-top: 0.5em;     /* tighter */
-  margin-bottom: 1em;    /* slightly tighter */
+  margin-top: 0.5em;
+  margin-bottom: 1em;
   text-align: center;
   max-width: 100%;
 }
@@ -196,36 +192,54 @@ h1, h2, h3 {
   margin-top: 1.5em;
 }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-
 .left-image {
   display: block;
   margin-left: 0;
   margin-right: auto;
 }
 
-/* Hide the description from the title block */
+/* ===== CUSTOM TITLE BLOCK STYLING ===== */
+
+/* Hide description (all known variants) */
+#title-block-header .description,
+.quarto-title p.description,
+.quarto-title .quarto-title-description,
+.quarto-title .lead,
 .quarto-title-description {
-  display: none;
+  display: none !important;
 }
 
 /* Hide "Author" and "Published" labels */
-.quarto-title-authors .quarto-title-meta-heading,
-.quarto-title-date .quarto-title-meta-heading {
-  display: none;
+.quarto-title-meta-heading {
+  display: none !important;
 }
 
-/* Stack author name and date without extra spacing */
-.quarto-title-authors .quarto-title-meta-contents {
-  display: block;
-  text-align: left;
-  font-weight: normal;
-  margin-bottom: 0.2em;
+/* === AUTHOR/DATE FINAL STYLING === */
+
+/* Stack author and date vertically */
+.quarto-title-meta {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  margin-top: 0.5em;
 }
 
-.quarto-title-date .quarto-title-meta-contents {
-  font-size: 0.9em;
-  color: #666;
+/* Style the first meta block (author) */
+.quarto-title-meta > div:first-of-type .quarto-title-meta-contents p {
+  text-transform: uppercase;
+  font-family: Kanit, serif;
+  font-size: 0.95em;
+  color: #555;
+  letter-spacing: 0.7px;
+  margin: 0 0 0.2em 0;
 }
 
+/* Style the second meta block (date) */
+.quarto-title-meta > div:last-of-type .quarto-title-meta-contents p {
+  text-transform: uppercase;
+  font-family: Kanit, serif;
+  font-size: 0.85em;
+  color: #555;
+  letter-spacing: 0.7px;
+  margin: 0;
+}

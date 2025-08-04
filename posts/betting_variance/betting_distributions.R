@@ -1,0 +1,55 @@
+
+#####################################################
+### Some simulations of betting P&L distributions ###
+#####################################################
+
+library(ggplot2)
+library(here)
+
+setwd(here("posts/betting_variance/viz"))
+
+# Set a custom color palette
+my_palette <- c("#233D4D", "#FF9F1C", "#41EAD4", "#FDFFFC", "#F71735")
+
+# ---- Function to generate P&L from n bets with probability p ----
+sim_bets <- function(n, p) {
+  # Simulate n outcomes: 1 for win, 0 for loss
+  outcomes <- rbinom(n, size = 1, prob = p)
+  
+  odds <- 1 / p # decimal odds
+  
+  # For each bet, P&L is (odds - 1) if win, -1 if loss
+  pl <- ifelse(outcomes == 1, odds - 1, -1)
+  
+  # Return total profit or loss
+  total_pl <- sum(pl)
+  return(total_pl)
+}
+
+# ---- Function to plot m repetitions of sim_bets ----
+sim_iterations_plot <- function(m, n, p, binwidth = 2) {
+  my_pls <- c()
+  for (i in 1:m) {
+    new_pl <- sim_bets(n, p)
+    my_pls <- c(my_pls, new_pl)
+  }
+  my_df <- data.frame(run = c(1:m), profit_loss = my_pls)
+  odds <- format(round(1 / p, 1), nsmall = 1)
+  plot_title <- paste("Distribution of mean after", n, "bets at odds of", odds, "(simulated", m, "times)")
+  ggplot(my_df, aes(x=profit_loss)) +
+    geom_histogram(binwidth = binwidth, fill = my_palette[1]) +
+    labs(x = "Profit", y = "Count", title = plot_title) +
+    theme(plot.title = element_text(size = 12))
+}
+
+(plot1 <- sim_iterations_plot(10000, 30, 0.5))
+ggsave("mean_distribution_2.png", plot1, dpi = 600)
+
+(plot2 <- sim_iterations_plot(10000, 30, 0.2, binwidth = 5))
+ggsave("mean_distribution_5.png", plot2, dpi = 600)
+
+(plot3 <- sim_iterations_plot(10000, 30, 0.05, binwidth = 20))
+ggsave("mean_distribution_20.png", plot3, dpi = 600)
+
+(plot4 <- sim_iterations_plot(10000, 100, 0.05, binwidth = 20))
+ggsave("mean_distribution_20a.png", plot4, dpi = 600)

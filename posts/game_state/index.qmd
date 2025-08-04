@@ -1,6 +1,5 @@
 ---
 title: "How does scoring rate change in a football match based on time elapsed and game state?"
-image: viz/mean_goals_by_minute.png
 author: "John Knight"
 date: 2025-07-22
 date-format: "D MMMM YYYY"
@@ -8,6 +7,7 @@ description: "Creating a logistic regression model to predict the chance of scor
 categories: ["football", "statistics"]
 format:
   html:
+    title-block-style: "default"
     title-block-categories: true
     css: ../../styles.css
 execute: 
@@ -15,8 +15,8 @@ execute:
   eval: true
 engine: knitr
 editor: source
-
 ---
+
 
 *Creating a logistic regression model to predict the chance of scoring a goal in each minute of a football match based on the pre-match odds, current score, minutes elapsed, and any red cards.*
 

@@ -8,6 +8,7 @@ description: "Visualizing rail travel times from the centre of London to surroun
 categories: ["transport", "property", "python"]
 format:
   html:
+    title-block-style: "default"
     title-block-categories: true
     css: ../../styles.css
 execute: 

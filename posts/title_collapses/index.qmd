@@ -8,6 +8,7 @@ description: "Using an Elo-derived simulation model, I ranked the five biggest l
 categories: ["football", "statistics"]
 format:
   html:
+    title-block-style: default
     title-block-categories: true
     css: ../../styles.css
 execute: 

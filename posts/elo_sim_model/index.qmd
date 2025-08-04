@@ -8,6 +8,7 @@ description: "I demonstrate how the Poisson and negative binomial distributions 
 categories: ["football", "statistics"]
 format:
   html:
+    title-block-style: "default"  
     title-block-categories: true
     css: ../../styles.css
 execute: 

@@ -111,6 +111,39 @@ table th {
   white-space: nowrap;
 }
 
+/* ========== FANCY TABLE STYLE ========== */
+table.fancy-table {
+  border-collapse: collapse;
+  width: auto;
+  font-size: 0.95em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #333;
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+table.fancy-table th,
+table.fancy-table td {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table.fancy-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+table.fancy-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+
 /* === Centered block wrapper === */
 .centered-block {
   display: flex;

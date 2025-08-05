@@ -5,7 +5,7 @@ draft: true
 format:
   html:
     title-block-categories: true
-    css: ../../styles.css
+    css: ../../../styles.css
 categories: ["betting", "statistics"]
 ---
 
@@ -81,19 +81,29 @@ Now here's a real life example from a betting system I was recently testing for 
 
 *** Show real example here ***
 
-Total number of bets: 405
-Total staked: 29495.07
-Total profit: 2824.242
-ROI: 0.09575301
+::: {.table}
+<table class="fancy-table">
+  <tr><td>Total number of bets</td><td>405</td></tr>
+  <tr><td>Total staked</td><td>£29,495.07</td></tr>
+  <tr><td>Total profit</td><td>£2,824.24</td></tr>
+  <tr><td>ROI</td><td>9.58%</td></tr>
+</table>
+:::
+
 
 ::: {.centered-block}
 <img src="viz/bet_record_plot_405.png"/>
 :::
 
-Total number of bets: 830
-Total staked: 61279.54
-Total profit: -413.3574
-ROI: -0.00674544
+::: {.table}
+<table class="fancy-table">
+  <tr><td>Total number of bets</td><td>830</td></tr>
+  <tr><td>Total staked</td><td>£61,279.54</td></tr>
+  <tr><td>Total profit</td><td>-£413.36</td></tr>
+  <tr><td>ROI</td><td>-0.67%</td></tr>
+</table>
+:::
+
 
 ::: {.centered-block}
 <img src="viz/bet_record_plot_830.png"/>

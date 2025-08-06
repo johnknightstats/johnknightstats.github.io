@@ -155,6 +155,16 @@ table.fancy-table tr:nth-child(even) {
   margin-bottom: -10px;
 }
 
+.centered-block img {
+  width: auto !important;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 /* Optional narrower version */
 .max-70 {
   max-width: 70%;

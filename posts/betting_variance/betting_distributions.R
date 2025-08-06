@@ -6,7 +6,7 @@
 library(ggplot2)
 library(here)
 
-setwd(here("posts/betting_variance/viz"))
+setwd(here("posts/_drafts/betting_variance/viz"))
 
 # Set a custom color palette
 my_palette <- c("#233D4D", "#FF9F1C", "#41EAD4", "#FDFFFC", "#F71735")

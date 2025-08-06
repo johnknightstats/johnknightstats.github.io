@@ -2,6 +2,7 @@
   {
     "listing": "/posts/index.html",
     "items": [
+      "/posts/betting_variance/index.html",
       "/posts/london_rail_stations/index.html",
       "/posts/game_state/index.html",
       "/posts/elo_sim_model/index.html",

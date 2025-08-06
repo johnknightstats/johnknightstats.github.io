@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2025-07-26">
-<meta name="description" content="Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.">
+<meta name="dcterms.date" content="2025-08-05">
+<meta name="description" content="How to understand the role of variance and evaluate your betting strategy.">
 
-<title>Commuting times from London railway terminals – John Knight Stats</title>
+<title>How can you know if your betting system really works? – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -301,17 +301,16 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Commuting times from London railway terminals</h1>
+<h1 class="title">How can you know if your betting system really works?</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">transport</div>
-    <div class="quarto-category">property</div>
-    <div class="quarto-category">python</div>
+    <div class="quarto-category">betting</div>
+    <div class="quarto-category">statistics</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.
+    How to understand the role of variance and evaluate your betting strategy.
   </div>
 </div>
 
@@ -328,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">26 July 2025</p>
+      <p class="date">5 August 2025</p>
     </div>
   </div>
   
@@ -340,45 +339,144 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.</em></p>
+<p><em>How to understand the role of variance and evaluate your betting strategy.</em></p>
 <hr>
-<p>Recently, I took a train from Waterloo station to <strong>Woking</strong> to play a round of golf in Surrey. I’ve taken this route before, and Woking is a relatively easy place to get to because of the abundance of fast trains departing from Waterloo.</p>
-<div class="image-block">
-<p><img src="woking.png"> <em>Woking: a superstar of the London commuting scene.<br>Picture credit: Kennedy News and Media.</em></p>
+<p>We’ve all been there. You develop a new betting system, you get off to a hot start and think you have found the golden goose - but then the wins dry up, and you end up back at square one.</p>
+<p>One of the trickiest parts of gambling is assessing whether or not you have a genuine <strong>edge</strong>. It can be easy to get overexcited after some positive early results; but there is also a danger of giving up on a system too early, just because you had an early run of bad luck.</p>
+<p>For any serious bettor, it’s important to keep a thorough record of all your bets, and an essential part of that process is to record your estimate of the <strong>true price</strong> for every selection. This enables you to calculate your expected profit at any time, and assess how your actual results are stacking up relative to expectations.</p>
+<section id="betting-distribution-tool" class="level2">
+<h2 class="anchored" data-anchor-id="betting-distribution-tool">Betting distribution tool</h2>
+<p>To help visualize this, I created a simple <a href="https://johnknightstats.com/tools/betting-variance-tool.html">tool</a> using R Shiny that compares two distribution curves based on the odds, number of bets and your perceived edge. One curve shows how results will be distributed if the market is correct, and the other if <em>your</em> price is correct.</p>
+<p>For example, let’s say you are placing $100 bets at decimal odds of 2.0, when you believe the true price is 1.8. This means you think there is a <strong>55.6%</strong> chance of the bet winning when the market says it is <strong>50%</strong>, which is a very solid edge if you can find it consistently.</p>
+<p>After 100 bets, the curves look like this:</p>
+<div class="centered-block">
+<p><img src="viz/bets_100.png"> <em>100 bets at 2.0 with a perceived “true” price of 1.8.</em></p>
 </div>
-<p>No doubt this makes Woking a hotbed for London commuters looking to escape the inflated house prices in the capital. But how does Woking’s train service compare with other London satellite towns?</p>
-<section id="a-project-for-python" class="level3">
-<h3 class="anchored" data-anchor-id="a-project-for-python">A Project for Python</h3>
-<p>I calculated and visualized the travel times to each station in London and the surrounding area using the following steps in <strong>Python</strong>:</p>
-<ol type="1">
-<li>Download free timetable and station data in <strong>JSON</strong> format from <a href="https://datafeeds.networkrail.co.uk/ntrod/">Network Rail</a>.</li>
-<li>Create relational tables for schedules and TIPLOCs (railway codes) in <strong>SQLite</strong>.</li>
-<li>Filter for trains departing from one of the 13 London terminals: <strong>Blackfriars</strong>, <strong>Cannon Street</strong>, <strong>Charing Cross</strong>, <strong>Euston</strong>, <strong>Fenchurch Street</strong>, <strong>King’s Cross</strong>, <strong>Liverpool Street</strong>, <strong>London Bridge</strong>, <strong>Marylebone</strong>, <strong>Paddington</strong>, <strong>St.&nbsp;Pancras</strong>, <strong>Victoria</strong> or <strong>Waterloo</strong>.</li>
-<li>Calculate the mean expected time from a traveller’s arrival at one of the terminals to reaching their destination.</li>
-<li>Visualize the time to each station on a map using the <a href="https://python-visualization.github.io/folium/latest/">folium</a> library, with green representing a shorter time and red a longer time.</li>
-</ol>
-<p>Here is the map:</p>
-<iframe src="london_commuter_stations.html" width="100%" height="600px" style="border:none;">
-</iframe>
+<p>Now, 100 bets is a lot! Especially if it’s a system that only throws up a handful of bets a week. This could be several months’ work - and yet clearly there is a lot of crossover between the two curves. You could quite feasibly be losing with a very good system, OR you could be showing a decent profit from pure guesses.</p>
+<p>After running the tool with the parameters mentioned above, the accompanying results table reveals that the probability of being in profit, if your prices are correct, is <strong>86.82%</strong>. So that’s just over a 13% probability of being <strong>down</strong> after 100 bets despite having a pretty solid edge.</p>
+<p>If we increase the number of bets to 1000, the two curves are now a lot more distinct, and the probability of an overall loss if your 1.8 price is correct is virtually nil:</p>
+<div class="centered-block">
+<p><img src="viz/bets_1000.png"> <em>1000 bets at 2.0 with a perceived “true” price of 1.8.</em></p>
+</div>
 </section>
-<section id="how-was-this-calculated" class="level3">
-<h3 class="anchored" data-anchor-id="how-was-this-calculated">How was this calculated?</h3>
-<p>Let me expand a little more on the calculation of the times. I wanted a fair way to capture both the frequency and the speed of each train service.</p>
-<p>Suppose you arrive at a London terminal at a random time on a Tuesday between 5:00pm and 7:00pm - typical for someone returning from a day’s work or shopping. You board the next available train with the earliest arrival time at your destination. For example, let’s say I arrived at Waterloo at 5:35pm and the next train to Woking was at 5:40pm. If the train then took 24 minutes to reach Woking (6:04pm arrival) my total elapsed time is <strong>29 minutes</strong>.</p>
-<p>I calculated this for each of the 120 minutes (i.e.&nbsp;one simulation per minute) from 5:00pm to 7:00pm and averaged them to get the expected time to each destination.</p>
+<section id="central-limit-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="central-limit-theorem">Central limit theorem</h2>
+<p>So this is all great in theory, but what about in practice? Not all bets are placed at even money; would the distribution for other prices really follow a nice smooth bell curve?</p>
+<p>The answer is: basically, yes! Thanks to the <strong>central limit theorem</strong>, the mean of a sample will approximate a normal distribution as long as the sample is sufficiently large. And what is <em>sufficiently large</em>? The rule of thumb for statisticians is around <strong>30</strong>, based on empirical observation. Let’s see how that looks.</p>
+<p>I created a small function in R that calculates the profit or loss after 30 bets at 2.0 (i.e.&nbsp;even money). Then, I wrote a second function that simulated the 30 bets 10,000 times and plotted a histogram of the outcomes.</p>
+<div class="centered-block">
+<p><img src="viz/mean_distribution_2.png"></p>
+</div>
+<p>As promised, after only 30 bets we can see that the distribution of the mean outcome resembles a beautiful bell shape.</p>
+<p>But that’s for the easy scenario where we are betting at even money. What about a more skewed distribution? I changed the odds to 5.0, perhaps betting on away underdogs in football matches. Here is how the distribution looks after 30 bets:</p>
+<div class="centered-block">
+<p><img src="viz/mean_distribution_5.png"></p>
+</div>
+<p>So you can see that even with odds of 5.0, after 30 bets the overall distribution is fairly close to normal - certainly close enough to be robust to statistical tests.</p>
+<p>If we move to more extreme lopsided distributions, that’s when the sample size of 30 becomes too small. Here I demonstrate 30 bets at odds of 20.0, maybe betting on horses, or golfers to win a tournament:</p>
+<div class="centered-block">
+<p><img src="viz/mean_distribution_20.png"></p>
+</div>
+<p>The distribution is now skewed to the right. Clearly your maximum loss is capped at 30 units, but profits of greater than 30 are quite feasible if 3 or 4 winners come in. So it would not be appropriate to use a normal distribution to represent these 30 bets. But if we increase the number of bets to 100 at the same odds, then we start to see the normal distribution shape emerge.</p>
+<div class="centered-block">
+<p><img src="viz/mean_distribution_20a.png"></p>
+</div>
+<p>So generally speaking, it should be fine to use a normal distribution to represent the range of outcomes one might reasonably expect from a series of independent bets, as long as you have a sample of around 30 bets or more.</p>
 </section>
-<section id="observations" class="level3">
-<h3 class="anchored" data-anchor-id="observations">Observations</h3>
-<p>It goes without saying, the general trend is for stations close to the centre of London to have shorter journey times. If you live in <strong>Bethnal Green</strong>, you’re in luck - it’s less than 10 minutes from Liverpool Street.</p>
-<p>Of course, Bethnal Green is hardly cheap nowadays. The more interesting stations are those further outside London which nonetheless have reasonable expected arrival times. Woking, to the south west of London for those unfamiliar with the home counties, stands out as one of the few solid green dots outside the M25 ringroad.</p>
-<p>Moving clockwise around the outside of the M25, we see similar green dots at <strong>Reading</strong>, <strong>St.&nbsp;Albans</strong>, <strong>Harpenden</strong>, <strong>Cheshunt</strong>, <strong>Broxbourne</strong>, <strong>Shenfield</strong>, <strong>Ebbsfleet</strong> and <strong>Sevenoaks</strong>. All these towns have an expected arrival time of less than 33 minutes from arriving at the original station, and might be attractive options for people working in London but looking for more affordable housing.</p>
-<p>Some considerations:</p>
-<ul>
-<li>I’m sure the train service to these towns is no secret, and house prices will be higher as a result.</li>
-<li>Train ticket prices may be higher as you go further outside London.</li>
-<li><strong>London Underground</strong> stations could be added for a more complete picture.</li>
-</ul>
-<p>I may revisit this analysis in future to incorporate house prices, travel cost, and tube stops. Nonetheless, I think it’s an interesting and useful visualization. I hope you agree! If you want to take a closer look at the code I used for this project, please check out my <a href="https://github.com/johnknightstats/london-train-stations">GitHub repo</a>.</p>
+<section id="a-real-life-example-from-my-betting" class="level2">
+<h2 class="anchored" data-anchor-id="a-real-life-example-from-my-betting">A real life example from my betting</h2>
+<p>So far, I have just been giving hypothetical examples where the odds are the same for every bet. You could actually use the <strong>binomial distribution</strong> if that were the case, but in reality you are going to have lots of different prices and stake sizes in your ledger.</p>
+<p>Because each bet is an independent Bernoulli event (it wins or it loses), it is simple to calculate the <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">expected variance</a> for each bet. And a great property of variance is that the variance of a sum of variables is simply the sum of the variance of each variable! So that makes it simple to create a normal distribution curve from any set of bets.</p>
+<p>Here’s a real life example from a football system I was testing for small stakes. This is something I strongly advise any time you think you have found something: test it with real money! Back-testing or paper trading is one thing, but there is no substitute for actually getting real money down. Just be sensible, of course - there’s no need to lose an uncomfortable amount while testing out a new method.</p>
+<p>Below are the results after 405 bets. I had staked over <strong>£29,000</strong> in total, which may sound like a lot but it is less than £100 per bet. At that bet size, a <strong>profit of £2,824</strong> from a large number of bets would certainly get you excited! The return on investment (ROI) is <strong>9.58%</strong>, though personally I’ve always found ROI to be misleading and limited when it comes to measuring betting performance.</p>
+<div class="table">
+<table class="fancy-table">
+<tbody><tr>
+<td>
+Total number of bets
+</td>
+<td>
+405
+</td>
+</tr>
+<tr>
+<td>
+Total staked
+</td>
+<td>
+£29,495.07
+</td>
+</tr>
+<tr>
+<td>
+Total profit
+</td>
+<td>
+£2,824.24
+</td>
+</tr>
+<tr>
+<td>
+ROI
+</td>
+<td>
+9.58%
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="centered-block">
+<p><img src="viz/bet_record_plot_405.png"></p>
+</div>
+<p>Suffice to say, I was feeling pretty excited about this system. I really thought I had found something! And you can see from the dashed line, these results are closer to the centre of the “my price” curve than the market price curve.</p>
+<p>However, there is still enough overlap with the right tail of the market price curve to suggest that this run of results could all just be good luck. In fact the probability is around <strong>8%</strong> that one will be at least this far in profit when one has no edge. And…that’s exactly what came to pass. Here are my results after <strong>830 bets</strong>:</p>
+<div class="table">
+<table class="fancy-table">
+<tbody><tr>
+<td>
+Total number of bets
+</td>
+<td>
+830
+</td>
+</tr>
+<tr>
+<td>
+Total staked
+</td>
+<td>
+£61,279.54
+</td>
+</tr>
+<tr>
+<td>
+Total profit
+</td>
+<td>
+-£413.36
+</td>
+</tr>
+<tr>
+<td>
+ROI
+</td>
+<td>
+-0.67%
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="centered-block">
+<p><img src="viz/bet_record_plot_830.png"></p>
+</div>
+<p>Lo and behold, I ended up almost smack on the expected return assuming the market price is correct. (Note that this is slightly below zero as it was on an exchange, so commission is factored in).</p>
+<p>I actually still quite like the system in question, but it needs some development. And that’s another great thing about deploying your bets to small stakes: even if it doesn’t make money, you tend to learn something. Humans are great learners, and just being active in the market will give you a feel for all sorts of nuances that are hard to gauge otherwise.</p>
+</section>
+<section id="in-summary" class="level2">
+<h2 class="anchored" data-anchor-id="in-summary">In summary</h2>
+<p>Keep a record of all your bets and include your estimate of the true price for every bet. Even after 100 or more bets, variance plays a large role in your overall profit &amp; loss, so don’t get too excited about any successes, and don’t give up on a losing system too quickly.</p>
+<p>Finally, there is one way to combat variance by using <strong>variance reduction methods</strong>. For example, if betting on football, one might use expected goals (xG) to derive the post-match expected win % for each team instead of the binary 1/0 result. Because expected wins have less variance than actual wins, the curves will be narrower and will diverge more quickly.</p>
+<p>I would urge a fair amount of caution though - ultimately it’s results we are betting on, and if there is some element of winning a football match that is not captured by xG…well, that could be an edge in itself!</p>
 <hr>
 <p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
 <p>© 2025 John Knight. All rights reserved.</p>

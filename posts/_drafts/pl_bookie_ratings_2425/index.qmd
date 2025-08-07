@@ -1,0 +1,24 @@
+---
+title: "How did bookmakers rate each Premier League team across the 2024-2025 season?"
+image: plot_snip.png
+author: "John Knight"
+date: 2025-08-06
+date-format: "D MMMM YYYY"
+description: "I use Python to derive team ratings from Pinnacle Sports Asian handicaps, and visualize how each team's rating changed throughout the 2024-2025 Premier League season."
+format:
+  html:
+    title-block-categories: true
+    css: ../../styles.css
+categories: ["football", "betting", "statistics"]
+execute: 
+  echo: false
+  eval: true
+engine: knitr
+editor: source
+---
+
+*I use Python to derive team ratings from Pinnacle Sports Asian handicaps, and visualize how each team's rating changed throughout the 2024-2025 Premier League season.*
+
+---
+
+When looking for an assessment of 

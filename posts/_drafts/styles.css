@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
+/* ========== GENERAL IMAGE STYLING ========== */
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+/* ========== IMAGE BLOCK DEFAULT (50%) ========== */
+.image-block {
+  text-align: center;
+  margin: 1em auto;
+  max-width: 50%;
+}
+
+/* Optional override class for 70% width */
+.max-70 {
+  max-width: 70%;
+}
+
+/* Responsive override for mobile: allow full width */
+@media screen and (max-width: 768px) {
+  .image-block,
+  .html-block,
+  .centered-block,
+  .centered-block.max-70,
+  .max-70 {
+    max-width: 100%;
+    padding: 0 1em;
+  }
+
+  .responsive-table-wrapper table {
+    font-size: 0.85em;
+  }
+}
+
+/* ========== CAPTIONS ========== */
+.caption,
+figcaption,
+.quarto-figure > figcaption,
+.quarto-figure > p.caption,
+.figure-caption,
+.image-block .caption,
+.html-block .caption,
+.centered-block em,
+.image-block em {
+  font-style: italic;
+  font-size: 0.8em;
+  text-align: center;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+/* Strong inside captions */
+.quarto-figure > figcaption > strong,
+.quarto-figure > p.caption > strong {
+  display: block;
+  text-align: center;
+}
+
+/* Caption inside .image-block */
+.image-block .caption {
+  font-style: italic;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+  text-align: center;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========== TABLES ========== */
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table th {
+  text-align: center;
+}
+
+/* Wrapper for included HTML tables */
+.responsive-table-wrapper {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1em;
+}
+
+.responsive-table-wrapper::after {
+  content: '→';
+  position: absolute;
+  right: 1em;
+  bottom: 0.5em;
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.responsive-table-wrapper table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+/* ========== FANCY TABLE STYLE ========== */
+table.fancy-table {
+  border-collapse: collapse;
+  width: auto;
+  font-size: 0.95em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #333;
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+table.fancy-table th,
+table.fancy-table td {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table.fancy-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+table.fancy-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+
+/* === Centered block wrapper === */
+.centered-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em auto;
+  max-width: 100%;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+.centered-block img {
+  width: auto !important;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Optional narrower version */
+.max-70 {
+  max-width: 70%;
+}
+
+/* Responsive: full width on phones */
+@media screen and (max-width: 768px) {
+  .centered-block,
+  .centered-block.max-70 {
+    max-width: 100%;
+    padding: 0 1em;
+  }
+}
+
+/* Title styling */
+.centered-block .tight-title {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 0.25em;
+  text-align: center;
+}
+
+/* Responsive wrapper for included HTML tables */
+.centered-block .responsive-table-wrapper {
+  margin-top: -10px;
+  margin-bottom: -20px;
+}
+
+.centered-block .responsive-table-wrapper table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Caption (em tag used as caption) */
+.centered-block em,
+.centered-block.max-70 em,
+.image-block em {
+  display: block;
+  font-style: italic;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* === Footer with data sources === */
+.data-footer {
+  max-width: 700px;
+  margin: 3em auto;
+  padding-top: 2em;
+  border-top: 1px solid #ddd;
+  font-size: 0.9em;
+  color: #444;
+}
+
+/* === Change text font === */
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  margin-top: 1.5em;
+}
+
+.left-image {
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ===== CUSTOM TITLE BLOCK STYLING ===== */
+
+/* Hide description (all known variants) */
+#title-block-header .description,
+.quarto-title p.description,
+.quarto-title .quarto-title-description,
+.quarto-title .lead,
+.quarto-title-description {
+  display: none !important;
+}
+
+/* Hide "Author" and "Published" labels */
+.quarto-title-meta-heading {
+  display: none !important;
+}
+
+/* === AUTHOR/DATE FINAL STYLING === */
+
+/* Stack author and date vertically */
+.quarto-title-meta {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  margin-top: 0.5em;
+}
+
+/* Style the first meta block (author) */
+.quarto-title-meta > div:first-of-type .quarto-title-meta-contents p {
+  text-transform: uppercase;
+  font-family: Kanit, serif;
+  font-size: 0.95em;
+  color: #555;
+  letter-spacing: 0.7px;
+  margin: 0 0 0.2em 0;
+}
+
+/* Style the second meta block (date) */
+.quarto-title-meta > div:last-of-type .quarto-title-meta-contents p {
+  text-transform: uppercase;
+  font-family: Kanit, serif;
+  font-size: 0.85em;
+  color: #555;
+  letter-spacing: 0.7px;
+  margin: 0;
+}

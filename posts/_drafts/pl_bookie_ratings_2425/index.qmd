@@ -21,4 +21,19 @@ editor: source
 
 ---
 
-When looking for an assessment of 
+If I asked you to rank the strength of the 20 Premier League teams, how would you do it? Last year's table? Goal difference? Elo? xG? Perhaps you would create a fancy model?
+
+Personally, whenever I want a quick ranking of teams or players in a sporting event, I head straight for the betting markets. Specifically, I look at either Betfair or Pinnacle. 
+
+Why these two? Because they are less restrictive on winning punters, which means their odds carry more useful information.
+
+I thought it would be interesting to see how the betting market's ratings for each of the Premier League teams changed across last season. I chose to use Pinnacle's odds for this project, mainly because they are kept on the wonderful [Football-Data](https://www.football-data.co.uk/) website.
+
+But how can we get ratings for all teams based simply from the odds of matches? Using Python, I created an algorithm that calculates a rolling rating for each team throughout the season. Here's how it works:
+
+1. Ratings are calculated for all 20 teams on any match day of the 2024-2025 season.
+2. Pinnacle's Asian handicap line is used as the rating for each match (with an adjustment based on the odds).
+3. A uniform home advantage is used from the aggregate of all matches over the season.
+4. For each date, matches considered are those on the date itself, plus the game before and game after for each team. So that's 3 games for teams playing on that date, and 2 for the other teams.
+5. An optimization is run for this pool of games to minimize the difference with the Asian handicap.
+

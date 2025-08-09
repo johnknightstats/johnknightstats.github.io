@@ -42,15 +42,9 @@ Using Python, I estimated rolling team ratings from Pinnacle’s **Asian handica
 
 Here is how the ratings look over the course of the 2024-2025 season. I added LOESS smoothing to reduce noise and make the plot more readable:
 
-<details>
-  <summary>
-    <img src="rolling_team_ratings.png" alt="Rolling Team Ratings" style="max-width:100%; border:1px solid #ccc;">
-    <br>Click to expand full interactive version
-  </summary>
-  <iframe src="viz/rolling_team_ratings.html" style="width:100%; height:700px; border:none;"></iframe>
-</details>
-
-
+<a href="rolling_team_ratings.html" target="_blank">
+  <img src="rolling_team_ratings.png" alt="Rolling Team Ratings" style="max-width:100%; border:1px solid #ccc;">
+</a>
 
 
 I did try to stick to team colours, but it soon becomes unreadable when multiple teams play in the same colour. Honestly it is amazing how many football teams play in red! I don't know why that is the case - maybe some attachment to red during the Victorian era when clubs were formed? Anyway, I'm sorry to Brentford fans that you ended up as lime green.

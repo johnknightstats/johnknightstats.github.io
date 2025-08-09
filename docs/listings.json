@@ -1,18 +1,19 @@
 [
   {
+    "listing": "/dashboards/index.html",
+    "items": [
+      "/dashboards/election-2020-tableau/index.html"
+    ]
+  },
+  {
     "listing": "/posts/index.html",
     "items": [
+      "/posts/pl_bookie_ratings_2425/index.html",
       "/posts/betting_variance/index.html",
       "/posts/london_rail_stations/index.html",
       "/posts/game_state/index.html",
       "/posts/elo_sim_model/index.html",
       "/posts/title_collapses/index.html"
-    ]
-  },
-  {
-    "listing": "/dashboards/index.html",
-    "items": [
-      "/dashboards/election-2020-tableau/index.html"
     ]
   },
   {

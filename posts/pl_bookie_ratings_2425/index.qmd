@@ -15,6 +15,10 @@ execute:
   eval: true
 engine: knitr
 editor: source
+resources:
+  - rolling_team_ratings.html
+  - rolling_team_ratings.png
+
 ---
 
 *I use Python to derive team ratings from Pinnacle Sports Asian handicaps, and visualize how each team's rating changed throughout the 2024-2025 Premier League season.*

@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="John Knight">
+<meta name="dcterms.date" content="2025-07-26">
+<meta name="description" content="Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.">
 
-<title>Dashboards – John Knight Stats</title>
+<title>Commuting times from London railway terminals – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +26,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,67 +74,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -305,7 +248,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
@@ -316,27 +259,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/index.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
 <span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/index.html"> 
+    <a class="nav-link" href="../../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../papers/index.html"> 
+    <a class="nav-link" href="../../papers/index.html"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tools/index.html"> 
+    <a class="nav-link" href="../../tools/index.html"> 
 <span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../dashboards/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../dashboards/index.html"> 
 <span class="menu-text">Dashboards</span></a>
   </li>  
 </ul>
@@ -358,14 +301,36 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dashboards</h1>
-</div>
+<h1 class="title">Commuting times from London railway terminals</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">transport</div>
+    <div class="quarto-category">property</div>
+    <div class="quarto-category">python</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Knight </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">26 July 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -375,34 +340,53 @@ window.Quarto = {
 </header>
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1764729773505" data-listing-reading-time-sort="2" data-listing-word-count-sort="231">
-<div class="thumbnail"><a href="../dashboards/election-2020-tableau/index.html" class="no-external">
-
-<img loading="lazy" src="../dashboards/election-2020-tableau/election_map.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../dashboards/election-2020-tableau/index.html" class="no-external">2020 U.S. Election Counties by Race and Education</a>
-</h3>
-<div class="delink listing-description"><a href="../dashboards/election-2020-tableau/index.html" class="no-external">
-<noscript>    </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="PresidentialElection2020_16892682956980/2020ElectionRaceEducation"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Pr/PresidentialElection2020_16892682956980/2020ElectionRaceEducation/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object>
-</a></div>
+<p><em>Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.</em></p>
+<hr>
+<p>Recently, I took a train from Waterloo station to <strong>Woking</strong> to play a round of golf in Surrey. I’ve taken this route before, and Woking is a relatively easy place to get to because of the abundance of fast trains departing from Waterloo.</p>
+<div class="image-block">
+<p><img src="woking.png"> <em>Woking: a superstar of the London commuting scene.<br>Picture credit: Kennedy News and Media.</em></p>
 </div>
-<div class="metadata">
-<a href="../dashboards/election-2020-tableau/index.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<p>No doubt this makes Woking a hotbed for London commuters looking to escape the inflated house prices in the capital. But how does Woking’s train service compare with other London satellite towns?</p>
+<section id="a-project-for-python" class="level3">
+<h3 class="anchored" data-anchor-id="a-project-for-python">A Project for Python</h3>
+<p>I calculated and visualized the travel times to each station in London and the surrounding area using the following steps in <strong>Python</strong>:</p>
+<ol type="1">
+<li>Download free timetable and station data in <strong>JSON</strong> format from <a href="https://datafeeds.networkrail.co.uk/ntrod/">Network Rail</a>.</li>
+<li>Create relational tables for schedules and TIPLOCs (railway codes) in <strong>SQLite</strong>.</li>
+<li>Filter for trains departing from one of the 13 London terminals: <strong>Blackfriars</strong>, <strong>Cannon Street</strong>, <strong>Charing Cross</strong>, <strong>Euston</strong>, <strong>Fenchurch Street</strong>, <strong>King’s Cross</strong>, <strong>Liverpool Street</strong>, <strong>London Bridge</strong>, <strong>Marylebone</strong>, <strong>Paddington</strong>, <strong>St.&nbsp;Pancras</strong>, <strong>Victoria</strong> or <strong>Waterloo</strong>.</li>
+<li>Calculate the mean expected time from a traveller’s arrival at one of the terminals to reaching their destination.</li>
+<li>Visualize the time to each station on a map using the <a href="https://python-visualization.github.io/folium/latest/">folium</a> library, with green representing a shorter time and red a longer time.</li>
+</ol>
+<p>Here is the map:</p>
+<iframe src="london_commuter_stations.html" width="100%" height="600px" style="border:none;">
+</iframe>
+</section>
+<section id="how-was-this-calculated" class="level3">
+<h3 class="anchored" data-anchor-id="how-was-this-calculated">How was this calculated?</h3>
+<p>Let me expand a little more on the calculation of the times. I wanted a fair way to capture both the frequency and the speed of each train service.</p>
+<p>Suppose you arrive at a London terminal at a random time on a Tuesday between 5:00pm and 7:00pm - typical for someone returning from a day’s work or shopping. You board the next available train with the earliest arrival time at your destination. For example, let’s say I arrived at Waterloo at 5:35pm and the next train to Woking was at 5:40pm. If the train then took 24 minutes to reach Woking (6:04pm arrival) my total elapsed time is <strong>29 minutes</strong>.</p>
+<p>I calculated this for each of the 120 minutes (i.e.&nbsp;one simulation per minute) from 5:00pm to 7:00pm and averaged them to get the expected time to each destination.</p>
+</section>
+<section id="observations" class="level3">
+<h3 class="anchored" data-anchor-id="observations">Observations</h3>
+<p>It goes without saying, the general trend is for stations close to the centre of London to have shorter journey times. If you live in <strong>Bethnal Green</strong>, you’re in luck - it’s less than 10 minutes from Liverpool Street.</p>
+<p>Of course, Bethnal Green is hardly cheap nowadays. The more interesting stations are those further outside London which nonetheless have reasonable expected arrival times. Woking, to the south west of London for those unfamiliar with the home counties, stands out as one of the few solid green dots outside the M25 ringroad.</p>
+<p>Moving clockwise around the outside of the M25, we see similar green dots at <strong>Reading</strong>, <strong>St.&nbsp;Albans</strong>, <strong>Harpenden</strong>, <strong>Cheshunt</strong>, <strong>Broxbourne</strong>, <strong>Shenfield</strong>, <strong>Ebbsfleet</strong> and <strong>Sevenoaks</strong>. All these towns have an expected arrival time of less than 33 minutes from arriving at the original station, and might be attractive options for people working in London but looking for more affordable housing.</p>
+<p>Some considerations:</p>
+<ul>
+<li>I’m sure the train service to these towns is no secret, and house prices will be higher as a result.</li>
+<li>Train ticket prices may be higher as you go further outside London.</li>
+<li><strong>London Underground</strong> stations could be added for a more complete picture.</li>
+</ul>
+<p>I may revisit this analysis in future to incorporate house prices, travel cost, and tube stops. Nonetheless, I think it’s an interesting and useful visualization. I hope you agree! If you want to take a closer look at the code I used for this project, please check out my <a href="https://github.com/johnknightstats/london-train-stations">GitHub repo</a>.</p>
+<hr>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+<p>© 2025 John Knight. All rights reserved.</p>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

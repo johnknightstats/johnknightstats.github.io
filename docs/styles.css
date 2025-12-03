@@ -193,12 +193,7 @@ table.fancy-table tr:nth-child(even) {
   margin-bottom: -20px;
 }
 
-.centered-block .responsive-table-wrapper table {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  border-collapse: collapse;
-}
+
 
 /* Caption (em tag used as caption) */
 .centered-block em,

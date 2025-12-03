@@ -87,9 +87,10 @@ I decided to create separate models for the first and second halves, since the s
 
 Finally, for each half I trained a second model including **interactions** between lead and minute, lead and pre-match odds, and between lead and red cards for and against. After inspecting the interaction terms' p-values, plus a likelihood ratio test and the Akaike Information Criterion (AIC), it seemed like the simpler model was about the same. *If in doubt, always stick with the simpler model!*
 
-::: {.centered-block}
-`r paste0('<div class="responsive-table-wrapper">', htmltools::includeHTML("viz/model1.html"), '</div>')`
+::: {.responsive-table-wrapper}
+`r htmltools::includeHTML("viz/model1.html")`
 :::
+
 
 <br><br>
 If you aren't familiar with logistic regression results, don't worry too much about the columns other than **Coefficient**. And the Intercept is only used when making predictions, otherwise that isn't too relevant. 
@@ -100,8 +101,8 @@ Firstly, we can see that teams leading by 1 have a lower coefficient (-0.132) th
 
 The first two minutes of the half, as expected, have lower scoring, and then there is a small increase (0.004) for each minute as the half progresses. A red card (-0.766) reduces the chance of scoring more than an opposition red card (0.536) increases it. Predictably, pre-match win probability (1.752) is a strong positive predictor of scoring rate.
 
-::: {.centered-block}
-`r paste0('<div class="responsive-table-wrapper">', htmltools::includeHTML("viz/model2.html"), '</div>')`
+::: {.responsive-table-wrapper}
+`r htmltools::includeHTML("viz/model2.html")`
 :::
 
 <br><br>

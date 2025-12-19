@@ -3,6 +3,7 @@ title: "Premier League Table (Current Season)"
 description: "W/D/L, points, goals, xG splits, field tilt, shot share (from my FotMob SQLite DB)."
 date: 2025-12-18
 categories: [football, premier-league]
+image: thumb.png
 format:
   html:
     toc: false
@@ -11,6 +12,7 @@ execute:
   warning: false
   message: false
 ---
+
 
 ```{r}
 library(readr)

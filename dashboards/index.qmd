@@ -7,3 +7,4 @@ listing:
   fields: [title, description, date, categories]
   categories: true
 ---
+

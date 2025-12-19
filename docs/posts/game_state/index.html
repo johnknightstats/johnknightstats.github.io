@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="John Knight">
+<meta name="dcterms.date" content="2025-07-22">
+<meta name="description" content="Creating a logistic regression model to predict the chance of scoring a goal in each minute of a football match based on the pre-match odds, current score, minutes elapsed, and any red cards.">
 
-<title>Dashboards – John Knight Stats</title>
+<title>How does scoring rate change in a football match based on time elapsed and game state? – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +26,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,70 +74,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -305,7 +248,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
@@ -316,27 +259,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/index.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
 <span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/index.html"> 
+    <a class="nav-link" href="../../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../papers/index.html"> 
+    <a class="nav-link" href="../../papers/index.html"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tools/index.html"> 
+    <a class="nav-link" href="../../tools/index.html"> 
 <span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../dashboards/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../dashboards/index.html"> 
 <span class="menu-text">Dashboards</span></a>
   </li>  
 </ul>
@@ -351,23 +294,42 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Zm9vdGJhbGw=">football <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJlbWllci1sZWFndWU=">premier-league <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dashboards</h1>
-</div>
+<h1 class="title">How does scoring rate change in a football match based on time elapsed and game state?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">football</div>
+    <div class="quarto-category">statistics</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Creating a logistic regression model to predict the chance of scoring a goal in each minute of a football match based on the pre-match odds, current score, minutes elapsed, and any red cards.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Knight </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">22 July 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -377,53 +339,111 @@ window.Quarto = {
 </header>
 
 
+<p><em>Creating a logistic regression model to predict the chance of scoring a goal in each minute of a football match based on the pre-match odds, current score, minutes elapsed, and any red cards.</em></p>
+<hr>
+<p>When is a football team most likely to score? My simple hypothesis would consist of:</p>
+<ol type="1">
+<li>The chance of scoring <strong>increases</strong> as the game goes on.</li>
+<li>Teams who are <strong>ahead</strong> are less likely to score than teams who are <strong>behind</strong>.</li>
+</ol>
+<p>But what does the data say?</p>
+<p>I looked at goal times from the big 5 European leagues (England, Spain, Germany, Italy, France) since 2017 - a total of <strong>38,882</strong> goals from <strong>14,357</strong> games.</p>
+<section id="what-to-do-about-injury-time" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-do-about-injury-time">What to do about injury time?</h3>
+<p>A tricky part of goal times in football is how to deal with <strong>injury time</strong>. Conventionally, these are often recorded as 45’ for a goal in first half injury time and 90’ for second half injury time, so you naturally end up with larger goal totals in these minutes, leading to artificial spikes that distort time-based goal patterns.</p>
+<p>It might be possible to consider each injury time minute individually, but that would require knowing exactly which minutes were played in full, and which were ended after, say, 15 seconds. I don’t currently have that level of detail, so I decided to ignore injury time goals for the purpose of this analysis, guaranteeing that the 90 minutes could all be treated equally.</p>
+<p>Firstly, here is a summary of the goals in each of the 90 minutes:</p>
+<div class="centered-block">
+<p><img src="viz/mean_goals_by_minute.png"></p>
+</div>
+<p>As expected, we see an <strong>upward trend</strong>, with understandably low totals at the start of each half as it’s harder to score when each team’s entire XI start in their own half of the pitch.</p>
+<p>But what’s that patch of high totals between 48 and 58 minutes? Why would there be a stretch of unusually high scoring just after half time like this? I double-checked for data errors but it appears to be correct - we will come back to this apparent anomaly a little later.</p>
+<p>Next, here is the same chart but showing <strong>expected goals</strong> (xG) instead of goals. The trend closely mirrors the goals chart, but with much <strong>lower variance</strong>. I will continue using goals for this particular analysis, but this is a good demonstration of why xG is so useful in statistical analysis of football: lowering variance is generally a good thing!</p>
+<div class="centered-block">
+<p><img src="viz/mean_xg_by_minute.png"></p>
+</div>
+</section>
+<section id="game-state" class="level3">
+<h3 class="anchored" data-anchor-id="game-state">Game state</h3>
+<p>So why does scoring tend to increase as a game progresses? One obvious factor is that every game starts off at 0-0, and scores are more likely to be level early in games than later on. Here is a summary of the scoreline by minute:</p>
+<div class="centered-block">
+<p><img src="viz/game_state_by_minute.png"></p>
+</div>
+<p>As you can see, for almost the entire first half a level scoreline is most common, and thereafter it is more frequently a one-goal lead for either team. If level games are generally tighter and more defensive than games where one team is leading, then that would explain the lower scoring early in games.</p>
+<p>When we look at a smoothed plot of scoring rate categorised by lead, we can see that teams with a two-goal lead score at the highest rate, followed by teams with a one-goal lead. (I would ignore the trends for -2 and +2 early in the game, due to small sample issues)</p>
+<div class="centered-block">
+<p><img src="viz/mean_goals_per_minute_by_lead.png"></p>
+</div>
+<p>The problem here is we have an additional factor: <strong>team strength</strong>. If a team is leading by two goals, then it is more likely that they are simply a better team than their opponent, and hence more likely to score next. So we need to also account for the quality of the teams.</p>
+<p>I divided all teams into quartiles based on their pre-match <strong>bookmaker odds</strong>, with quartile 4 containing the strongest teams and quartile 1 the weakest:</p>
+<div class="centered-block">
+<p><img src="viz/mean_goals_per_minute_by_odds.png"></p>
+</div>
+</section>
+<section id="time-for-a-regression" class="level3">
+<h3 class="anchored">Time for a regression</h3>
+<p>Now let’s bring everything together. The simplest way to estimate the effects of several variables when applied simultaneously is with a <strong>multiple regression</strong>. In this case we will use a <strong>logistic</strong> regression, since the outcome is binary (0 goals or 1 goal).</p>
+<p>The current lead in each minute was categorized with a minimum of “-2 or less” and a maximum of “2 or more”. Additional features in the model were the minute, pre-match odds (converted to probability), and red cards for and against.</p>
+<p>I decided to create separate models for the first and second halves, since the shape of some of the plots suggested it may not be a simple linear relationship for 90 minutes. Based on the low scoring in minutes 1, 2, 46 and 47, I also included dummy variables for minute 1 and minute 2 of each half.</p>
+<p>Finally, for each half I trained a second model including <strong>interactions</strong> between lead and minute, lead and pre-match odds, and between lead and red cards for and against. After inspecting the interaction terms’ p-values, plus a likelihood ratio test and the Akaike Information Criterion (AIC), it seemed like the simpler model was about the same. <em>If in doubt, always stick with the simpler model!</em></p>
+<div class="responsive-table-wrapper">
+<p><style> .styled-regression-table {   font-family: Arial, sans-serif;   font-size: 14px;   border-collapse: collapse;   width: 100%;   margin-top: 1em; } .styled-regression-table th, .styled-regression-table td {   padding: 8px 12px;   border: 1px solid #ccc;   text-align: right; } .styled-regression-table th {   background-color: #f2f2f2; } .styled-regression-table tr:nth-child(even) {   background-color: #f9f9f9; } </style> </p><h2 class="anchored" data-anchor-id="time-for-a-regression">Logistic Regression: First Half</h2> <table class="dataframe styled-regression-table table table-sm table-striped small">   <thead>     <tr>       <th></th>       <th>Coefficient</th>       <th>Std. Error</th>       <th>z-value</th>       <th>p-value</th>       <th>CI Lower</th>       <th>CI Upper</th>     </tr>   </thead>   <tbody>     <tr>       <th>Intercept</th>       <td>-5.080</td>       <td>0.055</td>       <td>-92.566</td>       <td>0.000</td>       <td>-5.187</td>       <td>-4.972</td>     </tr>     <tr>       <th>Trailing (-1)</th>       <td>-0.022</td>       <td>0.053</td>       <td>-0.417</td>       <td>0.677</td>       <td>-0.126</td>       <td>0.081</td>     </tr>     <tr>       <th>Level (0)</th>       <td>-0.047</td>       <td>0.050</td>       <td>-0.929</td>       <td>0.353</td>       <td>-0.145</td>       <td>0.052</td>     </tr>     <tr>       <th>Leading (1)</th>       <td>-0.132</td>       <td>0.053</td>       <td>-2.497</td>       <td>0.013</td>       <td>-0.236</td>       <td>-0.028</td>     </tr>     <tr>       <th>Leading (2 or more)</th>       <td>-0.064</td>       <td>0.063</td>       <td>-1.022</td>       <td>0.307</td>       <td>-0.188</td>       <td>0.059</td>     </tr>     <tr>       <th>First Min of Half</th>       <td>-0.620</td>       <td>0.075</td>       <td>-8.317</td>       <td>0.000</td>       <td>-0.767</td>       <td>-0.474</td>     </tr>     <tr>       <th>Second Min of Half</th>       <td>-0.248</td>       <td>0.063</td>       <td>-3.968</td>       <td>0.000</td>       <td>-0.371</td>       <td>-0.126</td>     </tr>     <tr>       <th>Minute</th>       <td>0.004</td>       <td>0.001</td>       <td>5.421</td>       <td>0.000</td>       <td>0.002</td>       <td>0.005</td>     </tr>     <tr>       <th>Red Card</th>       <td>-0.766</td>       <td>0.139</td>       <td>-5.507</td>       <td>0.000</td>       <td>-1.039</td>       <td>-0.493</td>     </tr>     <tr>       <th>Opponent Red Card</th>       <td>0.536</td>       <td>0.073</td>       <td>7.354</td>       <td>0.000</td>       <td>0.393</td>       <td>0.679</td>     </tr>     <tr>       <th>Pre-match Win Prob</th>       <td>1.752</td>       <td>0.038</td>       <td>45.761</td>       <td>0.000</td>       <td>1.677</td>       <td>1.827</td>     </tr>   </tbody> </table><p></p>
+</div>
+<p><br><br> If you aren’t familiar with logistic regression results, don’t worry too much about the columns other than <strong>Coefficient</strong>. And the Intercept is only used when making predictions, otherwise that isn’t too relevant.</p>
+<p>Each coefficient represents the associated change in log odds of scoring a goal - a positive coefficient means the chances of a goal increase as this variable increases, and vice versa.</p>
+<p>Firstly, we can see that teams leading by 1 have a lower coefficient (-0.132) than the other scorelines. This means teams with a one-goal lead are the least likely to score, all other things being equal.</p>
+<p>The first two minutes of the half, as expected, have lower scoring, and then there is a small increase (0.004) for each minute as the half progresses. A red card (-0.766) reduces the chance of scoring more than an opposition red card (0.536) increases it. Predictably, pre-match win probability (1.752) is a strong positive predictor of scoring rate.</p>
+<div class="responsive-table-wrapper">
+<p><style> .styled-regression-table {   font-family: Arial, sans-serif;   font-size: 14px;   border-collapse: collapse;   width: 100%;   margin-top: 1em; } .styled-regression-table th, .styled-regression-table td {   padding: 8px 12px;   border: 1px solid #ccc;   text-align: right; } .styled-regression-table th {   background-color: #f2f2f2; } .styled-regression-table tr:nth-child(even) {   background-color: #f9f9f9; } </style> </p><h2 class="anchored">Logistic Regression: Second Half</h2> <table class="dataframe styled-regression-table table table-sm table-striped small">   <thead>     <tr>       <th></th>       <th>Coefficient</th>       <th>Std. Error</th>       <th>z-value</th>       <th>p-value</th>       <th>CI Lower</th>       <th>CI Upper</th>     </tr>   </thead>   <tbody>     <tr>       <th>Intercept</th>       <td>-4.758</td>       <td>0.029</td>       <td>-165.596</td>       <td>0.000</td>       <td>-4.814</td>       <td>-4.702</td>     </tr>     <tr>       <th>Trailing (-1)</th>       <td>-0.036</td>       <td>0.027</td>       <td>-1.335</td>       <td>0.182</td>       <td>-0.088</td>       <td>0.017</td>     </tr>     <tr>       <th>Level (0)</th>       <td>-0.143</td>       <td>0.026</td>       <td>-5.576</td>       <td>0.000</td>       <td>-0.193</td>       <td>-0.093</td>     </tr>     <tr>       <th>Leading (1)</th>       <td>-0.228</td>       <td>0.028</td>       <td>-8.249</td>       <td>0.000</td>       <td>-0.282</td>       <td>-0.174</td>     </tr>     <tr>       <th>Leading (2 or more)</th>       <td>-0.156</td>       <td>0.030</td>       <td>-5.243</td>       <td>0.000</td>       <td>-0.215</td>       <td>-0.098</td>     </tr>     <tr>       <th>First Min of Half</th>       <td>-0.695</td>       <td>0.068</td>       <td>-10.218</td>       <td>0.000</td>       <td>-0.828</td>       <td>-0.561</td>     </tr>     <tr>       <th>Second Min of Half</th>       <td>-0.170</td>       <td>0.053</td>       <td>-3.176</td>       <td>0.001</td>       <td>-0.274</td>       <td>-0.065</td>     </tr>     <tr>       <th>Minute</th>       <td>-0.001</td>       <td>0.001</td>       <td>-1.866</td>       <td>0.062</td>       <td>-0.002</td>       <td>0.000</td>     </tr>     <tr>       <th>Red Card</th>       <td>-0.643</td>       <td>0.058</td>       <td>-11.162</td>       <td>0.000</td>       <td>-0.756</td>       <td>-0.530</td>     </tr>     <tr>       <th>Opponent Red Card</th>       <td>0.475</td>       <td>0.034</td>       <td>14.071</td>       <td>0.000</td>       <td>0.409</td>       <td>0.542</td>     </tr>     <tr>       <th>Pre-match Win Prob</th>       <td>1.813</td>       <td>0.038</td>       <td>47.985</td>       <td>0.000</td>       <td>1.739</td>       <td>1.887</td>     </tr>   </tbody> </table><p></p>
+</div>
+<p><br><br></p>
+<p>In the second half, the effects of the scorelines are a little more pronounced: a one-goal lead has a coefficient of -0.228 compared to -0.132 in the first half. We can also see that the effect of each additional minute is actually slightly negative now (-0.001).</p>
+<p>To demonstrate these results, I used the median of each quartile of pre-match odds and predicted each minute of the game with scorelines of -1, 0, and 1, with no red cards:</p>
+<div class="centered-block">
+<p><img src="viz/combined_predictions_odds_lead.png"></p>
+</div>
+<p>If a strong favourite (white line) was playing against an underdog (dark blue line), we can see that if the favourite were trailing by one goal in the second half, their probability of scoring in each minute would increase significantly more than the associated decrease in the underdog’s chance of scoring. This intuitively feels correct: favourites often ramp up the pressure when chasing an equaliser.</p>
+</section>
+<section id="summary-of-findings" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-findings">Summary of findings</h3>
+<ul>
+<li>Teams are relatively more likely to score when trailing than when level, and more likely to score when level than when leading.</li>
+<li>In the first half, scoring rate <strong>increases</strong> as the half progresses, all other things being equal.</li>
+<li>When the teams come out for the second half, scoring rate jumps higher than it was in the 45th minute, and then gradually <strong>decreases</strong> as the half progresses.</li>
+</ul>
+</section>
+<section id="what-about-those-high-values-in-the-48th-58th-minute" class="level3">
+<h3 class="anchored" data-anchor-id="what-about-those-high-values-in-the-48th-58th-minute">What about those high values in the 48th-58th minute?</h3>
+<p>If we revisit the first plot in this article, the unusually high values between 48 and 58 minutes can now be understood. I have added a red line to the plot which now looks like a slight downward trend in the second half, rather than a series of observations above the overall trend:</p>
+<div class="centered-block">
+<p><img src="viz/mean_goals_by_minute_red_line.png"></p>
+</div>
+</section>
+<section id="limitations" class="level3">
+<h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
+<p>There are, of course, some limitations to this analysis. Injury time in both halves has been ignored, as have factors like league- or game-specific goal totals. There is also the question of whether goals beget more goals: all other things being equal, does a scoreline of 1-1 tend to predict more goals than a scoreline of 0-0?</p>
+<p>There is plenty more scope to drill down in a future analysis, but this gives us a nice framework to build on. If you are interested in viewing the code and visualizations behind this project, please visit my <a href="https://github.com/johnknightstats/game-state/">Github repo</a>.</p>
+<div class="data-footer">
+<p><strong>Data Sources</strong><br>
+I gather match data from a variety of public sources. Please check out these excellent websites:</p>
+<ul>
+<li><a href="https://clubelo.com">Club Elo Ratings</a></li>
+<li><a href="https://www.espn.com/soccer/">ESPN</a></li>
+<li><a href="https://fbref.com">FBref</a></li>
+<li><a href="https://fotmob.com">FotMob</a></li>
+<li><a href="https://transfermarkt.com">Transfermarkt</a></li>
+<li><a href="https://understat.com">Understat</a></li>
+<li><a href="https://whoscored.com">WhoScored</a></li>
+<li><a href="http://eloratings.net/">World Football Elo Ratings</a></li>
+</ul>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+</div>
+<p>© 2025 John Knight. All rights reserved.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1764729773505" data-listing-reading-time-sort="2" data-listing-word-count-sort="231">
-<a href="../dashboards/election-2020-tableau/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-2020 U.S. Election Counties by Race and Education
-</h5>
-<div class="card-text listing-description delink">
-<noscript>    </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="PresidentialElection2020_16892682956980/2020ElectionRaceEducation"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Pr/PresidentialElection2020_16892682956980/2020ElectionRaceEducation/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Zm9vdGJhbGwlMkNwcmVtaWVyLWxlYWd1ZQ==" data-listing-date-sort="1766037600000" data-listing-file-modified-sort="1766111710600" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="186">
-<a href="../dashboards/pl-table/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Premier League Table (Current Season)
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Zm9vdGJhbGw='); return false;">football</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJlbWllci1sZWFndWU='); return false;">premier-league</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>W/D/L, points, goals, xG splits, field tilt, shot share (from my FotMob SQLite DB).</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Dec 18, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

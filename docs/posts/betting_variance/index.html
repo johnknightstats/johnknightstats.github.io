@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="John Knight">
+<meta name="dcterms.date" content="2025-08-05">
+<meta name="description" content="How to understand the role of variance and evaluate your betting strategy.">
 
-<title>Dashboards – John Knight Stats</title>
+<title>How can you know if your betting system really works? – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +26,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,70 +74,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -305,7 +248,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
@@ -316,27 +259,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/index.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
 <span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/index.html"> 
+    <a class="nav-link" href="../../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../papers/index.html"> 
+    <a class="nav-link" href="../../papers/index.html"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tools/index.html"> 
+    <a class="nav-link" href="../../tools/index.html"> 
 <span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../dashboards/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../dashboards/index.html"> 
 <span class="menu-text">Dashboards</span></a>
   </li>  
 </ul>
@@ -351,23 +294,42 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Zm9vdGJhbGw=">football <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJlbWllci1sZWFndWU=">premier-league <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dashboards</h1>
-</div>
+<h1 class="title">How can you know if your betting system really works?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">betting</div>
+    <div class="quarto-category">statistics</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    How to understand the role of variance and evaluate your betting strategy.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Knight </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">5 August 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -377,53 +339,152 @@ window.Quarto = {
 </header>
 
 
+<p><em>How to understand the role of variance and evaluate your betting strategy.</em></p>
+<hr>
+<p>We’ve all been there. You develop a new betting system, you get off to a hot start and think you have found the golden goose - but then the wins dry up, and you end up back at square one.</p>
+<p>One of the trickiest parts of gambling is assessing whether or not you have a genuine <strong>edge</strong>. It can be easy to get overexcited after some positive early results; but there is also a danger of giving up on a system too early, just because you had an early run of bad luck.</p>
+<p>For any serious bettor, it’s important to keep a thorough record of all your bets, and an essential part of that process is to record your estimate of the <strong>true price</strong> for every selection. This enables you to calculate your expected profit at any time, and assess how your actual results are stacking up relative to expectations.</p>
+<section id="betting-distribution-tool" class="level2">
+<h2 class="anchored" data-anchor-id="betting-distribution-tool">Betting distribution tool</h2>
+<p>To help visualize this, I created a simple <a href="https://johnknightstats.com/tools/betting-variance-tool.html">tool</a> using R Shiny that compares two distribution curves based on the odds, number of bets and your perceived edge. One curve shows how results will be distributed if the market is correct, and the other if <em>your</em> price is correct.</p>
+<p>For example, let’s say you are placing $100 bets at decimal odds of 2.0, when you believe the true price is 1.8. This means you think there is a <strong>55.6%</strong> chance of the bet winning when the market says it is <strong>50%</strong>, which is a very solid edge if you can find it consistently.</p>
+<p>After 100 bets, the curves look like this:</p>
+<div class="centered-block">
+<p><img src="viz/bets_100.png"> <em>100 bets at 2.0 with a perceived “true” price of 1.8.</em></p>
+</div>
+<p>Now, 100 bets is a lot! Especially if it’s a system that only throws up a handful of bets a week. This could be several months’ work - and yet clearly there is a lot of crossover between the two curves. You could quite feasibly be losing with a very good system, OR you could be showing a decent profit from pure guesses.</p>
+<p>After running the tool with the parameters mentioned above, the accompanying results table reveals that the probability of being in profit, if your prices are correct, is <strong>86.82%</strong>. So that’s just over a 13% probability of being <strong>down</strong> after 100 bets despite having a pretty solid edge.</p>
+<p>If we increase the number of bets to 1000, the two curves are now a lot more distinct, and the probability of an overall loss if your 1.8 price is correct is virtually nil:</p>
+<div class="centered-block">
+<p><img src="viz/bets_1000.png"> <em>1000 bets at 2.0 with a perceived “true” price of 1.8.</em></p>
+</div>
+</section>
+<section id="central-limit-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="central-limit-theorem">Central limit theorem</h2>
+<p>So this is all great in theory, but what about in practice? Not all bets are placed at even money; would the distribution for other prices really follow a nice smooth bell curve?</p>
+<p>The answer is: basically, yes! Thanks to the <strong>central limit theorem</strong>, the mean of a sample will approximate a normal distribution as long as the sample is sufficiently large. And what is <em>sufficiently large</em>? The rule of thumb for statisticians is around <strong>30</strong>, based on empirical observation. Let’s see how that looks.</p>
+<p>I created a small function in R that calculates the profit or loss after 30 bets at 2.0 (i.e.&nbsp;even money). Then, I wrote a second function that simulated the 30 bets 10,000 times and plotted a histogram of the outcomes.</p>
+<div class="centered-block">
+<p><img src="viz/mean_distribution_2.png"></p>
+</div>
+<p>As promised, after only 30 bets we can see that the distribution of the mean outcome resembles a beautiful bell shape.</p>
+<p>But that’s for the easy scenario where we are betting at even money. What about a more skewed distribution? I changed the odds to 5.0, perhaps betting on away underdogs in football matches. Here is how the distribution looks after 30 bets:</p>
+<div class="centered-block">
+<p><img src="viz/mean_distribution_5.png"></p>
+</div>
+<p>So you can see that even with odds of 5.0, after 30 bets the overall distribution is fairly close to normal - certainly close enough to be robust to statistical tests.</p>
+<p>If we move to more extreme lopsided distributions, that’s when the sample size of 30 becomes too small. Here I demonstrate 30 bets at odds of 20.0, maybe betting on horses, or golfers to win a tournament:</p>
+<div class="centered-block">
+<p><img src="viz/mean_distribution_20.png"></p>
+</div>
+<p>The distribution is now skewed to the right. Clearly your maximum loss is capped at 30 units, but profits of greater than 30 are quite feasible if 3 or 4 winners come in. So it would not be appropriate to use a normal distribution to represent these 30 bets. But if we increase the number of bets to 100 at the same odds, then we start to see the normal distribution shape emerge.</p>
+<div class="centered-block">
+<p><img src="viz/mean_distribution_20a.png"></p>
+</div>
+<p>So generally speaking, it should be fine to use a normal distribution to represent the range of outcomes one might reasonably expect from a series of independent bets, as long as you have a sample of around 30 bets or more.</p>
+</section>
+<section id="a-real-life-example-from-my-betting" class="level2">
+<h2 class="anchored" data-anchor-id="a-real-life-example-from-my-betting">A real life example from my betting</h2>
+<p>So far, I have just been giving hypothetical examples where the odds are the same for every bet. You could actually use the <strong>binomial distribution</strong> if that were the case, but in reality you are going to have lots of different prices and stake sizes in your ledger.</p>
+<p>Because each bet is an independent Bernoulli event (it wins or it loses), it is simple to calculate the <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">expected variance</a> for each bet. And a great property of variance is that the variance of a sum of variables is simply the sum of the variance of each variable! So that makes it simple to create a normal distribution curve from any set of bets.</p>
+<p>Here’s a real life example from a football system I was testing for small stakes. This is something I strongly advise any time you think you have found something: test it with real money! Back-testing or paper trading is one thing, but there is no substitute for actually getting real money down. Just be sensible, of course - there’s no need to lose an uncomfortable amount while testing out a new method.</p>
+<p>Below are the results after 405 bets. I had staked over <strong>£29,000</strong> in total, which may sound like a lot but it is less than £100 per bet. At that bet size, a <strong>profit of £2,824</strong> from a large number of bets would certainly get you excited! The return on investment (ROI) is <strong>9.58%</strong>, though personally I’ve always found ROI to be misleading and limited when it comes to measuring betting performance.</p>
+<div class="table">
+<table class="fancy-table">
+<tbody><tr>
+<td>
+Total number of bets
+</td>
+<td>
+405
+</td>
+</tr>
+<tr>
+<td>
+Total staked
+</td>
+<td>
+£29,495.07
+</td>
+</tr>
+<tr>
+<td>
+Total profit
+</td>
+<td>
+£2,824.24
+</td>
+</tr>
+<tr>
+<td>
+ROI
+</td>
+<td>
+9.58%
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="centered-block">
+<p><img src="viz/bet_record_plot_405.png"></p>
+</div>
+<p>Suffice to say, I was feeling pretty excited about this system. I really thought I had found something! And you can see from the dashed line, these results are closer to the centre of the “my price” curve than the market price curve.</p>
+<p>However, there is still enough overlap with the right tail of the market price curve to suggest that this run of results could all just be good luck. In fact the probability is around <strong>8%</strong> that one will be at least this far in profit when one has no edge. And…that’s exactly what came to pass. Here are my results after <strong>830 bets</strong>:</p>
+<div class="table">
+<table class="fancy-table">
+<tbody><tr>
+<td>
+Total number of bets
+</td>
+<td>
+830
+</td>
+</tr>
+<tr>
+<td>
+Total staked
+</td>
+<td>
+£61,279.54
+</td>
+</tr>
+<tr>
+<td>
+Total profit
+</td>
+<td>
+-£413.36
+</td>
+</tr>
+<tr>
+<td>
+ROI
+</td>
+<td>
+-0.67%
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="centered-block">
+<p><img src="viz/bet_record_plot_830.png"></p>
+</div>
+<p>Lo and behold, I ended up almost smack on the expected return assuming the market price is correct. (Note that this is slightly below zero as it was on an exchange, so commission is factored in).</p>
+<p>I actually still quite like the system in question, but it needs some development. And that’s another great thing about deploying your bets to small stakes: even if it doesn’t make money, you tend to learn something. Humans are great learners, and just being active in the market will give you a feel for all sorts of nuances that are hard to gauge otherwise.</p>
+</section>
+<section id="in-summary" class="level2">
+<h2 class="anchored" data-anchor-id="in-summary">In summary</h2>
+<p>Keep a record of all your bets and include your estimate of the true price for every bet. Even after 100 or more bets, variance plays a large role in your overall profit &amp; loss, so don’t get too excited about any successes, and don’t give up on a losing system too quickly.</p>
+<p>Finally, there is one way to combat variance by using <strong>variance reduction methods</strong>. For example, if betting on football, one might use expected goals (xG) to derive the post-match expected win % for each team instead of the binary 1/0 result. Because expected wins have less variance than actual wins, the curves will be narrower and will diverge more quickly.</p>
+<p>I would urge a fair amount of caution though - ultimately it’s results we are betting on, and if there is some element of winning a football match that is not captured by xG…well, that could be an edge in itself!</p>
+<hr>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+<p>© 2025 John Knight. All rights reserved.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1764729773505" data-listing-reading-time-sort="2" data-listing-word-count-sort="231">
-<a href="../dashboards/election-2020-tableau/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-2020 U.S. Election Counties by Race and Education
-</h5>
-<div class="card-text listing-description delink">
-<noscript>    </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="PresidentialElection2020_16892682956980/2020ElectionRaceEducation"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Pr/PresidentialElection2020_16892682956980/2020ElectionRaceEducation/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Zm9vdGJhbGwlMkNwcmVtaWVyLWxlYWd1ZQ==" data-listing-date-sort="1766037600000" data-listing-file-modified-sort="1766111710600" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="186">
-<a href="../dashboards/pl-table/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Premier League Table (Current Season)
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Zm9vdGJhbGw='); return false;">football</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJlbWllci1sZWFndWU='); return false;">premier-league</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>W/D/L, points, goals, xG splits, field tilt, shot share (from my FotMob SQLite DB).</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Dec 18, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

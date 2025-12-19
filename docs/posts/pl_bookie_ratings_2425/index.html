@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="John Knight">
+<meta name="dcterms.date" content="2025-08-09">
+<meta name="description" content="I use Python to derive team ratings from Pinnacle Sports Asian handicaps, and visualize how each team’s rating changed throughout the 2024-2025 Premier League season.">
 
-<title>Dashboards – John Knight Stats</title>
+<title>How did bookmakers rate each Premier League team across the 2024-2025 season? – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +26,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,70 +74,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -305,7 +248,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
@@ -316,27 +259,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/index.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
 <span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/index.html"> 
+    <a class="nav-link" href="../../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../papers/index.html"> 
+    <a class="nav-link" href="../../papers/index.html"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tools/index.html"> 
+    <a class="nav-link" href="../../tools/index.html"> 
 <span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../dashboards/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../dashboards/index.html"> 
 <span class="menu-text">Dashboards</span></a>
   </li>  
 </ul>
@@ -351,23 +294,43 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Zm9vdGJhbGw=">football <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJlbWllci1sZWFndWU=">premier-league <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dashboards</h1>
-</div>
+<h1 class="title">How did bookmakers rate each Premier League team across the 2024-2025 season?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">football</div>
+    <div class="quarto-category">betting</div>
+    <div class="quarto-category">statistics</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    I use Python to derive team ratings from Pinnacle Sports Asian handicaps, and visualize how each team’s rating changed throughout the 2024-2025 Premier League season.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Knight </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">9 August 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -377,53 +340,74 @@ window.Quarto = {
 </header>
 
 
+<p><em>I use Python to derive team ratings from Pinnacle Sports Asian handicaps, and visualize how each team’s rating changed throughout the 2024-2025 Premier League season.</em></p>
+<hr>
+<p>If I asked you to rank the strength of the 20 Premier League teams, how would you do it? Gut feel? Last year’s table? Goal difference? Elo? xG? Perhaps you’d build a model?</p>
+<p>Personally, whenever I want a quick ranking of teams or players in a sporting event, I head straight for the betting markets. Specifically, I look at either <strong>Betfair</strong> or <strong>Pinnacle</strong>.</p>
+<p>Why these two? Because they are less restrictive on winning punters, which means their odds carry more useful information. The sharpest punters in the world, with very deep pockets, have pushed and pulled each price until it reflects their information.</p>
+<p>I thought it would be interesting to see how the betting markets’ ratings for each of the Premier League teams evolved throughout last season. For this task, I used Pinnacle’s odds because historical closing lines are archived on the wonderful <a href="https://www.football-data.co.uk/">Football-Data</a> website.</p>
+<section id="python-optimisation-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="python-optimisation-algorithm">Python optimisation algorithm</h2>
+<p>Using Python, I estimated rolling team ratings from Pinnacle’s <strong>Asian handicap</strong> markets. Here’s how it works:</p>
+<ol type="1">
+<li>Ratings are calculated for all 20 teams on any match day of the 2024-2025 season.</li>
+<li>Pinnacle’s Asian handicap line is used as the rating for each match (with an adjustment based on the odds).</li>
+<li>A single, season‑wide home advantage is set as the mean of odds‑adjusted handicaps.</li>
+<li>For each match date, teams playing that day use prev/current/next fixtures (3). Teams not playing use prev/next (2). First and last matchdays are not rated.</li>
+<li>Minimise the squared error between (home_rating − away_rating + H) and the odds‑adjusted handicap.</li>
+<li>Final ratings are normalized to ensure a mean of zero.</li>
+</ol>
+<p>Here is how the ratings look over the course of the 2024-2025 season. I added LOESS smoothing to reduce noise and make the plot more readable:</p>
+<p><a href="rolling_team_ratings.html" target="_blank"> <img src="rolling_team_ratings.png" alt="Rolling Team Ratings" style="max-width:100%; border:1px solid #ccc;"> </a></p>
+<p>I did try to stick to team colours, but it soon becomes unreadable when multiple teams play in the same colour. Honestly it is amazing how many football teams play in red! I don’t know why that is the case - maybe some attachment to red during the Victorian era when clubs were formed? Anyway, I’m sorry to Brentford fans that you ended up as lime green.</p>
+</section>
+<section id="man-citys-decline" class="level2">
+<h2 class="anchored" data-anchor-id="man-citys-decline">Man City’s decline</h2>
+<p>As for the ratings: firstly we can look at the start of the season, and remind ourselves that <strong>Manchester City</strong> were still considered a class above the rest when the season kicked off, rated +1.61, more than half a goal ahead of <strong>Arsenal</strong> and <strong>Liverpool</strong>.</p>
+<p>City had won the last 4 titles, and 6 of the last 7. It’s pretty easy to connect their decline last season to Rodri’s ACL injury, and we can see that City’s rating steadily got worse throughout the season, dipping as low as <strong>+0.62</strong> before rallying at the end.</p>
+<p>Now, I would introduce a note of caution with regards to ratings near the end of the season. Ratings are based on the odds for each individual match, and in the final few weeks there can be vast disparities in <strong>motivation</strong> between teams. While City had some must-win matches for Champions League qualification, many other teams in the league had no such incentive since the title and relegation places were all decided relatively early. And certain teams, most notably <strong>Tottenham</strong>, had evidently prioritised cup competitions.</p>
+<p>Speaking of Spurs, we can see that in November they were still rated <strong>+0.51</strong> and considered a team worthy of a Champions League finish. Indeed, they had some good results around this time, putting 4 goals past West Ham, Aston Villa and Man City, but were struggling with consistency. A horrendous injury crisis then led to a loss of form and confidence, and a subsequent shift of focus to the <strong>Europa League</strong>, which they won, but their rating had declined by more than a full goal by the season’s end.</p>
+<p>It was a somewhat similar tale for <strong>Manchester United</strong>, whose rating opened at +0.46 and closed at -0.46. Despite the loss of revenue as a result of the defeat to Spurs in the Europa League final, United have conjured another huge amount of money to buy new forwards over the summer, and it will be fascinating to see whether these two teams perform like “big 6” clubs, or more like they were rated in May: <strong>16th</strong> and <strong>17th</strong> in the Premier League.</p>
+<p>The other notable decline was from <strong>Southampton</strong>. Obviously it was an appalling season for the Saints - one of the all-time worst PL seasons in fact, as they secured only 12 points. But it’s easy to forget that they actually came up looking like the most likely to survive of the three promoted teams. At the start of the season, Southampton were rated at -0.69 compared to Ipswich at -1.10 and Leicester -1.12.</p>
+<p>Things quickly went downhill, and Southampton’s struggles emphasise the difficulty of sustaining a front-foot, possession-based strategy when transitioning from the Championship into a league where you are going to be playing against vastly superior talent.</p>
+</section>
+<section id="on-the-rise-newcastle-aston-villa-bournemouth-et-al." class="level2">
+<h2 class="anchored" data-anchor-id="on-the-rise-newcastle-aston-villa-bournemouth-et-al.">On the rise: Newcastle, Aston Villa, Bournemouth et al.</h2>
+<p>On the flip side, there were numerous teams that improved as the season wore on, relative to their ratings in August. <strong>Newcastle</strong> and <strong>Aston Villa</strong> were both considered outsiders for a Champions League place, and the Geordies clearly benefitted from an absence of European football that had proved such a burden the previous season.</p>
+<p>Villa, meanwhile, were distracted by their own run to the Champions League quarter-finals, and it is notable that their form picked up in the second half of the season after the slog of the newly expanded league phase was over. In fact, Villa ended the season with a rating of <strong>+0.68</strong> which put them marginally ahead of Arsenal in third place. That rating is partly helped by a fortuitous fixture list which gave them both Europa League finalists Spurs and Manchester United in their final two games, and they will be desperately disappointed to have been well-beaten by the latter in their crucial last game.</p>
+<p>One of the great success stories in recent seasons has been <strong>Bournemouth</strong>, whose stock rose steadily throughout the season. The Cherries were rated as genuine European contenders (+0.42) at the season’s end, and it will be interesting to see how they can withstand the loss of key defenders Dean Huijsen, Illia Zabarnyi and Milos Kerkez, all of whom have been picked off by European giants.</p>
+<p>Interestingly, despite spending much of the season in the top four, <strong>Nottingham Forest</strong> were never rated higher than mid-table, peaking at <strong>+0.05</strong> in February. This is a good example of the cold-headed realism markets offer, while fans and TV pundits can be prone to hyperbole when they don’t have money on the line.</p>
+<p>One pattern that emerges is a more compressed league by the end of the season. Arguably that is partly down to Liverpool and Arsenal easing off after the title had been decided. But it is also because the smaller teams that might traditionally struggle, like <strong>Bournemouth</strong>, <strong>Fulham</strong> and <strong>Brentford</strong>, all surpassed expectations.</p>
+</section>
+<section id="good-luck-to-leeds-burnley-and-sunderland" class="level2">
+<h2 class="anchored" data-anchor-id="good-luck-to-leeds-burnley-and-sunderland">Good luck to Leeds, Burnley and Sunderland</h2>
+<p>The bleak outlook for promoted teams has been well documented, and normally there are a few teams who narrowly escaped the drop the previous year who may be vulnerable. But with <strong>Wolves</strong> and <strong>Everton</strong> also improving after managerial changes, there is a lack of obvious candidates to go down from last year’s 17. I’m sure some will mention Spurs or United for banter purposes, but realistically if any of the new boys are going to survive, it will be because one of the smaller clubs has an unexpectedly bad year, perhaps because of injuries they don’t have the depth to withstand.</p>
+</section>
+<section id="final-thoughts-the-2025-2026-season" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts-the-2025-2026-season">Final thoughts &amp; the 2025-2026 season</h2>
+<p>Even if you are someone with the self-confidence to think you know better (which is most of us, if we are being honest) it’s important to be aware of the betting markets’ overall rating of teams.</p>
+<p>If you are interested in the Python code I used for this project, feel free to check out my <a href="https://github.com/johnknightstats/pl-bookie-ratings-2425">Github repo</a>. I’ll probably run this code on the forthcoming season to keep track of where each team stands on a weekly basis. With only opening‑weekend prices available, there isn’t enough data to run the rolling optimisation (you need previous &amp; next matches for context) so I’ll publish weekly updates from week two. Watch this space!</p>
+<div class="data-footer">
+<p><strong>Data Sources</strong><br>
+I gather match data from a variety of public sources. Please check out these excellent websites:</p>
+<ul>
+<li><a href="https://clubelo.com">Club Elo Ratings</a></li>
+<li><a href="https://www.espn.com/soccer/">ESPN</a></li>
+<li><a href="https://fbref.com">FBref</a></li>
+<li><a href="https://fotmob.com">FotMob</a></li>
+<li><a href="https://transfermarkt.com">Transfermarkt</a></li>
+<li><a href="https://understat.com">Understat</a></li>
+<li><a href="https://whoscored.com">WhoScored</a></li>
+<li><a href="http://eloratings.net/">World Football Elo Ratings</a></li>
+</ul>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+</div>
+<p>© 2025 John Knight. All rights reserved.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1764729773505" data-listing-reading-time-sort="2" data-listing-word-count-sort="231">
-<a href="../dashboards/election-2020-tableau/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-2020 U.S. Election Counties by Race and Education
-</h5>
-<div class="card-text listing-description delink">
-<noscript>    </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="PresidentialElection2020_16892682956980/2020ElectionRaceEducation"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Pr/PresidentialElection2020_16892682956980/2020ElectionRaceEducation/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Zm9vdGJhbGwlMkNwcmVtaWVyLWxlYWd1ZQ==" data-listing-date-sort="1766037600000" data-listing-file-modified-sort="1766111710600" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="186">
-<a href="../dashboards/pl-table/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Premier League Table (Current Season)
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Zm9vdGJhbGw='); return false;">football</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJlbWllci1sZWFndWU='); return false;">premier-league</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>W/D/L, points, goals, xG splits, field tilt, shot share (from my FotMob SQLite DB).</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Dec 18, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

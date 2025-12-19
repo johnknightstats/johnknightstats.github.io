@@ -1,5 +1,5 @@
 ---
-title: "Premier League Table"
+title: "Premier League Table & Metrics"
 description: "W/D/L, points, goals, xG splits, field tilt, shot share (from my FotMob SQLite DB)."
 date: 2025-12-18
 categories: [football, premier-league]

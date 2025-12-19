@@ -18,43 +18,86 @@ execute:
 ```{r}
 library(readr)
 library(dplyr)
-library(gt)
-library(scales)
+library(DT)
 
-df <- read_csv("pl_table_current_season.csv", show_col_types = FALSE)
+df_raw <- read_csv("pl_table_current_season.csv", show_col_types=FALSE)
 
-df |>
+make_bins <- function(x, n=7) {
+  qs <- as.numeric(quantile(x, probs=seq(0, 1, length.out=n), na.rm=TRUE))
+  unique(qs)
+}
+
+# Base palette (green -> red), then we flip it as needed
+pal_g2r <- c("#1a9850","#66bd63","#a6d96a","#d9ef8b","#fee08b","#fdae61","#d73027")
+pal_r2g <- rev(pal_g2r)
+
+df <- df_raw |>
   select(-team_id) |>
   mutate(
-    field_tilt = percent(field_tilt, accuracy = 0.1),
-    shot_share = percent(shot_share, accuracy = 0.1)
+    field_tilt = as.numeric(field_tilt),
+    shot_share = as.numeric(shot_share)
   ) |>
-  gt() |>
-  cols_label(
-    team_name = "Team",
-    games_played = "P",
-    games_won = "W",
-    games_drawn = "D",
-    games_lost = "L",
-    points = "Pts",
-    goals_for = "GF",
-    goals_against = "GA",
-    goal_difference = "GD",
-    xg_for = "xG",
-    xg_against = "xGA",
-    xg_diff = "xGD",
-    xg_open_play_diff = "xGD (OP)",
-    xg_set_play_diff = "xGD (SP)",
-    xg_non_penalty_diff = "xGD (NP)",
-    field_tilt = "Field tilt",
-    shot_share = "Shot share"
-  ) |>
-  fmt_number(
-    columns = c(xg_for, xg_against, xg_diff, xg_open_play_diff, xg_set_play_diff, xg_non_penalty_diff),
-    decimals = 2
-  ) |>
-  tab_options(
-    table.font.size = px(14),
-    data_row.padding = px(3)
+  rename(
+    Team = team_name,
+    P = games_played,
+    W = games_won,
+    D = games_drawn,
+    L = games_lost,
+    Pts = points,
+    GF = goals_for,
+    GA = goals_against,
+    GD = goal_difference,
+    xG = xg_for,
+    xGA = xg_against,
+    xGD = xg_diff,
+    `xGD (OP)` = xg_open_play_diff,
+    `xGD (SP)` = xg_set_play_diff,
+    `xGD (NP)` = xg_non_penalty_diff,
+    `Field Tilt` = field_tilt,
+    `Shot Share` = shot_share
   )
+
+dt <- datatable(
+  df,
+  rownames=FALSE,
+  options=list(
+    pageLength=20,
+    scrollX=TRUE,
+    autoWidth=TRUE,
+    columnDefs=list(
+      # Team column: wider + no wrap
+      list(width="220px", targets=0)
+    )
+  )
+) |>
+  # display formatting
+  formatRound(c("xG","xGA","xGD","xGD (OP)","xGD (SP)","xGD (NP)"), digits=2) |>
+  formatPercentage(c("Field Tilt","Shot Share"), digits=1) |>
+  # force Team to stay on one line
+  formatStyle("Team", whiteSpace="nowrap")
+
+# Your requested directions BUT REVERSED per your fix request:
+# - "Green-to-red needs to be reversed" => use pal_r2g on those columns
+# - "Red-to-green needs to be reversed" => use pal_g2r on those columns
+g2r_cols_reversed <- c("Pts","GF","GD","xG","xGD","xGD (OP)","xGD (SP)","xGD (NP)","Field Tilt","Shot Share")
+r2g_cols_reversed <- c("GA","xGA")
+
+for (col in g2r_cols_reversed) {
+  bins <- make_bins(df[[col]], n=7)
+  if (length(bins) > 1) {
+    cuts <- bins[-1]
+    dt <- dt |> formatStyle(col, backgroundColor=styleInterval(cuts, pal_r2g))
+  }
+}
+
+for (col in r2g_cols_reversed) {
+  bins <- make_bins(df[[col]], n=7)
+  if (length(bins) > 1) {
+    cuts <- bins[-1]
+    dt <- dt |> formatStyle(col, backgroundColor=styleInterval(cuts, pal_g2r))
+  }
+}
+
+dt
+
 ```

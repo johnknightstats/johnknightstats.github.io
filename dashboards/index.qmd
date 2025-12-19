@@ -1,9 +1,9 @@
 ---
 title: "Dashboards"
 listing:
-  contents: .
-  type: grid
+  contents: "*/index.qmd"
   sort: "date desc"
+  type: grid
   fields: [title, description, date, categories]
   categories: true
 ---

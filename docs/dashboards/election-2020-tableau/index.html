@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-12-18">
-<meta name="description" content="W/D/L, points, goals, xG splits, field tilt, shot share (from my FotMob SQLite DB).">
 
-<title>Premier League Table (Current Season) – John Knight Stats</title>
+<title>2020 U.S. Election Counties by Race and Education – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -300,29 +298,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Premier League Table (Current Season)</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">football</div>
-    <div class="quarto-category">premier-league</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    W/D/L, points, goals, xG splits, field tilt, shot share (from my FotMob SQLite DB).
-  </div>
+<h1 class="title">2020 U.S. Election Counties by Race and Education</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 18, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -332,9 +315,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>library(readr) library(dplyr) library(gt) library(scales)</p>
-<p>df &lt;- read_csv(“pl_table_current_season.csv”, show_col_types = FALSE)</p>
-<p>df |&gt; mutate( field_tilt=percent(field_tilt, accuracy=0.1), shot_share=percent(shot_share, accuracy=0.1) ) |&gt; gt() |&gt; cols_label( games_played=“P”,games_won=“W”,games_drawn=“D”,games_lost=“L”, goals_for=“GF”,goals_against=“GA”,goal_difference=“GD”, xg_for=“xG”,xg_against=“xGA”,xg_diff=“xGD”, xg_open_play_diff=“xGD (OP)”, xg_set_play_diff=“xGD (SP)”, xg_non_penalty_diff=“xGD (NP)”, field_tilt=“Field tilt”, shot_share=“Shot share” ) |&gt; fmt_number( columns=c(xg_for,xg_against,xg_diff,xg_open_play_diff,xg_set_play_diff,xg_non_penalty_diff), decimals=2 )</p>
+<div id="viz1753656359789" class="tableauPlaceholder" style="position: relative">
+<p><noscript> <a href="#"> <img alt="2020 Election: Race &amp; Education by County" src="https://public.tableau.com/static/images/Pr/PresidentialElection2020_16892682956980/2020ElectionRaceEducation/1_rss.png" style="border: none"> </a> </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="PresidentialElection2020_16892682956980/2020ElectionRaceEducation"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Pr/PresidentialElection2020_16892682956980/2020ElectionRaceEducation/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object></p>
+</div>
+<script type="text/javascript">
+  var divElement = document.getElementById('viz1753656359789');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if (divElement.offsetWidth > 800) {
+    vizElement.style.width = '1000px';
+    vizElement.style.height = '827px';
+  } else if (divElement.offsetWidth > 500) {
+    vizElement.style.width = '1000px';
+    vizElement.style.height = '827px';
+  } else {
+    vizElement.style.width = '100%';
+    vizElement.style.height = '1027px';
+  }
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
 
 
 

@@ -57,3 +57,4 @@ df |>
     table.font.size = px(14),
     data_row.padding = px(3)
   )
+```

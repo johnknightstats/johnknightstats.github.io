@@ -1,5 +1,5 @@
 ---
-title: "Premier League Table (Current Season)"
+title: "Premier League Table"
 description: "W/D/L, points, goals, xG splits, field tilt, shot share (from my FotMob SQLite DB)."
 date: 2025-12-18
 categories: [football, premier-league]
@@ -22,17 +22,19 @@ library(DT)
 
 df_raw <- read_csv("pl_table_current_season.csv", show_col_types=FALSE)
 
-make_bins <- function(x, n=7) {
-  qs <- as.numeric(quantile(x, probs=seq(0, 1, length.out=n), na.rm=TRUE))
-  unique(qs)
+style_grad <- function(x, base_pal, n=101) {
+  rng <- range(x, na.rm=TRUE)
+  if (!is.finite(rng[1]) || !is.finite(rng[2]) || rng[1] == rng[2]) return(NULL)
+  cols <- grDevices::colorRampPalette(base_pal)(n)
+  cuts <- seq(rng[1], rng[2], length.out=n)[-1]
+  list(cuts=cuts, cols=cols)
 }
 
-# Base palette (green -> red), then we flip it as needed
 pal_g2r <- c("#1a9850","#66bd63","#a6d96a","#d9ef8b","#fee08b","#fdae61","#d73027")
 pal_r2g <- rev(pal_g2r)
 
 df <- df_raw |>
-  select(-team_id) |>
+  select(-team_id, -games_won, -games_drawn, -games_lost) |>
   mutate(
     field_tilt = as.numeric(field_tilt),
     shot_share = as.numeric(shot_share)
@@ -40,9 +42,6 @@ df <- df_raw |>
   rename(
     Team = team_name,
     P = games_played,
-    W = games_won,
-    D = games_drawn,
-    L = games_lost,
     Pts = points,
     GF = goals_for,
     GA = goals_against,
@@ -50,54 +49,71 @@ df <- df_raw |>
     xG = xg_for,
     xGA = xg_against,
     xGD = xg_diff,
-    `xGD (OP)` = xg_open_play_diff,
-    `xGD (SP)` = xg_set_play_diff,
-    `xGD (NP)` = xg_non_penalty_diff,
+    `xGD (open-play)` = xg_open_play_diff,
+    `xGD (set-piece)` = xg_set_play_diff,
+    `xGD (non-pen)` = xg_non_penalty_diff,
     `Field Tilt` = field_tilt,
     `Shot Share` = shot_share
   )
 
+g2r_cols_reversed <- c(
+  "Pts","GF","GD","xG","xGD",
+  "xGD (open-play)","xGD (set-piece)","xGD (non-pen)",
+  "Field Tilt","Shot Share"
+)
+r2g_cols_reversed <- c("GA","xGA")
+
 dt <- datatable(
   df,
-  rownames=FALSE,
-  options=list(
-    pageLength=20,
-    scrollX=TRUE,
-    autoWidth=TRUE,
-    columnDefs=list(
-      # Team column: wider + no wrap
-      list(width="220px", targets=0)
+  rownames = FALSE,
+  extensions = "FixedColumns",
+  options = list(
+    dom = "t",
+    paging = FALSE,
+    scrollX = TRUE,
+    fixedColumns = list(leftColumns = 1),
+    autoWidth = FALSE,
+
+    # Smaller header font
+    headerCallback = JS(
+      "function(thead) {",
+      "  $(thead).find('th').css({",
+      "    'font-size': '11px',",
+      "    'padding': '4px 6px'",
+      "  });",
+      "}"
+    ),
+
+    columnDefs = list(
+      list(width = "210px", targets = 0),
+      list(className = "dt-nowrap", targets = 0),
+      list(width = "44px", targets = c(1,2,3,4,5)),
+      list(width = "62px", targets = 6:13),
+      list(className = "dt-right", targets = 1:13)
     )
   )
 ) |>
-  # display formatting
-  formatRound(c("xG","xGA","xGD","xGD (OP)","xGD (SP)","xGD (NP)"), digits=2) |>
-  formatPercentage(c("Field Tilt","Shot Share"), digits=1) |>
-  # force Team to stay on one line
-  formatStyle("Team", whiteSpace="nowrap")
-
-# Your requested directions BUT REVERSED per your fix request:
-# - "Green-to-red needs to be reversed" => use pal_r2g on those columns
-# - "Red-to-green needs to be reversed" => use pal_g2r on those columns
-g2r_cols_reversed <- c("Pts","GF","GD","xG","xGD","xGD (OP)","xGD (SP)","xGD (NP)","Field Tilt","Shot Share")
-r2g_cols_reversed <- c("GA","xGA")
+  formatRound(
+    c("xG","xGA","xGD",
+      "xGD (open-play)","xGD (set-piece)","xGD (non-pen)"),
+    digits = 1
+  ) |>
+  formatPercentage(c("Field Tilt","Shot Share"), digits = 1) |>
+  formatStyle(names(df), fontSize = "12px", padding = "2px 6px") |>
+  formatStyle("Team", whiteSpace = "nowrap")
 
 for (col in g2r_cols_reversed) {
-  bins <- make_bins(df[[col]], n=7)
-  if (length(bins) > 1) {
-    cuts <- bins[-1]
-    dt <- dt |> formatStyle(col, backgroundColor=styleInterval(cuts, pal_r2g))
-  }
+  s <- style_grad(df[[col]], pal_r2g)
+  if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
 }
-
 for (col in r2g_cols_reversed) {
-  bins <- make_bins(df[[col]], n=7)
-  if (length(bins) > 1) {
-    cuts <- bins[-1]
-    dt <- dt |> formatStyle(col, backgroundColor=styleInterval(cuts, pal_g2r))
-  }
+  s <- style_grad(df[[col]], pal_g2r)
+  if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
 }
 
 dt
+
+
+
 
 ```

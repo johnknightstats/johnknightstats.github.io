@@ -7,7 +7,7 @@ format:
 
 Here are some projects from my MS in Applied Statistics & Data Science, and BS in Statistics:
 
-- Thesis: Time series clustering of 24-hour ambulatory blood pressure using Dynamic Time Warping and Time Warp Edit Distance (In Progress)
+- [Clustering 24-Hour Ambulatory Blood Pressure Time Series with Dynamic Time Warping and Time Warp Edit Distance](thesis.pdf)
 - [Coffee Ratings Prediction with Data Mining Techniques](coffee.pdf)
 - [A Logistic Regression Model of Voter Turnout for the 2024 Presidential Election in Hidalgo County, Texas](turnout.pdf)
 - [Time Series Analysis of Rainfall in the Rio Grande Valley, Texas, 1941-present](time_series.pdf)

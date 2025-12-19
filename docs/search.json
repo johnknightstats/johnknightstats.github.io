@@ -215,5 +215,12 @@
     "title": "Tools",
     "section": "",
     "text": "Betting Strategy Variance Tool\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLondon Commuter Map\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "dashboards/pl-table/index.html",
+    "href": "dashboards/pl-table/index.html",
+    "title": "Premier League Table (Current Season)",
+    "section": "",
+    "text": "library(readr) library(dplyr) library(gt) library(scales)\ndf &lt;- read_csv(“pl_table_current_season.csv”, show_col_types = FALSE)\ndf |&gt; mutate( field_tilt=percent(field_tilt, accuracy=0.1), shot_share=percent(shot_share, accuracy=0.1) ) |&gt; gt() |&gt; cols_label( games_played=“P”,games_won=“W”,games_drawn=“D”,games_lost=“L”, goals_for=“GF”,goals_against=“GA”,goal_difference=“GD”, xg_for=“xG”,xg_against=“xGA”,xg_diff=“xGD”, xg_open_play_diff=“xGD (OP)”, xg_set_play_diff=“xGD (SP)”, xg_non_penalty_diff=“xGD (NP)”, field_tilt=“Field tilt”, shot_share=“Shot share” ) |&gt; fmt_number( columns=c(xg_for,xg_against,xg_diff,xg_open_play_diff,xg_set_play_diff,xg_non_penalty_diff), decimals=2 )"
   }
 ]

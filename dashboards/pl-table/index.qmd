@@ -38,10 +38,11 @@ df <- df_raw |>
     field_tilt = as.numeric(field_tilt),
     shot_share = as.numeric(shot_share)
   ) |>
-  rename(
+    rename(
     Team = team_name,
     P = games_played,
     Pts = points,
+    `Bookie Pts` = bookie_pts,
     GF = goals_for,
     GA = goals_against,
     GD = goal_difference,
@@ -55,11 +56,13 @@ df <- df_raw |>
     `Shot Share` = shot_share
   )
 
+
 g2r_cols_reversed <- c(
-  "Pts","GF","GD","xG","xGD",
+  "Pts","Bookie Pts","GF","GD","xG","xGD",
   "xGD (open-play)","xGD (set-piece)","xGD (non-pen)",
   "Field Tilt","Shot Share"
 )
+
 r2g_cols_reversed <- c("GA","xGA")
 
 dt <- datatable(
@@ -86,17 +89,19 @@ dt <- datatable(
     columnDefs = list(
       list(width = "210px", targets = 0),
       list(className = "dt-nowrap", targets = 0),
-      list(width = "44px", targets = c(1,2,3,4,5)),
-      list(width = "62px", targets = 6:13),
-      list(className = "dt-right", targets = 1:13)
+
+      # Right-align all numeric columns (everything except Team)
+      list(className = "dt-right", targets = 1:(ncol(df) - 1))
     )
+
   )
 ) |>
-  formatRound(
-    c("xG","xGA","xGD",
+    formatRound(
+    c("Bookie Pts","xG","xGA","xGD",
       "xGD (open-play)","xGD (set-piece)","xGD (non-pen)"),
     digits = 1
   ) |>
+
   formatPercentage(c("Field Tilt","Shot Share"), digits = 1) |>
   formatStyle(names(df), fontSize = "12px", padding = "2px 6px") |>
   formatStyle("Team", whiteSpace = "nowrap")
@@ -117,3 +122,7 @@ dt
 
 ```
 
+Bookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.
+xG = Expected Goals (all, non-penalty, open-play, or set-pieces).
+Field Tilt = Share of touches inside opposition's penalty box.
+Shot Share = Share of total shots.

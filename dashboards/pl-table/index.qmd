@@ -122,6 +122,8 @@ dt
 
 ```
 
+## Notes
+
 Bookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.
 xG = Expected Goals (all, non-penalty, open-play, or set-pieces).
 Field Tilt = Share of touches inside opposition's penalty box.

@@ -11,6 +11,9 @@ execute:
   message: false
 ---
 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+
 library(shiny)
 library(DBI)
 library(RSQLite)
@@ -38,7 +41,7 @@ team_choices <- setNames(teams$team_id, teams$team_name)
 # ---- Helpers to parse season_id like: S-1925-3-N ----
 
 parse_season_id <- function(season_id) {
-m <- str_match(season_id, "^S-(\d{4})-(\d+)(?:-([NS]))?$")
+m <- str_match(season_id, "^S-([0-9]{4})-([0-9]+)(?:-([NS]))?$")
 tibble(
 season_id = season_id,
 year = as.integer(m[,2]),
@@ -112,7 +115,6 @@ server <- function(input, output, session) {
 standings_ab <- reactive({
 req(input$team_a, input$team_b)
 
-```
 st <- dbGetQuery(con, "
   SELECT season_id, team_id, position, played, wins, draws, losses,
          goals_for, goals_against, goal_difference, points, point_adjustment
@@ -130,14 +132,12 @@ parsed <- parse_season_id(st$season_id)
 
 st %>%
   left_join(parsed, by = "season_id")
-```
 
 })
 
 output$result_tbl <- renderDT({
 st <- standings_ab()
 
-```
 a_id <- as.character(input$team_a)
 b_id <- as.character(input$team_b)
 
@@ -176,8 +176,8 @@ datatable(
   out,
   rownames = FALSE,
   options = list(
-    pageLength = 25,
     dom = "t",
+    paging = FALSE,
     scrollX = TRUE
   )
 ) %>%
@@ -186,9 +186,12 @@ datatable(
     target = "cell",
     color = styleEqual("—", "gray")
   )
-```
 
 })
 }
 
 shinyApp(ui, server)
+
+```
+
+

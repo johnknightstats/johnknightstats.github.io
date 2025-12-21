@@ -10,8 +10,6 @@ execute:
   warning: false
   message: false
 draft: true
-
-
 ---
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}

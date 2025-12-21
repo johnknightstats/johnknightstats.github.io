@@ -130,7 +130,7 @@
     "href": "dashboards/index.html",
     "title": "Dashboards",
     "section": "",
-    "text": "2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\n\nHead-to-head: shared Football League seasons\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Table & Metrics\n\n\n\nfootball\n\npremier-league\n\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\nNo matching items"
+    "text": "2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Table & Metrics\n\n\n\nfootball\n\npremier-league\n\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -229,12 +229,5 @@
     "title": "Premier League Table & Metrics",
     "section": "",
     "text": "Notes\n\nBookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
-  },
-  {
-    "objectID": "dashboards/head-to-head/index.html",
-    "href": "dashboards/head-to-head/index.html",
-    "title": "Head-to-head: shared Football League seasons",
-    "section": "",
-    "text": "function () \n{\n    .callbacks$remove(id)\n}\n&lt;bytecode: 0x000001d5fc6579a8&gt;\n&lt;environment: 0x000001d5f9f2ed28&gt;"
   }
 ]

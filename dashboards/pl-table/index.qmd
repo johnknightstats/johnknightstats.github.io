@@ -13,13 +13,14 @@ execute:
 
 ---
 
-
 ```{r}
 library(readr)
 library(dplyr)
 library(DT)
 
 df_raw <- read_csv("pl_table_current_season.csv", show_col_types=FALSE)
+has_bookie <- "bookie_pts" %in% names(df_raw)
+
 
 style_grad <- function(x, base_pal, n=101) {
   rng <- range(x, na.rm=TRUE)
@@ -42,7 +43,6 @@ df <- df_raw |>
     Team = team_name,
     P = games_played,
     Pts = points,
-    `Bookie Pts` = bookie_pts,
     GF = goals_for,
     GA = goals_against,
     GD = goal_difference,
@@ -56,6 +56,11 @@ df <- df_raw |>
     `Shot Share` = shot_share
   )
 
+if (has_bookie) {
+  df <- df |> rename(`Bookie Pts` = bookie_pts)
+}
+
+
 
 g2r_cols_reversed <- c(
   "Pts","Bookie Pts","GF","GD","xG","xGD",
@@ -64,6 +69,9 @@ g2r_cols_reversed <- c(
 )
 
 r2g_cols_reversed <- c("GA","xGA")
+g2r_cols_reversed <- intersect(g2r_cols_reversed, names(df))
+r2g_cols_reversed <- intersect(r2g_cols_reversed, names(df))
+
 
 dt <- datatable(
   df,
@@ -95,16 +103,23 @@ dt <- datatable(
     )
 
   )
-) |>
-    formatRound(
-    c("Bookie Pts","xG","xGA","xGD",
-      "xGD (open-play)","xGD (set-piece)","xGD (non-pen)"),
-    digits = 1
-  ) |>
+)
 
+round_cols <- intersect(
+  c("Bookie Pts","xG","xGA","xGD",
+    "xGD (open-play)","xGD (set-piece)","xGD (non-pen)"),
+  names(df)
+)
+
+if (length(round_cols) > 0) {
+  dt <- dt |> formatRound(round_cols, digits = 1)
+}
+
+dt <- dt |>
   formatPercentage(c("Field Tilt","Shot Share"), digits = 1) |>
   formatStyle(names(df), fontSize = "12px", padding = "2px 6px") |>
   formatStyle("Team", whiteSpace = "nowrap")
+
 
 for (col in g2r_cols_reversed) {
   s <- style_grad(df[[col]], pal_r2g)
@@ -117,11 +132,7 @@ for (col in r2g_cols_reversed) {
 
 dt
 
-
-
-
 ```
-
 
 <div style="font-size: 0.85em; line-height: 1.25;">
 

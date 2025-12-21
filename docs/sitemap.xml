@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://johnknightstats.com/dashboards/pl-table/index.html</loc>
-    <lastmod>2025-12-20T06:34:52.217Z</lastmod>
+    <lastmod>2025-12-21T00:05:10.491Z</lastmod>
   </url>
   <url>
     <loc>https://johnknightstats.com/papers/index.html</loc>
@@ -67,5 +67,9 @@
   <url>
     <loc>https://johnknightstats.com/tools/index.html</loc>
     <lastmod>2025-12-03T02:42:54.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/dashboards/head-to-head/index.html</loc>
+    <lastmod>2025-12-20T07:23:41.049Z</lastmod>
   </url>
 </urlset>

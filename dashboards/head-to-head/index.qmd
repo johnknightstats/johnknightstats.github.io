@@ -9,6 +9,9 @@ execute:
   echo: false
   warning: false
   message: false
+listing:
+  exclude: true
+
 ---
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}

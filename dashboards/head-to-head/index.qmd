@@ -13,182 +13,340 @@ draft: true
 ---
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-
-
 library(shiny)
 library(DBI)
 library(RSQLite)
 library(dplyr)
 library(stringr)
-library(DT)
+library(readr)
+library(plotly)
+library(tidyr)
 
 # --- Path to your sqlite DB ---
-
 DB_PATH <- file.path("data", "englishfootball.db")
 
 con <- dbConnect(RSQLite::SQLite(), DB_PATH)
 onStop(function() dbDisconnect(con))
 
 # ---- Load teams for dropdowns ----
-
 teams <- dbGetQuery(con, "
-SELECT team_id, team_name
-FROM teams
-ORDER BY team_name
-")
+  SELECT team_id, team_name
+  FROM teams
+  ORDER BY team_name
+") %>%
+  as_tibble() %>%
+  mutate(team_id = as.character(team_id))
 
 team_choices <- setNames(teams$team_id, teams$team_name)
 
-# ---- Helpers to parse season_id like: S-1925-3-N ----
+# ---- Default colour generator (deterministic) ----
+default_colour <- function(team_id, variant = c("home", "change")) {
+  variant <- match.arg(variant)
 
-parse_season_id <- function(season_id) {
-m <- str_match(season_id, "^S-([0-9]{4})-([0-9]+)(?:-([NS]))?$")
-tibble(
-season_id = season_id,
-year = as.integer(m[,2]),
-tier = as.integer(m[,3]),
-region = m[,4]  # NA, "N", or "S"
-)
+  base_pal <- c(
+    "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728",
+    "#9467bd", "#8c564b", "#e377c2", "#7f7f7f",
+    "#bcbd22", "#17becf"
+  )
+
+  id_num <- suppressWarnings(as.integer(gsub("[^0-9]", "", team_id)))
+  if (is.na(id_num)) id_num <- sum(utf8ToInt(team_id))
+
+  idx <- (id_num %% length(base_pal)) + 1
+  col <- base_pal[idx]
+
+  # change colour = lighter version of home colour
+  if (variant == "change") {
+    col <- grDevices::adjustcolor(col, alpha.f = 0.6)
+  }
+
+  col
 }
 
-year_label <- function(y) as.character(y)
+# ---- Load team colours CSV ----
+# Expected columns: team_id, home_colour, change_colour
+COLOURS_CSV <- file.path("data", "team_colours.csv")
+
+team_colours <- read_csv(COLOURS_CSV, show_col_types = FALSE) %>%
+  mutate(team_id = as.character(team_id)) %>%
+  select(team_id, home_colour, change_colour)
+
+# Basic validation (won't stop the app, but prevents cryptic failures)
+stopifnot(all(c("team_id", "home_colour", "change_colour") %in% names(team_colours)))
+
+# ---- Helpers to parse season_id like: S-1925-3-N ----
+parse_season_id <- function(season_id) {
+  m <- str_match(season_id, "^S-([0-9]{4})-([0-9]+)(?:-([NS]))?$")
+  tibble(
+    season_id = season_id,
+    year = as.integer(m[,2]),
+    tier = as.integer(m[,3]),
+    region = m[,4]  # NA, "N", or "S"
+  )
+}
+
+season_label <- function(year, tier, region) {
+  y2 <- year + 1
+  div <- paste0("Tier ", tier)
+  if (!is.na(region) && region %in% c("N", "S")) div <- paste(div, paste0("(", region, ")"))
+  paste0(year, "–", substr(y2, 3, 4), " · ", div)
+}
 
 decide_winner_one_year <- function(a_row, b_row, a_name, b_name) {
-a_in <- nrow(a_row) == 1
-b_in <- nrow(b_row) == 1
+  a_in <- nrow(a_row) == 1
+  b_in <- nrow(b_row) == 1
 
-# If either is not in the Football League that year: tie
+  # If either team isn't in the league, treat as tie (no winner marker)
+  if (!a_in || !b_in) {
+    return(list(result = "—", note = "At least one team not in Football League"))
+  }
 
-if (!a_in || !b_in) {
-return(list(result = "—", note = "At least one team not in Football League"))
-}
+  if (a_row$tier[1] < b_row$tier[1]) return(list(result = a_name, note = "Higher division"))
+  if (a_row$tier[1] > b_row$tier[1]) return(list(result = b_name, note = "Higher division"))
 
-# Compare tiers (lower number is higher division)
+  tier <- a_row$tier[1]
+  if (tier == 3) {
+    ra <- a_row$region[1]
+    rb <- b_row$region[1]
+    if (!is.na(ra) && !is.na(rb) && ra != rb) {
+      return(list(result = "—", note = "Tier 3 split (N vs S)"))
+    }
+  }
 
-if (a_row$tier[1] < b_row$tier[1]) return(list(result = a_name, note = "Higher division"))
-if (a_row$tier[1] > b_row$tier[1]) return(list(result = b_name, note = "Higher division"))
+  if (a_row$position[1] < b_row$position[1]) return(list(result = a_name, note = "Higher position"))
+  if (a_row$position[1] > b_row$position[1]) return(list(result = b_name, note = "Higher position"))
 
-# Same tier
-
-tier <- a_row$tier[1]
-
-# Special: if tier 3 and one is N and the other is S => tie
-
-if (tier == 3) {
-ra <- a_row$region[1]
-rb <- b_row$region[1]
-if (!is.na(ra) && !is.na(rb) && ra != rb) {
-return(list(result = "—", note = "Tier 3 split (N vs S)"))
-}
-}
-
-# Same tier: compare position (lower is better)
-
-if (a_row$position[1] < b_row$position[1]) return(list(result = a_name, note = "Higher position"))
-if (a_row$position[1] > b_row$position[1]) return(list(result = b_name, note = "Higher position"))
-
-list(result = "—", note = "Same tier & position")
+  list(result = "—", note = "Same tier & position")
 }
 
 # ---- UI ----
-
 ui <- fluidPage(
-fluidRow(
-column(
-6,
-selectInput("team_a", "Team A", choices = team_choices, selected = teams$team_id[1])
-),
-column(
-6,
-selectInput("team_b", "Team B", choices = team_choices, selected = teams$team_id[min(2, nrow(teams))])
-)
-),
-hr(),
-DTOutput("result_tbl"),
-br(),
-tags$small("Notes: Division (tier) outranks position. Tier 3 North vs South counts as a tie regardless of position. If either team is not in the Football League that year, it’s a tie.")
+  fluidRow(
+    column(6, selectInput("team_a", "Team A", choices = team_choices, selected = teams$team_id[1])),
+    column(6, selectInput("team_b", "Team B", choices = team_choices, selected = teams$team_id[min(2, nrow(teams))]))
+  ),
+  hr(),
+  plotlyOutput("h2h_plot", height = "280px"),
+  tags$small("Hover points for details. Diamond = finished higher (when both teams were in the league)."),
+  br(),
+  verbatimTextOutput("clicked_details")
 )
 
 # ---- Server ----
-
 server <- function(input, output, session) {
 
-standings_ab <- reactive({
-req(input$team_a, input$team_b)
+  standings_ab <- reactive({
+    req(input$team_a, input$team_b)
 
-st <- dbGetQuery(con, "
-  SELECT season_id, team_id, position, played, wins, draws, losses,
-         goals_for, goals_against, goal_difference, points, point_adjustment
-  FROM standings
-  WHERE team_id IN (?, ?)
-", params = list(input$team_a, input$team_b))
+    st <- dbGetQuery(con, "
+      SELECT season_id, team_id, position, played, wins, draws, losses,
+             goals_for, goals_against, goal_difference, points, point_adjustment
+      FROM standings
+      WHERE team_id IN (?, ?)
+    ", params = list(input$team_a, input$team_b))
 
-st <- as_tibble(st) %>%
-  mutate(
-    team_id = as.character(team_id),
-    season_id = as.character(season_id)
-  )
+    st <- as_tibble(st) %>%
+      mutate(
+        team_id = as.character(team_id),
+        season_id = as.character(season_id)
+      )
 
-parsed <- parse_season_id(st$season_id)
+    parsed <- parse_season_id(st$season_id)
 
-st %>%
-  left_join(parsed, by = "season_id")
+    st %>%
+      left_join(parsed, by = "season_id")
+  })
 
-})
+  year_summary <- reactive({
+    st <- standings_ab()
 
-output$result_tbl <- renderDT({
-st <- standings_ab()
+    a_id <- as.character(input$team_a)
+    b_id <- as.character(input$team_b)
 
-a_id <- as.character(input$team_a)
-b_id <- as.character(input$team_b)
+    a_name <- teams$team_name[match(a_id, teams$team_id)]
+    b_name <- teams$team_name[match(b_id, teams$team_id)]
 
-a_name <- teams$team_name[match(a_id, teams$team_id)]
-b_name <- teams$team_name[match(b_id, teams$team_id)]
+    best_for_team_year <- function(df, tid, y) {
+      df %>%
+        filter(team_id == tid, year == y) %>%
+        arrange(tier, position) %>%
+        slice(1)
+    }
 
-years <- sort(unique(st$year))
+    # Build a full year range that covers the years in the query;
+    # years where both are absent will remain blank.
+    yr_min <- min(st$year, na.rm = TRUE)
+    yr_max <- max(st$year, na.rm = TRUE)
+    all_years <- seq(yr_min, yr_max)
 
-best_for_team_year <- function(df, tid, y) {
-  df %>%
-    filter(team_id == tid, year == y) %>%
-    arrange(tier, position) %>%
-    slice(1)
-}
+    rows <- lapply(all_years, function(y) {
+      a_row <- best_for_team_year(st, a_id, y)
+      b_row <- best_for_team_year(st, b_id, y)
 
-rows <- lapply(years, function(y) {
-  a_row <- best_for_team_year(st, a_id, y)
-  b_row <- best_for_team_year(st, b_id, y)
+      a_in <- nrow(a_row) == 1
+      b_in <- nrow(b_row) == 1
 
-  dec <- decide_winner_one_year(a_row, b_row, a_name, b_name)
+      # Both absent => keep a row but mark both as absent (plot will skip)
+      dec <- decide_winner_one_year(a_row, b_row, a_name, b_name)
 
-  tibble(
-    season_year = year_label(y),
-    team_a_div = if (nrow(a_row) == 1) a_row$season_id[1] else NA_character_,
-    team_a_pos = if (nrow(a_row) == 1) a_row$position[1] else NA_integer_,
-    team_b_div = if (nrow(b_row) == 1) b_row$season_id[1] else NA_character_,
-    team_b_pos = if (nrow(b_row) == 1) b_row$position[1] else NA_integer_,
-    finished_highest = dec$result,
-    reason = dec$note
-  )
-})
+      tibble(
+        year = y,
 
-out <- bind_rows(rows)
+        a_in = a_in,
+        a_season = if (a_in) season_label(a_row$year[1], a_row$tier[1], a_row$region[1]) else NA_character_,
+        a_pos = if (a_in) a_row$position[1] else NA_integer_,
+        a_pts = if (a_in) a_row$points[1] else NA_integer_,
+        a_gd  = if (a_in) a_row$goal_difference[1] else NA_integer_,
+        a_wdl = if (a_in) paste0(a_row$wins[1], "-", a_row$draws[1], "-", a_row$losses[1]) else NA_character_,
 
-datatable(
-  out,
-  rownames = FALSE,
-  options = list(
-    dom = "t",
-    paging = FALSE,
-    scrollX = TRUE
-  )
-) %>%
-  formatStyle(
-    "finished_highest",
-    target = "cell",
-    color = styleEqual("—", "gray")
-  )
+        b_in = b_in,
+        b_season = if (b_in) season_label(b_row$year[1], b_row$tier[1], b_row$region[1]) else NA_character_,
+        b_pos = if (b_in) b_row$position[1] else NA_integer_,
+        b_pts = if (b_in) b_row$points[1] else NA_integer_,
+        b_gd  = if (b_in) b_row$goal_difference[1] else NA_integer_,
+        b_wdl = if (b_in) paste0(b_row$wins[1], "-", b_row$draws[1], "-", b_row$losses[1]) else NA_character_,
 
-})
+        finished_highest = dec$result,
+        reason = dec$note,
+        a_name = a_name,
+        b_name = b_name
+      )
+    })
+
+    bind_rows(rows)
+  })
+
+  output$h2h_plot <- renderPlotly({
+    df <- year_summary()
+
+    a_id <- as.character(input$team_a)
+    b_id <- as.character(input$team_b)
+
+    a_name <- df$a_name[1]
+    b_name <- df$b_name[1]
+
+    # Pull colours for each team from CSV
+    a_col <- team_colours %>% filter(team_id == a_id) %>% slice(1)
+    b_col <- team_colours %>% filter(team_id == b_id) %>% slice(1)
+    
+    # Team A colours
+    col_a_home   <- if (nrow(a_col) == 1) a_col$home_colour[1]   else default_colour(a_id, "home")
+    col_a_change <- if (nrow(a_col) == 1) a_col$change_colour[1] else default_colour(a_id, "change")
+    
+    # Team B colours
+    col_b_home   <- if (nrow(b_col) == 1) b_col$home_colour[1]   else default_colour(b_id, "home")
+    col_b_change <- if (nrow(b_col) == 1) b_col$change_colour[1] else default_colour(b_id, "change")
+    
+    # Apply clash rule:
+    # Team A always uses home
+    # Team B uses home unless it clashes with Team A home
+    col_a <- col_a_home
+    col_b <- if (tolower(col_b_home) == tolower(col_a_home)) col_b_change else col_b_home
+
+
+    # Long format for plotting two rows
+    df_long <- df %>%
+      transmute(
+        year,
+        finished_highest,
+        reason,
+        a_name, b_name,
+        team = list(c(a_name, b_name)),
+        in_league = list(c(a_in, b_in)),
+        season = list(c(a_season, b_season)),
+        pos = list(c(a_pos, b_pos)),
+        pts = list(c(a_pts, b_pts)),
+        gd  = list(c(a_gd,  b_gd)),
+        wdl = list(c(a_wdl, b_wdl))
+      ) %>%
+      unnest(c(team, in_league, season, pos, pts, gd, wdl)) %>%
+      mutate(
+        who = if_else(team == a_name, "A", "B"),
+        y = if_else(who == "A", 1, 0),
+        # Blank when not in league (NA x/y makes plotly skip the point)
+        x_plot = if_else(in_league, year, NA_integer_),
+        y_plot = if_else(in_league, y, NA_real_),
+        # Winner marker only when BOTH teams are in-league AND not a tie.
+        both_in = df$a_in[match(year, df$year)] & df$b_in[match(year, df$year)],
+        is_winner = both_in & finished_highest == team,
+        symbol = if_else(is_winner, "diamond", "circle"),
+        colour = if_else(who == "A", col_a, col_b),
+        hover = paste0(
+          "<b>", team, "</b><br>",
+          "Year: ", year, "<br>",
+          if_else(in_league,
+            paste0(
+              season, "<br>",
+              "Pos: ", pos, " · Pts: ", pts, "<br>",
+              "W-D-L: ", wdl, " · GD: ", gd
+            ),
+            "Not in Football League"
+          ),
+          "<br><br><b>Finished higher:</b> ", finished_highest,
+          "<br><b>Reason:</b> ", reason
+        )
+      )
+
+    # Two traces => clean legend (Team A / Team B)
+    p <- plot_ly()
+
+    p <- p %>%
+      add_trace(
+        data = df_long %>% filter(who == "A"),
+        x = ~x_plot, y = ~y_plot,
+        type = "scatter", mode = "markers",
+        name = a_name,
+        text = ~hover, hoverinfo = "text",
+        marker = list(size = 26, color = col_a, line = list(width = 1, color = "gray40")),
+        symbol = ~symbol,
+        customdata = ~year
+      ) %>%
+      add_trace(
+        data = df_long %>% filter(who == "B"),
+        x = ~x_plot, y = ~y_plot,
+        type = "scatter", mode = "markers",
+        name = b_name,
+        text = ~hover, hoverinfo = "text",
+        marker = list(size = 26, color = col_b, line = list(width = 1, color = "gray40")),
+        symbol = ~symbol,
+        customdata = ~year
+      ) %>%
+      layout(
+        xaxis = list(title = "", tickmode = "linear", dtick = 5, zeroline = FALSE),
+        yaxis = list(
+          title = "",
+          tickmode = "array",
+          tickvals = c(1, 0),
+          ticktext = c(a_name, b_name),
+          range = c(-0.6, 1.6),
+          zeroline = FALSE
+        ),
+        legend = list(orientation = "h", x = 0, y = -0.15),
+        margin = list(l = 70, r = 20, t = 10, b = 60)
+      )
+
+    p
+  })
+
+  # Click-to-pin details (optional)
+  output$clicked_details <- renderPrint({
+    click <- event_data("plotly_click")
+    if (is.null(click)) {
+      cat("Click a point to pin its details here.")
+      return()
+    }
+    y <- click$customdata
+    df <- year_summary()
+    row <- df %>% filter(year == y) %>% slice(1)
+
+    cat(paste0(
+      "Year: ", row$year, "\n",
+      "Finished higher: ", row$finished_highest, "\n",
+      "Reason: ", row$reason, "\n\n",
+      row$a_name, ": ", if (!is.na(row$a_season)) paste0(row$a_season, " | Pos ", row$a_pos, " | Pts ", row$a_pts, " | WDL ", row$a_wdl, " | GD ", row$a_gd) else "Not in Football League", "\n",
+      row$b_name, ": ", if (!is.na(row$b_season)) paste0(row$b_season, " | Pos ", row$b_pos, " | Pts ", row$b_pts, " | WDL ", row$b_wdl, " | GD ", row$b_gd) else "Not in Football League", "\n"
+    ))
+  })
 }
 
 shinyApp(ui, server)

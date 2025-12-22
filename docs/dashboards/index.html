@@ -83,9 +83,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -136,7 +136,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -351,9 +351,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Zm9vdGJhbGw=">football <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJlbWllci1sZWFndWU=">premier-league <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -381,40 +379,64 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1764729773505" data-listing-reading-time-sort="2" data-listing-word-count-sort="231">
-<a href="../dashboards/election-2020-tableau/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-2020 U.S. Election Counties by Race and Education
-</h5>
-<div class="card-text listing-description delink">
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1764729773505" data-listing-reading-time-sort="2" data-listing-word-count-sort="231">
+<div class="thumbnail"><a href="../dashboards/election-2020-tableau/index.html" class="no-external">
+
+<img loading="lazy" src="../dashboards/election-2020-tableau/election_map.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../dashboards/election-2020-tableau/index.html" class="no-external">2020 U.S. Election Counties by Race and Education</a>
+</h3>
+<div class="delink listing-description"><a href="../dashboards/election-2020-tableau/index.html" class="no-external">
 <noscript>    </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="PresidentialElection2020_16892682956980/2020ElectionRaceEducation"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Pr/PresidentialElection2020_16892682956980/2020ElectionRaceEducation/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../dashboards/election-2020-tableau/index.html" class="no-external">
+</a>
 </div>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Zm9vdGJhbGwlMkNwcmVtaWVyLWxlYWd1ZQ==" data-listing-file-modified-sort="1766275510491" data-listing-reading-time-sort="3" data-listing-word-count-sort="517">
-<a href="../dashboards/pl-table/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Premier League Table &amp; Metrics
-</h5>
-<div class="listing-categories">
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1766277731124" data-listing-reading-time-sort="3" data-listing-word-count-sort="527">
+<div class="thumbnail"><a href="../dashboards/head-to-head/index.html" class="no-external">
 
-<div class="listing-category" onclick="window.quartoListingCategory('Zm9vdGJhbGw='); return false;">football</div>
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('cHJlbWllci1sZWFndWU='); return false;">premier-league</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../dashboards/head-to-head/index.html" class="no-external">Head-to-head: shared Football League seasons</a>
+</h3>
+<div class="delink listing-description"><a href="../dashboards/head-to-head/index.html" class="no-external">
 
+</a></div>
 </div>
-<div class="card-text listing-description delink">
+<div class="metadata">
+<a href="../dashboards/head-to-head/index.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="Zm9vdGJhbGwlMkNwcmVtaWVyLWxlYWd1ZQ==" data-listing-file-modified-sort="1766275510491" data-listing-reading-time-sort="3" data-listing-word-count-sort="517">
+<div class="thumbnail"><a href="../dashboards/pl-table/index.html" class="no-external">
+
+<img loading="lazy" src="../dashboards/pl-table/thumb.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../dashboards/pl-table/index.html" class="no-external">Premier League Table &amp; Metrics</a>
+</h3>
+<div class="delink listing-description"><a href="../dashboards/pl-table/index.html" class="no-external">
 <p>Points, goals, xG splits, field tilt, shot share.</p>
+</a></div>
 </div>
+<div class="metadata">
+<a href="../dashboards/pl-table/index.html" class="no-external">
+</a>
 </div>
-</div></a>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>

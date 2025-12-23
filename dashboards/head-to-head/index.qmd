@@ -21,6 +21,9 @@ library(stringr)
 library(readr)
 library(plotly)
 library(tidyr)
+library(htmltools)
+library(jsonlite)
+
 
 # --- Path to your sqlite DB ---
 DB_PATH <- file.path("data", "englishfootball.db")
@@ -28,19 +31,40 @@ DB_PATH <- file.path("data", "englishfootball.db")
 con <- dbConnect(RSQLite::SQLite(), DB_PATH)
 invisible(onStop(function() dbDisconnect(con)))
 
+# ---- CSS to make the app fill the screen (less scrolling) ----
+app_css <- "
+html, body { height: 100%; }
+.container-fluid { max-width: 1400px; }
+"
 
-# ---- Load teams for dropdowns ----
-teams <- dbGetQuery(con, "
-  SELECT team_id, team_name
-  FROM teams
-  ORDER BY team_name
-") %>%
-  as_tibble() %>%
-  mutate(team_id = as.character(team_id))
+# ---- Team menu CSV (your curated list + badge paths) ----
+# Expected columns: team_id, team_name, badge
+# badge should be a path under www/, e.g. badges/aston_villa.png
+TEAMS_MENU_CSV <- file.path("data", "teams_menu.csv")
 
-team_choices <- setNames(teams$team_id, teams$team_name)
+teams_menu <- read_csv(TEAMS_MENU_CSV, show_col_types = FALSE) %>%
+  mutate(team_id = as.character(team_id)) %>%
+  select(team_id, team_name, badge)
 
-# ---- Default colour generator (deterministic) ----
+team_choices <- setNames(teams_menu$team_name, teams_menu$team_id)
+
+
+# a named character vector: names are team_id, values are badge paths
+badge_map <- setNames(teams_menu$badge, teams_menu$team_id)
+
+stopifnot(all(c("team_id", "team_name", "badge") %in% names(teams_menu)))
+
+# ---- Team colours CSV ----
+# Expected columns: team_id, home_colour, change_colour
+COLOURS_CSV <- file.path("data", "team_colours.csv")
+
+team_colours <- read_csv(COLOURS_CSV, show_col_types = FALSE) %>%
+  mutate(team_id = as.character(team_id)) %>%
+  select(team_id, home_colour, change_colour)
+
+stopifnot(all(c("team_id", "home_colour", "change_colour") %in% names(team_colours)))
+
+# ---- Default colour generator (deterministic fallback) ----
 default_colour <- function(team_id, variant = c("home", "change")) {
   variant <- match.arg(variant)
 
@@ -56,24 +80,9 @@ default_colour <- function(team_id, variant = c("home", "change")) {
   idx <- (id_num %% length(base_pal)) + 1
   col <- base_pal[idx]
 
-  # change colour = lighter version of home colour
-  if (variant == "change") {
-    col <- grDevices::adjustcolor(col, alpha.f = 0.6)
-  }
-
+  if (variant == "change") col <- grDevices::adjustcolor(col, alpha.f = 0.6)
   col
 }
-
-# ---- Load team colours CSV ----
-# Expected columns: team_id, home_colour, change_colour
-COLOURS_CSV <- file.path("data", "team_colours.csv")
-
-team_colours <- read_csv(COLOURS_CSV, show_col_types = FALSE) %>%
-  mutate(team_id = as.character(team_id)) %>%
-  select(team_id, home_colour, change_colour)
-
-# Basic validation (won't stop the app, but prevents cryptic failures)
-stopifnot(all(c("team_id", "home_colour", "change_colour") %in% names(team_colours)))
 
 # ---- Helpers to parse season_id like: S-1925-3-N ----
 parse_season_id <- function(season_id) {
@@ -97,7 +106,6 @@ decide_winner_one_year <- function(a_row, b_row, a_name, b_name) {
   a_in <- nrow(a_row) == 1
   b_in <- nrow(b_row) == 1
 
-  # If either team isn't in the league, treat as tie (no winner marker)
   if (!a_in || !b_in) {
     return(list(result = "—", note = "At least one team not in Football League"))
   }
@@ -120,21 +128,126 @@ decide_winner_one_year <- function(a_row, b_row, a_name, b_name) {
   list(result = "—", note = "Same tier & position")
 }
 
+# ---- Selectize option renderer with badges ----
+# Uses <img> in the dropdown (works well with selectize)
+selectize_with_badges_opts <- function(badge_map) {
+  # Convert named vector to JSON object string
+  badge_json <- jsonlite::toJSON(as.list(badge_map), auto_unbox = TRUE)
+
+  selectizeOptions(
+    render = I(paste0("
+      {
+        option: function(item, escape) {
+          var badges = ", badge_json, ";
+          var badge = badges[item.value] || '';
+          var name = escape(item.text);
+          if (badge) {
+            return '<div style=\"display:flex; align-items:center; gap:10px;\">' +
+                   '<img src=\"' + badge + '\" style=\"height:20px; width:20px; object-fit:contain;\" />' +
+                   '<span>' + name + '</span></div>';
+          } else {
+            return '<div>' + name + '</div>';
+          }
+        },
+        item: function(item, escape) {
+          var badges = ", badge_json, ";
+          var badge = badges[item.value] || '';
+          var name = escape(item.text);
+          if (badge) {
+            return '<div style=\"display:flex; align-items:center; gap:8px;\">' +
+                   '<img src=\"' + badge + '\" style=\"height:18px; width:18px; object-fit:contain;\" />' +
+                   '<span>' + name + '</span></div>';
+          } else {
+            return '<div>' + name + '</div>';
+          }
+        }
+      }
+    ")),
+    placeholder = "Select a team...",
+    maxOptions = 500
+  )
+}
+
+
 # ---- UI ----
 ui <- fluidPage(
+  tags$head(tags$style(HTML(app_css))),
   fluidRow(
-    column(6, selectInput("team_a", "Team A", choices = team_choices, selected = teams$team_id[1])),
-    column(6, selectInput("team_b", "Team B", choices = team_choices, selected = teams$team_id[min(2, nrow(teams))]))
+    column(
+      6,
+      selectizeInput("team_a", "Team A", choices = NULL, selected = NULL, options = list())
+    ),
+    column(
+      6,
+      selectizeInput("team_b", "Team B", choices = NULL, selected = NULL, options = list())
+    )
   ),
   hr(),
-  plotlyOutput("h2h_plot", height = "280px"),
-  tags$small("Hover points for details. Diamond = finished higher (when both teams were in the league)."),
+  plotlyOutput("h2h_plot", height = "520px"),
+  tags$small("Hover points for details. Each year shows both teams on separate lines; a diamond outlines the team that finished higher."),
   br(),
   verbatimTextOutput("clicked_details")
 )
 
 # ---- Server ----
 server <- function(input, output, session) {
+
+  # Initialize selectize choices from teams_menu (your curated file)
+  observeEvent(TRUE, {
+  a0 <- teams_menu$team_id[1]
+  b0 <- teams_menu$team_id[min(2, nrow(teams_menu))]
+
+  updateSelectizeInput(
+    session, "team_a",
+    choices = team_choices,
+    selected = a0,
+    # options = selectize_with_badges_opts(badge_map)
+  )
+
+  updateSelectizeInput(
+    session, "team_b",
+    choices = team_choices,
+    selected = b0,
+    # options = selectize_with_badges_opts(badge_map)
+  )
+}, once = TRUE)
+
+
+  # Prevent selecting the same team in both inputs
+  observeEvent(input$team_a, {
+  req(input$team_a)
+
+  team_choices_b <- team_choices[names(team_choices) != input$team_a]
+  
+  # preserve b if still valid, else pick first available
+  b_sel <- input$team_b
+  if (is.null(b_sel) || !(b_sel %in% team_choices_b)) b_sel <- unname(team_choices_b[1])
+
+  updateSelectizeInput(
+    session, "team_b",
+    choices = team_choices_b,
+    selected = b_sel,
+    # options = selectize_with_badges_opts(badge_map)
+  )
+}, ignoreInit = TRUE)
+
+observeEvent(input$team_b, {
+  req(input$team_b)
+
+  team_choices_a <- team_choices[names(team_choices) != input$team_b]
+
+
+  a_sel <- input$team_a
+  if (is.null(a_sel) || !(a_sel %in% team_choices_a)) a_sel <- unname(team_choices_a[1])
+
+  updateSelectizeInput(
+    session, "team_a",
+    choices = team_choices_a,
+    selected = a_sel,
+    # options = selectize_with_badges_opts(badge_map)
+  )
+}, ignoreInit = TRUE)
+
 
   standings_ab <- reactive({
     req(input$team_a, input$team_b)
@@ -147,15 +260,11 @@ server <- function(input, output, session) {
     ", params = list(input$team_a, input$team_b))
 
     st <- as_tibble(st) %>%
-      mutate(
-        team_id = as.character(team_id),
-        season_id = as.character(season_id)
-      )
+      mutate(team_id = as.character(team_id), season_id = as.character(season_id))
 
     parsed <- parse_season_id(st$season_id)
 
-    st %>%
-      left_join(parsed, by = "season_id")
+    st %>% left_join(parsed, by = "season_id")
   })
 
   year_summary <- reactive({
@@ -164,8 +273,8 @@ server <- function(input, output, session) {
     a_id <- as.character(input$team_a)
     b_id <- as.character(input$team_b)
 
-    a_name <- teams$team_name[match(a_id, teams$team_id)]
-    b_name <- teams$team_name[match(b_id, teams$team_id)]
+    a_name <- teams_menu$team_name[match(a_id, teams_menu$team_id)]
+    b_name <- teams_menu$team_name[match(b_id, teams_menu$team_id)]
 
     best_for_team_year <- function(df, tid, y) {
       df %>%
@@ -174,8 +283,6 @@ server <- function(input, output, session) {
         slice(1)
     }
 
-    # Build a full year range that covers the years in the query;
-    # years where both are absent will remain blank.
     yr_min <- min(st$year, na.rm = TRUE)
     yr_max <- max(st$year, na.rm = TRUE)
     all_years <- seq(yr_min, yr_max)
@@ -187,7 +294,6 @@ server <- function(input, output, session) {
       a_in <- nrow(a_row) == 1
       b_in <- nrow(b_row) == 1
 
-      # Both absent => keep a row but mark both as absent (plot will skip)
       dec <- decide_winner_one_year(a_row, b_row, a_name, b_name)
 
       tibble(
@@ -209,8 +315,12 @@ server <- function(input, output, session) {
 
         finished_highest = dec$result,
         reason = dec$note,
+
         a_name = a_name,
-        b_name = b_name
+        b_name = b_name,
+
+        a_id = a_id,
+        b_id = b_id
       )
     })
 
@@ -220,119 +330,175 @@ server <- function(input, output, session) {
   output$h2h_plot <- renderPlotly({
     df <- year_summary()
 
-    a_id <- as.character(input$team_a)
-    b_id <- as.character(input$team_b)
-
+    a_id <- df$a_id[1]
+    b_id <- df$b_id[1]
     a_name <- df$a_name[1]
     b_name <- df$b_name[1]
 
-    # Pull colours for each team from CSV
+    # badges (paths under www/)
+    a_badge <- teams_menu$badge[match(a_id, teams_menu$team_id)]
+    b_badge <- teams_menu$badge[match(b_id, teams_menu$team_id)]
+
+    # Colours from CSV (fallback to deterministic)
     a_col <- team_colours %>% filter(team_id == a_id) %>% slice(1)
     b_col <- team_colours %>% filter(team_id == b_id) %>% slice(1)
-    
-    # Team A colours
+
     col_a_home   <- if (nrow(a_col) == 1) a_col$home_colour[1]   else default_colour(a_id, "home")
     col_a_change <- if (nrow(a_col) == 1) a_col$change_colour[1] else default_colour(a_id, "change")
-    
-    # Team B colours
+
     col_b_home   <- if (nrow(b_col) == 1) b_col$home_colour[1]   else default_colour(b_id, "home")
     col_b_change <- if (nrow(b_col) == 1) b_col$change_colour[1] else default_colour(b_id, "change")
-    
-    # Apply clash rule:
-    # Team A always uses home
-    # Team B uses home unless it clashes with Team A home
+
+    # clash rule (outline / accents)
     col_a <- col_a_home
     col_b <- if (tolower(col_b_home) == tolower(col_a_home)) col_b_change else col_b_home
 
-
-    # --- Single-line plot: one marker per year (winner colour) ---
-
-# Apply clash rule for colours (same as you already do)
-# Team A always uses home; Team B switches to change if home clashes
-col_a <- col_a_home
-col_b <- if (tolower(col_b_home) == tolower(col_a_home)) col_b_change else col_b_home
-
-a_name <- df$a_name[1]
-b_name <- df$b_name[1]
-
-# Build a full year range and keep it blank unless BOTH teams are in the league
-df_plot <- df %>%
-  mutate(
-    both_in = a_in & b_in,
-    # only plot when both in (shared seasons)
-    x_plot = if_else(both_in, year, NA_integer_),
-    y_plot = 0,
-    winner_class = case_when(
-      both_in & finished_highest == a_name ~ "A",
-      both_in & finished_highest == b_name ~ "B",
-      both_in ~ "T",   # tie (same tier/position or Tier 3 N vs S)
-      TRUE ~ NA_character_
-    ),
-    hover = paste0(
-      "<b>Year: </b>", year, "<br>",
-      if_else(both_in,
-        paste0(
+    # Build plotting data: only shared seasons
+    df_plot <- df %>%
+      mutate(
+        both_in = a_in & b_in,
+        hover = paste0(
+          "<b>Year: </b>", year, "<br>",
           "<br><b>", a_name, "</b><br>",
-          a_season, "<br>",
-          "Pos: ", a_pos, " · Pts: ", a_pts, "<br>",
-          "W-D-L: ", a_wdl, " · GD: ", a_gd, "<br>",
-          "<br><b>", b_name, "</b><br>",
-          b_season, "<br>",
-          "Pos: ", b_pos, " · Pts: ", b_pts, "<br>",
-          "W-D-L: ", b_wdl, " · GD: ", b_gd, "<br>",
-          "<br><b>Finished higher:</b> ", finished_highest,
+          if_else(both_in, paste0(a_season, "<br>Pos: ", a_pos, " · Pts: ", a_pts, "<br>W-D-L: ", a_wdl, " · GD: ", a_gd), "Not in league"),
+          "<br><br><b>", b_name, "</b><br>",
+          if_else(both_in, paste0(b_season, "<br>Pos: ", b_pos, " · Pts: ", b_pts, "<br>W-D-L: ", b_wdl, " · GD: ", b_gd), "Not in league"),
+          "<br><br><b>Finished higher:</b> ", finished_highest,
           "<br><b>Reason:</b> ", reason
-        ),
-        "Not a shared Football League season"
-      )
-    )
-  )
+        )
+      ) %>%
+      filter(both_in)
 
-  # Split into traces so the legend is meaningful
-  df_a <- df_plot %>% filter(winner_class == "A")
-  df_b <- df_plot %>% filter(winner_class == "B")
-  df_t <- df_plot %>% filter(winner_class == "T")
-  
-  p <- plot_ly() %>%
-    add_trace(
-      data = df_a,
-      x = ~x_plot, y = ~y_plot,
-      type = "scatter", mode = "markers",
-      name = paste0(a_name, " finished higher"),
-      text = ~hover, hoverinfo = "text",
-      marker = list(size = 26, color = col_a, line = list(width = 1, color = "gray40")),
-      customdata = ~year
-    ) %>%
-    add_trace(
-      data = df_b,
-      x = ~x_plot, y = ~y_plot,
-      type = "scatter", mode = "markers",
-      name = paste0(b_name, " finished higher"),
-      text = ~hover, hoverinfo = "text",
-      marker = list(size = 26, color = col_b, line = list(width = 1, color = "gray40")),
-      customdata = ~year
-    ) %>%
-    add_trace(
-      data = df_t,
-      x = ~x_plot, y = ~y_plot,
-      type = "scatter", mode = "markers",
-      name = "Tie",
-      text = ~hover, hoverinfo = "text",
-      marker = list(size = 26, color = "gray70", line = list(width = 1, color = "gray40")),
-      customdata = ~year
-    ) %>%
-    layout(
-      xaxis = list(title = "", tickmode = "linear", dtick = 5, zeroline = FALSE),
-      yaxis = list(title = "", visible = FALSE, range = c(-1, 1)),
-      legend = list(orientation = "h", x = 0, y = -0.2),
-      margin = list(l = 20, r = 20, t = 10, b = 70)
-    )
-  
-  p
+    # Two lanes: A at y=1, B at y=0
+    df_a <- df_plot %>% mutate(team = "A", y = 1, badge = a_badge)
+    df_b <- df_plot %>% mutate(team = "B", y = 0, badge = b_badge)
+    
+    # Convert badge paths to served URLs
+    a_badge_src <- if (!is.na(a_badge) && nzchar(a_badge)) paste0("/", a_badge) else NULL
+    b_badge_src <- if (!is.na(b_badge) && nzchar(b_badge)) paste0("/", b_badge) else NULL
+    
+    # Helper to build plotly layout image objects
+    make_badge_images <- function(df_lane, src) {
+      if (is.null(src) || nrow(df_lane) == 0) return(list())
+    
+      lapply(seq_len(nrow(df_lane)), function(i) {
+        list(
+          source = src,
+          xref = "x",
+          yref = "y",
+          x = df_lane$year[i],
+          y = df_lane$y[i],
+          sizex = 2.2,   # badge width in "x units" (years)
+          sizey = 0.22,  # badge height in "y units"
+          xanchor = "center",
+          yanchor = "middle",
+          sizing = "contain",
+          opacity = 1,
+          layer = "above"
+        )
+      })
+    }
+    
+    imgs_a <- make_badge_images(df_a, a_badge_src)
+    imgs_b <- make_badge_images(df_b, b_badge_src)
+    all_imgs <- c(imgs_a, imgs_b)
+
+
+    # Winner markers (diamond outline) over the winning team's lane
+    df_win_a <- df_plot %>% filter(finished_highest == a_name) %>% mutate(y = 1)
+    df_win_b <- df_plot %>% filter(finished_highest == b_name) %>% mutate(y = 0)
+    df_tie   <- df_plot %>% filter(finished_highest == "—") %>% mutate(y = 0.5)
+
+    p <- plot_ly() %>%
+      # Invisible hover/click points for Team A lane
+      add_trace(
+        data = df_a,
+        x = ~year, y = ~y,
+        type = "scatter", mode = "markers",
+        name = a_name,
+        text = ~hover, hoverinfo = "text",
+        marker = list(size = 20, opacity = 0),
+        customdata = ~year,
+        showlegend = FALSE
+      ) %>%
+      # Invisible hover/click points for Team B lane
+      add_trace(
+        data = df_b,
+        x = ~year, y = ~y,
+        type = "scatter", mode = "markers",
+        name = b_name,
+        text = ~hover, hoverinfo = "text",
+        marker = list(size = 20, opacity = 0),
+        customdata = ~year,
+        showlegend = FALSE
+      ) %>%
+      # Winner overlays (diamond outlines)
+      add_trace(
+        data = df_win_a,
+        x = ~year, y = ~y,
+        type = "scatter", mode = "markers",
+        name = paste0(a_name, " finished higher"),
+        text = ~hover, hoverinfo = "text",
+        marker = list(
+          size = 34,
+          symbol = "diamond",
+          color = "rgba(0,0,0,0)",
+          line = list(width = 3, color = col_a)
+        ),
+        customdata = ~year,
+        showlegend = TRUE
+      ) %>%
+      add_trace(
+        data = df_win_b,
+        x = ~year, y = ~y,
+        type = "scatter", mode = "markers",
+        name = paste0(b_name, " finished higher"),
+        text = ~hover, hoverinfo = "text",
+        marker = list(
+          size = 34,
+          symbol = "diamond",
+          color = "rgba(0,0,0,0)",
+          line = list(width = 3, color = col_b)
+        ),
+        customdata = ~year,
+        showlegend = TRUE
+      ) %>%
+      # Tie marker in the middle
+      add_trace(
+        data = df_tie,
+        x = ~year, y = ~y,
+        type = "scatter", mode = "markers",
+        name = "Tie / unclear (e.g., Tier 3 N vs S)",
+        text = ~hover, hoverinfo = "text",
+        marker = list(
+          size = 16,
+          symbol = "square",
+          color = "gray70",
+          line = list(width = 1, color = "gray40")
+        ),
+        customdata = ~year,
+        showlegend = TRUE
+      ) %>%
+      layout(
+        xaxis = list(title = "", tickmode = "linear", dtick = 5, zeroline = FALSE),
+        yaxis = list(
+          title = "",
+          tickmode = "array",
+          tickvals = c(1, 0),
+          ticktext = c(a_name, b_name),
+          range = c(-0.6, 1.6),
+          zeroline = FALSE
+        ),
+        legend = list(orientation = "h", x = 0, y = -0.25),
+        margin = list(l = 70, r = 20, t = 10, b = 90)
+      )
+
+    p <- p %>% layout(images = all_imgs)
+    p
 
   })
 
-  # Click-to-pin details (optional)
+  # Click-to-pin details
   output$clicked_details <- renderPrint({
     click <- event_data("plotly_click")
     if (is.null(click)) {
@@ -356,5 +522,6 @@ df_plot <- df %>%
 shinyApp(ui, server)
 
 ```
+
 
 

@@ -26,7 +26,8 @@ library(tidyr)
 DB_PATH <- file.path("data", "englishfootball.db")
 
 con <- dbConnect(RSQLite::SQLite(), DB_PATH)
-onStop(function() dbDisconnect(con))
+invisible(onStop(function() dbDisconnect(con)))
+
 
 # ---- Load teams for dropdowns ----
 teams <- dbGetQuery(con, "
@@ -244,88 +245,91 @@ server <- function(input, output, session) {
     col_b <- if (tolower(col_b_home) == tolower(col_a_home)) col_b_change else col_b_home
 
 
-    # Long format for plotting two rows
-    df_long <- df %>%
-      transmute(
-        year,
-        finished_highest,
-        reason,
-        a_name, b_name,
-        team = list(c(a_name, b_name)),
-        in_league = list(c(a_in, b_in)),
-        season = list(c(a_season, b_season)),
-        pos = list(c(a_pos, b_pos)),
-        pts = list(c(a_pts, b_pts)),
-        gd  = list(c(a_gd,  b_gd)),
-        wdl = list(c(a_wdl, b_wdl))
-      ) %>%
-      unnest(c(team, in_league, season, pos, pts, gd, wdl)) %>%
-      mutate(
-        who = if_else(team == a_name, "A", "B"),
-        y = if_else(who == "A", 1, 0),
-        # Blank when not in league (NA x/y makes plotly skip the point)
-        x_plot = if_else(in_league, year, NA_integer_),
-        y_plot = if_else(in_league, y, NA_real_),
-        # Winner marker only when BOTH teams are in-league AND not a tie.
-        both_in = df$a_in[match(year, df$year)] & df$b_in[match(year, df$year)],
-        is_winner = both_in & finished_highest == team,
-        symbol = if_else(is_winner, "diamond", "circle"),
-        colour = if_else(who == "A", col_a, col_b),
-        hover = paste0(
-          "<b>", team, "</b><br>",
-          "Year: ", year, "<br>",
-          if_else(in_league,
-            paste0(
-              season, "<br>",
-              "Pos: ", pos, " · Pts: ", pts, "<br>",
-              "W-D-L: ", wdl, " · GD: ", gd
-            ),
-            "Not in Football League"
-          ),
-          "<br><br><b>Finished higher:</b> ", finished_highest,
+    # --- Single-line plot: one marker per year (winner colour) ---
+
+# Apply clash rule for colours (same as you already do)
+# Team A always uses home; Team B switches to change if home clashes
+col_a <- col_a_home
+col_b <- if (tolower(col_b_home) == tolower(col_a_home)) col_b_change else col_b_home
+
+a_name <- df$a_name[1]
+b_name <- df$b_name[1]
+
+# Build a full year range and keep it blank unless BOTH teams are in the league
+df_plot <- df %>%
+  mutate(
+    both_in = a_in & b_in,
+    # only plot when both in (shared seasons)
+    x_plot = if_else(both_in, year, NA_integer_),
+    y_plot = 0,
+    winner_class = case_when(
+      both_in & finished_highest == a_name ~ "A",
+      both_in & finished_highest == b_name ~ "B",
+      both_in ~ "T",   # tie (same tier/position or Tier 3 N vs S)
+      TRUE ~ NA_character_
+    ),
+    hover = paste0(
+      "<b>Year: </b>", year, "<br>",
+      if_else(both_in,
+        paste0(
+          "<br><b>", a_name, "</b><br>",
+          a_season, "<br>",
+          "Pos: ", a_pos, " · Pts: ", a_pts, "<br>",
+          "W-D-L: ", a_wdl, " · GD: ", a_gd, "<br>",
+          "<br><b>", b_name, "</b><br>",
+          b_season, "<br>",
+          "Pos: ", b_pos, " · Pts: ", b_pts, "<br>",
+          "W-D-L: ", b_wdl, " · GD: ", b_gd, "<br>",
+          "<br><b>Finished higher:</b> ", finished_highest,
           "<br><b>Reason:</b> ", reason
-        )
-      )
-
-    # Two traces => clean legend (Team A / Team B)
-    p <- plot_ly()
-
-    p <- p %>%
-      add_trace(
-        data = df_long %>% filter(who == "A"),
-        x = ~x_plot, y = ~y_plot,
-        type = "scatter", mode = "markers",
-        name = a_name,
-        text = ~hover, hoverinfo = "text",
-        marker = list(size = 26, color = col_a, line = list(width = 1, color = "gray40")),
-        symbol = ~symbol,
-        customdata = ~year
-      ) %>%
-      add_trace(
-        data = df_long %>% filter(who == "B"),
-        x = ~x_plot, y = ~y_plot,
-        type = "scatter", mode = "markers",
-        name = b_name,
-        text = ~hover, hoverinfo = "text",
-        marker = list(size = 26, color = col_b, line = list(width = 1, color = "gray40")),
-        symbol = ~symbol,
-        customdata = ~year
-      ) %>%
-      layout(
-        xaxis = list(title = "", tickmode = "linear", dtick = 5, zeroline = FALSE),
-        yaxis = list(
-          title = "",
-          tickmode = "array",
-          tickvals = c(1, 0),
-          ticktext = c(a_name, b_name),
-          range = c(-0.6, 1.6),
-          zeroline = FALSE
         ),
-        legend = list(orientation = "h", x = 0, y = -0.15),
-        margin = list(l = 70, r = 20, t = 10, b = 60)
+        "Not a shared Football League season"
       )
+    )
+  )
 
-    p
+  # Split into traces so the legend is meaningful
+  df_a <- df_plot %>% filter(winner_class == "A")
+  df_b <- df_plot %>% filter(winner_class == "B")
+  df_t <- df_plot %>% filter(winner_class == "T")
+  
+  p <- plot_ly() %>%
+    add_trace(
+      data = df_a,
+      x = ~x_plot, y = ~y_plot,
+      type = "scatter", mode = "markers",
+      name = paste0(a_name, " finished higher"),
+      text = ~hover, hoverinfo = "text",
+      marker = list(size = 26, color = col_a, line = list(width = 1, color = "gray40")),
+      customdata = ~year
+    ) %>%
+    add_trace(
+      data = df_b,
+      x = ~x_plot, y = ~y_plot,
+      type = "scatter", mode = "markers",
+      name = paste0(b_name, " finished higher"),
+      text = ~hover, hoverinfo = "text",
+      marker = list(size = 26, color = col_b, line = list(width = 1, color = "gray40")),
+      customdata = ~year
+    ) %>%
+    add_trace(
+      data = df_t,
+      x = ~x_plot, y = ~y_plot,
+      type = "scatter", mode = "markers",
+      name = "Tie",
+      text = ~hover, hoverinfo = "text",
+      marker = list(size = 26, color = "gray70", line = list(width = 1, color = "gray40")),
+      customdata = ~year
+    ) %>%
+    layout(
+      xaxis = list(title = "", tickmode = "linear", dtick = 5, zeroline = FALSE),
+      yaxis = list(title = "", visible = FALSE, range = c(-1, 1)),
+      legend = list(orientation = "h", x = 0, y = -0.2),
+      margin = list(l = 20, r = 20, t = 10, b = 70)
+    )
+  
+  p
+
   })
 
   # Click-to-pin details (optional)

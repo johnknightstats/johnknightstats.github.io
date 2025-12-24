@@ -1,8 +1,8 @@
 ---
-title: "Premier League Manager Metrics 1"
-description: "Points per game and goals versus expected goals."
+title: "Premier League Manager Metrics 2"
+description: "Expected goals by situation, field tilt and shot share."
 categories: [football, premier-league]
-image: guardiola.png
+image: klopp.png
 format:
   html:
     toc: false
@@ -41,7 +41,7 @@ pal_r2g <- rev(pal_g2r)
 # -----------------------------
 
 df <- df_raw |>
-filter(games_played >= 10) |>
+filter(games_played >= 5) |>
 select(-coach_id, -team_id, -win, -draw, -loss) |>
 mutate(
 field_tilt = as.numeric(field_tilt),
@@ -65,8 +65,7 @@ xGD = xg_diff,
 `Shot Share` = shot_share
 ) |>
 arrange(desc(Pts), desc(GD), desc(GF)) |>
-mutate(Pld=as.integer(round(Pld)),
-       `GD - xGD` = GD - xGD)
+mutate(Pld=as.integer(round(Pld)))
 
 if (has_bookie) {
 df <- df |> rename(`Bookie Pts` = bookie_pts)
@@ -74,34 +73,35 @@ df <- df |> rename(`Bookie Pts` = bookie_pts)
 
 # -----------------------------
 
-# Keep only dashboard 1 columns
+# Keep only dashboard 2 columns
 
 # -----------------------------
 
-keep_cols <- c("Manager","Team","Pld","Pts","GF","GA","GD","xG","xGA","xGD", "GD - xGD")
+keep_cols <- c(
+"Manager","Team","Pld",
+"xGD","xGD (non-pen)","xGD (open-play)","xGD (set-piece)",
+"Field Tilt","Shot Share"
+)
 keep_cols <- intersect(keep_cols, names(df))
-df1 <- df |> select(all_of(keep_cols))
+df2 <- df |> select(all_of(keep_cols))
 
 # -----------------------------
 
-# Color scale groups (dashboard 1)
+# Color scale groups (dashboard 2)
 
 # -----------------------------
 
-g2r_cols_reversed <- intersect(c("Pts","GF","GD","xG","xGD","GD - xGD"), names(df1))
-r2g_cols_reversed <- intersect(c("GA","xGA"), names(df1))
+g2r_cols_reversed <- intersect(
+c("xGD","xGD (non-pen)","xGD (open-play)","xGD (set-piece)","Field Tilt","Shot Share"),
+names(df2)
+)
 
 dt <- datatable(
-df1,
+df2,
 rownames=FALSE,
 extensions=c("FixedColumns","FixedHeader"),
 options=list(
-order = list(
-list(3, "desc"),  # Pts
-list(6, "desc"),  # GD
-list(4, "desc")   # GF
-),
-
+order = list(list(3, "desc")),
 dom="t",
 paging=FALSE,
 scrollX=TRUE,
@@ -123,7 +123,7 @@ columnDefs=list(
   list(width="190px", targets=0), # Manager
   list(width="170px", targets=1), # Team
   list(className="dt-nowrap", targets=c(0,1)),
-  list(className="dt-right", targets=2:(ncol(df1)-1))
+  list(className="dt-right", targets=2:(ncol(df2)-1))
 ),
 
 initComplete=JS(
@@ -148,26 +148,27 @@ initComplete=JS(
 
 # ---- Formatting ----
 
-if ("Pld" %in% names(df1)) dt <- dt |> formatRound("Pld", digits=0)
+pct_cols <- intersect(c("Field Tilt","Shot Share"), names(df2))
 
-num_cols <- names(df1)[sapply(df1, is.numeric)]
-round2_cols <- setdiff(num_cols, "Pld")
+if ("Pld" %in% names(df2)) dt <- dt |> formatRound("Pld", digits=0)
+
+num_cols <- names(df2)[sapply(df2, is.numeric)]
+round2_cols <- setdiff(num_cols, c("Pld", pct_cols))
 if (length(round2_cols) > 0) dt <- dt |> formatRound(round2_cols, digits=2)
 
+if (length(pct_cols) > 0) dt <- dt |> formatPercentage(pct_cols, digits=1)
+
 dt <- dt |>
-formatStyle(names(df1), fontSize="12px", padding="2px 6px") |>
+formatStyle(names(df2), fontSize="12px", padding="2px 6px") |>
 formatStyle(c("Manager","Team"), whiteSpace="nowrap")
 
 for (col in g2r_cols_reversed) {
-s <- style_grad(df1[[col]], pal_r2g)
-if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor=styleInterval(s$cuts, s$cols))
-}
-for (col in r2g_cols_reversed) {
-s <- style_grad(df1[[col]], pal_g2r)
+s <- style_grad(df2[[col]], pal_r2g)
 if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor=styleInterval(s$cuts, s$cols))
 }
 
 dt
+
 
 
 ```

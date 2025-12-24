@@ -2,10 +2,10 @@
   {
     "listing": "/dashboards/index.html",
     "items": [
+      "/dashboards/pl-table/index.html",
       "/dashboards/managers-table/index.html",
       "/dashboards/managers-table-2/index.html",
-      "/dashboards/election-2020-tableau/index.html",
-      "/dashboards/pl-table/index.html"
+      "/dashboards/election-2020-tableau/index.html"
     ]
   },
   {

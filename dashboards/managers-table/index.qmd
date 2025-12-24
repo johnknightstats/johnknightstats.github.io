@@ -1,0 +1,188 @@
+---
+title: "Premier League Manager Table & Metrics"
+description: "Points per game and underlying metrics by (manager, team)."
+categories: [football, premier-league]
+image: thumb.png
+format:
+  html:
+    toc: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+Since 2020-2021 season
+
+```{r}
+
+library(readr)
+library(dplyr)
+library(DT)
+
+df_raw <- read_csv("pl_manager_team_table.csv", show_col_types=FALSE)
+has_bookie <- "bookie_pts" %in% names(df_raw)
+
+style_grad <- function(x, base_pal, n = 101) {
+rng <- range(x, na.rm=TRUE)
+if (!is.finite(rng[1]) || !is.finite(rng[2]) || rng[1] == rng[2]) return(NULL)
+cols <- grDevices::colorRampPalette(base_pal)(n)
+cuts <- seq(rng[1], rng[2], length.out=n)[-1]
+list(cuts=cuts, cols=cols)
+}
+
+pal_g2r <- c("#1a9850","#66bd63","#a6d96a","#d9ef8b","#fee08b","#fdae61","#d73027")
+pal_r2g <- rev(pal_g2r)
+
+df <- df_raw |>
+filter(games_played >= 5) |>
+select(-coach_id, -team_id, -win, -draw, -loss) |>
+mutate(
+field_tilt = as.numeric(field_tilt),
+shot_share = as.numeric(shot_share)
+) |>
+rename(
+Manager = coach_name,
+Team = team_name,
+Pld = games_played,
+Pts = points,
+GF = goals_for,
+GA = goals_against,
+GD = goal_difference,
+xG = xg_for,
+xGA = xg_against,
+xGD = xg_diff,
+`xGD (open-play)` = xg_open_play_diff,
+`xGD (set-piece)` = xg_set_play_diff,
+`xGD (non-pen)` = xg_non_penalty_diff,
+`Field Tilt` = field_tilt,
+`Shot Share` = shot_share
+) |>
+arrange(desc(Pts), desc(GD), desc(GF))
+
+df <- df |>
+  mutate(Pld=as.integer(round(Pld)))
+
+
+if (has_bookie) {
+df <- df |> rename(`Bookie Pts` = bookie_pts)
+}
+
+g2r_cols_reversed <- c(
+"Pts","Bookie Pts","GF","GD","xG","xGD",
+"xGD (open-play)","xGD (set-piece)","xGD (non-pen)",
+"Field Tilt","Shot Share"
+)
+r2g_cols_reversed <- c("GA","xGA")
+g2r_cols_reversed <- intersect(g2r_cols_reversed, names(df))
+r2g_cols_reversed <- intersect(r2g_cols_reversed, names(df))
+
+dt <- datatable(
+df,
+rownames = FALSE,
+extensions = "FixedColumns",
+options = list(
+dom = "t",
+paging = FALSE,
+scrollX = TRUE,
+fixedColumns = list(leftColumns = 2),  # Manager + Team
+autoWidth = FALSE,
+
+headerCallback = JS(
+  "function(thead) {",
+  "  $(thead).find('th').css({",
+  "    'font-size': '11px',",
+  "    'padding': '4px 6px'",
+  "  });",
+  "}"
+),
+
+columnDefs = list(
+  list(width = "190px", targets = 0), # Manager
+  list(width = "170px", targets = 1), # Team
+  list(className = "dt-nowrap", targets = c(0, 1)),
+  list(className = "dt-right", targets = 2:(ncol(df) - 1))
+),
+
+# Top horizontal scrollbar synced with the table
+initComplete = JS(
+  "function(settings, json) {",
+  "  var api = this.api();",
+  "  var $container = $(api.table().container());",
+  "  var $body = $container.find('div.dataTables_scrollBody');",
+
+  "  var $top = $('<div class=\"dt-scroll-top\" style=\"overflow-x:auto;overflow-y:hidden;height:16px;margin-bottom:6px;\"></div>');",
+  "  var $topInner = $('<div style=\"height:1px;\"></div>');",
+  "  $top.append($topInner);",
+  "  $container.prepend($top);",
+
+  "  function syncWidths(){",
+  "    $topInner.width($body.get(0).scrollWidth);",
+  "  }",
+  "  syncWidths();",
+  "  $(window).on('resize', syncWidths);",
+
+  "  $top.on('scroll', function(){ $body.scrollLeft($top.scrollLeft()); });",
+  "  $body.on('scroll', function(){ $top.scrollLeft($body.scrollLeft()); });",
+  "}"
+)
+
+)
+)
+
+# Round all numeric columns to 1 d.p.
+
+# ---- Formatting ----
+pct_cols <- intersect(c("Field Tilt","Shot Share"), names(df))
+
+# Integer for games played
+if ("Pld" %in% names(df)) {
+  dt <- dt |> formatRound("Pld", digits=0)
+}
+
+# Round all other numeric cols to 2 d.p. (excluding pct cols + Pld)
+num_cols <- names(df)[sapply(df, is.numeric)]
+round2_cols <- setdiff(num_cols, c("Pld", pct_cols))
+if (length(round2_cols) > 0) {
+  dt <- dt |> formatRound(round2_cols, digits=2)
+}
+
+# Percent columns to 1 d.p.
+if (length(pct_cols) > 0) {
+  dt <- dt |> formatPercentage(pct_cols, digits=1)
+}
+
+
+dt <- dt |>
+formatStyle(names(df), fontSize = "12px", padding = "2px 6px") |>
+formatStyle(c("Manager","Team"), whiteSpace = "nowrap")
+
+for (col in g2r_cols_reversed) {
+s <- style_grad(df[[col]], pal_r2g)
+if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
+}
+for (col in r2g_cols_reversed) {
+s <- style_grad(df[[col]], pal_g2r)
+if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
+}
+
+dt
+
+
+```
+
+<div style="font-size: 0.85em; line-height: 1.25;">
+
+
+### Notes
+
+Rows with fewer than 5 games are excluded.
+
+xG = Expected Goals (all, non-penalty, open-play, or set-pieces).
+
+Field Tilt = Share of touches inside opposition's penalty box.
+
+Shot Share = Share of total shots.
+
+</div>
+

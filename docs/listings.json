@@ -3,6 +3,7 @@
     "listing": "/dashboards/index.html",
     "items": [
       "/dashboards/election-2020-tableau/index.html",
+      "/dashboards/managers-table/index.html",
       "/dashboards/pl-table/index.html"
     ]
   },

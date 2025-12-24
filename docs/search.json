@@ -130,7 +130,7 @@
     "href": "dashboards/index.html",
     "title": "Dashboards",
     "section": "",
-    "text": "2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Table & Metrics\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Table & Metrics\n\n\nPoints per game and underlying metrics by (manager, team).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Table & Metrics\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -229,5 +229,19 @@
     "title": "Premier League Table & Metrics",
     "section": "",
     "text": "Notes\n\nBookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
+  },
+  {
+    "objectID": "dashboards/managers-table/index.html",
+    "href": "dashboards/managers-table/index.html",
+    "title": "Premier League Manager Table & Metrics",
+    "section": "",
+    "text": "Since 2020-2021 season\n\n\n\n\n\n\n\nNotes\nRows with fewer than 5 games are excluded.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
+  },
+  {
+    "objectID": "dashboards/managers-table/index.html#since-2020-2021-season",
+    "href": "dashboards/managers-table/index.html#since-2020-2021-season",
+    "title": "Premier League Manager Table & Metrics",
+    "section": "",
+    "text": "Notes\nRows with fewer than 5 games are excluded.\nBookie Pts = Expected points per match based on Pinnacle closing match odds.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
   }
 ]

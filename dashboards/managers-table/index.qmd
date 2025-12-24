@@ -1,6 +1,6 @@
 ---
 title: "Premier League Manager Table & Metrics"
-description: "Points per game and underlying metrics by (manager, team)."
+description: "Points per game and underlying metrics by manager."
 categories: [football, premier-league]
 image: guardiola.png
 format:

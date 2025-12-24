@@ -80,11 +80,13 @@ r2g_cols_reversed <- intersect(r2g_cols_reversed, names(df))
 dt <- datatable(
 df,
 rownames = FALSE,
-extensions = "FixedColumns",
+extensions = c("FixedColumns", "FixedHeader"),
 options = list(
 dom = "t",
 paging = FALSE,
 scrollX = TRUE,
+scrollY = "70vh",      # <-- controls vertical height
+fixedHeader = TRUE,    # <-- keeps headers visible
 fixedColumns = list(leftColumns = 2),  # Manager + Team
 autoWidth = FALSE,
 

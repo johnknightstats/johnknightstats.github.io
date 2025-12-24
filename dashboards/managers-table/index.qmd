@@ -15,6 +15,8 @@ dashboard_order: 2
 
 Since 2020-2021 season.
 
+Turn to landscape on phone for better viewing.
+
 ```{r}
 
 library(readr)
@@ -178,13 +180,9 @@ dt
 
 ### Notes
 
-Rows with fewer than 5 games are excluded.
+Minimum 10 games.
 
-xG = Expected Goals (all, non-penalty, open-play, or set-pieces).
-
-Field Tilt = Share of touches inside opposition's penalty box.
-
-Shot Share = Share of total shots.
+xG = Expected Goals.
 
 </div>
 

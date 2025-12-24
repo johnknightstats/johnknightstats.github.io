@@ -130,14 +130,14 @@
     "href": "dashboards/managers-table-2/index.html",
     "title": "Premier League Manager Metrics 2",
     "section": "",
-    "text": "Since 2020-2021 season.\n\n\n\n\n\n\n\nNotes\nRows with fewer than 5 games are excluded.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
+    "text": "Since 2020-2021 season.\nTurn to landscape on phone for better viewing.\n\n\n\n\n\n\n\nNotes\nMinimum 10 games.\nxG = Expected Goals.\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
   },
   {
     "objectID": "dashboards/index.html",
     "href": "dashboards/index.html",
     "title": "Dashboards",
     "section": "",
-    "text": "Premier League Table & Metrics\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 1\n\n\nPoints per game and goals versus expected goals.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 2\n\n\nExpected goals by situation, field tilt and shot share.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Premier League Manager Metrics 1\n\n\nPoints per game and goals versus expected goals.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 2\n\n\nExpected goals by situation, field tilt and shot share.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Table & Metrics\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -151,7 +151,7 @@
     "href": "dashboards/managers-table/index.html",
     "title": "Premier League Manager Metrics 1",
     "section": "",
-    "text": "Since 2020-2021 season.\n\n\n\n\n\n\n\nNotes\nRows with fewer than 5 games are excluded.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
+    "text": "Since 2020-2021 season.\nTurn to landscape on phone for better viewing.\n\n\n\n\n\n\n\nNotes\nMinimum 10 games.\nxG = Expected Goals."
   },
   {
     "objectID": "dashboards/pl-table/index.html",

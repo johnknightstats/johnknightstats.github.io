@@ -1,8 +1,9 @@
 ---
 title: "Dashboards"
 listing: default 
-contents:
-  - "*/index.qmd"
-  - "!head-to-head/index.qmd"
+  contents:
+    - "*/index.qmd"
+    - "!head-to-head/index.qmd"
+  sort: date desc
 ---
 

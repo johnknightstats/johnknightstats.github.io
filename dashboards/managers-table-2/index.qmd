@@ -44,7 +44,7 @@ pal_r2g <- rev(pal_g2r)
 # -----------------------------
 
 df <- df_raw |>
-filter(games_played >= 5) |>
+filter(games_played >= 10) |>
 select(-coach_id, -team_id, -win, -draw, -loss) |>
 mutate(
 field_tilt = as.numeric(field_tilt),

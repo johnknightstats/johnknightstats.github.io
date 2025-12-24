@@ -2,6 +2,7 @@
 title: "2020 U.S. Election Counties by Race and Education"
 image: election_map.png
 format: html
+dashboard_order: 100
 ---
 
 <div class='tableauPlaceholder' id='viz1753656359789' style='position: relative'>

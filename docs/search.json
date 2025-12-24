@@ -126,11 +126,11 @@
     "text": "About me\nWelcome to my website!\nI’m John Knight, a data analyst currently working in healthcare research. I have a B.S. in Statistics and M.S. in Applied Statistics and Data Science, and wrote my thesis on Clustering 24-Hour Ambulatory Blood Pressure Time Series with Dynamic Time Warping and Time Warp Edit Distance. My healthcare research focuses on areas such as clinical trials, trauma, pharmacy, and retrospective observational studies for journal publication.\nI also have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and often find myself at the intersection of sport and numbers. This has naturally drawn me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently, prior to entering the healthcare industry I also worked in mathematics education research.\nI started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack (coming soon!). The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be building other sections as I develop the website, such as Tools and Dashboard.\nI’m excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn | GitHub"
   },
   {
-    "objectID": "dashboards/index.html",
-    "href": "dashboards/index.html",
-    "title": "Dashboards",
+    "objectID": "dashboards/managers-table/index.html",
+    "href": "dashboards/managers-table/index.html",
+    "title": "Premier League Manager Table & Metrics",
     "section": "",
-    "text": "2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Table & Metrics\n\n\nPoints per game and underlying metrics by (manager, team).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Table & Metrics\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Since 2020-2021 season\n\n\n\n\n\n\n\nNotes\nRows with fewer than 5 games are excluded.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
   },
   {
     "objectID": "about.html",
@@ -138,6 +138,20 @@
     "title": "About",
     "section": "",
     "text": "I currently work as a data analyst in healthcare research. I have a BS in Statistics and I am soon to finish my MS in Applied Statistics & Data Science. I am a former professional gambler with a lifelong passion for statistics and sport, in particular football (soccer) and golf.\nI started this website as a place to collate my various projects and models, and write about things I find interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
+  },
+  {
+    "objectID": "dashboards/index.html",
+    "href": "dashboards/index.html",
+    "title": "Dashboards",
+    "section": "",
+    "text": "2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Table & Metrics\n\n\nPoints per game and underlying metrics by manager.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Table & Metrics\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "dashboards/pl-table/index.html",
+    "href": "dashboards/pl-table/index.html",
+    "title": "Premier League Table & Metrics",
+    "section": "",
+    "text": "Notes\n\nBookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
   },
   {
     "objectID": "papers/index.html",
@@ -215,33 +229,5 @@
     "title": "Tools",
     "section": "",
     "text": "Betting Strategy Variance Tool\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLondon Commuter Map\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "dashboards/pl-table/index.html#notes",
-    "href": "dashboards/pl-table/index.html#notes",
-    "title": "Premier League Table & Metrics",
-    "section": "Notes",
-    "text": "Notes\nBookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season. xG = Expected Goals (all, non-penalty, open-play, or set-pieces). Field Tilt = Share of touches inside opposition’s penalty box. Shot Share = Share of total shots."
-  },
-  {
-    "objectID": "dashboards/pl-table/index.html",
-    "href": "dashboards/pl-table/index.html",
-    "title": "Premier League Table & Metrics",
-    "section": "",
-    "text": "Notes\n\nBookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
-  },
-  {
-    "objectID": "dashboards/managers-table/index.html",
-    "href": "dashboards/managers-table/index.html",
-    "title": "Premier League Manager Table & Metrics",
-    "section": "",
-    "text": "Since 2020-2021 season\n\n\n\n\n\n\n\nNotes\nRows with fewer than 5 games are excluded.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
-  },
-  {
-    "objectID": "dashboards/managers-table/index.html#since-2020-2021-season",
-    "href": "dashboards/managers-table/index.html#since-2020-2021-season",
-    "title": "Premier League Manager Table & Metrics",
-    "section": "",
-    "text": "Notes\nRows with fewer than 5 games are excluded.\nBookie Pts = Expected points per match based on Pinnacle closing match odds.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
   }
 ]

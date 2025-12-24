@@ -4,6 +4,6 @@ listing:
   contents:
     - "*/index.qmd"
     - "!head-to-head/index.qmd"
-  sort: date desc
+  sort: date asc
 ---
 

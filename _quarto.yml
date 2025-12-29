@@ -31,3 +31,6 @@ format:
     css: styles.css
     includes:
       in-header: counter.html 
+
+execute:
+  freeze: auto

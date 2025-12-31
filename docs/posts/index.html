@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,18 +34,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-cc63fce9873912f1bbbccf05079cc9ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0d4a9d19931feb4fee1ddab4b2489000.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -117,7 +118,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -381,7 +382,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Zm9vdGJhbGwlMkNiZXR0aW5nJTJDc3RhdGlzdGljcw==" data-listing-date-sort="1754715600000" data-listing-file-modified-sort="1764729774036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1403">
+<div class="quarto-post image-right" data-index="0" data-categories="Zm9vdGJhbGwlMkNiZXR0aW5nJTJDc3RhdGlzdGljcw==" data-listing-date-sort="1754715600000" data-listing-file-modified-sort="1767143161878" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1403">
 <div class="thumbnail"><a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external">
 
 <img loading="lazy" src="../posts/pl_bookie_ratings_2425/plot_snip.png" class="thumbnail-image">
@@ -403,7 +404,7 @@ Aug 9, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="YmV0dGluZyUyQ3N0YXRpc3RpY3M=" data-listing-date-sort="1754370000000" data-listing-file-modified-sort="1764729773907" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1472">
+<div class="quarto-post image-right" data-index="1" data-categories="YmV0dGluZyUyQ3N0YXRpc3RpY3M=" data-listing-date-sort="1754370000000" data-listing-file-modified-sort="1767143161862" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1472">
 <div class="thumbnail"><a href="../posts/betting_variance/index.html" class="no-external">
 
 <img loading="lazy" src="../posts/betting_variance/viz/bet_record_plot_405.png" class="thumbnail-image">
@@ -425,7 +426,7 @@ Aug 5, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="dHJhbnNwb3J0JTJDcHJvcGVydHklMkNweXRob24=" data-listing-date-sort="1753506000000" data-listing-file-modified-sort="1764729774026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="634">
+<div class="quarto-post image-right" data-index="2" data-categories="dHJhbnNwb3J0JTJDcHJvcGVydHklMkNweXRob24=" data-listing-date-sort="1753506000000" data-listing-file-modified-sort="1767143161877" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="634">
 <div class="thumbnail"><a href="../posts/london_rail_stations/index.html" class="no-external">
 
 <img loading="lazy" src="../posts/london_rail_stations/woking.png" class="thumbnail-image">
@@ -447,10 +448,10 @@ Jul 26, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1753160400000" data-listing-file-modified-sort="1764729774765" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
+<div class="quarto-post image-right" data-index="3" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1753160400000" data-listing-file-modified-sort="1767143161873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
 <div class="thumbnail"><a href="../posts/game_state/index.html" class="no-external">
 
-<p class="card-img-top"><img src="game_state\viz\mean_goals_by_minute.png"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="game_state/viz/mean_goals_by_minute.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
@@ -469,7 +470,7 @@ Jul 22, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1752296400000" data-listing-file-modified-sort="1764729773927" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2326">
+<div class="quarto-post image-right" data-index="4" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1752296400000" data-listing-file-modified-sort="1767143161864" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2326">
 <div class="thumbnail"><a href="../posts/elo_sim_model/index.html" class="no-external">
 
 <img loading="lazy" src="../posts/elo_sim_model/viz/cond_plots.png" class="thumbnail-image">
@@ -491,7 +492,7 @@ Jul 12, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1751605200000" data-listing-file-modified-sort="1764729774074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2995">
+<div class="quarto-post image-right" data-index="5" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1751605200000" data-listing-file-modified-sort="1767143161884" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2995">
 <div class="thumbnail"><a href="../posts/title_collapses/index.html" class="no-external">
 
 <img loading="lazy" src="../posts/title_collapses/viz/gerrard_slip_screenshot.png" class="thumbnail-image">
@@ -580,13 +581,14 @@ Jul 4, 2025
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

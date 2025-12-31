@@ -8,9 +8,9 @@ format: html
 
 Welcome to my website!
 
-I'm John Knight, a data analyst currently working in healthcare research. I have a B.S. in Statistics and M.S. in Applied Statistics and Data Science, and wrote my thesis on *Clustering 24-Hour Ambulatory Blood Pressure Time Series with Dynamic Time Warping and Time Warp Edit Distance*. My healthcare research focuses on areas such as clinical trials, trauma, pharmacy, and retrospective observational studies for journal publication.
+I'm John Knight, an applied statistician currently working in healthcare research. I have a B.S. in Statistics and M.S. in Applied Statistics and Data Science, and wrote my thesis on *Clustering 24-Hour Ambulatory Blood Pressure Time Series with Dynamic Time Warping and Time Warp Edit Distance*. My healthcare research focuses on areas such as clinical trials, trauma, pharmacy, and retrospective observational studies for journal publication.
 
-I also have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and often find myself at the intersection of sport and numbers. This has naturally drawn me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently, prior to entering the healthcare industry I also worked in mathematics education research.
+I also have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and often find myself at the intersection of sport and numbers. This has naturally drawn me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently, prior to entering the healthcare industry I additionally worked in mathematics education research.
 
 I started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack (coming soon!). The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be building other sections as I develop the website, such as Tools and Dashboard. 
 

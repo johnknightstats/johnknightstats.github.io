@@ -32,5 +32,3 @@ format:
     includes:
       in-header: counter.html 
 
-execute:
-  freeze: auto

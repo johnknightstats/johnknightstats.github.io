@@ -1,9 +1,11 @@
 [
   {
-    "listing": "/tools/index.html",
+    "listing": "/dashboards/index.html",
     "items": [
-      "/tools/betting-variance-tool.html",
-      "/tools/london-commuter-map.html"
+      "/dashboards/pl-table/index.html",
+      "/dashboards/managers-table/index.html",
+      "/dashboards/managers-table-2/index.html",
+      "/dashboards/election-2020-tableau/index.html"
     ]
   },
   {
@@ -18,12 +20,10 @@
     ]
   },
   {
-    "listing": "/dashboards/index.html",
+    "listing": "/tools/index.html",
     "items": [
-      "/dashboards/pl-table/index.html",
-      "/dashboards/managers-table/index.html",
-      "/dashboards/managers-table-2/index.html",
-      "/dashboards/election-2020-tableau/index.html"
+      "/tools/betting-variance-tool.html",
+      "/tools/london-commuter-map.html"
     ]
   }
 ]

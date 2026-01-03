@@ -1,52 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://johnknightstats.com/dashboards/election-2020-tableau/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.721Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/dashboards/pl-table/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.790Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/dashboards/managers-table/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.790Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/about.html</loc>
-    <lastmod>2025-12-31T01:06:01.721Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/projects/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.905Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/posts/pl_bookie_ratings_2425/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.878Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/posts/betting_variance/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.862Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/posts/game_state/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.873Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/posts/london_rail_stations/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.877Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/tools/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.920Z</lastmod>
-  </url>
-  <url>
     <loc>https://johnknightstats.com/tools/london-commuter-map.html</loc>
     <lastmod>2025-12-31T01:06:01.920Z</lastmod>
   </url>
   <url>
     <loc>https://johnknightstats.com/tools/betting-variance-tool.html</loc>
     <lastmod>2025-12-31T01:06:01.920Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/posts/title_collapses/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.884Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/posts/london_rail_stations/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/posts/game_state/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.873Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/posts/betting_variance/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.862Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/index.html</loc>
+    <lastmod>2025-12-31T04:13:37.884Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/dashboards/managers-table/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.790Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/dashboards/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.789Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/dashboards/election-2020-tableau/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.721Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/about.html</loc>
+    <lastmod>2025-12-31T01:06:01.721Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/dashboards/managers-table-2/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.789Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/dashboards/pl-table/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.790Z</lastmod>
+  </url>
+  <url>
+    <loc>https://johnknightstats.com/papers/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.862Z</lastmod>
   </url>
   <url>
     <loc>https://johnknightstats.com/posts/elo_sim_model/index.html</loc>
@@ -57,23 +65,15 @@
     <lastmod>2025-12-31T01:06:01.877Z</lastmod>
   </url>
   <url>
-    <loc>https://johnknightstats.com/posts/title_collapses/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.884Z</lastmod>
+    <loc>https://johnknightstats.com/posts/pl_bookie_ratings_2425/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.878Z</lastmod>
   </url>
   <url>
-    <loc>https://johnknightstats.com/papers/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.862Z</lastmod>
+    <loc>https://johnknightstats.com/projects/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.905Z</lastmod>
   </url>
   <url>
-    <loc>https://johnknightstats.com/index.html</loc>
-    <lastmod>2025-12-31T04:13:37.884Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/dashboards/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.789Z</lastmod>
-  </url>
-  <url>
-    <loc>https://johnknightstats.com/dashboards/managers-table-2/index.html</loc>
-    <lastmod>2025-12-31T01:06:01.789Z</lastmod>
+    <loc>https://johnknightstats.com/tools/index.html</loc>
+    <lastmod>2025-12-31T01:06:01.920Z</lastmod>
   </url>
 </urlset>

@@ -13,6 +13,7 @@ categories: ["football", "statistics"]
 execute: 
   echo: false
   eval: true
+  message: false
 engine: knitr
 editor: source
 draft: true
@@ -49,7 +50,11 @@ The following two plots compare the R^2 values for three different variables use
 The first plot compares the R^2 for three separate regressions using each variable on its own:
 
 ::: {.image-block .max-70}
-![](viz/slr_r2.png){fig-cap = "SLR = simple linear regression. R^2 measures the proportion of the variance in the dependent variable (future PPG) explained by each model.}
+![](viz/slr_r2.png)
+
+<em>SLR = simple linear regression. R^2 measures the proportion of the variance in the dependent variable (future PPG) explained by each model.
+</em>
+
 :::
 
 So we can see that xG is the best predictor, followed by GD, then points. But the three lines track each other fairly closely: the variables each act as a reasonable proxy for team strength, if you literally didn't know anything else about each team.
@@ -57,7 +62,7 @@ So we can see that xG is the best predictor, followed by GD, then points. But th
 However, look at the second plot which shows the marginal R^2 from a multiple linear regression. In other words, this plot charts the extra predictive power that each variable offers when used in concert with the other two.
 
 ::: {.image-block .max-70}
-![](viz/mlr_marginal_r2.png){fig-cap = "MLR = multiple linear regression. Marginal R^2 measures the additional proportion of the variance explained when each independent variable is added to the simpler model.}
+![](viz/mlr_marginal_r2.png){fig-cap="MLR = multiple linear regression. Marginal R^2 measures the additional proportion of the variance explained when each independent variable is added to the simpler model."}
 :::
 
 It is clear that xG explains a lot more of the variance than points or GD. This is why people tend to use it as a quick & dirty indicator of which teams have been lucky or unlucky so far each season.
@@ -68,16 +73,100 @@ An obvious starting point is to compare xG with actual goals across the seasons 
 
 First, I plotted attacking overperformance (x axis) against defensive overperformance (y axis). So the top right quadrant of this plot is the place to be.
 
-*Plot with totals*
+::: {.img-block .max-70}
+![](viz/scatter_totals.png)
+:::
 
 Maybe this rewards quantity so plot z-scores:
 
-*Also plot with z-scores*
+::: {.img-block .max-70}
+![](viz/scatter_z.png)
+:::
 
 The results aren't overly surprising: Pep Guardiola stands miles clear a overperforming xG in attack, while Diego Simeone and Carlo Ancelotti excel on the defensive end. To emphasize: this measures the difference between xG and actual goals scored/conceded, so these managers already have elite teams putting up elite xg numbers, and then they additionally beat their xg by more than everyone else as well.
 
 As you will have noticed, Unai Emery sits in between these managers, exceeding his xg in both attack and defence. In fact he sits third in this table (*does he?*):
 
-*Show the top 5 managers in a table. Include SE/CI*
+```{r, message=FALSE}
+library(dplyr)
+library(readr)
+library(gt)
+
+# -----------------------------
+# Read + prep
+# -----------------------------
+df <- read_csv("data/manager_aggregates.csv", show_col_types = FALSE)
+
+table_df <- df %>%
+  transmute(
+    Manager = manager,
+    Matches = as.integer(matches),
+    Att = round(gf_adj_minus_xg, 1),
+    Def = round(xga_minus_ga_adj, 1),
+    Total = round(Att + Def, 1),
+    `per Match` = round((Att + Def) / Matches, 2)
+  ) %>%
+  arrange(desc(Total)) %>%
+  slice_head(n = 10)
+
+# -----------------------------
+# Table
+# -----------------------------
+table_df %>%
+  gt() %>%
+  tab_header(
+    title = "Top 10 managers by total xG overperformance",
+    subtitle = "Big 5 leagues plus UEFA competitions, 2017-2025"
+  ) %>%
+  tab_source_note(
+    source_note = "Overperformance = difference between actual goals and expected goals. Own goals not included."
+  ) %>%
+  # Reduce footnote font size
+  tab_style(
+  style = cell_text(size = px(11)),
+  locations = cells_source_notes()
+) %>%
+  # Header styling (bold + shaded)
+  tab_style(
+    style = list(
+      cell_fill(color = "#f2f2f2"),
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  # Subtle rules (slightly stronger rule under column labels + bottom rule)
+  tab_options(
+    table.border.top.style = "solid",
+    table.border.top.width = px(1),
+    table.border.top.color = "#d9d9d9",
+
+    heading.border.bottom.style = "solid",
+    heading.border.bottom.width = px(1),
+    heading.border.bottom.color = "#d9d9d9",
+
+    column_labels.border.bottom.style = "solid",
+    column_labels.border.bottom.width = px(2),
+    column_labels.border.bottom.color = "#d0d0d0",
+
+    # Tighter row spacing
+    data_row.padding = px(6),
+    heading.padding = px(6),
+    column_labels.padding = px(6),
+    
+    # Remove border under footnotes
+    table.border.bottom.style = "none",
+  
+    # Optional: slightly smaller text can look tighter too (comment out if you don't want)
+    table.font.size = px(14)
+  ) %>%
+  # Alignments: numeric right, Matches centered, Manager left
+  cols_align(align = "left", columns = Manager) %>%
+  cols_align(align = "center", columns = Matches) %>%
+  cols_align(align = "right", columns = c(Att, Def, Total, `per Match`)) %>%
+  # Ensure consistent numeric formatting (in case any become non-rounded later)
+  fmt_number(columns = c(Att, Def, Total), decimals = 1) %>%
+  fmt_number(columns = c(`per Match`), decimals = 2)
+```
+
 
 *Conclusion: Emery is one of the best managers versus xG, which we have seen is predictive on a team-season level. In the next part we will break down Emery's past performance by club, and drill down a little bit on where this xG overperformance comes from, including which players have overperformed their xG the most under Emery, and how Emery's xG overperformance changes by game state.*

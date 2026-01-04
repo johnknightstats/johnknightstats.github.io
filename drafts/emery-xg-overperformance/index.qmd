@@ -24,7 +24,11 @@ draft: true
 
 *Frame this as part one: Emery, why do we care about xg, and which managers are the best/worst compared to xg? Make it more robust: include variance, show results as z scores, show results for league games only, etc.*
 
-Anyone who has taken a passing interest at the underlying statistics from the current Premier League table will be aware that Aston Villa have been sustaining one of the all-time expected goals (xG) overperformances. Depending on your slant, either Unai Emery is a genius who defies the laws of xG, or Villa have been an absurdly fortunate side who are due a big regression.
+Aston Villa are having an incredible season. Their first four Premier League games resulted in two points and no goals. They followed that up with a stinker at Sunderland where they struggled to a draw againt a team that had 10 men for an hour. At that stage, a relegation battle looked more likely than a European spot - let alone a title challenge.
+
+And then they embarked on a truly absurd run of results: 17 wins from their next 20 games in all competitions, including a sequence of nine consecutive one-goal wins. Villa's title hopes took a huge blow with the 4-1 thrashing at Arsenal, but the fact they were even in the title conversation was a ridiculous turn of events.
+
+Now, anyone who has taken the slightest interest in the underlying statistics of this year's Premier League will be aware that Villa have been sustaining one of the all-time expected goals (xG) overperformances. Depending on your slant, this is either because Unai Emery is a genius who defies the laws of xG, or because Aston Villa have experienced some outrageous good fortune, and they are due for a big regression.
 
 *Show current PL table here*
 
@@ -43,6 +47,10 @@ I ran regressions across all teams, predicting their points-per-game over the re
 
 ::: {.image-block .max-70}
 ![](viz/slr_coefs.png){fig-cap="SLR = simple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season)."}
+:::
+
+::: {.image-block .max-70}
+![](viz/mlr_coefs.png){fig-cap="MLR = multiple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season)."}
 :::
 
 The following two plots compare the R^2 values for three different variables used as predictors after each game: points per game, goal difference (GD) per game, and xg per game. R^2 tells us how much of the variance can be explained by the model, so higher = a more powerful predictor.

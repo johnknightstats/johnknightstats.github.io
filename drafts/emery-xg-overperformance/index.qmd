@@ -2,13 +2,12 @@
 title: "Unai Emery: the xG whisperer"
 image: emery.jpg
 author: "John Knight"
-date: 2026-01-03
+date: 2026-01-04
 date-format: "D MMMM YYYY"
 description: "Part one: Why should anyone care about xG, and which managers consistently outperform xG?"
 format:
   html:
     title-block-categories: true
-    css: ../../styles.css
 categories: ["football", "statistics"]
 execute: 
   echo: false
@@ -22,83 +21,229 @@ draft: true
 
 ---
 
-*Frame this as part one: Emery, why do we care about xg, and which managers are the best/worst compared to xg? Make it more robust: include variance, show results as z scores, show results for league games only, etc.*
+**Aston Villa** are having an incredible season. Their first four Premier League games resulted in two points and no goals. They followed that up with a stinker at Sunderland where they struggled to a draw against a team that had 10 men for an hour. At that stage, a relegation battle looked more likely than a European spot - let alone a title challenge.
 
-Aston Villa are having an incredible season. Their first four Premier League games resulted in two points and no goals. They followed that up with a stinker at Sunderland where they struggled to a draw againt a team that had 10 men for an hour. At that stage, a relegation battle looked more likely than a European spot - let alone a title challenge.
+And then they embarked on a truly absurd run of results: 17 wins from their next 20 games in all competitions, including a sequence of nine consecutive one-goal wins. Villa's title hopes took a huge blow with the recent 4-1 thrashing at Arsenal, but the fact they were even in the title conversation was a ridiculous turn of events.
 
-And then they embarked on a truly absurd run of results: 17 wins from their next 20 games in all competitions, including a sequence of nine consecutive one-goal wins. Villa's title hopes took a huge blow with the 4-1 thrashing at Arsenal, but the fact they were even in the title conversation was a ridiculous turn of events.
+Now, anyone who has taken the slightest glance at the underlying statistics of this year's Premier League will be aware that Villa have been sustaining a monumental overperformance relative to **expected goals** (xG). After 20 games, they have the 2nd-most points, joint with Man City, but only the 14th-highest xG.
 
-Now, anyone who has taken the slightest interest in the underlying statistics of this year's Premier League will be aware that Villa have been sustaining one of the all-time expected goals (xG) overperformances. Depending on your slant, this is either because Unai Emery is a genius who defies the laws of xG, or because Aston Villa have experienced some outrageous good fortune, and they are due for a big regression.
-
-*Show current PL table here*
-
-The truth probably lies somewhere between those two poles, but why should we even care about xG in the first place?
-
-Despite xG being around for a fairly long time now, it continues to attract criticism from those who either don't understand it, or hold it to unfair standards. I recommend Scott Willis' [recent article](https://www.pythonfootball.com/p/which-xg-data-should-you-trust) discussing some common misunderstndings.
-
-In statistical circles you will often hear George Box's maxim, "all models are wrong, but some are useful". And this really is an important concept to emphasize. Just because an xG model says a chance was worth 0.4 goals, or that a team had 1.3 goals' worth of chances during a game, does not make that some ground source of truth. Anyone can watch the game with their eyes and judge that a chance is better, or worse, than the xG model rates it.
-
-But is xG useful? One way to judge this is to look at whether xG is predictive. 
-
-My dataset for this study uses FBRef data from the 'big five' European leagues (England, Spain, Italy, Germany and France), plus UEFA competitions, in the seasons 2017-2018 to 2024-2025. FBRef uses Opta's xG model; there are others to choose from, and [Python Football Review](https://www.pythonfootball.com/p/which-xg-data-should-you-trust) makes a nice comparison here.
-
-I ran regressions across all teams, predicting their points-per-game over the remainder of the season after each match.
-
-
-::: {.image-block .max-70}
-![](viz/slr_coefs.png){fig-cap="SLR = simple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season)."}
-:::
-
-::: {.image-block .max-70}
-![](viz/mlr_coefs.png){fig-cap="MLR = multiple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season)."}
-:::
-
-The following two plots compare the R^2 values for three different variables used as predictors after each game: points per game, goal difference (GD) per game, and xg per game. R^2 tells us how much of the variance can be explained by the model, so higher = a more powerful predictor.
-
-The first plot compares the R^2 for three separate regressions using each variable on its own:
-
-::: {.image-block .max-70}
-![](viz/slr_r2.png)
-
-<em>SLR = simple linear regression. R^2 measures the proportion of the variance in the dependent variable (future PPG) explained by each model.
-</em>
-
-:::
-
-So we can see that xG is the best predictor, followed by GD, then points. But the three lines track each other fairly closely: the variables each act as a reasonable proxy for team strength, if you literally didn't know anything else about each team.
-
-However, look at the second plot which shows the marginal R^2 from a multiple linear regression. In other words, this plot charts the extra predictive power that each variable offers when used in concert with the other two.
-
-::: {.image-block .max-70}
-![](viz/mlr_marginal_r2.png){fig-cap="MLR = multiple linear regression. Marginal R^2 measures the additional proportion of the variance explained when each independent variable is added to the simpler model."}
-:::
-
-It is clear that xG explains a lot more of the variance than points or GD. This is why people tend to use it as a quick & dirty indicator of which teams have been lucky or unlucky so far each season.
-
-And so we return to Aston Villa. What can we expect from them in the second half of this season? Based on the above, it would be fair to conclude that Villa's xG (*nth place*) is a much better indicator than their league position (*nth place*). But what about the Emery factor? Is there something in his tactics that enables his teams to defy xG?
-
-An obvious starting point is to compare xG with actual goals across the seasons in the dataset. *Own goals and calibration*
-
-First, I plotted attacking overperformance (x axis) against defensive overperformance (y axis). So the top right quadrant of this plot is the place to be.
-
-::: {.img-block .max-70}
-![](viz/scatter_totals.png)
-:::
-
-Maybe this rewards quantity so plot z-scores:
-
-::: {.img-block .max-70}
-![](viz/scatter_z.png)
-:::
-
-The results aren't overly surprising: Pep Guardiola stands miles clear a overperforming xG in attack, while Diego Simeone and Carlo Ancelotti excel on the defensive end. To emphasize: this measures the difference between xG and actual goals scored/conceded, so these managers already have elite teams putting up elite xg numbers, and then they additionally beat their xg by more than everyone else as well.
-
-As you will have noticed, Unai Emery sits in between these managers, exceeding his xg in both attack and defence. In fact he sits third in this table (*does he?*):
-
-```{r, message=FALSE}
+```{r, message = FALSE}
 library(dplyr)
 library(readr)
 library(gt)
+
+# -----------------------------
+
+# Read + prep
+
+# -----------------------------
+
+df <- read_csv("data/pl_table_current_season.csv", show_col_types = FALSE)
+
+table_df <- df %>%
+transmute(
+Team = team_name,
+GP = as.integer(games_played),
+Pts = as.integer(points),
+`xG Diff` = round(xg_diff, 1),
+GD = as.integer(goal_difference)
+) %>%
+arrange(desc(Pts), desc(GD), desc(`xG Diff`))
+
+# -----------------------------
+
+# Table
+
+# -----------------------------
+
+table_df %>%
+gt() %>%
+tab_header(
+title = "Premier League 2025-2026",
+subtitle = "4 Jan, 2026"
+) %>%
+tab_source_note(
+source_note = "xG data from FotMob."
+) %>%
+
+# Reduce footnote font size
+
+tab_style(
+style = cell_text(size = px(11), style="italic", align="left"), 
+locations = cells_source_notes()
+) %>%
+
+# Header styling (bold + shaded)
+
+tab_style(
+style = list(
+cell_fill(color = "#f2f2f2"),
+cell_text(weight = "bold")
+),
+locations = cells_column_labels(everything())
+) %>%
+
+# Subtle rules + spacing
+
+tab_options(
+table.border.top.style = "solid",
+table.border.top.width = px(1),
+table.border.top.color = "#d9d9d9",
+
+heading.border.bottom.style = "solid",
+heading.border.bottom.width = px(1),
+heading.border.bottom.color = "#d9d9d9",
+
+column_labels.border.bottom.style = "solid",
+column_labels.border.bottom.width = px(2),
+column_labels.border.bottom.color = "#d0d0d0",
+
+data_row.padding = px(6),
+heading.padding = px(6),
+column_labels.padding = px(6),
+
+table.border.bottom.style = "none",
+table.font.size = px(14)
+
+) %>%
+
+# Alignments
+
+cols_align(align = "left", columns = Team) %>%
+cols_align(align = "center", columns = GP) %>%
+cols_align(align = "right", columns = c(Pts, `xG Diff`, GD)) %>%
+
+# Formatting
+
+fmt_number(columns = c(`xG Diff`), decimals = 1)
+```
+
+Depending on your slant, this may be because **Unai Emery** is a tactical savant who defies the laws of xG, or because Aston Villa have experienced some outrageously good fortune and are due for a big regression to the mean. The truth probably lies somewhere between those two poles, but why should we even care about xG in the first place?
+
+Despite having been around for a fairly long time now, xG continues to suffer from a serious [PR problem](https://substack.com/home/post/p-183153652). In statistical circles you will often hear George Box's maxim, "all models are wrong, but some are useful". And this really is an important concept to digest. 
+
+Just because an xG model says a chance was worth 0.4 goals, or that a team had 1.3 goals' worth of chances during a game, does not make that some sort of ground truth. Probability is an abstract concept. Anyone can watch the game with their eyes and judge that a chance is better, or worse, than the xG model rates it.
+
+But is xG useful? That's really up to you, and whether you find a use for it. One way to judge xG's usefulness is to look at whether it is *predictive.* 
+
+## Assessing xG's predictive power
+
+My dataset for this study used FBRef data from the 'big five' European leagues (England, Spain, Italy, Germany and France) in the seasons 2017-2018 to 2024-2025. FBRef uses Opta's xG model; there are others to choose from, and [Python Football Review](https://www.pythonfootball.com/p/which-xg-data-should-you-trust) makes a nice comparison here. Overall, I don't sense that the choice of xG model is going to make or break this study.
+
+To assess predictive power, I used a snapshot of each team's points, goal difference (GD), and expected goal difference (xGD) after each game of each season, and predicted their points-per-game (PPG) over the remainder of the season.
+
+First, I fit three simple linear regressions - one using only points, one using only GD, and one using only xGD - and plotted the $R^2$ for each model as the number of games played increases. $R^2$ tells us the proportion of the variance in the dependent variable (in this case, PPG over the rest of the season) explained by each model. 
+
+
+<figure class="image-block max-70">
+  <img src="viz/slr_r2.png" class="img-fluid">
+  <figcaption
+    style="
+      font-style: italic;
+      font-size: 0.75rem;
+      line-height: 1.25;
+      max-width: 70%;
+      margin: 0.25em auto 1em auto;
+      text-align: left;
+      color: #666;
+    "
+  >
+    SLR = simple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season).
+  </figcaption>
+</figure>
+
+The lines follow a similar shape: as expected, the predictive power increases as the sample size increases, stabilising after about 10 games. Then it declines after around 23 games, because with fewer games remaining the PPG is more noisy.
+
+You will notice that xG is consistently above GD, followed by points. If you literally didn't know anything else about each team, the three measures give a similar approximation for predicting future points, but xG is the best.
+
+What about when we use all three together? I fit a multiple regression model with all three variables, and plotted each variable's coefficient, standardized to account for the different units of measurement. The second plot shows the marginal $R^2$ for each variable in a multiple regression setting - in other words, how much extra information do we get by adding this variable to a simpler model involving only the other two?
+
+<figure class="image-block max-70">
+  <img src="viz/mlr_coefs.png" class="img-fluid">
+  <figcaption
+    style="
+      font-style: italic;
+      font-size: 0.75rem;
+      line-height: 1.25;
+      max-width: 70%;
+      margin: 0.25em auto 1em auto;
+      text-align: left;
+      color: #666;
+    "
+  >
+    MLR = multiple linear regression. Big 5 European leagues 2017 to 2025
+    (2019-2020 Ligue 1 excluded due to COVID-shortened season).
+  </figcaption>
+</figure>
+
+<figure class="image-block max-70">
+  <img src="viz/mlr_marginal_r2.png" class="img-fluid">
+  <figcaption
+    style="
+      font-style: italic;
+      font-size: 0.75rem;
+      line-height: 1.25;
+      max-width: 70%;
+      margin: 0.25em auto 1em auto;
+      text-align: left;
+      color: #666;
+    "
+  >
+    Marginal R² measures the additional proportion of variance explained when the variable is added to the reduced model.
+  </figcaption>
+</figure>
+
+Now we see a more pronounced difference. When the three variables are used in concert, xG is by far the most useful of the three. These results suggest that xG offers some information that the other two variables do not convey. 
+
+These are simple models of course, and people can (and do!) create far more complex models to assess team strength and predict future performance. But added complexity generally involves diminishing returns, and it is handy to have a simple statistic that can give you a reasonable indication of how good a team is. This is why people tend to use xG as a quick & dirty indicator of which teams have been lucky or unlucky so far each season.
+
+And so we return to Aston Villa. What can we expect from them in the second half of this season? Based on the above, it would be fair to conclude that Villa's xG (14th place) is a much better reflection of how good they are than their league position (3rd place). But what about the Unai Emery factor? Is there some sort of magic in Emery's tactics that enables his teams to defy the xG gods?
+
+## Which managers have historically outperformed xG?
+
+I used the same dataset ('Big 5' leagues, 2017-2018 to 2024-2025), this time also including UEFA competitions, and compared the cumulative xG for each manager with their actual goals, for and against. The following scatterplot compares each manager's attacking overperformance (x axis) against defensive overperformance (y axis). So the **top right** quadrant of this plot is the place to be. Bottom left...not so good.
+
+<figure class="image-block max-70">
+  <img src="viz/scatter_totals.png" class="img-fluid">
+  <figcaption
+    style="
+      font-style: italic;
+      font-size: 0.75rem;
+      line-height: 1.25;
+      max-width: 70%;
+      margin: 0.25em auto 1em auto;
+      text-align: left;
+      color: #666;
+    "
+  >
+    Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = difference between actual goals and expected goals.
+  </figcaption>
+</figure>
+
+The names in the desirable upper-right quadrant are certainly some of the names you would identify as elite managers. Interestingly, **Pep Guardiola** exceeds xG entirely on the attacking end, while **Diego Simeone** and **Carlo Ancelotti** tend to excel defensively. To reiterate, this is a measure of goals relative to expected goals; it does not measure whether a team has high or low xG in the first place, although it is obvious that managers in charge of wealthy clubs like Man City or Real Madrid are going to be above average in xG and other measures.
+
+One problem with using cumulative scores is it may reward quantity rather than quality. This is why the upper-right quadrant has more outliers, whereas the bottom-left is more bunched: if you are consistently underperforming your xG then it's unlikely you will continue being employed for a prolonged period of time. To address this, the following plot shows the same measures but standardized to account for the number of games:
+
+<figure class="image-block max-70">
+  <img src="viz/scatter_z.png" class="img-fluid">
+  <figcaption
+    style="
+      font-style: italic;
+      font-size: 0.75rem;
+      line-height: 1.25;
+      max-width: 70%;
+      margin: 0.25em auto 1em auto;
+      text-align: left;
+      color: #666;
+    "
+  >
+    Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = difference between actual goals and expected goals.
+  </figcaption>
+</figure>
+
+The standardized plot reveals some interesting names in each quadrant - maybe I'll come back to them in a future article. But this study is about Unai Emery, and you will have noticed that Emery occupies a prominent position in the upper-right quadrant, exceeding his xG in both attack and defence. In terms of total overperformance relative to xG during the study period, Emery sits third:
+
+```{r, message=FALSE}
 
 # -----------------------------
 # Read + prep
@@ -131,7 +276,7 @@ table_df %>%
   ) %>%
   # Reduce footnote font size
   tab_style(
-  style = cell_text(size = px(11)),
+  style = cell_text(size = px(11), style="italic", align="left"), 
   locations = cells_source_notes()
 ) %>%
   # Header styling (bold + shaded)
@@ -176,5 +321,8 @@ table_df %>%
   fmt_number(columns = c(`per Match`), decimals = 2)
 ```
 
+It is worth clarifying: none of this is necessarily causal evidence of being a good or bad manager. The big names generally manage the richest teams with the best players, and it could end up as a self-fulfilling prophecy if we reward them for those players providing an edge at both ends of the pitch.
 
-*Conclusion: Emery is one of the best managers versus xG, which we have seen is predictive on a team-season level. In the next part we will break down Emery's past performance by club, and drill down a little bit on where this xG overperformance comes from, including which players have overperformed their xG the most under Emery, and how Emery's xG overperformance changes by game state.*
+Nonetheless, it is always reassuring when the consensus best managers such as Guardiola show up highly on a metric, and it is worth adding that while Unai Emery has managed some big clubs (PSG, Arsenal) during the study period, a large chunk of his games have been with Villarreal and Aston Villa.
+
+To recap part one, we have shown that xG is a good predictor, and we have seen that Unai Emery has outperformed his overall xG in previous seasons. In the next part, I will break down Emery's previous stints by club, and drill down a little bit on where this xG overperformance comes from, including which players have been the hottest finishers under Emery, whether goalkeepers have played a big role, and how Emery teams vary according to game state.

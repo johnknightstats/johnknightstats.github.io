@@ -49,9 +49,9 @@ figcaption,
 .centered-block em,
 .image-block em {
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 0.6em;
   text-align: center;
-  max-width: 100%;
+  max-width: 70%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0.5em;
@@ -195,19 +195,6 @@ table.fancy-table tr:nth-child(even) {
 
 
 
-/* Caption (em tag used as caption) */
-.centered-block em,
-.centered-block.max-70 em,
-.image-block em {
-  display: block;
-  font-style: italic;
-  font-size: 0.8em;
-  margin-top: 0.5em;
-  margin-bottom: 1em;
-  text-align: center;
-  max-width: 100%;
-}
-
 /* === Footer with data sources === */
 .data-footer {
   max-width: 700px;
@@ -281,3 +268,26 @@ h1, h2, h3 {
   letter-spacing: 0.7px;
   margin: 0;
 }
+
+/* Footnotes */
+.image-block .figure-note {
+  font-style: italic;
+  font-size: 0.75rem;   /* tune */
+  line-height: 1.25;
+  max-width: 70%;
+  margin: 0.25rem auto 1rem auto;  /* tight to image */
+  color: #666;
+}
+
+/* === Figure captions (manual <figure> or Quarto) === */
+figure figcaption,
+.figure-caption {
+  font-style: italic;
+  font-size: 0.75rem;        /* adjust to taste: 0.7–0.8rem */
+  line-height: 1.25;
+  max-width: 70%;
+  margin: 0.25em auto 1em auto;
+  text-align: center;
+  color: #666;
+}
+

@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-01-04">
+<meta name="dcterms.date" content="2026-01-05">
 <meta name="description" content="Part one: Why should anyone care about xG, and which managers consistently outperform xG?">
 
-<title>Unai Emery: the xG whisperer</title>
+<title>Unai Emery: the xG whisperer – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,19 +26,55 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="index_files/libs/clipboard/clipboard.min.js"></script>
-<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="index_files/libs/quarto-html/popper.min.js"></script>
-<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="index_files/libs/quarto-html/anchor.min.js"></script>
-<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<meta name="quarto:status" content="draft">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0d4a9d19931feb4fee1ddab4b2489000.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -70,13 +106,228 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="fullcontent quarto-light"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">John Knight Stats</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/index.html"> 
+<span class="menu-text">Articles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../papers/index.html"> 
+<span class="menu-text">Papers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tools/index.html"> 
+<span class="menu-text">Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../dashboards/index.html"> 
+<span class="menu-text">Dashboards</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -84,6 +335,9 @@ window.Quarto = {
   <div class="quarto-categories">
     <div class="quarto-category">football</div>
     <div class="quarto-category">statistics</div>
+    <div class="quarto-category">Unai Emery</div>
+    <div class="quarto-category">Aston Villa</div>
+    <div class="quarto-category">Premier League</div>
   </div>
   </div>
 
@@ -106,7 +360,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">4 January 2026</p>
+      <p class="date">5 January 2026</p>
     </div>
   </div>
   
@@ -123,23 +377,23 @@ window.Quarto = {
 <p>Now, anyone who has taken the slightest glance at the underlying statistics of this year’s Premier League will be aware that Villa have been sustaining a monumental overperformance relative to <strong>expected goals</strong> (xG). After 20 games, they have the 2nd-most points, joint with Man City, but only the 14th-highest xG.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="juzdixdxow" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#juzdixdxow table {
+<div id="ekosdlivxm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ekosdlivxm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#juzdixdxow thead, #juzdixdxow tbody, #juzdixdxow tfoot, #juzdixdxow tr, #juzdixdxow td, #juzdixdxow th {
+#ekosdlivxm thead, #ekosdlivxm tbody, #ekosdlivxm tfoot, #ekosdlivxm tr, #ekosdlivxm td, #ekosdlivxm th {
   border-style: none;
 }
 
-#juzdixdxow p {
+#ekosdlivxm p {
   margin: 0;
   padding: 0;
 }
 
-#juzdixdxow .gt_table {
+#ekosdlivxm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -165,12 +419,12 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_caption {
+#ekosdlivxm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#juzdixdxow .gt_title {
+#ekosdlivxm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -182,7 +436,7 @@ window.Quarto = {
   border-bottom-width: 0;
 }
 
-#juzdixdxow .gt_subtitle {
+#ekosdlivxm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -194,7 +448,7 @@ window.Quarto = {
   border-top-width: 0;
 }
 
-#juzdixdxow .gt_heading {
+#ekosdlivxm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -206,13 +460,13 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_bottom_border {
+#ekosdlivxm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: #D9D9D9;
 }
 
-#juzdixdxow .gt_col_headings {
+#ekosdlivxm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -227,7 +481,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_col_heading {
+#ekosdlivxm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -247,7 +501,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#juzdixdxow .gt_column_spanner_outer {
+#ekosdlivxm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -259,15 +513,15 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#juzdixdxow .gt_column_spanner_outer:first-child {
+#ekosdlivxm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#juzdixdxow .gt_column_spanner_outer:last-child {
+#ekosdlivxm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#juzdixdxow .gt_column_spanner {
+#ekosdlivxm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D0D0D0;
@@ -279,11 +533,11 @@ window.Quarto = {
   width: 100%;
 }
 
-#juzdixdxow .gt_spanner_row {
+#ekosdlivxm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#juzdixdxow .gt_group_heading {
+#ekosdlivxm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -309,7 +563,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#juzdixdxow .gt_empty_group_heading {
+#ekosdlivxm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -324,15 +578,15 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#juzdixdxow .gt_from_md > :first-child {
+#ekosdlivxm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#juzdixdxow .gt_from_md > :last-child {
+#ekosdlivxm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#juzdixdxow .gt_row {
+#ekosdlivxm .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -351,7 +605,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#juzdixdxow .gt_stub {
+#ekosdlivxm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -364,7 +618,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#juzdixdxow .gt_stub_row_group {
+#ekosdlivxm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -378,15 +632,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#juzdixdxow .gt_row_group_first td {
+#ekosdlivxm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#juzdixdxow .gt_row_group_first th {
+#ekosdlivxm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#juzdixdxow .gt_summary_row {
+#ekosdlivxm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -396,16 +650,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#juzdixdxow .gt_first_summary_row {
+#ekosdlivxm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_first_summary_row.thick {
+#ekosdlivxm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#juzdixdxow .gt_last_summary_row {
+#ekosdlivxm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -415,7 +669,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_grand_summary_row {
+#ekosdlivxm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -425,7 +679,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#juzdixdxow .gt_first_grand_summary_row {
+#ekosdlivxm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -435,7 +689,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_last_grand_summary_row_top {
+#ekosdlivxm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -445,11 +699,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_striped {
+#ekosdlivxm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#juzdixdxow .gt_table_body {
+#ekosdlivxm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -458,7 +712,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_footnotes {
+#ekosdlivxm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -472,7 +726,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_footnote {
+#ekosdlivxm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -481,7 +735,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#juzdixdxow .gt_sourcenotes {
+#ekosdlivxm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -495,7 +749,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#juzdixdxow .gt_sourcenote {
+#ekosdlivxm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -503,72 +757,72 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#juzdixdxow .gt_left {
+#ekosdlivxm .gt_left {
   text-align: left;
 }
 
-#juzdixdxow .gt_center {
+#ekosdlivxm .gt_center {
   text-align: center;
 }
 
-#juzdixdxow .gt_right {
+#ekosdlivxm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#juzdixdxow .gt_font_normal {
+#ekosdlivxm .gt_font_normal {
   font-weight: normal;
 }
 
-#juzdixdxow .gt_font_bold {
+#ekosdlivxm .gt_font_bold {
   font-weight: bold;
 }
 
-#juzdixdxow .gt_font_italic {
+#ekosdlivxm .gt_font_italic {
   font-style: italic;
 }
 
-#juzdixdxow .gt_super {
+#ekosdlivxm .gt_super {
   font-size: 65%;
 }
 
-#juzdixdxow .gt_footnote_marks {
+#ekosdlivxm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#juzdixdxow .gt_asterisk {
+#ekosdlivxm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#juzdixdxow .gt_indent_1 {
+#ekosdlivxm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#juzdixdxow .gt_indent_2 {
+#ekosdlivxm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#juzdixdxow .gt_indent_3 {
+#ekosdlivxm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#juzdixdxow .gt_indent_4 {
+#ekosdlivxm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#juzdixdxow .gt_indent_5 {
+#ekosdlivxm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#juzdixdxow .katex-display {
+#ekosdlivxm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#juzdixdxow div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ekosdlivxm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -579,11 +833,11 @@ window.Quarto = {
 <td colspan="5" class="gt_heading gt_title gt_font_normal">Premier League 2025-2026</td>
 </tr>
 <tr class="gt_heading even">
-<td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">4 Jan, 2026</td>
+<td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">5 Jan, 2026</td>
 </tr>
 <tr class="gt_col_headings header">
 <th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Team</th>
-<th id="GP" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">GP</th>
+<th id="Pld" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Pld</th>
 <th id="Pts" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Pts</th>
 <th id="xG-Diff" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">xG Diff</th>
 <th id="GD" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">GD</th>
@@ -592,140 +846,140 @@ window.Quarto = {
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Arsenal</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">48</td>
 <td class="gt_row gt_right" headers="xG Diff">21.5</td>
 <td class="gt_row gt_right" headers="GD">26</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Manchester City</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">42</td>
 <td class="gt_row gt_right" headers="xG Diff">15.8</td>
 <td class="gt_row gt_right" headers="GD">26</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Aston Villa</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">42</td>
 <td class="gt_row gt_right" headers="xG Diff">−5.3</td>
 <td class="gt_row gt_right" headers="GD">9</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Liverpool</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">34</td>
 <td class="gt_row gt_right" headers="xG Diff">8.6</td>
 <td class="gt_row gt_right" headers="GD">4</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Chelsea</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">31</td>
 <td class="gt_row gt_right" headers="xG Diff">6.4</td>
 <td class="gt_row gt_right" headers="GD">11</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Manchester United</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">31</td>
 <td class="gt_row gt_right" headers="xG Diff">9.0</td>
 <td class="gt_row gt_right" headers="GD">4</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Brentford</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">30</td>
 <td class="gt_row gt_right" headers="xG Diff">4.1</td>
 <td class="gt_row gt_right" headers="GD">4</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Sunderland</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">30</td>
 <td class="gt_row gt_right" headers="xG Diff">−11.4</td>
 <td class="gt_row gt_right" headers="GD">2</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Newcastle United</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">29</td>
 <td class="gt_row gt_right" headers="xG Diff">6.9</td>
 <td class="gt_row gt_right" headers="GD">4</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Brighton &amp; Hove Albion</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">28</td>
 <td class="gt_row gt_right" headers="xG Diff">4.1</td>
 <td class="gt_row gt_right" headers="GD">3</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Fulham</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">28</td>
 <td class="gt_row gt_right" headers="xG Diff">−3.3</td>
 <td class="gt_row gt_right" headers="GD">-1</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Everton</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">28</td>
 <td class="gt_row gt_right" headers="xG Diff">−6.9</td>
 <td class="gt_row gt_right" headers="GD">-2</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Tottenham Hotspur</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">27</td>
 <td class="gt_row gt_right" headers="xG Diff">−6.3</td>
 <td class="gt_row gt_right" headers="GD">4</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Crystal Palace</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">27</td>
 <td class="gt_row gt_right" headers="xG Diff">5.5</td>
 <td class="gt_row gt_right" headers="GD">-1</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">AFC Bournemouth</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">23</td>
 <td class="gt_row gt_right" headers="xG Diff">1.3</td>
 <td class="gt_row gt_right" headers="GD">-7</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Leeds United</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">22</td>
 <td class="gt_row gt_right" headers="xG Diff">0.1</td>
 <td class="gt_row gt_right" headers="GD">-7</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Nottingham Forest</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">18</td>
 <td class="gt_row gt_right" headers="xG Diff">−5.2</td>
 <td class="gt_row gt_right" headers="GD">-14</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">West Ham United</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">14</td>
 <td class="gt_row gt_right" headers="xG Diff">−14.0</td>
 <td class="gt_row gt_right" headers="GD">-20</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Team">Burnley</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">12</td>
 <td class="gt_row gt_right" headers="xG Diff">−21.2</td>
 <td class="gt_row gt_right" headers="GD">-19</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Team">Wolverhampton Wanderers</td>
-<td class="gt_row gt_center" headers="GP">20</td>
+<td class="gt_row gt_center" headers="Pld">20</td>
 <td class="gt_row gt_right" headers="Pts">6</td>
 <td class="gt_row gt_right" headers="xG Diff">−9.9</td>
 <td class="gt_row gt_right" headers="GD">-26</td>
@@ -742,116 +996,61 @@ window.Quarto = {
 </div>
 </div>
 <p>Depending on your slant, this may be because <strong>Unai Emery</strong> is a tactical savant who defies the laws of xG, or because Aston Villa have experienced some outrageously good fortune and are due for a big regression to the mean. The truth probably lies somewhere between those two poles, but why should we even care about xG in the first place?</p>
-<p>Despite having been around for a fairly long time now, xG continues to suffer from a serious <a href="https://substack.com/home/post/p-183153652">PR problem</a>. In statistical circles you will often hear George Box’s maxim, “all models are wrong, but some are useful”. And this really is an important concept to digest.</p>
+<p>Despite having been around for more than a decade now, xG continues to suffer from a serious <a href="https://substack.com/home/post/p-183153652">PR problem</a>. In statistical circles you will often hear George Box’s maxim, “all models are wrong, but some are useful”. And this really is an important concept to digest.</p>
 <p>Just because an xG model says a chance was worth 0.4 goals, or that a team had 1.3 goals’ worth of chances during a game, does not make that some sort of ground truth. Probability is an abstract concept. Anyone can watch the game with their eyes and judge that a chance is better, or worse, than the xG model rates it.</p>
 <p>But is xG useful? That’s really up to you, and whether you find a use for it. One way to judge xG’s usefulness is to look at whether it is <em>predictive.</em></p>
 <section id="assessing-xgs-predictive-power" class="level2">
 <h2 class="anchored" data-anchor-id="assessing-xgs-predictive-power">Assessing xG’s predictive power</h2>
-<p>My dataset for this study used FBRef data from the ‘big five’ European leagues (England, Spain, Italy, Germany and France) in the seasons 2017-2018 to 2024-2025. FBRef uses Opta’s xG model; there are others to choose from, and <a href="https://www.pythonfootball.com/p/which-xg-data-should-you-trust">Python Football Review</a> makes a nice comparison here. Overall, I don’t sense that the choice of xG model is going to make or break this study.</p>
+<p>My dataset for this study used FBRef data from the ‘big five’ European leagues (England, Spain, Italy, Germany and France) in the seasons 2017-2018 to 2024-2025. FBRef uses Opta’s xG model; there are others to choose from, and <a href="https://www.pythonfootball.com/p/which-xg-data-should-you-trust">Python Football Review</a> made a nice comparison. Overall, I don’t sense that the choice of xG model is going to make or break this study.</p>
 <p>To assess predictive power, I used a snapshot of each team’s points, goal difference (GD), and expected goal difference (xGD) after each game of each season, and predicted their points-per-game (PPG) over the remainder of the season.</p>
 <p>First, I fit three simple linear regressions - one using only points, one using only GD, and one using only xGD - and plotted the <span class="math inline">\(R^2\)</span> for each model as the number of games played increases. <span class="math inline">\(R^2\)</span> tells us the proportion of the variance in the dependent variable (in this case, PPG over the rest of the season) explained by each model.</p>
-<figure class="image-block max-70 figure">
-<img src="viz/slr_r2.png" class="img-fluid figure-img">
-<figcaption style="
-      font-style: italic;
-      font-size: 0.75rem;
-      line-height: 1.25;
-      max-width: 70%;
-      margin: 0.25em auto 1em auto;
-      text-align: left;
-      color: #666;
-    ">
-SLR = simple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season).
-</figcaption>
-</figure>
-<p>The lines follow a similar shape: as expected, the predictive power increases as the sample size increases, stabilising after about 10 games. Then it declines after around 23 games, because with fewer games remaining the PPG is more noisy.</p>
+<div class="centered-block">
+<p><img src="viz/slr_r2.png"> <em>SLR = simple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season).</em></p>
+</div>
+<p>The lines follow a similar shape: as expected, the predictive power increases as the sample size increases, stabilising after about 10 games. Then it declines after around 23 games, because with fewer games remaining future PPG naturally becomes more noisy.</p>
 <p>You will notice that xG is consistently above GD, followed by points. If you literally didn’t know anything else about each team, the three measures give a similar approximation for predicting future points, but xG is the best.</p>
-<p>What about when we use all three together? I fit a multiple regression model with all three variables, and plotted each variable’s coefficient, standardized to account for the different units of measurement. The second plot shows the marginal <span class="math inline">\(R^2\)</span> for each variable in a multiple regression setting - in other words, how much extra information do we get by adding this variable to a simpler model involving only the other two?</p>
-<figure class="image-block max-70 figure">
-<img src="viz/mlr_coefs.png" class="img-fluid figure-img">
-<figcaption style="
-      font-style: italic;
-      font-size: 0.75rem;
-      line-height: 1.25;
-      max-width: 70%;
-      margin: 0.25em auto 1em auto;
-      text-align: left;
-      color: #666;
-    ">
-MLR = multiple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season).
-</figcaption>
-</figure>
-<figure class="image-block max-70 figure">
-<img src="viz/mlr_marginal_r2.png" class="img-fluid figure-img">
-<figcaption style="
-      font-style: italic;
-      font-size: 0.75rem;
-      line-height: 1.25;
-      max-width: 70%;
-      margin: 0.25em auto 1em auto;
-      text-align: left;
-      color: #666;
-    ">
-Marginal R² measures the additional proportion of variance explained when the variable is added to the reduced model.
-</figcaption>
-</figure>
+<p>What about when we use all three together? I fit a multiple regression model with all three variables, and plotted each variable’s coefficient, standardized to account for the different units of measurement. The results can be seen below. The second plot shows the marginal <span class="math inline">\(R^2\)</span> for each variable in a multiple regression setting - in other words, how much extra information do we get by adding this variable to a simpler model involving only the other two?</p>
+<div class="centered-block">
+<p><img src="viz/mlr_coefs.png"> <em>MLR = multiple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season).</em></p>
+</div>
+<div class="centered-block">
+<p><img src="viz/mlr_marginal_r2.png"> <em>Marginal R² measures the additional proportion of variance explained when the variable is added to the reduced model.</em></p>
+</div>
 <p>Now we see a more pronounced difference. When the three variables are used in concert, xG is by far the most useful of the three. These results suggest that xG offers some information that the other two variables do not convey.</p>
 <p>These are simple models of course, and people can (and do!) create far more complex models to assess team strength and predict future performance. But added complexity generally involves diminishing returns, and it is handy to have a simple statistic that can give you a reasonable indication of how good a team is. This is why people tend to use xG as a quick &amp; dirty indicator of which teams have been lucky or unlucky so far each season.</p>
-<p>And so we return to Aston Villa. What can we expect from them in the second half of this season? Based on the above, it would be fair to conclude that Villa’s xG (14th place) is a much better reflection of how good they are than their league position (3rd place). But what about the Unai Emery factor? Is there some sort of magic in Emery’s tactics that enables his teams to defy the xG gods?</p>
+<p>And so we return to Aston Villa. What can we expect from them in the second half of this season? Based on the above, it would be fair to conclude that Villa’s xG (14th place) is a better reflection of how good they are than their league position (3rd place). But what about the Unai Emery factor? Is there some sort of magic in Emery’s tactics that enables his teams to defy the xG gods?</p>
 </section>
 <section id="which-managers-have-historically-outperformed-xg" class="level2">
 <h2 class="anchored" data-anchor-id="which-managers-have-historically-outperformed-xg">Which managers have historically outperformed xG?</h2>
 <p>I used the same dataset (‘Big 5’ leagues, 2017-2018 to 2024-2025), this time also including UEFA competitions, and compared the cumulative xG for each manager with their actual goals, for and against. The following scatterplot compares each manager’s attacking overperformance (x axis) against defensive overperformance (y axis). So the <strong>top right</strong> quadrant of this plot is the place to be. Bottom left…not so good.</p>
-<figure class="image-block max-70 figure">
-<img src="viz/scatter_totals.png" class="img-fluid figure-img">
-<figcaption style="
-      font-style: italic;
-      font-size: 0.75rem;
-      line-height: 1.25;
-      max-width: 70%;
-      margin: 0.25em auto 1em auto;
-      text-align: left;
-      color: #666;
-    ">
-Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = difference between actual goals and expected goals.
-</figcaption>
-</figure>
+<div class="centered-block">
+<p><img src="viz/scatter_totals.png"> <em>Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = difference between actual goals and expected goals.</em></p>
+</div>
 <p>The names in the desirable upper-right quadrant are certainly some of the names you would identify as elite managers. Interestingly, <strong>Pep Guardiola</strong> exceeds xG entirely on the attacking end, while <strong>Diego Simeone</strong> and <strong>Carlo Ancelotti</strong> tend to excel defensively. To reiterate, this is a measure of goals relative to expected goals; it does not measure whether a team has high or low xG in the first place, although it is obvious that managers in charge of wealthy clubs like Man City or Real Madrid are going to be above average in xG and other measures.</p>
 <p>One problem with using cumulative scores is it may reward quantity rather than quality. This is why the upper-right quadrant has more outliers, whereas the bottom-left is more bunched: if you are consistently underperforming your xG then it’s unlikely you will continue being employed for a prolonged period of time. To address this, the following plot shows the same measures but standardized to account for the number of games:</p>
-<figure class="image-block max-70 figure">
-<img src="viz/scatter_z.png" class="img-fluid figure-img">
-<figcaption style="
-      font-style: italic;
-      font-size: 0.75rem;
-      line-height: 1.25;
-      max-width: 70%;
-      margin: 0.25em auto 1em auto;
-      text-align: left;
-      color: #666;
-    ">
-Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = difference between actual goals and expected goals.
-</figcaption>
-</figure>
+<div class="centered-block">
+<p><img src="viz/scatter_z.png"> <em>Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = difference between actual goals and expected goals.</em></p>
+</div>
 <p>The standardized plot reveals some interesting names in each quadrant - maybe I’ll come back to them in a future article. But this study is about Unai Emery, and you will have noticed that Emery occupies a prominent position in the upper-right quadrant, exceeding his xG in both attack and defence. In terms of total overperformance relative to xG during the study period, Emery sits third:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="gnzuxkditm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gnzuxkditm table {
+<div id="zdjhyblwnp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zdjhyblwnp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gnzuxkditm thead, #gnzuxkditm tbody, #gnzuxkditm tfoot, #gnzuxkditm tr, #gnzuxkditm td, #gnzuxkditm th {
+#zdjhyblwnp thead, #zdjhyblwnp tbody, #zdjhyblwnp tfoot, #zdjhyblwnp tr, #zdjhyblwnp td, #zdjhyblwnp th {
   border-style: none;
 }
 
-#gnzuxkditm p {
+#zdjhyblwnp p {
   margin: 0;
   padding: 0;
 }
 
-#gnzuxkditm .gt_table {
+#zdjhyblwnp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -877,12 +1076,12 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-left-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_caption {
+#zdjhyblwnp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gnzuxkditm .gt_title {
+#zdjhyblwnp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -894,7 +1093,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-bottom-width: 0;
 }
 
-#gnzuxkditm .gt_subtitle {
+#zdjhyblwnp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -906,7 +1105,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-top-width: 0;
 }
 
-#gnzuxkditm .gt_heading {
+#zdjhyblwnp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -918,13 +1117,13 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-right-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_bottom_border {
+#zdjhyblwnp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: #D9D9D9;
 }
 
-#gnzuxkditm .gt_col_headings {
+#zdjhyblwnp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -939,7 +1138,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-right-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_col_heading {
+#zdjhyblwnp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -959,7 +1158,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   overflow-x: hidden;
 }
 
-#gnzuxkditm .gt_column_spanner_outer {
+#zdjhyblwnp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -971,15 +1170,15 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   padding-right: 4px;
 }
 
-#gnzuxkditm .gt_column_spanner_outer:first-child {
+#zdjhyblwnp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gnzuxkditm .gt_column_spanner_outer:last-child {
+#zdjhyblwnp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gnzuxkditm .gt_column_spanner {
+#zdjhyblwnp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D0D0D0;
@@ -991,11 +1190,11 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   width: 100%;
 }
 
-#gnzuxkditm .gt_spanner_row {
+#zdjhyblwnp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gnzuxkditm .gt_group_heading {
+#zdjhyblwnp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1021,7 +1220,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   text-align: left;
 }
 
-#gnzuxkditm .gt_empty_group_heading {
+#zdjhyblwnp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1036,15 +1235,15 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   vertical-align: middle;
 }
 
-#gnzuxkditm .gt_from_md > :first-child {
+#zdjhyblwnp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gnzuxkditm .gt_from_md > :last-child {
+#zdjhyblwnp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gnzuxkditm .gt_row {
+#zdjhyblwnp .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -1063,7 +1262,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   overflow-x: hidden;
 }
 
-#gnzuxkditm .gt_stub {
+#zdjhyblwnp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1076,7 +1275,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   padding-right: 5px;
 }
 
-#gnzuxkditm .gt_stub_row_group {
+#zdjhyblwnp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1090,15 +1289,15 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   vertical-align: top;
 }
 
-#gnzuxkditm .gt_row_group_first td {
+#zdjhyblwnp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gnzuxkditm .gt_row_group_first th {
+#zdjhyblwnp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gnzuxkditm .gt_summary_row {
+#zdjhyblwnp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1108,16 +1307,16 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   padding-right: 5px;
 }
 
-#gnzuxkditm .gt_first_summary_row {
+#zdjhyblwnp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_first_summary_row.thick {
+#zdjhyblwnp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gnzuxkditm .gt_last_summary_row {
+#zdjhyblwnp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1127,7 +1326,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-bottom-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_grand_summary_row {
+#zdjhyblwnp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1137,7 +1336,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   padding-right: 5px;
 }
 
-#gnzuxkditm .gt_first_grand_summary_row {
+#zdjhyblwnp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1147,7 +1346,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-top-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_last_grand_summary_row_top {
+#zdjhyblwnp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1157,11 +1356,11 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-bottom-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_striped {
+#zdjhyblwnp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gnzuxkditm .gt_table_body {
+#zdjhyblwnp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1170,7 +1369,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-bottom-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_footnotes {
+#zdjhyblwnp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1184,7 +1383,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-right-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_footnote {
+#zdjhyblwnp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1193,7 +1392,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   padding-right: 5px;
 }
 
-#gnzuxkditm .gt_sourcenotes {
+#zdjhyblwnp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1207,7 +1406,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   border-right-color: #D3D3D3;
 }
 
-#gnzuxkditm .gt_sourcenote {
+#zdjhyblwnp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1215,72 +1414,72 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
   padding-right: 5px;
 }
 
-#gnzuxkditm .gt_left {
+#zdjhyblwnp .gt_left {
   text-align: left;
 }
 
-#gnzuxkditm .gt_center {
+#zdjhyblwnp .gt_center {
   text-align: center;
 }
 
-#gnzuxkditm .gt_right {
+#zdjhyblwnp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gnzuxkditm .gt_font_normal {
+#zdjhyblwnp .gt_font_normal {
   font-weight: normal;
 }
 
-#gnzuxkditm .gt_font_bold {
+#zdjhyblwnp .gt_font_bold {
   font-weight: bold;
 }
 
-#gnzuxkditm .gt_font_italic {
+#zdjhyblwnp .gt_font_italic {
   font-style: italic;
 }
 
-#gnzuxkditm .gt_super {
+#zdjhyblwnp .gt_super {
   font-size: 65%;
 }
 
-#gnzuxkditm .gt_footnote_marks {
+#zdjhyblwnp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gnzuxkditm .gt_asterisk {
+#zdjhyblwnp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gnzuxkditm .gt_indent_1 {
+#zdjhyblwnp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gnzuxkditm .gt_indent_2 {
+#zdjhyblwnp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gnzuxkditm .gt_indent_3 {
+#zdjhyblwnp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gnzuxkditm .gt_indent_4 {
+#zdjhyblwnp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gnzuxkditm .gt_indent_5 {
+#zdjhyblwnp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gnzuxkditm .katex-display {
+#zdjhyblwnp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gnzuxkditm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zdjhyblwnp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1394,15 +1593,29 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
 </div>
 </div>
 </div>
-<p>It is worth clarifying: none of this is necessarily causal evidence of being a good or bad manager. The big names generally manage the richest teams with the best players, and it could end up as a self-fulfilling prophecy if we reward them for those players providing an edge at both ends of the pitch.</p>
+<p>It is worth clarifying: none of this is necessarily causal evidence of being a good or bad manager. The big names generally manage the richest teams with the best players, and it could end up as a self-fulfilling prophecy if we anoint them as great managers because those players provide an edge at both ends of the pitch.</p>
 <p>Nonetheless, it is always reassuring when the consensus best managers such as Guardiola show up highly on a metric, and it is worth adding that while Unai Emery has managed some big clubs (PSG, Arsenal) during the study period, a large chunk of his games have been with Villarreal and Aston Villa.</p>
-<p>To recap part one, we have shown that xG is a good predictor, and we have seen that Unai Emery has outperformed his overall xG in previous seasons. In the next part, I will break down Emery’s previous stints by club, and drill down a little bit on where this xG overperformance comes from, including which players have been the hottest finishers under Emery, whether goalkeepers have played a big role, and how Emery teams vary according to game state.</p>
+<p>To recap part one, we have shown that xG is a good predictor of future performance, and we have seen that Unai Emery has outperformed his overall xG in previous seasons. In the next part, I will break down Emery’s previous stints by club, and drill down a little bit on where this xG overperformance comes from, including which players have been the hottest finishers under Emery, whether goalkeepers have played a big role, and how Emery teams vary according to game state.</p>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -1474,7 +1687,7 @@ Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = d
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/johnknightstats\.com");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

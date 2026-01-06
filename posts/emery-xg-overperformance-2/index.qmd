@@ -27,19 +27,35 @@ Introduce part two questions.
 
 Emery by club (show with and without Emery stats).
 
+*emery vs not emery csv*
+
+*emery teams stacked bar chart...need to fix*
+
 Player finishing.
+
+*emery top overperformers total, by match, by shot, by minute. per 90 seems good. compare with not emery?*
 
 Goalkeeper psxG.
 
+*emery goalkeeper overperformance total, by match, by shot, by minute*
+
 Emery by game state versus all by game state.
+
+*side by side bar chart*
 
 Mixed effects regression model.
 
 GD to PPG model (linear).
 
+*scatterplot*
+
 Emery versus predicted points.
 
+*emery stints csv*
+
 Emery scoreline distribution.
+
+*column charts*
 
 Conclusion: Exceeding xG yes, exceeding GD no. Players, maybe. Introduce next part: How predictive is this? Build a model respecting chronology, and validate by using it to predict xG overperformance this season. 
 

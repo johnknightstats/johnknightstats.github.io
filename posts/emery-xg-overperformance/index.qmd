@@ -246,3 +246,7 @@ It is worth clarifying: none of this is necessarily causal evidence of being a g
 Nonetheless, it is always reassuring when the consensus best managers such as Guardiola show up highly on a metric, and it is worth adding that while Unai Emery has managed some big clubs (PSG, Arsenal) during the study period, a large chunk of his games have been with Villarreal and Aston Villa.
 
 To recap part one, we have shown that xG is a good predictor of future performance, and we have seen that Unai Emery has outperformed his overall xG in previous seasons. In the next part, I will break down Emery's previous stints by club, and drill down a little bit on where this xG overperformance comes from, including which players have been the hottest finishers under Emery, whether goalkeepers have played a big role, and how Emery teams vary according to game state.
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2025 John Knight. All rights reserved.

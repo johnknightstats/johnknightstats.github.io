@@ -19,6 +19,6 @@ I'm excited to build up this website and I hope you find something interesting. 
 <p>
   <a href="mailto:knightjohn2@gmail.com">Email</a> |
   <a href="https://www.linkedin.com/in/johnknightstats/">LinkedIn</a> |
-  <a href="https://github.com/johnknightstats">GitHub</a>
+  <a href="https://github.com/johnknightstats">GitHub</a> |
   <a href="https://substack.com/@johnknightstats">Substack</a>
 </p>

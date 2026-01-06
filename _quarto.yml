@@ -12,6 +12,7 @@ resources:
 website:
   title: "John Knight Stats"
   site-url: https://johnknightstats.com
+  draft-mode: unlinked
   navbar:
     left:
       - text: "Home"
@@ -35,4 +36,6 @@ format:
     css: styles.css
     includes:
       in-header: counter.html 
+      
+      
 

@@ -26,95 +26,74 @@ And then they embarked on a truly absurd run of results: 17 wins from their next
 
 Now, anyone who has taken the slightest glance at the underlying statistics of this year's Premier League will be aware that Villa have been sustaining a monumental overperformance relative to **expected goals** (xG). After 20 games, they have the 2nd-most points, joint with Man City, but only the 14th-highest xG.
 
-```{r, message = FALSE}
+```{r, message=FALSE}
 library(dplyr)
 library(readr)
 library(gt)
 
-# -----------------------------
-
-# Read + prep
-
-# -----------------------------
-
 df <- read_csv("data/pl_table_current_season.csv", show_col_types = FALSE)
 
 table_df <- df %>%
-transmute(
-Team = team_name,
-Pld = as.integer(games_played),
-Pts = as.integer(points),
-`xG Diff` = round(xg_diff, 1),
-GD = as.integer(goal_difference)
-) %>%
-arrange(desc(Pts), desc(GD), desc(`xG Diff`))
+  transmute(
+    Team = team_name,
+    Pld = as.integer(games_played),
+    Pts = as.integer(points),
+    `xG Diff` = round(xg_diff, 1),
+    GD = as.integer(goal_difference)
+  ) %>%
+  arrange(desc(Pts), desc(GD), desc(`xG Diff`))
 
-# -----------------------------
+# ---- Export for Substack (native table) ----
+write_csv(table_df, "data/pl_table_substack.csv")
 
-# Table
 
-# -----------------------------
+gt_tbl <- table_df %>%
+  gt() %>%
+  tab_header(
+    title = "Premier League 2025-2026",
+    subtitle = "5 Jan, 2026"
+  ) %>%
+  tab_source_note(source_note = "xG data from FotMob.") %>%
+  tab_style(
+    style = cell_text(size = px(11), style = "italic", align = "left"),
+    locations = cells_source_notes()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#f2f2f2"),
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(
+    table.border.top.style = "solid",
+    table.border.top.width = px(1),
+    table.border.top.color = "#d9d9d9",
 
-table_df %>%
-gt() %>%
-tab_header(
-title = "Premier League 2025-2026",
-subtitle = "5 Jan, 2026"
-) %>%
-tab_source_note(
-source_note = "xG data from FotMob."
-) %>%
+    heading.border.bottom.style = "solid",
+    heading.border.bottom.width = px(1),
+    heading.border.bottom.color = "#d9d9d9",
 
-# Reduce footnote font size
+    column_labels.border.bottom.style = "solid",
+    column_labels.border.bottom.width = px(2),
+    column_labels.border.bottom.color = "#d0d0d0",
 
-tab_style(
-style = cell_text(size = px(11), style="italic", align="left"), 
-locations = cells_source_notes()
-) %>%
+    data_row.padding = px(6),
+    heading.padding = px(6),
+    column_labels.padding = px(6),
 
-# Header styling (bold + shaded)
+    table.border.bottom.style = "none",
+    table.font.size = px(14)
+  ) %>%
+  cols_align(align = "left", columns = Team) %>%
+  cols_align(align = "center", columns = Pld) %>%
+  cols_align(align = "right", columns = c(Pts, `xG Diff`, GD)) %>%
+  fmt_number(columns = c(`xG Diff`), decimals = 1)
 
-tab_style(
-style = list(
-cell_fill(color = "#f2f2f2"),
-cell_text(weight = "bold")
-),
-locations = cells_column_labels(everything())
-) %>%
 
-# Subtle rules + spacing
 
-tab_options(
-table.border.top.style = "solid",
-table.border.top.width = px(1),
-table.border.top.color = "#d9d9d9",
-
-heading.border.bottom.style = "solid",
-heading.border.bottom.width = px(1),
-heading.border.bottom.color = "#d9d9d9",
-
-column_labels.border.bottom.style = "solid",
-column_labels.border.bottom.width = px(2),
-column_labels.border.bottom.color = "#d0d0d0",
-
-data_row.padding = px(6),
-heading.padding = px(6),
-column_labels.padding = px(6),
-
-table.border.bottom.style = "none",
-table.font.size = px(14)
-
-) %>%
-
-# Alignments
-
-cols_align(align = "left", columns = Team) %>%
-cols_align(align = "center", columns = Pld) %>%
-cols_align(align = "right", columns = c(Pts, `xG Diff`, GD)) %>%
-
-# Formatting
-
-fmt_number(columns = c(`xG Diff`), decimals = 1)
+gtsave(gt_tbl, filename = "pl_table_2025_26.png", vwidth = 1200)
+gt_tbl
 ```
 
 Depending on your slant, this may be because **Unai Emery** is a tactical savant who defies the laws of xG, or because Aston Villa have experienced some outrageously good fortune and are due for a big regression to the mean. The truth probably lies somewhere between those two poles, but why should we even care about xG in the first place?
@@ -199,6 +178,9 @@ table_df <- df %>%
   ) %>%
   arrange(desc(Total)) %>%
   slice_head(n = 10)
+
+# ---- Export for Substack (native table) ----
+write_csv(table_df, "data/top_managers_substack.csv")
 
 # -----------------------------
 # Table

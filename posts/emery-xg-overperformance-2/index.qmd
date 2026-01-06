@@ -1,0 +1,49 @@
+---
+title: "Unai Emery: the xG whisperer"
+draft: true
+image: emery2.jpg
+author: "John Knight"
+date: 2026-01-07
+date-format: "D MMMM YYYY"
+description: "Part two: Breaking down Emery by club, and looking at forward keepers, and game state."
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "statistics", "Unai Emery", "Aston Villa", "Premier League"]
+execute: 
+  echo: false
+  eval: true
+  message: false
+engine: knitr
+editor: source
+# resources:
+
+
+---
+
+Recap of part one with link.
+
+Introduce part two questions. 
+
+Emery by club (show with and without Emery stats).
+
+Player finishing.
+
+Goalkeeper psxG.
+
+Emery by game state versus all by game state.
+
+Mixed effects regression model.
+
+GD to PPG model (linear).
+
+Emery versus predicted points.
+
+Emery scoreline distribution.
+
+Conclusion: Exceeding xG yes, exceeding GD no. Players, maybe. Introduce next part: How predictive is this? Build a model respecting chronology, and validate by using it to predict xG overperformance this season. 
+
+
+
+
+

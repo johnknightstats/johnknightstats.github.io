@@ -14,6 +14,7 @@ execute:
   echo: false
   eval: true
   message: false
+  warning: false
 engine: knitr
 editor: source
 # resources:
@@ -21,23 +22,408 @@ editor: source
 
 ---
 
-Recap of part one with link.
+This is a multi-part look at Unai Emery and his apparent habit of outperforming expected goals (xG). In part one, I showed that xG is a more predictive statistic than points or goal difference, and that Emery ranks third among all managers for xG overperformance during the study period (2017-2018 to 2024-2025). You can find part one [here](https://johnknightstats.com/posts/emery-xg-overperformance/).
 
-Introduce part two questions. 
+Next, I want to drill down on Emery's stints at PSG, Arsenal, Villarreal and Aston Villa during those seasons. We know that his teams, cumulatively, have scored more than their expected goals, and conceded fewer than their expected goals against. But where have these gains come from?
 
-Emery by club (show with and without Emery stats).
+An obvious starting point is to break it down by club. Here we can see a breakdown of Emery's xG overperformance per game with each of the four clubs, with attacking overperformance in blue and defensive overperformance in orange.
 
-*emery vs not emery csv*
+::: {.centered-block}
+<img src="viz/emery_xg_overperformance_totals.png"/>
+<em>Emery has outperformed xG at all of his last four clubs, on both the attacking and defensive ends of the pitch.</em>
+:::
 
-*emery teams stacked bar chart...need to fix*
+```{r}
+library(dplyr)
+library(readr)
+library(gt)
 
-Player finishing.
+# -----------------------------
 
-*emery top overperformers total, by match, by shot, by minute. per 90 seems good. compare with not emery?*
+# Read + prep
+
+# -----------------------------
+
+
+df <- read_csv("data/emery_vs_not_emery_by_club.csv", show_col_types = FALSE)
+
+
+table_df <- df %>%
+transmute(
+Club = Club,
+`Matches (Emery)` = as.integer(matches_emery),
+`xG overperformance per match (Emery)` = round(opm_emery, 3),
+`Matches (Other)` = as.integer(matches_not),
+`xG overperformance per match (Other)` = round(opm_not, 3)
+) %>%
+arrange(desc(`xG overperformance per match (Emery)`), Club)
+
+# -----------------------------
+
+# Export for Datawrapper
+
+# -----------------------------
+
+# Datawrapper generally likes a clean CSV with the exact columns you want to chart.
+
+write_csv(table_df, "data/emery_vs_other_managers_datawrapper.csv")
+
+# -----------------------------
+
+# Table (Quarto article)
+
+# -----------------------------
+
+gt_tbl <- table_df %>%
+gt() %>%
+tab_header(
+title = "Unai Emery xG overperformance by club relative to other managers (2017-2025)"
+) %>%
+tab_source_note(
+source_note = "xG overperformance = goals − expected goals.") %>%
+  tab_style(
+style = cell_text(size = px(11), style = "italic", align = "left"),
+locations = cells_source_notes()
+) %>%
+tab_style(
+style = list(
+cell_fill(color = "#f2f2f2"),
+cell_text(weight = "bold")
+),
+locations = cells_column_labels(everything())
+) %>%
+tab_options(
+table.border.top.style = "solid",
+table.border.top.width = px(1),
+table.border.top.color = "#d9d9d9",
+
+heading.border.bottom.style = "solid",
+heading.border.bottom.width = px(1),
+heading.border.bottom.color = "#d9d9d9",
+
+column_labels.border.bottom.style = "solid",
+column_labels.border.bottom.width = px(2),
+column_labels.border.bottom.color = "#d0d0d0",
+
+data_row.padding = px(6),
+heading.padding = px(6),
+column_labels.padding = px(6),
+
+table.border.bottom.style = "none",
+table.font.size = px(14)
+
+) %>%
+  cols_width(
+  Club ~ pct(34),
+  `Matches (Emery)` ~ px(90),
+  `xG overperformance per match (Emery)` ~ px(170),
+  `Matches (Other)` ~ px(90),
+  `xG overperformance per match (Other)` ~ px(170)
+) %>%
+cols_align(align = "left", columns = Club) %>%
+cols_align(
+align = "center",
+columns = c(`Matches (Emery)`, `Matches (Other)`)
+) %>%
+cols_align(
+align = "right",
+columns = c(`xG overperformance per match (Emery)`, `xG overperformance per match (Other)`)
+) %>%
+fmt_number(
+columns = c(`xG overperformance per match (Emery)`, `xG overperformance per match (Other)`),
+decimals = 3
+)
+
+# Optional: save a PNG snapshot (useful for Substack or social)
+
+gtsave(gt_tbl, filename = "emery_vs_other_managers_table.png", vwidth = 1200)
+
+gt_tbl
+```
+
+
+```{r}
+library(dplyr)
+library(readr)
+library(gt)
+
+# -----------------------------
+
+# Read + prep
+
+# -----------------------------
+
+df <- read_csv(
+"data/player_finishing_emery_vs_not_emery_from_shots.csv",
+show_col_types = FALSE
+) %>%
+mutate(
+full_name = if_else(full_name == "Jáder Durán", "Jhon Durán", full_name)
+)
+
+# Defensive check (fail loudly if schema changes)
+
+required_cols <- c(
+"full_name",
+"emery_goals_minus_xg",
+"emery_goals_minus_xg_per_shot",
+"not_emery_goals_minus_xg",
+"not_emery_goals_minus_xg_per_shot",
+"emery_shots",
+"not_emery_shots"
+)
+
+missing <- setdiff(required_cols, names(df))
+if (length(missing) > 0) {
+stop("Missing required columns: ", paste(missing, collapse = ", "))
+}
+
+table_df <- df %>%
+transmute(
+Player = full_name,
+`Shots (Emery)` = as.integer(emery_shots),
+`xG overperformance (Emery)` = round(emery_goals_minus_xg, 2),
+`per shot (Emery)` = round(emery_goals_minus_xg_per_shot, 3),
+`Shots (Other)` = as.integer(not_emery_shots),
+`xG overperformance (Other)` = round(not_emery_goals_minus_xg, 2),
+`per shot (Other)` = round(not_emery_goals_minus_xg_per_shot, 3)
+) %>%
+arrange(desc(`xG overperformance (Emery)`), Player) %>%
+slice_head(n = 10)
+
+# -----------------------------
+
+# Export for Datawrapper
+
+# -----------------------------
+
+write_csv(
+table_df,
+"data/player_finishing_emery_vs_other_datawrapper.csv"
+)
+
+# -----------------------------
+
+# Table (Quarto article)
+
+# -----------------------------
+
+gt_tbl <- table_df %>%
+gt() %>%
+tab_header(
+title = "Top xG overperformers under Unai Emery (2017-2025)"
+) %>%
+tab_source_note(
+source_note = "xG overperformance = goals − expected goals."
+) %>%
+tab_style(
+style = list(
+cell_fill(color = "#f2f2f2"),
+cell_text(weight = "bold")
+),
+locations = cells_column_labels(everything())
+) %>%
+tab_style(
+style = cell_text(size = px(11), style = "italic", align = "left"),
+locations = cells_source_notes()
+) %>%
+tab_options(
+table.border.top.style = "solid",
+table.border.top.width = px(1),
+table.border.top.color = "#d9d9d9",
+
+heading.border.bottom.style = "solid",
+heading.border.bottom.width = px(1),
+heading.border.bottom.color = "#d9d9d9",
+
+column_labels.border.bottom.style = "solid",
+column_labels.border.bottom.width = px(2),
+column_labels.border.bottom.color = "#d0d0d0",
+
+data_row.padding = px(6),
+heading.padding = px(6),
+column_labels.padding = px(6),
+
+table.border.bottom.style = "none",
+table.font.size = px(14)
+
+
+) %>%
+cols_width(
+Player ~ pct(30),
+`Shots (Emery)` ~ px(105),
+`xG overperformance (Emery)` ~ px(170),
+`per shot (Emery)` ~ px(135),
+`Shots (Other)` ~ px(105),
+`xG overperformance (Other)` ~ px(170),
+`per shot (Other)` ~ px(135)
+) %>%
+cols_align(align = "left", columns = Player) %>%
+cols_align(
+align = "right",
+columns = -Player
+) %>%
+fmt_number(
+columns = c(
+`xG overperformance (Emery)`,
+`xG overperformance (Other)`
+),
+decimals = 2
+) %>%
+fmt_number(
+columns = c(
+`per shot (Emery)`,
+`per shot (Other)`
+),
+decimals = 3
+)
+
+# Optional PNG export (useful for Substack / social)
+
+gtsave(
+gt_tbl,
+filename = "top10_finishers_emery_vs_other.png",
+vwidth = 1200
+)
+
+gt_tbl
+```
 
 Goalkeeper psxG.
 
-*emery goalkeeper overperformance total, by match, by shot, by minute*
+```{r}
+library(dplyr)
+library(readr)
+library(gt)
+
+# -----------------------------
+
+# Read + prep
+
+# -----------------------------
+
+df <- read_csv(
+"data/goalkeeper_psxg_emery_vs_not_emery.csv",
+show_col_types = FALSE
+) %>%
+  filter(`emery_matches` >= 5)
+
+# Defensive check (fail loudly if schema changes)
+
+required_cols <- c(
+"full_name",
+"emery_matches",
+"emery_goals_prevented",
+"emery_goals_prevented_per_match",
+"not_emery_matches",
+"not_emery_goals_prevented",
+"not_emery_goals_prevented_per_match"
+)
+
+missing <- setdiff(required_cols, names(df))
+if (length(missing) > 0) {
+stop("Missing required columns: ", paste(missing, collapse = ", "))
+}
+
+table_df <- df %>%
+transmute(
+Goalkeeper = full_name,
+`Matches (Emery)` = as.integer(emery_matches),
+`Goals prevented (Emery)` = round(emery_goals_prevented, 1),
+`per match (Emery)` = round(emery_goals_prevented_per_match, 3),
+`Matches (Other)` = as.integer(not_emery_matches),
+`Goals prevented (Other)` = round(not_emery_goals_prevented, 1),
+`per match (Other)` = round(not_emery_goals_prevented_per_match, 3)
+) %>%
+arrange(desc(`Goals prevented (Emery)`), Goalkeeper)
+
+# -----------------------------
+
+# Export for Datawrapper
+
+# -----------------------------
+
+write_csv(
+table_df,
+"data/goalkeeper_psxg_emery_vs_other_datawrapper.csv"
+)
+
+# -----------------------------
+
+# Table (Quarto article)
+
+# -----------------------------
+
+gt_tbl <- table_df %>%
+gt() %>%
+tab_header(
+title = "Goalkeepers under Unai Emery (2017-2025)"
+) %>%
+tab_source_note(
+source_note = "Goals prevented = PSxG − goals against. Minumum 5 matches played under Emery."
+) %>%
+tab_style(
+style = list(
+cell_fill(color = "#f2f2f2"),
+cell_text(weight = "bold")
+),
+locations = cells_column_labels(everything())
+) %>%
+tab_style(
+style = cell_text(size = px(11), style = "italic", align = "left"),
+locations = cells_source_notes()
+) %>%
+tab_options(
+table.border.top.style = "solid",
+table.border.top.width = px(1),
+table.border.top.color = "#d9d9d9",
+
+heading.border.bottom.style = "solid",
+heading.border.bottom.width = px(1),
+heading.border.bottom.color = "#d9d9d9",
+
+column_labels.border.bottom.style = "solid",
+column_labels.border.bottom.width = px(2),
+column_labels.border.bottom.color = "#d0d0d0",
+
+data_row.padding = px(6),
+heading.padding = px(6),
+column_labels.padding = px(6),
+
+table.border.bottom.style = "none",
+table.font.size = px(14)
+
+) %>%
+cols_width(
+Goalkeeper ~ pct(30),
+`Matches (Emery)` ~ px(110),
+`Goals prevented (Emery)` ~ px(175),
+`per match (Emery)` ~ px(140),
+`Matches (Other)` ~ px(110),
+`Goals prevented (Other)` ~ px(175),
+`per match (Other)` ~ px(140)
+) %>%
+cols_align(align = "left", columns = Goalkeeper) %>%
+cols_align(align = "right", columns = -Goalkeeper) %>%
+fmt_number(
+columns = c(`Goals prevented (Emery)`, `Goals prevented (Other)`),
+decimals = 1
+) %>%
+fmt_number(
+columns = c(`per match (Emery)`, `per match (Other)`),
+decimals = 3
+)
+
+# Optional PNG export (useful for Substack / social)
+
+gtsave(
+gt_tbl,
+filename = "top10_goalkeepers_emery_vs_other.png",
+vwidth = 1200
+)
+
+gt_tbl
+```
 
 Emery by game state versus all by game state.
 

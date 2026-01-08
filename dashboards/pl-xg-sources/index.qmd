@@ -1,0 +1,179 @@
+---
+title: "Premier League xG by situation"
+description: "Totals by shot situation for the 2025-2026 Premier League."
+categories: [football, premier-league]
+image: arse_corner.jpg
+format:
+  html:
+    toc: false
+execute:
+  echo: false
+  warning: false
+  message: false
+dashboard_order: 2
+
+---
+
+2025-2026 season (data from FotMob)
+
+Turn to landscape on phone for betting viewing.
+
+```{r}
+library(readr)
+library(dplyr)
+library(DT)
+
+df_raw <- read_csv("data/tables/pl_xg_by_situation_current_season.csv", show_col_types = FALSE)
+
+style_grad <- function(x, base_pal, n=101) {
+  rng <- range(x, na.rm=TRUE)
+  if (!is.finite(rng[1]) || !is.finite(rng[2]) || rng[1] == rng[2]) return(NULL)
+  cols <- grDevices::colorRampPalette(base_pal)(n)
+  cuts <- seq(rng[1], rng[2], length.out=n)[-1]
+  list(cuts=cuts, cols=cols)
+}
+
+pal_g2r <- c("#1a9850","#66bd63","#a6d96a","#d9ef8b","#fee08b","#fdae61","#d73027")
+pal_r2g <- rev(pal_g2r)
+
+# totals only
+pct_cols <- grep("_pct$", names(df_raw), value = TRUE)
+df0 <- df_raw |> select(-any_of(pct_cols))
+
+for_cols     <- grep("^xg_for_", names(df0), value = TRUE)
+against_cols <- grep("^xg_against_", names(df0), value = TRUE)
+
+pretty_sit <- function(nm, prefix) {
+  x <- sub(paste0("^", prefix), "", nm)
+  x <- gsub("_", " ", x)
+  tools::toTitleCase(x)
+}
+
+df_for <- df0 |>
+  select(team_name, matches, xg_for, all_of(for_cols)) |>
+  rename(Team = team_name, Matches = matches, `Total xG` = xg_for)
+
+if (length(for_cols) > 0) {
+  names(df_for)[match(for_cols, names(df_for))] <-
+    vapply(for_cols, pretty_sit, character(1), prefix = "xg_for_")
+}
+
+df_against <- df0 |>
+  select(team_name, matches, xg_against, all_of(against_cols)) |>
+  rename(Team = team_name, Matches = matches, `Total xG` = xg_against)
+
+if (length(against_cols) > 0) {
+  names(df_against)[match(against_cols, names(df_against))] <-
+    vapply(against_cols, pretty_sit, character(1), prefix = "xg_against_")
+}
+
+# -----------------------------
+# Friendly column names
+# -----------------------------
+rename_map <- c(
+  "Matches"            = "Pld",
+  "Regularplay"        = "Regular play",
+  "Fromcorner"         = "Corner",
+  "Fastbreak"          = "Fast break",
+  "Setpiece"           = "Set piece",
+  "Throwinsetpiece"    = "Throw in",
+  "Freekick"           = "Free kick",
+  "Individualplay"     = "Individual play"
+)
+
+rename_existing <- function(df, map) {
+  hits <- intersect(names(map), names(df))
+  if (length(hits) > 0) {
+    names(df)[match(hits, names(df))] <- unname(map[hits])
+  }
+  df
+}
+
+df_for     <- rename_existing(df_for, rename_map)
+df_against <- rename_existing(df_against, rename_map)
+
+# -----------------------------
+# Ensure Pld is integer
+# -----------------------------
+if ("Pld" %in% names(df_for)) {
+  df_for$Pld <- as.integer(df_for$Pld)
+}
+
+if ("Pld" %in% names(df_against)) {
+  df_against$Pld <- as.integer(df_against$Pld)
+}
+
+
+make_dt <- function(df, mode = c("for","against")) {
+  mode <- match.arg(mode)
+
+  dt <- datatable(
+    df,
+    rownames = FALSE,
+    options = list(
+      dom = "t",
+      paging = FALSE,
+      scrollX = TRUE,
+      autoWidth = FALSE,
+      headerCallback = JS(
+        "function(thead) {",
+        "  $(thead).find('th').css({",
+        "    'font-size': '11px',",
+        "    'padding': '4px 6px'",
+        "  });",
+        "}"
+      ),
+      columnDefs = list(
+        list(width = "210px", targets = 0),
+        list(className = "dt-nowrap", targets = 0),
+        list(className = "dt-right", targets = 1:(ncol(df) - 1))
+      )
+    )
+  )
+
+  num_cols <- names(df)[sapply(df, is.numeric)]
+  num_cols_round2 <- setdiff(num_cols, "Pld")  # don't format Pld with decimals
+  
+  if (length(num_cols_round2) > 0) {
+    dt <- dt |> formatRound(num_cols_round2, digits = 2)
+  }
+  
+  # Optional: explicitly format Pld as 0 decimals (usually not needed once it's integer)
+  if ("Pld" %in% names(df)) {
+    dt <- dt |> formatRound("Pld", digits = 0)
+  }
+
+
+  dt <- dt |>
+    formatStyle(names(df), fontSize = "12px", padding = "2px 6px") |>
+    formatStyle("Team", whiteSpace = "nowrap")
+
+  color_cols <- setdiff(names(df), c("Team", "Pld"))
+  for (col in color_cols) {
+    x <- df[[col]]
+    s <- style_grad(x, if (mode == "for") pal_r2g else pal_g2r)
+    if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
+  }
+
+  dt
+}
+
+
+
+```
+
+::: {.panel-tabset}
+
+## xG For
+
+```{r}
+make_dt(df_for, mode="for")
+```
+
+## xG Against
+
+```{r}
+make_dt(df_against, mode="against")
+```
+
+:::

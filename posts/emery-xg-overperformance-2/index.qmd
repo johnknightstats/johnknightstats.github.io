@@ -24,7 +24,7 @@ editor: source
 
 This is a multi-part look at Unai Emery and his apparent habit of outperforming expected goals (xG). In part one, I showed that xG is a more predictive statistic than points or goal difference, and that Emery ranks third among all managers for xG overperformance during the study period (2017-2018 to 2024-2025). You can find part one [here](https://johnknightstats.com/posts/emery-xg-overperformance/).
 
-Next, I want to drill down on Emery's stints at PSG, Arsenal, Villarreal and Aston Villa during those seasons. We know that his teams, cumulatively, have scored more than their expected goals, and conceded fewer than their expected goals against. But where have these gains come from?
+Next, I want to drill down on Emery's stints at PSG, Arsenal, Villarreal and Aston Villa during those seasons. We know that his teams, cumulatively, have scored more than their expected goals for, and conceded fewer than their expected goals against. But where have these gains come from?
 
 An obvious starting point is to break it down by club. Here we can see a breakdown of Emery's xG overperformance per game with each of the four clubs, with attacking overperformance in blue and defensive overperformance in orange.
 
@@ -32,6 +32,10 @@ An obvious starting point is to break it down by club. Here we can see a breakdo
 <img src="viz/emery_xg_overperformance_totals.png"/>
 <em>Emery has outperformed xG at all of his last four clubs, on both the attacking and defensive ends of the pitch.</em>
 :::
+
+All four clubs, with Emery as manager, have performed better than xG in both attack and defence. And there's an obvious point to be made, especially with respect to PSG and Arsenal: is this just about having better players? These are wealthy clubs that can sign better-than-average footballers in every position; it's no wonder that they will excel at whatever minutiae the xG models cannot capture.
+
+This is fair, so let's take a look at how these clubs have performed, relative to xG, with and without Unai Emery as manager during the study period:
 
 ```{r}
 library(dplyr)
@@ -141,6 +145,9 @@ gtsave(gt_tbl, filename = "emery_vs_other_managers_table.png", vwidth = 1200)
 gt_tbl
 ```
 
+Again, I want to reiterate that this is a measure of goals relative to xG - it does NOT measure whether the xG is high or low in the first place. But it is clear that Emery has done better, relative to xG, at each of the four clubs than all the other managers collectively. PSG and Arsenal have outperformed xG across all managers, whereas Aston Villa and Villarreal are close to neutral under non-Emery managers, backing up the hypothesis that wealth -> talent -> xG overperformance.
+
+So if we suspect star players may be driving some of the 'Emery effect', let's take a look at the goalscorers who have exceeded their xG by the most while playing for Emery teams between 2017 and 2025:
 
 ```{r}
 library(dplyr)
@@ -289,7 +296,9 @@ vwidth = 1200
 gt_tbl
 ```
 
-Goalkeeper psxG.
+There are some familiar names on the list, but only Neymar and Lacazette were able to sustain their finishing prowess under different managers. Edinson Cavani underperformed his xG in subsequent seasons with PSG, Man Utd and Valencia. Ollie Watkins has established himself as a star striker at Emery's Villa, but had previously been seen as a hard worker but poor finisher. Alex Baena, meanwhile, experienced an outrageous run of finishing in his short time playing for Emery's Villarreal, scoring 9 times from only 37 shots and gaining 6.31 goals; yet without Emery, his shooting boots deserted him, completely negating the hot run (-6.45 goals).
+
+The defensive end of the pitch is a bit harder to measure directly, but we can take a look at goalkeepers. Post-shot expected goals (PSxG) models the probability of a goal being scored after the ball is struck (an off-target shot therefore being worth zero) and we can look at a goalkeeper's "goals prevented" by subtracting the actual number of goals conceded from their total PSxG.
 
 ```{r}
 library(dplyr)
@@ -424,6 +433,9 @@ vwidth = 1200
 
 gt_tbl
 ```
+
+
+
 
 Emery by game state versus all by game state.
 

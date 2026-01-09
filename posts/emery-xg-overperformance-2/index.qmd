@@ -3,9 +3,9 @@ title: "Unai Emery: the xG whisperer"
 draft: true
 image: emery2.jpg
 author: "John Knight"
-date: 2026-01-07
+date: 2026-01-09
 date-format: "D MMMM YYYY"
-description: "Part two: Breaking down Emery by club, and looking at forward keepers, and game state."
+description: "Part two: Breaking down Emery by club, and looking at forwards, keepers, and game state."
 format:
   html:
     title-block-categories: true
@@ -22,7 +22,7 @@ editor: source
 
 ---
 
-This is a multi-part look at Unai Emery and his apparent habit of outperforming expected goals (xG). In part one, I showed that xG is a more predictive statistic than points or goal difference, and that Emery ranks third among all managers for xG overperformance during the study period (2017-2018 to 2024-2025). You can find part one [here](https://johnknightstats.com/posts/emery-xg-overperformance/).
+This is part two of a multi-part look at Unai Emery and his apparent habit of outperforming expected goals (xG). In [part one](https://johnknightstats.com/posts/emery-xg-overperformance/), I showed that xG is a more predictive statistic than points or goal difference, and that Emery ranks third among all managers for xG overperformance during the study period (2017-2018 to 2024-2025).
 
 Next, I want to drill down on Emery's stints at PSG, Arsenal, Villarreal and Aston Villa during those seasons. We know that his teams, cumulatively, have scored more than their expected goals for, and conceded fewer than their expected goals against. But where have these gains come from?
 
@@ -189,13 +189,13 @@ table_df <- df %>%
 transmute(
 Player = full_name,
 `Shots (Emery)` = as.integer(emery_shots),
-`xG overperformance (Emery)` = round(emery_goals_minus_xg, 2),
+`Total xG overperformance (Emery)` = round(emery_goals_minus_xg, 2),
 `per shot (Emery)` = round(emery_goals_minus_xg_per_shot, 3),
 `Shots (Other)` = as.integer(not_emery_shots),
-`xG overperformance (Other)` = round(not_emery_goals_minus_xg, 2),
+`Total xG overperformance (Other)` = round(not_emery_goals_minus_xg, 2),
 `per shot (Other)` = round(not_emery_goals_minus_xg_per_shot, 3)
 ) %>%
-arrange(desc(`xG overperformance (Emery)`), Player) %>%
+arrange(desc(`Total xG overperformance (Emery)`), Player) %>%
 slice_head(n = 10)
 
 # -----------------------------
@@ -259,10 +259,10 @@ table.font.size = px(14)
 cols_width(
 Player ~ pct(30),
 `Shots (Emery)` ~ px(105),
-`xG overperformance (Emery)` ~ px(170),
+`Total xG overperformance (Emery)` ~ px(170),
 `per shot (Emery)` ~ px(135),
 `Shots (Other)` ~ px(105),
-`xG overperformance (Other)` ~ px(170),
+`Total xG overperformance (Other)` ~ px(170),
 `per shot (Other)` ~ px(135)
 ) %>%
 cols_align(align = "left", columns = Player) %>%
@@ -272,8 +272,8 @@ columns = -Player
 ) %>%
 fmt_number(
 columns = c(
-`xG overperformance (Emery)`,
-`xG overperformance (Other)`
+`Total xG overperformance (Emery)`,
+`Total xG overperformance (Other)`
 ),
 decimals = 2
 ) %>%
@@ -296,7 +296,7 @@ vwidth = 1200
 gt_tbl
 ```
 
-There are some familiar names on the list, but only Neymar and Lacazette were able to sustain their finishing prowess under different managers. Edinson Cavani underperformed his xG in subsequent seasons with PSG, Man Utd and Valencia. Ollie Watkins has established himself as a star striker at Emery's Villa, but had previously been seen as a hard worker but poor finisher. Alex Baena, meanwhile, experienced an outrageous run of finishing in his short time playing for Emery's Villarreal, scoring 9 times from only 37 shots and gaining 6.31 goals; yet without Emery, his shooting boots deserted him, completely negating the hot run (-6.45 goals).
+There are some familiar names on the list, but only Neymar and Lacazette were able to sustain their finishing prowess under different managers. Edinson Cavani underperformed his xG in subsequent seasons with PSG, Man Utd and Valencia. Ollie Watkins has established himself as a star striker at Emery's Villa, but had previously been seen as a hard worker but poor finisher. Alex Baena, meanwhile, experienced an outrageous run of finishing in his short time playing for Emery's Villarreal, scoring 9 times from only 37 shots and gaining 6.31 goals; yet without Emery, his shooting boots deserted him, completely negating the hot run (-6.45 goals). Yeremi Pino, now of Crystal Palace, experience a similar turnaround (+3.92 to -6.18).
 
 The defensive end of the pitch is a bit harder to measure directly, but we can take a look at goalkeepers. Post-shot expected goals (PSxG) models the probability of a goal being scored after the ball is struck (an off-target shot therefore being worth zero) and we can look at a goalkeeper's "goals prevented" by subtracting the actual number of goals conceded from their total PSxG.
 
@@ -434,14 +434,143 @@ vwidth = 1200
 gt_tbl
 ```
 
+Discuss the results.
 
-
-
-Emery by game state versus all by game state.
-
-*side by side bar chart*
+::: {.centered-block}
+<img src="viz/emery_vs_all_by_game_state_overperf.png"/>
+<em>Emery's attacking overperformance comes predominantly in close games. Defensively, he outperforms xG in all game states.</em>
+:::
 
 Mixed effects regression model.
+
+::: {.centered-block}
+<img src="viz/emery_regression_attack.png"/>
+<em>After adjusting for team strengths, Emery's xG overperformance in attack is most prominent when trailing by one goal.</em>
+:::
+
+::: {.centered-block}
+<img src="viz/emery_regression_defence.png"/>
+<em>In defence, Emery's teams overperform xG when trailing by all scorelines.</em>
+:::
+
+
+Mention Emery points compared to his GD, and the number of one-goal wins this season. Is this a thing?
+
+```{r}
+library(dplyr)
+library(readr)
+library(gt)
+
+# -----------------------------
+
+# Read + prep
+
+# -----------------------------
+
+df <- read_csv(
+"data/one_goal_wins.csv",
+show_col_types = FALSE
+)
+
+# Defensive check (fail loudly if schema changes)
+
+required_cols <- c(
+"team",
+"wins",
+"one_goal_wins"
+)
+
+missing <- setdiff(required_cols, names(df))
+if (length(missing) > 0) {
+stop("Missing required columns: ", paste(missing, collapse = ", "))
+}
+
+table_df <- df %>%
+transmute(
+Team = team,
+`One-goal wins` = as.integer(one_goal_wins),
+`Total wins` = as.integer(wins)
+) %>%
+arrange(desc(`One-goal wins`), desc(`Total wins`), Team)
+
+# Add 'Played' column
+table_df$Played <- rep(21, 20)
+table_df <- table_df %>% select(Team, Played, `One-goal wins`, `Total wins`)
+
+# -----------------------------
+
+# Export for Datawrapper
+
+# -----------------------------
+
+write_csv(
+table_df,
+"data/one_goal_wins_current_season_datawrapper.csv"
+)
+
+# -----------------------------
+
+# Table (Quarto article)
+
+# -----------------------------
+
+gt_tbl <- table_df %>%
+gt() %>%
+tab_header(
+title = "Most one-goal wins, 2025-2026 Premier League"
+) %>%
+tab_style(
+style = list(
+cell_fill(color = "#f2f2f2"),
+cell_text(weight = "bold")
+),
+locations = cells_column_labels(everything())
+) %>%
+tab_style(
+style = cell_text(size = px(11), style = "italic", align = "left"),
+locations = cells_source_notes()
+) %>%
+tab_options(
+table.border.top.style = "solid",
+table.border.top.width = px(1),
+table.border.top.color = "#d9d9d9",
+
+heading.border.bottom.style = "solid",
+heading.border.bottom.width = px(1),
+heading.border.bottom.color = "#d9d9d9",
+
+column_labels.border.bottom.style = "solid",
+column_labels.border.bottom.width = px(2),
+column_labels.border.bottom.color = "#d0d0d0",
+
+data_row.padding = px(6),
+heading.padding = px(6),
+column_labels.padding = px(6),
+
+table.border.bottom.style = "none",
+table.font.size = px(14)
+
+) %>%
+cols_width(
+Team ~ pct(45),
+Played ~ px(140),
+`One-goal wins` ~ px(160),
+`Total wins` ~ px(140)
+) %>%
+cols_align(align = "left", columns = Team) %>%
+cols_align(align = "right", columns = -Team)
+
+# Optional PNG export (useful for Substack / social)
+
+gtsave(
+gt_tbl,
+filename = "one_goal_wins_current_season.png",
+vwidth = 1000
+)
+
+gt_tbl
+
+```
 
 GD to PPG model (linear).
 

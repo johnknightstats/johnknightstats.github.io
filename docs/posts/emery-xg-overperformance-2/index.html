@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-01-09">
-<meta name="description" content="Part two: Breaking down Emery by club, and looking at forwards, keepers, and game state.">
+<meta name="dcterms.date" content="2026-01-10">
+<meta name="description" content="Part two: Breaking down Emery’s xG performance by club, and looking at player effects and game state.">
 
 <title>Unai Emery: the xG whisperer – John Knight Stats</title>
 <style>
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta name="quarto:status" content="draft">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -246,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -315,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Part two: Breaking down Emery by club, and looking at forwards, keepers, and game state.
+    Part two: Breaking down Emery’s xG performance by club, and looking at player effects and game state.
   </div>
 </div>
 
@@ -332,7 +331,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">9 January 2026</p>
+      <p class="date">10 January 2026</p>
     </div>
   </div>
   
@@ -344,33 +343,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is part two of a multi-part look at Unai Emery and his apparent habit of outperforming expected goals (xG). In <a href="https://johnknightstats.com/posts/emery-xg-overperformance/">part one</a>, I showed that xG is a more predictive statistic than points or goal difference, and that Emery ranks third among all managers for xG overperformance during the study period (2017-2018 to 2024-2025).</p>
-<p>Next, I want to drill down on Emery’s stints at PSG, Arsenal, Villarreal and Aston Villa during those seasons. We know that his teams, cumulatively, have scored more than their expected goals for, and conceded fewer than their expected goals against. But where have these gains come from?</p>
-<p>An obvious starting point is to break it down by club. Here we can see a breakdown of Emery’s xG overperformance per game with each of the four clubs, with attacking overperformance in blue and defensive overperformance in orange.</p>
+<p>This is part two of a multi-part look at <strong>Unai Emery</strong> and his apparent habit of outperforming expected goals (xG). In <a href="https://johnknightstats.com/posts/emery-xg-overperformance/">part one</a>, I showed that xG is a more predictive statistic than points or goal difference, and that Emery ranks third among all managers for xG overperformance during the study period (2017-2018 to 2024-2025).</p>
+<p>Next, I want to drill down on Emery’s stints at PSG, Arsenal, Villarreal and Aston Villa during those seasons. We know from part one that his teams, cumulatively, have scored more than their expected goals for, and conceded fewer than their expected goals against. But where have these gains come from?</p>
+<p>An obvious starting point is to break it down by club. Here we can see a breakdown of Emery’s total xG overperformance at each of the four clubs, with attacking overperformance in blue and defensive overperformance in orange.</p>
 <div class="centered-block">
-<p><img src="viz/emery_xg_overperformance_totals.png"> <em>Emery has outperformed xG at all of his last four clubs, on both the attacking and defensive ends of the pitch.</em></p>
+<p><img src="viz/emery_xg_overperformance_totals.png"></p>
 </div>
-<p>All four clubs, with Emery as manager, have performed better than xG in both attack and defence. And there’s an obvious point to be made, especially with respect to PSG and Arsenal: is this just about having better players? These are wealthy clubs that can sign better-than-average footballers in every position; it’s no wonder that they will excel at whatever minutiae the xG models cannot capture.</p>
-<p>This is fair, so let’s take a look at how these clubs have performed, relative to xG, with and without Unai Emery as manager during the study period:</p>
+<p>All four clubs, with Emery as manager, have performed better than their xG in both attack and defence. The largest overperformance came at Aston Villa where, up to the end of the 2024-2025 season, Emery outperformed xG by 31.7 goals. With both Villa and PSG, the majority of overperformance came in attack, whereas at Villarreal the majority was on the defensive end. At Arsenal it was close to a 50:50 split.</p>
+<p>There is an obvious question to be raised, especially with respect to PSG and Arsenal: is this just about having better players? These are wealthy clubs that can sign better-than-average footballers in every position; it’s no wonder that they will excel at whatever aspects of the game the xG models cannot capture.</p>
+<p>This is a fair point, so let’s take a look at how these clubs have performed, relative to xG, with and without Unai Emery as manager during the study period:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="katbvatyqq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#katbvatyqq table {
+<div id="aweczzdeue" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aweczzdeue table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#katbvatyqq thead, #katbvatyqq tbody, #katbvatyqq tfoot, #katbvatyqq tr, #katbvatyqq td, #katbvatyqq th {
+#aweczzdeue thead, #aweczzdeue tbody, #aweczzdeue tfoot, #aweczzdeue tr, #aweczzdeue td, #aweczzdeue th {
   border-style: none;
 }
 
-#katbvatyqq p {
+#aweczzdeue p {
   margin: 0;
   padding: 0;
 }
 
-#katbvatyqq .gt_table {
+#aweczzdeue .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -396,12 +396,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_caption {
+#aweczzdeue .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#katbvatyqq .gt_title {
+#aweczzdeue .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -413,7 +413,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#katbvatyqq .gt_subtitle {
+#aweczzdeue .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -425,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#katbvatyqq .gt_heading {
+#aweczzdeue .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -437,13 +437,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_bottom_border {
+#aweczzdeue .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: #D9D9D9;
 }
 
-#katbvatyqq .gt_col_headings {
+#aweczzdeue .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -458,7 +458,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_col_heading {
+#aweczzdeue .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -478,7 +478,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#katbvatyqq .gt_column_spanner_outer {
+#aweczzdeue .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -490,15 +490,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#katbvatyqq .gt_column_spanner_outer:first-child {
+#aweczzdeue .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#katbvatyqq .gt_column_spanner_outer:last-child {
+#aweczzdeue .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#katbvatyqq .gt_column_spanner {
+#aweczzdeue .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D0D0D0;
@@ -510,11 +510,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#katbvatyqq .gt_spanner_row {
+#aweczzdeue .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#katbvatyqq .gt_group_heading {
+#aweczzdeue .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -540,7 +540,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#katbvatyqq .gt_empty_group_heading {
+#aweczzdeue .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -555,15 +555,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#katbvatyqq .gt_from_md > :first-child {
+#aweczzdeue .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#katbvatyqq .gt_from_md > :last-child {
+#aweczzdeue .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#katbvatyqq .gt_row {
+#aweczzdeue .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -582,7 +582,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#katbvatyqq .gt_stub {
+#aweczzdeue .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -595,7 +595,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#katbvatyqq .gt_stub_row_group {
+#aweczzdeue .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -609,15 +609,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#katbvatyqq .gt_row_group_first td {
+#aweczzdeue .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#katbvatyqq .gt_row_group_first th {
+#aweczzdeue .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#katbvatyqq .gt_summary_row {
+#aweczzdeue .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -627,16 +627,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#katbvatyqq .gt_first_summary_row {
+#aweczzdeue .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_first_summary_row.thick {
+#aweczzdeue .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#katbvatyqq .gt_last_summary_row {
+#aweczzdeue .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -646,7 +646,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_grand_summary_row {
+#aweczzdeue .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -656,7 +656,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#katbvatyqq .gt_first_grand_summary_row {
+#aweczzdeue .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -666,7 +666,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_last_grand_summary_row_top {
+#aweczzdeue .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -676,11 +676,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_striped {
+#aweczzdeue .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#katbvatyqq .gt_table_body {
+#aweczzdeue .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -689,7 +689,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_footnotes {
+#aweczzdeue .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -703,7 +703,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_footnote {
+#aweczzdeue .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -712,7 +712,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#katbvatyqq .gt_sourcenotes {
+#aweczzdeue .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -726,7 +726,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#katbvatyqq .gt_sourcenote {
+#aweczzdeue .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -734,72 +734,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#katbvatyqq .gt_left {
+#aweczzdeue .gt_left {
   text-align: left;
 }
 
-#katbvatyqq .gt_center {
+#aweczzdeue .gt_center {
   text-align: center;
 }
 
-#katbvatyqq .gt_right {
+#aweczzdeue .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#katbvatyqq .gt_font_normal {
+#aweczzdeue .gt_font_normal {
   font-weight: normal;
 }
 
-#katbvatyqq .gt_font_bold {
+#aweczzdeue .gt_font_bold {
   font-weight: bold;
 }
 
-#katbvatyqq .gt_font_italic {
+#aweczzdeue .gt_font_italic {
   font-style: italic;
 }
 
-#katbvatyqq .gt_super {
+#aweczzdeue .gt_super {
   font-size: 65%;
 }
 
-#katbvatyqq .gt_footnote_marks {
+#aweczzdeue .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#katbvatyqq .gt_asterisk {
+#aweczzdeue .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#katbvatyqq .gt_indent_1 {
+#aweczzdeue .gt_indent_1 {
   text-indent: 5px;
 }
 
-#katbvatyqq .gt_indent_2 {
+#aweczzdeue .gt_indent_2 {
   text-indent: 10px;
 }
 
-#katbvatyqq .gt_indent_3 {
+#aweczzdeue .gt_indent_3 {
   text-indent: 15px;
 }
 
-#katbvatyqq .gt_indent_4 {
+#aweczzdeue .gt_indent_4 {
   text-indent: 20px;
 }
 
-#katbvatyqq .gt_indent_5 {
+#aweczzdeue .gt_indent_5 {
   text-indent: 25px;
 }
 
-#katbvatyqq .katex-display {
+#aweczzdeue .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#katbvatyqq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#aweczzdeue div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -855,7 +855,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
-<td colspan="5" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">xG overperformance = goals − expected goals.</td>
+<td colspan="5" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">xG overperformance = goals minus expected goals.</td>
 </tr>
 </tfoot>
 
@@ -864,27 +864,30 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Again, I want to reiterate that this is a measure of goals relative to xG - it does NOT measure whether the xG is high or low in the first place. But it is clear that Emery has done better, relative to xG, at each of the four clubs than all the other managers collectively. PSG and Arsenal have outperformed xG across all managers, whereas Aston Villa and Villarreal are close to neutral under non-Emery managers, backing up the hypothesis that wealth -&gt; talent -&gt; xG overperformance.</p>
-<p>So if we suspect star players may be driving some of the ‘Emery effect’, let’s take a look at the goalscorers who have exceeded their xG by the most while playing for Emery teams between 2017 and 2025:</p>
+<p>Again, I want to reiterate that this is a measure of goals relative to xG - it does NOT measure whether the xG is high or low in the first place. Just because Emery outperformed his xG by an average of 0.3 at Arsenal, does not mean he got better results overall than the managers that outperformed their xG by an average of 0.201.</p>
+<p>Nonetheless, it is clear that Emery has done better, relative to xG, at each of the four clubs than all the other managers collectively. It is also evident that PSG and Arsenal have outperformed xG (by 0.309 and 0.201 per game, respectively, without Emery) across all managers, whereas Aston Villa and Villarreal are close to neutral under non-Emery managers, backing up the hypothesis that wealth begets talent which begets xG overperformance.</p>
+<section id="is-it-just-about-having-better-players" class="level2">
+<h2 class="anchored" data-anchor-id="is-it-just-about-having-better-players">Is it just about having better players?</h2>
+<p>If we suspect that star players may be driving some of the ‘Emery effect’, let’s take a look at the 10 goalscorers who have exceeded their xG by the most while playing for Emery teams between 2017 and 2025:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="zbxitvghyi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zbxitvghyi table {
+<div id="aseaznates" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aseaznates table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zbxitvghyi thead, #zbxitvghyi tbody, #zbxitvghyi tfoot, #zbxitvghyi tr, #zbxitvghyi td, #zbxitvghyi th {
+#aseaznates thead, #aseaznates tbody, #aseaznates tfoot, #aseaznates tr, #aseaznates td, #aseaznates th {
   border-style: none;
 }
 
-#zbxitvghyi p {
+#aseaznates p {
   margin: 0;
   padding: 0;
 }
 
-#zbxitvghyi .gt_table {
+#aseaznates .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -910,12 +913,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_caption {
+#aseaznates .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zbxitvghyi .gt_title {
+#aseaznates .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -927,7 +930,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#zbxitvghyi .gt_subtitle {
+#aseaznates .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -939,7 +942,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#zbxitvghyi .gt_heading {
+#aseaznates .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -951,13 +954,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_bottom_border {
+#aseaznates .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: #D9D9D9;
 }
 
-#zbxitvghyi .gt_col_headings {
+#aseaznates .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -972,7 +975,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_col_heading {
+#aseaznates .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -992,7 +995,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#zbxitvghyi .gt_column_spanner_outer {
+#aseaznates .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1004,15 +1007,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#zbxitvghyi .gt_column_spanner_outer:first-child {
+#aseaznates .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zbxitvghyi .gt_column_spanner_outer:last-child {
+#aseaznates .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zbxitvghyi .gt_column_spanner {
+#aseaznates .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D0D0D0;
@@ -1024,11 +1027,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#zbxitvghyi .gt_spanner_row {
+#aseaznates .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zbxitvghyi .gt_group_heading {
+#aseaznates .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1054,7 +1057,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#zbxitvghyi .gt_empty_group_heading {
+#aseaznates .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1069,15 +1072,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#zbxitvghyi .gt_from_md > :first-child {
+#aseaznates .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zbxitvghyi .gt_from_md > :last-child {
+#aseaznates .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zbxitvghyi .gt_row {
+#aseaznates .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -1096,7 +1099,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#zbxitvghyi .gt_stub {
+#aseaznates .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1109,7 +1112,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zbxitvghyi .gt_stub_row_group {
+#aseaznates .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1123,15 +1126,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#zbxitvghyi .gt_row_group_first td {
+#aseaznates .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zbxitvghyi .gt_row_group_first th {
+#aseaznates .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zbxitvghyi .gt_summary_row {
+#aseaznates .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1141,16 +1144,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zbxitvghyi .gt_first_summary_row {
+#aseaznates .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_first_summary_row.thick {
+#aseaznates .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zbxitvghyi .gt_last_summary_row {
+#aseaznates .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1160,7 +1163,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_grand_summary_row {
+#aseaznates .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1170,7 +1173,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zbxitvghyi .gt_first_grand_summary_row {
+#aseaznates .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1180,7 +1183,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_last_grand_summary_row_top {
+#aseaznates .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1190,11 +1193,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_striped {
+#aseaznates .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zbxitvghyi .gt_table_body {
+#aseaznates .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1203,7 +1206,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_footnotes {
+#aseaznates .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1217,7 +1220,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_footnote {
+#aseaznates .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1226,7 +1229,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zbxitvghyi .gt_sourcenotes {
+#aseaznates .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1240,7 +1243,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zbxitvghyi .gt_sourcenote {
+#aseaznates .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1248,72 +1251,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zbxitvghyi .gt_left {
+#aseaznates .gt_left {
   text-align: left;
 }
 
-#zbxitvghyi .gt_center {
+#aseaznates .gt_center {
   text-align: center;
 }
 
-#zbxitvghyi .gt_right {
+#aseaznates .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zbxitvghyi .gt_font_normal {
+#aseaznates .gt_font_normal {
   font-weight: normal;
 }
 
-#zbxitvghyi .gt_font_bold {
+#aseaznates .gt_font_bold {
   font-weight: bold;
 }
 
-#zbxitvghyi .gt_font_italic {
+#aseaznates .gt_font_italic {
   font-style: italic;
 }
 
-#zbxitvghyi .gt_super {
+#aseaznates .gt_super {
   font-size: 65%;
 }
 
-#zbxitvghyi .gt_footnote_marks {
+#aseaznates .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zbxitvghyi .gt_asterisk {
+#aseaznates .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zbxitvghyi .gt_indent_1 {
+#aseaznates .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zbxitvghyi .gt_indent_2 {
+#aseaznates .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zbxitvghyi .gt_indent_3 {
+#aseaznates .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zbxitvghyi .gt_indent_4 {
+#aseaznates .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zbxitvghyi .gt_indent_5 {
+#aseaznates .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zbxitvghyi .katex-display {
+#aseaznates .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zbxitvghyi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#aseaznates div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1330,7 +1333,7 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="gt_heading header">
-<td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border">Top xG overperformers under Unai Emery (2017-2025)</td>
+<td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border">Greatest total xG overperformers under Unai Emery (2017-2025)</td>
 </tr>
 <tr class="gt_col_headings even">
 <th id="Player" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Player</th>
@@ -1435,7 +1438,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
-<td colspan="7" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">xG overperformance = goals − expected goals.</td>
+<td colspan="7" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">xG overperformance = goals minus expected goals.</td>
 </tr>
 </tfoot>
 
@@ -1444,27 +1447,29 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>There are some familiar names on the list, but only Neymar and Lacazette were able to sustain their finishing prowess under different managers. Edinson Cavani underperformed his xG in subsequent seasons with PSG, Man Utd and Valencia. Ollie Watkins has established himself as a star striker at Emery’s Villa, but had previously been seen as a hard worker but poor finisher. Alex Baena, meanwhile, experienced an outrageous run of finishing in his short time playing for Emery’s Villarreal, scoring 9 times from only 37 shots and gaining 6.31 goals; yet without Emery, his shooting boots deserted him, completely negating the hot run (-6.45 goals). Yeremi Pino, now of Crystal Palace, experience a similar turnaround (+3.92 to -6.18).</p>
-<p>The defensive end of the pitch is a bit harder to measure directly, but we can take a look at goalkeepers. Post-shot expected goals (PSxG) models the probability of a goal being scored after the ball is struck (an off-target shot therefore being worth zero) and we can look at a goalkeeper’s “goals prevented” by subtracting the actual number of goals conceded from their total PSxG.</p>
+<p>Leading the way is Jhon Durán, who seemed to score everything he looked at in the first half of the 2024-2025 season, including the incredible 35-yard winner against Bayern Munich. Because Durán arrived at Villa from MLS and left to Saudi Arabia, we do not have any non-Emery results for him in the dataset for comparison.</p>
+<p>Of the 10 names on the list, only Neymar and Alexandre Lacazette recorded a positive xG overperformance under other managers. Edinson Cavani underperformed his xG in subsequent seasons with PSG, Man Utd and Valencia. Ollie Watkins has now established himself as a star striker at Emery’s Villa, but had previously been seen by many as a hard-working forward but a mediocre finisher.</p>
+<p>Alex Baena, meanwhile, experienced an outrageous run of finishing in his short time playing for Emery’s Villarreal, scoring 9 times from only 37 shots and gaining 6.31 goals over xG; yet without Emery, his shooting boots deserted him, completely negating the hot run (-6.45 goals). Yeremy Pino, now of Crystal Palace, experience a similar turnaround (+3.92 to -6.18) as did Gerard Moreno (+4.58 to -4.69).</p>
+<p>The impact of defenders on opposition finishing is a bit harder to quantify, but we can take a look at goalkeepers. <strong>Post-shot expected goals</strong> (PSxG) can be used to model the probability of a goal being scored after the ball is struck (an off-target shot therefore being worth zero) and we can calculate a goalkeeper’s “goals prevented” by subtracting the actual number of goals conceded from their total PSxG. The following table contains all goalkeepers who played more than 5 games for Emery’s teams during the study period.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="gfggybophv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gfggybophv table {
+<div id="gdzbfvgcmq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gdzbfvgcmq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gfggybophv thead, #gfggybophv tbody, #gfggybophv tfoot, #gfggybophv tr, #gfggybophv td, #gfggybophv th {
+#gdzbfvgcmq thead, #gdzbfvgcmq tbody, #gdzbfvgcmq tfoot, #gdzbfvgcmq tr, #gdzbfvgcmq td, #gdzbfvgcmq th {
   border-style: none;
 }
 
-#gfggybophv p {
+#gdzbfvgcmq p {
   margin: 0;
   padding: 0;
 }
 
-#gfggybophv .gt_table {
+#gdzbfvgcmq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1490,12 +1495,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#gfggybophv .gt_caption {
+#gdzbfvgcmq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gfggybophv .gt_title {
+#gdzbfvgcmq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1507,7 +1512,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#gfggybophv .gt_subtitle {
+#gdzbfvgcmq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1519,7 +1524,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#gfggybophv .gt_heading {
+#gdzbfvgcmq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1531,13 +1536,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gfggybophv .gt_bottom_border {
+#gdzbfvgcmq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: #D9D9D9;
 }
 
-#gfggybophv .gt_col_headings {
+#gdzbfvgcmq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1552,7 +1557,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gfggybophv .gt_col_heading {
+#gdzbfvgcmq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1572,7 +1577,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#gfggybophv .gt_column_spanner_outer {
+#gdzbfvgcmq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1584,15 +1589,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#gfggybophv .gt_column_spanner_outer:first-child {
+#gdzbfvgcmq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gfggybophv .gt_column_spanner_outer:last-child {
+#gdzbfvgcmq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gfggybophv .gt_column_spanner {
+#gdzbfvgcmq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D0D0D0;
@@ -1604,11 +1609,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#gfggybophv .gt_spanner_row {
+#gdzbfvgcmq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gfggybophv .gt_group_heading {
+#gdzbfvgcmq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1634,7 +1639,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#gfggybophv .gt_empty_group_heading {
+#gdzbfvgcmq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1649,15 +1654,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#gfggybophv .gt_from_md > :first-child {
+#gdzbfvgcmq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gfggybophv .gt_from_md > :last-child {
+#gdzbfvgcmq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gfggybophv .gt_row {
+#gdzbfvgcmq .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -1676,7 +1681,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#gfggybophv .gt_stub {
+#gdzbfvgcmq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1689,7 +1694,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gfggybophv .gt_stub_row_group {
+#gdzbfvgcmq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1703,15 +1708,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#gfggybophv .gt_row_group_first td {
+#gdzbfvgcmq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gfggybophv .gt_row_group_first th {
+#gdzbfvgcmq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gfggybophv .gt_summary_row {
+#gdzbfvgcmq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1721,16 +1726,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gfggybophv .gt_first_summary_row {
+#gdzbfvgcmq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gfggybophv .gt_first_summary_row.thick {
+#gdzbfvgcmq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gfggybophv .gt_last_summary_row {
+#gdzbfvgcmq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1740,7 +1745,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gfggybophv .gt_grand_summary_row {
+#gdzbfvgcmq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1750,7 +1755,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gfggybophv .gt_first_grand_summary_row {
+#gdzbfvgcmq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1760,7 +1765,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#gfggybophv .gt_last_grand_summary_row_top {
+#gdzbfvgcmq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1770,11 +1775,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gfggybophv .gt_striped {
+#gdzbfvgcmq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gfggybophv .gt_table_body {
+#gdzbfvgcmq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1783,7 +1788,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gfggybophv .gt_footnotes {
+#gdzbfvgcmq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1797,7 +1802,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gfggybophv .gt_footnote {
+#gdzbfvgcmq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1806,7 +1811,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gfggybophv .gt_sourcenotes {
+#gdzbfvgcmq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1820,7 +1825,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gfggybophv .gt_sourcenote {
+#gdzbfvgcmq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1828,72 +1833,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gfggybophv .gt_left {
+#gdzbfvgcmq .gt_left {
   text-align: left;
 }
 
-#gfggybophv .gt_center {
+#gdzbfvgcmq .gt_center {
   text-align: center;
 }
 
-#gfggybophv .gt_right {
+#gdzbfvgcmq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gfggybophv .gt_font_normal {
+#gdzbfvgcmq .gt_font_normal {
   font-weight: normal;
 }
 
-#gfggybophv .gt_font_bold {
+#gdzbfvgcmq .gt_font_bold {
   font-weight: bold;
 }
 
-#gfggybophv .gt_font_italic {
+#gdzbfvgcmq .gt_font_italic {
   font-style: italic;
 }
 
-#gfggybophv .gt_super {
+#gdzbfvgcmq .gt_super {
   font-size: 65%;
 }
 
-#gfggybophv .gt_footnote_marks {
+#gdzbfvgcmq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gfggybophv .gt_asterisk {
+#gdzbfvgcmq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gfggybophv .gt_indent_1 {
+#gdzbfvgcmq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gfggybophv .gt_indent_2 {
+#gdzbfvgcmq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gfggybophv .gt_indent_3 {
+#gdzbfvgcmq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gfggybophv .gt_indent_4 {
+#gdzbfvgcmq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gfggybophv .gt_indent_5 {
+#gdzbfvgcmq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gfggybophv .katex-display {
+#gdzbfvgcmq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gfggybophv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gdzbfvgcmq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1933,6 +1938,15 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_right" headers="per match (Other)">−0.033</td>
 </tr>
 <tr class="even">
+<td class="gt_row gt_left" headers="Goalkeeper">Gerónimo Rulli</td>
+<td class="gt_row gt_right" headers="Matches (Emery)">70</td>
+<td class="gt_row gt_right" headers="Goals prevented (Emery)">−1.4</td>
+<td class="gt_row gt_right" headers="per match (Emery)">−0.020</td>
+<td class="gt_row gt_right" headers="Matches (Other)">125</td>
+<td class="gt_row gt_right" headers="Goals prevented (Other)">−10.0</td>
+<td class="gt_row gt_right" headers="per match (Other)">−0.080</td>
+</tr>
+<tr class="odd">
 <td class="gt_row gt_left" headers="Goalkeeper">Bernd Leno</td>
 <td class="gt_row gt_right" headers="Matches (Emery)">48</td>
 <td class="gt_row gt_right" headers="Goals prevented (Emery)">2.7</td>
@@ -1940,6 +1954,15 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_right" headers="Matches (Other)">213</td>
 <td class="gt_row gt_right" headers="Goals prevented (Other)">−12.3</td>
 <td class="gt_row gt_right" headers="per match (Other)">−0.058</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Goalkeeper">Sergio Asenjo</td>
+<td class="gt_row gt_right" headers="Matches (Emery)">43</td>
+<td class="gt_row gt_right" headers="Goals prevented (Emery)">−3.8</td>
+<td class="gt_row gt_right" headers="per match (Emery)">−0.088</td>
+<td class="gt_row gt_right" headers="Matches (Other)">101</td>
+<td class="gt_row gt_right" headers="Goals prevented (Other)">−2.3</td>
+<td class="gt_row gt_right" headers="per match (Other)">−0.023</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Goalkeeper">Alphonse Areola</td>
@@ -1960,24 +1983,6 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_right" headers="per match (Other)">−0.049</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Goalkeeper">Gerónimo Rulli</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">70</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">−1.4</td>
-<td class="gt_row gt_right" headers="per match (Emery)">−0.020</td>
-<td class="gt_row gt_right" headers="Matches (Other)">125</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−10.0</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.080</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Goalkeeper">Sergio Asenjo</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">43</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">−3.8</td>
-<td class="gt_row gt_right" headers="per match (Emery)">−0.088</td>
-<td class="gt_row gt_right" headers="Matches (Other)">101</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−2.3</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.023</td>
-</tr>
-<tr class="odd">
 <td class="gt_row gt_left" headers="Goalkeeper">Robin Olsen</td>
 <td class="gt_row gt_right" headers="Matches (Emery)">14</td>
 <td class="gt_row gt_right" headers="Goals prevented (Emery)">−4.7</td>
@@ -1988,7 +1993,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
-<td colspan="7" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">Goals prevented = PSxG − goals against. Minumum 5 matches played under Emery.</td>
+<td colspan="7" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">Goals prevented = PSxG minus goals against. Minumum 5 matches played under Emery.</td>
 </tr>
 </tfoot>
 
@@ -1997,37 +2002,47 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Discuss the results.</p>
+<p>Emiliano Martinez and Bernd Leno both experienced a similar difference between Emery and other managers - about 0.1 goals per match. Gerónimo Rulli’s difference was slightly lower (0.06) but still positive. Only Villarreal’s Sergio Asenjo, of goalkeepers playing 40+ games, had a worse performance relative to PSxG under Emery than under other managers.</p>
+</section>
+<section id="game-state" class="level2">
+<h2 class="anchored" data-anchor-id="game-state">Game state</h2>
+<p>Something that gets neglected when people throw around aggregated statistics is context. A team that is down by one goal has very different incentives than a team that is leading by one goal, and will vary their tactics accordingly. We can break down Unai Emery’s teams by game state (i.e.&nbsp;the number of goals they are leading or trailing by at any point in the match) and see how their xG overperformance varies.</p>
 <div class="centered-block">
-<p><img src="viz/emery_vs_all_by_game_state_overperf.png"> <em>Emery’s attacking overperformance comes predominantly in close games. Defensively, he outperforms xG in all game states.</em></p>
+<p><img src="viz/emery_vs_all_by_game_state_overperf.png"></p>
 </div>
-<p>Mixed effects regression model.</p>
+<p>In attack, Emery’s teams tend to overperform their xG per shot in close games (leading by one, trailing by one, or level). In defence, they tend to overperform across the board.</p>
+<p>The orange bars show the overall distribution for all teams: in attack, outperforming xG when leading, and underperforming xG when trailing. The trend is mirrored in defence, because one team’s attack is always another team’s defence. The implication here is intuitive: when you are chasing an equaliser, the opposition will keep more players back, and there will be less space to get shots off; players are more crowded and have to shoot quickly under duress. When leading, they are more likely to find themselves in friendly situations with fewer defenders back.</p>
+<p>But there’s an obvious problem with these overall aggregated statistics. Good teams tend to be ahead more often, and bad teams tend to be behind, so this is likely to bias the results.</p>
+<p>To account for this bias, I trained a regression model that used the log of the match odds (adjusted to remove the bookmaker’s overround) to represent the relative strengths of the two teams. The outcome variable was the difference between goals and xG on each shot, with game state, team strength and Emery as features along with interactions to capture different effects at each game state.</p>
 <div class="centered-block">
-<p><img src="viz/emery_regression_attack.png"> <em>After adjusting for team strengths, Emery’s xG overperformance in attack is most prominent when trailing by one goal.</em></p>
+<p><img src="viz/emery_regression_attack.png"></p>
 </div>
+<p>After accounting for team strength, Emery’s teams overperformed xG in attack by 0.024 goals per shot when trailing by one goal, and 0.013 per shot when leading by one goal. They actually underperformed in games that were not close (2 or more goal lead for either team).</p>
 <div class="centered-block">
-<p><img src="viz/emery_regression_defence.png"> <em>In defence, Emery’s teams overperform xG when trailing by all scorelines.</em></p>
+<p><img src="viz/emery_regression_defence.png"></p>
 </div>
-<p>Mention Emery points compared to his GD, and the number of one-goal wins this season. Is this a thing?</p>
+<p>In defence, the largest overperformance was when trailing by two goals (+0.035 goals per shot) followed by one goal (+0.026). So when Emery’s teams were <strong>behind by one goal</strong>, they outperformed xG by similar amounts both offensively and defensively, and this is the scoreline at which Emery seems to create the biggest edge.</p>
+<p>These amounts may sound small, but when you bear in mind that the average shot has an xG of around 0.11, a difference of 0.024 per shot would be more than a 20% increase in the number of goals.</p>
+<p>There is one aspect of Villa’s current season that I haven’t yet covered, and that is the conversion of a +9 goal difference into 42 points, the same number of points as Manchester City who have a goal difference of +26. The only way to do that is with a lot of <strong>one-goal wins</strong>, and unsurprisingly Villa lead the Premier League in that category with 10 one-goal wins after 21 matches played.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="schnswwzgy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#schnswwzgy table {
+<div id="mviztyirlf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mviztyirlf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#schnswwzgy thead, #schnswwzgy tbody, #schnswwzgy tfoot, #schnswwzgy tr, #schnswwzgy td, #schnswwzgy th {
+#mviztyirlf thead, #mviztyirlf tbody, #mviztyirlf tfoot, #mviztyirlf tr, #mviztyirlf td, #mviztyirlf th {
   border-style: none;
 }
 
-#schnswwzgy p {
+#mviztyirlf p {
   margin: 0;
   padding: 0;
 }
 
-#schnswwzgy .gt_table {
+#mviztyirlf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2053,12 +2068,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_caption {
+#mviztyirlf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#schnswwzgy .gt_title {
+#mviztyirlf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2070,7 +2085,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#schnswwzgy .gt_subtitle {
+#mviztyirlf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2082,7 +2097,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#schnswwzgy .gt_heading {
+#mviztyirlf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2094,13 +2109,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_bottom_border {
+#mviztyirlf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: #D9D9D9;
 }
 
-#schnswwzgy .gt_col_headings {
+#mviztyirlf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2115,7 +2130,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_col_heading {
+#mviztyirlf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2135,7 +2150,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#schnswwzgy .gt_column_spanner_outer {
+#mviztyirlf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2147,15 +2162,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#schnswwzgy .gt_column_spanner_outer:first-child {
+#mviztyirlf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#schnswwzgy .gt_column_spanner_outer:last-child {
+#mviztyirlf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#schnswwzgy .gt_column_spanner {
+#mviztyirlf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D0D0D0;
@@ -2167,11 +2182,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#schnswwzgy .gt_spanner_row {
+#mviztyirlf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#schnswwzgy .gt_group_heading {
+#mviztyirlf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2197,7 +2212,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#schnswwzgy .gt_empty_group_heading {
+#mviztyirlf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2212,15 +2227,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#schnswwzgy .gt_from_md > :first-child {
+#mviztyirlf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#schnswwzgy .gt_from_md > :last-child {
+#mviztyirlf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#schnswwzgy .gt_row {
+#mviztyirlf .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -2239,7 +2254,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#schnswwzgy .gt_stub {
+#mviztyirlf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2252,7 +2267,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#schnswwzgy .gt_stub_row_group {
+#mviztyirlf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2266,15 +2281,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#schnswwzgy .gt_row_group_first td {
+#mviztyirlf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#schnswwzgy .gt_row_group_first th {
+#mviztyirlf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#schnswwzgy .gt_summary_row {
+#mviztyirlf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2284,16 +2299,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#schnswwzgy .gt_first_summary_row {
+#mviztyirlf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_first_summary_row.thick {
+#mviztyirlf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#schnswwzgy .gt_last_summary_row {
+#mviztyirlf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2303,7 +2318,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_grand_summary_row {
+#mviztyirlf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2313,7 +2328,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#schnswwzgy .gt_first_grand_summary_row {
+#mviztyirlf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2323,7 +2338,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_last_grand_summary_row_top {
+#mviztyirlf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2333,11 +2348,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_striped {
+#mviztyirlf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#schnswwzgy .gt_table_body {
+#mviztyirlf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2346,7 +2361,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_footnotes {
+#mviztyirlf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2360,7 +2375,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_footnote {
+#mviztyirlf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2369,7 +2384,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#schnswwzgy .gt_sourcenotes {
+#mviztyirlf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2383,7 +2398,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#schnswwzgy .gt_sourcenote {
+#mviztyirlf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2391,72 +2406,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#schnswwzgy .gt_left {
+#mviztyirlf .gt_left {
   text-align: left;
 }
 
-#schnswwzgy .gt_center {
+#mviztyirlf .gt_center {
   text-align: center;
 }
 
-#schnswwzgy .gt_right {
+#mviztyirlf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#schnswwzgy .gt_font_normal {
+#mviztyirlf .gt_font_normal {
   font-weight: normal;
 }
 
-#schnswwzgy .gt_font_bold {
+#mviztyirlf .gt_font_bold {
   font-weight: bold;
 }
 
-#schnswwzgy .gt_font_italic {
+#mviztyirlf .gt_font_italic {
   font-style: italic;
 }
 
-#schnswwzgy .gt_super {
+#mviztyirlf .gt_super {
   font-size: 65%;
 }
 
-#schnswwzgy .gt_footnote_marks {
+#mviztyirlf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#schnswwzgy .gt_asterisk {
+#mviztyirlf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#schnswwzgy .gt_indent_1 {
+#mviztyirlf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#schnswwzgy .gt_indent_2 {
+#mviztyirlf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#schnswwzgy .gt_indent_3 {
+#mviztyirlf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#schnswwzgy .gt_indent_4 {
+#mviztyirlf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#schnswwzgy .gt_indent_5 {
+#mviztyirlf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#schnswwzgy .katex-display {
+#mviztyirlf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#schnswwzgy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mviztyirlf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2606,15 +2621,46 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>GD to PPG model (linear).</p>
-<p><em>scatterplot</em></p>
-<p>Emery versus predicted points.</p>
-<p><em>emery stints csv</em></p>
-<p>Emery scoreline distribution.</p>
-<p><em>column charts</em></p>
-<p>Conclusion: Exceeding xG yes, exceeding GD no. Players, maybe. Introduce next part: How predictive is this? Build a model respecting chronology, and validate by using it to predict xG overperformance this season.</p>
+<p>So is this also a part of Emery’s repertoire? It is not unreasonable to suppose that a manager might set up his team in such a way that they play conservatively with the lead and aggressively without it, increasing the chance of winning by exactly one goal and earning a greater number of points than the team’s goal difference would imply. If that is the case with Emery then it should show up in his results in previous seasons across each of his clubs.</p>
+<p>I entered the final points and goal difference for each team in each season of the study period and as you can see below, the relationship is linear. I have plotted the GDPG and PPG for Emery’s stints at his four clubs, and while Aston Villa and Arsenal lie above the line, Villarreal and PSG lie underneath. So it doesn’t seem like Emery is able to consistently overshoot his goal difference.</p>
+<div class="centered-block">
+<p><img src="viz/emery_ppg_vs_gdpg.png"></p>
+</div>
+<p>We can also look at Emery’s previous seasons to see whether he really does have an unusual number of one-goal wins. The side-by-side column charts below compare the score distribution of Emery’s teams alongside the distribution of teams in a similar bin of overall goal difference per game. Emery actually had <em>fewer</em> one-goal wins than expected at PSG, Arsenal and Villarreal; only with Aston Villa did he exceed the expected number of one-goal wins.</p>
+<div class="centered-block">
+<p><img src="viz/emery_scoreline_distribution_stints.png"></p>
+</div>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<p>In part two, we have learned the following:</p>
+<ul>
+<li>All of Unai Emery’s four clubs in the study period overperformed their xG in both attack and defence.</li>
+<li>Emery overperformed xG <em>more</em> than the same teams did under other managers.</li>
+<li>Players who were hot finishers under Emery did not necessarily do the same under other managers.</li>
+<li>Emery’s largest xG overperformance came when trailing by one goal.</li>
+<li>There is no evidence to suggest Emery can consistently record one-goal wins and turn GD into excessive points.</li>
+</ul>
+<p>Next up, in part three, I will try to answer the most important question: is any of this predictive? Can we expect Emery’s teams to keep doing this, or is it just statistical noise? And I will take a look at the match statistics from Emery’s teams to see if there are any aspects of his tactics that stand out.</p>
+<div class="data-footer">
+<p><strong>Data Sources</strong><br>
+I gather match data from a variety of public sources. Please check out these excellent websites:</p>
+<ul>
+<li><a href="https://clubelo.com">Club Elo Ratings</a></li>
+<li><a href="https://www.espn.com/soccer/">ESPN</a></li>
+<li><a href="https://fbref.com">FBref</a></li>
+<li><a href="https://fotmob.com">FotMob</a></li>
+<li><a href="https://transfermarkt.com">Transfermarkt</a></li>
+<li><a href="https://understat.com">Understat</a></li>
+<li><a href="https://whoscored.com">WhoScored</a></li>
+<li><a href="http://eloratings.net/">World Football Elo Ratings</a></li>
+</ul>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+</div>
+<p>© 2025 John Knight. All rights reserved.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

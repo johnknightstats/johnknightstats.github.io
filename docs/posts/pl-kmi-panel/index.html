@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-01-05">
-<meta name="description" content="Part one: Why should anyone care about xG, and which managers consistently outperform xG?">
+<meta name="dcterms.date" content="2026-01-13">
+<meta name="description" content="Examining the futility of the Premier League’s Key Match Incident Panel using Bayesian probability.">
 
-<title>Unai Emery: the xG whisperer – John Knight Stats</title>
+<title>Are referees judged harshly with respect to VAR? – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,36 +75,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="quarto:status" content="draft">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -274,7 +246,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -331,19 +303,17 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unai Emery: the xG whisperer</h1>
+<h1 class="title">Are referees judged harshly with respect to VAR?</h1>
   <div class="quarto-categories">
     <div class="quarto-category">football</div>
     <div class="quarto-category">statistics</div>
-    <div class="quarto-category">Unai Emery</div>
-    <div class="quarto-category">Aston Villa</div>
     <div class="quarto-category">Premier League</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Part one: Why should anyone care about xG, and which managers consistently outperform xG?
+    Examining the futility of the Premier League’s Key Match Incident Panel using Bayesian probability.
   </div>
 </div>
 
@@ -360,7 +330,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 January 2026</p>
+      <p class="date">13 January 2026</p>
     </div>
   </div>
   
@@ -372,46 +342,50 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Aston Villa</strong> are having an incredible season. Their first four Premier League games resulted in two points and no goals. They followed that up with a stinker at Sunderland where they struggled to a draw against a team that had 10 men for an hour. At that stage, a relegation battle looked more likely than a European spot - let alone a title challenge.</p>
-<p>And then they embarked on a truly absurd run of results: 17 wins from their next 20 games in all competitions, including a sequence of nine consecutive one-goal wins. Villa’s title hopes took a huge blow with the recent 4-1 thrashing at Arsenal, but the fact they were even in the title conversation was a ridiculous turn of events.</p>
-<p>Now, anyone who has taken the slightest glance at the underlying statistics of this year’s Premier League will be aware that Villa have been sustaining a monumental overperformance relative to <strong>expected goals</strong> (xG). After 20 games, they have the 2nd-most points, joint with Man City, but only the 14th-highest xG.</p>
+<p>There are three different camps when it comes to VAR. Those, like me, who have been against VAR from day one: personally, I think it ruins the excitement of goals, and creates unrealistic expectations of forensic accuracy for every decision. There are also those, presumably, who think VAR is fantastic and are very happy with it. And a third camp who think VAR is a good idea, if only those pesky humans operating it weren’t so incompetent!</p>
+<p>The problem with that last group is, I’m not sure people are being realistic in terms of how easy it is to get decisions right.</p>
+<p>This <a href="https://www.bbc.com/sport/football/articles/cvgrx8ml7m0o">BBC article</a> describes the increase in VAR errors in the first half of the current Premier League season, and lists the 13 “mistakes”, 11 of which were missed interventions and 2 of which were incorrect interventions.</p>
+<p>After giving details of each incident, the article also shows a running total of which teams have suffered from and gained from these errors. This no doubt helps to foster a sense of injustice among supporters who think their team has been hard done by, while those whose teams have benefitted will probably point to decisions that have gone against them in previous seasons. Football supporters have never been known for their objectivity.</p>
+<p>The mistakes are identified by the Key Match Incidents (KMI) Panel which meets every week to adjudicate on all key decisions in Premier League matches. The panel consists of one representative each from the Premier League and the PGMOL, as well as three from a <a href="https://www.nytimes.com/athletic/5332282/2024/03/12/referee-complaints-premier-league/">rotating pool of former players and managers</a> including the likes of Karen Carney, Rob Green, Terry Burton, Jonathan Walters and Steven Reid.</p>
+<p>Now firstly, we get the privilege of listening to former players all the time as co-commentators during live matches, and the evidence would suggest that being a former player does not give you some special skill at analysing football. So this already undermines the credibility of the panel.</p>
+<p>But leaving that aside, even if we respect the judgement of each individual on the panel, what are the statistics behind these mistakes actually showing us? Here is the breakdown of the panel’s ruling on the 13 VAR errors:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="xrzusemcnm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xrzusemcnm table {
+<div id="iukecrkdyg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iukecrkdyg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xrzusemcnm thead, #xrzusemcnm tbody, #xrzusemcnm tfoot, #xrzusemcnm tr, #xrzusemcnm td, #xrzusemcnm th {
+#iukecrkdyg thead, #iukecrkdyg tbody, #iukecrkdyg tfoot, #iukecrkdyg tr, #iukecrkdyg td, #iukecrkdyg th {
   border-style: none;
 }
 
-#xrzusemcnm p {
+#iukecrkdyg p {
   margin: 0;
   padding: 0;
 }
 
-#xrzusemcnm .gt_table {
+#iukecrkdyg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
   width: auto;
   border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D9D9D9;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
   border-right-style: none;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  border-bottom-style: none;
+  border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
   border-left-style: none;
@@ -419,36 +393,36 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_caption {
+#iukecrkdyg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xrzusemcnm .gt_title {
+#iukecrkdyg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#xrzusemcnm .gt_subtitle {
+#iukecrkdyg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 5px;
-  padding-bottom: 7px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#xrzusemcnm .gt_heading {
+#iukecrkdyg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -460,19 +434,19 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_bottom_border {
+#iukecrkdyg .gt_bottom_border {
   border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D9D9D9;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_col_headings {
+#iukecrkdyg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
+  border-bottom-color: #D3D3D3;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -481,7 +455,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_col_heading {
+#iukecrkdyg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -494,14 +468,14 @@ window.Quarto = {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 6px;
   padding-left: 5px;
   padding-right: 5px;
   overflow-x: hidden;
 }
 
-#xrzusemcnm .gt_column_spanner_outer {
+#iukecrkdyg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -513,31 +487,31 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#xrzusemcnm .gt_column_spanner_outer:first-child {
+#iukecrkdyg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xrzusemcnm .gt_column_spanner_outer:last-child {
+#iukecrkdyg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xrzusemcnm .gt_column_spanner {
+#iukecrkdyg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
+  border-bottom-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#xrzusemcnm .gt_spanner_row {
+#iukecrkdyg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xrzusemcnm .gt_group_heading {
+#iukecrkdyg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -563,7 +537,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#xrzusemcnm .gt_empty_group_heading {
+#iukecrkdyg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -578,17 +552,17 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#xrzusemcnm .gt_from_md > :first-child {
+#iukecrkdyg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xrzusemcnm .gt_from_md > :last-child {
+#iukecrkdyg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xrzusemcnm .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
+#iukecrkdyg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -605,7 +579,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#xrzusemcnm .gt_stub {
+#iukecrkdyg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -618,7 +592,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#xrzusemcnm .gt_stub_row_group {
+#iukecrkdyg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -632,15 +606,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#xrzusemcnm .gt_row_group_first td {
+#iukecrkdyg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xrzusemcnm .gt_row_group_first th {
+#iukecrkdyg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xrzusemcnm .gt_summary_row {
+#iukecrkdyg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -650,16 +624,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#xrzusemcnm .gt_first_summary_row {
+#iukecrkdyg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_first_summary_row.thick {
+#iukecrkdyg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xrzusemcnm .gt_last_summary_row {
+#iukecrkdyg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -669,7 +643,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_grand_summary_row {
+#iukecrkdyg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -679,7 +653,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#xrzusemcnm .gt_first_grand_summary_row {
+#iukecrkdyg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -689,7 +663,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_last_grand_summary_row_top {
+#iukecrkdyg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -699,11 +673,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_striped {
+#iukecrkdyg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xrzusemcnm .gt_table_body {
+#iukecrkdyg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -712,7 +686,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_footnotes {
+#iukecrkdyg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -726,7 +700,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_footnote {
+#iukecrkdyg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -735,7 +709,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#xrzusemcnm .gt_sourcenotes {
+#iukecrkdyg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -749,7 +723,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#xrzusemcnm .gt_sourcenote {
+#iukecrkdyg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -757,318 +731,162 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#xrzusemcnm .gt_left {
+#iukecrkdyg .gt_left {
   text-align: left;
 }
 
-#xrzusemcnm .gt_center {
+#iukecrkdyg .gt_center {
   text-align: center;
 }
 
-#xrzusemcnm .gt_right {
+#iukecrkdyg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xrzusemcnm .gt_font_normal {
+#iukecrkdyg .gt_font_normal {
   font-weight: normal;
 }
 
-#xrzusemcnm .gt_font_bold {
+#iukecrkdyg .gt_font_bold {
   font-weight: bold;
 }
 
-#xrzusemcnm .gt_font_italic {
+#iukecrkdyg .gt_font_italic {
   font-style: italic;
 }
 
-#xrzusemcnm .gt_super {
+#iukecrkdyg .gt_super {
   font-size: 65%;
 }
 
-#xrzusemcnm .gt_footnote_marks {
+#iukecrkdyg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xrzusemcnm .gt_asterisk {
+#iukecrkdyg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xrzusemcnm .gt_indent_1 {
+#iukecrkdyg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xrzusemcnm .gt_indent_2 {
+#iukecrkdyg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xrzusemcnm .gt_indent_3 {
+#iukecrkdyg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xrzusemcnm .gt_indent_4 {
+#iukecrkdyg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xrzusemcnm .gt_indent_5 {
+#iukecrkdyg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xrzusemcnm .katex-display {
+#iukecrkdyg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xrzusemcnm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iukecrkdyg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
-<tr class="gt_heading header">
-<td colspan="5" class="gt_heading gt_title gt_font_normal">Premier League 2025-2026</td>
-</tr>
-<tr class="gt_heading even">
-<td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">5 Jan, 2026</td>
-</tr>
 <tr class="gt_col_headings header">
-<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Team</th>
-<th id="Pld" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Pld</th>
-<th id="Pts" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Pts</th>
-<th id="xG-Diff" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">xG Diff</th>
-<th id="GD" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">GD</th>
+<th id="Panel" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Panel split</th>
+<th id="Frequency" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Frequency</th>
+<th id="Percent" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">%</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Team">Arsenal</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">48</td>
-<td class="gt_row gt_right" headers="xG Diff">21.5</td>
-<td class="gt_row gt_right" headers="GD">26</td>
+<td class="gt_row gt_center" headers="Panel">5–0</td>
+<td class="gt_row gt_center" headers="Frequency">3</td>
+<td class="gt_row gt_center" headers="Percent">23.1</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Team">Manchester City</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">42</td>
-<td class="gt_row gt_right" headers="xG Diff">15.8</td>
-<td class="gt_row gt_right" headers="GD">26</td>
+<td class="gt_row gt_center" headers="Panel">4–1</td>
+<td class="gt_row gt_center" headers="Frequency">3</td>
+<td class="gt_row gt_center" headers="Percent">23.1</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Team">Aston Villa</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">42</td>
-<td class="gt_row gt_right" headers="xG Diff">−5.3</td>
-<td class="gt_row gt_right" headers="GD">9</td>
+<td class="gt_row gt_center" headers="Panel">3–2</td>
+<td class="gt_row gt_center" headers="Frequency">7</td>
+<td class="gt_row gt_center" headers="Percent">53.8</td>
 </tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Liverpool</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">34</td>
-<td class="gt_row gt_right" headers="xG Diff">8.6</td>
-<td class="gt_row gt_right" headers="GD">4</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Chelsea</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">31</td>
-<td class="gt_row gt_right" headers="xG Diff">6.4</td>
-<td class="gt_row gt_right" headers="GD">11</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Manchester United</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">31</td>
-<td class="gt_row gt_right" headers="xG Diff">9.0</td>
-<td class="gt_row gt_right" headers="GD">4</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Brentford</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">30</td>
-<td class="gt_row gt_right" headers="xG Diff">4.1</td>
-<td class="gt_row gt_right" headers="GD">4</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Sunderland</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">30</td>
-<td class="gt_row gt_right" headers="xG Diff">−11.4</td>
-<td class="gt_row gt_right" headers="GD">2</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Newcastle United</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">29</td>
-<td class="gt_row gt_right" headers="xG Diff">6.9</td>
-<td class="gt_row gt_right" headers="GD">4</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Brighton &amp; Hove Albion</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">28</td>
-<td class="gt_row gt_right" headers="xG Diff">4.1</td>
-<td class="gt_row gt_right" headers="GD">3</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Fulham</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">28</td>
-<td class="gt_row gt_right" headers="xG Diff">−3.3</td>
-<td class="gt_row gt_right" headers="GD">-1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Everton</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">28</td>
-<td class="gt_row gt_right" headers="xG Diff">−6.9</td>
-<td class="gt_row gt_right" headers="GD">-2</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Tottenham Hotspur</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">27</td>
-<td class="gt_row gt_right" headers="xG Diff">−6.3</td>
-<td class="gt_row gt_right" headers="GD">4</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Crystal Palace</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">27</td>
-<td class="gt_row gt_right" headers="xG Diff">5.5</td>
-<td class="gt_row gt_right" headers="GD">-1</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">AFC Bournemouth</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">23</td>
-<td class="gt_row gt_right" headers="xG Diff">1.3</td>
-<td class="gt_row gt_right" headers="GD">-7</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Leeds United</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">22</td>
-<td class="gt_row gt_right" headers="xG Diff">0.1</td>
-<td class="gt_row gt_right" headers="GD">-7</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Nottingham Forest</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">18</td>
-<td class="gt_row gt_right" headers="xG Diff">−5.2</td>
-<td class="gt_row gt_right" headers="GD">-14</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">West Ham United</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">14</td>
-<td class="gt_row gt_right" headers="xG Diff">−14.0</td>
-<td class="gt_row gt_right" headers="GD">-20</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Burnley</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">12</td>
-<td class="gt_row gt_right" headers="xG Diff">−21.2</td>
-<td class="gt_row gt_right" headers="GD">-19</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Wolverhampton Wanderers</td>
-<td class="gt_row gt_center" headers="Pld">20</td>
-<td class="gt_row gt_right" headers="Pts">6</td>
-<td class="gt_row gt_right" headers="xG Diff">−9.9</td>
-<td class="gt_row gt_right" headers="GD">-26</td>
-</tr>
-</tbody><tfoot>
-<tr class="gt_sourcenotes odd">
-<td colspan="5" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">xG data from FotMob.</td>
-</tr>
-</tfoot>
-
+</tbody>
 </table>
 
 </div>
 </div>
 </div>
-<p>Depending on your slant, this may be because <strong>Unai Emery</strong> is a tactical savant who defies the laws of xG, or because Aston Villa have experienced some outrageously good fortune and are due for a big regression to the mean. The truth probably lies somewhere between those two poles, but why should we even care about xG in the first place?</p>
-<p>Despite having been around for more than a decade now, xG continues to suffer from a serious <a href="https://substack.com/home/post/p-183153652">PR problem</a>. In statistical circles you will often hear George Box’s maxim, “all models are wrong, but some are useful”. And this really is an important concept to digest.</p>
-<p>Just because an xG model says a chance was worth 0.4 goals, or that a team had 1.3 goals’ worth of chances during a game, does not make that some sort of ground truth. Probability is an abstract concept. Anyone can watch the game with their eyes and judge that a chance is better, or worse, than the xG model rates it.</p>
-<p>But is xG useful? That’s really up to you, and whether you find a use for it. One way to judge xG’s usefulness is to look at whether it is <em>predictive.</em></p>
-<section id="assessing-xgs-predictive-power" class="level2">
-<h2 class="anchored" data-anchor-id="assessing-xgs-predictive-power">Assessing xG’s predictive power</h2>
-<p>My dataset for this study used FBRef data from the ‘big five’ European leagues (England, Spain, Italy, Germany and France) in the seasons 2017-2018 to 2024-2025. FBRef uses Opta’s xG model; there are others to choose from, and <a href="https://www.pythonfootball.com/p/which-xg-data-should-you-trust">Python Football Review</a> made a nice comparison. Overall, I don’t sense that the choice of xG model is going to make or break this study.</p>
-<p>To assess predictive power, I used a snapshot of each team’s points, goal difference (GD), and expected goal difference (xGD) after each game of each season, and predicted their points-per-game (PPG) over the remainder of the season.</p>
-<p>First, I fit three simple linear regressions - one using only points, one using only GD, and one using only xGD - and plotted the <span class="math inline">\(R^2\)</span> for each model as the number of games played increases. <span class="math inline">\(R^2\)</span> tells us the proportion of the variance in the dependent variable (in this case, PPG over the rest of the season) explained by each model.</p>
-<div class="centered-block">
-<p><img src="viz/slr_r2.png"> <em>SLR = simple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season).</em></p>
-</div>
-<p>The lines follow a similar shape: as expected, the predictive power increases as the sample size increases, stabilising after about 10 games. Then it declines after around 23 games, because with fewer games remaining future PPG naturally becomes more noisy.</p>
-<p>You will notice that xG is consistently above GD, followed by points. If you literally didn’t know anything else about each team, the three measures give a similar approximation for predicting future points, but xG is the best.</p>
-<p>What about when we use all three together? I fit a multiple regression model with all three variables, and plotted each variable’s coefficient, standardized to account for the different units of measurement. The results can be seen below. The second plot shows the marginal <span class="math inline">\(R^2\)</span> for each variable in a multiple regression setting - in other words, how much extra information do we get by adding this variable to a simpler model involving only the other two?</p>
-<div class="centered-block">
-<p><img src="viz/mlr_coefs.png"> <em>MLR = multiple linear regression. Big 5 European leagues 2017 to 2025 (2019-2020 Ligue 1 excluded due to COVID-shortened season).</em></p>
-</div>
-<div class="centered-block">
-<p><img src="viz/mlr_marginal_r2.png"> <em>Marginal R² measures the additional proportion of variance explained when the variable is added to the reduced model.</em></p>
-</div>
-<p>Now we see a more pronounced difference. When the three variables are used in concert, xG is by far the most useful of the three. These results suggest that xG offers some information that the other two variables do not convey.</p>
-<p>These are simple models of course, and people can (and do!) create far more complex models to assess team strength and predict future performance. But added complexity generally involves diminishing returns, and it is handy to have a simple statistic that can give you a reasonable indication of how good a team is. This is why people tend to use xG as a quick &amp; dirty indicator of which teams have been lucky or unlucky so far each season.</p>
-<p>And so we return to Aston Villa. What can we expect from them in the second half of this season? Based on the above, it would be fair to conclude that Villa’s xG (14th place) is a better reflection of how good they are than their league position (3rd place). But what about the Unai Emery factor? Is there some sort of magic in Emery’s tactics that enables his teams to defy the xG gods?</p>
-</section>
-<section id="which-managers-have-historically-outperformed-xg" class="level2">
-<h2 class="anchored" data-anchor-id="which-managers-have-historically-outperformed-xg">Which managers have historically outperformed xG?</h2>
-<p>I used the same dataset (‘Big 5’ leagues, 2017-2018 to 2024-2025), this time also including UEFA competitions, and compared the cumulative xG for each manager with their actual goals, for and against. The following scatterplot compares each manager’s attacking overperformance (x axis) against defensive overperformance (y axis). So the <strong>top right</strong> quadrant of this plot is the place to be. Bottom left…not so good.</p>
-<div class="centered-block">
-<p><img src="viz/scatter_totals.png"> <em>Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = difference between actual goals and expected goals.</em></p>
-</div>
-<p>The names in the desirable upper-right quadrant are certainly some of the names you would identify as elite managers. Interestingly, <strong>Pep Guardiola</strong> exceeds xG entirely on the attacking end, while <strong>Diego Simeone</strong> and <strong>Carlo Ancelotti</strong> tend to excel defensively. To reiterate, this is a measure of goals relative to expected goals; it does not measure whether a team has high or low xG in the first place, although it is obvious that managers in charge of wealthy clubs like Man City or Real Madrid are going to be above average in xG and other measures.</p>
-<p>One problem with using cumulative scores is it may reward quantity rather than quality. This is why the upper-right quadrant has more outliers, whereas the bottom-left is more bunched: if you are consistently underperforming your xG then it’s unlikely you will continue being employed for a prolonged period of time. To address this, the following plot shows the same measures but standardized to account for the number of games:</p>
-<div class="centered-block">
-<p><img src="viz/scatter_z.png"> <em>Big 5 European leagues plus UEFA competitions, 2017 to 2025. Overperformance = difference between actual goals and expected goals.</em></p>
-</div>
-<p>The standardized plot reveals some interesting names in each quadrant - maybe I’ll come back to them in a future article. But this study is about Unai Emery, and you will have noticed that Emery occupies a prominent position in the upper-right quadrant, exceeding his xG in both attack and defence. In terms of total overperformance relative to xG during the study period, Emery sits third:</p>
+<p>Of the 13 decisions branded as mistakes, only three of them were unanimous 5-0 decisions by the KMI Panel. Three of them had one dissenter in a 4-1 decision and in more than half of the so-called mistakes, the panel was split 3-2! So can we really say that the referees got it wrong? What if the panel got it wrong?</p>
+<section id="a-bayesian-approach" class="level2">
+<h2 class="anchored" data-anchor-id="a-bayesian-approach">A Bayesian approach</h2>
+<p>The language surrounding refereeing decisions in football is often quite binary and hyperbolic. You will often hear “that’s a stonewall penalty”, or “never a pen in a million years”; sometimes about the same decision!</p>
+<p>The fact that the panel of experts failed to unanimously agree on most of the cases shows that this generally isn’t the case in reality. It is reasonable to assume that each refereeing decision isn’t actually a simple case of right or wrong, but instead has a probability somewhere between 0 and 1 of being incorrect.</p>
+<p>Under that assumption, we can model the KMI Panel’s voting split as a beta-binomial distribution, where the underlying probability of the decision being incorrect follows a beta distribution, and then our five expert panelists are each drawn as independent Bernoulli variables each with that probability of voting incorrect.</p>
+<p>Unfortunately we don’t have the full data relating to the KMI Panel’s votes on every case, only on the mistakes, so we can’t derive the full distribution. But what we can do is use a few different example prior distributions, and show what our posterior probability would be of the referee’s decision being incorrect under a 3-2, 4-1, or 5-0 vote.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rqsdyxyotq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rqsdyxyotq table {
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The obvious starting point is the uniform beta (1,1). This is a flat line: we simply don’t know anything about the probability of the referee’s decision being correct. But this also implies a 50% overall probability of the referee’s decision being wrong, which is too high; we know from the article that there were, at minimum, 49 VAR interventions, plus other cases the panel considered while only finding 13 to be mistakes.</p>
+<p>The second and third beta distributions assume a mean of 0.1 probability that the referee’s decision was incorrect. They vary in shape: the second distribution is a downward curve, while the third distribution is U-shaped, reflecting a larger frequency near 0 and 1: your stonewall and never-in-a-million-years decisions.</p>
+<p>Based on these three prior distributions, we can calculate the posterior probability of the ref’s decision being wrong, conditional on the panel’s votes.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="yhenftxzvt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yhenftxzvt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rqsdyxyotq thead, #rqsdyxyotq tbody, #rqsdyxyotq tfoot, #rqsdyxyotq tr, #rqsdyxyotq td, #rqsdyxyotq th {
+#yhenftxzvt thead, #yhenftxzvt tbody, #yhenftxzvt tfoot, #yhenftxzvt tr, #yhenftxzvt td, #yhenftxzvt th {
   border-style: none;
 }
 
-#rqsdyxyotq p {
+#yhenftxzvt p {
   margin: 0;
   padding: 0;
 }
 
-#rqsdyxyotq .gt_table {
+#yhenftxzvt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
   width: auto;
   border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D9D9D9;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
   border-right-style: none;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  border-bottom-style: none;
+  border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
   border-left-style: none;
@@ -1076,36 +894,36 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_caption {
+#yhenftxzvt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rqsdyxyotq .gt_title {
+#yhenftxzvt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#rqsdyxyotq .gt_subtitle {
+#yhenftxzvt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 5px;
-  padding-bottom: 7px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#rqsdyxyotq .gt_heading {
+#yhenftxzvt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1117,19 +935,19 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_bottom_border {
+#yhenftxzvt .gt_bottom_border {
   border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D9D9D9;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_col_headings {
+#yhenftxzvt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
+  border-bottom-color: #D3D3D3;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -1138,7 +956,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_col_heading {
+#yhenftxzvt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1151,14 +969,14 @@ window.Quarto = {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 6px;
   padding-left: 5px;
   padding-right: 5px;
   overflow-x: hidden;
 }
 
-#rqsdyxyotq .gt_column_spanner_outer {
+#yhenftxzvt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1170,31 +988,31 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#rqsdyxyotq .gt_column_spanner_outer:first-child {
+#yhenftxzvt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rqsdyxyotq .gt_column_spanner_outer:last-child {
+#yhenftxzvt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rqsdyxyotq .gt_column_spanner {
+#yhenftxzvt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
+  border-bottom-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#rqsdyxyotq .gt_spanner_row {
+#yhenftxzvt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rqsdyxyotq .gt_group_heading {
+#yhenftxzvt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1220,7 +1038,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#rqsdyxyotq .gt_empty_group_heading {
+#yhenftxzvt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1235,17 +1053,17 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#rqsdyxyotq .gt_from_md > :first-child {
+#yhenftxzvt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rqsdyxyotq .gt_from_md > :last-child {
+#yhenftxzvt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rqsdyxyotq .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
+#yhenftxzvt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -1262,7 +1080,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#rqsdyxyotq .gt_stub {
+#yhenftxzvt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1275,7 +1093,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#rqsdyxyotq .gt_stub_row_group {
+#yhenftxzvt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1289,15 +1107,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#rqsdyxyotq .gt_row_group_first td {
+#yhenftxzvt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rqsdyxyotq .gt_row_group_first th {
+#yhenftxzvt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rqsdyxyotq .gt_summary_row {
+#yhenftxzvt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1307,16 +1125,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#rqsdyxyotq .gt_first_summary_row {
+#yhenftxzvt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_first_summary_row.thick {
+#yhenftxzvt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rqsdyxyotq .gt_last_summary_row {
+#yhenftxzvt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1326,7 +1144,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_grand_summary_row {
+#yhenftxzvt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1336,7 +1154,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#rqsdyxyotq .gt_first_grand_summary_row {
+#yhenftxzvt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1346,7 +1164,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_last_grand_summary_row_top {
+#yhenftxzvt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1356,11 +1174,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_striped {
+#yhenftxzvt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rqsdyxyotq .gt_table_body {
+#yhenftxzvt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1369,7 +1187,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_footnotes {
+#yhenftxzvt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1383,7 +1201,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_footnote {
+#yhenftxzvt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1392,7 +1210,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#rqsdyxyotq .gt_sourcenotes {
+#yhenftxzvt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1406,7 +1224,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#rqsdyxyotq .gt_sourcenote {
+#yhenftxzvt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1414,204 +1232,601 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#rqsdyxyotq .gt_left {
+#yhenftxzvt .gt_left {
   text-align: left;
 }
 
-#rqsdyxyotq .gt_center {
+#yhenftxzvt .gt_center {
   text-align: center;
 }
 
-#rqsdyxyotq .gt_right {
+#yhenftxzvt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rqsdyxyotq .gt_font_normal {
+#yhenftxzvt .gt_font_normal {
   font-weight: normal;
 }
 
-#rqsdyxyotq .gt_font_bold {
+#yhenftxzvt .gt_font_bold {
   font-weight: bold;
 }
 
-#rqsdyxyotq .gt_font_italic {
+#yhenftxzvt .gt_font_italic {
   font-style: italic;
 }
 
-#rqsdyxyotq .gt_super {
+#yhenftxzvt .gt_super {
   font-size: 65%;
 }
 
-#rqsdyxyotq .gt_footnote_marks {
+#yhenftxzvt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rqsdyxyotq .gt_asterisk {
+#yhenftxzvt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rqsdyxyotq .gt_indent_1 {
+#yhenftxzvt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rqsdyxyotq .gt_indent_2 {
+#yhenftxzvt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rqsdyxyotq .gt_indent_3 {
+#yhenftxzvt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rqsdyxyotq .gt_indent_4 {
+#yhenftxzvt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rqsdyxyotq .gt_indent_5 {
+#yhenftxzvt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rqsdyxyotq .katex-display {
+#yhenftxzvt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rqsdyxyotq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yhenftxzvt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
-<tr class="gt_heading header">
-<td colspan="6" class="gt_heading gt_title gt_font_normal">Top 10 managers by total xG overperformance</td>
-</tr>
-<tr class="gt_heading even">
-<td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Big 5 leagues plus UEFA competitions, 2017-2025</td>
-</tr>
 <tr class="gt_col_headings header">
-<th id="Manager" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Manager</th>
-<th id="Matches" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Matches</th>
-<th id="Att" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Att</th>
-<th id="Def" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Def</th>
-<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Total</th>
-<th id="per-Match" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">per Match</th>
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="a5-0" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">5-0</th>
+<th id="a4-1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">4-1</th>
+<th id="a3-2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">3-2</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Manager">Pep Guardiola</td>
-<td class="gt_row gt_center" headers="Matches">390</td>
-<td class="gt_row gt_right" headers="Att">109.2</td>
-<td class="gt_row gt_right" headers="Def">0.7</td>
-<td class="gt_row gt_right" headers="Total">109.9</td>
-<td class="gt_row gt_right" headers="per Match">0.28</td>
+<th id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Beta(0.05, 0.45)</th>
+<td class="gt_row gt_center" headers="stub_1_1 5-0">0.918</td>
+<td class="gt_row gt_center" headers="stub_1_1 4-1">0.736</td>
+<td class="gt_row gt_center" headers="stub_1_1 3-2">0.555</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Manager">Diego Simeone</td>
-<td class="gt_row gt_center" headers="Matches">378</td>
-<td class="gt_row gt_right" headers="Att">39.0</td>
-<td class="gt_row gt_right" headers="Def">68.8</td>
-<td class="gt_row gt_right" headers="Total">107.8</td>
-<td class="gt_row gt_right" headers="per Match">0.29</td>
+<th id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Beta(1, 1)</th>
+<td class="gt_row gt_center" headers="stub_1_2 5-0">0.857</td>
+<td class="gt_row gt_center" headers="stub_1_2 4-1">0.714</td>
+<td class="gt_row gt_center" headers="stub_1_2 3-2">0.571</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Manager">Unai Emery</td>
-<td class="gt_row gt_center" headers="Matches">359</td>
-<td class="gt_row gt_right" headers="Att">59.8</td>
-<td class="gt_row gt_right" headers="Def">45.5</td>
-<td class="gt_row gt_right" headers="Total">105.3</td>
-<td class="gt_row gt_right" headers="per Match">0.29</td>
+<th id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Beta(1, 9)</th>
+<td class="gt_row gt_center" headers="stub_1_3 5-0">0.400</td>
+<td class="gt_row gt_center" headers="stub_1_3 4-1">0.333</td>
+<td class="gt_row gt_center" headers="stub_1_3 3-2">0.267</td>
 </tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Manager">Carlo Ancelotti</td>
-<td class="gt_row gt_center" headers="Matches">341</td>
-<td class="gt_row gt_right" headers="Att">29.8</td>
-<td class="gt_row gt_right" headers="Def">61.7</td>
-<td class="gt_row gt_right" headers="Total">91.5</td>
-<td class="gt_row gt_right" headers="per Match">0.27</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Manager">Ernesto Valverde</td>
-<td class="gt_row gt_center" headers="Matches">251</td>
-<td class="gt_row gt_right" headers="Att">41.0</td>
-<td class="gt_row gt_right" headers="Def">45.0</td>
-<td class="gt_row gt_right" headers="Total">86.0</td>
-<td class="gt_row gt_right" headers="per Match">0.34</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Manager">Jürgen Klopp</td>
-<td class="gt_row gt_center" headers="Matches">341</td>
-<td class="gt_row gt_right" headers="Att">41.6</td>
-<td class="gt_row gt_right" headers="Def">34.6</td>
-<td class="gt_row gt_right" headers="Total">76.2</td>
-<td class="gt_row gt_right" headers="per Match">0.22</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Manager">Bruno Génésio</td>
-<td class="gt_row gt_center" headers="Matches">256</td>
-<td class="gt_row gt_right" headers="Att">48.1</td>
-<td class="gt_row gt_right" headers="Def">26.5</td>
-<td class="gt_row gt_right" headers="Total">74.6</td>
-<td class="gt_row gt_right" headers="per Match">0.29</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Manager">Hansi Flick</td>
-<td class="gt_row gt_center" headers="Matches">128</td>
-<td class="gt_row gt_right" headers="Att">49.4</td>
-<td class="gt_row gt_right" headers="Def">14.8</td>
-<td class="gt_row gt_right" headers="Total">64.2</td>
-<td class="gt_row gt_right" headers="per Match">0.50</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Manager">Mauricio Pochettino</td>
-<td class="gt_row gt_center" headers="Matches">224</td>
-<td class="gt_row gt_right" headers="Att">44.5</td>
-<td class="gt_row gt_right" headers="Def">17.8</td>
-<td class="gt_row gt_right" headers="Total">62.3</td>
-<td class="gt_row gt_right" headers="per Match">0.28</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Manager">Mikel Arteta</td>
-<td class="gt_row gt_center" headers="Matches">258</td>
-<td class="gt_row gt_right" headers="Att">42.8</td>
-<td class="gt_row gt_right" headers="Def">19.4</td>
-<td class="gt_row gt_right" headers="Total">62.2</td>
-<td class="gt_row gt_right" headers="per Match">0.24</td>
-</tr>
-</tbody><tfoot>
-<tr class="gt_sourcenotes odd">
-<td colspan="6" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">Overperformance = difference between actual goals and expected goals. Own goals not included.</td>
-</tr>
-</tfoot>
-
+</tbody>
 </table>
 
 </div>
 </div>
 </div>
-<p>It is worth clarifying: none of this is necessarily causal evidence of being a good or bad manager. The big names generally manage the richest teams with the best players, and it could end up as a self-fulfilling prophecy if we anoint them as great managers because those players provide an edge at both ends of the pitch.</p>
-<p>Nonetheless, it is always reassuring when the consensus best managers such as Guardiola show up highly on a metric, and it is worth adding that while Unai Emery has managed some big clubs (PSG, Arsenal) during the study period, a large chunk of his games have been with Villarreal and Aston Villa.</p>
-<p>To recap part one, we have shown that xG is a good predictor of future performance, and we have seen that Unai Emery has outperformed his overall xG in previous seasons. In the next part, I will break down Emery’s previous stints by club, and drill down a little bit on where this xG overperformance comes from, including which players have been the hottest finishers under Emery, whether goalkeepers have played a big role, and how Emery teams vary according to game state.</p>
-<div class="data-footer">
-<p><strong>Data Sources</strong><br>
-I gather match data from a variety of public sources. Please check out these excellent websites:</p>
-<ul>
-<li><a href="https://clubelo.com">Club Elo Ratings</a></li>
-<li><a href="https://www.espn.com/soccer/">ESPN</a></li>
-<li><a href="https://fbref.com">FBref</a></li>
-<li><a href="https://fotmob.com">FotMob</a></li>
-<li><a href="https://transfermarkt.com">Transfermarkt</a></li>
-<li><a href="https://understat.com">Understat</a></li>
-<li><a href="https://whoscored.com">WhoScored</a></li>
-<li><a href="http://eloratings.net/">World Football Elo Ratings</a></li>
-</ul>
-<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="vempjjjlul" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vempjjjlul table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#vempjjjlul thead, #vempjjjlul tbody, #vempjjjlul tfoot, #vempjjjlul tr, #vempjjjlul td, #vempjjjlul th {
+  border-style: none;
+}
+
+#vempjjjlul p {
+  margin: 0;
+  padding: 0;
+}
+
+#vempjjjlul .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#vempjjjlul .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vempjjjlul .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vempjjjlul .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vempjjjlul .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vempjjjlul .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vempjjjlul .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vempjjjlul .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vempjjjlul .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vempjjjlul .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#vempjjjlul .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vempjjjlul .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vempjjjlul .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vempjjjlul .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vempjjjlul .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vempjjjlul .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vempjjjlul .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vempjjjlul .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vempjjjlul .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vempjjjlul .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vempjjjlul .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vempjjjlul .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vempjjjlul .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vempjjjlul .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vempjjjlul .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vempjjjlul .gt_left {
+  text-align: left;
+}
+
+#vempjjjlul .gt_center {
+  text-align: center;
+}
+
+#vempjjjlul .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vempjjjlul .gt_font_normal {
+  font-weight: normal;
+}
+
+#vempjjjlul .gt_font_bold {
+  font-weight: bold;
+}
+
+#vempjjjlul .gt_font_italic {
+  font-style: italic;
+}
+
+#vempjjjlul .gt_super {
+  font-size: 65%;
+}
+
+#vempjjjlul .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#vempjjjlul .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vempjjjlul .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#vempjjjlul .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#vempjjjlul .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#vempjjjlul .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#vempjjjlul .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#vempjjjlul .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#vempjjjlul div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="a5-0" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">5-0</th>
+<th id="a4-1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">4-1</th>
+<th id="a3-2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">3-2</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Beta(0.05, 0.45)</th>
+<td class="gt_row gt_center" headers="stub_1_1 5-0">99.2%</td>
+<td class="gt_row gt_center" headers="stub_1_1 4-1">89.1%</td>
+<td class="gt_row gt_center" headers="stub_1_1 3-2">60.9%</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Beta(1, 1)</th>
+<td class="gt_row gt_center" headers="stub_1_2 5-0">98.4%</td>
+<td class="gt_row gt_center" headers="stub_1_2 4-1">89.1%</td>
+<td class="gt_row gt_center" headers="stub_1_2 3-2">65.6%</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Beta(1, 9)</th>
+<td class="gt_row gt_center" headers="stub_1_3 5-0">21.2%</td>
+<td class="gt_row gt_center" headers="stub_1_3 4-1">9.0%</td>
+<td class="gt_row gt_center" headers="stub_1_3 3-2">2.9%</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<p>© 2025 John Knight. All rights reserved.</p>
+</div>
+</div>
+<p>Looking at the panel’s voting splits for these 13 decisions, my takeaway is completely the opposite of the article’s. I think it shows what a difficult job referees have because even a panel of experts, with all the camera angles and infinite time to make their judgement, cannot agree on most of them!</p>
+<p><em>It should be 5-0 only decisions that we report as wrong? “Clear and obvious”. The article and panel contradict themselves. Also bear in mind they get way more time to decide.</em></p>
+<p><em>Compare with jury odds. Although jury is not independent.</em></p>
+<p><em>Which leads me to an idea…multi-VAR. For “clear and obvious”. How many would we need?</em></p>
+<p><em>It would be an improvement, but it’s never going to be perfect and we need a better perspective on refereeing decisions. Something that is a 3-2 split either way (or even 4-1) should not be reported as a mistake by the officials; that is only going to ramp up the sense of injustice and claims of corruption.</em></p>
 
 
 </section>

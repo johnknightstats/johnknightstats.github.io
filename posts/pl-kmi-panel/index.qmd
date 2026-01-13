@@ -1,0 +1,249 @@
+---
+title: "Are referees judged harshly with respect to VAR?"
+author: "John Knight"
+date: 2026-01-13
+date-format: "D MMMM YYYY"
+description: "Examining the futility of the Premier League's Key Match Incident Panel using Bayesian probability."
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "statistics", "Premier League"]
+execute: 
+  echo: false
+  eval: true
+  message: false
+  warning: false
+engine: knitr
+editor: source
+draft: true
+
+---
+
+There are three different camps when it comes to VAR. Those, like me, who have been against VAR from day one: personally, I think it ruins the excitement of goals, and creates unrealistic expectations of forensic accuracy for every decision. There are also those, presumably, who think VAR is fantastic and are very happy with it. And a third camp who think VAR is a good idea, if only those pesky humans operating it weren't so incompetent!
+
+The problem with that last group is, I'm not sure people are being realistic in terms of how easy it is to get decisions right. 
+
+This [BBC article](https://www.bbc.com/sport/football/articles/cvgrx8ml7m0o) describes the increase in VAR errors in the first half of the current Premier League season, and lists the 13 "mistakes", 11 of which were missed interventions and 2 of which were incorrect interventions.
+
+After giving details of each incident, the article also shows a running total of which teams have suffered from and gained from these errors. This no doubt helps to foster a sense of injustice among supporters who think their team has been hard done by, while those whose teams have benefitted will probably point to decisions that have gone against them in previous seasons. Football supporters have never been known for their objectivity.
+
+The mistakes are identified by the Key Match Incidents (KMI) Panel which meets every week to adjudicate on all key decisions in Premier League matches. The panel consists of one representative each from the Premier League and the PGMOL, as well as three from a [rotating pool of former players and managers](https://www.nytimes.com/athletic/5332282/2024/03/12/referee-complaints-premier-league/) including the likes of Karen Carney, Rob Green, Terry Burton, Jonathan Walters and Steven Reid. 
+
+Now firstly, we get the privilege of listening to former players all the time as co-commentators during live matches, and the evidence would suggest that being a former player does not give you some special skill at analysing football. So this already undermines the credibility of the panel.
+
+But leaving that aside, even if we respect the judgement of each individual on the panel, what are the statistics behind these mistakes actually showing us? Here is the breakdown of the panel's ruling on the 13 VAR errors:
+
+```{r}
+library(dplyr)
+library(tibble)
+library(gt)
+
+panel_votes <- tribble(
+  ~Panel, ~Frequency,
+  "5–0",  3,
+  "4–1",  3,
+  "3–2",  7
+) |>
+  mutate(
+    Percent = Frequency / sum(Frequency) * 100
+  )
+
+panel_votes |>
+  gt() |>
+  fmt_number(
+    columns = Percent,
+    decimals = 1
+  ) |>
+  cols_label(
+    Panel = "Panel split",
+    Frequency = "Frequency",
+    Percent = "%"
+  ) |>
+  cols_align(
+    align = "center",
+    columns = everything()
+  )
+```
+
+Of the 13 decisions branded as mistakes, only three of them were unanimous 5-0 decisions by the KMI Panel. Three of them had one dissenter in a 4-1 decision and in more than half of the so-called mistakes, the panel was split 3-2! So can we really say that the referees got it wrong? What if the panel got it wrong?
+
+## A Bayesian approach
+
+The language surrounding refereeing decisions in football is often quite binary and hyperbolic. You will often hear "that's a stonewall penalty", or "never a pen in a million years"; sometimes about the same decision!
+
+The fact that the panel of experts failed to unanimously agree on most of the cases shows that this generally isn't the case in reality. It is reasonable to assume that each refereeing decision isn't actually a simple case of right or wrong, but instead has a probability somewhere between 0 and 1 of being incorrect.
+
+Under that assumption, we can model the KMI Panel's voting split as a beta-binomial distribution, where the underlying probability of the decision being incorrect follows a beta distribution, and then our five expert panelists are each drawn as independent Bernoulli variables each with that probability of voting incorrect.
+
+Unfortunately we don't have the full data relating to the KMI Panel's votes on every case, only on the mistakes, so we can't derive the full distribution. But what we can do is use a few different example prior distributions, and show what our posterior probability would be of the referee's decision being incorrect under a 3-2, 4-1, or 5-0 vote.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+
+# Your preferred palette
+my_palette <- c("#233D4D", "#FF9F1C", "#41EAD4", "#FDFFFC", "#F71735")
+
+# Distributions to compare
+dists <- tibble(
+  Distribution = c("Beta(1, 1)", "Beta(1, 9)", "Beta(0.05, 0.45)"),
+  alpha = c(1, 1, 0.05),
+  beta  = c(1, 9, 0.45)
+)
+
+dists <- dists |>
+  mutate(
+    Distribution = factor(
+      Distribution,
+      levels = c("Beta(1, 1)", "Beta(1, 9)", "Beta(0.05, 0.45)")
+    )
+  )
+
+
+# Evenly spaced bins (width = 0.1)
+breaks <- seq(0, 1, by = 0.1)
+bin_labels <- sprintf("%.1f–%.1f", breaks[-length(breaks)], breaks[-1])
+
+bin_df <- tibble(
+  bin = factor(bin_labels, levels = bin_labels),
+  lo = breaks[-length(breaks)],
+  hi = breaks[-1]
+)
+
+# Compute bin probabilities: P(lo < q <= hi)
+plot_df <- dists |>
+  crossing(bin_df) |>
+  mutate(
+    prob = pbeta(hi, alpha, beta) - pbeta(lo, alpha, beta)
+  )
+
+ggplot(plot_df, aes(x = bin, y = prob, fill = Distribution)) +
+  geom_col(width = 0.85) +
+  facet_wrap(~ Distribution, nrow = 1) +
+  scale_fill_manual(values = c(my_palette[1], my_palette[2], my_palette[5])) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  scale_x_discrete(
+    breaks = c(bin_labels[1], bin_labels[length(bin_labels)]),
+    labels = c("0", "1")
+  ) +
+  labs(
+    x = "Probability of incorrect decision",
+    y = "Probability mass"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position = "none",
+    strip.text = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    axis.title.x = element_text(size=11)
+  )
+
+
+
+
+```
+
+
+The obvious starting point is the uniform beta (1,1). This is a flat line: we simply don't know anything about the probability of the referee's decision being correct. But this also implies a 50% overall probability of the referee's decision being wrong, which is too high; we know from the article that there were, at minimum, 49 VAR interventions, plus other cases the panel considered while only finding 13 to be mistakes.
+
+The second and third beta distributions assume a mean of 0.1 probability that the referee's decision was incorrect. They vary in shape: the second distribution is a downward curve, while the third distribution is U-shaped, reflecting a larger frequency near 0 and 1: your stonewall and never-in-a-million-years decisions.
+
+Based on these three prior distributions, we can calculate the posterior probability of the ref's decision being wrong, conditional on the panel's votes.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(gt)
+
+# Priors to compare
+priors <- tribble(
+  ~Beta,                ~alpha, ~beta,
+  "Beta(1, 1)",          1,      1,
+  "Beta(1, 9)",          1,      9,
+  "Beta(0.05, 0.45)",    0.05,   0.45
+)
+
+# Panel outcomes (k = # voting "incorrect" out of n = 5)
+panels <- tribble(
+  ~Panel, ~k,
+  "5-0",   5,
+  "4-1",   4,
+  "3-2",   3
+) |>
+  mutate(Panel = factor(Panel, levels = c("5-0", "4-1", "3-2")))
+
+n <- 5
+
+# Posterior mean E[q | k] = (alpha + k) / (alpha + beta + n)
+results <- priors |>
+  crossing(panels) |>
+  mutate(
+    posterior_mean = (alpha + k) / (alpha + beta + n)
+  ) |>
+  select(Beta, Panel, posterior_mean) |>
+  pivot_wider(names_from = Panel, values_from = posterior_mean)
+
+# Table
+results |>
+  gt(rowname_col = "Beta") |>
+  fmt_number(columns = everything(), decimals = 3) |>
+  cols_align(align = "center", columns = everything())
+```
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(gt)
+
+# Priors to compare
+priors <- tribble(
+  ~Beta,                ~alpha, ~beta,
+  "Beta(1, 1)",          1,      1,
+  "Beta(1, 9)",          1,      9,
+  "Beta(0.05, 0.45)",    0.05,   0.45
+)
+
+# Panel outcomes (k = # voting "incorrect" out of n = 5)
+panels <- tribble(
+  ~Panel, ~k,
+  "5-0",   5,
+  "4-1",   4,
+  "3-2",   3
+) |>
+  mutate(Panel = factor(Panel, levels = c("5-0", "4-1", "3-2")))
+
+n <- 5
+
+# Posterior probability P(p > 0.5 | k)
+results <- priors |>
+  crossing(panels) |>
+  mutate(
+    post_alpha = alpha + k,
+    post_beta  = beta + (n - k),
+    prob_p_gt_0_5 = 1 - pbeta(0.5, post_alpha, post_beta)
+  ) |>
+  select(Beta, Panel, prob_p_gt_0_5) |>
+  pivot_wider(names_from = Panel, values_from = prob_p_gt_0_5)
+
+# Table
+results |>
+  gt(rowname_col = "Beta") |>
+  fmt_percent(columns = everything(), decimals = 1) |>
+  cols_align(align = "center", columns = everything())
+
+
+```
+
+Looking at the panel's voting splits for these 13 decisions, my takeaway is completely the opposite of the article's. I think it shows what a difficult job referees have because even a panel of experts, with all the camera angles and infinite time to make their judgement, cannot agree on most of them!
+
+*It should be 5-0 only decisions that we report as wrong? "Clear and obvious". The article and panel contradict themselves. Also bear in mind they get way more time to decide.*
+
+*Compare with jury odds. Although jury is not independent.*
+
+*Which leads me to an idea...multi-VAR. For "clear and obvious". How many would we need?*
+
+*It would be an improvement, but it's never going to be perfect and we need a better perspective on refereeing decisions. Something that is a 3-2 split either way (or even 4-1) should not be reported as a mistake by the officials; that is only going to ramp up the sense of injustice and claims of corruption.*

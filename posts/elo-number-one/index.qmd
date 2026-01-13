@@ -17,23 +17,29 @@ draft: true
 <!-- Tottenham 18 days last 1985 -->
 <!-- Nottm For 14 days last 1979 -->
 
-Structure:
+As a football nerd, I love playing around on the [Club Elo](http://clubelo.com) website. One thing I noticed is that each club's page shows their highest rating, and when they most recently had that rating. So it got me wondering: which British teams have reached #1 in the Elo rankings?
 
-Intro. Clubs that have been champions of Europe. But that doesn't mean they are the best. Example Villa, flukey cunts. 
+We know which teams have been champions of Europe: Celtic, Manchester United, Liverpool, Nottingham Forest, Aston Villa, Chelsea and Manchester City. But that doesn't necessarily mean reaching #1; Villa, for example, only reached a ranking of 6th in the early 80s despite winning the English league title and the European Cup back-to-back. *Explain why...came out of nowhere and disappeared again...only 10th in the year they won EC...is that the lowest of any team?*
 
 Introduce Club Elo as a fun and somewhat effective measure. Best in the world? Elo doesn't include South American teams which would have been an interesting debate until recently but not enough crossover.
 
-Dominant eras by country.
+Dominant eras by country. Start: Spain. How was this decided? 1940s: Spain, Italy (Torino: plane crash), Malmo!? 1950s: Austria, Italy, Scotland, Spain, Hungary. European Cup era (1955-1956 first season): Hungary then RM. Finally Inter in 1965. 1968 Scotland (Celtic) then the English era 1970s and 1980s. Ajax & Bayern early 1970s plus Feyenoord & Gladbach. Germany good in the 80s too! Then 90s, Italy.
 
-Start from #11 Forest...
+*Show the percentage of days occupied by each country in each decade. Side-by-side bar chart?*
 
-11. Nottingham Forest
+Start from #12 Forest...
+
+12. Nottingham Forest
 
 Promoted, League, European Cup, European Cup. Clough. Derby. Leeds. Peter Taylor. Meh, keep it short, has to be one paragraph tops really.
 
-10. Tottenham
+11. Tottenham
 
 You would think 1960s but no! Some great 1980s sides but often undone by heavy schedule/injuries instead of peaking once.
+
+10. Hibernian
+
+Wait what?
 
 9. Arsenal
 
@@ -41,7 +47,7 @@ Cunts.
 
 8. Aberdeen
 
-Fergie, wow.
+Fergie, wow. Broke the Auld Firm stranglehold. Joined in summer of 1978. 4-1-2-2-3-1-1-4. Won 4 Scottish Cups and the Cup Winners' Cup.
 
 7. Everton
 

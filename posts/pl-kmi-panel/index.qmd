@@ -1,5 +1,6 @@
 ---
 title: "Are referees judged harshly with respect to VAR?"
+image: var.jpg
 author: "John Knight"
 date: 2026-01-13
 date-format: "D MMMM YYYY"
@@ -19,19 +20,19 @@ draft: true
 
 ---
 
-There are three different camps when it comes to VAR. Those, like me, who have been against VAR from day one: personally, I think it ruins the excitement of goals, and creates unrealistic expectations of forensic accuracy for every decision. There are also those, presumably, who think VAR is fantastic and are very happy with it. And a third camp who think VAR is a good idea, if only those pesky humans operating it weren't so incompetent!
+There are three different camps when it comes to VAR in football. Those, like me, who have been against VAR from day one: I think it ruins the excitement of goals and creates unrealistic expectations of forensic-level accuracy over every decision. There are also those who think VAR is fantastic and are very happy with it. I mean, I've never met those people, but they must exist. And the third camp consists of those who think VAR is a good idea, if only those pesky humans operating it weren't so incompetent!
 
-The problem with that last group is, I'm not sure people are being realistic in terms of how easy it is to get decisions right. 
+The problem with that last group is, I'm not sure people are being realistic in terms of how easy it is to get refereeing decisions right. 
 
-This [BBC article](https://www.bbc.com/sport/football/articles/cvgrx8ml7m0o) describes the increase in VAR errors in the first half of the current Premier League season, and lists the 13 "mistakes", 11 of which were missed interventions and 2 of which were incorrect interventions.
+This [BBC article](https://www.bbc.com/sport/football/articles/cvgrx8ml7m0o) describes the increase in VAR errors in the first half of the current Premier League season, and lists the 13 VAR "mistakes", 11 of which were missed interventions and two of which were incorrect interventions.
 
-After giving details of each incident, the article also shows a running total of which teams have suffered from and gained from these errors. This no doubt helps to foster a sense of injustice among supporters who think their team has been hard done by, while those whose teams have benefitted will probably point to decisions that have gone against them in previous seasons. Football supporters have never been known for their objectivity.
+After giving details of each incident, the article also shows a running total of which teams have suffered from or gained from these errors, just to pour a bit more petrol on the bonfire of those who think the world is conspiring against their team. Football supporters have never been renowned for their objectivity.
 
-The mistakes are identified by the Key Match Incidents (KMI) Panel which meets every week to adjudicate on all key decisions in Premier League matches. The panel consists of one representative each from the Premier League and the PGMOL, as well as three from a [rotating pool of former players and managers](https://www.nytimes.com/athletic/5332282/2024/03/12/referee-complaints-premier-league/) including the likes of Karen Carney, Rob Green, Terry Burton, Jonathan Walters and Steven Reid. 
+The mistakes are identified by the Key Match Incidents (KMI) Panel which meets every week to adjudicate on all key decisions in Premier League matches. The panel consists of one representative each from the Premier League and Professional Game Match Officials Limited (PGMOL), as well as three from a [rotating pool of former players and managers](https://www.nytimes.com/athletic/5332282/2024/03/12/referee-complaints-premier-league/) including the likes of Karen Carney, Rob Green, Terry Burton, Jonathan Walters and Steven Reid. 
 
-Now firstly, we get the privilege of listening to former players all the time as co-commentators during live matches, and the evidence would suggest that being a former player does not give you some special skill at analysing football. So this already undermines the credibility of the panel.
+We will gloss over the suitability of those individuals for the panel - judging by the general standard of punditry and co-commentary on TV, the bar is not high - but even if we respect the judgement of the panel, what are the statistics behind these mistakes actually showing us? 
 
-But leaving that aside, even if we respect the judgement of each individual on the panel, what are the statistics behind these mistakes actually showing us? Here is the breakdown of the panel's ruling on the 13 VAR errors:
+According to the BBC article, here is the breakdown of the panel's votes on the 13 VAR errors:
 
 ```{r}
 library(dplyr)
@@ -64,18 +65,22 @@ panel_votes |>
     columns = everything()
   )
 ```
+<p style="font-size:0.9em; color:#666; margin-top:-0.5em; text-align:center;">
+  <em>More than half the ‘mistakes’ were only decided by a panel 3–2 verdict.</em>
+</p>
 
-Of the 13 decisions branded as mistakes, only three of them were unanimous 5-0 decisions by the KMI Panel. Three of them had one dissenter in a 4-1 decision and in more than half of the so-called mistakes, the panel was split 3-2! So can we really say that the referees got it wrong? What if the panel got it wrong?
+
+Evidently, of the 13 decisions branded as mistakes, only three of them were unanimous 5-0 decisions by the KMI Panel. Three of them had one dissenter in a 4-1 decision and in more than half of the so-called mistakes, the panel was split 3-2! So can we really say that the referees got it wrong? What if the panel got it wrong?
 
 ## A Bayesian approach
 
 The language surrounding refereeing decisions in football is often quite binary and hyperbolic. You will often hear "that's a stonewall penalty", or "never a pen in a million years"; sometimes about the same decision!
 
-The fact that the panel of experts failed to unanimously agree on most of the cases shows that this generally isn't the case in reality. It is reasonable to assume that each refereeing decision isn't actually a simple case of right or wrong, but instead has a probability somewhere between 0 and 1 of being incorrect.
+The fact that the panel of experts failed to unanimously agree on most of the cases shows that reality is not so clear-cut. It is reasonable to consider each refereeing decision not as a simple case of right or wrong, but instead as having a probability somewhere between 0 and 1 of being incorrect.
 
-Under that assumption, we can model the KMI Panel's voting split as a beta-binomial distribution, where the underlying probability of the decision being incorrect follows a beta distribution, and then our five expert panelists are each drawn as independent Bernoulli variables each with that probability of voting incorrect.
+Under that assumption, we can model the KMI Panel's voting split as a beta-binomial distribution, where the underlying probability of the decision being incorrect follows a beta distribution, and then our five expert panelists are treated as independent Bernoulli draws and may vote correct or incorrect based on that underlying probability.
 
-Unfortunately we don't have the full data relating to the KMI Panel's votes on every case, only on the mistakes, so we can't derive the full distribution. But what we can do is use a few different example prior distributions, and show what our posterior probability would be of the referee's decision being incorrect under a 3-2, 4-1, or 5-0 vote.
+Unfortunately we don't have the full data relating to the KMI Panel's votes on every case, only on the mistakes, so we can't derive the full distribution. But what we can do is use a few different example priors, and show what our posterior probability would be of the referee's decision being incorrect after a 3-2, 4-1, or 5-0 vote.
 
 ```{r}
 library(dplyr)
@@ -88,16 +93,16 @@ my_palette <- c("#233D4D", "#FF9F1C", "#41EAD4", "#FDFFFC", "#F71735")
 
 # Distributions to compare
 dists <- tibble(
-  Distribution = c("Beta(1, 1)", "Beta(1, 9)", "Beta(0.05, 0.45)"),
-  alpha = c(1, 1, 0.05),
-  beta  = c(1, 9, 0.45)
+  Distribution = c("Beta(1.0, 1.0)", "Beta(0.3, 2.7)", "Beta(0.05, 0.45)"),
+  alpha = c(1, 0.3, 0.05),
+  beta  = c(1, 2.7, 0.45)
 )
 
 dists <- dists |>
   mutate(
     Distribution = factor(
       Distribution,
-      levels = c("Beta(1, 1)", "Beta(1, 9)", "Beta(0.05, 0.45)")
+      levels = c("Beta(1.0, 1.0)", "Beta(0.3, 2.7)", "Beta(0.05, 0.45)")
     )
   )
 
@@ -146,11 +151,11 @@ ggplot(plot_df, aes(x = bin, y = prob, fill = Distribution)) +
 ```
 
 
-The obvious starting point is the uniform beta (1,1). This is a flat line: we simply don't know anything about the probability of the referee's decision being correct. But this also implies a 50% overall probability of the referee's decision being wrong, which is too high; we know from the article that there were, at minimum, 49 VAR interventions, plus other cases the panel considered while only finding 13 to be mistakes.
+The obvious starting point for the prior is the uniform beta (1,1). This is a flat line: we simply don't know anything about the probability of the referee's decision being correct or incorrect. But this also implies a 50% overall probability of the referee's decision being wrong, which is too high; we know from the article that there were, at minimum, 49 VAR interventions, plus other cases the panel considered while only finding 13 to be mistakes.
 
-The second and third beta distributions assume a mean of 0.1 probability that the referee's decision was incorrect. They vary in shape: the second distribution is a downward curve, while the third distribution is U-shaped, reflecting a larger frequency near 0 and 1: your stonewall and never-in-a-million-years decisions.
+The second and third beta distributions I have chosen assume a mean of 0.1 probability that the referee's decision was incorrect. They vary in shape: the second distribution is a downward curve, while the third distribution is U-shaped, reflecting a larger frequency near 0 and 1: your *stonewall* and *never-in-a-million-years* decisions.
 
-Based on these three prior distributions, we can calculate the posterior probability of the ref's decision being wrong, conditional on the panel's votes.
+Based on these three prior distributions we can calculate the posterior probability of the ref's decision being wrong, conditional on the panel's votes.
 
 ```{r}
 library(dplyr)
@@ -161,8 +166,8 @@ library(gt)
 # Priors to compare
 priors <- tribble(
   ~Beta,                ~alpha, ~beta,
-  "Beta(1, 1)",          1,      1,
-  "Beta(1, 9)",          1,      9,
+  "Beta(1.0, 1.0)",          1,      1,
+  "Beta(0.3, 2.7)",      0.3,    2.7,
   "Beta(0.05, 0.45)",    0.05,   0.45
 )
 
@@ -189,61 +194,21 @@ results <- priors |>
 # Table
 results |>
   gt(rowname_col = "Beta") |>
-  fmt_number(columns = everything(), decimals = 3) |>
+  fmt_number(columns = everything(), decimals = 2) |>
   cols_align(align = "center", columns = everything())
 ```
+<p style="font-size:0.9em; color:#666; margin-top:-0.5em; text-align:center;">
+  <em>Mean posterior probability of decision being incorrect, conditional on observed panel decision.</em>
+</p>
 
-```{r}
-library(dplyr)
-library(tidyr)
-library(tibble)
-library(gt)
+So, depending on your prior, the maximum estimate of the probability of an incorrect decision based on the panel's vote would be 92% for 5-0, 74% for 4-1, and 57% for 3-2: not far off a coin flip!
 
-# Priors to compare
-priors <- tribble(
-  ~Beta,                ~alpha, ~beta,
-  "Beta(1, 1)",          1,      1,
-  "Beta(1, 9)",          1,      9,
-  "Beta(0.05, 0.45)",    0.05,   0.45
-)
+This sort of thing highlights a wider problem with statistics which is that there are different ways to spin the exact same result. The BBC have gone with "VAR mistakes are on the rise!" whereas I look at the panel's voting splits and think this just shows you how difficult a referee's job is! Even a panel of experts, with all the time in the world, cannot agree what is the correct decision.
 
-# Panel outcomes (k = # voting "incorrect" out of n = 5)
-panels <- tribble(
-  ~Panel, ~k,
-  "5-0",   5,
-  "4-1",   4,
-  "3-2",   3
-) |>
-  mutate(Panel = factor(Panel, levels = c("5-0", "4-1", "3-2")))
+So what is a better approach? At minimum, I think they should require at least a 4-1 vote for a decision to be declared incorrect, and preferably 5-0. This is in line with the "clear and obvious error" spirit that everyone seems to be in favour of, until there is a decision they don't like.
 
-n <- 5
+A similar system exists in a jury, where all 12 members have to agree to reach a guilty verdict. Perhaps we should have a VAR jury? Five different refs sat in different rooms, and a 4-1 majority required to overturn the on-field decision.
 
-# Posterior probability P(p > 0.5 | k)
-results <- priors |>
-  crossing(panels) |>
-  mutate(
-    post_alpha = alpha + k,
-    post_beta  = beta + (n - k),
-    prob_p_gt_0_5 = 1 - pbeta(0.5, post_alpha, post_beta)
-  ) |>
-  select(Beta, Panel, prob_p_gt_0_5) |>
-  pivot_wider(names_from = Panel, values_from = prob_p_gt_0_5)
+I don't hugely care about VAR's accuracy, to be honest. There will be incremental improvements, but it feels like that will just move us to a new frontier of what everyone will complain about; we can already look forward to [VAR reviews of corners](https://www.bbc.com/sport/football/articles/c62lgler7rlo).
 
-# Table
-results |>
-  gt(rowname_col = "Beta") |>
-  fmt_percent(columns = everything(), decimals = 1) |>
-  cols_align(align = "center", columns = everything())
-
-
-```
-
-Looking at the panel's voting splits for these 13 decisions, my takeaway is completely the opposite of the article's. I think it shows what a difficult job referees have because even a panel of experts, with all the camera angles and infinite time to make their judgement, cannot agree on most of them!
-
-*It should be 5-0 only decisions that we report as wrong? "Clear and obvious". The article and panel contradict themselves. Also bear in mind they get way more time to decide.*
-
-*Compare with jury odds. Although jury is not independent.*
-
-*Which leads me to an idea...multi-VAR. For "clear and obvious". How many would we need?*
-
-*It would be an improvement, but it's never going to be perfect and we need a better perspective on refereeing decisions. Something that is a 3-2 split either way (or even 4-1) should not be reported as a mistake by the officials; that is only going to ramp up the sense of injustice and claims of corruption.*
+Those who anticipated VAR ushering in a new era without weekly officiating controversies were sadly mistaken. We did lose the spontaneity of goals being scored though, and now it's "ok maybe we've scored, but I'll have to wait for the replay to see if that winger was half a yard offside for that pass in the buildup". Was it worth it?

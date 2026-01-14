@@ -2,7 +2,7 @@
 title: "Are referees judged harshly with respect to VAR?"
 image: var.jpg
 author: "John Knight"
-date: 2026-01-13
+date: 2026-01-14
 date-format: "D MMMM YYYY"
 description: "Examining the futility of the Premier League's Key Match Incident Panel using Bayesian probability."
 format:
@@ -16,11 +16,10 @@ execute:
   warning: false
 engine: knitr
 editor: source
-draft: true
 
 ---
 
-There are three different camps when it comes to VAR in football. Those, like me, who have been against VAR from day one: I think it ruins the excitement of goals and creates unrealistic expectations of forensic-level accuracy over every decision. There are also those who think VAR is fantastic and are very happy with it. I mean, I've never met those people, but they must exist. And the third camp consists of those who think VAR is a good idea, if only those pesky humans operating it weren't so incompetent!
+There are three different camps when it comes to **VAR** in football. Those, like me, who have been against VAR from day one: I think it ruins the excitement of goals and creates unrealistic expectations of forensic-level accuracy over every decision. There are also those who think VAR is fantastic and are very happy with it. I mean, I've never met those people, but they must exist. And the third camp consists of those who think VAR is a good idea, if only those pesky humans operating it weren't so incompetent!
 
 The problem with that last group is, I'm not sure people are being realistic in terms of how easy it is to get refereeing decisions right. 
 
@@ -66,7 +65,7 @@ panel_votes |>
   )
 ```
 <p style="font-size:0.9em; color:#666; margin-top:-0.5em; text-align:center;">
-  <em>More than half the ‘mistakes’ were only decided by a panel 3–2 verdict.</em>
+  <em>More than half the ‘mistakes’ were only decided by a 3-2 panel verdict.</em>
 </p>
 
 
@@ -78,9 +77,13 @@ The language surrounding refereeing decisions in football is often quite binary 
 
 The fact that the panel of experts failed to unanimously agree on most of the cases shows that reality is not so clear-cut. It is reasonable to consider each refereeing decision not as a simple case of right or wrong, but instead as having a probability somewhere between 0 and 1 of being incorrect.
 
-Under that assumption, we can model the KMI Panel's voting split as a beta-binomial distribution, where the underlying probability of the decision being incorrect follows a beta distribution, and then our five expert panelists are treated as independent Bernoulli draws and may vote correct or incorrect based on that underlying probability.
+Under that assumption, we can model the KMI Panel's voting split as a **beta-binomial** distribution, where the underlying probability of the decision being incorrect follows a beta distribution, and then our five expert panelists are treated as independent Bernoulli draws and may vote correct or incorrect based on that underlying probability.
 
 Unfortunately we don't have the full data relating to the KMI Panel's votes on every case, only on the mistakes, so we can't derive the full distribution. But what we can do is use a few different example priors, and show what our posterior probability would be of the referee's decision being incorrect after a 3-2, 4-1, or 5-0 vote.
+
+The obvious starting point for the prior is the uniform beta (1,1). This is a flat line: we simply don't know anything about the probability of the referee's decision being correct or incorrect. But this also implies a 50% overall probability of the referee's decision being wrong, which is too high; we know from the article that there were, at minimum, 49 VAR interventions, plus other cases the panel considered while only finding 13 to be mistakes.
+
+The second and third beta distributions I have chosen assume a mean of 0.1 probability that the referee's decision was incorrect. They vary in shape: the second distribution is a downward curve, while the third distribution is U-shaped, reflecting a larger frequency near 0 and 1: your *stonewall* and *never-in-a-million-years* decisions.
 
 ```{r}
 library(dplyr)
@@ -145,15 +148,7 @@ ggplot(plot_df, aes(x = bin, y = prob, fill = Distribution)) +
     axis.title.x = element_text(size=11)
   )
 
-
-
-
 ```
-
-
-The obvious starting point for the prior is the uniform beta (1,1). This is a flat line: we simply don't know anything about the probability of the referee's decision being correct or incorrect. But this also implies a 50% overall probability of the referee's decision being wrong, which is too high; we know from the article that there were, at minimum, 49 VAR interventions, plus other cases the panel considered while only finding 13 to be mistakes.
-
-The second and third beta distributions I have chosen assume a mean of 0.1 probability that the referee's decision was incorrect. They vary in shape: the second distribution is a downward curve, while the third distribution is U-shaped, reflecting a larger frequency near 0 and 1: your *stonewall* and *never-in-a-million-years* decisions.
 
 Based on these three prior distributions we can calculate the posterior probability of the ref's decision being wrong, conditional on the panel's votes.
 
@@ -203,12 +198,16 @@ results |>
 
 So, depending on your prior, the maximum estimate of the probability of an incorrect decision based on the panel's vote would be 92% for 5-0, 74% for 4-1, and 57% for 3-2: not far off a coin flip!
 
-This sort of thing highlights a wider problem with statistics which is that there are different ways to spin the exact same result. The BBC have gone with "VAR mistakes are on the rise!" whereas I look at the panel's voting splits and think this just shows you how difficult a referee's job is! Even a panel of experts, with all the time in the world, cannot agree what is the correct decision.
+This sort of thing highlights a wider problem with statistics which is that there are different ways to spin the exact same result. The BBC have gone with "VAR mistakes are on the rise!" whereas I look at the panel's voting splits and think this just shows you how difficult a referee's job is: even a panel of experts, with all the time in the world, cannot agree what is the correct decision.
 
-So what is a better approach? At minimum, I think they should require at least a 4-1 vote for a decision to be declared incorrect, and preferably 5-0. This is in line with the "clear and obvious error" spirit that everyone seems to be in favour of, until there is a decision they don't like.
+So what is a better approach? Stop reporting 3-2 decisions as errors. At minimum, I think they should require at least a 4-1 vote for a decision to be declared incorrect, and preferably 5-0. This is in line with the "clear and obvious error" spirit that everyone seems to be in favour of (until there is a decision they don't like).
 
-A similar system exists in a jury, where all 12 members have to agree to reach a guilty verdict. Perhaps we should have a VAR jury? Five different refs sat in different rooms, and a 4-1 majority required to overturn the on-field decision.
+A similar system exists in a jury, where all 12 members have to agree to reach a guilty verdict. Perhaps we should have a VAR jury in the Premier League? Five different refs sat in different rooms, and a 4-1 majority required to overturn the on-field decision.
 
-I don't hugely care about VAR's accuracy, to be honest. There will be incremental improvements, but it feels like that will just move us to a new frontier of what everyone will complain about; we can already look forward to [VAR reviews of corners](https://www.bbc.com/sport/football/articles/c62lgler7rlo).
+But I feel like the accuracy of VAR is a red herring. The overall accuracy of decisions has improved compared to pre-VAR, and yet nobody seems happier. There will continue to be incremental improvements, but that will just move us to a new frontier of what everyone will complain about; we can already look forward to [VAR reviews of corners](https://www.bbc.com/sport/football/articles/c62lgler7rlo). Exciting!
 
-Those who anticipated VAR ushering in a new era without weekly officiating controversies were sadly mistaken. We did lose the spontaneity of goals being scored though, and now it's "ok maybe we've scored, but I'll have to wait for the replay to see if that winger was half a yard offside for that pass in the buildup". Was it worth it?
+Those who anticipated VAR ushering in a new era without weekly officiating controversies were sadly mistaken. We did lose a lot of the spontaneous elation when a goal is scored - the new normal is that your team has probably scored, but you are worried about that pass in the buildup where the winger had maybe strayed half a yard offside. Scoring is now more like getting a penalty: there's a good chance we are getting a goal here. Was it worth the trade? Not for me.
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2025 John Knight. All rights reserved.

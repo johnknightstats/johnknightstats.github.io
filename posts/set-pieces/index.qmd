@@ -1,0 +1,66 @@
+---
+title: "Set pieces article"
+author: "John Knight"
+date: 2026-01-15
+date-format: "D MMMM YYYY"
+description: "describe here"
+categories: []
+format:
+  html:
+    title-block-style: "default"
+    title-block-categories: true
+    css: ../../styles.css
+execute: 
+  echo: false
+  eval: true
+engine: knitr
+editor: source
+draft: true
+---
+
+### NEED TO REDO EVERYTHING ###
+
+### THINK WE ACTUALLY HAVE DATA BACK TO 2020-2021 ###
+
+### It's just that there isn't a 1st half/2nd half split, hence less rows ###
+
+
+Questions:
+
+*Try to include variance in all plots & tables*
+
+Has open play xG gone down in each league? YES + plot Big 5.
+Has set piece xG gone up in each league? YES
+Has the proportion of open play xG gone down in each league? Yes.
+Have open play goals gone down in each league? YES + plot Big 5.
+Have set piece goals gone up in each league? YES
+Has the proportion of open play goals gone down in each league? Yes
+Trend of all-time goals per season in English top flight.
+Which teams have scored the most set piece goals? Leeds
+Which teams have created the most set piece xG? Leeds
+How have English teams done against non-English teams in Europe on set pieces by season? Well!
+How have English teams done against non-English teams in Europe in open play by season? Ok
+How does the set piece increase break down by corners, long throws, and other set pieces? It's long throws!
+How has average player height changed in each league?
+Are set piece goals more likely to be 'crucial' than open play goals? Control for season as a confounder.
+Have goals-per-xg for set pieces increased in each league? 
+
+The article:
+
+*Intro. Motivation: it seems like English football has gone all defensive and now all the goals are corners. Do the stats back this up?*
+
+*Look at the change in open play xG over the last few seasons. It has certainly gone down! Has this been replaced by set piece xG?*
+
+*Not really. It's gone up but by nowhere near as much.*
+
+*Actually when you look at the all-time trend of goals in the English top flight, maybe 2023-2024 was an outlier. Talk about the managers (Ange, de Zerbi etc) and the tactics and goal kick rule change.*
+
+*So who has benefitted from set pieces this season? Arsenal, right? Surprisingly no!*
+
+*Are English teams killing it in Europe on set pieces? Yes and seems like more defensive games.*
+
+*Where is the set piece xG coming from in the PL? Long throws!*
+
+*Who are the kings of the long throws this season? Brentford, no surprise. Burnley and other smaller teams.*
+
+*Conclusion.*

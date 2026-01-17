@@ -1,0 +1,194 @@
+#!/usr/bin/env Rscript
+
+# ------------------------------------------------------------
+# clubelo_number_one_pies_by_decade.R
+#
+# Reads:  data/processed/clubelo_number_one_daily.csv
+# Writes: outputs/clubelo_number_one_pies_by_decade.png
+#
+# CSV columns: Date, Team, Country (Country is 3-letter code)
+# ------------------------------------------------------------
+
+suppressPackageStartupMessages({
+  library(readr)
+  library(dplyr)
+  library(stringr)
+  library(lubridate)
+  library(ggplot2)
+  library(patchwork)
+  library(grid)   # unit()
+  library(tibble)
+})
+
+# ----------------------------
+# Config
+# ----------------------------
+IN_CSV  <- file.path("data", "processed", "clubelo_number_one_daily.csv")
+OUT_DIR <- "outputs"
+OUT_PNG <- file.path(OUT_DIR, "clubelo_number_one_pies_by_decade.png")
+
+DECADES_KEEP <- c("1940s","1950s","1960s","1970s","1980s","1990s","2000s","2010s","2020s")
+
+COUNTRY_CODE_TO_NAME <- c(
+  "AUT" = "Austria",
+  "BEL" = "Belgium",
+  "ENG" = "England",
+  "ESP" = "Spain",
+  "GER" = "Germany",
+  "FRG" = "Germany",   # merge FRG into GER
+  "HUN" = "Hungary",
+  "ITA" = "Italy",
+  "NED" = "Netherlands",
+  "POR" = "Portugal",
+  "SCO" = "Scotland",
+  "SWE" = "Sweden"
+)
+
+COUNTRY_COLORS <- c(
+  "Austria"      = "black",
+  "Belgium"      = "pink",
+  "England"      = "white",
+  "Spain"        = "red",
+  "Germany"      = "gold",
+  "Hungary"      = "green",
+  "Italy"        = "royalblue",
+  "Netherlands"  = "orange",
+  "Portugal"     = "turquoise",
+  "Scotland"     = "darkblue",
+  "Sweden"       = "yellow"
+)
+
+COUNTRY_ORDER <- names(COUNTRY_COLORS)
+
+# Output size (3x3 pies + legend column)
+PNG_WIDTH_IN  <- 16
+PNG_HEIGHT_IN <- 12
+PNG_DPI       <- 300
+
+TITLE_TEXT <- "Nationality of Club Elo Number One by Decade"
+
+# ----------------------------
+# Helpers
+# ----------------------------
+extract_legend_grob <- function(p) {
+  g <- ggplotGrob(p)
+  idx <- which(vapply(g$grobs, function(x) x$name, character(1)) == "guide-box")
+  if (length(idx) == 0) stop("No legend found to extract.")
+  g$grobs[[idx[1]]]
+}
+
+# ----------------------------
+# IO checks
+# ----------------------------
+if (!file.exists(IN_CSV)) stop("Input file not found: ", IN_CSV)
+dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
+
+# ----------------------------
+# Load + prep
+# ----------------------------
+df_raw <- read_csv(IN_CSV, show_col_types = FALSE)
+
+needed <- c("Date", "Team", "Country")
+missing_cols <- setdiff(needed, names(df_raw))
+if (length(missing_cols) > 0) stop("Missing columns in CSV: ", paste(missing_cols, collapse = ", "))
+
+df <- df_raw %>%
+  mutate(
+    Date = as.Date(Date),
+    year = year(Date),
+    decade = paste0(floor(year / 10) * 10, "s"),
+    Country = str_squish(as.character(Country)),
+    country_name = unname(COUNTRY_CODE_TO_NAME[Country])
+  ) %>%
+  filter(!is.na(Date), decade %in% DECADES_KEEP, !is.na(country_name)) %>%
+  mutate(
+    decade = factor(decade, levels = DECADES_KEEP),
+    country_name = factor(country_name, levels = COUNTRY_ORDER)
+  )
+
+df_dec <- df %>%
+  count(decade, country_name, name = "days") %>%
+  group_by(decade) %>%
+  mutate(prop = days / sum(days)) %>%
+  ungroup()
+
+# ----------------------------
+# Plot builders
+# ----------------------------
+pie_for_decade <- function(dec_label) {
+  d <- df_dec %>% filter(decade == dec_label)
+  
+  ggplot(d, aes(x = 1, y = prop, fill = country_name)) +
+    geom_col(width = 1, color = "grey20", linewidth = 0.3) +
+    coord_polar(theta = "y") +
+    # limits + drop=FALSE keeps mapping stable
+    scale_fill_manual(values = COUNTRY_COLORS, limits = COUNTRY_ORDER, drop = FALSE) +
+    labs(title = as.character(dec_label)) +
+    theme_void(base_size = 12) +
+    theme(
+      plot.title = element_text(hjust = 0.5, face = "bold"),
+      legend.position = "none"
+    )
+}
+
+plots <- lapply(levels(df$decade), pie_for_decade)
+grid_plot <- wrap_plots(plots, ncol = 3)
+
+# ----------------------------
+# Build ONE legend (standalone)
+# ----------------------------
+legend_df <- tibble(
+  country_name = factor(COUNTRY_ORDER, levels = COUNTRY_ORDER),
+  prop = rep(1 / length(COUNTRY_ORDER), length(COUNTRY_ORDER))
+)
+
+legend_plot_src <-
+  ggplot(legend_df, aes(x = 1, y = prop, fill = country_name)) +
+  geom_col() +
+  coord_polar(theta = "y") +
+  scale_fill_manual(values = COUNTRY_COLORS, limits = COUNTRY_ORDER, drop = FALSE) +
+  labs(fill = "Country") +
+  theme_void(base_size = 14) +
+  theme(
+    legend.position = "right",
+    legend.title = element_text(size = 14, face = "bold"),
+    legend.text  = element_text(size = 12),
+    legend.key.size = unit(0.9, "cm"),
+    # helps England (white) show as a key
+    legend.key = element_rect(fill = "grey92", color = "grey60")
+  )
+
+legend_grob <- extract_legend_grob(legend_plot_src)
+legend_panel <- wrap_elements(full = legend_grob)
+
+# ----------------------------
+# Combine grid + legend (closer + larger legend)
+# ----------------------------
+final_plot <-
+  (grid_plot | legend_panel) +
+  plot_layout(widths = c(5,1.5)) +
+  plot_annotation(
+    title = TITLE_TEXT,
+    theme = theme(
+      plot.title = element_text(
+        size = 18,
+        face = "bold",
+        hjust = 0.5,
+        margin = margin(b = 12)
+      )
+    )
+  )
+
+# ----------------------------
+# Save
+# ----------------------------
+ggsave(
+  filename = OUT_PNG,
+  plot = final_plot,
+  width = PNG_WIDTH_IN,
+  height = PNG_HEIGHT_IN,
+  dpi = PNG_DPI,
+  bg = "white"
+)
+
+message("Saved: ", OUT_PNG)

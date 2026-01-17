@@ -1,7 +1,22 @@
 ---
 title: "Which British teams have been ranked number one in Europe?"
 author: "John Knight"
+date: 2026-01-16
+date-format: "D MMMM YYYY"
+description: "Add description here."
+categories: ["football", "statistics"]
+format:
+  html:
+    title-block-style: default
+    title-block-categories: true
+    css: ../../styles.css
+execute: 
+  echo: false
+  eval: true
+engine: knitr
+editor: source
 draft: true
+
 ---
 
 <!-- Liverpool 3481 days last 2025 -->
@@ -23,56 +38,86 @@ We know which teams have been champions of Europe: Celtic, Manchester United, Li
 
 Introduce Club Elo as a fun and somewhat effective measure. Best in the world? Elo doesn't include South American teams which would have been an interesting debate until recently but not enough crossover.
 
-Dominant eras by country. Start: Spain. How was this decided? 1940s: Spain, Italy (Torino: plane crash), Malmo!? 1950s: Austria, Italy, Scotland, Spain, Hungary. European Cup era (1955-1956 first season): Hungary then RM. Finally Inter in 1965. 1968 Scotland (Celtic) then the English era 1970s and 1980s. Ajax & Bayern early 1970s plus Feyenoord & Gladbach. Germany good in the 80s too! Then 90s, Italy.
+Dominant eras by country. Start: Spain. How was this decided? 1940s: Spain, Italy (Torino: plane crash), Malmo!? 1950s: Austria, Italy, Scotland, Spain, Hungary. European Cup era (1955-1956 first season): Hungary then RM. Finally Inter in 1965. 1968 Scotland (Celtic) then the English era 1970s and 1980s. Ajax & Bayern early 1970s plus Feyenoord & Gladbach. Germany good in the 80s too! Then 90s, Italy. 2010s: Guardiola!? See if you can work out what % his teams were #1.
 
-*Show the percentage of days occupied by each country in each decade. Side-by-side bar chart?*
+::: {.centered-block}
+<img src="outputs/clubelo_number_one_pies_by_decade.png"/>
+:::
 
 Start from #12 Forest...
 
 12. Nottingham Forest
 
-Promoted, League, European Cup, European Cup. Clough. Derby. Leeds. Peter Taylor. Meh, keep it short, has to be one paragraph tops really.
+*1979*
 
-11. Tottenham
+It's one of the most ridiculous runs in football history. Brian Clough, having already won the league with unheralded Derby County, took Nottingham Forest to promotion from the second division, to English champions, to European champions then European champions again in four consecutive seasons between 1976-77 and 1979-80. They also won the league cup in 1978 and 1979.
+
+Forest only briefly reached number one of the Elo rankings in October 1979, such was the dominance of their rivals Liverpool during this era. 
+
+11. Tottenham Hotspur
+
+*1985*
+
+It's not a surprise that Spurs have reached the top of the rankings, but it's a surprise *when* this happened. The all-time great Spurs side of the 60s never made it to the top spot - the dominance of Real Madrid during that era made it difficult. But Tottenham did sneak into top spot in January 1985.
 
 You would think 1960s but no! Some great 1980s sides but often undone by heavy schedule/injuries instead of peaking once.
 
 10. Hibernian
 
+*1951-1952*
+
 Wait what?
 
 9. Arsenal
+
+*1971, 1991, 2004, 2025-2026*
 
 Cunts.
 
 8. Aberdeen
 
+*1983-1984*
+
 Fergie, wow. Broke the Auld Firm stranglehold. Joined in summer of 1978. 4-1-2-2-3-1-1-4. Won 4 Scottish Cups and the Cup Winners' Cup.
 
 7. Everton
+
+*1969-1970, 1985-1987*
 
 Quality in 60s and 80s
 
 6. Celtic
 
+*1968-1971*
+
 Famous 1967 team but continued being great until 1972
 
 5. Leeds
+
+*1969-1974*
 
 The great unheralded team of English football.
 
 4. Chelsea
 
+*2004-2009*
+
 New money
 
 3. Man Utd
+
+*1999-2003, 2007-2009*
 
 Then and now.
 
 2. Man City
 
+*2021-2022*
+
 New money
 
 1. Liverpool
+
+*1972-1991, 2009, 2022-2025*
 
 The best by MILES. Shanks.

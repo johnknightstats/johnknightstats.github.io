@@ -1,0 +1,15 @@
+---
+title: "English Top Flight Table on Any Date in History"
+image: league_table_thumbnail.png
+format: html
+page-layout: full
+navbar: false
+---
+
+<iframe 
+  src="https://statybara.shinyapps.io/league-table-tool/" 
+  width="100%" 
+  height="800" 
+  style="border: 1px solid #ccc; border-radius: 8px;">
+</iframe>
+

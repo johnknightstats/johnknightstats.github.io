@@ -58,7 +58,9 @@ Along with the Premier League, the Bundesliga has also increased its set piece o
 
 ## Where are the set-piece goals coming from?
 
-So set pieces are on the rise in England, but which teams are benefitting the most? From casual observance, it feels like **Arsenal** have scored about twice as many set pieces as any other team. But is that the case? Surprisingly, no!
+So set pieces are on the rise in England, but which teams are benefitting the most? From casual observance, it feels like **Arsenal** have scored about twice as many set pieces as any other team.
+
+That's not quite the case, but Arsenal do lead the way with 14 goals, followed by **Manchester United**.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(readr)
@@ -104,8 +106,6 @@ df %>%
     data_row.padding = px(4)
   )
 ```
-
-It is actually **Leeds United** who lead the way with 13 set-piece goals this season, although in xG terms it is indeed Arsenal in first place with 11.4. 
 
 At the other end, there are multiple theories behind **Liverpool**'s struggles this season, but being rock bottom with only three set piece goals and 4.84 xG clearly has not helped.
 
@@ -164,7 +164,7 @@ df %>%
   ) 
 ```
 
-**Brentford**, pioneers of the set piece movement and with former set piece coach Keith Andrews now as their manager, lead the way with four goals and 3.3 xG from long throws. And looking at the top half of the list, it's a mish mash of many of the smaller clubs in the division, which suggests long throws are a bit of a leveller.
+**Brentford**, pioneers of the set piece movement and with former set piece coach Keith Andrews now as their manager, lead the way with three goals and 3.3 xG from long throws. It is notable that most of the teams near the top of the list are among the smaller clubs in the division, suggesting that long throws are a bit of a leveller.
 
 Finally, I was interested to see how English teams are performing in Europe with regard to open play and set pieces. The general narrative is that the Premier League is packed with physical beasts playing hurly burly in the penalty area each week, and the poor little technically-gifted Europeans aren't able to deal with it. 
 

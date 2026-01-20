@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-01-15">
-<meta name="description" content="describe here">
+<meta name="dcterms.date" content="2026-01-20">
+<meta name="description" content="A look at recent set piece trends in England and Europe, and a rant about refereeing.">
 
-<title>Set pieces article – John Knight Stats</title>
+<title>Set pieces are on the rise in football - but is this a good thing? – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta name="quarto:status" content="draft">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -246,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -303,12 +302,18 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Set pieces article</h1>
-</div>
+<h1 class="title">Set pieces are on the rise in football - but is this a good thing?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">football</div>
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">Premier League</div>
+    <div class="quarto-category">referees</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
-    describe here
+    A look at recent set piece trends in England and Europe, and a rant about refereeing.
   </div>
 </div>
 
@@ -325,7 +330,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">15 January 2026</p>
+      <p class="date">20 January 2026</p>
     </div>
   </div>
   
@@ -337,27 +342,1208 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="need-to-redo-everything" class="level3">
-<h3 class="anchored" data-anchor-id="need-to-redo-everything">NEED TO REDO EVERYTHING</h3>
+<p>Watching English football lately it feels like there has been a set-piece explosion, with half the goals on any given weekend coming from corners or long throws. The reliance on scoring from set pieces seems like it has also removed a bit of the risk-taking from teams’ tactical approaches, resulting in a slightly duller overall product. I think this can and should be addressed, and I will have a little rant about officiating later in the article. But first, what do the statistics say about how football is changing with regard to open play and set pieces? And which teams are benefitting the most?</p>
+<p><a href="https://www.fotmob.com">FotMob</a> publishes data for open-play xG and set-piece xG as far back as the 2020-2021 season. Using this data, let’s first take a look at the open-play and set-piece xG per match for each of the last six seasons. I have added a linear regression trend line (calculated at match level, not season level) that uses the date as an independent variable, to show whether the overall trend over those seasons has been increasing or decreasing.</p>
+<p>(I have used xG rather than goals for all analysis in this article; if you sub in goals instead, the trends are basically the same, but variance is higher).</p>
+<div class="centered-block">
+<p><img src="viz/pl_open_vs_set_xg_trend_2020_2026.png"></p>
+</div>
+<p>Both open-play and set-piece xG have an overall upward trend of 0.03 per match per season, with a high level of statistical significance (low p-values). But what also jumps out is that open-play xG increased dramatically in 2023-24, and has declined in the two seasons since.</p>
+<p>This is interesting, but before we start fishing for narratives, let’s put this in the context of the all-time goals per game by season in the English top flight.</p>
+<div class="centered-block">
+<p><img src="viz/english_top_flight_goals_per_game.png"></p>
+</div>
+<p>It seems like 2023-24 was quite a big outlier. Since the early 1970s when Catenaccio and pressing nullified the free-flowing attacks of the 60s, the number of goals had been fairly stable until it suddenly shot up in 2023. Why? Without digging too deep into it, my feeling is that this season was the peak of the “play it out dangerously from the back” movement aligned with the “aggressive high press” movement. A perfect storm.</p>
+<p>Perhaps another time I will look more closely at that season, but focusing on the current topic, I am interested to see how the Premier League’s trends for open-play and set-piece xG compare with the other major European leagues over the past six seasons.</p>
+<p>First, let’s look at open play.</p>
+<div class="centered-block">
+<p><img src="viz/leagues6_open_play_xg_trends.png"></p>
+</div>
+<p>Ligue 1, the Champions League, and La Liga all had a greater upward trend than the Premier League. Meanwhile, Serie A, which had done a reasonable job of shedding its reputation for dull football, has declined at a rate of 0.07 open-play xG per season.</p>
+<p>Now we can look at the same for set-piece xG.</p>
+<div class="centered-block">
+<p><img src="viz/leagues6_set_piece_xg_trends.png"></p>
+</div>
+<p>Along with the Premier League, the Bundesliga has also increased its set piece output at a similar rate, and there is a bit of separation between these leagues and the others.</p>
+<section id="where-are-the-set-piece-goals-coming-from" class="level2">
+<h2 class="anchored" data-anchor-id="where-are-the-set-piece-goals-coming-from">Where are the set-piece goals coming from?</h2>
+<p>So set pieces are on the rise in England, but which teams are benefitting the most? From casual observance, it feels like <strong>Arsenal</strong> have scored about twice as many set pieces as any other team. But is that the case? Surprisingly, no!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="jkswigomku" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jkswigomku table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jkswigomku thead, #jkswigomku tbody, #jkswigomku tfoot, #jkswigomku tr, #jkswigomku td, #jkswigomku th {
+  border-style: none;
+}
+
+#jkswigomku p {
+  margin: 0;
+  padding: 0;
+}
+
+#jkswigomku .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jkswigomku .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jkswigomku .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jkswigomku .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jkswigomku .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jkswigomku .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jkswigomku .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jkswigomku .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jkswigomku .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jkswigomku .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jkswigomku .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jkswigomku .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jkswigomku .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jkswigomku .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jkswigomku .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jkswigomku .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jkswigomku .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jkswigomku .gt_row {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jkswigomku .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkswigomku .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jkswigomku .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jkswigomku .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jkswigomku .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkswigomku .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jkswigomku .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jkswigomku .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jkswigomku .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkswigomku .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jkswigomku .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jkswigomku .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jkswigomku .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jkswigomku .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jkswigomku .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkswigomku .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jkswigomku .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkswigomku .gt_left {
+  text-align: left;
+}
+
+#jkswigomku .gt_center {
+  text-align: center;
+}
+
+#jkswigomku .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jkswigomku .gt_font_normal {
+  font-weight: normal;
+}
+
+#jkswigomku .gt_font_bold {
+  font-weight: bold;
+}
+
+#jkswigomku .gt_font_italic {
+  font-style: italic;
+}
+
+#jkswigomku .gt_super {
+  font-size: 65%;
+}
+
+#jkswigomku .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jkswigomku .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jkswigomku .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jkswigomku .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jkswigomku .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jkswigomku .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jkswigomku .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#jkswigomku .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jkswigomku div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border"><strong>Premier League set-piece leaders (2025–26)</strong></td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Set-Piece-Goals" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Set Piece Goals</th>
+<th id="Set-Piece-xG" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Set Piece xG</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Leeds United</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">13</td>
+<td class="gt_row gt_center" headers="Set Piece xG">10.77</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Arsenal</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">12</td>
+<td class="gt_row gt_center" headers="Set Piece xG">11.40</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Newcastle United</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">12</td>
+<td class="gt_row gt_center" headers="Set Piece xG">10.58</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Chelsea</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">12</td>
+<td class="gt_row gt_center" headers="Set Piece xG">9.13</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Manchester United</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">11</td>
+<td class="gt_row gt_center" headers="Set Piece xG">9.89</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Tottenham Hotspur</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">11</td>
+<td class="gt_row gt_center" headers="Set Piece xG">7.99</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">AFC Bournemouth</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">10</td>
+<td class="gt_row gt_center" headers="Set Piece xG">9.74</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Brighton &amp; Hove Albion</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">9</td>
+<td class="gt_row gt_center" headers="Set Piece xG">6.73</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Aston Villa</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">9</td>
+<td class="gt_row gt_center" headers="Set Piece xG">6.57</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Crystal Palace</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">8</td>
+<td class="gt_row gt_center" headers="Set Piece xG">9.28</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Everton</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">7</td>
+<td class="gt_row gt_center" headers="Set Piece xG">8.75</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">West Ham United</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">7</td>
+<td class="gt_row gt_center" headers="Set Piece xG">7.73</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Sunderland</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">7</td>
+<td class="gt_row gt_center" headers="Set Piece xG">7.19</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Fulham</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">7</td>
+<td class="gt_row gt_center" headers="Set Piece xG">5.65</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Nottingham Forest</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">7</td>
+<td class="gt_row gt_center" headers="Set Piece xG">4.95</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Brentford</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">6</td>
+<td class="gt_row gt_center" headers="Set Piece xG">9.12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Manchester City</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">6</td>
+<td class="gt_row gt_center" headers="Set Piece xG">6.80</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Burnley</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">6</td>
+<td class="gt_row gt_center" headers="Set Piece xG">6.05</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Wolverhampton Wanderers</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">4</td>
+<td class="gt_row gt_center" headers="Set Piece xG">4.97</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Liverpool</td>
+<td class="gt_row gt_center" headers="Set Piece Goals">3</td>
+<td class="gt_row gt_center" headers="Set Piece xG">4.84</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>It is actually <strong>Leeds United</strong> who lead the way with 13 set-piece goals this season, although in xG terms it is indeed Arsenal in first place with 11.4.</p>
+<p>At the other end, there are multiple theories behind <strong>Liverpool</strong>’s struggles this season, but being rock bottom with only three set piece goals and 4.84 xG clearly has not helped.</p>
+<p>In its shot data, FotMob further breaks down set pieces into four categories: corners, long throws, direct free kicks, and other set pieces. So we can also look at where the set piece increase has come from over the last six seasons.</p>
+<div class="centered-block">
+<p><img src="viz/pl_set_piece_type_xg_trends_2020_2026.png"></p>
+</div>
+<p>The overall trend for both corners and long throws is the same, +0.02. But if you look closely at the dots, corners actually peaked in 2022-23 and have slightly declined since. Meanwhile, <strong>long throws</strong> were almost non-existent in 2020-21 and have gone through the roof this season. Direct free kick xG, interestingly, seems to be trending down.</p>
+<p>Long throws are the new hot thing, but which team is leading the way? The answer probably won’t surprise you.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="jlgeiujkas" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jlgeiujkas table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jlgeiujkas thead, #jlgeiujkas tbody, #jlgeiujkas tfoot, #jlgeiujkas tr, #jlgeiujkas td, #jlgeiujkas th {
+  border-style: none;
+}
+
+#jlgeiujkas p {
+  margin: 0;
+  padding: 0;
+}
+
+#jlgeiujkas .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jlgeiujkas .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jlgeiujkas .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jlgeiujkas .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jlgeiujkas .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jlgeiujkas .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jlgeiujkas .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jlgeiujkas .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jlgeiujkas .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jlgeiujkas .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jlgeiujkas .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jlgeiujkas .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jlgeiujkas .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jlgeiujkas .gt_row {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jlgeiujkas .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlgeiujkas .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jlgeiujkas .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jlgeiujkas .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jlgeiujkas .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlgeiujkas .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jlgeiujkas .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlgeiujkas .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jlgeiujkas .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlgeiujkas .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jlgeiujkas .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlgeiujkas .gt_left {
+  text-align: left;
+}
+
+#jlgeiujkas .gt_center {
+  text-align: center;
+}
+
+#jlgeiujkas .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jlgeiujkas .gt_font_normal {
+  font-weight: normal;
+}
+
+#jlgeiujkas .gt_font_bold {
+  font-weight: bold;
+}
+
+#jlgeiujkas .gt_font_italic {
+  font-style: italic;
+}
+
+#jlgeiujkas .gt_super {
+  font-size: 65%;
+}
+
+#jlgeiujkas .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jlgeiujkas .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jlgeiujkas .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jlgeiujkas .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jlgeiujkas .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jlgeiujkas .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jlgeiujkas .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#jlgeiujkas .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jlgeiujkas div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border"><strong>Premier League long-throw leaders (2025–26)</strong></td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Long-Throw-Goals" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Long Throw Goals</th>
+<th id="Long-Throw-xG" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Long Throw xG</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Brentford</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">4</td>
+<td class="gt_row gt_center" headers="Long Throw xG">3.30</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Newcastle United</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">3</td>
+<td class="gt_row gt_center" headers="Long Throw xG">2.03</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Burnley</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">3</td>
+<td class="gt_row gt_center" headers="Long Throw xG">1.57</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Crystal Palace</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">2</td>
+<td class="gt_row gt_center" headers="Long Throw xG">2.92</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Leeds United</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">2</td>
+<td class="gt_row gt_center" headers="Long Throw xG">2.91</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Sunderland</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">2</td>
+<td class="gt_row gt_center" headers="Long Throw xG">2.88</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">AFC Bournemouth</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">2</td>
+<td class="gt_row gt_center" headers="Long Throw xG">2.46</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Everton</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">2</td>
+<td class="gt_row gt_center" headers="Long Throw xG">1.76</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Manchester United</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">2</td>
+<td class="gt_row gt_center" headers="Long Throw xG">1.70</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Aston Villa</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">1</td>
+<td class="gt_row gt_center" headers="Long Throw xG">1.10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Liverpool</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">1</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.19</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Tottenham Hotspur</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.95</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Arsenal</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.81</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Nottingham Forest</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.59</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Chelsea</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.50</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Wolverhampton Wanderers</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.41</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Fulham</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.41</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">West Ham United</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.25</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Brighton &amp; Hove Albion</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.24</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Manchester City</td>
+<td class="gt_row gt_center" headers="Long Throw Goals">0</td>
+<td class="gt_row gt_center" headers="Long Throw xG">0.06</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Brentford</strong>, pioneers of the set piece movement and with former set piece coach Keith Andrews now as their manager, lead the way with four goals and 3.3 xG from long throws. And looking at the top half of the list, it’s a mish mash of many of the smaller clubs in the division, which suggests long throws are a bit of a leveller.</p>
+<p>Finally, I was interested to see how English teams are performing in Europe with regard to open play and set pieces. The general narrative is that the Premier League is packed with physical beasts playing hurly burly in the penalty area each week, and the poor little technically-gifted Europeans aren’t able to deal with it.</p>
+<p>How does that tally with the stats? Let’s look at how open-play and set-piece xG have changed in UEFA competitions in games between English teams and non-English opposition.</p>
+<div class="centered-block">
+<p><img src="viz/uefa_eng_vs_noneng_xg_for_against_trends_2020_2026.png"></p>
+</div>
+<p>You will notice that the error bars are a bit larger in this plot; it’s obviously a much smaller sample than the league matches.</p>
+<p>Nonetheless, there is a significant increase in set-piece xG for the English teams of 0.02 per match per season. Again, look more closely at the dots and we can see a large change in the current season: set-piece xG has increased, while open-play xG both for and against has decreased.</p>
 </section>
-<section id="think-we-actually-have-data-back-to-2020-2021" class="level3">
-<h3 class="anchored" data-anchor-id="think-we-actually-have-data-back-to-2020-2021">THINK WE ACTUALLY HAVE DATA BACK TO 2020-2021</h3>
-</section>
-<section id="its-just-that-there-isnt-a-1st-half2nd-half-split-hence-less-rows" class="level3">
-<h3 class="anchored" data-anchor-id="its-just-that-there-isnt-a-1st-half2nd-half-split-hence-less-rows">It’s just that there isn’t a 1st half/2nd half split, hence less rows</h3>
-<p>Questions:</p>
-<p><em>Try to include variance in all plots &amp; tables</em></p>
-<p>Has open play xG gone down in each league? YES + plot Big 5. Has set piece xG gone up in each league? YES Has the proportion of open play xG gone down in each league? Yes. Have open play goals gone down in each league? YES + plot Big 5. Have set piece goals gone up in each league? YES Has the proportion of open play goals gone down in each league? Yes Trend of all-time goals per season in English top flight. Which teams have scored the most set piece goals? Leeds Which teams have created the most set piece xG? Leeds How have English teams done against non-English teams in Europe on set pieces by season? Well! How have English teams done against non-English teams in Europe in open play by season? Ok How does the set piece increase break down by corners, long throws, and other set pieces? It’s long throws! How has average player height changed in each league? Are set piece goals more likely to be ‘crucial’ than open play goals? Control for season as a confounder. Have goals-per-xg for set pieces increased in each league?</p>
-<p>The article:</p>
-<p><em>Intro. Motivation: it seems like English football has gone all defensive and now all the goals are corners. Do the stats back this up?</em></p>
-<p><em>Look at the change in open play xG over the last few seasons. It has certainly gone down! Has this been replaced by set piece xG?</em></p>
-<p><em>Not really. It’s gone up but by nowhere near as much.</em></p>
-<p><em>Actually when you look at the all-time trend of goals in the English top flight, maybe 2023-2024 was an outlier. Talk about the managers (Ange, de Zerbi etc) and the tactics and goal kick rule change.</em></p>
-<p><em>So who has benefitted from set pieces this season? Arsenal, right? Surprisingly no!</em></p>
-<p><em>Are English teams killing it in Europe on set pieces? Yes and seems like more defensive games.</em></p>
-<p><em>Where is the set piece xG coming from in the PL? Long throws!</em></p>
-<p><em>Who are the kings of the long throws this season? Brentford, no surprise. Burnley and other smaller teams.</em></p>
-<p><em>Conclusion.</em></p>
+<section id="a-rant-about-referees-and-applying-the-laws-of-the-game" class="level2">
+<h2 class="anchored" data-anchor-id="a-rant-about-referees-and-applying-the-laws-of-the-game">A rant about referees and applying the laws of the game</h2>
+<p>That fits the overall sense of the recent English shift towards more cautious football with an emphasis on set pieces. Everyone will have their own opinion on this. Personally, I think if you want to watch players wrestling and blocking each other while they wait for someone to launch a ball at them, there are other sports where you can enjoy that. And tellingly, those sports tend to use an egg-shaped ball to add even more fun &amp; randomness to these chaotic sequences!</p>
+<p>Football, on the other hand, with its round ball, bills itself as the “beautiful game”. And while the clash of different styles remains an important part of football, the authorities have always had the power to tinker with the rules (or the application thereof) to steer the game in a desired direction. Hence you can no longer just <a href="https://www.youtube.com/watch?v=9OtnR06Z3EY">kick the shit out of</a> the opposition’s star player.</p>
+<p>Something that has become evident over the past few seasons is that referees have decided to allow players to obstruct the goalkeeper. In fact it is now <em>de rigueur</em> to assign one player at every corner whose sole job is to block the keeper from being able to come out and challenge for the ball.</p>
+<p>Why allow this to happen? I suppose the simple logic is that set piece goals are nonetheless goals, and more goals = more entertainment? But sometimes changes have unintended consequences, and if managers realise they can rely a bit more on these set piece goals and a bit less on attacking from open play, then the overall product suffers.</p>
+<p>The good news is, we don’t need to scratch our heads to find a solution here. The FA can simply issue an edict instructing referees to actually apply the <a href="https://www.thefa.com/football-rules-governance/lawsandrules/laws/football-11-11/law-12---fouls-and-misconduct">obstruction law</a>.</p>
+<blockquote class="blockquote">
+<p>IMPEDING THE PROGRESS OF AN OPPONENT WITHOUT CONTACT</p>
+<p>Impeding the progress of an opponent means moving into the opponent’s path to obstruct, block, slow down or force a change of direction when the ball is not within playing distance of either player.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>All players have a right to their position on the field of play; being in the way of an opponent is not the same as moving into the way of an opponent.</p>
+</blockquote>
+<p>Based on that law, is it an offence for an attacking player to block the goalkeeper at a corner? Clearly, the ball is not within playing distance and the goalkeeper’s progress is being impeded - he wants to come out and claim the ball but he is obstructed, blocked, slowed down, forced to change direction, or all of the above.</p>
+<p>So the crux of the matter seems to be the “all players have a right to their position on the field of play” clause. This is the loophole being exploited. The “I’ve got to stand somewhere!” excuse.</p>
+<p>But who is really buying this? The player is there solely to obstruct the goalkeeper. I know it, you know it, the referee knows it. And by and large, the player does <em>move into the way</em> of the keeper anyway, just before the corner is struck so as to minimize his ability to navigate around the blocker.</p>
+<p>Furthermore, importantly, the above law applies <strong>without contact</strong>! Deliberately blocking off the keeper should be an infringement <em>even if you don’t touch him</em> - yet they are allowing players to pin the keeper on his line with a load of contact thrown into the bargain.</p>
+<p>I recommend <a href="https://substack.com/home/post/p-171292006">this article</a> from last year by Profspur for a more broad, eloquent argument on this topic. Personally, I find it baffling and frustrating, and I assume there will be a growing discontent over set pieces - not least over the time spent with the ball out of play while they are setting them up like something from an NFL playbook. In the meantime, I can pull my hair out each week while the experts in the studio tell us the keeper “just needs to be stronger”.</p>
 
 
 </section>

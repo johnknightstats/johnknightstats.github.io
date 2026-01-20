@@ -1,10 +1,11 @@
 ---
-title: "Set pieces article"
+title: "Set pieces are on the rise in football - but is this a good thing?"
+image: wolves_mancity_corner.jpg
 author: "John Knight"
-date: 2026-01-15
+date: 2026-01-20
 date-format: "D MMMM YYYY"
-description: "describe here"
-categories: []
+description: "A look at recent set piece trends in England and Europe, and a rant about refereeing."
+categories: ["football", "statistics", "Premier League", "referees"]
 format:
   html:
     title-block-style: "default"
@@ -15,52 +16,197 @@ execute:
   eval: true
 engine: knitr
 editor: source
-draft: true
 ---
 
-### NEED TO REDO EVERYTHING ###
+Watching English football lately it feels like there has been a set-piece explosion, with half the goals on any given weekend coming from corners or long throws. The reliance on scoring from set pieces seems like it has also removed a bit of the risk-taking from teams' tactical approaches, resulting in a slightly duller overall product. I think this can and should be addressed, and I will have a little rant about officiating later in the article. But first, what do the statistics say about how football is changing with regard to open play and set pieces? And which teams are benefitting the most?
 
-### THINK WE ACTUALLY HAVE DATA BACK TO 2020-2021 ###
+[FotMob](https://www.fotmob.com) publishes data for open-play xG and set-piece xG as far back as the 2020-2021 season. Using this data, let's first take a look at the open-play and set-piece xG per match for each of the last six seasons. I have added a linear regression trend line (calculated at match level, not season level) that uses the date as an independent variable, to show whether the overall trend over those seasons has been increasing or decreasing.
 
-### It's just that there isn't a 1st half/2nd half split, hence less rows ###
+(I have used xG rather than goals for all analysis in this article; if you sub in goals instead, the trends are basically the same, but variance is higher).
 
+::: {.centered-block}
+<img src="viz/pl_open_vs_set_xg_trend_2020_2026.png"/>
+:::
 
-Questions:
+Both open-play and set-piece xG have an overall upward trend of 0.03 per match per season, with a high level of statistical significance (low p-values). But what also jumps out is that open-play xG increased dramatically in 2023-24, and has declined in the two seasons since.
 
-*Try to include variance in all plots & tables*
+This is interesting, but before we start fishing for narratives, let's put this in the context of the all-time goals per game by season in the English top flight.
 
-Has open play xG gone down in each league? YES + plot Big 5.
-Has set piece xG gone up in each league? YES
-Has the proportion of open play xG gone down in each league? Yes.
-Have open play goals gone down in each league? YES + plot Big 5.
-Have set piece goals gone up in each league? YES
-Has the proportion of open play goals gone down in each league? Yes
-Trend of all-time goals per season in English top flight.
-Which teams have scored the most set piece goals? Leeds
-Which teams have created the most set piece xG? Leeds
-How have English teams done against non-English teams in Europe on set pieces by season? Well!
-How have English teams done against non-English teams in Europe in open play by season? Ok
-How does the set piece increase break down by corners, long throws, and other set pieces? It's long throws!
-How has average player height changed in each league?
-Are set piece goals more likely to be 'crucial' than open play goals? Control for season as a confounder.
-Have goals-per-xg for set pieces increased in each league? 
+::: {.centered-block}
+<img src="viz/english_top_flight_goals_per_game.png"/>
+:::
 
-The article:
+It seems like 2023-24 was quite a big outlier. Since the early 1970s when Catenaccio and pressing nullified the free-flowing attacks of the 60s, the number of goals had been fairly stable until it suddenly shot up in 2023.  Why? Without digging too deep into it, my feeling is that this season was the peak of the "play it out dangerously from the back" movement aligned with the "aggressive high press" movement. A perfect storm. 
 
-*Intro. Motivation: it seems like English football has gone all defensive and now all the goals are corners. Do the stats back this up?*
+Perhaps another time I will look more closely at that season, but focusing on the current topic, I am interested to see how the Premier League's trends for open-play and set-piece xG compare with the other major European leagues over the past six seasons.
 
-*Look at the change in open play xG over the last few seasons. It has certainly gone down! Has this been replaced by set piece xG?*
+First, let's look at open play.
 
-*Not really. It's gone up but by nowhere near as much.*
+::: {.centered-block}
+<img src="viz/leagues6_open_play_xg_trends.png"/>
+:::
 
-*Actually when you look at the all-time trend of goals in the English top flight, maybe 2023-2024 was an outlier. Talk about the managers (Ange, de Zerbi etc) and the tactics and goal kick rule change.*
+Ligue 1, the Champions League, and La Liga all had a greater upward trend than the Premier League. Meanwhile, Serie A, which had done a reasonable job of shedding its reputation for dull football, has declined at a rate of 0.07 open-play xG per season.
 
-*So who has benefitted from set pieces this season? Arsenal, right? Surprisingly no!*
+Now we can look at the same for set-piece xG.
 
-*Are English teams killing it in Europe on set pieces? Yes and seems like more defensive games.*
+::: {.centered-block}
+<img src="viz/leagues6_set_piece_xg_trends.png"/>
+:::
 
-*Where is the set piece xG coming from in the PL? Long throws!*
+Along with the Premier League, the Bundesliga has also increased its set piece output at a similar rate, and there is a bit of separation between these leagues and the others.
 
-*Who are the kings of the long throws this season? Brentford, no surprise. Burnley and other smaller teams.*
+## Where are the set-piece goals coming from?
 
-*Conclusion.*
+So set pieces are on the rise in England, but which teams are benefitting the most? From casual observance, it feels like **Arsenal** have scored about twice as many set pieces as any other team. But is that the case? Surprisingly, no!
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(gt)
+library(scales)
+
+df <- read_csv("pl_set_piece_goals_xg_2025_2026.csv", show_col_types = FALSE) %>%
+  transmute(
+    Team = team_name,
+    `Set Piece Goals` = set_piece_goals,
+    `Set Piece xG` = set_piece_xg
+  ) %>%
+  arrange(desc(`Set Piece Goals`), desc(`Set Piece xG`))
+
+df %>%
+  gt() %>%
+  tab_header(
+    title = md("**Premier League set-piece leaders (2025–26)**")
+  ) %>%
+  fmt_number(
+    columns = c(`Set Piece Goals`),
+    decimals = 0
+  ) %>%
+  fmt_number(
+    columns = c(`Set Piece xG`),
+    decimals = 2
+  ) %>%
+  cols_align(
+    align = "left",
+    columns = Team
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(`Set Piece Goals`, `Set Piece xG`)
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(
+    table.font.size = px(14),
+    data_row.padding = px(4)
+  )
+```
+
+It is actually **Leeds United** who lead the way with 13 set-piece goals this season, although in xG terms it is indeed Arsenal in first place with 11.4. 
+
+At the other end, there are multiple theories behind **Liverpool**'s struggles this season, but being rock bottom with only three set piece goals and 4.84 xG clearly has not helped.
+
+In its shot data, FotMob further breaks down set pieces into four categories: corners, long throws, direct free kicks, and other set pieces. So we can also look at where the set piece increase has come from over the last six seasons.
+
+::: {.centered-block}
+<img src="viz/pl_set_piece_type_xg_trends_2020_2026.png"/>
+:::
+
+The overall trend for both corners and long throws is the same, +0.02. But if you look closely at the dots, corners actually peaked in 2022-23 and have slightly declined since. Meanwhile, **long throws** were almost non-existent in 2020-21 and have gone through the roof this season. Direct free kick xG, interestingly, seems to be trending down.
+
+Long throws are the new hot thing, but which team is leading the way? The answer probably won't surprise you.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(gt)
+library(scales)
+
+df <- read_csv("pl_throwin_setpiece_goals_xg_2025_2026.csv", show_col_types = FALSE) %>%
+  transmute(
+    Team = team_name,
+    `Long Throw Goals` = throwin_setpiece_goals,
+    `Long Throw xG` = throwin_setpiece_xg
+  ) %>%
+  arrange(desc(`Long Throw Goals`), desc(`Long Throw xG`))
+
+df %>%
+  gt() %>%
+  tab_header(
+    title = md("**Premier League long-throw leaders (2025–26)**")
+  ) %>%
+  fmt_number(
+    columns = c(`Long Throw Goals`),
+    decimals = 0
+  ) %>%
+  fmt_number(
+    columns = c(`Long Throw xG`),
+    decimals = 2
+  ) %>%
+  cols_align(
+    align = "left",
+    columns = Team
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(`Long Throw Goals`, `Long Throw xG`)
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(
+    table.font.size = px(14),
+    data_row.padding = px(4)
+  ) 
+```
+
+**Brentford**, pioneers of the set piece movement and with former set piece coach Keith Andrews now as their manager, lead the way with four goals and 3.3 xG from long throws. And looking at the top half of the list, it's a mish mash of many of the smaller clubs in the division, which suggests long throws are a bit of a leveller.
+
+Finally, I was interested to see how English teams are performing in Europe with regard to open play and set pieces. The general narrative is that the Premier League is packed with physical beasts playing hurly burly in the penalty area each week, and the poor little technically-gifted Europeans aren't able to deal with it. 
+
+How does that tally with the stats? Let's look at how open-play and set-piece xG have changed in UEFA competitions in games between English teams and non-English opposition.
+
+::: {.centered-block}
+<img src="viz/uefa_eng_vs_noneng_xg_for_against_trends_2020_2026.png"/>
+:::
+
+You will notice that the error bars are a bit larger in this plot; it's obviously a much smaller sample than the league matches.
+
+Nonetheless, there is a significant increase in set-piece xG for the English teams of 0.02 per match per season. Again, look more closely at the dots and we can see a large change in the current season: set-piece xG has increased, while open-play xG both for and against has decreased.
+
+## A rant about referees and applying the laws of the game
+
+That fits the overall sense of the recent English shift towards more cautious football with an emphasis on set pieces. Everyone will have their own opinion on this. Personally, I think if you want to watch players wrestling and blocking each other while they wait for someone to launch a ball at them, there are other sports where you can enjoy that. And tellingly, those sports tend to use an egg-shaped ball to add even more fun & randomness to these chaotic sequences!
+
+Football, on the other hand, with its round ball, bills itself as the "beautiful game". And while the clash of different styles remains an important part of football, the authorities have always had the power to tinker with the rules (or the application thereof) to steer the game in a desired direction. Hence you can no longer just [kick the shit out of](https://www.youtube.com/watch?v=9OtnR06Z3EY) the opposition's star player.
+
+Something that has become evident over the past few seasons is that referees have decided to allow players to obstruct the goalkeeper. In fact it is now *de rigueur* to assign one player at every corner whose sole job is to block the keeper from being able to come out and challenge for the ball. 
+
+Why allow this to happen? I suppose the simple logic is that set piece goals are nonetheless goals, and more goals = more entertainment? But sometimes changes have unintended consequences, and if managers realise they can rely a bit more on these set piece goals and a bit less on attacking from open play, then the overall product suffers.
+
+The good news is, we don't need to scratch our heads to find a solution here. The FA can simply issue an edict instructing referees to actually apply the [obstruction law](https://www.thefa.com/football-rules-governance/lawsandrules/laws/football-11-11/law-12---fouls-and-misconduct).
+
+>IMPEDING THE PROGRESS OF AN OPPONENT WITHOUT CONTACT
+>
+>Impeding the progress of an opponent means moving into the opponent’s
+>path to obstruct, block, slow down or force a change of direction when
+>the ball is not within playing distance of either player.
+
+>All players have a right to their position on the field of play; being
+>in the way of an opponent is not the same as moving into the way of an 
+>opponent.
+
+Based on that law, is it an offence for an attacking player to block the goalkeeper at a corner? Clearly, the ball is not within playing distance and the goalkeeper's progress is being impeded - he wants to come out and claim the ball but he is obstructed, blocked, slowed down, forced to change direction, or all of the above.
+
+So the crux of the matter seems to be the "all players have a right to their position on the field of play" clause. This is the loophole being exploited. The "I've got to stand somewhere!" excuse.
+
+But who is really buying this? The player is there solely to obstruct the goalkeeper. I know it, you know it, the referee knows it. And by and large, the player does *move into the way* of the keeper anyway, just before the corner is struck so as to minimize his ability to navigate around the blocker.
+
+Furthermore, importantly, the above law applies **without contact**! Deliberately blocking off the keeper should be an infringement *even if you don't touch him* - yet they are allowing players to pin the keeper on his line with a load of contact thrown into the bargain. 
+
+I recommend [this article](https://substack.com/home/post/p-171292006) from last year by Profspur for a more broad, eloquent argument on this topic. Personally, I find it baffling and frustrating, and I assume there will be a growing discontent over set pieces - not least over the time spent with the ball out of play while they are setting them up like something from an NFL playbook. In the meantime, I can pull my hair out each week while the experts in the studio tell us the keeper "just needs to be stronger".
+

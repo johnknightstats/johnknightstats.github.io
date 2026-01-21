@@ -23,7 +23,7 @@ library(readr)
 library(dplyr)
 library(DT)
 
-df_raw <- read_csv("data/tables/pl_xg_by_situation_current_season.csv", show_col_types = FALSE)
+df_raw <- read_csv("pl_xg_by_situation_current_season.csv", show_col_types = FALSE)
 
 style_grad <- function(x, base_pal, n=101) {
   rng <- range(x, na.rm=TRUE)

@@ -210,3 +210,6 @@ Furthermore, importantly, the above law applies **without contact**! Deliberatel
 
 I recommend [this article](https://substack.com/home/post/p-171292006) from last year by Profspur for a more broad, eloquent argument on this topic. Personally, I find it baffling and frustrating, and I assume there will be a growing discontent over set pieces - not least over the time spent with the ball out of play while they are setting them up like something from an NFL playbook. In the meantime, I can pull my hair out each week while the experts in the studio tell us the keeper "just needs to be stronger".
 
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2025 John Knight. All rights reserved.

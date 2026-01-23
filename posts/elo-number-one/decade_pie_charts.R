@@ -23,8 +23,8 @@ suppressPackageStartupMessages({
 # ----------------------------
 # Config
 # ----------------------------
-IN_CSV  <- file.path("data", "processed", "clubelo_number_one_daily.csv")
-OUT_DIR <- "outputs"
+IN_CSV  <- "posts/elo-number-one/data/processed/clubelo_number_one_daily.csv"
+OUT_DIR <- "posts/elo-number-one/outputs"
 OUT_PNG <- file.path(OUT_DIR, "clubelo_number_one_pies_by_decade.png")
 
 DECADES_KEEP <- c("1940s","1950s","1960s","1970s","1980s","1990s","2000s","2010s","2020s")
@@ -67,6 +67,11 @@ PNG_DPI       <- 300
 
 TITLE_TEXT <- "Nationality of Club Elo Number One by Decade"
 
+# Pie orientation: 12 o'clock start, clockwise
+PIE_START <- 0
+PIE_DIR   <- 1
+
+
 # ----------------------------
 # Helpers
 # ----------------------------
@@ -103,13 +108,19 @@ df <- df_raw %>%
   filter(!is.na(Date), decade %in% DECADES_KEEP, !is.na(country_name)) %>%
   mutate(
     decade = factor(decade, levels = DECADES_KEEP),
-    country_name = factor(country_name, levels = COUNTRY_ORDER)
+    country_name = as.character(country_name)
   )
 
+# Compute slice boundaries explicitly (largest starts at 12 o'clock)
 df_dec <- df %>%
   count(decade, country_name, name = "days") %>%
   group_by(decade) %>%
   mutate(prop = days / sum(days)) %>%
+  arrange(desc(prop), country_name) %>%  # descending within each decade
+  mutate(
+    ymax = cumsum(prop),
+    ymin = dplyr::lag(ymax, default = 0)
+  ) %>%
   ungroup()
 
 # ----------------------------
@@ -118,11 +129,20 @@ df_dec <- df %>%
 pie_for_decade <- function(dec_label) {
   d <- df_dec %>% filter(decade == dec_label)
   
-  ggplot(d, aes(x = 1, y = prop, fill = country_name)) +
-    geom_col(width = 1, color = "grey20", linewidth = 0.3) +
-    coord_polar(theta = "y") +
-    # limits + drop=FALSE keeps mapping stable
-    scale_fill_manual(values = COUNTRY_COLORS, limits = COUNTRY_ORDER, drop = FALSE) +
+  ggplot(d, aes(
+    xmin = 0, xmax = 1,
+    ymin = ymin, ymax = ymax,
+    fill = country_name
+  )) +
+    geom_rect(color = "grey20", linewidth = 0.3) +
+    coord_polar(theta = "y", start = PIE_START, direction = PIE_DIR) +
+    scale_fill_manual(
+      values = COUNTRY_COLORS,
+      breaks = COUNTRY_ORDER,
+      limits = COUNTRY_ORDER,
+      drop = FALSE,
+      na.value = "grey80"
+    ) +
     labs(title = as.character(dec_label)) +
     theme_void(base_size = 12) +
     theme(
@@ -145,8 +165,8 @@ legend_df <- tibble(
 legend_plot_src <-
   ggplot(legend_df, aes(x = 1, y = prop, fill = country_name)) +
   geom_col() +
-  coord_polar(theta = "y") +
-  scale_fill_manual(values = COUNTRY_COLORS, limits = COUNTRY_ORDER, drop = FALSE) +
+  coord_polar(theta = "y", start = PIE_START, direction = PIE_DIR) +
+  scale_fill_manual(values = COUNTRY_COLORS, breaks = COUNTRY_ORDER, limits = COUNTRY_ORDER, drop = FALSE) +
   labs(fill = "Country") +
   theme_void(base_size = 14) +
   theme(
@@ -154,7 +174,6 @@ legend_plot_src <-
     legend.title = element_text(size = 14, face = "bold"),
     legend.text  = element_text(size = 12),
     legend.key.size = unit(0.9, "cm"),
-    # helps England (white) show as a key
     legend.key = element_rect(fill = "grey92", color = "grey60")
   )
 
@@ -162,11 +181,11 @@ legend_grob <- extract_legend_grob(legend_plot_src)
 legend_panel <- wrap_elements(full = legend_grob)
 
 # ----------------------------
-# Combine grid + legend (closer + larger legend)
+# Combine grid + legend
 # ----------------------------
 final_plot <-
   (grid_plot | legend_panel) +
-  plot_layout(widths = c(5,1.5)) +
+  plot_layout(widths = c(5, 1.5)) +
   plot_annotation(
     title = TITLE_TEXT,
     theme = theme(

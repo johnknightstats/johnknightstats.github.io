@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-01-10">
-<meta name="description" content="Part two: Breaking down Emery’s xG performance by club, and looking at player effects and game state.">
+<meta name="dcterms.date" content="2026-01-22">
+<meta name="description" content="Using bookmaker odds and simulation to find the probability of each team qualifying, and their potential opponents in the next round.">
 
-<title>Unai Emery: the xG whisperer – John Knight Stats</title>
+<title>What are the probabilities of each team qualifying for the next phase of the Champions League? – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -302,19 +302,17 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unai Emery: the xG whisperer</h1>
+<h1 class="title">What are the probabilities of each team qualifying for the next phase of the Champions League?</h1>
   <div class="quarto-categories">
     <div class="quarto-category">football</div>
     <div class="quarto-category">statistics</div>
-    <div class="quarto-category">Unai Emery</div>
-    <div class="quarto-category">Aston Villa</div>
-    <div class="quarto-category">Premier League</div>
+    <div class="quarto-category">Champions League</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Part two: Breaking down Emery’s xG performance by club, and looking at player effects and game state.
+    Using bookmaker odds and simulation to find the probability of each team qualifying, and their potential opponents in the next round.
   </div>
 </div>
 
@@ -331,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10 January 2026</p>
+      <p class="date">22 January 2026</p>
     </div>
   </div>
   
@@ -343,52 +341,49 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is part two of a multi-part look at <strong>Unai Emery</strong> and his apparent habit of outperforming expected goals (xG). In <a href="https://johnknightstats.com/posts/emery-xg-overperformance/">part one</a>, I showed that xG is a more predictive statistic than points or goal difference, and that Emery ranks third among all managers for xG overperformance during the study period (2017-2018 to 2024-2025).</p>
-<p>Next, I want to drill down on Emery’s stints at PSG, Arsenal, Villarreal and Aston Villa during those seasons. We know from part one that his teams, cumulatively, have scored more than their expected goals for, and conceded fewer than their expected goals against. But where have these gains come from?</p>
-<p>An obvious starting point is to break it down by club. Here we can see a breakdown of Emery’s total xG overperformance at each of the four clubs, with attacking overperformance in blue and defensive overperformance in orange.</p>
 <div class="centered-block">
-<p><img src="viz/emery_xg_overperformance_totals.png"></p>
+<p><img src="cl.jpg"></p>
 </div>
-<p>All four clubs, with Emery as manager, have performed better than their xG in both attack and defence. The largest overperformance came at Aston Villa where, up to the end of the 2024-2025 season, Emery outperformed xG by 31.7 goals. With both Villa and PSG, the majority of overperformance came in attack, whereas at Villarreal the majority was on the defensive end. At Arsenal it was close to a 50:50 split.</p>
-<p>There is an obvious question to be raised, especially with respect to PSG and Arsenal: is this just about having better players? These are wealthy clubs that can sign better-than-average footballers in every position; it’s no wonder that they will excel at whatever aspects of the game the xG models cannot capture.</p>
-<p>This is a fair point, so let’s take a look at how these clubs have performed, relative to xG, with and without Unai Emery as manager during the study period:</p>
+<p>The new Champions League format is in its second season. I’d say the verdict so far is: not perfect, but better than the old format. I’ll talk a bit more about the pros and cons of the new format later, but first let’s try and pick apart the incredibly bunched league table with one game remaining, including a ridiculous <strong>eight teams</strong> tied on 13 points.</p>
+<p>I simulated the final set of matches using <a href="https://www.pinnacle.com/en/soccer/uefa-champions-league/matchups/#all">Pinnacle’s</a> current lines for each match. Simulation can be tricky to use appropriately and is perhaps overused at times in football analysis, but in this case it is fairly simple: there is only one game left, and the changes in team ratings after this game or further down the line are irrelevant. There is a small case to be made that the games are not independent - a team might play differently near the end based on other scores - but we will have to ignore that unless someone wants to build a ridiculously complex minute-by-minute state model just for some incremental gains.</p>
+<p>So here we go. Based on the current match odds, here are the probabilities for each team to finish in the top 8 or the top 24.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qlmytmbtcp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qlmytmbtcp table {
+<div id="oqrmotsmvc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oqrmotsmvc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qlmytmbtcp thead, #qlmytmbtcp tbody, #qlmytmbtcp tfoot, #qlmytmbtcp tr, #qlmytmbtcp td, #qlmytmbtcp th {
+#oqrmotsmvc thead, #oqrmotsmvc tbody, #oqrmotsmvc tfoot, #oqrmotsmvc tr, #oqrmotsmvc td, #oqrmotsmvc th {
   border-style: none;
 }
 
-#qlmytmbtcp p {
+#oqrmotsmvc p {
   margin: 0;
   padding: 0;
 }
 
-#qlmytmbtcp .gt_table {
+#oqrmotsmvc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
-  width: auto;
+  width: 100%;
   border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D9D9D9;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
   border-right-style: none;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  border-bottom-style: none;
+  border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
   border-left-style: none;
@@ -396,36 +391,36 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#qlmytmbtcp .gt_caption {
+#oqrmotsmvc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qlmytmbtcp .gt_title {
+#oqrmotsmvc .gt_title {
   color: #333333;
-  font-size: 125%;
+  font-size: 16px;
   font-weight: initial;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#qlmytmbtcp .gt_subtitle {
+#oqrmotsmvc .gt_subtitle {
   color: #333333;
-  font-size: 85%;
+  font-size: 12px;
   font-weight: initial;
-  padding-top: 5px;
-  padding-bottom: 7px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#qlmytmbtcp .gt_heading {
+#oqrmotsmvc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -437,19 +432,19 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qlmytmbtcp .gt_bottom_border {
+#oqrmotsmvc .gt_bottom_border {
   border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D9D9D9;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
-#qlmytmbtcp .gt_col_headings {
+#oqrmotsmvc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
+  border-bottom-color: #D3D3D3;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -458,7 +453,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qlmytmbtcp .gt_col_heading {
+#oqrmotsmvc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -471,14 +466,14 @@ ul.task-list li input[type="checkbox"] {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 6px;
   padding-left: 5px;
   padding-right: 5px;
   overflow-x: hidden;
 }
 
-#qlmytmbtcp .gt_column_spanner_outer {
+#oqrmotsmvc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -490,31 +485,31 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#qlmytmbtcp .gt_column_spanner_outer:first-child {
+#oqrmotsmvc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qlmytmbtcp .gt_column_spanner_outer:last-child {
+#oqrmotsmvc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qlmytmbtcp .gt_column_spanner {
+#oqrmotsmvc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
+  border-bottom-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#qlmytmbtcp .gt_spanner_row {
+#oqrmotsmvc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qlmytmbtcp .gt_group_heading {
+#oqrmotsmvc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -540,7 +535,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#qlmytmbtcp .gt_empty_group_heading {
+#oqrmotsmvc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -555,17 +550,17 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#qlmytmbtcp .gt_from_md > :first-child {
+#oqrmotsmvc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qlmytmbtcp .gt_from_md > :last-child {
+#oqrmotsmvc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qlmytmbtcp .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
+#oqrmotsmvc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -582,7 +577,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qlmytmbtcp .gt_stub {
+#oqrmotsmvc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -595,524 +590,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qlmytmbtcp .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#qlmytmbtcp .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#qlmytmbtcp .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#qlmytmbtcp .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qlmytmbtcp .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#qlmytmbtcp .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#qlmytmbtcp .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qlmytmbtcp .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qlmytmbtcp .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#qlmytmbtcp .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qlmytmbtcp .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#qlmytmbtcp .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qlmytmbtcp .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#qlmytmbtcp .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qlmytmbtcp .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#qlmytmbtcp .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qlmytmbtcp .gt_left {
-  text-align: left;
-}
-
-#qlmytmbtcp .gt_center {
-  text-align: center;
-}
-
-#qlmytmbtcp .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#qlmytmbtcp .gt_font_normal {
-  font-weight: normal;
-}
-
-#qlmytmbtcp .gt_font_bold {
-  font-weight: bold;
-}
-
-#qlmytmbtcp .gt_font_italic {
-  font-style: italic;
-}
-
-#qlmytmbtcp .gt_super {
-  font-size: 65%;
-}
-
-#qlmytmbtcp .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#qlmytmbtcp .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#qlmytmbtcp .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#qlmytmbtcp .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#qlmytmbtcp .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#qlmytmbtcp .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#qlmytmbtcp .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#qlmytmbtcp .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#qlmytmbtcp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 34%">
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr class="gt_heading header">
-<td colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border">Unai Emery xG overperformance by club relative to other managers (2017-2025)</td>
-</tr>
-<tr class="gt_col_headings even">
-<th id="Club" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Club</th>
-<th id="Matches-(Emery)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Matches (Emery)</th>
-<th id="xG-overperformance-per-match-(Emery)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">xG overperformance per match (Emery)</th>
-<th id="Matches-(Other)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Matches (Other)</th>
-<th id="xG-overperformance-per-match-(Other)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">xG overperformance per match (Other)</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Club">Paris Saint-Germain</td>
-<td class="gt_row gt_center" headers="Matches (Emery)">46</td>
-<td class="gt_row gt_right" headers="xG overperformance per match (Emery)">0.624</td>
-<td class="gt_row gt_center" headers="Matches (Other)">323</td>
-<td class="gt_row gt_right" headers="xG overperformance per match (Other)">0.309</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Club">Arsenal</td>
-<td class="gt_row gt_center" headers="Matches (Emery)">71</td>
-<td class="gt_row gt_right" headers="xG overperformance per match (Emery)">0.300</td>
-<td class="gt_row gt_center" headers="Matches (Other)">316</td>
-<td class="gt_row gt_right" headers="xG overperformance per match (Other)">0.201</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Club">Aston Villa</td>
-<td class="gt_row gt_center" headers="Matches (Emery)">125</td>
-<td class="gt_row gt_right" headers="xG overperformance per match (Emery)">0.254</td>
-<td class="gt_row gt_center" headers="Matches (Other)">127</td>
-<td class="gt_row gt_right" headers="xG overperformance per match (Other)">0.015</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Club">Villarreal</td>
-<td class="gt_row gt_center" headers="Matches (Emery)">117</td>
-<td class="gt_row gt_right" headers="xG overperformance per match (Emery)">0.202</td>
-<td class="gt_row gt_center" headers="Matches (Other)">249</td>
-<td class="gt_row gt_right" headers="xG overperformance per match (Other)">0.027</td>
-</tr>
-</tbody><tfoot>
-<tr class="gt_sourcenotes odd">
-<td colspan="5" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">xG overperformance = goals minus expected goals.</td>
-</tr>
-</tfoot>
-
-</table>
-
-</div>
-</div>
-</div>
-<p>Again, I want to reiterate that this is a measure of goals relative to xG - it does NOT measure whether the xG is high or low in the first place. Just because Emery outperformed his xG by an average of 0.3 at Arsenal, does not mean he got better results overall than the managers that outperformed their xG by an average of 0.201.</p>
-<p>Nonetheless, it is clear that Emery has done better, relative to xG, at each of the four clubs than all the other managers collectively. It is also evident that PSG and Arsenal have outperformed xG (by 0.309 and 0.201 per game, respectively, without Emery) across all managers, whereas Aston Villa and Villarreal are close to neutral under non-Emery managers, backing up the hypothesis that wealth begets talent which begets xG overperformance.</p>
-<section id="is-it-just-about-having-better-players" class="level2">
-<h2 class="anchored" data-anchor-id="is-it-just-about-having-better-players">Is it just about having better players?</h2>
-<p>If we suspect that star players may be driving some of the ‘Emery effect’, let’s take a look at the 10 goalscorers who have exceeded their xG by the most while playing for Emery teams between 2017 and 2025:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="nmcsdzyhgz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nmcsdzyhgz table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#nmcsdzyhgz thead, #nmcsdzyhgz tbody, #nmcsdzyhgz tfoot, #nmcsdzyhgz tr, #nmcsdzyhgz td, #nmcsdzyhgz th {
-  border-style: none;
-}
-
-#nmcsdzyhgz p {
-  margin: 0;
-  padding: 0;
-}
-
-#nmcsdzyhgz .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D9D9D9;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#nmcsdzyhgz .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#nmcsdzyhgz .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#nmcsdzyhgz .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 5px;
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#nmcsdzyhgz .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#nmcsdzyhgz .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D9D9D9;
-}
-
-#nmcsdzyhgz .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#nmcsdzyhgz .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#nmcsdzyhgz .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#nmcsdzyhgz .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#nmcsdzyhgz .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#nmcsdzyhgz .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#nmcsdzyhgz .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#nmcsdzyhgz .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#nmcsdzyhgz .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#nmcsdzyhgz .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#nmcsdzyhgz .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#nmcsdzyhgz .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#nmcsdzyhgz .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#nmcsdzyhgz .gt_stub_row_group {
+#oqrmotsmvc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1126,15 +604,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#nmcsdzyhgz .gt_row_group_first td {
+#oqrmotsmvc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nmcsdzyhgz .gt_row_group_first th {
+#oqrmotsmvc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nmcsdzyhgz .gt_summary_row {
+#oqrmotsmvc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1144,16 +622,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#nmcsdzyhgz .gt_first_summary_row {
+#oqrmotsmvc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nmcsdzyhgz .gt_first_summary_row.thick {
+#oqrmotsmvc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nmcsdzyhgz .gt_last_summary_row {
+#oqrmotsmvc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1163,7 +641,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#nmcsdzyhgz .gt_grand_summary_row {
+#oqrmotsmvc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1173,7 +651,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#nmcsdzyhgz .gt_first_grand_summary_row {
+#oqrmotsmvc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1183,7 +661,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#nmcsdzyhgz .gt_last_grand_summary_row_top {
+#oqrmotsmvc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1193,11 +671,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#nmcsdzyhgz .gt_striped {
+#oqrmotsmvc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nmcsdzyhgz .gt_table_body {
+#oqrmotsmvc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1206,7 +684,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#nmcsdzyhgz .gt_footnotes {
+#oqrmotsmvc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1220,7 +698,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#nmcsdzyhgz .gt_footnote {
+#oqrmotsmvc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1229,7 +707,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#nmcsdzyhgz .gt_sourcenotes {
+#oqrmotsmvc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1243,7 +721,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#nmcsdzyhgz .gt_sourcenote {
+#oqrmotsmvc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1251,1369 +729,418 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#nmcsdzyhgz .gt_left {
+#oqrmotsmvc .gt_left {
   text-align: left;
 }
 
-#nmcsdzyhgz .gt_center {
+#oqrmotsmvc .gt_center {
   text-align: center;
 }
 
-#nmcsdzyhgz .gt_right {
+#oqrmotsmvc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nmcsdzyhgz .gt_font_normal {
+#oqrmotsmvc .gt_font_normal {
   font-weight: normal;
 }
 
-#nmcsdzyhgz .gt_font_bold {
+#oqrmotsmvc .gt_font_bold {
   font-weight: bold;
 }
 
-#nmcsdzyhgz .gt_font_italic {
+#oqrmotsmvc .gt_font_italic {
   font-style: italic;
 }
 
-#nmcsdzyhgz .gt_super {
+#oqrmotsmvc .gt_super {
   font-size: 65%;
 }
 
-#nmcsdzyhgz .gt_footnote_marks {
+#oqrmotsmvc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nmcsdzyhgz .gt_asterisk {
+#oqrmotsmvc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nmcsdzyhgz .gt_indent_1 {
+#oqrmotsmvc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nmcsdzyhgz .gt_indent_2 {
+#oqrmotsmvc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nmcsdzyhgz .gt_indent_3 {
+#oqrmotsmvc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nmcsdzyhgz .gt_indent_4 {
+#oqrmotsmvc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nmcsdzyhgz .gt_indent_5 {
+#oqrmotsmvc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nmcsdzyhgz .katex-display {
+#oqrmotsmvc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nmcsdzyhgz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oqrmotsmvc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 30%">
-<col>
-<col>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr class="gt_heading header">
-<td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border">Greatest total xG overperformers under Unai Emery (2017-2025)</td>
+<td colspan="7" class="gt_heading gt_title gt_font_normal"><strong>Champions League 2025-2026</strong></td>
 </tr>
-<tr class="gt_col_headings even">
-<th id="Player" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Player</th>
-<th id="Shots-(Emery)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Shots (Emery)</th>
-<th id="Total-xG-overperformance-(Emery)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Total xG overperformance (Emery)</th>
-<th id="per-shot-(Emery)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">per shot (Emery)</th>
-<th id="Shots-(Other)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Shots (Other)</th>
-<th id="Total-xG-overperformance-(Other)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Total xG overperformance (Other)</th>
-<th id="per-shot-(Other)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">per shot (Other)</th>
+<tr class="gt_heading even">
+<td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Standings and qualification probabilities after 7 games</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Position" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Position</th>
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Points" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Points</th>
+<th id="Goal-diff" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Goal diff</th>
+<th id="Top-8" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Top 8</th>
+<th id="Top-24" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Top 24</th>
+<th id="Playoff" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Playoff</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Player">Jhon Durán</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">92</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">6.49</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.071</td>
-<td class="gt_row gt_right" headers="Shots (Other)">NA</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">NA</td>
-<td class="gt_row gt_right" headers="per shot (Other)">NA</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Player">Alex Baena</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">37</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">6.31</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.171</td>
-<td class="gt_row gt_right" headers="Shots (Other)">202</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">−6.45</td>
-<td class="gt_row gt_right" headers="per shot (Other)">−0.032</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Player">Edinson Cavani</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">132</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">6.26</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.047</td>
-<td class="gt_row gt_right" headers="Shots (Other)">201</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">−1.45</td>
-<td class="gt_row gt_right" headers="per shot (Other)">−0.007</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Player">Neymar</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">118</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">5.52</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.047</td>
-<td class="gt_row gt_right" headers="Shots (Other)">392</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">4.76</td>
-<td class="gt_row gt_right" headers="per shot (Other)">0.012</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Player">Gerard Moreno</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">206</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">4.58</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.022</td>
-<td class="gt_row gt_right" headers="Shots (Other)">424</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">−4.69</td>
-<td class="gt_row gt_right" headers="per shot (Other)">−0.011</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Player">Yeremi Pino</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">58</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">3.92</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.068</td>
-<td class="gt_row gt_right" headers="Shots (Other)">86</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">−6.18</td>
-<td class="gt_row gt_right" headers="per shot (Other)">−0.072</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Player">Alexandre Lacazette</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">124</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">3.76</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.030</td>
-<td class="gt_row gt_right" headers="Shots (Other)">481</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">6.83</td>
-<td class="gt_row gt_right" headers="per shot (Other)">0.014</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Player">Morgan Rogers</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">97</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">3.64</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.038</td>
-<td class="gt_row gt_right" headers="Shots (Other)">NA</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">NA</td>
-<td class="gt_row gt_right" headers="per shot (Other)">NA</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Player">Ollie Watkins</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">288</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">3.52</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.012</td>
-<td class="gt_row gt_right" headers="Shots (Other)">201</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">−3.87</td>
-<td class="gt_row gt_right" headers="per shot (Other)">−0.019</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Player">Mesut Özil</td>
-<td class="gt_row gt_right" headers="Shots (Emery)">17</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Emery)">3.36</td>
-<td class="gt_row gt_right" headers="per shot (Emery)">0.198</td>
-<td class="gt_row gt_right" headers="Shots (Other)">57</td>
-<td class="gt_row gt_right" headers="Total xG overperformance (Other)">−0.12</td>
-<td class="gt_row gt_right" headers="per shot (Other)">−0.002</td>
-</tr>
-</tbody><tfoot>
-<tr class="gt_sourcenotes odd">
-<td colspan="7" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">xG overperformance = goals minus expected goals.</td>
-</tr>
-</tfoot>
-
-</table>
-
-</div>
-</div>
-</div>
-<p>Leading the way is Jhon Durán, who seemed to score everything he looked at in the first half of the 2024-2025 season, including the incredible 35-yard winner against Bayern Munich. Because Durán arrived at Villa from MLS and left to Saudi Arabia, we do not have any non-Emery results for him in the dataset for comparison.</p>
-<p>Of the 10 names on the list, only Neymar and Alexandre Lacazette recorded a positive xG overperformance under other managers. Edinson Cavani underperformed his xG in subsequent seasons with PSG, Man Utd and Valencia. Ollie Watkins has now established himself as a star striker at Emery’s Villa, but had previously been seen by many as a hard-working forward but a mediocre finisher.</p>
-<p>Alex Baena, meanwhile, experienced an outrageous run of finishing in his short time playing for Emery’s Villarreal, scoring 9 times from only 37 shots and gaining 6.31 goals over xG; yet without Emery, his shooting boots deserted him, completely negating the hot run (-6.45 goals). Yeremy Pino, now of Crystal Palace, experience a similar turnaround (+3.92 to -6.18) as did Gerard Moreno (+4.58 to -4.69).</p>
-<p>The impact of defenders on opposition finishing is a bit harder to quantify, but we can take a look at goalkeepers. <strong>Post-shot expected goals</strong> (PSxG) can be used to model the probability of a goal being scored after the ball is struck (an off-target shot therefore being worth zero) and we can calculate a goalkeeper’s “goals prevented” by subtracting the actual number of goals conceded from their total PSxG. The following table contains all goalkeepers who played more than 5 games for Emery’s teams during the study period.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="irjslwxqog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#irjslwxqog table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#irjslwxqog thead, #irjslwxqog tbody, #irjslwxqog tfoot, #irjslwxqog tr, #irjslwxqog td, #irjslwxqog th {
-  border-style: none;
-}
-
-#irjslwxqog p {
-  margin: 0;
-  padding: 0;
-}
-
-#irjslwxqog .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D9D9D9;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#irjslwxqog .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#irjslwxqog .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 5px;
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#irjslwxqog .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D9D9D9;
-}
-
-#irjslwxqog .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#irjslwxqog .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#irjslwxqog .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#irjslwxqog .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#irjslwxqog .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#irjslwxqog .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#irjslwxqog .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#irjslwxqog .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#irjslwxqog .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#irjslwxqog .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#irjslwxqog .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#irjslwxqog .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#irjslwxqog .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#irjslwxqog .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#irjslwxqog .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#irjslwxqog .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#irjslwxqog .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#irjslwxqog .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#irjslwxqog .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#irjslwxqog .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#irjslwxqog .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#irjslwxqog .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#irjslwxqog .gt_left {
-  text-align: left;
-}
-
-#irjslwxqog .gt_center {
-  text-align: center;
-}
-
-#irjslwxqog .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#irjslwxqog .gt_font_normal {
-  font-weight: normal;
-}
-
-#irjslwxqog .gt_font_bold {
-  font-weight: bold;
-}
-
-#irjslwxqog .gt_font_italic {
-  font-style: italic;
-}
-
-#irjslwxqog .gt_super {
-  font-size: 65%;
-}
-
-#irjslwxqog .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#irjslwxqog .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#irjslwxqog .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#irjslwxqog .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#irjslwxqog .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#irjslwxqog .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#irjslwxqog .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#irjslwxqog .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#irjslwxqog div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 30%">
-<col>
-<col>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr class="gt_heading header">
-<td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border">Goalkeepers under Unai Emery (2017-2025)</td>
-</tr>
-<tr class="gt_col_headings even">
-<th id="Goalkeeper" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Goalkeeper</th>
-<th id="Matches-(Emery)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Matches (Emery)</th>
-<th id="Goals-prevented-(Emery)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Goals prevented (Emery)</th>
-<th id="per-match-(Emery)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">per match (Emery)</th>
-<th id="Matches-(Other)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Matches (Other)</th>
-<th id="Goals-prevented-(Other)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Goals prevented (Other)</th>
-<th id="per-match-(Other)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">per match (Other)</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Goalkeeper">Emiliano Martínez</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">121</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">8.9</td>
-<td class="gt_row gt_right" headers="per match (Emery)">0.074</td>
-<td class="gt_row gt_right" headers="Matches (Other)">102</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−3.4</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.033</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Goalkeeper">Gerónimo Rulli</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">70</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">−1.4</td>
-<td class="gt_row gt_right" headers="per match (Emery)">−0.020</td>
-<td class="gt_row gt_right" headers="Matches (Other)">125</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−10.0</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.080</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Goalkeeper">Bernd Leno</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">48</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">2.7</td>
-<td class="gt_row gt_right" headers="per match (Emery)">0.056</td>
-<td class="gt_row gt_right" headers="Matches (Other)">213</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−12.3</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.058</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Goalkeeper">Sergio Asenjo</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">43</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">−3.8</td>
-<td class="gt_row gt_right" headers="per match (Emery)">−0.088</td>
-<td class="gt_row gt_right" headers="Matches (Other)">101</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−2.3</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.023</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Goalkeeper">Alphonse Areola</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">42</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">1.2</td>
-<td class="gt_row gt_right" headers="per match (Emery)">0.029</td>
-<td class="gt_row gt_right" headers="Matches (Other)">157</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−3.8</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.024</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Goalkeeper">Petr Čech</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">18</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">0.0</td>
-<td class="gt_row gt_right" headers="per match (Emery)">0.000</td>
-<td class="gt_row gt_right" headers="Matches (Other)">37</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−1.8</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.049</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Goalkeeper">Robin Olsen</td>
-<td class="gt_row gt_right" headers="Matches (Emery)">14</td>
-<td class="gt_row gt_right" headers="Goals prevented (Emery)">−4.7</td>
-<td class="gt_row gt_right" headers="per match (Emery)">−0.336</td>
-<td class="gt_row gt_right" headers="Matches (Other)">65</td>
-<td class="gt_row gt_right" headers="Goals prevented (Other)">−5.6</td>
-<td class="gt_row gt_right" headers="per match (Other)">−0.086</td>
-</tr>
-</tbody><tfoot>
-<tr class="gt_sourcenotes odd">
-<td colspan="7" class="gt_sourcenote" style="text-align: left; font-size: 11px; font-style: italic;">Goals prevented = PSxG minus goals against. Minumum 5 matches played under Emery.</td>
-</tr>
-</tfoot>
-
-</table>
-
-</div>
-</div>
-</div>
-<p>Emiliano Martinez and Bernd Leno both experienced a similar difference between Emery and other managers - about 0.1 goals per match. Gerónimo Rulli’s difference was slightly lower (0.06) but still positive. Only Villarreal’s Sergio Asenjo, of goalkeepers playing 40+ games, had a worse performance relative to PSxG under Emery than under other managers.</p>
-</section>
-<section id="game-state" class="level2">
-<h2 class="anchored" data-anchor-id="game-state">Game state</h2>
-<p>Something that gets neglected when people throw around aggregated statistics is context. A team that is down by one goal has very different incentives than a team that is leading by one goal, and will vary their tactics accordingly. We can break down Unai Emery’s teams by game state (i.e.&nbsp;the number of goals they are leading or trailing by at any point in the match) and see how their xG overperformance varies.</p>
-<div class="centered-block">
-<p><img src="viz/emery_vs_all_by_game_state_overperf.png"></p>
-</div>
-<p>In attack, Emery’s teams tend to overperform their xG per shot in close games (leading by one, trailing by one, or level). In defence, they tend to overperform across the board.</p>
-<p>The orange bars show the overall distribution for all teams: in attack, outperforming xG when leading, and underperforming xG when trailing. The trend is mirrored in defence, because one team’s attack is always another team’s defence. The implication here is intuitive: when you are chasing an equaliser, the opposition will keep more players back, and there will be less space to get shots off; players are more crowded and have to shoot quickly under duress. When leading, they are more likely to find themselves in friendly situations with fewer defenders back.</p>
-<p>But there’s an obvious problem with these overall aggregated statistics. Good teams tend to be ahead more often, and bad teams tend to be behind, so this is likely to bias the results.</p>
-<p>To account for this bias, I trained a regression model that used the log of the match odds (adjusted to remove the bookmaker’s overround) to represent the relative strengths of the two teams. The outcome variable was the difference between goals and xG on each shot, with game state, team strength and Emery as features along with interactions to capture different effects at each game state.</p>
-<div class="centered-block">
-<p><img src="viz/emery_regression_attack.png"></p>
-</div>
-<p>After accounting for team strength, Emery’s teams overperformed xG in attack by 0.024 goals per shot when trailing by one goal, and 0.013 per shot when leading by one goal. They actually underperformed in games that were not close (2 or more goal lead for either team).</p>
-<div class="centered-block">
-<p><img src="viz/emery_regression_defence.png"></p>
-</div>
-<p>In defence, the largest overperformance was when trailing by two goals (+0.035 goals per shot) followed by one goal (+0.026). So when Emery’s teams were <strong>behind by one goal</strong>, they outperformed xG by similar amounts both offensively and defensively, and this is the scoreline at which Emery seems to create the biggest edge.</p>
-<p>These amounts may sound small, but when you bear in mind that the average shot has an xG of around 0.11, a difference of 0.024 per shot would be more than a 20% increase in the number of goals.</p>
-<p>There is one aspect of Villa’s current season that I haven’t yet covered, and that is the conversion of a +9 goal difference into 42 points, the same number of points as Manchester City who have a goal difference of +26. The only way to do that is with a lot of <strong>one-goal wins</strong>, and unsurprisingly Villa lead the Premier League in that category with 10 one-goal wins after 21 matches played.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="btknzglszs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#btknzglszs table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#btknzglszs thead, #btknzglszs tbody, #btknzglszs tfoot, #btknzglszs tr, #btknzglszs td, #btknzglszs th {
-  border-style: none;
-}
-
-#btknzglszs p {
-  margin: 0;
-  padding: 0;
-}
-
-#btknzglszs .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D9D9D9;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#btknzglszs .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#btknzglszs .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#btknzglszs .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 5px;
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#btknzglszs .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#btknzglszs .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D9D9D9;
-}
-
-#btknzglszs .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#btknzglszs .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#btknzglszs .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#btknzglszs .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#btknzglszs .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#btknzglszs .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D0D0D0;
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#btknzglszs .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#btknzglszs .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#btknzglszs .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#btknzglszs .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#btknzglszs .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#btknzglszs .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#btknzglszs .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#btknzglszs .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#btknzglszs .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#btknzglszs .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#btknzglszs .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#btknzglszs .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#btknzglszs .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#btknzglszs .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#btknzglszs .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#btknzglszs .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#btknzglszs .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#btknzglszs .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#btknzglszs .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#btknzglszs .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#btknzglszs .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#btknzglszs .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#btknzglszs .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#btknzglszs .gt_left {
-  text-align: left;
-}
-
-#btknzglszs .gt_center {
-  text-align: center;
-}
-
-#btknzglszs .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#btknzglszs .gt_font_normal {
-  font-weight: normal;
-}
-
-#btknzglszs .gt_font_bold {
-  font-weight: bold;
-}
-
-#btknzglszs .gt_font_italic {
-  font-style: italic;
-}
-
-#btknzglszs .gt_super {
-  font-size: 65%;
-}
-
-#btknzglszs .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#btknzglszs .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#btknzglszs .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#btknzglszs .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#btknzglszs .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#btknzglszs .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#btknzglszs .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#btknzglszs .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#btknzglszs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 45%">
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr class="gt_heading header">
-<td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border">Most one-goal wins, 2025-2026 Premier League</td>
-</tr>
-<tr class="gt_col_headings even">
-<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Team</th>
-<th id="Played" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Played</th>
-<th id="One-goal-wins" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">One-goal wins</th>
-<th id="Total-wins" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #F2F2F2; font-weight: bold" scope="col">Total wins</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Aston Villa</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">10</td>
-<td class="gt_row gt_right" headers="Total wins">13</td>
-</tr>
-<tr class="even">
+<td class="gt_row gt_center" headers="Position">1</td>
 <td class="gt_row gt_left" headers="Team">Arsenal</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">8</td>
-<td class="gt_row gt_right" headers="Total wins">15</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Fulham</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">7</td>
-<td class="gt_row gt_right" headers="Total wins">9</td>
+<td class="gt_row gt_center" headers="Points">21</td>
+<td class="gt_row gt_center" headers="Goal diff">18</td>
+<td class="gt_row gt_center" headers="Top 8">100.0%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">0.0%</td>
 </tr>
 <tr class="even">
+<td class="gt_row gt_center" headers="Position">2</td>
+<td class="gt_row gt_left" headers="Team">Bayern München</td>
+<td class="gt_row gt_center" headers="Points">18</td>
+<td class="gt_row gt_center" headers="Goal diff">13</td>
+<td class="gt_row gt_center" headers="Top 8">100.0%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">0.0%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">3</td>
+<td class="gt_row gt_left" headers="Team">Real Madrid</td>
+<td class="gt_row gt_center" headers="Points">15</td>
+<td class="gt_row gt_center" headers="Goal diff">11</td>
+<td class="gt_row gt_center" headers="Top 8">86.6%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">13.4%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">4</td>
 <td class="gt_row gt_left" headers="Team">Liverpool</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">6</td>
-<td class="gt_row gt_right" headers="Total wins">10</td>
+<td class="gt_row gt_center" headers="Points">15</td>
+<td class="gt_row gt_center" headers="Goal diff">6</td>
+<td class="gt_row gt_center" headers="Top 8">95.8%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">4.2%</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Team">Newcastle United</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">5</td>
-<td class="gt_row gt_right" headers="Total wins">9</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Manchester United</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">5</td>
-<td class="gt_row gt_right" headers="Total wins">8</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Sunderland</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">5</td>
-<td class="gt_row gt_right" headers="Total wins">7</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Manchester City</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">4</td>
-<td class="gt_row gt_right" headers="Total wins">13</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Everton</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">4</td>
-<td class="gt_row gt_right" headers="Total wins">8</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Crystal Palace</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">4</td>
-<td class="gt_row gt_right" headers="Total wins">7</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">AFC Bournemouth</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">4</td>
-<td class="gt_row gt_right" headers="Total wins">6</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Brighton &amp; Hove Albion</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">3</td>
-<td class="gt_row gt_right" headers="Total wins">7</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Brentford</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">2</td>
-<td class="gt_row gt_right" headers="Total wins">10</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Chelsea</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">2</td>
-<td class="gt_row gt_right" headers="Total wins">8</td>
-</tr>
-<tr class="odd">
+<td class="gt_row gt_center" headers="Position">5</td>
 <td class="gt_row gt_left" headers="Team">Tottenham Hotspur</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">2</td>
-<td class="gt_row gt_right" headers="Total wins">7</td>
+<td class="gt_row gt_center" headers="Points">14</td>
+<td class="gt_row gt_center" headers="Goal diff">8</td>
+<td class="gt_row gt_center" headers="Top 8">56.9%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">43.1%</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Team">Nottingham Forest</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">2</td>
-<td class="gt_row gt_right" headers="Total wins">6</td>
+<td class="gt_row gt_center" headers="Position">6</td>
+<td class="gt_row gt_left" headers="Team">Paris Saint-Germain</td>
+<td class="gt_row gt_center" headers="Points">13</td>
+<td class="gt_row gt_center" headers="Goal diff">10</td>
+<td class="gt_row gt_center" headers="Top 8">68.9%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">31.1%</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Team">Leeds United</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">2</td>
-<td class="gt_row gt_right" headers="Total wins">5</td>
+<td class="gt_row gt_center" headers="Position">7</td>
+<td class="gt_row gt_left" headers="Team">Newcastle United</td>
+<td class="gt_row gt_center" headers="Points">13</td>
+<td class="gt_row gt_center" headers="Goal diff">10</td>
+<td class="gt_row gt_center" headers="Top 8">14.7%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">85.3%</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Team">Burnley</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">1</td>
-<td class="gt_row gt_right" headers="Total wins">3</td>
+<td class="gt_row gt_center" headers="Position">8</td>
+<td class="gt_row gt_left" headers="Team">Chelsea</td>
+<td class="gt_row gt_center" headers="Points">13</td>
+<td class="gt_row gt_center" headers="Goal diff">6</td>
+<td class="gt_row gt_center" headers="Top 8">35.0%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">65.0%</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Team">West Ham United</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">1</td>
-<td class="gt_row gt_right" headers="Total wins">3</td>
+<td class="gt_row gt_center" headers="Position">9</td>
+<td class="gt_row gt_left" headers="Team">Barcelona</td>
+<td class="gt_row gt_center" headers="Points">13</td>
+<td class="gt_row gt_center" headers="Goal diff">5</td>
+<td class="gt_row gt_center" headers="Top 8">85.6%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">14.4%</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Team">Wolverhampton Wanderers</td>
-<td class="gt_row gt_right" headers="Played">21</td>
-<td class="gt_row gt_right" headers="One-goal wins">0</td>
-<td class="gt_row gt_right" headers="Total wins">1</td>
+<td class="gt_row gt_center" headers="Position">10</td>
+<td class="gt_row gt_left" headers="Team">Sporting CP</td>
+<td class="gt_row gt_center" headers="Points">13</td>
+<td class="gt_row gt_center" headers="Goal diff">5</td>
+<td class="gt_row gt_center" headers="Top 8">19.4%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">80.6%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">11</td>
+<td class="gt_row gt_left" headers="Team">Manchester City</td>
+<td class="gt_row gt_center" headers="Points">13</td>
+<td class="gt_row gt_center" headers="Goal diff">4</td>
+<td class="gt_row gt_center" headers="Top 8">65.8%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">34.2%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">12</td>
+<td class="gt_row gt_left" headers="Team">Atletico Madrid</td>
+<td class="gt_row gt_center" headers="Points">13</td>
+<td class="gt_row gt_center" headers="Goal diff">3</td>
+<td class="gt_row gt_center" headers="Top 8">51.1%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">48.9%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">13</td>
+<td class="gt_row gt_left" headers="Team">Atalanta</td>
+<td class="gt_row gt_center" headers="Points">13</td>
+<td class="gt_row gt_center" headers="Goal diff">1</td>
+<td class="gt_row gt_center" headers="Top 8">12.0%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">88.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">14</td>
+<td class="gt_row gt_left" headers="Team">Inter</td>
+<td class="gt_row gt_center" headers="Points">12</td>
+<td class="gt_row gt_center" headers="Goal diff">6</td>
+<td class="gt_row gt_center" headers="Top 8">4.6%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">95.4%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">15</td>
+<td class="gt_row gt_left" headers="Team">Juventus</td>
+<td class="gt_row gt_center" headers="Points">12</td>
+<td class="gt_row gt_center" headers="Goal diff">4</td>
+<td class="gt_row gt_center" headers="Top 8">3.1%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">96.9%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">16</td>
+<td class="gt_row gt_left" headers="Team">Borussia Dortmund</td>
+<td class="gt_row gt_center" headers="Points">11</td>
+<td class="gt_row gt_center" headers="Goal diff">4</td>
+<td class="gt_row gt_center" headers="Top 8">0.5%</td>
+<td class="gt_row gt_center" headers="Top 24">100.0%</td>
+<td class="gt_row gt_center" headers="Playoff">99.5%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">17</td>
+<td class="gt_row gt_left" headers="Team">Galatasaray</td>
+<td class="gt_row gt_center" headers="Points">10</td>
+<td class="gt_row gt_center" headers="Goal diff">0</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">99.9%</td>
+<td class="gt_row gt_center" headers="Playoff">99.9%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">18</td>
+<td class="gt_row gt_left" headers="Team">Qarabag FK</td>
+<td class="gt_row gt_center" headers="Points">10</td>
+<td class="gt_row gt_center" headers="Goal diff">−2</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">99.6%</td>
+<td class="gt_row gt_center" headers="Playoff">99.6%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">19</td>
+<td class="gt_row gt_left" headers="Team">Marseille</td>
+<td class="gt_row gt_center" headers="Points">9</td>
+<td class="gt_row gt_center" headers="Goal diff">0</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">95.2%</td>
+<td class="gt_row gt_center" headers="Playoff">95.2%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">20</td>
+<td class="gt_row gt_left" headers="Team">Bayer Leverkusen</td>
+<td class="gt_row gt_center" headers="Points">9</td>
+<td class="gt_row gt_center" headers="Goal diff">−4</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">96.0%</td>
+<td class="gt_row gt_center" headers="Playoff">96.0%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">21</td>
+<td class="gt_row gt_left" headers="Team">Monaco</td>
+<td class="gt_row gt_center" headers="Points">9</td>
+<td class="gt_row gt_center" headers="Goal diff">−6</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">75.6%</td>
+<td class="gt_row gt_center" headers="Playoff">75.6%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">22</td>
+<td class="gt_row gt_left" headers="Team">PSV Eindhoven</td>
+<td class="gt_row gt_center" headers="Points">8</td>
+<td class="gt_row gt_center" headers="Goal diff">1</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">44.3%</td>
+<td class="gt_row gt_center" headers="Playoff">44.3%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">23</td>
+<td class="gt_row gt_left" headers="Team">Athletic Club</td>
+<td class="gt_row gt_center" headers="Points">8</td>
+<td class="gt_row gt_center" headers="Goal diff">−4</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">68.5%</td>
+<td class="gt_row gt_center" headers="Playoff">68.5%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">24</td>
+<td class="gt_row gt_left" headers="Team">Olympiacos</td>
+<td class="gt_row gt_center" headers="Points">8</td>
+<td class="gt_row gt_center" headers="Goal diff">−5</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">58.4%</td>
+<td class="gt_row gt_center" headers="Playoff">58.4%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">25</td>
+<td class="gt_row gt_left" headers="Team">Napoli</td>
+<td class="gt_row gt_center" headers="Points">8</td>
+<td class="gt_row gt_center" headers="Goal diff">−5</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">50.7%</td>
+<td class="gt_row gt_center" headers="Playoff">50.7%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">26</td>
+<td class="gt_row gt_left" headers="Team">FC København</td>
+<td class="gt_row gt_center" headers="Points">8</td>
+<td class="gt_row gt_center" headers="Goal diff">−6</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">6.4%</td>
+<td class="gt_row gt_center" headers="Playoff">6.4%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">27</td>
+<td class="gt_row gt_left" headers="Team">Club Brugge</td>
+<td class="gt_row gt_center" headers="Points">7</td>
+<td class="gt_row gt_center" headers="Goal diff">−5</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">36.0%</td>
+<td class="gt_row gt_center" headers="Playoff">36.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">28</td>
+<td class="gt_row gt_left" headers="Team">Bodø/Glimt</td>
+<td class="gt_row gt_center" headers="Points">6</td>
+<td class="gt_row gt_center" headers="Goal diff">−2</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">8.9%</td>
+<td class="gt_row gt_center" headers="Playoff">8.9%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">29</td>
+<td class="gt_row gt_left" headers="Team">Benfica</td>
+<td class="gt_row gt_center" headers="Points">6</td>
+<td class="gt_row gt_center" headers="Goal diff">−4</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">16.9%</td>
+<td class="gt_row gt_center" headers="Playoff">16.9%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">30</td>
+<td class="gt_row gt_left" headers="Team">Pafos FC</td>
+<td class="gt_row gt_center" headers="Points">6</td>
+<td class="gt_row gt_center" headers="Goal diff">−6</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">24.8%</td>
+<td class="gt_row gt_center" headers="Playoff">24.8%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">31</td>
+<td class="gt_row gt_left" headers="Team">Union St.Gilloise</td>
+<td class="gt_row gt_center" headers="Points">6</td>
+<td class="gt_row gt_center" headers="Goal diff">−10</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">8.0%</td>
+<td class="gt_row gt_center" headers="Playoff">8.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">32</td>
+<td class="gt_row gt_left" headers="Team">Ajax</td>
+<td class="gt_row gt_center" headers="Points">6</td>
+<td class="gt_row gt_center" headers="Goal diff">−12</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">10.7%</td>
+<td class="gt_row gt_center" headers="Playoff">10.7%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">33</td>
+<td class="gt_row gt_left" headers="Team">Eintracht Frankfurt</td>
+<td class="gt_row gt_center" headers="Points">4</td>
+<td class="gt_row gt_center" headers="Goal diff">−9</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">0.0%</td>
+<td class="gt_row gt_center" headers="Playoff">0.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">34</td>
+<td class="gt_row gt_left" headers="Team">Slavia Prague</td>
+<td class="gt_row gt_center" headers="Points">3</td>
+<td class="gt_row gt_center" headers="Goal diff">−11</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">0.0%</td>
+<td class="gt_row gt_center" headers="Playoff">0.0%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Position">35</td>
+<td class="gt_row gt_left" headers="Team">Villarreal</td>
+<td class="gt_row gt_center" headers="Points">1</td>
+<td class="gt_row gt_center" headers="Goal diff">−10</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">0.0%</td>
+<td class="gt_row gt_center" headers="Playoff">0.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Position">36</td>
+<td class="gt_row gt_left" headers="Team">Kairat Almaty</td>
+<td class="gt_row gt_center" headers="Points">1</td>
+<td class="gt_row gt_center" headers="Goal diff">−14</td>
+<td class="gt_row gt_center" headers="Top 8">0.0%</td>
+<td class="gt_row gt_center" headers="Top 24">0.0%</td>
+<td class="gt_row gt_center" headers="Playoff">0.0%</td>
 </tr>
 </tbody>
 </table>
@@ -2621,27 +1148,2175 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>So is this also a part of Emery’s repertoire? It is not unreasonable to suppose that a manager might set up his team in such a way that they play conservatively with the lead and aggressively without it, increasing the chance of winning by exactly one goal and earning a greater number of points than the team’s goal difference would imply. If that is the case with Emery then it should show up in his results in previous seasons across each of his clubs.</p>
-<p>I entered the final points and goal difference for each team in each season of the study period and as you can see below, the relationship is linear. I have plotted the GDPG and PPG for Emery’s stints at his four clubs, and while Aston Villa and Arsenal lie above the line, Villarreal and PSG lie underneath. So it doesn’t seem like Emery is able to consistently overshoot his goal difference.</p>
-<div class="centered-block">
-<p><img src="viz/emery_ppg_vs_gdpg.png"></p>
+<p>At this stage, only <strong>Arsenal</strong> and <strong>Bayern</strong> are assured of a bye into the last 16. The next 14 teams are competing for six more places in the top eight, while at the bottom end only four teams are completely eliminated. It’s up for grabs!</p>
+<p>Focusing on the English teams, Arsenal, as mentioned, have secured a bye and are assured of home advantage in all second legs by virtue of a top-2 finish. <strong>Liverpool</strong> have a 95.8% chance of making the top eight, largely thanks to a friendly last fixture at home to Qarabag.</p>
+<p><strong>Tottenham</strong> have somehow found themselves in 5th place, having won all four home CL games in a campaign in which they only have two home wins from 11 league matches. Is this a reflection of the Premier League’s current level of dominance? Or maybe a different mental switch Spurs are able to turn on in Europe? Either way, with a trip to already-eliminated Eintracht Frankfurt in the final game, Spurs are given a 56.9% chance of making the top eight.</p>
+<p>Despite currently occupying 7th position, <strong>Newcastle</strong> are only rated a 14.7% chance to secure a bye because they face PSG away in their last game, almost certainly needing a win. <strong>Chelsea</strong> likewise are currently in the top eight and yet more likely expected to finish lower: their probability of a top eight finish is down at 35% as they face a tricky trip to Antonio Conte’s Napoli next week.</p>
+<p>Rounding out the English teams we have <strong>Manchester City</strong> who, despite being in 11th place and the lowest of the six English sides, finished in the top eight in 65.8% of simulations! City are strong favourites for their final game at home to Galatasaray, and are helped by the teams above them either having difficult fixtures or playing against each other. It seems like some of the bookies are dangling 1.8 for City to finish in the top eight which is pretty good value in my opinion, for people who are into that sort of thing.</p>
+<p>For Liverpool, Tottenham, and Newcastle thanks to their goal difference, the brief is simple: win and you’re in. But what if they don’t win? What are their chances? And what about Chelsea and City? The following table shows the probability of each team reaching the top eight conditional upon their result in the final match.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="xdzjxpfviq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xdzjxpfviq table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xdzjxpfviq thead, #xdzjxpfviq tbody, #xdzjxpfviq tfoot, #xdzjxpfviq tr, #xdzjxpfviq td, #xdzjxpfviq th {
+  border-style: none;
+}
+
+#xdzjxpfviq p {
+  margin: 0;
+  padding: 0;
+}
+
+#xdzjxpfviq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xdzjxpfviq .gt_title {
+  color: #333333;
+  font-size: 16px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xdzjxpfviq .gt_subtitle {
+  color: #333333;
+  font-size: 12px;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xdzjxpfviq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xdzjxpfviq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xdzjxpfviq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xdzjxpfviq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xdzjxpfviq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xdzjxpfviq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xdzjxpfviq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xdzjxpfviq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xdzjxpfviq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xdzjxpfviq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xdzjxpfviq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xdzjxpfviq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdzjxpfviq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xdzjxpfviq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xdzjxpfviq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xdzjxpfviq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdzjxpfviq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xdzjxpfviq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdzjxpfviq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xdzjxpfviq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdzjxpfviq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xdzjxpfviq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdzjxpfviq .gt_left {
+  text-align: left;
+}
+
+#xdzjxpfviq .gt_center {
+  text-align: center;
+}
+
+#xdzjxpfviq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xdzjxpfviq .gt_font_normal {
+  font-weight: normal;
+}
+
+#xdzjxpfviq .gt_font_bold {
+  font-weight: bold;
+}
+
+#xdzjxpfviq .gt_font_italic {
+  font-style: italic;
+}
+
+#xdzjxpfviq .gt_super {
+  font-size: 65%;
+}
+
+#xdzjxpfviq .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xdzjxpfviq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xdzjxpfviq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xdzjxpfviq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xdzjxpfviq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xdzjxpfviq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xdzjxpfviq .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xdzjxpfviq .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xdzjxpfviq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="4" class="gt_heading gt_title gt_font_normal"><strong>Champions League 2025-2026 Top 8 Finish Probability</strong></td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Conditional on result in final game</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="W" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Win</th>
+<th id="D" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Draw</th>
+<th id="L" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Loss</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Tottenham Hotspur</td>
+<td class="gt_row gt_center" headers="W">100.0%</td>
+<td class="gt_row gt_center" headers="D">20.5%</td>
+<td class="gt_row gt_center" headers="L">4.1%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Newcastle United</td>
+<td class="gt_row gt_center" headers="W">100.0%</td>
+<td class="gt_row gt_center" headers="D">2.2%</td>
+<td class="gt_row gt_center" headers="L">0.0%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Liverpool</td>
+<td class="gt_row gt_center" headers="W">100.0%</td>
+<td class="gt_row gt_center" headers="D">77.6%</td>
+<td class="gt_row gt_center" headers="L">15.6%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Chelsea</td>
+<td class="gt_row gt_center" headers="W">89.3%</td>
+<td class="gt_row gt_center" headers="D">1.0%</td>
+<td class="gt_row gt_center" headers="L">0.0%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Manchester City</td>
+<td class="gt_row gt_center" headers="W">80.3%</td>
+<td class="gt_row gt_center" headers="D">0.4%</td>
+<td class="gt_row gt_center" headers="L">0.0%</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<p>We can also look at Emery’s previous seasons to see whether he really does have an unusual number of one-goal wins. The side-by-side column charts below compare the score distribution of Emery’s teams alongside the distribution of teams in a similar bin of overall goal difference per game. Emery actually had <em>fewer</em> one-goal wins than expected at PSG, Arsenal and Villarreal; only with Aston Villa did he exceed the expected number of one-goal wins.</p>
+</div>
+</div>
+<p>Newcastle probably have the simplest agenda: they need to win in Paris (good luck with that) otherwise they have about a one in 50 chance of making the top eight. Spurs probably need a win, but 20.5% of the time after a draw in Frankfurt they still scrape home. Liverpool, if they somehow can’t beat Qarabag at Anfield, still have the cushion of a draw being enough 77.6% of the time.</p>
+<p>For Chelsea, a win gives them a 89.3% chance, but that will be a tall order in Naples. Finally, Man City are only 80.3% likely to be in the top eight after a win, but given that they are 1/4 pokes against Galatasaray, that still makes them closer to 1.5 than the bookies’ 1.8 (just saying!).</p>
+<p>Something else I was able to monitor was the median 8th-placed team from all the simulations: this ended up as 16 points and a +6 goal difference; incredibly close to last year’s league phase when <strong>Aston Villa</strong> finished in 8th place on 16 points with a +7 goal difference!</p>
+<p>In more than 80% of simulations 16 points were required for 8th spot. There is a small-but-not-zero chance that 13 points could be enough, but that would take an absurd set of results.</p>
 <div class="centered-block">
-<p><img src="viz/emery_scoreline_distribution_stints.png"></p>
+<p><img src="outputs/ucl_8th_place_points_probs.png"></p>
+</div>
+<p>In addition, I looked at the percentage of simulations where it came down to goal difference - in other words, where the teams in 8th and 9th were on the same number of points. The answer? 67%. So it’s definitely going to be squeaky bum time for a few teams next Wednesday.</p>
+<section id="potential-playoff-opponents" class="level2">
+<h2 class="anchored" data-anchor-id="potential-playoff-opponents">Potential playoff opponents</h2>
+<p>The final set of probabilities I thought might be interesting is to see which opponents the English teams are likely to draw in the playoff round, if they do miss out on the top eight. The draw will be seeded such that the pair in 9th &amp; 10th will play either of the pair in 23rd &amp; 24th, while 11th &amp; 12th will play either of 21st &amp; 22nd, and so on.</p>
+<p>Arsenal are through, and Liverpool really should be through, so first we will look at Tottenham’s potential opponents.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="zvkosdhcos" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zvkosdhcos table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zvkosdhcos thead, #zvkosdhcos tbody, #zvkosdhcos tfoot, #zvkosdhcos tr, #zvkosdhcos td, #zvkosdhcos th {
+  border-style: none;
+}
+
+#zvkosdhcos p {
+  margin: 0;
+  padding: 0;
+}
+
+#zvkosdhcos .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zvkosdhcos .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zvkosdhcos .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zvkosdhcos .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zvkosdhcos .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zvkosdhcos .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zvkosdhcos .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zvkosdhcos .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zvkosdhcos .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zvkosdhcos .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zvkosdhcos .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zvkosdhcos .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zvkosdhcos .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zvkosdhcos .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zvkosdhcos .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvkosdhcos .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zvkosdhcos .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zvkosdhcos .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zvkosdhcos .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvkosdhcos .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zvkosdhcos .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvkosdhcos .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zvkosdhcos .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvkosdhcos .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zvkosdhcos .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvkosdhcos .gt_left {
+  text-align: left;
+}
+
+#zvkosdhcos .gt_center {
+  text-align: center;
+}
+
+#zvkosdhcos .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zvkosdhcos .gt_font_normal {
+  font-weight: normal;
+}
+
+#zvkosdhcos .gt_font_bold {
+  font-weight: bold;
+}
+
+#zvkosdhcos .gt_font_italic {
+  font-style: italic;
+}
+
+#zvkosdhcos .gt_super {
+  font-size: 65%;
+}
+
+#zvkosdhcos .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zvkosdhcos .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zvkosdhcos .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zvkosdhcos .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zvkosdhcos .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zvkosdhcos .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zvkosdhcos .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#zvkosdhcos .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zvkosdhcos div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="2" class="gt_heading gt_title gt_font_normal"><strong>Potential playoff opponents for Tottenham Hotspur</strong></td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Conditional on being in the playoff round</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Opponent" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Opponent</th>
+<th id="a%" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">%</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Qarabag FK</td>
+<td class="gt_row gt_center" headers="%">16.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Galatasaray</td>
+<td class="gt_row gt_center" headers="%">10.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Monaco</td>
+<td class="gt_row gt_center" headers="%">9.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Marseille</td>
+<td class="gt_row gt_center" headers="%">9.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Olympiacos</td>
+<td class="gt_row gt_center" headers="%">6.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Athletic Club</td>
+<td class="gt_row gt_center" headers="%">6.6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Pafos FC</td>
+<td class="gt_row gt_center" headers="%">6.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Bayer Leverkusen</td>
+<td class="gt_row gt_center" headers="%">6.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Napoli</td>
+<td class="gt_row gt_center" headers="%">6.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">PSV Eindhoven</td>
+<td class="gt_row gt_center" headers="%">6.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Benfica</td>
+<td class="gt_row gt_center" headers="%">4.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Club Brugge</td>
+<td class="gt_row gt_center" headers="%">3.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Ajax</td>
+<td class="gt_row gt_center" headers="%">2.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Bodø/Glimt</td>
+<td class="gt_row gt_center" headers="%">2.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Union St.Gilloise</td>
+<td class="gt_row gt_center" headers="%">2.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">FC København</td>
+<td class="gt_row gt_center" headers="%">0.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Borussia Dortmund</td>
+<td class="gt_row gt_center" headers="%">0.1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The good news for Spurs fans is it’s not the scariest set of teams. Qarabag are the most likely - their approximate league phase position is one of the most predictable, since they are assured of qualification but are likely to lose at Anfield in the final game. It is debatable whether Spurs would be underdogs against any of those teams, and would be solid favourites against many of them.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="gpbskwaues" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gpbskwaues table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gpbskwaues thead, #gpbskwaues tbody, #gpbskwaues tfoot, #gpbskwaues tr, #gpbskwaues td, #gpbskwaues th {
+  border-style: none;
+}
+
+#gpbskwaues p {
+  margin: 0;
+  padding: 0;
+}
+
+#gpbskwaues .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gpbskwaues .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gpbskwaues .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gpbskwaues .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gpbskwaues .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gpbskwaues .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gpbskwaues .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gpbskwaues .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gpbskwaues .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gpbskwaues .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gpbskwaues .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gpbskwaues .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gpbskwaues .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gpbskwaues .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gpbskwaues .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gpbskwaues .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gpbskwaues .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gpbskwaues .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gpbskwaues .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gpbskwaues .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gpbskwaues .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gpbskwaues .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gpbskwaues .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gpbskwaues .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gpbskwaues .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gpbskwaues .gt_left {
+  text-align: left;
+}
+
+#gpbskwaues .gt_center {
+  text-align: center;
+}
+
+#gpbskwaues .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gpbskwaues .gt_font_normal {
+  font-weight: normal;
+}
+
+#gpbskwaues .gt_font_bold {
+  font-weight: bold;
+}
+
+#gpbskwaues .gt_font_italic {
+  font-style: italic;
+}
+
+#gpbskwaues .gt_super {
+  font-size: 65%;
+}
+
+#gpbskwaues .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gpbskwaues .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gpbskwaues .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gpbskwaues .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gpbskwaues .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gpbskwaues .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gpbskwaues .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#gpbskwaues .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#gpbskwaues div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="2" class="gt_heading gt_title gt_font_normal"><strong>Potential playoff opponents for Chelsea</strong></td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Conditional on being in the playoff round</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Opponent" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Opponent</th>
+<th id="a%" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">%</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Napoli</td>
+<td class="gt_row gt_center" headers="%">17.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Qarabag FK</td>
+<td class="gt_row gt_center" headers="%">12.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Galatasaray</td>
+<td class="gt_row gt_center" headers="%">12.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Athletic Club</td>
+<td class="gt_row gt_center" headers="%">8.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Olympiacos</td>
+<td class="gt_row gt_center" headers="%">8.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Marseille</td>
+<td class="gt_row gt_center" headers="%">8.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Bayer Leverkusen</td>
+<td class="gt_row gt_center" headers="%">6.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Monaco</td>
+<td class="gt_row gt_center" headers="%">5.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Club Brugge</td>
+<td class="gt_row gt_center" headers="%">5.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">PSV Eindhoven</td>
+<td class="gt_row gt_center" headers="%">5.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Borussia Dortmund</td>
+<td class="gt_row gt_center" headers="%">2.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Pafos FC</td>
+<td class="gt_row gt_center" headers="%">2.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Benfica</td>
+<td class="gt_row gt_center" headers="%">1.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Bodø/Glimt</td>
+<td class="gt_row gt_center" headers="%">1.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Ajax</td>
+<td class="gt_row gt_center" headers="%">0.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Union St.Gilloise</td>
+<td class="gt_row gt_center" headers="%">0.6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">FC København</td>
+<td class="gt_row gt_center" headers="%">0.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Inter</td>
+<td class="gt_row gt_center" headers="%">0.1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The set of potential opponents for the other English teams is going to be largely similar. Due to the vaguaries of the standings, which are hard to explain without going into the permutations in way too much detail, Chelsea apparently have a 17.1% chance of playing Napoli, if they end up in the playoffs.</p>
+<p>Meanwhile, Newcastle are most likely to be in a playoff against Galatasaray or Qarabag. Rack up those air miles!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="jasrtxuhdf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jasrtxuhdf table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jasrtxuhdf thead, #jasrtxuhdf tbody, #jasrtxuhdf tfoot, #jasrtxuhdf tr, #jasrtxuhdf td, #jasrtxuhdf th {
+  border-style: none;
+}
+
+#jasrtxuhdf p {
+  margin: 0;
+  padding: 0;
+}
+
+#jasrtxuhdf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jasrtxuhdf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jasrtxuhdf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jasrtxuhdf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jasrtxuhdf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jasrtxuhdf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jasrtxuhdf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jasrtxuhdf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jasrtxuhdf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jasrtxuhdf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jasrtxuhdf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jasrtxuhdf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jasrtxuhdf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jasrtxuhdf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jasrtxuhdf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jasrtxuhdf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jasrtxuhdf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jasrtxuhdf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jasrtxuhdf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jasrtxuhdf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jasrtxuhdf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jasrtxuhdf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jasrtxuhdf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jasrtxuhdf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jasrtxuhdf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jasrtxuhdf .gt_left {
+  text-align: left;
+}
+
+#jasrtxuhdf .gt_center {
+  text-align: center;
+}
+
+#jasrtxuhdf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jasrtxuhdf .gt_font_normal {
+  font-weight: normal;
+}
+
+#jasrtxuhdf .gt_font_bold {
+  font-weight: bold;
+}
+
+#jasrtxuhdf .gt_font_italic {
+  font-style: italic;
+}
+
+#jasrtxuhdf .gt_super {
+  font-size: 65%;
+}
+
+#jasrtxuhdf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jasrtxuhdf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jasrtxuhdf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jasrtxuhdf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jasrtxuhdf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jasrtxuhdf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jasrtxuhdf .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#jasrtxuhdf .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jasrtxuhdf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="2" class="gt_heading gt_title gt_font_normal"><strong>Potential playoff opponents for Newcastle United</strong></td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Conditional on being in the playoff round</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Opponent" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Opponent</th>
+<th id="a%" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">%</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Galatasaray</td>
+<td class="gt_row gt_center" headers="%">20.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Qarabag FK</td>
+<td class="gt_row gt_center" headers="%">18.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Olympiacos</td>
+<td class="gt_row gt_center" headers="%">8.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Club Brugge</td>
+<td class="gt_row gt_center" headers="%">8.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Marseille</td>
+<td class="gt_row gt_center" headers="%">8.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Athletic Club</td>
+<td class="gt_row gt_center" headers="%">7.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Bayer Leverkusen</td>
+<td class="gt_row gt_center" headers="%">6.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Napoli</td>
+<td class="gt_row gt_center" headers="%">6.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Monaco</td>
+<td class="gt_row gt_center" headers="%">5.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">PSV Eindhoven</td>
+<td class="gt_row gt_center" headers="%">3.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Borussia Dortmund</td>
+<td class="gt_row gt_center" headers="%">2.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Bodø/Glimt</td>
+<td class="gt_row gt_center" headers="%">1.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Pafos FC</td>
+<td class="gt_row gt_center" headers="%">0.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Benfica</td>
+<td class="gt_row gt_center" headers="%">0.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">FC København</td>
+<td class="gt_row gt_center" headers="%">0.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Union St.Gilloise</td>
+<td class="gt_row gt_center" headers="%">0.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Ajax</td>
+<td class="gt_row gt_center" headers="%">0.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Opponent">Inter</td>
+<td class="gt_row gt_center" headers="%">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Opponent">Juventus</td>
+<td class="gt_row gt_center" headers="%">0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </section>
-<section id="takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
-<p>In part two, we have learned the following:</p>
-<ul>
-<li>All of Unai Emery’s four clubs in the study period overperformed their xG in both attack and defence.</li>
-<li>Emery overperformed xG <em>more</em> than the same teams did under other managers.</li>
-<li>Players who were hot finishers under Emery did not necessarily do the same under other managers.</li>
-<li>Emery’s largest xG overperformance came when trailing by one goal.</li>
-<li>There is no evidence to suggest Emery can consistently record one-goal wins and turn GD into excessive points.</li>
-</ul>
-<p>Next up, in part three, I will try to answer the most important question: is any of this predictive? Can we expect Emery’s teams to keep doing this, or is it just statistical noise? And I will take a look at the match statistics from Emery’s teams to see if there are any aspects of his tactics that stand out.</p>
+<section id="thoughts-on-the-format" class="level2">
+<h2 class="anchored" data-anchor-id="thoughts-on-the-format">Thoughts on the format</h2>
+<p>As for my views on the format. First and foremost, let’s be honest, this is a continuation of the descent into <strong>low-jeopardy slop</strong> that is plaguing many sports nowadays. Perhaops the worst example is basketball’s NBA where they play an 82-game regular season after which 16 of 30 teams still get into the playoffs, and even then they play a best-of-seven series for each round. The Americans truly know how to squeeze all the juice out of the orange.</p>
+<p>Undoubtedly a downside of the new Champions League format is that an early defeat or two is not terminal. 24 out of 36 teams going through is pretty outrageous, to be honest, after making everyone play eight midweek matches alongside their domestic campaigns.</p>
+<p>One thing I do like is the extra variety of opponents. While the four-team groups in theory created some more tension by playing the same teams home &amp; away, the rivalries just aren’t the same when you are playing teams from another country. The fixture list is far more interesting with eight distinct opponents instead of three.</p>
+<p>A problem we do seem to have at the moment is because of the rule where teams from the same country cannot face each other in the league phase, English teams are getting a double-whammy: they are already the strongest teams because of their large revenue, and then they get easier fixtures because they don’t have to play one another!</p>
+<p>But why should this be the case? Does anyone actually question this rule? Similar to the World Cup wanting to mix continents, I suppose they want to promote mixing between different nations, and it would definitely be a bit silly in the old format if you had three English teams in the same group.</p>
+<p>But in the new format? Would it really be so bad if Arsenal had two of their league phase matches against, say, Spurs and Liverpool? Those would be pretty epic games! I just don’t really see the downside.</p>
+<p>Another thing I was pondering is the aspect of the new format for the knockout round where the top two teams from the league phase are guaranteed home advantage in second legs all the way to the final. But because UEFA effectively set up a “bracket”, this means if one of those teams gets knocked out, their <em>opponent</em> secures that home advantage. A fair reward, one might say, until you realise that the team finishing 3rd cannot possible get home advantage for the semi-finals, whereas a team who finished much further down the table can.</p>
+<p>In the <strong>World Cup</strong> a pre-determined bracket makes sense, because they are trying to squeeze the whole tournament into one month and have to control the order of games in each round. But in the Champions League there is no reason why they can’t have a random draw each round as they used to do - it was an exciting aspect of the tournament! At the very least they could do a reseeding each round to continue rewarding the team that finished highest.</p>
+<p>Overall though, like most competitions, it’s just good to get past the early grind and into the meat of the tournament. And there is no separation of teams from the same country after the league phase, so with perhaps five or six English teams going into the round of 16, we should have some cracking ties to look forward to.</p>
 <div class="data-footer">
 <p><strong>Data Sources</strong><br>
 I gather match data from a variety of public sources. Please check out these excellent websites:</p>

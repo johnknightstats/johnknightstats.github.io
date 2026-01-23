@@ -1,0 +1,583 @@
+team,opponent,p_opponent_given_playoff
+Ajax,Atletico Madrid,0.185612
+Ajax,Atalanta,0.167238
+Ajax,Manchester City,0.12426
+Ajax,Tottenham Hotspur,0.10028
+Ajax,Sporting CP,0.081906
+Ajax,Inter,0.076923
+Ajax,Juventus,0.066646
+Ajax,Chelsea,0.051074
+Ajax,Paris Saint-Germain,0.033012
+Ajax,Liverpool,0.028029
+Ajax,Real Madrid,0.025226
+Ajax,Borussia Dortmund,0.022111
+Ajax,Barcelona,0.019931
+Ajax,Newcastle United,0.017751
+Atalanta,Galatasaray,0.123935
+Atalanta,Qarabag FK,0.114882
+Atalanta,Bayer Leverkusen,0.101776
+Atalanta,Marseille,0.10011
+Atalanta,Olympiacos,0.080717
+Atalanta,Athletic Club,0.080414
+Atalanta,Monaco,0.076929
+Atalanta,PSV Eindhoven,0.066096
+Atalanta,Napoli,0.059884
+Atalanta,Borussia Dortmund,0.053331
+Atalanta,Club Brugge,0.042991
+Atalanta,Pafos FC,0.036324
+Atalanta,Ajax,0.02034
+Atalanta,Benfica,0.016249
+Atalanta,Bodø/Glimt,0.010795
+Atalanta,FC København,0.007121
+Atalanta,Inter,0.005568
+Atalanta,Juventus,0.002538
+Athletic Club,Sporting CP,0.226613
+Athletic Club,Atalanta,0.103329
+Athletic Club,Inter,0.103183
+Athletic Club,Newcastle United,0.090139
+Athletic Club,Juventus,0.085759
+Athletic Club,Chelsea,0.082449
+Athletic Club,Borussia Dortmund,0.078458
+Athletic Club,Atletico Madrid,0.049596
+Athletic Club,Tottenham Hotspur,0.041273
+Athletic Club,Manchester City,0.037234
+Athletic Club,Paris Saint-Germain,0.032318
+Athletic Club,Bayer Leverkusen,0.018106
+Athletic Club,Barcelona,0.016305
+Athletic Club,Real Madrid,0.01173
+Athletic Club,Marseille,0.009102
+Athletic Club,Liverpool,0.004575
+Athletic Club,Monaco,0.004575
+Athletic Club,Galatasaray,0.003066
+Athletic Club,Qarabag FK,0.001071
+Athletic Club,PSV Eindhoven,0.001071
+Athletic Club,Napoli,4.9e-05
+Atletico Madrid,Qarabag FK,0.122374
+Atletico Madrid,Galatasaray,0.103001
+Atletico Madrid,Monaco,0.102592
+Atletico Madrid,Marseille,0.094952
+Atletico Madrid,PSV Eindhoven,0.082196
+Atletico Madrid,Olympiacos,0.077353
+Atletico Madrid,Bayer Leverkusen,0.070259
+Atletico Madrid,Athletic Club,0.069509
+Atletico Madrid,Pafos FC,0.064529
+Atletico Madrid,Napoli,0.05266
+Atletico Madrid,Ajax,0.040655
+Atletico Madrid,Club Brugge,0.040382
+Atletico Madrid,Union St.Gilloise,0.03015
+Atletico Madrid,Borussia Dortmund,0.023261
+Atletico Madrid,Benfica,0.01719
+Atletico Madrid,FC København,0.006548
+Atletico Madrid,Inter,0.001774
+Atletico Madrid,Bodø/Glimt,0.000409
+Atletico Madrid,Juventus,0.000205
+Barcelona,Qarabag FK,0.144209
+Barcelona,Galatasaray,0.138671
+Barcelona,Marseille,0.085141
+Barcelona,FC København,0.08191
+Barcelona,Monaco,0.077527
+Barcelona,Athletic Club,0.077296
+Barcelona,Olympiacos,0.076373
+Barcelona,PSV Eindhoven,0.05976
+Barcelona,Bayer Leverkusen,0.057683
+Barcelona,Club Brugge,0.044301
+Barcelona,Pafos FC,0.039917
+Barcelona,Napoli,0.039917
+Barcelona,Benfica,0.018689
+Barcelona,Bodø/Glimt,0.016382
+Barcelona,Ajax,0.014767
+Barcelona,Union St.Gilloise,0.013613
+Barcelona,Borussia Dortmund,0.013383
+Barcelona,Inter,0.000461
+Bayer Leverkusen,Borussia Dortmund,0.17764
+Bayer Leverkusen,Inter,0.146992
+Bayer Leverkusen,Juventus,0.125889
+Bayer Leverkusen,Atalanta,0.093263
+Bayer Leverkusen,Sporting CP,0.070529
+Bayer Leverkusen,Marseille,0.063136
+Bayer Leverkusen,Newcastle United,0.057964
+Bayer Leverkusen,Chelsea,0.043664
+Bayer Leverkusen,Atletico Madrid,0.03575
+Bayer Leverkusen,Tottenham Hotspur,0.02749
+Bayer Leverkusen,Manchester City,0.026865
+Bayer Leverkusen,Monaco,0.023151
+Bayer Leverkusen,Galatasaray,0.022283
+Bayer Leverkusen,Paris Saint-Germain,0.02145
+Bayer Leverkusen,Athletic Club,0.012912
+Bayer Leverkusen,PSV Eindhoven,0.011419
+Bayer Leverkusen,Barcelona,0.008677
+Bayer Leverkusen,Qarabag FK,0.008365
+Bayer Leverkusen,Olympiacos,0.007983
+Bayer Leverkusen,Real Madrid,0.006282
+Bayer Leverkusen,Napoli,0.004304
+Bayer Leverkusen,Liverpool,0.002256
+Bayer Leverkusen,Club Brugge,0.001631
+Bayer Leverkusen,FC København,0.000104
+Benfica,Real Madrid,0.203718
+Benfica,Juventus,0.12144
+Benfica,Tottenham Hotspur,0.113133
+Benfica,Inter,0.104628
+Benfica,Atalanta,0.08485
+Benfica,Chelsea,0.061116
+Benfica,Borussia Dortmund,0.054391
+Benfica,Paris Saint-Germain,0.053797
+Benfica,Atletico Madrid,0.049842
+Benfica,Sporting CP,0.048457
+Benfica,Newcastle United,0.044304
+Benfica,Manchester City,0.035601
+Benfica,Barcelona,0.016021
+Benfica,Liverpool,0.008703
+Bodø/Glimt,Newcastle United,0.11747
+Bodø/Glimt,Tottenham Hotspur,0.114458
+Bodø/Glimt,Inter,0.111069
+Bodø/Glimt,Atalanta,0.107304
+Bodø/Glimt,Juventus,0.099398
+Bodø/Glimt,Borussia Dortmund,0.098268
+Bodø/Glimt,Chelsea,0.087726
+Bodø/Glimt,Sporting CP,0.085467
+Bodø/Glimt,Paris Saint-Germain,0.06137
+Bodø/Glimt,Manchester City,0.059864
+Bodø/Glimt,Barcelona,0.026732
+Bodø/Glimt,Real Madrid,0.022214
+Bodø/Glimt,Liverpool,0.006401
+Bodø/Glimt,Atletico Madrid,0.002259
+Borussia Dortmund,Bayer Leverkusen,0.17148
+Borussia Dortmund,Marseille,0.137305
+Borussia Dortmund,Galatasaray,0.092743
+Borussia Dortmund,Qarabag FK,0.08822
+Borussia Dortmund,Monaco,0.065771
+Borussia Dortmund,Juventus,0.061382
+Borussia Dortmund,Athletic Club,0.054011
+Borussia Dortmund,Atalanta,0.047176
+Borussia Dortmund,Sporting CP,0.043389
+Borussia Dortmund,Olympiacos,0.040407
+Borussia Dortmund,PSV Eindhoven,0.033941
+Borussia Dortmund,Napoli,0.028346
+Borussia Dortmund,Club Brugge,0.027407
+Borussia Dortmund,Newcastle United,0.022181
+Borussia Dortmund,Chelsea,0.017992
+Borussia Dortmund,Atletico Madrid,0.011425
+Borussia Dortmund,Pafos FC,0.011258
+Borussia Dortmund,Manchester City,0.010655
+Borussia Dortmund,Benfica,0.009214
+Borussia Dortmund,Bodø/Glimt,0.008745
+Borussia Dortmund,Paris Saint-Germain,0.004791
+Borussia Dortmund,FC København,0.003786
+Borussia Dortmund,Union St.Gilloise,0.002814
+Borussia Dortmund,Ajax,0.002379
+Borussia Dortmund,Barcelona,0.001943
+Borussia Dortmund,Tottenham Hotspur,0.000637
+Borussia Dortmund,Inter,0.000469
+Borussia Dortmund,Liverpool,6.7e-05
+Borussia Dortmund,Real Madrid,6.7e-05
+Chelsea,Napoli,0.171051
+Chelsea,Qarabag FK,0.127878
+Chelsea,Galatasaray,0.126955
+Chelsea,Athletic Club,0.086858
+Chelsea,Olympiacos,0.082756
+Chelsea,Marseille,0.082654
+Chelsea,Bayer Leverkusen,0.064503
+Chelsea,Monaco,0.052761
+Chelsea,Club Brugge,0.051479
+Chelsea,PSV Eindhoven,0.05112
+Chelsea,Borussia Dortmund,0.027534
+Chelsea,Pafos FC,0.024253
+Chelsea,Benfica,0.015844
+Chelsea,Bodø/Glimt,0.011947
+Chelsea,Ajax,0.008409
+Chelsea,Union St.Gilloise,0.006461
+Chelsea,FC København,0.006358
+Chelsea,Inter,0.001179
+Club Brugge,Newcastle United,0.206504
+Club Brugge,Atalanta,0.105151
+Club Brugge,Sporting CP,0.104317
+Club Brugge,Inter,0.102742
+Club Brugge,Chelsea,0.093015
+Club Brugge,Juventus,0.090143
+Club Brugge,Borussia Dortmund,0.075783
+Club Brugge,Atletico Madrid,0.054845
+Club Brugge,Paris Saint-Germain,0.052344
+Club Brugge,Manchester City,0.040671
+Club Brugge,Tottenham Hotspur,0.040393
+Club Brugge,Barcelona,0.017788
+Club Brugge,Liverpool,0.004447
+Club Brugge,Bayer Leverkusen,0.004354
+Club Brugge,Real Madrid,0.003613
+Club Brugge,Galatasaray,0.002687
+Club Brugge,Monaco,0.001204
+FC København,Barcelona,0.183557
+FC København,Juventus,0.128232
+FC København,Inter,0.1091
+FC København,Newcastle United,0.098759
+FC København,Atalanta,0.097208
+FC København,Chelsea,0.064116
+FC København,Borussia Dortmund,0.058428
+FC København,Sporting CP,0.057394
+FC København,Tottenham Hotspur,0.053257
+FC København,Atletico Madrid,0.049638
+FC København,Paris Saint-Germain,0.03878
+FC København,Manchester City,0.035677
+FC København,Real Madrid,0.01241
+FC København,Liverpool,0.007239
+FC København,Marseille,0.003102
+FC København,Bayer Leverkusen,0.001551
+FC København,Galatasaray,0.001034
+FC København,Qarabag FK,0.000517
+Galatasaray,Newcastle United,0.175682
+Galatasaray,Inter,0.113818
+Galatasaray,Atalanta,0.109179
+Galatasaray,Sporting CP,0.099136
+Galatasaray,Borussia Dortmund,0.092362
+Galatasaray,Juventus,0.090727
+Galatasaray,Chelsea,0.082619
+Galatasaray,Atletico Madrid,0.050385
+Galatasaray,Paris Saint-Germain,0.04865
+Galatasaray,Tottenham Hotspur,0.046648
+Galatasaray,Bayer Leverkusen,0.021422
+Galatasaray,Barcelona,0.020054
+Galatasaray,Marseille,0.013981
+Galatasaray,Manchester City,0.008576
+Galatasaray,Real Madrid,0.007207
+Galatasaray,Monaco,0.00664
+Galatasaray,Liverpool,0.004038
+Galatasaray,Athletic Club,0.002102
+Galatasaray,Olympiacos,0.002002
+Galatasaray,PSV Eindhoven,0.001735
+Galatasaray,Qarabag FK,0.001268
+Galatasaray,Club Brugge,0.000968
+Galatasaray,Napoli,0.000734
+Galatasaray,FC København,6.7e-05
+Inter,Bayer Leverkusen,0.147958
+Inter,Marseille,0.129197
+Inter,Galatasaray,0.11917
+Inter,Qarabag FK,0.114628
+Inter,Monaco,0.09688
+Inter,Athletic Club,0.074066
+Inter,Olympiacos,0.067708
+Inter,Napoli,0.057087
+Inter,PSV Eindhoven,0.050624
+Inter,Club Brugge,0.038745
+Inter,Pafos FC,0.026063
+Inter,Benfica,0.018482
+Inter,Juventus,0.010551
+Inter,Bodø/Glimt,0.010306
+Inter,Union St.Gilloise,0.008664
+Inter,Ajax,0.008629
+Inter,FC København,0.007372
+Inter,Atalanta,0.005136
+Inter,Manchester City,0.003564
+Inter,Sporting CP,0.002201
+Inter,Atletico Madrid,0.000908
+Inter,Chelsea,0.000804
+Inter,Newcastle United,0.000629
+Inter,Borussia Dortmund,0.000489
+Inter,Barcelona,7e-05
+Inter,Paris Saint-Germain,7e-05
+Juventus,Monaco,0.158346
+Juventus,Bayer Leverkusen,0.124798
+Juventus,Marseille,0.10866
+Juventus,Qarabag FK,0.097134
+Juventus,Galatasaray,0.093555
+Juventus,Borussia Dortmund,0.063035
+Juventus,Olympiacos,0.062932
+Juventus,Athletic Club,0.060627
+Juventus,Napoli,0.054055
+Juventus,PSV Eindhoven,0.040946
+Juventus,Club Brugge,0.033479
+Juventus,Pafos FC,0.032309
+Juventus,Benfica,0.021127
+Juventus,Union St.Gilloise,0.010976
+Juventus,Inter,0.010391
+Juventus,Bodø/Glimt,0.009084
+Juventus,FC København,0.008533
+Juventus,Ajax,0.007363
+Juventus,Atalanta,0.002305
+Juventus,Manchester City,0.000172
+Juventus,Atletico Madrid,0.000103
+Juventus,Newcastle United,3.4e-05
+Juventus,Sporting CP,3.4e-05
+Liverpool,Monaco,0.130229
+Liverpool,Marseille,0.105762
+Liverpool,Pafos FC,0.104183
+Liverpool,Galatasaray,0.095501
+Liverpool,Olympiacos,0.091555
+Liverpool,PSV Eindhoven,0.08603
+Liverpool,Athletic Club,0.074191
+Liverpool,Ajax,0.071034
+Liverpool,Napoli,0.051302
+Liverpool,Bayer Leverkusen,0.051302
+Liverpool,Union St.Gilloise,0.040253
+Liverpool,Club Brugge,0.037885
+Liverpool,Benfica,0.034728
+Liverpool,Bodø/Glimt,0.013418
+Liverpool,FC København,0.01105
+Liverpool,Borussia Dortmund,0.001579
+Manchester City,Qarabag FK,0.139766
+Manchester City,Monaco,0.106823
+Manchester City,Marseille,0.099708
+Manchester City,Olympiacos,0.086257
+Manchester City,PSV Eindhoven,0.078655
+Manchester City,Bayer Leverkusen,0.075439
+Manchester City,Athletic Club,0.074561
+Manchester City,Pafos FC,0.06501
+Manchester City,Napoli,0.0577
+Manchester City,Club Brugge,0.042788
+Manchester City,Ajax,0.038889
+Manchester City,Borussia Dortmund,0.030994
+Manchester City,Union St.Gilloise,0.028168
+Manchester City,Galatasaray,0.025049
+Manchester City,Benfica,0.017544
+Manchester City,Bodø/Glimt,0.015497
+Manchester City,Inter,0.009942
+Manchester City,FC København,0.006725
+Manchester City,Juventus,0.000487
+Marseille,Borussia Dortmund,0.143513
+Marseille,Inter,0.129504
+Marseille,Juventus,0.110594
+Marseille,Atalanta,0.092558
+Marseille,Newcastle United,0.071581
+Marseille,Sporting CP,0.070916
+Marseille,Bayer Leverkusen,0.063702
+Marseille,Chelsea,0.056452
+Marseille,Atletico Madrid,0.048748
+Marseille,Tottenham Hotspur,0.043215
+Marseille,Manchester City,0.035826
+Marseille,Monaco,0.030222
+Marseille,Paris Saint-Germain,0.030222
+Marseille,Real Madrid,0.015724
+Marseille,Galatasaray,0.014673
+Marseille,Barcelona,0.012922
+Marseille,PSV Eindhoven,0.007039
+Marseille,Athletic Club,0.006549
+Marseille,Qarabag FK,0.006094
+Marseille,Liverpool,0.004693
+Marseille,Olympiacos,0.003082
+Marseille,Napoli,0.001961
+Marseille,FC København,0.00021
+Monaco,Juventus,0.202839
+Monaco,Inter,0.122223
+Monaco,Atalanta,0.089519
+Monaco,Borussia Dortmund,0.086522
+Monaco,Atletico Madrid,0.066291
+Monaco,Sporting CP,0.061574
+Monaco,Newcastle United,0.060869
+Monaco,Tottenham Hotspur,0.05655
+Monaco,Manchester City,0.048307
+Monaco,Chelsea,0.045354
+Monaco,Marseille,0.038038
+Monaco,Bayer Leverkusen,0.029399
+Monaco,Paris Saint-Germain,0.029178
+Monaco,Real Madrid,0.016881
+Monaco,Barcelona,0.01481
+Monaco,Galatasaray,0.008771
+Monaco,Liverpool,0.007273
+Monaco,Athletic Club,0.004143
+Monaco,PSV Eindhoven,0.003526
+Monaco,Olympiacos,0.003218
+Monaco,Qarabag FK,0.002953
+Monaco,Napoli,0.00119
+Monaco,Club Brugge,0.000573
+Napoli,Chelsea,0.219113
+Napoli,Inter,0.107323
+Napoli,Newcastle United,0.106338
+Napoli,Atalanta,0.103842
+Napoli,Juventus,0.103186
+Napoli,Sporting CP,0.082167
+Napoli,Borussia Dortmund,0.055567
+Napoli,Tottenham Hotspur,0.0511
+Napoli,Atletico Madrid,0.050706
+Napoli,Manchester City,0.038883
+Napoli,Paris Saint-Germain,0.03757
+Napoli,Real Madrid,0.012348
+Napoli,Barcelona,0.011363
+Napoli,Bayer Leverkusen,0.008144
+Napoli,Liverpool,0.004269
+Napoli,Marseille,0.003678
+Napoli,Monaco,0.001773
+Napoli,Galatasaray,0.001445
+Napoli,Qarabag FK,0.000591
+Napoli,PSV Eindhoven,0.00046
+Napoli,Athletic Club,6.6e-05
+Napoli,Olympiacos,6.6e-05
+Newcastle United,Galatasaray,0.205777
+Newcastle United,Qarabag FK,0.180489
+Newcastle United,Olympiacos,0.087665
+Newcastle United,Club Brugge,0.087118
+Newcastle United,Marseille,0.079887
+Newcastle United,Athletic Club,0.072383
+Newcastle United,Bayer Leverkusen,0.06527
+Newcastle United,Napoli,0.063277
+Newcastle United,Monaco,0.053975
+Newcastle United,PSV Eindhoven,0.035175
+Newcastle United,Borussia Dortmund,0.025874
+Newcastle United,Bodø/Glimt,0.012194
+Newcastle United,Pafos FC,0.009146
+Newcastle United,Benfica,0.008755
+Newcastle United,FC København,0.007465
+Newcastle United,Union St.Gilloise,0.00258
+Newcastle United,Ajax,0.002228
+Newcastle United,Inter,0.000704
+Newcastle United,Juventus,3.9e-05
+Olympiacos,Newcastle United,0.127923
+Olympiacos,Atalanta,0.121535
+Olympiacos,Inter,0.110528
+Olympiacos,Sporting CP,0.106479
+Olympiacos,Juventus,0.104312
+Olympiacos,Chelsea,0.09205
+Olympiacos,Borussia Dortmund,0.068781
+Olympiacos,Atletico Madrid,0.064674
+Olympiacos,Manchester City,0.050473
+Olympiacos,Tottenham Hotspur,0.04939
+Olympiacos,Paris Saint-Germain,0.039751
+Olympiacos,Barcelona,0.018878
+Olympiacos,Bayer Leverkusen,0.013117
+Olympiacos,Real Madrid,0.011406
+Olympiacos,Liverpool,0.006616
+Olympiacos,Marseille,0.005019
+Olympiacos,Monaco,0.004163
+Olympiacos,Galatasaray,0.003422
+Olympiacos,Qarabag FK,0.000913
+Olympiacos,PSV Eindhoven,0.000513
+Olympiacos,Napoli,5.7e-05
+PSV Eindhoven,Atalanta,0.131242
+PSV Eindhoven,Sporting CP,0.111763
+PSV Eindhoven,Inter,0.10898
+PSV Eindhoven,Atletico Madrid,0.090629
+PSV Eindhoven,Juventus,0.089501
+PSV Eindhoven,Borussia Dortmund,0.076188
+PSV Eindhoven,Chelsea,0.074985
+PSV Eindhoven,Newcastle United,0.06769
+PSV Eindhoven,Manchester City,0.060695
+PSV Eindhoven,Tottenham Hotspur,0.057912
+PSV Eindhoven,Paris Saint-Germain,0.032717
+PSV Eindhoven,Bayer Leverkusen,0.024744
+PSV Eindhoven,Barcelona,0.01948
+PSV Eindhoven,Real Madrid,0.01602
+PSV Eindhoven,Marseille,0.015117
+PSV Eindhoven,Liverpool,0.008198
+PSV Eindhoven,Monaco,0.006017
+PSV Eindhoven,Galatasaray,0.003911
+PSV Eindhoven,Athletic Club,0.001655
+PSV Eindhoven,Qarabag FK,0.001354
+PSV Eindhoven,Olympiacos,0.000677
+PSV Eindhoven,Napoli,0.000526
+Pafos FC,Atalanta,0.128915
+Pafos FC,Atletico Madrid,0.127168
+Pafos FC,Juventus,0.126227
+Pafos FC,Tottenham Hotspur,0.108886
+Pafos FC,Inter,0.100282
+Pafos FC,Manchester City,0.089663
+Pafos FC,Chelsea,0.063584
+Pafos FC,Sporting CP,0.051889
+Pafos FC,Paris Saint-Germain,0.046108
+Pafos FC,Borussia Dortmund,0.045167
+Pafos FC,Real Madrid,0.039656
+Pafos FC,Newcastle United,0.031456
+Pafos FC,Barcelona,0.023256
+Pafos FC,Liverpool,0.017744
+Paris Saint-Germain,Qarabag FK,0.16647
+Paris Saint-Germain,Galatasaray,0.156488
+Paris Saint-Germain,Marseille,0.092626
+Paris Saint-Germain,Olympiacos,0.074809
+Paris Saint-Germain,Athletic Club,0.071268
+Paris Saint-Germain,Monaco,0.071053
+Paris Saint-Germain,Bayer Leverkusen,0.06633
+Paris Saint-Germain,Napoli,0.061393
+Paris Saint-Germain,Club Brugge,0.060642
+Paris Saint-Germain,PSV Eindhoven,0.046689
+Paris Saint-Germain,Pafos FC,0.036814
+Paris Saint-Germain,Benfica,0.029194
+Paris Saint-Germain,Bodø/Glimt,0.017495
+Paris Saint-Germain,Borussia Dortmund,0.015348
+Paris Saint-Germain,Union St.Gilloise,0.013738
+Paris Saint-Germain,Ajax,0.011377
+Paris Saint-Germain,FC København,0.00805
+Paris Saint-Germain,Inter,0.000215
+Qarabag FK,Newcastle United,0.1545
+Qarabag FK,Inter,0.109769
+Qarabag FK,Atalanta,0.101472
+Qarabag FK,Juventus,0.094446
+Qarabag FK,Borussia Dortmund,0.08809
+Qarabag FK,Sporting CP,0.085346
+Qarabag FK,Chelsea,0.083439
+Qarabag FK,Tottenham Hotspur,0.070659
+Qarabag FK,Atletico Madrid,0.06002
+Qarabag FK,Paris Saint-Germain,0.05189
+Qarabag FK,Manchester City,0.047976
+Qarabag FK,Barcelona,0.02091
+Qarabag FK,Real Madrid,0.011877
+Qarabag FK,Bayer Leverkusen,0.008063
+Qarabag FK,Marseille,0.005821
+Qarabag FK,Monaco,0.002242
+Qarabag FK,Galatasaray,0.001271
+Qarabag FK,Athletic Club,0.000736
+Qarabag FK,PSV Eindhoven,0.000602
+Qarabag FK,Olympiacos,0.000535
+Qarabag FK,Napoli,0.000301
+Qarabag FK,FC København,3.3e-05
+Real Madrid,Benfica,0.256028
+Real Madrid,Marseille,0.111608
+Real Madrid,Monaco,0.095203
+Real Madrid,Qarabag FK,0.088243
+Real Madrid,Pafos FC,0.073328
+Real Madrid,Athletic Club,0.059906
+Real Madrid,Galatasaray,0.053691
+Real Madrid,PSV Eindhoven,0.052946
+Real Madrid,Olympiacos,0.049714
+Real Madrid,Napoli,0.046731
+Real Madrid,Bayer Leverkusen,0.044991
+Real Madrid,Ajax,0.020134
+Real Madrid,Union St.Gilloise,0.016654
+Real Madrid,Bodø/Glimt,0.014666
+Real Madrid,Club Brugge,0.009694
+Real Madrid,FC København,0.005966
+Real Madrid,Borussia Dortmund,0.000497
+Sporting CP,Athletic Club,0.192556
+Sporting CP,Galatasaray,0.12287
+Sporting CP,Qarabag FK,0.1055
+Sporting CP,Bayer Leverkusen,0.084036
+Sporting CP,Marseille,0.083747
+Sporting CP,Olympiacos,0.077213
+Sporting CP,PSV Eindhoven,0.061456
+Sporting CP,Monaco,0.057775
+Sporting CP,Borussia Dortmund,0.053557
+Sporting CP,Napoli,0.051737
+Sporting CP,Club Brugge,0.046567
+Sporting CP,Pafos FC,0.015964
+Sporting CP,Ajax,0.010877
+Sporting CP,Benfica,0.010132
+Sporting CP,Bodø/Glimt,0.009388
+Sporting CP,Union St.Gilloise,0.009388
+Sporting CP,FC København,0.004591
+Sporting CP,Inter,0.002605
+Sporting CP,Juventus,4.1e-05
+Tottenham Hotspur,Qarabag FK,0.163253
+Tottenham Hotspur,Galatasaray,0.108062
+Tottenham Hotspur,Monaco,0.099173
+Tottenham Hotspur,Marseille,0.095385
+Tottenham Hotspur,Olympiacos,0.06694
+Tottenham Hotspur,Athletic Club,0.065548
+Tottenham Hotspur,Pafos FC,0.062611
+Tottenham Hotspur,Bayer Leverkusen,0.06122
+Tottenham Hotspur,Napoli,0.060138
+Tottenham Hotspur,PSV Eindhoven,0.059519
+Tottenham Hotspur,Benfica,0.044214
+Tottenham Hotspur,Club Brugge,0.033702
+Tottenham Hotspur,Ajax,0.02489
+Tottenham Hotspur,Bodø/Glimt,0.023498
+Tottenham Hotspur,Union St.Gilloise,0.022416
+Tottenham Hotspur,FC København,0.007962
+Tottenham Hotspur,Borussia Dortmund,0.001469
+Union St.Gilloise,Atletico Madrid,0.184474
+Union St.Gilloise,Juventus,0.133139
+Union St.Gilloise,Tottenham Hotspur,0.121035
+Union St.Gilloise,Manchester City,0.120618
+Union St.Gilloise,Inter,0.103506
+Union St.Gilloise,Sporting CP,0.094741
+Union St.Gilloise,Paris Saint-Germain,0.053422
+Union St.Gilloise,Chelsea,0.052588
+Union St.Gilloise,Borussia Dortmund,0.035058
+Union St.Gilloise,Real Madrid,0.027963
+Union St.Gilloise,Newcastle United,0.027546
+Union St.Gilloise,Barcelona,0.024624
+Union St.Gilloise,Liverpool,0.021285

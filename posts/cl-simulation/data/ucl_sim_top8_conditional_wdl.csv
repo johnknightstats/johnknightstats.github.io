@@ -1,0 +1,16 @@
+team,opponent_r8,home_or_away_r8,result_r8,sims_in_bucket,top8_sims_in_bucket,p_top8_given_result
+Tottenham Hotspur,Eintracht Frankfurt,A,W,15311,15311,1.0
+Tottenham Hotspur,Eintracht Frankfurt,A,D,7030,1439,0.204694
+Tottenham Hotspur,Eintracht Frankfurt,A,L,7659,313,0.040867
+Newcastle United,Paris Saint-Germain,A,W,4283,4283,1.0
+Newcastle United,Paris Saint-Germain,A,D,5684,127,0.022343
+Newcastle United,Paris Saint-Germain,A,L,20033,4,0.0002
+Chelsea,Napoli,A,W,11659,10411,0.892958
+Chelsea,Napoli,A,D,8280,86,0.010386
+Chelsea,Napoli,A,L,10061,0,0.0
+Liverpool,Qarabag FK,H,W,26383,26383,1.0
+Liverpool,Qarabag FK,H,D,2881,2235,0.775772
+Liverpool,Qarabag FK,H,L,736,115,0.15625
+Manchester City,Galatasaray,H,W,24563,19724,0.802996
+Manchester City,Galatasaray,H,D,3640,16,0.004396
+Manchester City,Galatasaray,H,L,1797,0,0.0

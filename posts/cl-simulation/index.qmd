@@ -132,7 +132,7 @@ library(tidyr)
 library(gt)
 
 datawrapper_dir  <- "datawrapper"
-datawrapper_csv  <- file.path(datawrapper_dir, "ucl_league_phase_standings_with_probs.csv")
+datawrapper_csv  <- file.path(datawrapper_dir, "ucl_playoffs_conditional.csv")
 
 in_csv <- "data/ucl_sim_top8_conditional_wdl.csv"
 
@@ -222,7 +222,7 @@ library(dplyr)
 library(gt)
 
 datawrapper_dir  <- "datawrapper"
-datawrapper_csv  <- file.path(datawrapper_dir, "ucl_league_phase_standings_with_probs.csv")
+datawrapper_csv  <- file.path(datawrapper_dir, "spurs_opponents.csv")
 
 in_csv <- "data/ucl_sim_playoff_opponent_probs.csv"
 
@@ -281,7 +281,7 @@ library(dplyr)
 library(gt)
 
 datawrapper_dir  <- "datawrapper"
-datawrapper_csv  <- file.path(datawrapper_dir, "ucl_league_phase_standings_with_probs.csv")
+datawrapper_csv  <- file.path(datawrapper_dir, "chelsea_opponents.csv")
 
 in_csv <- "data/ucl_sim_playoff_opponent_probs.csv"
 
@@ -342,7 +342,7 @@ library(dplyr)
 library(gt)
 
 datawrapper_dir  <- "datawrapper"
-datawrapper_csv  <- file.path(datawrapper_dir, "ucl_league_phase_standings_with_probs.csv")
+datawrapper_csv  <- file.path(datawrapper_dir, "newcastle_opponents.csv")
 
 in_csv <- "data/ucl_sim_playoff_opponent_probs.csv"
 
@@ -401,7 +401,7 @@ Undoubtedly a downside of the new Champions League format is that an early defea
 
 One thing I do like is the extra variety of opponents. While the four-team groups in theory created some more tension by playing the same teams home & away, the rivalries just aren't the same when you are playing teams from another country. The fixture list is far more interesting with eight distinct opponents instead of three.
 
-A problem we do seem to have at the moment is because of the rule where teams from the same country cannot face each other in the league phase, English teams are getting a double-whammy: they are already the strongest teams because of their large revenue, and then they get easier fixtures because they don't have to play one another!
+A problem we do seem to have at the moment is because of the rule where teams from the same country cannot face each other in the league phase, English teams are getting a double advantage: they are already the strongest teams because of their large revenue, and then they get easier fixtures because they don't have to play one another!
 
 But why should this be the case? Does anyone actually question this rule? Similar to the World Cup wanting to mix continents, I suppose they want to promote mixing between different nations, and it would definitely be a bit silly in the old format if you had three English teams in the same group.
 

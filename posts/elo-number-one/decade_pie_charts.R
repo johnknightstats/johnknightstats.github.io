@@ -3,8 +3,9 @@
 # ------------------------------------------------------------
 # clubelo_number_one_pies_by_decade.R
 #
-# Reads:  data/processed/clubelo_number_one_daily.csv
-# Writes: outputs/clubelo_number_one_pies_by_decade.png
+# Reads:  posts/elo-number-one/data/processed/clubelo_number_one_daily.csv
+# Writes: posts/elo-number-one/outputs/clubelo_number_one_pies_by_decade.png
+#         posts/elo-number-one/outputs/clubelo_number_one_timeline_by_decade.png
 #
 # CSV columns: Date, Team, Country (Country is 3-letter code)
 # ------------------------------------------------------------
@@ -16,7 +17,7 @@ suppressPackageStartupMessages({
   library(lubridate)
   library(ggplot2)
   library(patchwork)
-  library(grid)   # unit()
+  library(grid)
   library(tibble)
 })
 
@@ -25,7 +26,9 @@ suppressPackageStartupMessages({
 # ----------------------------
 IN_CSV  <- "posts/elo-number-one/data/processed/clubelo_number_one_daily.csv"
 OUT_DIR <- "posts/elo-number-one/outputs"
-OUT_PNG <- file.path(OUT_DIR, "clubelo_number_one_pies_by_decade.png")
+
+OUT_PNG_PIES     <- file.path(OUT_DIR, "clubelo_number_one_pies_by_decade.png")
+OUT_PNG_TIMELINE <- file.path(OUT_DIR, "clubelo_number_one_timeline_by_decade.png")
 
 DECADES_KEEP <- c("1940s","1950s","1960s","1970s","1980s","1990s","2000s","2010s","2020s")
 
@@ -35,7 +38,7 @@ COUNTRY_CODE_TO_NAME <- c(
   "ENG" = "England",
   "ESP" = "Spain",
   "GER" = "Germany",
-  "FRG" = "Germany",   # merge FRG into GER
+  "FRG" = "Germany",
   "HUN" = "Hungary",
   "ITA" = "Italy",
   "NED" = "Netherlands",
@@ -45,14 +48,14 @@ COUNTRY_CODE_TO_NAME <- c(
 )
 
 COUNTRY_COLORS <- c(
-  "Austria"      = "black",
+  "Austria"      = "#ED2939",
   "Belgium"      = "pink",
   "England"      = "white",
-  "Spain"        = "red",
-  "Germany"      = "gold",
-  "Hungary"      = "green",
+  "Spain"        = "#8B0D11",
+  "Germany"      = "black",
+  "Hungary"      = "#477050",
   "Italy"        = "royalblue",
-  "Netherlands"  = "orange",
+  "Netherlands"  = "#F46C22",
   "Portugal"     = "turquoise",
   "Scotland"     = "darkblue",
   "Sweden"       = "yellow"
@@ -65,12 +68,15 @@ PNG_WIDTH_IN  <- 16
 PNG_HEIGHT_IN <- 12
 PNG_DPI       <- 300
 
-TITLE_TEXT <- "Nationality of Club Elo Number One by Decade"
+TITLE_TEXT <- "Nationality of Club Elo Number One Team by Decade"
 
 # Pie orientation: 12 o'clock start, clockwise
 PIE_START <- 0
 PIE_DIR   <- 1
 
+# Timeline output size
+TL_WIDTH_IN  <- 16
+TL_HEIGHT_IN <- 8
 
 # ----------------------------
 # Helpers
@@ -78,7 +84,7 @@ PIE_DIR   <- 1
 extract_legend_grob <- function(p) {
   g <- ggplotGrob(p)
   idx <- which(vapply(g$grobs, function(x) x$name, character(1)) == "guide-box")
-  if (length(idx) == 0) stop("No legend found to extract.")
+  if (length(idx) == 0) stop("No legend found.")
   g$grobs[[idx[1]]]
 }
 
@@ -91,41 +97,30 @@ dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 # ----------------------------
 # Load + prep
 # ----------------------------
-df_raw <- read_csv(IN_CSV, show_col_types = FALSE)
-
-needed <- c("Date", "Team", "Country")
-missing_cols <- setdiff(needed, names(df_raw))
-if (length(missing_cols) > 0) stop("Missing columns in CSV: ", paste(missing_cols, collapse = ", "))
-
-df <- df_raw %>%
+df <- read_csv(IN_CSV, show_col_types = FALSE) %>%
   mutate(
     Date = as.Date(Date),
     year = year(Date),
     decade = paste0(floor(year / 10) * 10, "s"),
-    Country = str_squish(as.character(Country)),
-    country_name = unname(COUNTRY_CODE_TO_NAME[Country])
+    country_name = unname(COUNTRY_CODE_TO_NAME[str_squish(Country)])
   ) %>%
-  filter(!is.na(Date), decade %in% DECADES_KEEP, !is.na(country_name)) %>%
-  mutate(
-    decade = factor(decade, levels = DECADES_KEEP),
-    country_name = as.character(country_name)
-  )
+  filter(decade %in% DECADES_KEEP, !is.na(country_name)) %>%
+  mutate(decade = factor(decade, levels = DECADES_KEEP))
 
-# Compute slice boundaries explicitly (largest starts at 12 o'clock)
+# ----------------------------
+# Pies: compute slice boundaries explicitly (largest starts at 12 o'clock)
+# ----------------------------
 df_dec <- df %>%
   count(decade, country_name, name = "days") %>%
   group_by(decade) %>%
   mutate(prop = days / sum(days)) %>%
-  arrange(desc(prop), country_name) %>%  # descending within each decade
+  arrange(desc(prop), country_name) %>%
   mutate(
     ymax = cumsum(prop),
     ymin = dplyr::lag(ymax, default = 0)
   ) %>%
   ungroup()
 
-# ----------------------------
-# Plot builders
-# ----------------------------
 pie_for_decade <- function(dec_label) {
   d <- df_dec %>% filter(decade == dec_label)
   
@@ -155,15 +150,15 @@ plots <- lapply(levels(df$decade), pie_for_decade)
 grid_plot <- wrap_plots(plots, ncol = 3)
 
 # ----------------------------
-# Build ONE legend (standalone)
+# Build ONE legend (pies)
 # ----------------------------
-legend_df <- tibble(
+legend_df_pies <- tibble(
   country_name = factor(COUNTRY_ORDER, levels = COUNTRY_ORDER),
   prop = rep(1 / length(COUNTRY_ORDER), length(COUNTRY_ORDER))
 )
 
-legend_plot_src <-
-  ggplot(legend_df, aes(x = 1, y = prop, fill = country_name)) +
+legend_plot_src_pies <-
+  ggplot(legend_df_pies, aes(x = 1, y = prop, fill = country_name)) +
   geom_col() +
   coord_polar(theta = "y", start = PIE_START, direction = PIE_DIR) +
   scale_fill_manual(values = COUNTRY_COLORS, breaks = COUNTRY_ORDER, limits = COUNTRY_ORDER, drop = FALSE) +
@@ -177,14 +172,11 @@ legend_plot_src <-
     legend.key = element_rect(fill = "grey92", color = "grey60")
   )
 
-legend_grob <- extract_legend_grob(legend_plot_src)
-legend_panel <- wrap_elements(full = legend_grob)
+legend_grob_pies <- extract_legend_grob(legend_plot_src_pies)
+legend_panel_pies <- wrap_elements(full = legend_grob_pies)
 
-# ----------------------------
-# Combine grid + legend
-# ----------------------------
-final_plot <-
-  (grid_plot | legend_panel) +
+final_plot_pies <-
+  (grid_plot | legend_panel_pies) +
   plot_layout(widths = c(5, 1.5)) +
   plot_annotation(
     title = TITLE_TEXT,
@@ -199,15 +191,158 @@ final_plot <-
   )
 
 # ----------------------------
+# Timeline prep (FIXED: robust decade length + clamp xend to avoid clipping)
+# ----------------------------
+df_runs <- df %>%
+  arrange(decade, Date) %>%
+  group_by(decade) %>%
+  mutate(run_id = cumsum(country_name != lag(country_name, default = first(country_name)))) %>%
+  group_by(decade, run_id, country_name) %>%
+  summarise(start_date = min(Date), end_date = max(Date), .groups = "drop") %>%
+  mutate(
+    decade_num = as.numeric(factor(decade, levels = DECADES_KEEP)),
+    
+    decade_start_year = as.integer(sub("s$", "", as.character(decade))),
+    decade_start = as.Date(paste0(decade_start_year, "-01-01")),
+    decade_end_excl = as.Date(paste0(decade_start_year + 10, "-01-01")),
+    decade_days = as.numeric(decade_end_excl - decade_start),
+    
+    end_date_excl = end_date + days(1),
+    
+    xstart_raw = as.numeric(start_date - decade_start) / decade_days,
+    xend_raw   = as.numeric(end_date_excl - decade_start) / decade_days,
+    
+    xstart = pmin(pmax(xstart_raw, 0), 1),
+    xend   = pmin(pmax(xend_raw,   0), 1)
+  )
+
+# ----------------------------
+# Timeline plot core (NO title, NO legend; we add both via patchwork)
+# ----------------------------
+timeline_plot_core <-
+  ggplot(df_runs, aes(
+    xmin = xstart,
+    xmax = xend,
+    ymin = decade_num - 0.35,
+    ymax = decade_num + 0.35,
+    fill = country_name
+  )) +
+  geom_rect(color = "grey20", linewidth = 0.15) +
+  scale_fill_manual(values = COUNTRY_COLORS, limits = COUNTRY_ORDER, drop = FALSE) +
+  scale_y_reverse(
+    breaks = seq_along(DECADES_KEEP),
+    labels = DECADES_KEEP,
+    expand = expansion(add = 0.4)
+  ) +
+  scale_x_continuous(
+    limits = c(0, 1),
+    breaks = seq(0, 0.9, by = 0.1),
+    labels = 0:9,
+    expand = c(0, 0)
+  ) +
+  labs(
+    x = "Year",
+    y = NULL,
+    fill = "Country"
+  ) +
+  theme_classic(base_size = 13) +
+  theme(
+    panel.grid = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.6),
+    axis.text.y = element_text(face = "bold"),
+    legend.position = "none",
+    plot.margin = margin(t = 4, r = 8, b = 8, l = 8)
+  )
+
+# ----------------------------
+# Timeline legend (grob)
+# ----------------------------
+legend_df_tl <- tibble(
+  country_name = factor(COUNTRY_ORDER, levels = COUNTRY_ORDER),
+  dummy = 1
+)
+
+legend_plot_src_tl <-
+  ggplot(legend_df_tl, aes(x = dummy, fill = country_name)) +
+  geom_bar() +
+  scale_fill_manual(
+    values = COUNTRY_COLORS,
+    breaks = COUNTRY_ORDER,
+    limits = COUNTRY_ORDER,
+    drop = FALSE,
+    guide = guide_legend(
+      nrow = 2,
+      byrow = TRUE,
+      keywidth  = unit(0.6, "cm"),  # <-- increases column width
+      keyheight = unit(0.6, "cm")
+    )
+  ) +
+  labs(fill = "Country") +
+  theme_void() +
+  theme(
+    legend.position = "top",
+    legend.direction = "horizontal",
+    
+    legend.title = element_text(size = 12, face = "bold"),
+    legend.text  = element_text(
+      size = 10,
+      margin = margin(r = 12, l = 4)       # <-- adds extra gap after each label
+    ),
+    
+    # dark outline around the color squares (helps England)
+    legend.key = element_rect(
+      fill = NA,
+      color = "grey30",
+      linewidth = 0.4
+    ),
+    
+    legend.box.spacing = unit(0, "pt"),
+    legend.margin = margin(0, 0, 0, 0)
+  )
+
+
+
+legend_grob_tl <- extract_legend_grob(legend_plot_src_tl)
+legend_panel_tl <- wrap_elements(full = legend_grob_tl)
+
+# ----------------------------
+# Timeline: Title above, then legend, then plot (no overlap)
+# ----------------------------
+timeline_plot_final <-
+  (legend_panel_tl / timeline_plot_core) +
+  plot_layout(heights = c(1.2, 10)) +
+  plot_annotation(
+    title = TITLE_TEXT,
+    theme = theme(
+      plot.title = element_text(
+        size = 18,
+        face = "bold",
+        hjust = 0.5,
+        margin = margin(b = 8)
+      ),
+      plot.margin = margin(t = 8, r = 8, b = 8, l = 8)
+    )
+  )
+
+# ----------------------------
 # Save
 # ----------------------------
 ggsave(
-  filename = OUT_PNG,
-  plot = final_plot,
+  filename = OUT_PNG_PIES,
+  plot = final_plot_pies,
   width = PNG_WIDTH_IN,
   height = PNG_HEIGHT_IN,
   dpi = PNG_DPI,
   bg = "white"
 )
+message("Saved: ", OUT_PNG_PIES)
 
-message("Saved: ", OUT_PNG)
+ggsave(
+  filename = OUT_PNG_TIMELINE,
+  plot = timeline_plot_final,
+  width = TL_WIDTH_IN,
+  height = TL_HEIGHT_IN,
+  dpi = PNG_DPI,
+  bg = "white"
+)
+message("Saved: ", OUT_PNG_TIMELINE)

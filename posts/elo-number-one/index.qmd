@@ -33,11 +33,13 @@ Before I look at the British number ones, I think it's interesting to see which 
 <img src="outputs/clubelo_number_one_timeline_by_decade.png"/>
 :::
 
-*The Club Elo rankings begin at the start of 1940. Start: Spain. How was this decided? 2nd world war, unfair advantage to Spain? 1940s: Spain, Italy (Torino: plane crash), Malmo!? *
+*The Club Elo rankings begin at the start of 1940, although it's not clear how the first set of ratings are devised, or how much inter-league mixing there was prior to the start of the European Cup era in 1955. Certainly there were international club competitions such as the Latin Cup and Mitropa Cup (check these) as well as various club friendlies. Famously, (Wolves champions of the world story).*
 
-*1950s: Austria, Italy, Scotland, Spain, Hungary. European Cup era (1955-1956 first season): Hungary then RM. Finally Inter in 1965. Dominance of British teams from late 60s through the 70s and 80s although German teams (Hamburg and Bayern) make up a surprising amount of the 1980s. *
+Spanish teams of course had the advantage in the early 1940s that everyone else was busy fighting World War 2. Once that conflict was decided, Italy took over top spot with the great Torino side reigning for more than two years before the tragic plane crash that killed their entire team in 1949.
 
-*The 1990s are undoubtedly the Italian decade. 2010s: Guardiola!? See if you can work out what % his teams were #1.*
+*Malmo!? Champs 1949, 1950, 1951, 1953. Runners-up 1946, 1948, 1952. Is this fair? I have no idea.*
+
+*1950s: Austria (Rapid Vienna & Austria Vienna), Hungary (MTK & Honved), long dominance by Spain (Real Madrid & Barcelona; mostly RM) in early European Cup era (1955-1956 first season) finally broken by Italy (first Milan, then Inter) Hungary then RM. Finally Inter in 1965. First British era begins with Celtic in 1968 then Leeds through early 70s, then Dutch in mid 70s (total football!) and England in late 70s before the Germans take over in early 80s (Hamburg & Bayern). England back on top but derailed by the Heysel ban. 1990s, the Italian decade with great Ajax side sneaking in. 2000s, England and Spain. 2010s, mostly Spain with some Germany and Barcelona. What % of this decade was Guardiola #1? Work it out!! 2020s, England.*
 
 ## 12. Nottingham Forest: 14 Days
 

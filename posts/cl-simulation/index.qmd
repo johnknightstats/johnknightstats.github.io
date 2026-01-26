@@ -415,4 +415,4 @@ Overall though, like most competitions, it's just good to get past the early gri
 
 {{< include ../../includes/_article_footer.qmd >}}
 
-© 2025 John Knight. All rights reserved.
+© 2026 John Knight. All rights reserved.

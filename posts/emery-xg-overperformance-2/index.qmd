@@ -620,5 +620,5 @@ Next up, in part three, I will try to answer the most important question: is any
 
 {{< include ../../includes/_article_footer.qmd >}}
 
-© 2025 John Knight. All rights reserved.
+© 2026 John Knight. All rights reserved.
 

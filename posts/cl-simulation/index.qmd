@@ -395,7 +395,7 @@ gt(table_df) %>%
 
 ## Thoughts on the format
 
-As for my views on the format. First and foremost, let's be honest, this is a continuation of the descent into **low-jeopardy slop** that is plaguing many sports nowadays. Perhaops the worst example is basketball's NBA where they play an 82-game regular season after which 16 of 30 teams still get into the playoffs, and even then they play a best-of-seven series for each round. The Americans truly know how to squeeze all the juice out of the orange.
+As for my views on the format. First and foremost, let's be honest, this is a continuation of the descent into **low-jeopardy slop** that is plaguing many sports nowadays. Perhaps the worst example is basketball's NBA where they play an 82-game regular season after which 16 of 30 teams still get into the playoffs, and even then they play a best-of-seven series for each round. The Americans truly know how to squeeze all the juice out of the orange.
 
 Undoubtedly a downside of the new Champions League format is that an early defeat or two is not terminal. 24 out of 36 teams going through is pretty outrageous, to be honest, after making everyone play eight midweek matches alongside their domestic campaigns.
 

@@ -8,6 +8,16 @@
     ]
   },
   {
+    "listing": "/dashboards/index.html",
+    "items": [
+      "/dashboards/pl-table/index.html",
+      "/dashboards/pl-xg-sources/index.html",
+      "/dashboards/managers-table/index.html",
+      "/dashboards/managers-table-2/index.html",
+      "/dashboards/election-2020-tableau/index.html"
+    ]
+  },
+  {
     "listing": "/posts/index.html",
     "items": [
       "/posts/cl-simulation/index.html",
@@ -21,16 +31,6 @@
       "/posts/game_state/index.html",
       "/posts/elo_sim_model/index.html",
       "/posts/title_collapses/index.html"
-    ]
-  },
-  {
-    "listing": "/dashboards/index.html",
-    "items": [
-      "/dashboards/pl-table/index.html",
-      "/dashboards/pl-xg-sources/index.html",
-      "/dashboards/managers-table/index.html",
-      "/dashboards/managers-table-2/index.html",
-      "/dashboards/election-2020-tableau/index.html"
     ]
   }
 ]

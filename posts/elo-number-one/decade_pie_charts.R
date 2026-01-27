@@ -249,7 +249,9 @@ timeline_plot_core <-
   theme(
     panel.grid = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.6),
-    axis.text.y = element_text(face = "bold"),
+    axis.text.y = element_text(face = "bold", size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.title.x = element_text(size = 18),
     legend.position = "none",
     plot.margin = margin(t = 4, r = 8, b = 8, l = 8)
   )
@@ -283,9 +285,9 @@ legend_plot_src_tl <-
     legend.position = "top",
     legend.direction = "horizontal",
     
-    legend.title = element_text(size = 12, face = "bold"),
+    legend.title = element_text(size = 20, face = "bold"),
     legend.text  = element_text(
-      size = 10,
+      size = 20,
       margin = margin(r = 12, l = 4)       # <-- adds extra gap after each label
     ),
     
@@ -315,7 +317,7 @@ timeline_plot_final <-
     title = TITLE_TEXT,
     theme = theme(
       plot.title = element_text(
-        size = 18,
+        size = 32,
         face = "bold",
         hjust = 0.5,
         margin = margin(b = 8)

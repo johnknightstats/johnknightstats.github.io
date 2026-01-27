@@ -1,7 +1,8 @@
 ---
 title: "Which British teams have been the best in Europe?"
 author: "John Knight"
-date: 2026-01-26
+image: Liverpool_6_ucl_trophies.jpg
+date: 2026-01-27
 date-format: "D MMMM YYYY"
 description: "A review of the number one team by Elo rating over the last 85 years."
 categories: ["football", "statistics", "Elo ratings"]
@@ -21,9 +22,15 @@ draft: true
 
 ---
 
+::: {.centered-block}
+<img src="Liverpool_6_ucl_trophies.jpg"/>
+:::
+
 As a football nerd, I love playing around on the [Club Elo](http://clubelo.com) website. One little feature I noticed is that each club's page shows their highest rating, and when they most recently had that rating. So it got me wondering: which British teams have reached #1 in the Elo rankings?
 
-We know which British teams have been champions of Europe: Celtic, Manchester United, Liverpool, Nottingham Forest, Aston Villa, Chelsea and Manchester City. But that doesn't necessarily mean reaching #1 in Elo; Villa, for example, only reached a ranking of 6th in the early 80s despite winning the English league title and European Cup. Why so low? Because Villa had finished no better than 7th in the three seasons before their title, and finished 11th the following year - still the lowest ever league position for any winner of the European Cup or Champions League in the 70 years of the competition. 
+We know which British teams have been champions of Europe: Celtic, Manchester United, Liverpool, Nottingham Forest, Aston Villa, Chelsea and Manchester City. But that doesn't necessarily mean reaching #1 in Elo; **Aston Villa**, for example, only reached a highest ranking of 6th in the early 80s despite winning the English league title and European Cup. 
+
+Why so low? Because Villa had finished no better than 7th in the three seasons before their title, and finished 11th the following year - still the lowest ever league position for any winner of the European Cup or Champions League in the 70 years of the competition. 
 
 ```{r}
 library(readr)
@@ -57,8 +64,12 @@ df_dw %>%
   tab_style(style = cell_text(weight = "bold"),
             locations = cells_column_labels(columns = everything()))
 ```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+European champions who finished 5th or lower in their domestic league that season.
+</p>
 
-Villa fans won't care of course, because the only real thing about sport is winning games and winning trophies; the notion of being a "good team" is an abstract concept. Nonetheless, I like the Club Elo ratings as they provide an objective measure to compare teams, and they generally pass the eye test. In fact, Villa fans will be pleased to know they are currently ranked in 8th place, just two points behind Real Madrid. 
+
+Villa fans won't care about that, of course, because the only real thing about sport is winning matches and trophies; the notion of being a "good team" is an abstract concept. Nonetheless, I like the Club Elo ratings as they provide an objective measure to compare teams, and they generally pass the eye test. In fact, Villa fans will be pleased to know the current side are ranked in 8th place, just two points behind Real Madrid.
 
 ```{r}
 library(readr)
@@ -83,8 +94,13 @@ df_dw %>%
   tab_style(style = cell_text(weight = "bold"),
             locations = cells_column_labels(columns = everything()))
 ```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Current Elo ratings (27 Jan, 2026).
+</p>
 
-At first I was going to entitle this article "Which British teams have been the best in the world?" But of course, the Club Elo ratings don't include teams outside Europe, which arguably wouldn't affect the top teams today but certainly would have at various points in history. Even if the data included results from South American club football, would there be enough crossover between the two continents to make meaningful combined ratings? Doubtful.
+
+
+At first I was going to entitle this article "Which British teams have been the best in the world?" But of course, the Club Elo ratings don't include teams outside Europe, which arguably wouldn't affect the top teams today but certainly would have at various points in history. But even if the data included results from South American club football, would there be enough crossover between the two continents to make meaningful combined ratings? Doubtful.
 
 Before I look at the British number ones, I think it's interesting to see which countries have dominated across each era.
 
@@ -94,17 +110,17 @@ Before I look at the British number ones, I think it's interesting to see which 
 
 The Club Elo rankings begin at the start of 1940, although it's not clear how the first set of ratings are devised, or how much inter-league mixing there was prior to the start of the European Cup era in 1955. Certainly there were international club competitions such as the Latin Cup and Mitropa Cup, as well as various club friendlies. Famously, **Wolverhampton Wanderers** were announced as [Champions of the World](https://www.theguardian.com/football/2014/dec/13/wolves-world-champions-honved-molineux-hungary-wembley) by the Daily Mail in 1954 after beating Hungarian champions Honved 3-2.
 
-Spanish teams of course had the advantage in the early 1940s that everyone else was busy fighting World War Two. Once that conflict was decided, Italy soon took over top spot with the great Torino side reigning for more than two years before the tragic [plane crash](https://www.bbc.com/sport/football/46788983) that killed their entire team in 1949.
+Spanish teams of course had the advantage in the early 1940s that everyone else was busy fighting **World War Two**. Once that conflict was decided, Italy soon took over top spot with the great **Torino** side reigning for more than two years before the tragic [plane crash](https://www.bbc.com/sport/football/46788983) that killed their entire team in 1949.
 
-It would take too long to comment on every different spell at the top, but the broad trends can be seen: the coffee shops of Vienna and Budapest in the 50s; the Real Madrid team that won the first five European Cups; the *total football* Dutch era; the English and German dominance of the 70s and 80s; the almost complete dominance of the 1990s by Italy; and the back and forth between Spain and England since the turn of the century, with occasional interruptions from Bayern.
+It would be arduous to comment on every different spell at the top, but the broad trends can be seen: the coffee shops of Vienna and Budapest in the 50s; the **Real Madrid** team that won the first five European Cups; the *total football* Dutch era; the English and German dominance of the 70s and 80s; the almost complete monopoly of the 1990s by Italy; and the back and forth between Spain and England since the turn of the century.
 
-Every team has an interesting story to tell, and maybe I will take a similar look at the non-British teams in future. But for now, let's run through each of the twelve British sides that reached top spot: how many days have been #1, and when they did it.
+Every team has an interesting story to tell, and maybe I will take a similar look at the non-British teams in future. But for now, let's run through each of the twelve British sides that reached top spot: how many days they have been #1, and when they did it.
 
 ## 12. Nottingham Forest: 14 Days
 
 *October 1979*
 
-It's one of the most ridiculous runs in football history. Brian Clough, having already won the league with unheralded Derby County in 1972, took Nottingham Forest to promotion from the second division, to English champions, to European champions then European champions again in four consecutive seasons between 1976-77 and 1979-80. They also won the league cup in 1978 and 1979. Despite this success, Forest only briefly reached number one of the Elo rankings in October 1979, such was the dominance of their rivals Liverpool during this era.
+It's one of the most ridiculous runs in football history. **Brian Clough**, having already won the league with unheralded Derby County in 1972, took Nottingham Forest to promotion from the second division, to English champions, to European champions then European champions again in four consecutive seasons between 1976-77 and 1979-80. They also won the League Cup in 1978 and 1979. Despite this success, Forest only briefly reached number one of the Elo rankings in October 1979, such was the dominance of rivals Liverpool during the same era.
 
 ## 11. Tottenham Hotspur: 18 Days
 
@@ -135,22 +151,25 @@ df_dw %>%
   tab_style(style = cell_text(weight = "bold"),
             locations = cells_column_labels(columns = everything()))
 ```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Elo ratings on 2 Jan, 1985.
+</p>
 
-Having won the 1984 UEFA Cup Final against a strong Anderlecht side who themselves reached #1 that year, Spurs began the 1984-1985 season well and topped the table going into the new year after winning at local rivals Arsenal. But Everton put together an incredible run of 16 wins and two draws from 18 matches to surge to the title and also take over Spurs' short-lived Elo #1 ranking. 
+Having won the 1984 UEFA Cup Final against a strong **Anderlecht** side who themselves reached #1 that year, Spurs began the 1984-1985 season well, topping the table in the new year after winning at local rivals Arsenal. But **Everton** put together an incredible run of 16 wins and two draws from 18 matches to surge to the title and also take over Spurs' short-lived Elo #1 ranking. 
 
 ## 10. Hibernian: 26 Days
 
 *1951-1952*
 
-With all due respect, I was not expecting to see Hibernian on this list. As mentioned earlier, it's not clear exactly what international club competitions are included in the early Elo calculations. But this was clearly a fantastic Hibs side, winning the Scottish championship in 1948, 1951 and 1952; Celtic & Rangers had won all but one of the league titles in the previous 43 years. [Logan Roy](https://www.youtube.com/watch?v=wKpzcxBBRUQ) would be proud!
+With all due respect, I was not expecting to see Hibernian on this list. As mentioned earlier, it's not clear exactly what international club competitions are included in the early Elo calculations. But this was clearly a fantastic Hibs side, winning the Scottish championship in 1948, 1951 and 1952; **Celtic & Rangers** had won all but one of the league titles in the previous 43 years. [Logan Roy](https://www.youtube.com/watch?v=wKpzcxBBRUQ) would be proud!
 
-## 9. Arsenal: 165 Days
+## 9. Arsenal: 166 Days
 
 *1971, 1991, 2004, 2025-2026*
 
 Although Arsenal have reached #1 at four different times in their history, it is actually the current side that has been there the longest. In 1971, despite winning the double, they only reached the top spot for a total of 14 days, and in 1991 after hosing up in the league they only managed two days at the top, such had England's stock fallen during the Heysel ban.
 
-For all his domestic success at Arsenal, Arsene Wenger never really cracked Europe, and he only reached #1 for four days in 2004. So it is Arteta, with a current run of 145 days that doesn't look like ending any time soon, who has by far the longest spell in top spot. Can he now add the trophies to match?
+For all his domestic success at Arsenal, **Arsene Wenger** never really cracked Europe, and he only reached #1 for four days in 2004. So it is Mikel Arteta, with a current run of 146 days that doesn't look like ending any time soon, who has by far the longest spell in top spot. Can he now add the trophies to match?
 
 ```{r}
 library(readr)
@@ -175,20 +194,23 @@ df_dw %>%
   tab_style(style = cell_text(weight = "bold"),
             locations = cells_column_labels(columns = everything()))
 ```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Arsenal managers who have reached Elo #1.
+</p>
 
 ## 8. Aberdeen: 166 Days
 
 *1983-1984*
 
-Alex Ferguson's name is now synonymous with Manchester United's most successful era, but his time at Aberdeen was also prolific. Fergie took over in 1978 and led Aberdeen to league finishes of 4-1-2-2-3-1-1-4, as well as winning four Scottish FA Cups and the 1983 UEFA Cup Winners' Cup where they beat Real Madrid in the final. The Dons topped the rankings for 152 straight days between November 1983 and April 1984.
+Alex Ferguson's name is now synonymous with Manchester United's most successful era, but his time at Aberdeen was also prolific. Fergie took over in 1978 and led Aberdeen to league finishes of 4-1-2-2-3-1-1-4, as well as winning four Scottish FA Cups and the 1983 UEFA Cup Winners' Cup, where they beat Real Madrid in the final. The Dons topped the rankings for 152 straight days between November 1983 and April 1984.
 
 ## 7. Everton: 378 Days
 
 *1969-1970, 1985-1987*
 
-Everton have been top dogs in two eras. Their title-winning side of 1969-1970 held the #1 spot for a total of 154 days, followed by a lean spell and then the great Everton side of the 1980s. The Toffees won the 1984 FA Cup and then in 1985, as mentioned in the Spurs section earlier, they went on a brilliant run after Christmas, winning 16 of 18 games to romp to the league title as well as winning the Cup Winners' Cup and losing the FA Cup final to Manchester United in extra time. Bearing in mind the fixture load, it has to be one of the most impressive runs in English football history.
+Everton have been top dogs in two eras. Their title-winning side of 1969-1970 held the #1 spot for a total of 154 days. This was followed by a relatively lean spell before the great Everton side of the 1980s emerged. The Toffees won the 1984 FA Cup and then in 1985, as mentioned in the Spurs section above, they went on a brilliant run after Christmas, winning 16 of 18 games to romp to the league title as well as winning the Cup Winners' Cup and losing the FA Cup final to Manchester United in extra time. Bearing in mind the fixture load, it has to be one of the most impressive runs in English football history.
 
-Everton followed this up with second place in 1986 (Gary Lineker's only season at the club) and then won the league again in 1987. Sadly, Everton were big losers from English clubs' European ban following the Heysel disaster. In an era where England had won seven of the previous nine European Cup finals, they obviously would have had a great chance - and the fact neither of the champions in those two seasons were particularly strong (Steaua Bucharest and PSV Eindhoven) only backs up the case.
+Everton followed this up with second place in 1986 (Gary Lineker's only season at the club) and then won the league again in 1987. Sadly, Everton were big losers from English clubs' European ban following the Heysel disaster. In an era where England had won seven of the previous nine European Cup finals, they obviously would have had a great chance in both 1986 and 1988 - and the fact neither of the champions in those two seasons were particularly strong (Steaua Bucharest and PSV Eindhoven) only backs up the case.
 
 ```{r}
 library(readr)
@@ -223,6 +245,9 @@ tbl_ellipses %>%
     locations = cells_body(rows = Club == "\u22EE")
   )
 ```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Bucharest vs. Barcelona).
+</p>
 
 ```{r}
 library(readr)
@@ -257,6 +282,9 @@ tbl_ellipses %>%
     locations = cells_body(rows = Club == "\u22EE")
   )
 ```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhoven vs. Benfica).
+</p>
 
 ## 6. Celtic: 533 Days
 
@@ -264,15 +292,17 @@ tbl_ellipses %>%
 
 Famously, Celtic were the first British team to win the European Cup, and did so with a team comprised entirely of players born within a 30-mile radius of Glasgow. Almost as famous, or infamous, was their subsequent [Intercontinental Cup](https://en.wikipedia.org/wiki/1967_Intercontinental_Cup) tie against Racing Club of Argentina, marred by foul play and culminating in six players being sent off in the deciding playoff match. 
 
-Although this Celtic team is predominantly associated with those two competitions, they held reached #1 in the Elo ratings in all of the years from 1968 through to 1972. Celtic won nine consecutive Scottish titles from 1965-1966 to 1973-1974, adding four Scottish FA Cups and five Scottish League Cups in the same period. Scottish domestic success can sometimes be scoffed at due to the lack of competition north of the border, but Celtic showed their pedigree in Europe, winning the European Cup in 1967 as well as losing the 1970 final to Feyenoord via a 117th-minute extra time goal. They also lost to eventual champions Milan in the 1969 quarter-finals, and likewise to Ajax in the 1971 quarter-finals, then lost to Inter on penalties in the 1972 semis. They were no flash in the pan.
+Although this Celtic team is predominantly associated with those two events, they reached #1 in the Elo ratings in all of the years from 1968 through to 1972. Celtic won nine consecutive Scottish titles from 1965-66 to 1973-74, adding four Scottish FA Cups and five Scottish League Cups in the same period. 
+
+Scottish domestic success can sometimes be scoffed at due to the lack of depth north of the border, but Celtic showed their pedigree in Europe, winning the European Cup in 1967 as well as losing the 1970 final to Feyenoord via a 117th-minute extra time goal. They also lost to eventual champions Milan in the 1969 quarter-finals, and likewise to Ajax in the 1971 quarter-finals, then lost to Inter on penalties in the 1972 semis. They were no flash in the pan.
 
 ## 5. Leeds United: 575 Days
 
 *1969-1971, 1973-1974*
 
-Arguably the great unheralded team of English football, Leeds were champions of England in 1969 and 1974, the years that bookend their spells atop the Elo rankings. Despite all their success, this Leeds team are probably defined more by what they didn't win than what they did win. They were runners-up in the league in three consecutive years from 1970 to 1972, *describe near-misses. Arsenal 71, Derby 72*
+Arguably the great unheralded team of English football, Leeds were champions of England in 1969 and 1974, the years that bookend their spells atop the Elo rankings. Despite all their success, this Leeds team is probably defined more by what they didn't win than what they did win. They were runners-up in the league in three consecutive years from 1970 to 1972, aided by a [controversial Jeff Astle goal](https://www.theguardian.com/sport/2009/apr/18/ray-tinkler-played-advantage-leeds) for West Brom in 1971, and a final day defeat at Wolves in 1972 when a draw would have made them champions.
 
-*Describe European Cup final near-misses as well as semi (Celtic 1970) (Milan CWC final 1973 fix) (1975 lost to Bayern; already in decline though, 10th v 9th! Where were they both in Elo at this time? Peter Lorimer goal? Bremner offside.). And Two FA Cup final defeats: Chelsea replay and Sunderland big upset.*
+In UEFA competitions, the club's two final defeats still leave a sour taste among Leeds fans today. The 1973 [Cup Winners' Cup final](http://news.bbc.co.uk/sport2/hi/football/teams/l/leeds_united/7973507.stm) against AC Milan was marred by dubious officiating from a referee who was subsequently banned for life by UEFA. Then, in the 1975 European Cup final against Bayern Munich, Peter Lorimer had a [goal disallowed](https://www.youtube.com/shorts/Km0k6DUocVA) as Billy Bremner was deemed to be standing in an offside position. Leeds were also denied what they felt was a blatant penalty, and the English fans responded to the perceived injustice in the usual fashion of the time: they rioted, and Leeds were banned from European competitions for four years (later reduced to two on appeal).
 
 # 4. Chelsea: 664 Days
 
@@ -280,11 +310,11 @@ Arguably the great unheralded team of English football, Leeds were champions of 
 
 The history of Chelsea can be neatly divide into two eras: Before Roman, and After Roman. Prior to the establishment of the Premier League, Chelsea FC were an afterthought in English football, with only four top-4 finishes in the club's history, with one league trophy and one FA Cup.
 
-Since the arrival of Roman Abramovich in 2004, Chelsea have won five league titles, five FA Cups, three league cups, two Champions Leagues, two Europa Leagues, as well as two FIFA Club World Cups, for whatever they are worth.
+Since the arrival of **Roman Abramovich** in 2004, Chelsea have won five league titles, five FA Cups, three league cups, two Champions Leagues, two Europa Leagues and two FIFA Club World Cups.
 
-The golden era for Chelsea was undoubtedly under Jose Mourinho. The league was simply not ready to compete with a club that blew everyone out of the water financially, and a team that played relatively cautious, defensive football while having the best players. It just wasn't an approach that had been seen before in a country that still largely deployed an open 4-4-2 formation, certainly at home.
+The golden era for Chelsea was undoubtedly under **Jose Mourinho**. English clubs were simply not ready to compete with a club that blew everyone out of the water financially, and a team that played relatively cautious, defensive football while also having the best players. It just wasn't an approach that had been seen before in a country that still largely deployed open 4-4-2 formations, certainly when playing at home.
 
-Ironically, it was the equally pragmatic Rafa Benitez at Liverpool who proved to be Mourinho's nemesis. In all three of Mourinho's seasons at Chelsea, Benitez knocked them out of Europe: twice directly (in the semi-finals in 2005 and 2007) and indirectly in 2005-2006, when they were drawn in the same group which Liverpool finished top of, causing Chelsea to draw eventual winners Barcelona in the second round.
+Ironically, it was the equally pragmatic **Rafa Benitez** at Liverpool who proved to be Mourinho's nemesis. In all three of Mourinho's seasons at Chelsea, Benitez knocked them out of Europe: twice directly (in the semi-finals in 2005 and 2007) and once indirectly in 2005-06, when they were drawn in the same group. Liverpool finished top of the group, causing Chelsea to draw eventual winners Barcelona in the second round.
 
 ```{r}
 library(readr)
@@ -319,16 +349,20 @@ tbl_ellipses %>%
     locations = cells_body(rows = Club == "\u22EE")
   )
 ```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Elo ratings on 26 April, 2005, before the Chelsea vs. Liverpool Champions League semi-final.
+</p>
 
-Chelsea spent a large portion of the Mourinho era as the #1 team in the Elo ratings, and also reached top spot under Avram Grant and Luis Felipe Scolari as the money continued to flow. Surprisingly, despite the huge spending continuing both under Abramovich and his successors the Clearlake Capital group, they have never reached the top spot since 2009. European success finally came, but with vastly inferior teams to those of their peak years - reminding everyone that knockout football is, after all, knockout football.
+
+Chelsea spent a large portion of the Mourinho era as the #1 team in the Elo ratings, and also reached top spot under Avram Grant and Luis Felipe Scolari as the money continued to flow. Surprisingly, despite the huge spending continuing both under Abramovich and his successors the Clearlake Capital group, they have never reached the top spot since 2009. European success finally came in 2012, but with a vastly inferior team to those of their peak years - reminding everyone that knockout football is, after all, knockout football.
 
 ## 3. Manchester United: 992 Days
 
 *1999-2003, 2007-2009*
 
-Given United's storied history, it is perhaps surprising that they had to wait until the turn of the century before reaching the number one position. The iconic team of Best, Law and Charlton won the league in 1967 and followed it up with the European Cup in 1968. But they were pipped to the title that year by neighbours Man City, beginning a decline that would result in relegation in 1974 and a long wait until 1993 to finally win their next championship.
+Given United's storied history, it is perhaps surprising that they had to wait until the turn of the century before reaching the number one position. The iconic team of Best, Law and Charlton won the league in 1967 and followed it up with European Cup success in 1968. But they were pipped to the title that year by neighbours Man City, beginning a decline that would result in **relegation** in 1974 and a long wait until 1993 to finally win their next championship.
 
-After dominating the 1990s in England, United finally cracked the Elo top spot after winning the European Cup in dramatic fashion in 1999 to add to the league and FA Cup they had won that year. They flirted with top spot over the next few seasons, but it was from 2007 to 2009 where they amassed the most days at #1, with the Rooney & Ronaldo team that many observers consider Fergie's best.
+After dominating the 1990s in England, United finally cracked the Elo top spot after winning the European Cup in dramatic fashion in 1999 to add to the league and FA Cup they had won that year. They flirted with top spot over the next few seasons, but it was from 2007 to 2009 where they amassed the most days at #1, with the **Rooney & Ronaldo** team that many observers consider Fergie's best.
 
 ```{r}
 library(readr)
@@ -354,23 +388,159 @@ df_dw %>%
   tab_style(style = cell_text(weight = "bold"),
             locations = cells_column_labels(columns = everything()))
 ```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Elo ratings on 26 August, 1999. After a decade of Italian dominance, United finally wrestled top spot.
+</p>
 
 ## 2. Manchester City: 1,127 Days
 
 *2021-2024*
 
-Much like Chelsea, you can't really assess the history of Manchester City without thinking of a Before Abu Dhabi era and an After Abu Dhabi era. Prior to 2008 they had two league titles (1937 - relegated next year! - and 1968) and hadn't won anything since league cup 1976. Since AD, 8 leagues, 3 FA Cups, 6 league cups, CL, club world cup.
+Much like Chelsea, you can't really assess the history of Manchester City without thinking of a Before Abu Dhabi era and an After Abu Dhabi era. On the day of the takeover, City hadn't won any trophy since the 1976 League Cup, and were ranked **39th** in the Club Elo ratings.
 
-*Show the Elo rankings on eve of Abu Dhabi takeover*
+```{r}
+library(readr)
+library(dplyr)
+library(gt)
+
+IN_CSV <- "data/elo_20080901.csv"
+
+tbl <- read_csv(IN_CSV, show_col_types = FALSE)
+
+# Make a 1-row tibble with the SAME column types as `tbl`
+ellipsis_row <- tbl[1, ] %>%
+  mutate(across(everything(), ~ NA)) %>%          # keep types, set NA
+  mutate(Club = "\u22EE")                         # put ⋮ in a text column
+
+tbl_ellipses <- bind_rows(
+  tbl[1:5, ],
+  ellipsis_row,
+  tbl[15, ],
+  ellipsis_row,
+  tbl[19, ],
+  ellipsis_row,
+  tbl[25, ],
+  ellipsis_row,
+  tbl[27, ],
+  ellipsis_row,
+  tbl[29, ],
+  ellipsis_row,
+  tbl[34, ],
+  ellipsis_row,
+  tbl[39, ]
+)
+
+tbl_ellipses %>%
+  gt() %>%
+  fmt_number(columns = Elo, decimals = 0, sep_mark = "") %>%  # if Elo is numeric
+  fmt_missing(columns = everything(), missing_text = "\u22EE") %>%  # show ⋮ for NAs
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(columns = everything())
+  ) %>%
+  tab_style(
+    style = cell_text(align = "center"),
+    locations = cells_body(rows = Club == "\u22EE")
+  )
+```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Manchester City.
+</p>
+
+One thing the above rankings emphasise is the stranglehold the top four teams had on the Premier League at the time. Champions League revenue was a huge advantage, creating a feedback loop that allowed the same teams to secure the top four spots each year and qualify again. In the six seasons from 2003-04 to 2008-09, Everton were the only other team to finish in the top four, taking advantage of a poor Liverpool season in 2005 to grab 4th place with 61 points and a negative goal difference, before unfortunately losing to Villarreal in the Champions League qualifying round.
+
+Given the enormous level of spending, City's trophy return was disappointing over the first nine seasons. They won two league titles, both thanks to enormous collapses by Manchester United in 2012 and then Liverpool in 2014, and the 2011 FA Cup where they beat Stoke in the final.
+
+It wasn't until the arrival of **Pep Guardiola** that City truly became a consistently elite side. After a first bedding-in season, where the expert pundits questioned his decisions such as dropping Joe Hart, Guardiola rattled off six of the next seven league titles, amassing some huge points totals; Liverpool could only finish second in 2019 with **97 points**!
+
+It was in February 2021 that City finally gained the Elo #1 ranking for the first time in the club's history, and they largely stayed there until the end of 2024 when Liverpool knocked them back off.
+
+It is yet to be seen how the ruling over City's **115 charges** for financial misconduct will affect the club's legacy. The stripping of titles doesn't seem to be applied in team sports, because that's not good for marketing, so a fine and/or points deduction seems more likely - that's IF they are found guilty, of course. So whether or not people will add a notional asterisk next to their club honours list, it is nonetheless an amazing fact that Manchester City have won more major trophies under one manager (15) than they had won in the previous 136 years of the football club's existence (14).
 
 ## 1. Liverpool: 3,481 Days
 
 *1972-1974, 1976-1980, 1982, 1984-1991, 2009, 2019-2020, 2022, 2024-2025*
 
-It's not even close! Shanks started it. Win everything 70s and 80s, dueling with Forest and Everton. Surprisingly hit #1 in April 2009 for four days under Rafa, then Klopp era.
+It's not even close! Liverpool have been top of the Elo rankings for more than three times the number of days of any other British club.
 
-*Show the table when #1 under Rafa.*
+It all started with **Bill Shankly** who took over the club in the second division in 1959, with Everton the undisputed best team on Merseyside. Progress was swift: promotion in 1962 was followed by league titles in 1964 and 1966, and Liverpool have basically been a fixture near the top of the league table ever since: they have still never finished lower than 8th place since Shankly first got them promoted. 
+
+```{r}
+library(readr)
+library(dplyr)
+library(gt)
+
+# ----------------------------
+# Paths
+# ----------------------------
+IN_CSV  <- "data/elo_19721002.csv"
+
+# ----------------------------
+# Load + filter
+# ----------------------------
+df_dw <- read_csv(IN_CSV, show_col_types = FALSE)
+
+# ----------------------------
+# gt table for Quarto
+# ----------------------------
+df_dw %>%
+  gt() %>%
+  fmt_number(columns = Elo, decimals = 0, sep_mark = "") %>%
+  tab_style(style = cell_text(weight = "bold"),
+            locations = cells_column_labels(columns = everything()))
+```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
+</p>
+
+The Reds first reached the top of the Elo rankings in October 1972 after a starting strongly in the league (which they would go on to win) and knocking out Eintracht Frankfurt in the UEFA Cup (which they would also win). 
+
+And winning became a habit for Liverpool in the 70s and 80s as they amassed 11 league championships, four European Cups and two UEFA Cups between 1973 and 1990.
+
+It's interesting how the fortunes of England's two biggest clubs, Liverpool and Manchester United, have dovetailed through the years. Liverpool's golden era overlaps almost perfectly with United's barren run without a league title from 1967 to 1993, and then United's domination in the 1990s and 2000s coincided with Liverpool's decline, until the retirement of Alex Ferguson, after which United have struggled while Liverpool thrived in the Jurgen Klopp era. It's like the footballing gods won't allow them to both be good at the same time.
+
+Liverpool once again became a major force under Klopp, but surprisingly they did sneak into #1 spot for four days in April 2009 under Rafa Benitez after an impressive run of results that included a 4-1 win at Manchester United, a 5-0 win over 5th-placed Aston Villa, and a 5-0 aggregate win over Real Madrid in the Champions League.
+
+```{r}
+library(readr)
+library(dplyr)
+library(gt)
+
+# ----------------------------
+# Paths
+# ----------------------------
+IN_CSV  <- "data/elo_20090405.csv"
+
+# ----------------------------
+# Load + filter
+# ----------------------------
+df_dw <- read_csv(IN_CSV, show_col_types = FALSE)
+
+# ----------------------------
+# gt table for Quarto
+# ----------------------------
+df_dw %>%
+  gt() %>%
+  fmt_number(columns = Elo, decimals = 0, sep_mark = "") %>%
+  tab_style(style = cell_text(weight = "bold"),
+            locations = cells_column_labels(columns = everything()))
+```
+<p style="font-size: 0.8em; font-style: italic; text-align: center;">
+Elo ratings on 5 April, 2009. Liverpool briefly reached number one under Rafa Benitez.
+</p>
+
+At time of writing, Liverpool have slipped to 6th place in the Elo rankings as Arne Slot struggles to follow up his successful first season. Arsenal have built themselves a comfortable lead at the top, but they will have to stay there for another 10 years to match Liverpool's total.
 
 ## Final Word
 
-*Talk about eras and how hard it is to reach #1 when your country isn't dominating. Have to really dominate your league. Liverpool dominated, but others paved the way. Spurs, Celtic, Man Utd, Leeds. The future? PL looks so strong, it seems like whoever is best in PL will be best in Europe, for some time to come.*
+This was a fun exercise, and something that becomes clear is the differences between eras in terms of how strong the English league is rated in comparison to other leagues. To get to number one in the Elo ratings, you not only have to be the best team in England, but you also need English teams to be highly-rated in general.
+
+For example, the great Spurs side of the 1960s was not even close to being top of the Elo ratings despite being narrowly beaten by Benfica in the 1962 European Cup semi-finals, and then winning the Cup Winners' Cup the following season.
+
+Elo is a nice system because it is simple, objective and interpretable. But it can be too slow to update, and clearly it took many years of English teams having good results in Europe before the ratings caught up. And so while certain teams racked up the days at the #1 spot, other teams such as Manchester United and Leeds United were responsible for dragging the English league into relevance.
+
+As for the future, the Premier League is obviously in a very strong position at the moment and it looks like whoever are the best team in England have a pretty good chance of being ranked the best in Europe. So we could see teams start to make inroads into Liverpool's lead, not only in the Elo stakes but also in the thing that matters: trophies. Liverpool currently have six European Cups - will another English team ever equal them? Arsenal getting to one would be a start; they will feel like this year is a good chance.
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2026 John Knight. All rights reserved.

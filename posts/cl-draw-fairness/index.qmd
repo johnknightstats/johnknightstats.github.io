@@ -1,0 +1,245 @@
+---
+title: "Is the Champions League draw unfair?"
+author: "John Knight"
+date: 2026-01-30
+date-format: "D MMMM YYYY"
+description: "Maybe."
+categories: ["football", "statistics", "Elo ratings"]
+format:
+  html:
+    title-block-style: default
+    title-block-categories: true
+    css: ../../styles.css
+execute: 
+  echo: false
+  message: false
+  warning: false
+  eval: true
+engine: knitr
+editor: source
+draft: true
+
+---
+
+The league phase of the 2025-26 Champions League is over, and after two iterations a pattern has emerged: a low-jeopardy slog, culminating in a chaotic and fun final day. A question that has been raised by numerous people - [including myself](https://johnknightstats.substack.com/p/what-are-the-probabilities-of-each) - is whether the English teams have an unfair advantage by virtue of not having to play each other.
+
+One of the stats doing the rounds is that Spurs - relatively poor in the Premier League this season - finished 4th in the league phase despite only beating one team in the top 24. Did Spurs get an easy fixture list? And what about the other English teams?
+
+Using the ratings from [Club Elo](https://clubelo.com) we can look at the mean Elo of the eight opponents for each team in the league phase over the last two seasons.  
+
+
+```{r}
+library(readr)
+library(dplyr)
+library(gt)
+
+IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
+OUT_DIR <- "data/datawrapper"
+OUT_CSV <- file.path(OUT_DIR, "ucl_mean_opponent_elo_by_season_datawrapper.csv")
+
+df_ucl <- read_csv(IN_CSV, show_col_types = FALSE)
+
+df_dw <- df_ucl %>%
+  mutate(mean_opp_elo=as.numeric(mean_opp_elo)) %>%
+  arrange(desc(mean_opp_elo)) %>%
+  select(team, season, mean_opp_elo) %>%
+  rename(
+    `Team`=team,
+    `Season`=season,
+    `Avg. Opponent Elo`=mean_opp_elo
+  ) %>%
+  mutate(`Avg. Opponent Elo`=round(`Avg. Opponent Elo`, 0))
+
+dir.create(OUT_DIR, recursive=TRUE, showWarnings=FALSE)
+write_csv(df_dw, OUT_CSV)
+
+# Muted pastel fills (inspired by your palette)
+fill_2425 <- "#D9E2EA"  # muted light blue (from #233D4D)
+fill_2526 <- "#FFE3C7"  # muted light orange (from #FF9F1C)
+
+# List of English teams for bolding
+english_teams <- c("Liverpool", "Newcastle United", "Manchester City",
+                   "Arsenal", "Chelsea", "Aston Villa", "Tottenham Hotspur")
+
+# Calculate mean and standard deviation
+cl_sd <- round(sd(df_ucl$mean_opp_elo), 1)
+cl_mean <- round(mean(df_ucl$mean_opp_elo), 0)
+
+df_dw %>%
+  gt() %>%
+  fmt_number(
+    columns=`Avg. Opponent Elo`,
+    decimals=0,
+    use_seps=FALSE
+  ) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=cells_column_labels(columns=everything())
+  ) %>%
+  # IMPORTANT: apply fill to ALL columns in those rows
+  tab_style(
+    style=cell_fill(color=fill_2425),
+    locations=cells_body(
+      rows=`Season`=="2024/2025",
+      columns=everything()
+    )
+  ) %>%
+  tab_style(
+    style=cell_fill(color=fill_2526),
+    locations=cells_body(
+      rows=`Season`=="2025/2026",
+      columns=everything()
+    )
+  )  %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=cells_body(
+      rows=`Team` %in% english_teams
+    )
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = `Season`
+  ) %>%
+  tab_style(
+    style = cell_text(align = "center"),
+    locations = cells_column_labels(columns = `Season`)
+  ) %>%
+  tab_footnote(paste("Mean", as.character(cl_mean), ", standard deviation", as.character(cl_sd)))
+
+
+```
+
+*Comment on English teams not obviously all down the bottom (calculate their mean vs overall mean) and Spurs below average but nothing absurd...Villa, Chelsea and Arsenal lower.*
+
+*Report just 25/26 or both? Probably need both because I've shown both seasons.*
+
+English teams mean(mean_opp_elo): 1776.23 (n_teams=6)
+Overall mean(mean_opp_elo): 1784.96 (n_teams=36)
+
+The defending champions got the hardest draw! Maybe that's harsh, or maybe that's good handicapping?
+
+```{r}
+IN_CSV  <- "data/psg_opponents_elo_2025_2026.csv"
+
+psg <- read.csv(IN_CSV) %>%
+  select(c(match_date, psg_side, opponent, opponent_elo_matchday)) %>%
+  rename(
+    `Date` = match_date,
+    `H/A` = psg_side,
+    `Opponent` = opponent,
+    `Elo` = opponent_elo_matchday
+  )
+
+psg$Elo <- round(psg$Elo, 0)
+psg$`H/A` <- case_when(
+  psg$`H/A` == "home" ~ "H",
+  psg$`H/A` == "away" ~ "A"
+)
+
+psg %>% gt() %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=cells_column_labels(columns=everything())
+  ) %>%
+    cols_align(
+    align = "center",
+    columns = c(`Date`, `H/A`)
+  ) %>%
+  tab_style(
+    style = cell_text(align = "center"),
+    locations = cells_column_labels(columns = c(`Date`, `H/A`))
+  )
+```
+
+The difficulty in PSG's schedule stems largely from the teams they drew in pots three and four. From pot three they played Spurs (1821) and Sporting (1823) and from pot four they got Newcastle (1872) and Athletic Bilbao (1733), the latter being PSG's only opponent with below-average Elo.
+
+This always seems to be a problem when teams are divided into pots based on some arbitrary ranking system: there will always be some big outliers, generally in the lower pots - although in the World Cup, you face the additional wrinkle of weak host nations being placed into the top pot alongside the elite teams.
+
+```{r}
+IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
+
+pots <- read.csv(IN_CSV) %>%
+  filter(season == "2025/2026") %>%
+  select(c(team, pot, elo_start)) %>%
+  rename(
+    `Team` = team,
+    `Pot` = pot,
+    `Elo` = elo_start
+  ) %>%
+  arrange(-Elo)
+
+pots$`Elo` <- pots$`Elo` %>% round(0)
+
+pot_tbls <- list()
+pot_start_means <- c()
+pot_start_sds <- c()
+
+for (pot in 1:4) {
+  pot_df <- pots %>% filter(as.numeric(Pot) == pot) %>%
+    select(-Pot)
+  pot_start_means <- c(pot_start_means, mean(pot_df$`Elo`))
+  pot_start_sds <- c(pot_start_sds, sd(pot_df$`Elo`))
+  pot_tbls[[pot]] <- pot_df
+}
+
+gt(pot_tbls[[1]]) %>%
+tab_header(title="Pot 1", subtitle = paste("Mean:",
+                                           round(pot_start_means[[1]], 0),
+                                           "SD:",
+                                           round(pot_start_sds[[1]], 1)))
+gt(pot_tbls[[2]]) %>%
+tab_header(title="Pot 2", subtitle = paste("Mean:",
+                                           round(pot_start_means[[2]], 0),
+                                           "SD:",
+                                           round(pot_start_sds[[2]], 1)))
+gt(pot_tbls[[3]]) %>%
+tab_header(title="Pot 3", subtitle = paste("Mean:",
+                                           round(pot_start_means[[3]], 0),
+                                           "SD:",
+                                           round(pot_start_sds[[3]], 1)))
+gt(pot_tbls[[4]]) %>%
+tab_header(title="Pot 4", subtitle = paste("Mean:",
+                                           round(pot_start_means[[4]], 0),
+                                           "SD:",
+                                           round(pot_start_sds[[4]], 1)))
+
+```
+
+The Elo ratings above are taken from the start of the league phase. The smallest standard deviation is in Pot 1, while the largest by far is Pot 4. Kairat Almaty of Kazakhstan were ranked as comfortably the worst team in Pot 4, more than 200 Elo points worse than Qarabag. And sure enough, Kairat finished rock bottom in 36th place with a solo point gained at home to Pafos FC of Cyprus.
+
+It is not hard to see why PSG's schedule was ranked the hardest. They played the hardest two teams from Pot 4 (Newcastle and Athletic Club), and the second and third hardest teams from Pot 3 (Spurs and Sporting).
+
+*Also show Elo by start date and end date and see which teams changed most.*
+
+```{r}
+IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
+
+cl_elo <- read.csv(IN_CSV) %>%
+  filter(season == "2025/2026") %>%
+  select(c(team, pot, elo_start, elo_final)) %>%
+  rename(
+    `Team` = team,
+    `Pot` = pot,
+    `Start Elo` = elo_start,
+    `End Elo` = elo_final
+  )
+
+cl_elo$`Start Elo` <- round(cl_elo$`Start Elo`, 0)
+cl_elo$`End Elo` <- round(cl_elo$`End Elo`, 0)
+
+cl_elo$`Elo Change` <- cl_elo$`End Elo` - cl_elo$`Start Elo`
+
+cl_elo <- cl_elo %>% arrange(-`Elo Change`)
+
+
+gt(cl_elo)
+```
+
+*But mention that getting a bad outlier in pot 4 (Kairat Almaty) may not be such a big advantage as the Elo difference implies, because if you are a good team then you should beat the pot 4 teams anyway. So it depends how good you are. Use Elo odds conversion to show expected points for each scheduled based on being a good, average, or bad team. Also whether you play the shit teams at home or away makes a difference.*
+
+*English clubs advantage? Yes mainly because they avoid the best team in each pot. And this is likely to continue because of the strength of the PL, good teams will miss out on Europe some years and it is harder to rack up annual coefficient points compared to teams that qualify every year. But with teams now playing against teams from their own pot, what really is the point of this? There is no benefit to having a high coefficient. *
+
+Current coefficients: https://www.uefa.com/nationalassociations/uefarankings/club/?year=2026
+
+*How does this compare with the old format? Compare new format with previous X years of old format. Look at the variance in team schedules. It used to be only 3 opponents so presumably much higher variance when you had "group of death" etc!*

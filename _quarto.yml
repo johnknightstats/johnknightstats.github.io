@@ -8,6 +8,10 @@ project:
 
 resources:
   - images/
+  - data/tables/*.csv
+  - dashboards/pl-table/*.csv
+  - dashboards/pl-table/data/tables/*.csv
+
   
 website:
   title: "John Knight Stats"

@@ -229,6 +229,7 @@ library(dplyr)
 library(gt)
 
 IN_CSV <- "data/elo_19860506.csv"
+OUT_CSV <- "data/processed/elo_19860506.csv"
 
 tbl <- read_csv(IN_CSV, show_col_types = FALSE)
 
@@ -242,6 +243,11 @@ tbl_ellipses <- bind_rows(
   ellipsis_row,
   tbl[16, ]
 )
+
+# ----------------------------
+# Output CSV for Datawrapper
+# ----------------------------
+write_csv(tbl_ellipses, OUT_CSV)
 
 tbl_ellipses %>%
   gt() %>%
@@ -270,6 +276,7 @@ library(dplyr)
 library(gt)
 
 IN_CSV <- "data/elo_19880524.csv"
+OUT_CSV <- "data/processed/elo_19880524.csv"
 
 tbl <- read_csv(IN_CSV, show_col_types = FALSE)
 
@@ -283,6 +290,11 @@ tbl_ellipses <- bind_rows(
   ellipsis_row,
   tbl[31, ]
 )
+
+# ----------------------------
+# Output CSV for Datawrapper
+# ----------------------------
+write_csv(tbl_ellipses, OUT_CSV)
 
 tbl_ellipses %>%
   gt() %>%
@@ -341,6 +353,7 @@ library(dplyr)
 library(gt)
 
 IN_CSV <- "data/elo_20050426.csv"
+OUT_CSV <- "data/processed/elo_20050426.csv"
 
 tbl <- read_csv(IN_CSV, show_col_types = FALSE)
 
@@ -354,6 +367,11 @@ tbl_ellipses <- bind_rows(
   ellipsis_row,
   tbl[14, ]
 )
+
+# ----------------------------
+# Output CSV for Datawrapper
+# ----------------------------
+write_csv(tbl_ellipses, OUT_CSV)
 
 tbl_ellipses %>%
   gt() %>%
@@ -431,6 +449,7 @@ library(dplyr)
 library(gt)
 
 IN_CSV <- "data/elo_20080901.csv"
+OUT_CSV <- "data/processed/elo_20080901.csv"
 
 tbl <- read_csv(IN_CSV, show_col_types = FALSE)
 
@@ -456,6 +475,11 @@ tbl_ellipses <- bind_rows(
   ellipsis_row,
   tbl[39, ]
 )
+
+# ----------------------------
+# Output CSV for Datawrapper
+# ----------------------------
+write_csv(tbl_ellipses, OUT_CSV)
 
 tbl_ellipses %>%
   gt() %>%

@@ -1,7 +1,7 @@
 ---
-title: "Premier League Table & Metrics"
-description: "Points, goals, xG splits, field tilt, shot share."
-categories: [football, premier-league]
+title: "League Tables & Metrics"
+description: "Big 5 European leagues plus English lower leagues."
+categories: [football]
 image: thumb.png
 format:
   html:
@@ -11,18 +11,20 @@ execute:
   warning: false
   message: false
 dashboard_order: 1
-
 ---
+
+2025–2026 season (data from FotMob)
+
+Turn to landscape on phone for better viewing.
 
 ```{r}
 library(readr)
 library(dplyr)
 library(DT)
 
-df_raw <- read_csv("pl_table_current_season.csv", show_col_types=FALSE)
-has_bookie <- "bookie_pts" %in% names(df_raw)
-
-
+# ----------------------------
+# Helpers
+# ----------------------------
 style_grad <- function(x, base_pal, n=101) {
   rng <- range(x, na.rm=TRUE)
   if (!is.finite(rng[1]) || !is.finite(rng[2]) || rng[1] == rng[2]) return(NULL)
@@ -34,113 +36,173 @@ style_grad <- function(x, base_pal, n=101) {
 pal_g2r <- c("#1a9850","#66bd63","#a6d96a","#d9ef8b","#fee08b","#fdae61","#d73027")
 pal_r2g <- rev(pal_g2r)
 
-df <- df_raw |>
-  select(-team_id, -games_won, -games_drawn, -games_lost) |>
-  mutate(
-    field_tilt = as.numeric(field_tilt),
-    shot_share = as.numeric(shot_share)
-  ) |>
+make_league_dt <- function(csv_path) {
+  if (!file.exists(csv_path)) {
+    return(
+      DT::datatable(
+        data.frame(Message = paste0("Missing file: ", csv_path)),
+        rownames = FALSE,
+        options = list(dom = "t", paging = FALSE)
+      )
+    )
+  }
+
+  df_raw <- read_csv(csv_path, show_col_types = FALSE)
+  has_bookie <- "bookie_pts" %in% names(df_raw)
+
+  df <- df_raw |>
+    select(-any_of(c("team_id","games_won","games_drawn","games_lost"))) |>
+    mutate(
+      field_tilt = as.numeric(field_tilt),
+      shot_share = as.numeric(shot_share)
+    ) |>
     rename(
-    Team = team_name,
-    P = games_played,
-    Pts = points,
-    GF = goals_for,
-    GA = goals_against,
-    GD = goal_difference,
-    xG = xg_for,
-    xGA = xg_against,
-    xGD = xg_diff,
-    `xGD (open-play)` = xg_open_play_diff,
-    `xGD (set-piece)` = xg_set_play_diff,
-    `xGD (non-pen)` = xg_non_penalty_diff,
-    `Field Tilt` = field_tilt,
-    `Shot Share` = shot_share
-  )
-
-if (has_bookie) {
-  df <- df |> rename(`Bookie Pts` = bookie_pts)
-}
-
-
-
-g2r_cols_reversed <- c(
-  "Pts","Bookie Pts","GF","GD","xG","xGD",
-  "xGD (open-play)","xGD (set-piece)","xGD (non-pen)",
-  "Field Tilt","Shot Share"
-)
-
-r2g_cols_reversed <- c("GA","xGA")
-g2r_cols_reversed <- intersect(g2r_cols_reversed, names(df))
-r2g_cols_reversed <- intersect(r2g_cols_reversed, names(df))
-
-
-dt <- datatable(
-  df,
-  rownames = FALSE,
-  extensions = "FixedColumns",
-  options = list(
-    dom = "t",
-    paging = FALSE,
-    scrollX = TRUE,
-    fixedColumns = list(leftColumns = 1),
-    autoWidth = FALSE,
-
-    # Smaller header font
-    headerCallback = JS(
-      "function(thead) {",
-      "  $(thead).find('th').css({",
-      "    'font-size': '11px',",
-      "    'padding': '4px 6px'",
-      "  });",
-      "}"
-    ),
-
-    columnDefs = list(
-      list(width = "210px", targets = 0),
-      list(className = "dt-nowrap", targets = 0),
-
-      # Right-align all numeric columns (everything except Team)
-      list(className = "dt-right", targets = 1:(ncol(df) - 1))
+      Team = team_name,
+      P = games_played,
+      Pts = points,
+      GF = goals_for,
+      GA = goals_against,
+      GD = goal_difference,
+      xG = xg_for,
+      xGA = xg_against,
+      xGD = xg_diff,
+      `xGD<br>(open-play)` = xg_open_play_diff,
+      `xGD<br>(set-piece)` = xg_set_play_diff,
+      `xGD<br>(non-pen)`   = xg_non_penalty_diff,
+      `Field<br>Tilt`      = field_tilt,
+      `Shot<br>Share`      = shot_share
     )
 
+  if (has_bookie) {
+    df <- df |> rename(`Bookie<br>Pts` = bookie_pts)
+  }
+
+  # Sort like a league table: Pts desc, GD desc, GF desc
+  df <- df |> arrange(desc(Pts), desc(GD), desc(GF))
+
+  g2r_cols <- c(
+    "Pts","Bookie<br>Pts","GF","GD","xG","xGD",
+    "xGD<br>(open-play)","xGD<br>(set-piece)","xGD<br>(non-pen)",
+    "Field<br>Tilt","Shot<br>Share"
   )
-)
+  r2g_cols <- c("GA","xGA")
 
-round_cols <- intersect(
-  c("Bookie Pts","xG","xGA","xGD",
-    "xGD (open-play)","xGD (set-piece)","xGD (non-pen)"),
-  names(df)
-)
+  g2r_cols <- intersect(g2r_cols, names(df))
+  r2g_cols <- intersect(r2g_cols, names(df))
 
-if (length(round_cols) > 0) {
-  dt <- dt |> formatRound(round_cols, digits = 1)
+  dt <- datatable(
+    df,
+    rownames = FALSE,
+    escape = FALSE,      # allow <br> in column headers
+    extensions = "FixedColumns",
+    options = list(
+      dom = "t",
+      paging = FALSE,
+      scrollX = TRUE,
+      autoWidth = TRUE,
+      fixedColumns = list(leftColumns = 1),
+
+      # Make headers wrap + tighten spacing
+      headerCallback = JS(
+        "function(thead) {",
+        "  $(thead).find('th').css({",
+        "    'font-size': '11px',",
+        "    'padding': '4px 6px',",
+        "    'white-space': 'normal',",
+        "    'line-height': '1.05'",
+        "  });",
+        "}"
+      ),
+
+      columnDefs = list(
+        list(width = "210px", targets = 0),
+        list(className = "dt-nowrap", targets = 0),
+        list(className = "dt-right", targets = 1:(ncol(df) - 1))
+      )
+    )
+  )
+
+  # Rounding
+  round_cols <- intersect(
+    c("Bookie<br>Pts","xG","xGA","xGD",
+      "xGD<br>(open-play)","xGD<br>(set-piece)","xGD<br>(non-pen)"),
+    names(df)
+  )
+  if (length(round_cols) > 0) dt <- dt |> formatRound(round_cols, digits = 1)
+
+  # Percent columns
+  pct_cols <- intersect(c("Field<br>Tilt","Shot<br>Share"), names(df))
+  if (length(pct_cols) > 0) dt <- dt |> formatPercentage(pct_cols, digits = 1)
+
+  dt <- dt |>
+    formatStyle(names(df), fontSize = "12px", padding = "2px 6px") |>
+    formatStyle("Team", whiteSpace = "nowrap")
+
+  # Gradients
+  for (col in g2r_cols) {
+    s <- style_grad(df[[col]], pal_r2g)
+    if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
+  }
+  for (col in r2g_cols) {
+    s <- style_grad(df[[col]], pal_g2r)
+    if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
+  }
+
+  dt
 }
-
-dt <- dt |>
-  formatPercentage(c("Field Tilt","Shot Share"), digits = 1) |>
-  formatStyle(names(df), fontSize = "12px", padding = "2px 6px") |>
-  formatStyle("Team", whiteSpace = "nowrap")
-
-
-for (col in g2r_cols_reversed) {
-  s <- style_grad(df[[col]], pal_r2g)
-  if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
-}
-for (col in r2g_cols_reversed) {
-  s <- style_grad(df[[col]], pal_g2r)
-  if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
-}
-
-dt
-
 ```
 
-<div style="font-size: 0.85em; line-height: 1.25;">
 
-### Notes
-- **Bookie Pts** = Expected number of points based on Pinnacle closing match odds throughout the season.
-- **xG** = Expected Goals (all, non-penalty, open-play, or set-pieces).
-- **Field Tilt** = Share of touches inside opposition's penalty box.
-- **Shot Share** = Share of total shots.
+:::{.panel-tabset}
 
-</div>
+## Premier League
+
+```{r}
+make_league_dt("pl_table_current_season.csv")
+```
+
+## Championship
+
+```{r}
+make_league_dt("championship_table_current_season.csv")
+```
+
+## League One
+
+```{r}
+make_league_dt("league_one_table_current_season.csv")
+```
+
+## League Two
+
+```{r}
+make_league_dt("league_two_table_current_season.csv")
+```
+
+## Serie A 
+
+```{r}
+make_league_dt("serie_a_table_current_season.csv")
+```
+
+## La Liga
+
+```{r}
+make_league_dt("laliga_table_current_season.csv")
+```
+
+## Ligue 1
+
+```{r}
+make_league_dt("ligue_1_table_current_season.csv")
+```
+
+## Bundesliga 
+
+```{r}
+make_league_dt("bundesliga_table_current_season.csv")
+```
+
+:::
+
+<div style="font-size: 0.85em; line-height: 1.25; margin-top: 0.75rem;"> <h3 style="margin-bottom: 0.25rem;">Notes</h3> <ul style="margin-top: 0;"> <li><b>Bookie Pts</b> = Expected number of points based on Pinnacle closing match odds throughout the season.</li> <li><b>xG</b> = Expected Goals (all, non-penalty, open-play, or set-pieces).</li> <li><b>Field Tilt</b> = Share of touches inside opposition's penalty box.</li> <li><b>Shot Share</b> = Share of total shots.</li> </ul> </div>

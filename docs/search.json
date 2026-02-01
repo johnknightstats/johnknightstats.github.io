@@ -189,6 +189,62 @@
     "text": "Final Word\nThis was a fun exercise, and something that becomes clear is the differences between eras in terms of how strongly the English league is rated in comparison to other leagues. To get to number one in the Elo ratings, you not only have to be the best team in England, but you also need English teams to be highly-rated in general.\nFor example, the great Spurs side of the 1960s was not even close to being top of the Elo ratings despite being narrowly beaten by Benfica in the 1962 European Cup semi-finals, and then winning the Cup Winners’ Cup the following season.\nElo is a nice system because it is simple, objective and interpretable. But it can sometimes be too slow to update to new information, and clearly it took many years of English teams having good results in Europe before the ratings caught up. And so while certain teams racked up the days at the #1 spot, other teams such as Spurs, Manchester United and Leeds United were responsible for dragging the English league into relevance.\nAs for the future, the Premier League is obviously in a very strong position at the moment and it looks like whoever are the best team in England also have a pretty good chance of being ranked the best in Europe. So we could see teams start to make inroads into Liverpool’s lead, not only in the Elo stakes but also in the thing that matters: trophies. Liverpool currently have six European Cups - will another English team ever equal them? Arsenal getting to one would be a start; they will feel like this year is a good chance.\n\nData Sources\nI gather match data from a variety of public sources. Please check out these excellent websites:\n\nClub Elo Ratings\nESPN\nFBref\nFotMob\nTransfermarkt\nUnderstat\nWhoScored\nWorld Football Elo Ratings\n\nI welcome feedback! Feel free to contact me at knightjohn2@gmail.com.\n\n© 2026 John Knight. All rights reserved."
   },
   {
+    "objectID": "papers/index.html",
+    "href": "papers/index.html",
+    "title": "Academic Papers",
+    "section": "",
+    "text": "Here are some academic papers I have co-authored:\n\nHip Fracture Patterns Among Hispanic Seniors: Risk Factors and Implications\n\n\nMath Attitudes and Identity of High Schoolers Impacted through Participating in Informal, Near-peer Mentoring\n\n\nExploring High School Students’ Careless or Insufficient Effort Survey Responses when Investigating Attitudes toward Mathematics"
+  },
+  {
+    "objectID": "dashboards/pl-xg-sources/index.html",
+    "href": "dashboards/pl-xg-sources/index.html",
+    "title": "Premier League xG by situation",
+    "section": "",
+    "text": "2025-2026 season (data from FotMob)\nTurn to landscape on phone for betting viewing.\n\nxG ForxG Against"
+  },
+  {
+    "objectID": "dashboards/managers-table/index.html",
+    "href": "dashboards/managers-table/index.html",
+    "title": "Premier League Manager Metrics 1",
+    "section": "",
+    "text": "Since 2020-2021 season.\nTurn to landscape on phone for better viewing.\n\n\n\n\n\n\n\nNotes\nMinimum 10 games.\nxG = Expected Goals."
+  },
+  {
+    "objectID": "dashboards/index.html",
+    "href": "dashboards/index.html",
+    "title": "Dashboards",
+    "section": "",
+    "text": "League Tables & Metrics\n\n\nBig 5 European leagues plus English lower leagues.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League xG by situation\n\n\nTotals by shot situation for the 2025-2026 Premier League.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 1\n\n\nPoints per game and goals versus expected goals.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 2\n\n\nExpected goals by situation, field tilt and shot share.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I currently work as a data analyst in healthcare research. I have a BS in Statistics and I am soon to finish my MS in Applied Statistics & Data Science. I am a former professional gambler with a lifelong passion for statistics and sport, in particular football (soccer) and golf.\nI started this website as a place to collate my various projects and models, and write about things I find interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
+  },
+  {
+    "objectID": "dashboards/managers-table-2/index.html",
+    "href": "dashboards/managers-table-2/index.html",
+    "title": "Premier League Manager Metrics 2",
+    "section": "",
+    "text": "Since 2020-2021 season.\nTurn to landscape on phone for better viewing.\n\n\n\n\n\n\n\nNotes\nMinimum 10 games.\nxG = Expected Goals.\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
+  },
+  {
+    "objectID": "dashboards/pl-table/index.html",
+    "href": "dashboards/pl-table/index.html",
+    "title": "League Tables & Metrics",
+    "section": "",
+    "text": "2025–2026 season (data from FotMob)\nTurn to landscape on phone for better viewing.\n\nPremier LeagueChampionshipLeague OneLeague TwoSerie ALa LigaLigue 1Bundesliga\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotes\n\n\n\nBookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.\n\n\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\n\n\nField Tilt = Share of touches inside opposition’s penalty box.\n\n\nShot Share = Share of total shots."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "John Knight Stats",
+    "section": "About me",
+    "text": "About me\nWelcome to my website!\nI’m John Knight, an applied statistician currently working in healthcare research. I have a B.S. in Statistics and M.S. in Applied Statistics and Data Science, and wrote my thesis on Clustering 24-Hour Ambulatory Blood Pressure Time Series with Dynamic Time Warping and Time Warp Edit Distance. My healthcare research focuses on areas such as clinical trials, trauma, pharmacy, and retrospective observational studies for journal publication.\nI also have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and often find myself at the intersection of sport and numbers. This has naturally drawn me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently, prior to entering the healthcare industry I additionally worked in mathematics education research.\nI started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack. The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be building other sections as I develop the website, such as Tools and Dashboard.\nI’m excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn | GitHub | Substack"
+  },
+  {
     "objectID": "posts/betting_variance/index.html",
     "href": "posts/betting_variance/index.html",
     "title": "How can you know if your betting system really works?",
@@ -222,62 +278,6 @@
     "title": "How can you know if your betting system really works?",
     "section": "In summary",
     "text": "In summary\nKeep a record of all your bets and include your estimate of the true price for every bet. Even after 100 or more bets, variance plays a large role in your overall profit & loss, so don’t get too excited about any successes, and don’t give up on a losing system too quickly.\nFinally, there is one way to combat variance by using variance reduction methods. For example, if betting on football, one might use expected goals (xG) to derive the post-match expected win % for each team instead of the binary 1/0 result. Because expected wins have less variance than actual wins, the curves will be narrower and will diverge more quickly.\nI would urge a fair amount of caution though - ultimately it’s results we are betting on, and if there is some element of winning a football match that is not captured by xG…well, that could be an edge in itself!\n\nI welcome feedback! Feel free to contact me at knightjohn2@gmail.com.\n© 2025 John Knight. All rights reserved."
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "John Knight Stats",
-    "section": "About me",
-    "text": "About me\nWelcome to my website!\nI’m John Knight, an applied statistician currently working in healthcare research. I have a B.S. in Statistics and M.S. in Applied Statistics and Data Science, and wrote my thesis on Clustering 24-Hour Ambulatory Blood Pressure Time Series with Dynamic Time Warping and Time Warp Edit Distance. My healthcare research focuses on areas such as clinical trials, trauma, pharmacy, and retrospective observational studies for journal publication.\nI also have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and often find myself at the intersection of sport and numbers. This has naturally drawn me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently, prior to entering the healthcare industry I additionally worked in mathematics education research.\nI started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack. The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be building other sections as I develop the website, such as Tools and Dashboard.\nI’m excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn | GitHub | Substack"
-  },
-  {
-    "objectID": "dashboards/pl-table/index.html",
-    "href": "dashboards/pl-table/index.html",
-    "title": "Premier League Table & Metrics",
-    "section": "",
-    "text": "Notes\n\nBookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
-  },
-  {
-    "objectID": "dashboards/managers-table-2/index.html",
-    "href": "dashboards/managers-table-2/index.html",
-    "title": "Premier League Manager Metrics 2",
-    "section": "",
-    "text": "Since 2020-2021 season.\nTurn to landscape on phone for better viewing.\n\n\n\n\n\n\n\nNotes\nMinimum 10 games.\nxG = Expected Goals.\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I currently work as a data analyst in healthcare research. I have a BS in Statistics and I am soon to finish my MS in Applied Statistics & Data Science. I am a former professional gambler with a lifelong passion for statistics and sport, in particular football (soccer) and golf.\nI started this website as a place to collate my various projects and models, and write about things I find interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn"
-  },
-  {
-    "objectID": "dashboards/index.html",
-    "href": "dashboards/index.html",
-    "title": "Dashboards",
-    "section": "",
-    "text": "Premier League Table & Metrics\n\n\nPoints, goals, xG splits, field tilt, shot share.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League xG by situation\n\n\nTotals by shot situation for the 2025-2026 Premier League.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 1\n\n\nPoints per game and goals versus expected goals.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 2\n\n\nExpected goals by situation, field tilt and shot share.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "dashboards/managers-table/index.html",
-    "href": "dashboards/managers-table/index.html",
-    "title": "Premier League Manager Metrics 1",
-    "section": "",
-    "text": "Since 2020-2021 season.\nTurn to landscape on phone for better viewing.\n\n\n\n\n\n\n\nNotes\nMinimum 10 games.\nxG = Expected Goals."
-  },
-  {
-    "objectID": "dashboards/pl-xg-sources/index.html",
-    "href": "dashboards/pl-xg-sources/index.html",
-    "title": "Premier League xG by situation",
-    "section": "",
-    "text": "2025-2026 season (data from FotMob)\nTurn to landscape on phone for betting viewing.\n\nxG ForxG Against"
-  },
-  {
-    "objectID": "papers/index.html",
-    "href": "papers/index.html",
-    "title": "Academic Papers",
-    "section": "",
-    "text": "Here are some academic papers I have co-authored:\n\nHip Fracture Patterns Among Hispanic Seniors: Risk Factors and Implications\n\n\nMath Attitudes and Identity of High Schoolers Impacted through Participating in Informal, Near-peer Mentoring\n\n\nExploring High School Students’ Careless or Insufficient Effort Survey Responses when Investigating Attitudes toward Mathematics"
   },
   {
     "objectID": "posts/cl-simulation/index.html",

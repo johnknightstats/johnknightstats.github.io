@@ -1,10 +1,11 @@
 ---
-title: "Is the Champions League draw unfair?"
+title: "Does the Champions League draw give English teams an unfair advantage?"
 author: "John Knight"
-date: 2026-01-30
+date: 2026-02-04
 date-format: "D MMMM YYYY"
-description: "Maybe."
-categories: ["football", "statistics", "Elo ratings"]
+description: "Calculating each team's strength of schedule and a proposal to improve the format"
+categories: ["football", "statistics", "Elo ratings", "champions league"]
+image: cl_logo.png
 format:
   html:
     title-block-style: default
@@ -17,16 +18,14 @@ execute:
   eval: true
 engine: knitr
 editor: source
-draft: true
 
 ---
 
-The league phase of the 2025-26 Champions League is over, and after two iterations a pattern has emerged: a low-jeopardy slog, culminating in a chaotic and fun final day. A question that has been raised by numerous people - [including myself](https://johnknightstats.substack.com/p/what-are-the-probabilities-of-each) - is whether the English teams have an unfair advantage by virtue of not having to play each other.
+The league phase of the 2025-26 **Champions League** is over, and after two iterations of the new *Swiss Model* format, a pattern has emerged: a low-jeopardy slog that culminates in a chaotic and fun final day. One question that has been raised by numerous people - [including myself](https://johnknightstats.substack.com/p/what-are-the-probabilities-of-each) - is whether the English teams have an unfair advantage by virtue of not having to play each other?
 
-One of the stats doing the rounds is that Spurs - relatively poor in the Premier League this season - finished 4th in the league phase despite only beating one team in the top 24. Did Spurs get an easy fixture list? And what about the other English teams?
+One of the stats doing the rounds last week was that **Spurs** - relatively poor in the Premier League this season - finished 4th in the CL league phase despite only beating **one team who finished in the top 24**. Did Spurs get an unusually easy fixture list? And what about the other English teams?
 
-Using the ratings from [Club Elo](https://clubelo.com) we can look at the mean Elo of the eight opponents for each team in the league phase over the last two seasons.  
-
+Using the ratings from [Club Elo](https://clubelo.com) we can rate the difficulty of each team's fixtures over the last two seasons by looking at the mean Elo rating of their eight opponents. These ratings are taken from the day of each individual match.
 
 ```{r}
 library(readr)
@@ -107,17 +106,55 @@ df_dw %>%
   ) %>%
   tab_footnote(paste("Mean", as.character(cl_mean), ", standard deviation", as.character(cl_sd)))
 
+```
+
+There were seven teams who got an easier set of fixtures than Tottenham, including **Arsenal** and **Chelsea**. **Aston Villa** also had a softer schedule in 2024/25.
+
+English teams as a whole did have an easier schedule in 2025-26 compared to the rest, but in 2024-25 the opposite was true.
+
+```{r}
+ucl_2425 <- df_ucl[df_ucl$season == "2024/2025",]
+ucl_2526 <- df_ucl[df_ucl$season == "2025/2026",]
+
+overall_mean_2425 <- mean(ucl_2425$mean_opp_elo)
+eng_mean_2425 <- mean(ucl_2425$mean_opp_elo[ucl_2425$team %in% english_teams])
+non_eng_mean_2425 <- mean(ucl_2425$mean_opp_elo[!(ucl_2425$team %in% english_teams)])
+overall_mean_2526 <- mean(ucl_2526$mean_opp_elo)
+eng_mean_2526 <- mean(ucl_2526$mean_opp_elo[ucl_2526$team %in% english_teams])
+non_eng_mean_2526 <- mean(ucl_2526$mean_opp_elo[!(ucl_2526$team %in% english_teams)])
+
+cl_means <- data.frame(
+  Teams = c("English only", "Non-English"),
+  season_2425 = c(eng_mean_2425, non_eng_mean_2425),
+  season_2526 = c(eng_mean_2526, non_eng_mean_2526)
+)
+
+cl_means %>%
+  gt() %>%
+  cols_label(
+    season_2425 = "2024–25",
+    season_2526 = "2025–26"
+  ) %>%
+  fmt_number(
+    columns = c(season_2425, season_2526),
+    decimals = 0,
+    use_seps=FALSE
+  ) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=cells_column_labels(columns=everything())
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(season_2425, season_2526)
+  )
+
 
 ```
 
-*Comment on English teams not obviously all down the bottom (calculate their mean vs overall mean) and Spurs below average but nothing absurd...Villa, Chelsea and Arsenal lower.*
+It's ironic that the team with the hardest draw of anyone in 2025-26 were the defending champions **Paris St-Germain**. Maybe that's harsh after winning the thing...or maybe that's good handicapping?
 
-*Report just 25/26 or both? Probably need both because I've shown both seasons.*
-
-English teams mean(mean_opp_elo): 1776.23 (n_teams=6)
-Overall mean(mean_opp_elo): 1784.96 (n_teams=36)
-
-The defending champions got the hardest draw! Maybe that's harsh, or maybe that's good handicapping?
+The difficulty in PSG's schedule stems largely from the teams they drew in pots three and four. From pot three they played Spurs (1821) and Sporting (1823) and from pot four they got Newcastle (1872) and Athletic Bilbao (1733), the latter being PSG's only opponent with below-average Elo.
 
 ```{r}
 IN_CSV  <- "data/psg_opponents_elo_2025_2026.csv"
@@ -126,15 +163,15 @@ psg <- read.csv(IN_CSV) %>%
   select(c(match_date, psg_side, opponent, opponent_elo_matchday)) %>%
   rename(
     `Date` = match_date,
-    `H/A` = psg_side,
+    `Venue` = psg_side,
     `Opponent` = opponent,
     `Elo` = opponent_elo_matchday
   )
 
 psg$Elo <- round(psg$Elo, 0)
-psg$`H/A` <- case_when(
-  psg$`H/A` == "home" ~ "H",
-  psg$`H/A` == "away" ~ "A"
+psg$`Venue` <- case_when(
+  psg$`Venue` == "home" ~ "H",
+  psg$`Venue` == "away" ~ "A"
 )
 
 psg %>% gt() %>%
@@ -144,17 +181,19 @@ psg %>% gt() %>%
   ) %>%
     cols_align(
     align = "center",
-    columns = c(`Date`, `H/A`)
+    columns = c(`Date`, `Venue`)
   ) %>%
   tab_style(
     style = cell_text(align = "center"),
-    locations = cells_column_labels(columns = c(`Date`, `H/A`))
-  )
+    locations = cells_column_labels(columns = c(`Date`, `Venue`))
+  ) 
 ```
 
-The difficulty in PSG's schedule stems largely from the teams they drew in pots three and four. From pot three they played Spurs (1821) and Sporting (1823) and from pot four they got Newcastle (1872) and Athletic Bilbao (1733), the latter being PSG's only opponent with below-average Elo.
+This just seems to be bad luck on PSG's part rather than a direct result of their position in the draw. Whenever teams are divided into pots based on some arbitrary ranking system, there tend to be a few big outliers. These outliers are generally in the lower pots, although in the **World Cup** there is often the additional wrinkle of weak host nations being placed into the top pot alongside the elite teams.
 
-This always seems to be a problem when teams are divided into pots based on some arbitrary ranking system: there will always be some big outliers, generally in the lower pots - although in the World Cup, you face the additional wrinkle of weak host nations being placed into the top pot alongside the elite teams.
+Below we can see the four pots from the 2025/26 Champions League draw, with Elo ratings from the start of the league phase. Pot 1 had the lowest standard deviation: Dortmund were the weakest team, but the overall difference between many of the teams was small.
+
+Meanwhile, Pot 4 had by far the highest standard deviation. Even without Kairat Almaty, the difference between Newcastle and the next-worst team, Qarabag, is bigger than the difference between the best and worst teams in any other pot.
 
 ```{r}
 IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
@@ -187,30 +226,48 @@ gt(pot_tbls[[1]]) %>%
 tab_header(title="Pot 1", subtitle = paste("Mean:",
                                            round(pot_start_means[[1]], 0),
                                            "SD:",
-                                           round(pot_start_sds[[1]], 1)))
+                                           round(pot_start_sds[[1]], 1))) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=list(cells_column_labels(columns=everything()),
+                cells_title(groups="title"))
+  )
 gt(pot_tbls[[2]]) %>%
 tab_header(title="Pot 2", subtitle = paste("Mean:",
                                            round(pot_start_means[[2]], 0),
                                            "SD:",
-                                           round(pot_start_sds[[2]], 1)))
+                                           round(pot_start_sds[[2]], 1))) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=list(cells_column_labels(columns=everything()),
+                cells_title(groups="title"))
+  )
 gt(pot_tbls[[3]]) %>%
 tab_header(title="Pot 3", subtitle = paste("Mean:",
                                            round(pot_start_means[[3]], 0),
                                            "SD:",
-                                           round(pot_start_sds[[3]], 1)))
+                                           round(pot_start_sds[[3]], 1))) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=list(cells_column_labels(columns=everything()),
+                cells_title(groups="title"))
+  )
 gt(pot_tbls[[4]]) %>%
 tab_header(title="Pot 4", subtitle = paste("Mean:",
                                            round(pot_start_means[[4]], 0),
                                            "SD:",
-                                           round(pot_start_sds[[4]], 1)))
+                                           round(pot_start_sds[[4]], 1))) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=list(cells_column_labels(columns=everything()),
+                cells_title(groups="title"))
+  )
 
 ```
 
-The Elo ratings above are taken from the start of the league phase. The smallest standard deviation is in Pot 1, while the largest by far is Pot 4. Kairat Almaty of Kazakhstan were ranked as comfortably the worst team in Pot 4, more than 200 Elo points worse than Qarabag. And sure enough, Kairat finished rock bottom in 36th place with a solo point gained at home to Pafos FC of Cyprus.
+So it is the teams drawn from Pot 4 that will determine your schedule difficulty more than anything else. Playing Newcastle is a significantly more difficult assignment than Kairat, who finished rock bottom in 36th place with a single point, gained at home to Pafos FC of Cyprus.
 
-It is not hard to see why PSG's schedule was ranked the hardest. They played the hardest two teams from Pot 4 (Newcastle and Athletic Club), and the second and third hardest teams from Pot 3 (Spurs and Sporting).
-
-*Also show Elo by start date and end date and see which teams changed most.*
+An additionally layer of luck comes from opponents who end up being better or worse than they appeared when the draw was made. This just seems like an unavoidable feature of a competition where teams only play a subset of other teams. Comparing the Elo rating from the start to the end of the league phase, the biggest improvers were Arsenal, and the biggest decline was from Monaco.
 
 ```{r}
 IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
@@ -233,13 +290,130 @@ cl_elo$`Elo Change` <- cl_elo$`End Elo` - cl_elo$`Start Elo`
 cl_elo <- cl_elo %>% arrange(-`Elo Change`)
 
 
-gt(cl_elo)
+gt(cl_elo) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=cells_column_labels(columns=everything())
+  )
 ```
 
-*But mention that getting a bad outlier in pot 4 (Kairat Almaty) may not be such a big advantage as the Elo difference implies, because if you are a good team then you should beat the pot 4 teams anyway. So it depends how good you are. Use Elo odds conversion to show expected points for each scheduled based on being a good, average, or bad team. Also whether you play the shit teams at home or away makes a difference.*
+Framing everything in terms of average Elo scores can feel a bit abstract. What tangible difference does this make? To help answer this, I used a model to translate Elo scores to win-lose-draw probabilities for each match. To isolate the schedule difficulty, as opposed to how good each team is, I took the median rating of the 36 teams and calculated the expected points that the median team would achieve when playing each team's schedule. The difference between the easiest schedule (Pafos FC) and the hardest (PSG) was worth around **3.2 points**.
 
-*English clubs advantage? Yes mainly because they avoid the best team in each pot. And this is likely to continue because of the strength of the PL, good teams will miss out on Europe some years and it is harder to rack up annual coefficient points compared to teams that qualify every year. But with teams now playing against teams from their own pot, what really is the point of this? There is no benefit to having a high coefficient. *
+```{r}
+cl_pts <- read.csv("data/ucl_expected_points_vs_schedule.csv")
 
-Current coefficients: https://www.uefa.com/nationalassociations/uefarankings/club/?year=2026
+cl_2526_median <- cl_pts %>%
+  filter(season == "2025/2026") %>%
+  select(team, total_exp_pts_p50) %>%
+  arrange(-total_exp_pts_p50)
 
-*How does this compare with the old format? Compare new format with previous X years of old format. Look at the variance in team schedules. It used to be only 3 opponents so presumably much higher variance when you had "group of death" etc!*
+cl_2526_median %>% gt() %>%
+  cols_label(
+    team = "Team",
+    total_exp_pts_p50 = "Expected Points"
+  ) %>%
+  fmt_number(
+    columns = total_exp_pts_p50,
+    decimals = 1
+  ) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=cells_column_labels(columns=everything())
+  ) 
+```
+
+## Does it matter who you play at home or away?
+
+Another wrinkle to the Swiss model format is because teams only play their opponent once, the home & away fixtures will not necessarily balance out. Each team plays one home match and one away match against teams from each of the four pots, but does it make a difference which games are at home and which are away?
+
+Imagine a team getting a polarised draw where they play the best and worst team from each of the four pots (we will ignore any country restrictions for now). So that is Liverpool & Dortmund from Pot 1, Arsenal & Club Brugge from Pot 2, Napoli & Bodø/Glimt from Pot 3, and  Newcastle & Kairat Almaty from Pot 4.
+
+We will simulate two extremes: firstly, where they get all the hardest teams at home and easiest teams away ("hard home"), and secondly where they get all the hardest teams away and the easiest ones at home ("easy home").
+
+How would this affect a team's expected points? Does it depend which team is being considered? One might hypothesise that a strong team playing the easy teams at home is a bit of a waste, since they would still fancy beating them away; conversely, the weaker teams might prefer to play easier teams at home, and write off the very difficult away games.
+
+To represent a strong team, an average team and a weak team I used the 90th, 50th and 10th percentile Elo ratings from this year's 36 teams, and gave them the *hard home* and *easy home* schedules.
+
+```{r}
+ucl_polar <- read.csv("data/ucl_polarised_draw_extremes_summary.csv")
+
+ucl_polar <- ucl_polar %>%
+  select(ref_team, scenario, mean_points, sd_points) %>%
+  arrange(desc(ref_team), scenario)
+
+ucl_polar$ref_team <- case_when(
+  ucl_polar$ref_team == "p90" ~ "90th",
+  ucl_polar$ref_team == "p50" ~ "50th",
+  ucl_polar$ref_team == "p10" ~ "10th"
+)
+
+ucl_polar$scenario <- case_when(
+  ucl_polar$scenario == "easy_home" ~ "easy home",
+  ucl_polar$scenario == "hard_home" ~ "hard home"
+)
+
+ucl_polar %>% gt() %>%
+  fmt_number(
+    columns = c("mean_points","sd_points"),
+    decimals = 1
+  ) %>%
+  cols_label(
+    ref_team = "Team Percentile",
+    scenario = "Schedule Type",
+    mean_points = "Points",
+    sd_points = "St Dev"
+  ) %>%
+  tab_style(
+    style=cell_text(weight="bold"),
+    locations=cells_column_labels(columns=everything())
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(ref_team, scenario)
+  )
+
+```
+
+The hypothesis was correct. The strong 90th-percentile team benefits by having the harder teams at home and easier teams away (0.6 point difference) while the weak 10th-percentile team prefers having the easier teams at home and the hard ones away (0.4 point difference). The standard deviation is higher for all teams when playing the hard games at home and easy ones away. This makes sense, as lopsided games (big home favourite) will have expected points close to 3 and 0 with the same result most of the time.
+
+## Does it favour the English teams? And how?
+
+We've established that the draw in any particular season favours some teams more than others, and that the home/away arrangement of fixtures also makes a difference. But does the format **systematically** favour English teams?
+
+Trivially, the key to an easy draw is avoiding the hardest teams in each pot. If the hardest teams in each pot are from your country, you avoid playing them. Evidently, in 2025-26 this does favour English teams as they had the highest-rated teams in three of the four pots, and the second-highest team in the other one. But why was this the case? What is even the point of pots in the first place? 
+
+In statistical modeling, many problems boil down to a **bias-variance** trade-off. A model with high bias fails to capture the true signal correctly (underfitting) while a model with high variance may vary dramatically based on the sample chosen (overfitting).
+
+A Champions League draw with zero bias would be very simple to accomplish: an open, random draw where anyone can play anyone, with no restrictions. This is fair to all, but it carries an inherent risk because a team could draw lots of very weak opponents, while another team draws lots of very strong opponents. The variance in such a draw would be very high.
+
+And this is why we have pots. Competition organisers make huge revenue from TV contracts, and they want to keep the big teams involved as long as possible. They wouldn't want to lose a team like **Real Madrid** early in the competition because they randomly drew a hard set of fixtures. There is also the argument that stronger teams deserve to avoid a tough draw due to past performance, which is debatable.
+
+Under the old Champions League format, or the format used for World Cups and the like, allocating teams into pots achieves two goals. Firstly, it helps to reduce the variance by segregating teams based on their coefficient, and secondly, it awards stronger teams an easier schedule (because if you are in Pot 1, you only play teams from Pots 2, 3 and 4).
+
+The Swiss model further reduces variance, because having eight random opponents naturally has a lower dispersion of average difficulty than having three random opponents. But since teams are drawn against two opponents from each pot, regardless of which pot they are in themselves, it negates the easier schedule advantage for the teams in Pot 1. 
+
+In fact, it now becomes an advantage to be in a lower pot! Imagine moving Man City to Pot 4 and switching Galatasaray to Pot 1 in their place. City's average Pot 1 opponent just got much easier, while their average Pot 4 opponent barely changed (because they can't play themselves!). And since teams cannot play against other teams from the same country, the list of potential opponents is the same for all the English teams, meaning when City get moved to Pot 4 it makes the average schedule easier for *all* the English teams.
+
+Pots are determined by [UEFA club  coefficients](https://www.uefa.com/nationalassociations/uefarankings/club/?year=2026) which disproportionately reward quantity rather than quality. A season with no European football results in 0 points, but does not reduce the denominator (five seasons). So in deep leagues like the Premier League, strong teams will sometimes miss out on Europe after a bad season, reducing their coefficient when they return. Even Arsenal failed to reach Pot 1 this year because of a single Europe-less season in 2021-22.
+
+This approach to determining pots means the Premier League can expect to enjoy the same Champions League draw bias in future seasons. As things stand, Aston Villa, Manchester United and Chelsea are all in the top five of the PL but would not rank in Pot 1 for next year's CL draw.
+
+## A possible solution
+
+The bias itself isn't enormous - as shown earlier, English teams actually had harder-than-average fixtures in 2024-25. And a big argument in favour of the Swiss model is that draw advantages & disadvantages are dampened by virtue of having eight different opponents.
+
+However, if one wished to neutralise the pro-English bias, what would be the best approach? The fairest and most chaotic approach is the completely open random draw. They will never do that, of course. 
+
+An obvious suggestion is to remove the rule that says teams from the same country cannot play one another in the league phase - not least because those games would be a lot of fun! That would reduce the English teams' edge, but it would still leave the problem of teams like Newcastle being better off in Pot 4 than a higher pot.
+
+The **UEFA coefficients** themselves seem to be the problem here. The coefficients are biased towards teams from weaker leagues who qualify for Europe every year, and punish teams from strong leagues who sometimes miss out. That was fine under the old format, where a high coefficient was rewarded with an easier draw (assuming UEFA wish to help the smaller leagues). But under the Swiss model the logic has now flipped, and a *lower* coefficient is rewarded.
+
+Assuming UEFA are not going to start using an Elo-style system to rank teams, there is a simple solution to this problem. Instead of the present club-specific coefficients, UEFA should use a ranking based on the league and the qualification spot of the team. So if Premier League teams perform well then the Premier League coefficient goes up, but there is a fixed hierarchy so that the PL 1st place team has a higher coefficient than 2nd, then 3rd, and so on. This would do a better job of reflecting actual teams' current strengths, which is the only purpose of the pots under the Swiss model so that schedules can be distributed evenly.
+
+Finally, it is worth reiterating that these are relatively minor quibbles. The old CL format was far more prone to draw bias and variance - for example, in the final season of the format there was a classic **group of death** containing PSG, Borussia Dortmund, AC Milan and Newcastle. 
+
+Some will argue that this throws up some great head-to-head matches with higher jeopardy, which is true but there were also a lot of dead rubbers. I think the Swiss model is a reasonable step forward, perhaps with a few more tweaks required.
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2026 John Knight. All rights reserved.

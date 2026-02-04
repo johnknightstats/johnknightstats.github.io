@@ -20,6 +20,7 @@
   {
     "listing": "/posts/index.html",
     "items": [
+      "/posts/cl-draw-fairness/index.html",
       "/posts/elo-number-one/index.html",
       "/posts/cl-simulation/index.html",
       "/posts/set-pieces/index.html",

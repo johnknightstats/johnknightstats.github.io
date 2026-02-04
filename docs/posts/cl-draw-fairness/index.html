@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-01-30">
-<meta name="description" content="Maybe.">
+<meta name="dcterms.date" content="2026-02-04">
+<meta name="description" content="Calculating each team’s strength of schedule and a proposal to improve the format">
 
-<title>Is the Champions League draw unfair? – John Knight Stats</title>
+<title>Does the Champions League draw give English teams an unfair advantage? – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta name="quarto:status" content="draft">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -246,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -303,17 +302,18 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Is the Champions League draw unfair?</h1>
+<h1 class="title">Does the Champions League draw give English teams an unfair advantage?</h1>
   <div class="quarto-categories">
     <div class="quarto-category">football</div>
     <div class="quarto-category">statistics</div>
     <div class="quarto-category">Elo ratings</div>
+    <div class="quarto-category">champions league</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Maybe.
+    Calculating each team’s strength of schedule and a proposal to improve the format
   </div>
 </div>
 
@@ -330,7 +330,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">30 January 2026</p>
+      <p class="date">4 February 2026</p>
     </div>
   </div>
   
@@ -342,28 +342,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The league phase of the 2025-26 Champions League is over, and after two iterations a pattern has emerged: a low-jeopardy slog, culminating in a chaotic and fun final day. A question that has been raised by numerous people - <a href="https://johnknightstats.substack.com/p/what-are-the-probabilities-of-each">including myself</a> - is whether the English teams have an unfair advantage by virtue of not having to play each other.</p>
-<p>One of the stats doing the rounds is that Spurs - relatively poor in the Premier League this season - finished 4th in the league phase despite only beating one team in the top 24. Did Spurs get an easy fixture list? And what about the other English teams?</p>
-<p>Using the ratings from <a href="https://clubelo.com">Club Elo</a> we can look at the mean Elo of the eight opponents for each team in the league phase over the last two seasons.</p>
+<p>The league phase of the 2025-26 <strong>Champions League</strong> is over, and after two iterations of the new <em>Swiss Model</em> format, a pattern has emerged: a low-jeopardy slog that culminates in a chaotic and fun final day. One question that has been raised by numerous people - <a href="https://johnknightstats.substack.com/p/what-are-the-probabilities-of-each">including myself</a> - is whether the English teams have an unfair advantage by virtue of not having to play each other?</p>
+<p>One of the stats doing the rounds last week was that <strong>Spurs</strong> - relatively poor in the Premier League this season - finished 4th in the CL league phase despite only beating <strong>one team who finished in the top 24</strong>. Did Spurs get an unusually easy fixture list? And what about the other English teams?</p>
+<p>Using the ratings from <a href="https://clubelo.com">Club Elo</a> we can rate the difficulty of each team’s fixtures over the last two seasons by looking at the mean Elo rating of their eight opponents. These ratings are taken from the day of each individual match.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="bzxaklewkz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bzxaklewkz table {
+<div id="iwruymgpsl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iwruymgpsl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bzxaklewkz thead, #bzxaklewkz tbody, #bzxaklewkz tfoot, #bzxaklewkz tr, #bzxaklewkz td, #bzxaklewkz th {
+#iwruymgpsl thead, #iwruymgpsl tbody, #iwruymgpsl tfoot, #iwruymgpsl tr, #iwruymgpsl td, #iwruymgpsl th {
   border-style: none;
 }
 
-#bzxaklewkz p {
+#iwruymgpsl p {
   margin: 0;
   padding: 0;
 }
 
-#bzxaklewkz .gt_table {
+#iwruymgpsl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -389,12 +389,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_caption {
+#iwruymgpsl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bzxaklewkz .gt_title {
+#iwruymgpsl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -406,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#bzxaklewkz .gt_subtitle {
+#iwruymgpsl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -418,7 +418,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#bzxaklewkz .gt_heading {
+#iwruymgpsl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -430,13 +430,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_bottom_border {
+#iwruymgpsl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_col_headings {
+#iwruymgpsl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -451,7 +451,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_col_heading {
+#iwruymgpsl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -471,7 +471,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#bzxaklewkz .gt_column_spanner_outer {
+#iwruymgpsl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -483,15 +483,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#bzxaklewkz .gt_column_spanner_outer:first-child {
+#iwruymgpsl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bzxaklewkz .gt_column_spanner_outer:last-child {
+#iwruymgpsl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bzxaklewkz .gt_column_spanner {
+#iwruymgpsl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -503,11 +503,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#bzxaklewkz .gt_spanner_row {
+#iwruymgpsl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bzxaklewkz .gt_group_heading {
+#iwruymgpsl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -533,7 +533,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#bzxaklewkz .gt_empty_group_heading {
+#iwruymgpsl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -548,15 +548,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#bzxaklewkz .gt_from_md > :first-child {
+#iwruymgpsl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bzxaklewkz .gt_from_md > :last-child {
+#iwruymgpsl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bzxaklewkz .gt_row {
+#iwruymgpsl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -575,7 +575,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#bzxaklewkz .gt_stub {
+#iwruymgpsl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -588,7 +588,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#bzxaklewkz .gt_stub_row_group {
+#iwruymgpsl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -602,15 +602,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#bzxaklewkz .gt_row_group_first td {
+#iwruymgpsl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bzxaklewkz .gt_row_group_first th {
+#iwruymgpsl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bzxaklewkz .gt_summary_row {
+#iwruymgpsl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -620,16 +620,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#bzxaklewkz .gt_first_summary_row {
+#iwruymgpsl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_first_summary_row.thick {
+#iwruymgpsl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bzxaklewkz .gt_last_summary_row {
+#iwruymgpsl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -639,7 +639,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_grand_summary_row {
+#iwruymgpsl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -649,7 +649,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#bzxaklewkz .gt_first_grand_summary_row {
+#iwruymgpsl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -659,7 +659,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_last_grand_summary_row_top {
+#iwruymgpsl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -669,11 +669,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_striped {
+#iwruymgpsl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bzxaklewkz .gt_table_body {
+#iwruymgpsl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -682,7 +682,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_footnotes {
+#iwruymgpsl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -696,7 +696,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_footnote {
+#iwruymgpsl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -705,7 +705,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#bzxaklewkz .gt_sourcenotes {
+#iwruymgpsl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -719,7 +719,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#bzxaklewkz .gt_sourcenote {
+#iwruymgpsl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -727,72 +727,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#bzxaklewkz .gt_left {
+#iwruymgpsl .gt_left {
   text-align: left;
 }
 
-#bzxaklewkz .gt_center {
+#iwruymgpsl .gt_center {
   text-align: center;
 }
 
-#bzxaklewkz .gt_right {
+#iwruymgpsl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bzxaklewkz .gt_font_normal {
+#iwruymgpsl .gt_font_normal {
   font-weight: normal;
 }
 
-#bzxaklewkz .gt_font_bold {
+#iwruymgpsl .gt_font_bold {
   font-weight: bold;
 }
 
-#bzxaklewkz .gt_font_italic {
+#iwruymgpsl .gt_font_italic {
   font-style: italic;
 }
 
-#bzxaklewkz .gt_super {
+#iwruymgpsl .gt_super {
   font-size: 65%;
 }
 
-#bzxaklewkz .gt_footnote_marks {
+#iwruymgpsl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bzxaklewkz .gt_asterisk {
+#iwruymgpsl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bzxaklewkz .gt_indent_1 {
+#iwruymgpsl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bzxaklewkz .gt_indent_2 {
+#iwruymgpsl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bzxaklewkz .gt_indent_3 {
+#iwruymgpsl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bzxaklewkz .gt_indent_4 {
+#iwruymgpsl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bzxaklewkz .gt_indent_5 {
+#iwruymgpsl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bzxaklewkz .katex-display {
+#iwruymgpsl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bzxaklewkz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iwruymgpsl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1177,29 +1177,27 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p><em>Comment on English teams not obviously all down the bottom (calculate their mean vs overall mean) and Spurs below average but nothing absurd…Villa, Chelsea and Arsenal lower.</em></p>
-<p><em>Report just 25/26 or both? Probably need both because I’ve shown both seasons.</em></p>
-<p>English teams mean(mean_opp_elo): 1776.23 (n_teams=6) Overall mean(mean_opp_elo): 1784.96 (n_teams=36)</p>
-<p>The defending champions got the hardest draw! Maybe that’s harsh, or maybe that’s good handicapping?</p>
+<p>There were seven teams who got an easier set of fixtures than Tottenham, including <strong>Arsenal</strong> and <strong>Chelsea</strong>. <strong>Aston Villa</strong> also had a softer schedule in 2024/25.</p>
+<p>English teams as a whole did have an easier schedule in 2025-26 compared to the rest, but in 2024-25 the opposite was true.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qqkegdqbou" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qqkegdqbou table {
+<div id="fhxjfbskfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fhxjfbskfi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qqkegdqbou thead, #qqkegdqbou tbody, #qqkegdqbou tfoot, #qqkegdqbou tr, #qqkegdqbou td, #qqkegdqbou th {
+#fhxjfbskfi thead, #fhxjfbskfi tbody, #fhxjfbskfi tfoot, #fhxjfbskfi tr, #fhxjfbskfi td, #fhxjfbskfi th {
   border-style: none;
 }
 
-#qqkegdqbou p {
+#fhxjfbskfi p {
   margin: 0;
   padding: 0;
 }
 
-#qqkegdqbou .gt_table {
+#fhxjfbskfi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1225,12 +1223,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_caption {
+#fhxjfbskfi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qqkegdqbou .gt_title {
+#fhxjfbskfi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1242,7 +1240,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#qqkegdqbou .gt_subtitle {
+#fhxjfbskfi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1254,7 +1252,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#qqkegdqbou .gt_heading {
+#fhxjfbskfi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1266,13 +1264,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_bottom_border {
+#fhxjfbskfi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_col_headings {
+#fhxjfbskfi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1287,7 +1285,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_col_heading {
+#fhxjfbskfi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1307,7 +1305,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qqkegdqbou .gt_column_spanner_outer {
+#fhxjfbskfi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1319,15 +1317,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#qqkegdqbou .gt_column_spanner_outer:first-child {
+#fhxjfbskfi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qqkegdqbou .gt_column_spanner_outer:last-child {
+#fhxjfbskfi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qqkegdqbou .gt_column_spanner {
+#fhxjfbskfi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1339,11 +1337,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#qqkegdqbou .gt_spanner_row {
+#fhxjfbskfi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qqkegdqbou .gt_group_heading {
+#fhxjfbskfi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1369,7 +1367,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#qqkegdqbou .gt_empty_group_heading {
+#fhxjfbskfi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1384,15 +1382,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#qqkegdqbou .gt_from_md > :first-child {
+#fhxjfbskfi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qqkegdqbou .gt_from_md > :last-child {
+#fhxjfbskfi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qqkegdqbou .gt_row {
+#fhxjfbskfi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1411,7 +1409,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qqkegdqbou .gt_stub {
+#fhxjfbskfi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1424,7 +1422,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qqkegdqbou .gt_stub_row_group {
+#fhxjfbskfi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1438,15 +1436,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#qqkegdqbou .gt_row_group_first td {
+#fhxjfbskfi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qqkegdqbou .gt_row_group_first th {
+#fhxjfbskfi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qqkegdqbou .gt_summary_row {
+#fhxjfbskfi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1456,16 +1454,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qqkegdqbou .gt_first_summary_row {
+#fhxjfbskfi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_first_summary_row.thick {
+#fhxjfbskfi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qqkegdqbou .gt_last_summary_row {
+#fhxjfbskfi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1475,7 +1473,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_grand_summary_row {
+#fhxjfbskfi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1485,7 +1483,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qqkegdqbou .gt_first_grand_summary_row {
+#fhxjfbskfi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1495,7 +1493,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_last_grand_summary_row_top {
+#fhxjfbskfi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1505,11 +1503,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_striped {
+#fhxjfbskfi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qqkegdqbou .gt_table_body {
+#fhxjfbskfi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1518,7 +1516,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_footnotes {
+#fhxjfbskfi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1532,7 +1530,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_footnote {
+#fhxjfbskfi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1541,7 +1539,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qqkegdqbou .gt_sourcenotes {
+#fhxjfbskfi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1555,7 +1553,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qqkegdqbou .gt_sourcenote {
+#fhxjfbskfi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1563,72 +1561,551 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qqkegdqbou .gt_left {
+#fhxjfbskfi .gt_left {
   text-align: left;
 }
 
-#qqkegdqbou .gt_center {
+#fhxjfbskfi .gt_center {
   text-align: center;
 }
 
-#qqkegdqbou .gt_right {
+#fhxjfbskfi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qqkegdqbou .gt_font_normal {
+#fhxjfbskfi .gt_font_normal {
   font-weight: normal;
 }
 
-#qqkegdqbou .gt_font_bold {
+#fhxjfbskfi .gt_font_bold {
   font-weight: bold;
 }
 
-#qqkegdqbou .gt_font_italic {
+#fhxjfbskfi .gt_font_italic {
   font-style: italic;
 }
 
-#qqkegdqbou .gt_super {
+#fhxjfbskfi .gt_super {
   font-size: 65%;
 }
 
-#qqkegdqbou .gt_footnote_marks {
+#fhxjfbskfi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qqkegdqbou .gt_asterisk {
+#fhxjfbskfi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qqkegdqbou .gt_indent_1 {
+#fhxjfbskfi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qqkegdqbou .gt_indent_2 {
+#fhxjfbskfi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qqkegdqbou .gt_indent_3 {
+#fhxjfbskfi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qqkegdqbou .gt_indent_4 {
+#fhxjfbskfi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qqkegdqbou .gt_indent_5 {
+#fhxjfbskfi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qqkegdqbou .katex-display {
+#fhxjfbskfi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qqkegdqbou div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fhxjfbskfi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Teams" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Teams</th>
+<th id="season_2425" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">2024–25</th>
+<th id="season_2526" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">2025–26</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Teams">English only</td>
+<td class="gt_row gt_center" headers="season_2425">1784</td>
+<td class="gt_row gt_center" headers="season_2526">1776</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Teams">Non-English</td>
+<td class="gt_row gt_center" headers="season_2425">1777</td>
+<td class="gt_row gt_center" headers="season_2526">1787</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>It’s ironic that the team with the hardest draw of anyone in 2025-26 were the defending champions <strong>Paris St-Germain</strong>. Maybe that’s harsh after winning the thing…or maybe that’s good handicapping?</p>
+<p>The difficulty in PSG’s schedule stems largely from the teams they drew in pots three and four. From pot three they played Spurs (1821) and Sporting (1823) and from pot four they got Newcastle (1872) and Athletic Bilbao (1733), the latter being PSG’s only opponent with below-average Elo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="yppuzdzzny" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yppuzdzzny table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yppuzdzzny thead, #yppuzdzzny tbody, #yppuzdzzny tfoot, #yppuzdzzny tr, #yppuzdzzny td, #yppuzdzzny th {
+  border-style: none;
+}
+
+#yppuzdzzny p {
+  margin: 0;
+  padding: 0;
+}
+
+#yppuzdzzny .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yppuzdzzny .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yppuzdzzny .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yppuzdzzny .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yppuzdzzny .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yppuzdzzny .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yppuzdzzny .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yppuzdzzny .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yppuzdzzny .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yppuzdzzny .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yppuzdzzny .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yppuzdzzny .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yppuzdzzny .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yppuzdzzny .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yppuzdzzny .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yppuzdzzny .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yppuzdzzny .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yppuzdzzny .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yppuzdzzny .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yppuzdzzny .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yppuzdzzny .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yppuzdzzny .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yppuzdzzny .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yppuzdzzny .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yppuzdzzny .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yppuzdzzny .gt_left {
+  text-align: left;
+}
+
+#yppuzdzzny .gt_center {
+  text-align: center;
+}
+
+#yppuzdzzny .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yppuzdzzny .gt_font_normal {
+  font-weight: normal;
+}
+
+#yppuzdzzny .gt_font_bold {
+  font-weight: bold;
+}
+
+#yppuzdzzny .gt_font_italic {
+  font-style: italic;
+}
+
+#yppuzdzzny .gt_super {
+  font-size: 65%;
+}
+
+#yppuzdzzny .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yppuzdzzny .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yppuzdzzny .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yppuzdzzny .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yppuzdzzny .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yppuzdzzny .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yppuzdzzny .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#yppuzdzzny .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yppuzdzzny div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1637,7 +2114,7 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr class="gt_col_headings header">
 <th id="Date" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="col">Date</th>
-<th id="H/A" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="col">H/A</th>
+<th id="Venue" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="col">Venue</th>
 <th id="Opponent" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Opponent</th>
 <th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Elo</th>
 </tr>
@@ -1645,49 +2122,49 @@ ul.task-list li input[type="checkbox"] {
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_center" headers="Date">2025-09-17</td>
-<td class="gt_row gt_center" headers="H/A">H</td>
+<td class="gt_row gt_center" headers="Venue">H</td>
 <td class="gt_row gt_left" headers="Opponent">Atalanta</td>
 <td class="gt_row gt_right" headers="Elo">1833</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Date">2025-10-01</td>
-<td class="gt_row gt_center" headers="H/A">A</td>
+<td class="gt_row gt_center" headers="Venue">A</td>
 <td class="gt_row gt_left" headers="Opponent">Barcelona</td>
 <td class="gt_row gt_right" headers="Elo">1965</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Date">2025-10-21</td>
-<td class="gt_row gt_center" headers="H/A">A</td>
+<td class="gt_row gt_center" headers="Venue">A</td>
 <td class="gt_row gt_left" headers="Opponent">Bayer Leverkusen</td>
 <td class="gt_row gt_right" headers="Elo">1843</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Date">2025-11-04</td>
-<td class="gt_row gt_center" headers="H/A">H</td>
+<td class="gt_row gt_center" headers="Venue">H</td>
 <td class="gt_row gt_left" headers="Opponent">Bayern München</td>
 <td class="gt_row gt_right" headers="Elo">1975</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Date">2025-11-26</td>
-<td class="gt_row gt_center" headers="H/A">H</td>
+<td class="gt_row gt_center" headers="Venue">H</td>
 <td class="gt_row gt_left" headers="Opponent">Tottenham Hotspur</td>
 <td class="gt_row gt_right" headers="Elo">1821</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Date">2025-12-10</td>
-<td class="gt_row gt_center" headers="H/A">A</td>
+<td class="gt_row gt_center" headers="Venue">A</td>
 <td class="gt_row gt_left" headers="Opponent">Athletic Club</td>
 <td class="gt_row gt_right" headers="Elo">1733</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Date">2026-01-20</td>
-<td class="gt_row gt_center" headers="H/A">A</td>
+<td class="gt_row gt_center" headers="Venue">A</td>
 <td class="gt_row gt_left" headers="Opponent">Sporting CP</td>
 <td class="gt_row gt_right" headers="Elo">1823</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Date">2026-01-28</td>
-<td class="gt_row gt_center" headers="H/A">H</td>
+<td class="gt_row gt_center" headers="Venue">H</td>
 <td class="gt_row gt_left" headers="Opponent">Newcastle United</td>
 <td class="gt_row gt_right" headers="Elo">1872</td>
 </tr>
@@ -1697,27 +2174,28 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>The difficulty in PSG’s schedule stems largely from the teams they drew in pots three and four. From pot three they played Spurs (1821) and Sporting (1823) and from pot four they got Newcastle (1872) and Athletic Bilbao (1733), the latter being PSG’s only opponent with below-average Elo.</p>
-<p>This always seems to be a problem when teams are divided into pots based on some arbitrary ranking system: there will always be some big outliers, generally in the lower pots - although in the World Cup, you face the additional wrinkle of weak host nations being placed into the top pot alongside the elite teams.</p>
+<p>This just seems to be bad luck on PSG’s part rather than a direct result of their position in the draw. Whenever teams are divided into pots based on some arbitrary ranking system, there tend to be a few big outliers. These outliers are generally in the lower pots, although in the <strong>World Cup</strong> there is often the additional wrinkle of weak host nations being placed into the top pot alongside the elite teams.</p>
+<p>Below we can see the four pots from the 2025/26 Champions League draw, with Elo ratings from the start of the league phase. Pot 1 had the lowest standard deviation: Dortmund were the weakest team, but the overall difference between many of the teams was small.</p>
+<p>Meanwhile, Pot 4 had by far the highest standard deviation. Even without Kairat Almaty, the difference between Newcastle and the next-worst team, Qarabag, is bigger than the difference between the best and worst teams in any other pot.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="lkrmkmsamz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lkrmkmsamz table {
+<div id="cqzvwvwucr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cqzvwvwucr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lkrmkmsamz thead, #lkrmkmsamz tbody, #lkrmkmsamz tfoot, #lkrmkmsamz tr, #lkrmkmsamz td, #lkrmkmsamz th {
+#cqzvwvwucr thead, #cqzvwvwucr tbody, #cqzvwvwucr tfoot, #cqzvwvwucr tr, #cqzvwvwucr td, #cqzvwvwucr th {
   border-style: none;
 }
 
-#lkrmkmsamz p {
+#cqzvwvwucr p {
   margin: 0;
   padding: 0;
 }
 
-#lkrmkmsamz .gt_table {
+#cqzvwvwucr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1743,12 +2221,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_caption {
+#cqzvwvwucr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lkrmkmsamz .gt_title {
+#cqzvwvwucr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1760,7 +2238,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#lkrmkmsamz .gt_subtitle {
+#cqzvwvwucr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1772,7 +2250,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#lkrmkmsamz .gt_heading {
+#cqzvwvwucr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1784,13 +2262,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_bottom_border {
+#cqzvwvwucr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_col_headings {
+#cqzvwvwucr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1805,7 +2283,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_col_heading {
+#cqzvwvwucr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1825,7 +2303,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#lkrmkmsamz .gt_column_spanner_outer {
+#cqzvwvwucr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1837,15 +2315,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#lkrmkmsamz .gt_column_spanner_outer:first-child {
+#cqzvwvwucr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lkrmkmsamz .gt_column_spanner_outer:last-child {
+#cqzvwvwucr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lkrmkmsamz .gt_column_spanner {
+#cqzvwvwucr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1857,11 +2335,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#lkrmkmsamz .gt_spanner_row {
+#cqzvwvwucr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lkrmkmsamz .gt_group_heading {
+#cqzvwvwucr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1887,7 +2365,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#lkrmkmsamz .gt_empty_group_heading {
+#cqzvwvwucr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1902,15 +2380,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#lkrmkmsamz .gt_from_md > :first-child {
+#cqzvwvwucr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lkrmkmsamz .gt_from_md > :last-child {
+#cqzvwvwucr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lkrmkmsamz .gt_row {
+#cqzvwvwucr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1929,7 +2407,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#lkrmkmsamz .gt_stub {
+#cqzvwvwucr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1942,7 +2420,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lkrmkmsamz .gt_stub_row_group {
+#cqzvwvwucr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1956,15 +2434,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#lkrmkmsamz .gt_row_group_first td {
+#cqzvwvwucr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lkrmkmsamz .gt_row_group_first th {
+#cqzvwvwucr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lkrmkmsamz .gt_summary_row {
+#cqzvwvwucr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1974,16 +2452,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lkrmkmsamz .gt_first_summary_row {
+#cqzvwvwucr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_first_summary_row.thick {
+#cqzvwvwucr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lkrmkmsamz .gt_last_summary_row {
+#cqzvwvwucr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1993,7 +2471,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_grand_summary_row {
+#cqzvwvwucr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2003,7 +2481,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lkrmkmsamz .gt_first_grand_summary_row {
+#cqzvwvwucr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2013,7 +2491,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_last_grand_summary_row_top {
+#cqzvwvwucr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2023,11 +2501,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_striped {
+#cqzvwvwucr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lkrmkmsamz .gt_table_body {
+#cqzvwvwucr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2036,7 +2514,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_footnotes {
+#cqzvwvwucr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2050,7 +2528,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_footnote {
+#cqzvwvwucr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2059,7 +2537,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lkrmkmsamz .gt_sourcenotes {
+#cqzvwvwucr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2073,7 +2551,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lkrmkmsamz .gt_sourcenote {
+#cqzvwvwucr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2081,72 +2559,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lkrmkmsamz .gt_left {
+#cqzvwvwucr .gt_left {
   text-align: left;
 }
 
-#lkrmkmsamz .gt_center {
+#cqzvwvwucr .gt_center {
   text-align: center;
 }
 
-#lkrmkmsamz .gt_right {
+#cqzvwvwucr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lkrmkmsamz .gt_font_normal {
+#cqzvwvwucr .gt_font_normal {
   font-weight: normal;
 }
 
-#lkrmkmsamz .gt_font_bold {
+#cqzvwvwucr .gt_font_bold {
   font-weight: bold;
 }
 
-#lkrmkmsamz .gt_font_italic {
+#cqzvwvwucr .gt_font_italic {
   font-style: italic;
 }
 
-#lkrmkmsamz .gt_super {
+#cqzvwvwucr .gt_super {
   font-size: 65%;
 }
 
-#lkrmkmsamz .gt_footnote_marks {
+#cqzvwvwucr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lkrmkmsamz .gt_asterisk {
+#cqzvwvwucr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lkrmkmsamz .gt_indent_1 {
+#cqzvwvwucr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lkrmkmsamz .gt_indent_2 {
+#cqzvwvwucr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lkrmkmsamz .gt_indent_3 {
+#cqzvwvwucr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lkrmkmsamz .gt_indent_4 {
+#cqzvwvwucr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lkrmkmsamz .gt_indent_5 {
+#cqzvwvwucr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lkrmkmsamz .katex-display {
+#cqzvwvwucr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lkrmkmsamz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cqzvwvwucr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2154,14 +2632,14 @@ ul.task-list li input[type="checkbox"] {
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<td colspan="2" class="gt_heading gt_title gt_font_normal">Pot 1</td>
+<td colspan="2" class="gt_heading gt_title gt_font_normal" style="font-weight: bold">Pot 1</td>
 </tr>
 <tr class="gt_heading even">
 <td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Mean: 1936 SD: 52.5</td>
 </tr>
 <tr class="gt_col_headings header">
-<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Team</th>
-<th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Elo</th>
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Elo</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -2207,23 +2685,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="cell-output-display">
-<div id="lefcpdxcyy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lefcpdxcyy table {
+<div id="pobqebepbf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pobqebepbf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lefcpdxcyy thead, #lefcpdxcyy tbody, #lefcpdxcyy tfoot, #lefcpdxcyy tr, #lefcpdxcyy td, #lefcpdxcyy th {
+#pobqebepbf thead, #pobqebepbf tbody, #pobqebepbf tfoot, #pobqebepbf tr, #pobqebepbf td, #pobqebepbf th {
   border-style: none;
 }
 
-#lefcpdxcyy p {
+#pobqebepbf p {
   margin: 0;
   padding: 0;
 }
 
-#lefcpdxcyy .gt_table {
+#pobqebepbf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2249,12 +2727,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_caption {
+#pobqebepbf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lefcpdxcyy .gt_title {
+#pobqebepbf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2266,7 +2744,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#lefcpdxcyy .gt_subtitle {
+#pobqebepbf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2278,7 +2756,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#lefcpdxcyy .gt_heading {
+#pobqebepbf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2290,13 +2768,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_bottom_border {
+#pobqebepbf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_col_headings {
+#pobqebepbf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2311,7 +2789,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_col_heading {
+#pobqebepbf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2331,7 +2809,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#lefcpdxcyy .gt_column_spanner_outer {
+#pobqebepbf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2343,15 +2821,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#lefcpdxcyy .gt_column_spanner_outer:first-child {
+#pobqebepbf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lefcpdxcyy .gt_column_spanner_outer:last-child {
+#pobqebepbf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lefcpdxcyy .gt_column_spanner {
+#pobqebepbf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2363,11 +2841,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#lefcpdxcyy .gt_spanner_row {
+#pobqebepbf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lefcpdxcyy .gt_group_heading {
+#pobqebepbf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2393,7 +2871,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#lefcpdxcyy .gt_empty_group_heading {
+#pobqebepbf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2408,15 +2886,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#lefcpdxcyy .gt_from_md > :first-child {
+#pobqebepbf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lefcpdxcyy .gt_from_md > :last-child {
+#pobqebepbf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lefcpdxcyy .gt_row {
+#pobqebepbf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2435,7 +2913,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#lefcpdxcyy .gt_stub {
+#pobqebepbf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2448,7 +2926,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lefcpdxcyy .gt_stub_row_group {
+#pobqebepbf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2462,15 +2940,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#lefcpdxcyy .gt_row_group_first td {
+#pobqebepbf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lefcpdxcyy .gt_row_group_first th {
+#pobqebepbf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lefcpdxcyy .gt_summary_row {
+#pobqebepbf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2480,16 +2958,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lefcpdxcyy .gt_first_summary_row {
+#pobqebepbf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_first_summary_row.thick {
+#pobqebepbf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lefcpdxcyy .gt_last_summary_row {
+#pobqebepbf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2499,7 +2977,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_grand_summary_row {
+#pobqebepbf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2509,7 +2987,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lefcpdxcyy .gt_first_grand_summary_row {
+#pobqebepbf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2519,7 +2997,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_last_grand_summary_row_top {
+#pobqebepbf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2529,11 +3007,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_striped {
+#pobqebepbf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lefcpdxcyy .gt_table_body {
+#pobqebepbf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2542,7 +3020,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_footnotes {
+#pobqebepbf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2556,7 +3034,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_footnote {
+#pobqebepbf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2565,7 +3043,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lefcpdxcyy .gt_sourcenotes {
+#pobqebepbf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2579,7 +3057,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lefcpdxcyy .gt_sourcenote {
+#pobqebepbf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2587,72 +3065,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lefcpdxcyy .gt_left {
+#pobqebepbf .gt_left {
   text-align: left;
 }
 
-#lefcpdxcyy .gt_center {
+#pobqebepbf .gt_center {
   text-align: center;
 }
 
-#lefcpdxcyy .gt_right {
+#pobqebepbf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lefcpdxcyy .gt_font_normal {
+#pobqebepbf .gt_font_normal {
   font-weight: normal;
 }
 
-#lefcpdxcyy .gt_font_bold {
+#pobqebepbf .gt_font_bold {
   font-weight: bold;
 }
 
-#lefcpdxcyy .gt_font_italic {
+#pobqebepbf .gt_font_italic {
   font-style: italic;
 }
 
-#lefcpdxcyy .gt_super {
+#pobqebepbf .gt_super {
   font-size: 65%;
 }
 
-#lefcpdxcyy .gt_footnote_marks {
+#pobqebepbf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lefcpdxcyy .gt_asterisk {
+#pobqebepbf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lefcpdxcyy .gt_indent_1 {
+#pobqebepbf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lefcpdxcyy .gt_indent_2 {
+#pobqebepbf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lefcpdxcyy .gt_indent_3 {
+#pobqebepbf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lefcpdxcyy .gt_indent_4 {
+#pobqebepbf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lefcpdxcyy .gt_indent_5 {
+#pobqebepbf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lefcpdxcyy .katex-display {
+#pobqebepbf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lefcpdxcyy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pobqebepbf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2660,14 +3138,14 @@ ul.task-list li input[type="checkbox"] {
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<td colspan="2" class="gt_heading gt_title gt_font_normal">Pot 2</td>
+<td colspan="2" class="gt_heading gt_title gt_font_normal" style="font-weight: bold">Pot 2</td>
 </tr>
 <tr class="gt_heading even">
 <td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Mean: 1826 SD: 75.1</td>
 </tr>
 <tr class="gt_col_headings header">
-<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Team</th>
-<th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Elo</th>
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Elo</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -2713,23 +3191,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="cell-output-display">
-<div id="vskamsezvp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vskamsezvp table {
+<div id="hmczpfrgut" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hmczpfrgut table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vskamsezvp thead, #vskamsezvp tbody, #vskamsezvp tfoot, #vskamsezvp tr, #vskamsezvp td, #vskamsezvp th {
+#hmczpfrgut thead, #hmczpfrgut tbody, #hmczpfrgut tfoot, #hmczpfrgut tr, #hmczpfrgut td, #hmczpfrgut th {
   border-style: none;
 }
 
-#vskamsezvp p {
+#hmczpfrgut p {
   margin: 0;
   padding: 0;
 }
 
-#vskamsezvp .gt_table {
+#hmczpfrgut .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2755,12 +3233,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_caption {
+#hmczpfrgut .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vskamsezvp .gt_title {
+#hmczpfrgut .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2772,7 +3250,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#vskamsezvp .gt_subtitle {
+#hmczpfrgut .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2784,7 +3262,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#vskamsezvp .gt_heading {
+#hmczpfrgut .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2796,13 +3274,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_bottom_border {
+#hmczpfrgut .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_col_headings {
+#hmczpfrgut .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2817,7 +3295,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_col_heading {
+#hmczpfrgut .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2837,7 +3315,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#vskamsezvp .gt_column_spanner_outer {
+#hmczpfrgut .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2849,15 +3327,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#vskamsezvp .gt_column_spanner_outer:first-child {
+#hmczpfrgut .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vskamsezvp .gt_column_spanner_outer:last-child {
+#hmczpfrgut .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vskamsezvp .gt_column_spanner {
+#hmczpfrgut .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2869,11 +3347,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#vskamsezvp .gt_spanner_row {
+#hmczpfrgut .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vskamsezvp .gt_group_heading {
+#hmczpfrgut .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2899,7 +3377,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#vskamsezvp .gt_empty_group_heading {
+#hmczpfrgut .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2914,15 +3392,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#vskamsezvp .gt_from_md > :first-child {
+#hmczpfrgut .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vskamsezvp .gt_from_md > :last-child {
+#hmczpfrgut .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vskamsezvp .gt_row {
+#hmczpfrgut .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2941,7 +3419,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#vskamsezvp .gt_stub {
+#hmczpfrgut .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2954,7 +3432,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vskamsezvp .gt_stub_row_group {
+#hmczpfrgut .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2968,15 +3446,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#vskamsezvp .gt_row_group_first td {
+#hmczpfrgut .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vskamsezvp .gt_row_group_first th {
+#hmczpfrgut .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vskamsezvp .gt_summary_row {
+#hmczpfrgut .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2986,16 +3464,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vskamsezvp .gt_first_summary_row {
+#hmczpfrgut .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_first_summary_row.thick {
+#hmczpfrgut .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vskamsezvp .gt_last_summary_row {
+#hmczpfrgut .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3005,7 +3483,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_grand_summary_row {
+#hmczpfrgut .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3015,7 +3493,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vskamsezvp .gt_first_grand_summary_row {
+#hmczpfrgut .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3025,7 +3503,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_last_grand_summary_row_top {
+#hmczpfrgut .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3035,11 +3513,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_striped {
+#hmczpfrgut .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vskamsezvp .gt_table_body {
+#hmczpfrgut .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3048,7 +3526,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_footnotes {
+#hmczpfrgut .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3062,7 +3540,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_footnote {
+#hmczpfrgut .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3071,7 +3549,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vskamsezvp .gt_sourcenotes {
+#hmczpfrgut .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3085,7 +3563,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#vskamsezvp .gt_sourcenote {
+#hmczpfrgut .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3093,72 +3571,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vskamsezvp .gt_left {
+#hmczpfrgut .gt_left {
   text-align: left;
 }
 
-#vskamsezvp .gt_center {
+#hmczpfrgut .gt_center {
   text-align: center;
 }
 
-#vskamsezvp .gt_right {
+#hmczpfrgut .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vskamsezvp .gt_font_normal {
+#hmczpfrgut .gt_font_normal {
   font-weight: normal;
 }
 
-#vskamsezvp .gt_font_bold {
+#hmczpfrgut .gt_font_bold {
   font-weight: bold;
 }
 
-#vskamsezvp .gt_font_italic {
+#hmczpfrgut .gt_font_italic {
   font-style: italic;
 }
 
-#vskamsezvp .gt_super {
+#hmczpfrgut .gt_super {
   font-size: 65%;
 }
 
-#vskamsezvp .gt_footnote_marks {
+#hmczpfrgut .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vskamsezvp .gt_asterisk {
+#hmczpfrgut .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vskamsezvp .gt_indent_1 {
+#hmczpfrgut .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vskamsezvp .gt_indent_2 {
+#hmczpfrgut .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vskamsezvp .gt_indent_3 {
+#hmczpfrgut .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vskamsezvp .gt_indent_4 {
+#hmczpfrgut .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vskamsezvp .gt_indent_5 {
+#hmczpfrgut .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vskamsezvp .katex-display {
+#hmczpfrgut .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vskamsezvp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hmczpfrgut div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3166,14 +3644,14 @@ ul.task-list li input[type="checkbox"] {
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<td colspan="2" class="gt_heading gt_title gt_font_normal">Pot 3</td>
+<td colspan="2" class="gt_heading gt_title gt_font_normal" style="font-weight: bold">Pot 3</td>
 </tr>
 <tr class="gt_heading even">
 <td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Mean: 1744 SD: 72</td>
 </tr>
 <tr class="gt_col_headings header">
-<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Team</th>
-<th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Elo</th>
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Elo</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -3219,23 +3697,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="cell-output-display">
-<div id="xyryocowbl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xyryocowbl table {
+<div id="dkcdqiknsg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dkcdqiknsg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xyryocowbl thead, #xyryocowbl tbody, #xyryocowbl tfoot, #xyryocowbl tr, #xyryocowbl td, #xyryocowbl th {
+#dkcdqiknsg thead, #dkcdqiknsg tbody, #dkcdqiknsg tfoot, #dkcdqiknsg tr, #dkcdqiknsg td, #dkcdqiknsg th {
   border-style: none;
 }
 
-#xyryocowbl p {
+#dkcdqiknsg p {
   margin: 0;
   padding: 0;
 }
 
-#xyryocowbl .gt_table {
+#dkcdqiknsg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3261,12 +3739,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_caption {
+#dkcdqiknsg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xyryocowbl .gt_title {
+#dkcdqiknsg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3278,7 +3756,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#xyryocowbl .gt_subtitle {
+#dkcdqiknsg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3290,7 +3768,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#xyryocowbl .gt_heading {
+#dkcdqiknsg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3302,13 +3780,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_bottom_border {
+#dkcdqiknsg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_col_headings {
+#dkcdqiknsg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3323,7 +3801,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_col_heading {
+#dkcdqiknsg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3343,7 +3821,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#xyryocowbl .gt_column_spanner_outer {
+#dkcdqiknsg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3355,15 +3833,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#xyryocowbl .gt_column_spanner_outer:first-child {
+#dkcdqiknsg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xyryocowbl .gt_column_spanner_outer:last-child {
+#dkcdqiknsg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xyryocowbl .gt_column_spanner {
+#dkcdqiknsg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3375,11 +3853,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#xyryocowbl .gt_spanner_row {
+#dkcdqiknsg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xyryocowbl .gt_group_heading {
+#dkcdqiknsg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3405,7 +3883,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#xyryocowbl .gt_empty_group_heading {
+#dkcdqiknsg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3420,15 +3898,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#xyryocowbl .gt_from_md > :first-child {
+#dkcdqiknsg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xyryocowbl .gt_from_md > :last-child {
+#dkcdqiknsg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xyryocowbl .gt_row {
+#dkcdqiknsg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3447,7 +3925,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#xyryocowbl .gt_stub {
+#dkcdqiknsg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3460,7 +3938,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xyryocowbl .gt_stub_row_group {
+#dkcdqiknsg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3474,15 +3952,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#xyryocowbl .gt_row_group_first td {
+#dkcdqiknsg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xyryocowbl .gt_row_group_first th {
+#dkcdqiknsg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xyryocowbl .gt_summary_row {
+#dkcdqiknsg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3492,16 +3970,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xyryocowbl .gt_first_summary_row {
+#dkcdqiknsg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_first_summary_row.thick {
+#dkcdqiknsg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xyryocowbl .gt_last_summary_row {
+#dkcdqiknsg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3511,7 +3989,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_grand_summary_row {
+#dkcdqiknsg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3521,7 +3999,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xyryocowbl .gt_first_grand_summary_row {
+#dkcdqiknsg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3531,7 +4009,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_last_grand_summary_row_top {
+#dkcdqiknsg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3541,11 +4019,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_striped {
+#dkcdqiknsg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xyryocowbl .gt_table_body {
+#dkcdqiknsg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3554,7 +4032,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_footnotes {
+#dkcdqiknsg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3568,7 +4046,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_footnote {
+#dkcdqiknsg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3577,7 +4055,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xyryocowbl .gt_sourcenotes {
+#dkcdqiknsg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3591,7 +4069,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xyryocowbl .gt_sourcenote {
+#dkcdqiknsg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3599,72 +4077,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xyryocowbl .gt_left {
+#dkcdqiknsg .gt_left {
   text-align: left;
 }
 
-#xyryocowbl .gt_center {
+#dkcdqiknsg .gt_center {
   text-align: center;
 }
 
-#xyryocowbl .gt_right {
+#dkcdqiknsg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xyryocowbl .gt_font_normal {
+#dkcdqiknsg .gt_font_normal {
   font-weight: normal;
 }
 
-#xyryocowbl .gt_font_bold {
+#dkcdqiknsg .gt_font_bold {
   font-weight: bold;
 }
 
-#xyryocowbl .gt_font_italic {
+#dkcdqiknsg .gt_font_italic {
   font-style: italic;
 }
 
-#xyryocowbl .gt_super {
+#dkcdqiknsg .gt_super {
   font-size: 65%;
 }
 
-#xyryocowbl .gt_footnote_marks {
+#dkcdqiknsg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xyryocowbl .gt_asterisk {
+#dkcdqiknsg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xyryocowbl .gt_indent_1 {
+#dkcdqiknsg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xyryocowbl .gt_indent_2 {
+#dkcdqiknsg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xyryocowbl .gt_indent_3 {
+#dkcdqiknsg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xyryocowbl .gt_indent_4 {
+#dkcdqiknsg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xyryocowbl .gt_indent_5 {
+#dkcdqiknsg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xyryocowbl .katex-display {
+#dkcdqiknsg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xyryocowbl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dkcdqiknsg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3672,14 +4150,14 @@ ul.task-list li input[type="checkbox"] {
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<td colspan="2" class="gt_heading gt_title gt_font_normal">Pot 4</td>
+<td colspan="2" class="gt_heading gt_title gt_font_normal" style="font-weight: bold">Pot 4</td>
 </tr>
 <tr class="gt_heading even">
 <td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Mean: 1653 SD: 174.7</td>
 </tr>
 <tr class="gt_col_headings header">
-<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Team</th>
-<th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Elo</th>
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Elo</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -3725,28 +4203,27 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>The Elo ratings above are taken from the start of the league phase. The smallest standard deviation is in Pot 1, while the largest by far is Pot 4. Kairat Almaty of Kazakhstan were ranked as comfortably the worst team in Pot 4, more than 200 Elo points worse than Qarabag. And sure enough, Kairat finished rock bottom in 36th place with a solo point gained at home to Pafos FC of Cyprus.</p>
-<p>It is not hard to see why PSG’s schedule was ranked the hardest. They played the hardest two teams from Pot 4 (Newcastle and Athletic Club), and the second and third hardest teams from Pot 3 (Spurs and Sporting).</p>
-<p><em>Also show Elo by start date and end date and see which teams changed most.</em></p>
+<p>So it is the teams drawn from Pot 4 that will determine your schedule difficulty more than anything else. Playing Newcastle is a significantly more difficult assignment than Kairat, who finished rock bottom in 36th place with a single point, gained at home to Pafos FC of Cyprus.</p>
+<p>An additionally layer of luck comes from opponents who end up being better or worse than they appeared when the draw was made. This just seems like an unavoidable feature of a competition where teams only play a subset of other teams. Comparing the Elo rating from the start to the end of the league phase, the biggest improvers were Arsenal, and the biggest decline was from Monaco.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dyorkiscyl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dyorkiscyl table {
+<div id="wfbpdhssne" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wfbpdhssne table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dyorkiscyl thead, #dyorkiscyl tbody, #dyorkiscyl tfoot, #dyorkiscyl tr, #dyorkiscyl td, #dyorkiscyl th {
+#wfbpdhssne thead, #wfbpdhssne tbody, #wfbpdhssne tfoot, #wfbpdhssne tr, #wfbpdhssne td, #wfbpdhssne th {
   border-style: none;
 }
 
-#dyorkiscyl p {
+#wfbpdhssne p {
   margin: 0;
   padding: 0;
 }
 
-#dyorkiscyl .gt_table {
+#wfbpdhssne .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3772,12 +4249,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_caption {
+#wfbpdhssne .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dyorkiscyl .gt_title {
+#wfbpdhssne .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3789,7 +4266,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#dyorkiscyl .gt_subtitle {
+#wfbpdhssne .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3801,7 +4278,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#dyorkiscyl .gt_heading {
+#wfbpdhssne .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3813,13 +4290,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_bottom_border {
+#wfbpdhssne .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_col_headings {
+#wfbpdhssne .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3834,7 +4311,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_col_heading {
+#wfbpdhssne .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3854,7 +4331,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#dyorkiscyl .gt_column_spanner_outer {
+#wfbpdhssne .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3866,15 +4343,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#dyorkiscyl .gt_column_spanner_outer:first-child {
+#wfbpdhssne .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dyorkiscyl .gt_column_spanner_outer:last-child {
+#wfbpdhssne .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dyorkiscyl .gt_column_spanner {
+#wfbpdhssne .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3886,11 +4363,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#dyorkiscyl .gt_spanner_row {
+#wfbpdhssne .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dyorkiscyl .gt_group_heading {
+#wfbpdhssne .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3916,7 +4393,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#dyorkiscyl .gt_empty_group_heading {
+#wfbpdhssne .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3931,15 +4408,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#dyorkiscyl .gt_from_md > :first-child {
+#wfbpdhssne .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dyorkiscyl .gt_from_md > :last-child {
+#wfbpdhssne .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dyorkiscyl .gt_row {
+#wfbpdhssne .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3958,7 +4435,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#dyorkiscyl .gt_stub {
+#wfbpdhssne .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3971,7 +4448,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dyorkiscyl .gt_stub_row_group {
+#wfbpdhssne .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3985,15 +4462,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#dyorkiscyl .gt_row_group_first td {
+#wfbpdhssne .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dyorkiscyl .gt_row_group_first th {
+#wfbpdhssne .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dyorkiscyl .gt_summary_row {
+#wfbpdhssne .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4003,16 +4480,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dyorkiscyl .gt_first_summary_row {
+#wfbpdhssne .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_first_summary_row.thick {
+#wfbpdhssne .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dyorkiscyl .gt_last_summary_row {
+#wfbpdhssne .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4022,7 +4499,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_grand_summary_row {
+#wfbpdhssne .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4032,7 +4509,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dyorkiscyl .gt_first_grand_summary_row {
+#wfbpdhssne .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4042,7 +4519,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_last_grand_summary_row_top {
+#wfbpdhssne .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4052,11 +4529,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_striped {
+#wfbpdhssne .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dyorkiscyl .gt_table_body {
+#wfbpdhssne .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4065,7 +4542,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_footnotes {
+#wfbpdhssne .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4079,7 +4556,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_footnote {
+#wfbpdhssne .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4088,7 +4565,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dyorkiscyl .gt_sourcenotes {
+#wfbpdhssne .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4102,7 +4579,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dyorkiscyl .gt_sourcenote {
+#wfbpdhssne .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4110,72 +4587,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dyorkiscyl .gt_left {
+#wfbpdhssne .gt_left {
   text-align: left;
 }
 
-#dyorkiscyl .gt_center {
+#wfbpdhssne .gt_center {
   text-align: center;
 }
 
-#dyorkiscyl .gt_right {
+#wfbpdhssne .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dyorkiscyl .gt_font_normal {
+#wfbpdhssne .gt_font_normal {
   font-weight: normal;
 }
 
-#dyorkiscyl .gt_font_bold {
+#wfbpdhssne .gt_font_bold {
   font-weight: bold;
 }
 
-#dyorkiscyl .gt_font_italic {
+#wfbpdhssne .gt_font_italic {
   font-style: italic;
 }
 
-#dyorkiscyl .gt_super {
+#wfbpdhssne .gt_super {
   font-size: 65%;
 }
 
-#dyorkiscyl .gt_footnote_marks {
+#wfbpdhssne .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dyorkiscyl .gt_asterisk {
+#wfbpdhssne .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dyorkiscyl .gt_indent_1 {
+#wfbpdhssne .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dyorkiscyl .gt_indent_2 {
+#wfbpdhssne .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dyorkiscyl .gt_indent_3 {
+#wfbpdhssne .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dyorkiscyl .gt_indent_4 {
+#wfbpdhssne .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dyorkiscyl .gt_indent_5 {
+#wfbpdhssne .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dyorkiscyl .katex-display {
+#wfbpdhssne .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dyorkiscyl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wfbpdhssne div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4183,11 +4660,11 @@ ul.task-list li input[type="checkbox"] {
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
-<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Team</th>
-<th id="Pot" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pot</th>
-<th id="Start-Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Start Elo</th>
-<th id="End-Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">End Elo</th>
-<th id="Elo-Change" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Elo Change</th>
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Pot" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Pot</th>
+<th id="Start-Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Start Elo</th>
+<th id="End-Elo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">End Elo</th>
+<th id="Elo-Change" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Elo Change</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -4449,12 +4926,1171 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p><em>But mention that getting a bad outlier in pot 4 (Kairat Almaty) may not be such a big advantage as the Elo difference implies, because if you are a good team then you should beat the pot 4 teams anyway. So it depends how good you are. Use Elo odds conversion to show expected points for each scheduled based on being a good, average, or bad team. Also whether you play the shit teams at home or away makes a difference.</em></p>
-<p><em>English clubs advantage? Yes mainly because they avoid the best team in each pot. And this is likely to continue because of the strength of the PL, good teams will miss out on Europe some years and it is harder to rack up annual coefficient points compared to teams that qualify every year. But with teams now playing against teams from their own pot, what really is the point of this? There is no benefit to having a high coefficient. </em></p>
-<p>Current coefficients: https://www.uefa.com/nationalassociations/uefarankings/club/?year=2026</p>
-<p><em>How does this compare with the old format? Compare new format with previous X years of old format. Look at the variance in team schedules. It used to be only 3 opponents so presumably much higher variance when you had “group of death” etc!</em></p>
+<p>Framing everything in terms of average Elo scores can feel a bit abstract. What tangible difference does this make? To help answer this, I used a model to translate Elo scores to win-lose-draw probabilities for each match. To isolate the schedule difficulty, as opposed to how good each team is, I took the median rating of the 36 teams and calculated the expected points that the median team would achieve when playing each team’s schedule. The difference between the easiest schedule (Pafos FC) and the hardest (PSG) was worth around <strong>3.2 points</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="kgimsloxwx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kgimsloxwx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#kgimsloxwx thead, #kgimsloxwx tbody, #kgimsloxwx tfoot, #kgimsloxwx tr, #kgimsloxwx td, #kgimsloxwx th {
+  border-style: none;
+}
+
+#kgimsloxwx p {
+  margin: 0;
+  padding: 0;
+}
+
+#kgimsloxwx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#kgimsloxwx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kgimsloxwx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kgimsloxwx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kgimsloxwx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kgimsloxwx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kgimsloxwx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kgimsloxwx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kgimsloxwx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#kgimsloxwx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#kgimsloxwx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kgimsloxwx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kgimsloxwx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kgimsloxwx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kgimsloxwx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kgimsloxwx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#kgimsloxwx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#kgimsloxwx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#kgimsloxwx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kgimsloxwx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#kgimsloxwx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kgimsloxwx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kgimsloxwx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kgimsloxwx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kgimsloxwx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kgimsloxwx .gt_left {
+  text-align: left;
+}
+
+#kgimsloxwx .gt_center {
+  text-align: center;
+}
+
+#kgimsloxwx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kgimsloxwx .gt_font_normal {
+  font-weight: normal;
+}
+
+#kgimsloxwx .gt_font_bold {
+  font-weight: bold;
+}
+
+#kgimsloxwx .gt_font_italic {
+  font-style: italic;
+}
+
+#kgimsloxwx .gt_super {
+  font-size: 65%;
+}
+
+#kgimsloxwx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#kgimsloxwx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#kgimsloxwx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#kgimsloxwx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#kgimsloxwx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#kgimsloxwx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#kgimsloxwx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#kgimsloxwx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#kgimsloxwx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="total_exp_pts_p50" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Expected Points</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Pafos FC</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Olympiacos</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Villarreal</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Real Madrid</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Chelsea</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Tottenham Hotspur</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">FC København</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Juventus</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Arsenal</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Napoli</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">12.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Ajax</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Monaco</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Barcelona</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Qarabag FK</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Kairat Almaty</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Inter</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Atalanta</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Sporting CP</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Benfica</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Liverpool</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Galatasaray</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Borussia Dortmund</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Manchester City</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Eintracht Frankfurt</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Club Brugge</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">11.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Marseille</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Bayer Leverkusen</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Bodø/Glimt</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Slavia Prague</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Bayern München</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Atletico Madrid</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Athletic Club</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">Newcastle United</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Union St.Gilloise</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="team">PSV Eindhoven</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">10.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="team">Paris Saint-Germain</td>
+<td class="gt_row gt_right" headers="total_exp_pts_p50">9.6</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="does-it-matter-who-you-play-at-home-or-away" class="level2">
+<h2 class="anchored" data-anchor-id="does-it-matter-who-you-play-at-home-or-away">Does it matter who you play at home or away?</h2>
+<p>Another wrinkle to the Swiss model format is because teams only play their opponent once, the home &amp; away fixtures will not necessarily balance out. Each team plays one home match and one away match against teams from each of the four pots, but does it make a difference which games are at home and which are away?</p>
+<p>Imagine a team getting a polarised draw where they play the best and worst team from each of the four pots (we will ignore any country restrictions for now). So that is Liverpool &amp; Dortmund from Pot 1, Arsenal &amp; Club Brugge from Pot 2, Napoli &amp; Bodø/Glimt from Pot 3, and Newcastle &amp; Kairat Almaty from Pot 4.</p>
+<p>We will simulate two extremes: firstly, where they get all the hardest teams at home and easiest teams away (“hard home”), and secondly where they get all the hardest teams away and the easiest ones at home (“easy home”).</p>
+<p>How would this affect a team’s expected points? Does it depend which team is being considered? One might hypothesise that a strong team playing the easy teams at home is a bit of a waste, since they would still fancy beating them away; conversely, the weaker teams might prefer to play easier teams at home, and write off the very difficult away games.</p>
+<p>To represent a strong team, an average team and a weak team I used the 90th, 50th and 10th percentile Elo ratings from this year’s 36 teams, and gave them the <em>hard home</em> and <em>easy home</em> schedules.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="faeaxmtwhl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#faeaxmtwhl table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#faeaxmtwhl thead, #faeaxmtwhl tbody, #faeaxmtwhl tfoot, #faeaxmtwhl tr, #faeaxmtwhl td, #faeaxmtwhl th {
+  border-style: none;
+}
+
+#faeaxmtwhl p {
+  margin: 0;
+  padding: 0;
+}
+
+#faeaxmtwhl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#faeaxmtwhl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#faeaxmtwhl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#faeaxmtwhl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#faeaxmtwhl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#faeaxmtwhl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#faeaxmtwhl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#faeaxmtwhl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#faeaxmtwhl .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#faeaxmtwhl .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#faeaxmtwhl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#faeaxmtwhl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#faeaxmtwhl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#faeaxmtwhl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#faeaxmtwhl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#faeaxmtwhl .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#faeaxmtwhl .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#faeaxmtwhl .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#faeaxmtwhl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#faeaxmtwhl .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#faeaxmtwhl .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#faeaxmtwhl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#faeaxmtwhl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#faeaxmtwhl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#faeaxmtwhl .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#faeaxmtwhl .gt_left {
+  text-align: left;
+}
+
+#faeaxmtwhl .gt_center {
+  text-align: center;
+}
+
+#faeaxmtwhl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#faeaxmtwhl .gt_font_normal {
+  font-weight: normal;
+}
+
+#faeaxmtwhl .gt_font_bold {
+  font-weight: bold;
+}
+
+#faeaxmtwhl .gt_font_italic {
+  font-style: italic;
+}
+
+#faeaxmtwhl .gt_super {
+  font-size: 65%;
+}
+
+#faeaxmtwhl .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#faeaxmtwhl .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#faeaxmtwhl .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#faeaxmtwhl .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#faeaxmtwhl .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#faeaxmtwhl .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#faeaxmtwhl .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#faeaxmtwhl .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#faeaxmtwhl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="ref_team" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team Percentile</th>
+<th id="scenario" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Schedule Type</th>
+<th id="mean_points" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Points</th>
+<th id="sd_points" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">St Dev</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="ref_team">90th</td>
+<td class="gt_row gt_center" headers="scenario">easy home</td>
+<td class="gt_row gt_right" headers="mean_points">14.3</td>
+<td class="gt_row gt_right" headers="sd_points">3.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="ref_team">90th</td>
+<td class="gt_row gt_center" headers="scenario">hard home</td>
+<td class="gt_row gt_right" headers="mean_points">14.9</td>
+<td class="gt_row gt_right" headers="sd_points">3.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="ref_team">50th</td>
+<td class="gt_row gt_center" headers="scenario">easy home</td>
+<td class="gt_row gt_right" headers="mean_points">11.2</td>
+<td class="gt_row gt_right" headers="sd_points">3.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="ref_team">50th</td>
+<td class="gt_row gt_center" headers="scenario">hard home</td>
+<td class="gt_row gt_right" headers="mean_points">11.3</td>
+<td class="gt_row gt_right" headers="sd_points">3.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="ref_team">10th</td>
+<td class="gt_row gt_center" headers="scenario">easy home</td>
+<td class="gt_row gt_right" headers="mean_points">8.3</td>
+<td class="gt_row gt_right" headers="sd_points">2.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="ref_team">10th</td>
+<td class="gt_row gt_center" headers="scenario">hard home</td>
+<td class="gt_row gt_right" headers="mean_points">7.9</td>
+<td class="gt_row gt_right" headers="sd_points">3.2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The hypothesis was correct. The strong 90th-percentile team benefits by having the harder teams at home and easier teams away (0.6 point difference) while the weak 10th-percentile team prefers having the easier teams at home and the hard ones away (0.4 point difference). The standard deviation is higher for all teams when playing the hard games at home and easy ones away. This makes sense, as lopsided games (big home favourite) will have expected points close to 3 and 0 with the same result most of the time.</p>
+</section>
+<section id="does-it-favour-the-english-teams-and-how" class="level2">
+<h2 class="anchored" data-anchor-id="does-it-favour-the-english-teams-and-how">Does it favour the English teams? And how?</h2>
+<p>We’ve established that the draw in any particular season favours some teams more than others, and that the home/away arrangement of fixtures also makes a difference. But does the format <strong>systematically</strong> favour English teams?</p>
+<p>Trivially, the key to an easy draw is avoiding the hardest teams in each pot. If the hardest teams in each pot are from your country, you avoid playing them. Evidently, in 2025-26 this does favour English teams as they had the highest-rated teams in three of the four pots, and the second-highest team in the other one. But why was this the case? What is even the point of pots in the first place?</p>
+<p>In statistical modeling, many problems boil down to a <strong>bias-variance</strong> trade-off. A model with high bias fails to capture the true signal correctly (underfitting) while a model with high variance may vary dramatically based on the sample chosen (overfitting).</p>
+<p>A Champions League draw with zero bias would be very simple to accomplish: an open, random draw where anyone can play anyone, with no restrictions. This is fair to all, but it carries an inherent risk because a team could draw lots of very weak opponents, while another team draws lots of very strong opponents. The variance in such a draw would be very high.</p>
+<p>And this is why we have pots. Competition organisers make huge revenue from TV contracts, and they want to keep the big teams involved as long as possible. They wouldn’t want to lose a team like <strong>Real Madrid</strong> early in the competition because they randomly drew a hard set of fixtures. There is also the argument that stronger teams deserve to avoid a tough draw due to past performance, which is debatable.</p>
+<p>Under the old Champions League format, or the format used for World Cups and the like, allocating teams into pots achieves two goals. Firstly, it helps to reduce the variance by segregating teams based on their coefficient, and secondly, it awards stronger teams an easier schedule (because if you are in Pot 1, you only play teams from Pots 2, 3 and 4).</p>
+<p>The Swiss model further reduces variance, because having eight random opponents naturally has a lower dispersion of average difficulty than having three random opponents. But since teams are drawn against two opponents from each pot, regardless of which pot they are in themselves, it negates the easier schedule advantage for the teams in Pot 1.</p>
+<p>In fact, it now becomes an advantage to be in a lower pot! Imagine moving Man City to Pot 4 and switching Galatasaray to Pot 1 in their place. City’s average Pot 1 opponent just got much easier, while their average Pot 4 opponent barely changed (because they can’t play themselves!). And since teams cannot play against other teams from the same country, the list of potential opponents is the same for all the English teams, meaning when City get moved to Pot 4 it makes the average schedule easier for <em>all</em> the English teams.</p>
+<p>Pots are determined by <a href="https://www.uefa.com/nationalassociations/uefarankings/club/?year=2026">UEFA club coefficients</a> which disproportionately reward quantity rather than quality. A season with no European football results in 0 points, but does not reduce the denominator (five seasons). So in deep leagues like the Premier League, strong teams will sometimes miss out on Europe after a bad season, reducing their coefficient when they return. Even Arsenal failed to reach Pot 1 this year because of a single Europe-less season in 2021-22.</p>
+<p>This approach to determining pots means the Premier League can expect to enjoy the same Champions League draw bias in future seasons. As things stand, Aston Villa, Manchester United and Chelsea are all in the top five of the PL but would not rank in Pot 1 for next year’s CL draw.</p>
+</section>
+<section id="a-possible-solution" class="level2">
+<h2 class="anchored" data-anchor-id="a-possible-solution">A possible solution</h2>
+<p>The bias itself isn’t enormous - as shown earlier, English teams actually had harder-than-average fixtures in 2024-25. And a big argument in favour of the Swiss model is that draw advantages &amp; disadvantages are dampened by virtue of having eight different opponents.</p>
+<p>However, if one wished to neutralise the pro-English bias, what would be the best approach? The fairest and most chaotic approach is the completely open random draw. They will never do that, of course.</p>
+<p>An obvious suggestion is to remove the rule that says teams from the same country cannot play one another in the league phase - not least because those games would be a lot of fun! That would reduce the English teams’ edge, but it would still leave the problem of teams like Newcastle being better off in Pot 4 than a higher pot.</p>
+<p>The <strong>UEFA coefficients</strong> themselves seem to be the problem here. The coefficients are biased towards teams from weaker leagues who qualify for Europe every year, and punish teams from strong leagues who sometimes miss out. That was fine under the old format, where a high coefficient was rewarded with an easier draw (assuming UEFA wish to help the smaller leagues). But under the Swiss model the logic has now flipped, and a <em>lower</em> coefficient is rewarded.</p>
+<p>Assuming UEFA are not going to start using an Elo-style system to rank teams, there is a simple solution to this problem. Instead of the present club-specific coefficients, UEFA should use a ranking based on the league and the qualification spot of the team. So if Premier League teams perform well then the Premier League coefficient goes up, but there is a fixed hierarchy so that the PL 1st place team has a higher coefficient than 2nd, then 3rd, and so on. This would do a better job of reflecting actual teams’ current strengths, which is the only purpose of the pots under the Swiss model so that schedules can be distributed evenly.</p>
+<p>Finally, it is worth reiterating that these are relatively minor quibbles. The old CL format was far more prone to draw bias and variance - for example, in the final season of the format there was a classic <strong>group of death</strong> containing PSG, Borussia Dortmund, AC Milan and Newcastle.</p>
+<p>Some will argue that this throws up some great head-to-head matches with higher jeopardy, which is true but there were also a lot of dead rubbers. I think the Swiss model is a reasonable step forward, perhaps with a few more tweaks required.</p>
+<div class="data-footer">
+<p><strong>Data Sources</strong><br>
+I gather match data from a variety of public sources. Please check out these excellent websites:</p>
+<ul>
+<li><a href="https://clubelo.com">Club Elo Ratings</a></li>
+<li><a href="https://www.espn.com/soccer/">ESPN</a></li>
+<li><a href="https://fbref.com">FBref</a></li>
+<li><a href="https://fotmob.com">FotMob</a></li>
+<li><a href="https://transfermarkt.com">Transfermarkt</a></li>
+<li><a href="https://understat.com">Understat</a></li>
+<li><a href="https://whoscored.com">WhoScored</a></li>
+<li><a href="http://eloratings.net/">World Football Elo Ratings</a></li>
+</ul>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+</div>
+<p>© 2026 John Knight. All rights reserved.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

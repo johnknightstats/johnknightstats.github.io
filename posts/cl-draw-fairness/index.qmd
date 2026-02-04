@@ -5,7 +5,7 @@ date: 2026-02-04
 date-format: "D MMMM YYYY"
 description: "Calculating each team's strength of schedule and a proposal to improve the format"
 categories: ["football", "statistics", "Elo ratings", "champions league"]
-image: cl_logo.png
+image: cl_logo_with_table.png
 format:
   html:
     title-block-style: default

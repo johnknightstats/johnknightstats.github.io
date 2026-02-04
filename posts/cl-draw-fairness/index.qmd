@@ -32,8 +32,13 @@ library(readr)
 library(dplyr)
 library(gt)
 
-IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
+# --- Datawrapper output folder (used throughout) ---
 OUT_DIR <- "data/datawrapper"
+dir.create(OUT_DIR, recursive=TRUE, showWarnings=FALSE)
+```
+
+```{r}
+IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
 OUT_CSV <- file.path(OUT_DIR, "ucl_mean_opponent_elo_by_season_datawrapper.csv")
 
 df_ucl <- read_csv(IN_CSV, show_col_types = FALSE)
@@ -49,18 +54,15 @@ df_dw <- df_ucl %>%
   ) %>%
   mutate(`Avg. Opponent Elo`=round(`Avg. Opponent Elo`, 0))
 
-dir.create(OUT_DIR, recursive=TRUE, showWarnings=FALSE)
 write_csv(df_dw, OUT_CSV)
 
 # Muted pastel fills (inspired by your palette)
-fill_2425 <- "#D9E2EA"  # muted light blue (from #233D4D)
-fill_2526 <- "#FFE3C7"  # muted light orange (from #FF9F1C)
+fill_2425 <- "#D9E2EA"
+fill_2526 <- "#FFE3C7"
 
-# List of English teams for bolding
 english_teams <- c("Liverpool", "Newcastle United", "Manchester City",
                    "Arsenal", "Chelsea", "Aston Villa", "Tottenham Hotspur")
 
-# Calculate mean and standard deviation
 cl_sd <- round(sd(df_ucl$mean_opp_elo), 1)
 cl_mean <- round(mean(df_ucl$mean_opp_elo), 0)
 
@@ -75,7 +77,6 @@ df_dw %>%
     style=cell_text(weight="bold"),
     locations=cells_column_labels(columns=everything())
   ) %>%
-  # IMPORTANT: apply fill to ALL columns in those rows
   tab_style(
     style=cell_fill(color=fill_2425),
     locations=cells_body(
@@ -113,13 +114,14 @@ There were seven teams who got an easier set of fixtures than Tottenham, includi
 English teams as a whole did have an easier schedule in 2025-26 compared to the rest, but in 2024-25 the opposite was true.
 
 ```{r}
+# --- English vs non-English means (CSV + gt) ---
+OUT_CSV <- file.path(OUT_DIR, "ucl_mean_opp_elo_english_vs_nonenglish_by_season_datawrapper.csv")
+
 ucl_2425 <- df_ucl[df_ucl$season == "2024/2025",]
 ucl_2526 <- df_ucl[df_ucl$season == "2025/2026",]
 
-overall_mean_2425 <- mean(ucl_2425$mean_opp_elo)
 eng_mean_2425 <- mean(ucl_2425$mean_opp_elo[ucl_2425$team %in% english_teams])
 non_eng_mean_2425 <- mean(ucl_2425$mean_opp_elo[!(ucl_2425$team %in% english_teams)])
-overall_mean_2526 <- mean(ucl_2526$mean_opp_elo)
 eng_mean_2526 <- mean(ucl_2526$mean_opp_elo[ucl_2526$team %in% english_teams])
 non_eng_mean_2526 <- mean(ucl_2526$mean_opp_elo[!(ucl_2526$team %in% english_teams)])
 
@@ -128,6 +130,15 @@ cl_means <- data.frame(
   season_2425 = c(eng_mean_2425, non_eng_mean_2425),
   season_2526 = c(eng_mean_2526, non_eng_mean_2526)
 )
+
+# match displayed rounding (0 dp)
+cl_means_dw <- cl_means %>%
+  mutate(
+    season_2425 = round(season_2425, 0),
+    season_2526 = round(season_2526, 0)
+  )
+
+write_csv(cl_means_dw, OUT_CSV)
 
 cl_means %>%
   gt() %>%
@@ -149,15 +160,16 @@ cl_means %>%
     columns = c(season_2425, season_2526)
   )
 
-
 ```
 
 It's ironic that the team with the hardest draw of anyone in 2025-26 were the defending champions **Paris St-Germain**. Maybe that's harsh after winning the thing...or maybe that's good handicapping?
 
-The difficulty in PSG's schedule stems largely from the teams they drew in pots three and four. From pot three they played Spurs (1821) and Sporting (1823) and from pot four they got Newcastle (1872) and Athletic Bilbao (1733), the latter being PSG's only opponent with below-average Elo.
+The difficulty in PSG's schedule stems largely from the teams they drew in pots 3 and 4. From Pot 3 they played Spurs (1821) and Sporting (1823) and from Pot 4 they got Newcastle (1872) and Athletic Bilbao (1733), the latter being PSG's only opponent with below-average Elo.
 
 ```{r}
+# --- PSG opponent list (CSV + gt) ---
 IN_CSV  <- "data/psg_opponents_elo_2025_2026.csv"
+OUT_CSV <- file.path(OUT_DIR, "psg_opponents_elo_2025_2026_datawrapper.csv")
 
 psg <- read.csv(IN_CSV) %>%
   select(c(match_date, psg_side, opponent, opponent_elo_matchday)) %>%
@@ -174,19 +186,22 @@ psg$`Venue` <- case_when(
   psg$`Venue` == "away" ~ "A"
 )
 
+write_csv(psg, OUT_CSV)
+
 psg %>% gt() %>%
   tab_style(
     style=cell_text(weight="bold"),
     locations=cells_column_labels(columns=everything())
   ) %>%
-    cols_align(
+  cols_align(
     align = "center",
     columns = c(`Date`, `Venue`)
   ) %>%
   tab_style(
     style = cell_text(align = "center"),
     locations = cells_column_labels(columns = c(`Date`, `Venue`))
-  ) 
+  )
+
 ```
 
 This just seems to be bad luck on PSG's part rather than a direct result of their position in the draw. Whenever teams are divided into pots based on some arbitrary ranking system, there tend to be a few big outliers. These outliers are generally in the lower pots, although in the **World Cup** there is often the additional wrinkle of weak host nations being placed into the top pot alongside the elite teams.
@@ -196,6 +211,7 @@ Below we can see the four pots from the 2025/26 Champions League draw, with Elo 
 Meanwhile, Pot 4 had by far the highest standard deviation. Even without Kairat Almaty, the difference between Newcastle and the next-worst team, Qarabag, is bigger than the difference between the best and worst teams in any other pot.
 
 ```{r}
+# --- Pots (4 CSVs + 4 gt tables) ---
 IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
 
 pots <- read.csv(IN_CSV) %>%
@@ -208,59 +224,68 @@ pots <- read.csv(IN_CSV) %>%
   ) %>%
   arrange(-Elo)
 
-pots$`Elo` <- pots$`Elo` %>% round(0)
+pots$`Elo` <- round(pots$`Elo`, 0)
 
 pot_tbls <- list()
 pot_start_means <- c()
 pot_start_sds <- c()
 
 for (pot in 1:4) {
-  pot_df <- pots %>% filter(as.numeric(Pot) == pot) %>%
+  pot_df <- pots %>%
+    filter(as.numeric(Pot) == pot) %>%
     select(-Pot)
+
+  # write csv for this pot
+  OUT_CSV <- file.path(OUT_DIR, paste0("ucl_pot_", pot, "_teams_elo_start_2025_2026_datawrapper.csv"))
+  write_csv(pot_df, OUT_CSV)
+
   pot_start_means <- c(pot_start_means, mean(pot_df$`Elo`))
   pot_start_sds <- c(pot_start_sds, sd(pot_df$`Elo`))
   pot_tbls[[pot]] <- pot_df
 }
 
 gt(pot_tbls[[1]]) %>%
-tab_header(title="Pot 1", subtitle = paste("Mean:",
-                                           round(pot_start_means[[1]], 0),
-                                           "SD:",
-                                           round(pot_start_sds[[1]], 1))) %>%
+  tab_header(title="Pot 1", subtitle = paste("Mean:",
+                                            round(pot_start_means[[1]], 0),
+                                            "SD:",
+                                            round(pot_start_sds[[1]], 1))) %>%
   tab_style(
     style=cell_text(weight="bold"),
     locations=list(cells_column_labels(columns=everything()),
-                cells_title(groups="title"))
+                   cells_title(groups="title"))
   )
+
 gt(pot_tbls[[2]]) %>%
-tab_header(title="Pot 2", subtitle = paste("Mean:",
-                                           round(pot_start_means[[2]], 0),
-                                           "SD:",
-                                           round(pot_start_sds[[2]], 1))) %>%
+  tab_header(title="Pot 2", subtitle = paste("Mean:",
+                                            round(pot_start_means[[2]], 0),
+                                            "SD:",
+                                            round(pot_start_sds[[2]], 1))) %>%
   tab_style(
     style=cell_text(weight="bold"),
     locations=list(cells_column_labels(columns=everything()),
-                cells_title(groups="title"))
+                   cells_title(groups="title"))
   )
+
 gt(pot_tbls[[3]]) %>%
-tab_header(title="Pot 3", subtitle = paste("Mean:",
-                                           round(pot_start_means[[3]], 0),
-                                           "SD:",
-                                           round(pot_start_sds[[3]], 1))) %>%
+  tab_header(title="Pot 3", subtitle = paste("Mean:",
+                                            round(pot_start_means[[3]], 0),
+                                            "SD:",
+                                            round(pot_start_sds[[3]], 1))) %>%
   tab_style(
     style=cell_text(weight="bold"),
     locations=list(cells_column_labels(columns=everything()),
-                cells_title(groups="title"))
+                   cells_title(groups="title"))
   )
+
 gt(pot_tbls[[4]]) %>%
-tab_header(title="Pot 4", subtitle = paste("Mean:",
-                                           round(pot_start_means[[4]], 0),
-                                           "SD:",
-                                           round(pot_start_sds[[4]], 1))) %>%
+  tab_header(title="Pot 4", subtitle = paste("Mean:",
+                                            round(pot_start_means[[4]], 0),
+                                            "SD:",
+                                            round(pot_start_sds[[4]], 1))) %>%
   tab_style(
     style=cell_text(weight="bold"),
     locations=list(cells_column_labels(columns=everything()),
-                cells_title(groups="title"))
+                   cells_title(groups="title"))
   )
 
 ```
@@ -270,7 +295,9 @@ So it is the teams drawn from Pot 4 that will determine your schedule difficulty
 An additionally layer of luck comes from opponents who end up being better or worse than they appeared when the draw was made. This just seems like an unavoidable feature of a competition where teams only play a subset of other teams. Comparing the Elo rating from the start to the end of the league phase, the biggest improvers were Arsenal, and the biggest decline was from Monaco.
 
 ```{r}
+# --- Elo change table (CSV + gt) ---
 IN_CSV  <- "data/ucl_mean_opponent_elo_by_season.csv"
+OUT_CSV <- file.path(OUT_DIR, "ucl_elo_start_end_change_2025_2026_datawrapper.csv")
 
 cl_elo <- read.csv(IN_CSV) %>%
   filter(season == "2025/2026") %>%
@@ -284,30 +311,41 @@ cl_elo <- read.csv(IN_CSV) %>%
 
 cl_elo$`Start Elo` <- round(cl_elo$`Start Elo`, 0)
 cl_elo$`End Elo` <- round(cl_elo$`End Elo`, 0)
-
 cl_elo$`Elo Change` <- cl_elo$`End Elo` - cl_elo$`Start Elo`
-
 cl_elo <- cl_elo %>% arrange(-`Elo Change`)
 
+write_csv(cl_elo, OUT_CSV)
 
 gt(cl_elo) %>%
   tab_style(
     style=cell_text(weight="bold"),
     locations=cells_column_labels(columns=everything())
   )
+
 ```
 
 Framing everything in terms of average Elo scores can feel a bit abstract. What tangible difference does this make? To help answer this, I used a model to translate Elo scores to win-lose-draw probabilities for each match. To isolate the schedule difficulty, as opposed to how good each team is, I took the median rating of the 36 teams and calculated the expected points that the median team would achieve when playing each team's schedule. The difference between the easiest schedule (Pafos FC) and the hardest (PSG) was worth around **3.2 points**.
 
 ```{r}
-cl_pts <- read.csv("data/ucl_expected_points_vs_schedule.csv")
+# --- Median team expected points vs schedules (CSV + gt) ---
+IN_CSV  <- "data/ucl_expected_points_vs_schedule.csv"
+OUT_CSV <- file.path(OUT_DIR, "ucl_expected_points_median_team_vs_schedule_2025_2026_datawrapper.csv")
+
+cl_pts <- read.csv(IN_CSV)
 
 cl_2526_median <- cl_pts %>%
   filter(season == "2025/2026") %>%
   select(team, total_exp_pts_p50) %>%
   arrange(-total_exp_pts_p50)
 
-cl_2526_median %>% gt() %>%
+# match displayed rounding (1 dp)
+cl_2526_median_dw <- cl_2526_median %>%
+  mutate(total_exp_pts_p50 = round(total_exp_pts_p50, 1))
+
+write_csv(cl_2526_median_dw, OUT_CSV)
+
+cl_2526_median %>%
+  gt() %>%
   cols_label(
     team = "Team",
     total_exp_pts_p50 = "Expected Points"
@@ -319,7 +357,8 @@ cl_2526_median %>% gt() %>%
   tab_style(
     style=cell_text(weight="bold"),
     locations=cells_column_labels(columns=everything())
-  ) 
+  )
+
 ```
 
 ## Does it matter who you play at home or away?
@@ -335,7 +374,11 @@ How would this affect a team's expected points? Does it depend which team is bei
 To represent a strong team, an average team and a weak team I used the 90th, 50th and 10th percentile Elo ratings from this year's 36 teams, and gave them the *hard home* and *easy home* schedules.
 
 ```{r}
-ucl_polar <- read.csv("data/ucl_polarised_draw_extremes_summary.csv")
+# --- Polarised home/away extremes (CSV + gt) ---
+IN_CSV  <- "data/ucl_polarised_draw_extremes_summary.csv"
+OUT_CSV <- file.path(OUT_DIR, "ucl_polarised_draw_extremes_summary_datawrapper.csv")
+
+ucl_polar <- read.csv(IN_CSV)
 
 ucl_polar <- ucl_polar %>%
   select(ref_team, scenario, mean_points, sd_points) %>%
@@ -352,7 +395,17 @@ ucl_polar$scenario <- case_when(
   ucl_polar$scenario == "hard_home" ~ "hard home"
 )
 
-ucl_polar %>% gt() %>%
+# match displayed rounding (1 dp)
+ucl_polar_dw <- ucl_polar %>%
+  mutate(
+    mean_points = round(mean_points, 1),
+    sd_points = round(sd_points, 1)
+  )
+
+write_csv(ucl_polar_dw, OUT_CSV)
+
+ucl_polar %>%
+  gt() %>%
   fmt_number(
     columns = c("mean_points","sd_points"),
     decimals = 1

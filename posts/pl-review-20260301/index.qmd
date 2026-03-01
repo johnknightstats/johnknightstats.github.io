@@ -43,7 +43,7 @@ This game had a bit of a dead rubber feel to it, although I suppose **Bournemout
 
 Sunderland's opener was a good example of why contexG applies shrinkage to xG values. It's down as 0.68 on Understat and 0.9 on Fotmob, because the keeper parried a shot into the centre of the goal for an easy tap-in. But it doesn't feel like that should carry much more signal than if the shot had just gone straight in in the first place.
 
-Credit to Sunderland for staying up unexpectedly this season, but they continue to look like a team that will be along the favourites to go down next season (current season-long contexGD: **-0.55**).
+Credit to Sunderland for staying up unexpectedly this season, but they continue to look like a team that will be among the favourites to go down next season (current season-long contexGD: **-0.55**).
 
 ::: {.centered-block .max-70}
 <img src="29051_burnley_vs_brentford.png"/>
@@ -152,7 +152,7 @@ library(readr)
 library(gt)
 
 IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_premier_league.csv")
-OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contexg-intro/datawrapper")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/pl-review-20260301/datawrapper")
 OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_premier_league_2526_datawrapper.csv")
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)

@@ -1,0 +1,86 @@
+---
+title: "Why do so many transfers go badly?"
+author: "John Knight"
+draft: TRUE
+---
+
+*Intro*
+
+Below are the top 10 most expensive signings by Premier League clubs last summer (source: Transfermarkt). Go down the list and make a virtual thumbs-up or thumbs-down for each player, relative to the fee paid. I gave three thumbs up; I will guess you are somewhat similar to that.
+
+Was this an unusually difficult season for big signings? Let's take a look at the last few summers. First, 2024:
+
+Now 2023:
+
+And finally, 2022:
+
+There is obviously some variance from one year to the next, but it seems clear to me that there are more disappointments than successes among those collective buys. This is something I picked up on a few years ago and led me to develop what I call Knight's Law: For every three signings your club makes each summer, two of them will be disappointing.
+
+I know, I know, it's a pessimistic outlook. Fan podcasts will typically do a "transfer window grade" where they rate the team's signings but I have noticed that this essentially correlates with how many signings they made and how much money they spent. Why? Because every signing looks good at the time of the signing. And that is the heart of the problem!
+
+I have done a lot of thinking about this problem - you might call it a game theory perspective, or a philosphical perspective. Why do so many transfers end in disappointment? Let's think this through logically.
+
+## 1. Winner's Curse
+
+Winner's curse is a concept in economic theory. Imagine you are auctioning a painting, whose unknown true value is X pounds. A group of bidders each makes their own valuation of the painting, and an open auction is conducted to sell the painting to the highest bidder. Assuming nobody has some secret information, it is likely that the winning bidder is someone who overestimated the value of the painting.
+
+Translating this to football is not difficult - or any team sport, for that matter. A player is on the market, lots of clubs have an opinion on how good the player is, and the team that offers the most money is likely to have overestimated the player's value.
+
+## 2. Asymmetry of information
+
+Winner's curse on its own would make recruitment difficult, but there is an extra handicap for buyers. The selling team has to agree to the sale, for an agreed, fee, and they may hold more information about the player than the buying team does!
+
+A wealth of statistics are now available for modern football clubs, but these can only convey certain information: i.e. what each player did during each match. But there is plenty of information about the player that isn't known universally, but will be known by the player's current club:
+
+- Does the player have a serious injury concern that isn't publicly known?
+- Have the player's training fitness metrics gone off a cliff? 
+- Is the player carrying out the manager's instructions? Or is he selfishly padding his numbers while neglecting teamwork?
+- Is this player a coach's dream, or is he a nightmare to work with?
+- Are the team's tactics such that another player could easily slot in and do the same thing?
+
+## 3. Variable factors
+
+In his book, How to Win the Premier League, etc etc...
+
+Any player at any particular time has a series of intangible factors...healthiness, happiness off the pitch (of both himself and his family), whether the formation suits him, chemistry with teammates, and of course the notion of "form", which may be a combination of the above, plus randomness and hitherto unobservable effects.
+
+But these factors are NOT random when a player is signed. Conditional on a transfer being executed, it is reasonable to assume that the sum of these factors will be above average - hence the player's performances were good enough to attract the attention of the buyer.
+
+We can demonstrate this with a simulation...
+
+So, if recruitment is so difficult, what is the solution? Just don't ever sign any players, right? Net zero will put you above everyone else. But of course, football clubs need players, and a club will slide down the divisions if their owner decides to just put the cash in the bank and gain interest instead.
+
+Firstly, an obvious point is that everyone should downgrade their expectations of new signings. While you might hope that the new 50m signing will be the superstar that single-handedly takes your team to the next level, in reality juat nailing down a first-team spot for the next few seasons might be a decent return. 
+
+More generally, let's think about transfers on both a micro and macro level. On a micro level, one transfer at a time, the idea is to "do a Brighton". You analyse players, and you identify players that are better than the fee required to purchase that player. Keep doing that, and you will end up outperforming whatever budget is available for your size of football club. 
+
+And this is definitely true. Except, everyone else is trying to do that, and not everyone can be the best at it. Do you have an edge on the market? Are you just looking at the same statistics as everyone else? This is where the transfer market resembles the gambling market, and unsurprisingly the guys who are good at gambling (Tony Bloom at Brighton, Matthew Benham at Brentford) are also good at transfers. 
+
+Speaking of which, why does anyone ever sell to these teams? If Brighton called to say they want my 19-year-old reserve midfielder, I'm saying no and immediately taking a closer look at that player in training - or, I'm calling some big clubs telling them Tony Bloom fancies the player, and maybe they should bid a few million more? But I digress...
+
+If you aren't Bloom or Benham, the problem comes back to winner's curse: if you "win" the auction for a player, it is more likely that you simply overvalued the player relative to everyone else. 
+
+Instead let's think about transfers on a macro level. Buyers have disadvantages, in general, but what are some situations where those disadvantages are reduced?
+
+## 1. It's not a genuine auction.
+
+This is probably the most common advantage for buyers. In theory, clubs bid on a player and the highest bid wins. The reality is far from that, of course. Players largely dictate which club they would like to join, and negotiations proceed from there. Antoine Semenyo joined Manchester City for a fee of 72m euros (pounds?); the idea that a random club, say Leeds, could roll all their budget into one and bit slightly higher to secure the player, simply isn't true. The richest clubs can not only outbid other teams, they can offer things the player wants: Champions League football, medals, lots of TV exposure, etc. It's not a fair fight. 
+
+## 2. Forced sellers.
+
+## 3. Players with below-average intangibles.
+
+Now it gets interesting. Earlier we discussed how players are often signing when their intangibles are on the crest of a wave. So the obvious response is to try and sign players when their intangibles are low, and hopefully going to rise in future.
+
+How does this look, in reality? A player with low intangibles might be:
+
+- Injured a lot recently, but none of the injuries are a long-term concern.
+- Following the manager's instructions in a functional way that doesn't pad his stats at all.
+- Unhappy off the pitch, unable to settle at his curent team or in the country he moved to. 
+- Unsuited to his current team's tactics; maybe he is a centre-back with low pace playng in a high line, or a big centre forward in a team that doesn't put in many crosses.
+- Just not clicking with his current teammates.
+- Having a down year form-wise, whatever that may mean in reality.
+
+These factors are, of course, difficult to assess. There are some famous managers from history who loved a reclamation project - no one more than Brian Clough. *Talk about John Robertson, Harry Redknapp, Paolo Di Canio, etc*
+
+*Where is value found in the real world? One man's trash is another man's treasure. Rich golfer keeps buying new drivers hoping for a quick fix. Value-seeker can buy his second-hand driver that works perfectly well.*

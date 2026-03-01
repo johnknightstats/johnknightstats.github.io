@@ -1,0 +1,31 @@
+---
+title: "What is the point of models?"
+image: none
+author: "John Knight"
+date: 2026-02-08
+date-format: "D MMMM YYYY"
+description: "People love making and publishing their models. But when is this useful, and when is it pointless?"
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "statistics"]
+execute: 
+  echo: false
+  eval: true
+  message: false
+  warning: false
+engine: knitr
+editor: source
+# resources:
+---
+
+A regular source of amusement when I am watching football is when the commentators announce the Opta/Copilot win probabilities. I will routinely check this against the PUBLICLY AVAILABLE odds on the highly-liquid betting exchanges, and sometimes they are close, often they are not.
+
+When the Opta/Copilot model is different from the betting market, there are two possibilities. 1) The model is wrong. 2) The market is wrong, meaning the finest minds in betting, with very deep pockets, have somehow overlooked this publicly available model. (Spoiler alert, it's option 1).
+
+*Why do we make models?*
+
+*They are fun, and it's actually a great accomplishment to build a model that is even vaguely correct.*
+
+*Most models could be beaten simply by an experienced bettor saying "I reckon that's the price".*
+

@@ -20,6 +20,8 @@
   {
     "listing": "/posts/index.html",
     "items": [
+      "/posts/contexg-intro/index.html",
+      "/posts/what-is-the-point-of-models/index.html",
       "/posts/cl-draw-fairness/index.html",
       "/posts/elo-number-one/index.html",
       "/posts/cl-simulation/index.html",

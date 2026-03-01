@@ -1,0 +1,371 @@
+---
+title: "Introducing contexG"
+author: "John Knight"
+date: 2026-02-28
+date-format: "D MMMM YYYY"
+description: "A composite, context-adjusted rating to summarise each team's performance in a football match."
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "statistics"]
+execute: 
+  echo: false
+eval: true
+message: false
+warning: false
+engine: knitr
+editor: source
+image: 29057_wolverhampton_wanderers_vs_aston_villa.png
+# resources:
+---
+  
+I have created a new football metric called **contexG**. What is contexG, and what was the motivation for contexG? 
+
+When discussing **expected goals (xG)** among football fans, it is not uncommon to encounter a degree of scepticism. Some common complaints might be along the following lines:
+
+> "There's no way that chance was only 0.18 xG."
+>
+> "xG just doesn't reflect the great situations we were in."
+> 
+> "But we had 10 men and we were defending the lead for an hour."
+
+And these are perfectly valid criticisms! xG is just a model, which people may or may not find a use for, and that's ok. I have always advocated looking at xG alongside other statistics such as attacking possession, total shots, corners, and importantly, **game state**: Who was leading? Were there any red cards?
+
+This was the motivation for contexG. I wanted an xG-like, single score for each match that accounted for more than just the quality of the shots taken.
+
+xG models are trained by analysing a large dataset of shots and predicting whether a given shot will result in a goal, based on the location and other factors. Indirectly, football analysts have found xG useful as a proxy for team strength, because it removes the noise of finishing luck.
+
+An important difference with contexG is that I trained it on **future team performance**. Team A may have created more xG in a match than Team B, but sometimes it feels like Team B's xG contains a greater signal of being a strong team (obvious example: many people ignore xG from penalty kicks). The task was to create a model that appropriately weights match data to reflect those underlying signals based on historical data. 
+
+## Building the model
+
+There are different ways to approach this, but the method I chose was to create a walk-forward model that uses Poisson likelihood to model home and away goals, where expected goals are determined by a baseline scoring rate, home advantage, and evolving attack and defence ratings for each team. 
+
+The ratings update after each game using a learned performance signal constructed from match-level features. Originally this used the [Fotmob](https://www.fotmob.com) match variables but alas, since Fotmob recently decided to aggressively defend their API with Cloudflare (no complaints - it's their right to do that) I have switched my data source to [Understat](https://understat.com). It's a smaller set of variables but it's questionable how much incremental gain you get from adding more and more features with a high degree of collinearity, and I'm fairly happy with the model's output.
+
+So, what do I mean by *performance*? The main elements that went into the model can be categorised into three buckets:
+
+### Shots
+
+This is the xG component of the model, since every shot has an attached xG (whose value comes from Understat's xG model). My hypothesis was that high-xG chances can be quite noisy, and there's more luck involved in creating a single 0.8 xG chance than, say, eight 0.1 xG chances - think of a goalkeeper spilling a long-range shot and leaving an open goal.
+
+Using **total shots** would be an option, and I actually think that can be a useful metric - it's what we used for gambling models way back when xG wasn't public - but then that shrinks all shots to the same value, even hopeless potshots from distance. Perhaps there is a nice compromise to be found by shrinking or truncating the value of each shot? 
+
+### Dominance
+
+This is where Understat's data is a bit less rich than Fotmob's. Nonetheless, they have **Deep Completions** which, if you could just choose one stat, isn't a bad one to have. They also report **PPDA** (passes allowed per defensive action) which is arguably more of a stylistic indicator than something that obviously reflects good attacking or defensive play, but it still seemed worthy of inclusion.
+
+### Game State
+
+The important factor that raw xG always misses. Given a set of match stats, if you are then told that one team led from the 5th minute onwards, or that one team had 10 men for an hour, would it change your opinion of how the game went? Of course it would! So I calculated the game state in every minute of every match and included that in the model. Remember, this is when training the model how to update each team's rating for predicting **future** games, NOT training it on the result of the same game. 
+
+## What did the model say about the relative importance of each stat?
+
+The model was trained by first tuning hyperparameters and applying an appropriate level of regularization to prevent overfitting, and time order was preserved to prevent leakage. The final parameters were interesting but fairly intuitive.
+
+I tried various methods of transforming xG including log, square root, or just capping xG at a certain threshold. And it was the capped xG that won out - perhaps surprisingly, the optimal cap was found to be just **0.15 xG**! So in other words, every shot of 0.15 xG or higher was counted as 0.15. I'm comfortable with this result: shot volume is the most important factor, high-xG chances being quite noisy, but you also can't just count any old junk as the same. This method means the number of *at least fairly decent* shots a team can create is probably most indicative of its attacking quality. And vice versa for defence, of course.
+
+In terms of shot characteristics, the results are what you might expect: **open-play** chances are more valuable than **set-piece** chances, which are more valuable than penalties (remember, this is *after* chances have already been truncated to a 0.15 xG maximum). 
+
+**Off-target** shots are more valuable than **saved** shots, which are more valuable than **blocked** shots. I'm not sure that is the order I would have guessed, but recall that this is when comparing shots that have the same xG: perhaps a shot that gets saved betrays some information about the quality of the chance (i.e. easier to save), more so than when it goes wide or over the bar? Without knowing the full nuts & bolts of the Understat xG model, it is hard to speculate.
+
+**Deep completions** were a very strong indicator of team quality. Nobody should be surprised about this: good teams get the ball into threatening areas, and this is less noisy than whether they turn that into a big chance or a goal.
+
+**PPDA** was an interesting one, because I wasn't sure if this would associate more with a team's attacking rating or defensive rating. Turns out, it's almost exactly a 50:50 split! But PPDA is definitely an indicator of a good team (low = good; you are stopping the opposition from stringing passes together).
+
+The game state coefficients are as one would expect. The biggest boosts are given to teams who are ***down to 10 men** while leading or drawing, and the biggest reductions are vice versa: teams who are trailing or drawing while the other team has 10 men. You are *expected* to dominate the game in these situations.
+
+## Some real contexG examples
+
+Let's look at some actual matches. There's no better place to start than Friday night's **Wolves v Aston Villa** match. Understat gave the final xG score as Wolves **1.51 - 1.31** Aston Villa. What does contexG say?
+
+::: {.centered-block .max-70}
+<img src="29057_wolverhampton_wanderers_vs_aston_villa.png"/>
+:::
+
+So, why the discrepancy? In terms of shots, Villa had **14** to Wolves' **9**. Three of Wolves' shots were high-value xG (Gomes 0.44, Mosquera 0.39, Gomes 0.33) that were truncated at 0.15. Villa only had two high-xG shots: Onana 0.41 and Luiz 0.3. Adding in that Mosquera's shot was from a set piece, Wolves lose a lot more of their raw xG than Villa do.
+
+Deep completions were **7-1** in Villa's favour. This gives Villa's contexG a huge boost. They also had **5.33 PPDA** compared to **17.1** for Wolves. 
+
+At one point during the match the commentator said "if you watched this match without seeing the league table, you would never guess that it's Wolves who are down at the bottom". And maybe you wouldn't guess that they were 41 points behind Villa going into the match, but in spite of the score, I think on the balance of play you *would* have guessed that Wolves were the inferior team. Aston Villa, away from home, had the lion's share of the play.
+
+For an extreme example of contexG's contextual adjustments, consider **Man City 1-1 Chelsea** from the 4th of January. The xG in that game was **1.03-2.04** in Chelsea's favour, but contexG scores it as **1.71-0.91** in City's favour. 
+
+::: {.centered-block .max-70}
+<img src="28977_manchester_city_vs_chelsea.png"/>
+:::
+
+Why? Firstly, City led the game from the 41st minute, right up until Enzo Fernandez's last-minute equaliser. This means Chelsea are expected to be chasing the game and creating more attacking output. 
+
+Deep completions were **7-2** for City. PPDA was **8.2-13.2**. Three of Chelsea's shots were very high xG: Fernandez 0.95 xG, Fernandez 0.67 xG*, and Neto 0.64 xG. I watched that game, and there was no doubt City threw away two points in a game where they were the better team. This is a good example of contexG's merits.
+
+*Note that Understat and other sites make an adjustment for two chances in quick succession when calculating match-level xG. I haven't done that with contexG, but the truncation of individual shots' xG reduces the associated effect.
+
+## Limitations
+
+I'm not claiming to have reinvented the wheel with contexG. It's just a handy way of summarising what you can already see by browsing the match stats, or even with the eye test by watching a game of football.
+
+I should emphasise that contexG does not account for home advantage or opposition strength. It just reflects what happened on the pitch, much like xG does.
+
+**Set pieces** are a tricky area. While set pieces are generally considered more noisy, and therefore carry lower signal, there is a danger of underestimating teams that are consistently strong at set pieces when all teams are aggregated in a single model. Could set-piece skill be rated separately, with a different rate of decay compared to open-play ratings? That's something I will continue to think about, but I am always wary of overfitting.
+
+Finally, but importantly, contexG can only capture what's in the Understat data. I hope to develop the model in future iterations to incorporate more stats and more competitions, if I can add more data sources. But it's a rough time for football analysts, and I am grateful that we at least have access to data from the likes of Understat.
+
+## Season-long contexG ratings
+
+Having a composite rating for each match allows us to summarise team performance over a season. These are broadly in line with the average xG for each team, but it's interesting to see where the differences lie.
+
+```{r}
+# --- contexG attack/defence team summary (CSV + gt) ---
+library(dplyr)
+library(readr)
+library(gt)
+
+IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_premier_league.csv")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_premier_league_2526_datawrapper.csv")
+
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+
+tbl <- read_csv(IN_CSV, show_col_types = FALSE) %>%
+  select(team_name, matches, contexg_diff, mean_xgd) %>%
+  rename(
+    `Team` = team_name,
+    `Matches` = matches,
+    `contexGD` = contexg_diff,
+    `xGD` = mean_xgd
+  ) %>%
+  mutate(
+    Team = if_else(Team == "Wolverhampton Wanderers", "Wolves", Team),
+    `contexGD` = round(`contexGD`, 2),
+    `xGD` = round(`xGD`, 2)
+  )
+
+write_csv(tbl, OUT_CSV)
+
+tbl %>%
+  gt() %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(columns = everything())
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(`Matches`, `contexGD`, `xGD`)
+  ) %>%
+  fmt_number(
+    columns = c(`contexGD`, `xGD`),
+    decimals = 2
+  ) %>%
+  tab_header(
+    title = "Premier League 2025-26 contexG Ratings",
+    subtitle = "28 Feb, 2026"
+  )
+```
+
+Relative to xG, contexG likes **Man City, Villa, Fulham, Forest and Burnley**. Meanwhile, relative to xG, contexG dislikes **Arsenal, Man United, Brentford, Newcastle, Palace, Bournemouth** and **Leeds**. 
+
+It's hard to say exactly why this is the case without digging into all the games. Some of it may be set-piece driven (see *Limitations* above). Overall though, it tallies quite well with my sense of the quality of the teams.
+
+We can also take a peek at the top teams in the other four major European leagues: France, Germany, Italy and Spain.
+
+```{r}
+# --- contexG attack/defence team summary (CSV + gt) ---
+library(dplyr)
+library(readr)
+library(gt)
+
+IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_ligue_1.csv")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_ligue_1_2526_datawrapper.csv")
+
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+
+tbl <- read_csv(IN_CSV, show_col_types = FALSE) %>%
+  select(team_name, matches, contexg_diff, mean_xgd) %>%
+  rename(
+    `Team` = team_name,
+    `Matches` = matches,
+    `contexGD` = contexg_diff,
+    `xGD` = mean_xgd
+  ) %>%
+  mutate(
+    `contexGD` = round(`contexGD`, 2),
+    `xGD` = round(`xGD`, 2)
+  ) %>%
+  slice_head(n=5)
+
+write_csv(tbl, OUT_CSV)
+
+tbl %>%
+  gt() %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(columns = everything())
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(`Matches`, `contexGD`, `xGD`)
+  ) %>%
+  fmt_number(
+    columns = c(`contexGD`, `xGD`),
+    decimals = 2
+  ) %>%
+  tab_header(
+    title = "Ligue 1 2025-26 contexG Ratings",
+    subtitle = "28 Feb, 2026"
+  )
+```
+
+```{r}
+# --- contexG attack/defence team summary (CSV + gt) ---
+library(dplyr)
+library(readr)
+library(gt)
+
+IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_bundesliga.csv")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_bundesliga_2526_datawrapper.csv")
+
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+
+tbl <- read_csv(IN_CSV, show_col_types = FALSE) %>%
+  select(team_name, matches, contexg_diff, mean_xgd) %>%
+  rename(
+    `Team` = team_name,
+    `Matches` = matches,
+    `contexGD` = contexg_diff,
+    `xGD` = mean_xgd
+  ) %>%
+  mutate(
+    Team = if_else(Team == "RasenBallsport Leipzig", "RB Leipzig", Team),
+    `contexGD` = round(`contexGD`, 2),
+    `xGD` = round(`xGD`, 2)
+  ) %>%
+  slice_head(n=5)
+
+write_csv(tbl, OUT_CSV)
+
+tbl %>%
+  gt() %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(columns = everything())
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(`Matches`, `contexGD`, `xGD`)
+  ) %>%
+  fmt_number(
+    columns = c(`contexGD`, `xGD`),
+    decimals = 2
+  ) %>%
+  tab_header(
+    title = "Bundesliga 2025-26 contexG Ratings",
+    subtitle = "28 Feb, 2026"
+  )
+```
+
+```{r}
+# --- contexG attack/defence team summary (CSV + gt) ---
+library(dplyr)
+library(readr)
+library(gt)
+
+IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_serie_a.csv")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_serie_a_2526_datawrapper.csv")
+
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+
+tbl <- read_csv(IN_CSV, show_col_types = FALSE) %>%
+  select(team_name, matches, contexg_diff, mean_xgd) %>%
+  rename(
+    `Team` = team_name,
+    `Matches` = matches,
+    `contexGD` = contexg_diff,
+    `xGD` = mean_xgd
+  ) %>%
+  mutate(
+    `contexGD` = round(`contexGD`, 2),
+    `xGD` = round(`xGD`, 2)
+  ) %>%
+  slice_head(n=5)
+
+write_csv(tbl, OUT_CSV)
+
+tbl %>%
+  gt() %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(columns = everything())
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(`Matches`, `contexGD`, `xGD`)
+  ) %>%
+  fmt_number(
+    columns = c(`contexGD`, `xGD`),
+    decimals = 2
+  ) %>%
+  tab_header(
+    title = "Serie A 2025-26 contexG Ratings",
+    subtitle = "28 Feb, 2026"
+  )
+```
+
+```{r}
+# --- contexG attack/defence team summary (CSV + gt) ---
+library(dplyr)
+library(readr)
+library(gt)
+
+IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_la_liga.csv")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_la_liga_2526_datawrapper.csv")
+
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+
+tbl <- read_csv(IN_CSV, show_col_types = FALSE) %>%
+  select(team_name, matches, contexg_diff, mean_xgd) %>%
+  rename(
+    `Team` = team_name,
+    `Matches` = matches,
+    `contexGD` = contexg_diff,
+    `xGD` = mean_xgd
+  ) %>%
+  mutate(
+    `contexGD` = round(`contexGD`, 2),
+    `xGD` = round(`xGD`, 2)
+  ) %>%
+  slice_head(n=5)
+
+write_csv(tbl, OUT_CSV)
+
+tbl %>%
+  gt() %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(columns = everything())
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(`Matches`, `contexGD`, `xGD`)
+  ) %>%
+  fmt_number(
+    columns = c(`contexGD`, `xGD`),
+    decimals = 2
+  ) %>%
+  tab_header(
+    title = "La Liga 2025-26 contexG Ratings",
+    subtitle = "28 Feb, 2026"
+  )
+```
+
+We see some large disparities between contexG and xG, which I am not going to dig into here, but I would be interested if anyone has any thoughts. One thing that is evident is the gulf between the top side in each league - **PSG**, **Bayern**, **Inter** and **Barcelona** - and the rest.
+
+Moving forward, I plan to write a weekly review of each set of Premier League matches where contexG will help to give a simple numerical overview of each game. I hope you will enjoy reading them. 
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2026 John Knight. All rights reserved.

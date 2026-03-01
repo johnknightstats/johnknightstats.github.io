@@ -122,7 +122,7 @@ library(readr)
 library(gt)
 
 IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_premier_league.csv")
-OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contexg-intro/datawrapper")
 OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_premier_league_2526_datawrapper.csv")
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
@@ -176,7 +176,7 @@ library(readr)
 library(gt)
 
 IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_ligue_1.csv")
-OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contexg-intro/datawrapper")
 OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_ligue_1_2526_datawrapper.csv")
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
@@ -224,7 +224,7 @@ library(readr)
 library(gt)
 
 IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_bundesliga.csv")
-OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contexg-intro/datawrapper")
 OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_bundesliga_2526_datawrapper.csv")
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
@@ -273,7 +273,7 @@ library(readr)
 library(gt)
 
 IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_serie_a.csv")
-OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contexg-intro/datawrapper")
 OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_serie_a_2526_datawrapper.csv")
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
@@ -321,7 +321,7 @@ library(readr)
 library(gt)
 
 IN_CSV  <- path.expand("~/projects/contexg/files/pipeline/stage03_score_attack_defence_singlebeta_league_season_v002_latest/2526/contexg_attack_defence_team_summary_la_liga.csv")
-OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contextg-intro/datawrapper")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/contexg-intro/datawrapper")
 OUT_CSV <- file.path(OUT_DIR, "contexg_attack_defence_team_summary_la_liga_2526_datawrapper.csv")
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)

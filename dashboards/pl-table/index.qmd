@@ -13,6 +13,8 @@ execute:
 dashboard_order: 1
 ---
 
+**This dashboard has stopped updating because of problems with the data source. Apologies for the inconvenience while I try to arrange a new source.**
+
 2025–2026 season (data from FotMob)
 
 Turn to landscape on phone for better viewing.

@@ -13,6 +13,8 @@ execute:
 dashboard_order: 3
 ---
 
+**This dashboard has stopped updating because of problems with the data source. Apologies for the inconvenience while I try to arrange a new source.**
+
 Since 2020-2021 season.
 
 Turn to landscape on phone for better viewing.

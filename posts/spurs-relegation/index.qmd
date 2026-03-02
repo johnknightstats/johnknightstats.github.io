@@ -16,8 +16,13 @@ execute:
   warning: false
 engine: knitr
 editor: source
-draft: TRUE
+image: spurs_stadium.jpg
 ---
+
+::: {.centered-block}
+<img src="spurs_stadium.jpg"/>
+<em>Arguably the best in Britain, Tottenham Hotspur stadium could this year be hosting two NFL games, Bad Bunny, and...Preston North End?</em>
+:::
 
 Tottenham Hotspur are in a fairly dire state at the moment. Following yesterday's 2-1 defeat at Fulham, which extended a run of 10 league games without a win, they find themselves only four points above the relegation zone. At time of writing, betting exchange midpoints give them an 18.3% probability of going down.
 

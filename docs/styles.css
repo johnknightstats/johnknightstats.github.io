@@ -143,6 +143,16 @@ table.fancy-table tr:nth-child(even) {
   background-color: #fafafa;
 }
 
+/* Don't zebra-stripe gt tables even if they get fancy-table */
+table.fancy-table.gt_table tr:nth-child(even) {
+  background-color: transparent !important;
+}
+
+/* Force gt rows to be white (overrides any global striping rules) */
+table.gt_table tr:nth-child(even) td,
+table.gt_table tr:nth-child(odd) td {
+  background-color: white !important;
+}
 
 /* === Centered block wrapper === */
 .centered-block {

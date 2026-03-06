@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="804" height="556" viewBox="0 0 804 556">
+<rect x="0" y="0" width="100%" height="100%" fill="white"/>
+<text x="402.0" y="36" text-anchor="middle" font-family="Arial, sans-serif" font-size="20">West Ham contexGD by Match (Opponent-Adjusted)</text>
+<line x1="92" y1="56" x2="92" y2="476" stroke="#333" stroke-width="1"/>
+<line x1="92" y1="476" x2="788" y2="476" stroke="#333" stroke-width="1"/>
+<line x1="92" y1="98.00" x2="788" y2="98.00" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="92" y1="182.00" x2="788" y2="182.00" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="92" y1="266.00" x2="788" y2="266.00" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="92" y1="350.00" x2="788" y2="350.00" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="92" y1="434.00" x2="788" y2="434.00" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="88" y1="476.00" x2="92" y2="476.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="479.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-2.5</text>
+<line x1="88" y1="434.00" x2="92" y2="434.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="437.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-2.0</text>
+<line x1="88" y1="392.00" x2="92" y2="392.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="395.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-1.5</text>
+<line x1="88" y1="350.00" x2="92" y2="350.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="353.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-1.0</text>
+<line x1="88" y1="308.00" x2="92" y2="308.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="311.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-0.5</text>
+<line x1="88" y1="266.00" x2="92" y2="266.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="269.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0</text>
+<line x1="88" y1="224.00" x2="92" y2="224.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="227.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.5</text>
+<line x1="88" y1="182.00" x2="92" y2="182.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="185.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">1.0</text>
+<line x1="88" y1="140.00" x2="92" y2="140.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="143.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">1.5</text>
+<line x1="88" y1="98.00" x2="92" y2="98.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="101.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">2.0</text>
+<line x1="88" y1="56.00" x2="92" y2="56.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="59.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">2.5</text>
+<rect x="92" y="266.00" width="20" height="7.24" fill="#c53030"/>
+<rect x="116" y="266.00" width="20" height="81.05" fill="#c53030"/>
+<rect x="140" y="262.53" width="20" height="3.47" fill="#2f855a"/>
+<rect x="164" y="266.00" width="20" height="124.30" fill="#c53030"/>
+<rect x="188" y="266.00" width="20" height="70.07" fill="#c53030"/>
+<rect x="212" y="266.00" width="20" height="43.87" fill="#c53030"/>
+<rect x="236" y="266.00" width="20" height="113.16" fill="#c53030"/>
+<rect x="260" y="266.00" width="20" height="201.29" fill="#c53030"/>
+<rect x="284" y="266.00" width="20" height="37.64" fill="#c53030"/>
+<rect x="308" y="266.00" width="20" height="19.46" fill="#c53030"/>
+<rect x="332" y="266.00" width="20" height="128.77" fill="#c53030"/>
+<rect x="356" y="266.00" width="20" height="121.79" fill="#c53030"/>
+<rect x="380" y="266.00" width="20" height="43.98" fill="#c53030"/>
+<rect x="404" y="261.75" width="20" height="4.25" fill="#2f855a"/>
+<rect x="428" y="266.00" width="20" height="31.01" fill="#c53030"/>
+<rect x="452" y="266.00" width="20" height="61.52" fill="#c53030"/>
+<rect x="476" y="266.00" width="20" height="141.09" fill="#c53030"/>
+<rect x="500" y="266.00" width="20" height="16.95" fill="#c53030"/>
+<rect x="524" y="266.00" width="20" height="23.74" fill="#c53030"/>
+<rect x="548" y="266.00" width="20" height="55.03" fill="#c53030"/>
+<rect x="572" y="266.00" width="20" height="20.54" fill="#c53030"/>
+<rect x="596" y="266.00" width="20" height="17.08" fill="#c53030"/>
+<rect x="620" y="259.02" width="20" height="6.98" fill="#2f855a"/>
+<rect x="644" y="225.50" width="20" height="40.50" fill="#2f855a"/>
+<rect x="668" y="266.00" width="20" height="58.06" fill="#c53030"/>
+<rect x="692" y="266.00" width="20" height="8.23" fill="#c53030"/>
+<rect x="716" y="225.99" width="20" height="40.01" fill="#2f855a"/>
+<rect x="740" y="266.00" width="20" height="50.40" fill="#c53030"/>
+<rect x="764" y="254.50" width="20" height="11.50" fill="#2f855a"/>
+<polyline points="102.00,273.24 126.00,310.15 150.00,294.27 174.00,318.28 198.00,321.84 222.00,319.84 246.00,328.32 270.00,345.69 294.00,341.02 318.00,335.46 342.00,347.61 366.00,351.69 390.00,356.43 414.00,343.58 438.00,339.67 462.00,341.44 486.00,344.23 510.00,325.80 534.00,324.41 558.00,327.96 582.00,317.14 606.00,306.67 630.00,301.57 654.00,297.95 678.00,300.65 702.00,295.32 726.00,277.21 750.00,280.56 774.00,277.03" fill="none" stroke="black" stroke-width="3"/>
+<line x1="568" y1="76" x2="604" y2="76" stroke="black" stroke-width="3"/>
+<text x="612" y="80" font-family="Arial, sans-serif" font-size="12">10-match rolling average</text>
+<line x1="102.00" y1="476" x2="102.00" y2="480" stroke="#333" stroke-width="1"/>
+<text x="102.00" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">1</text>
+<line x1="318.00" y1="476" x2="318.00" y2="480" stroke="#333" stroke-width="1"/>
+<text x="318.00" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">10</text>
+<line x1="558.00" y1="476" x2="558.00" y2="480" stroke="#333" stroke-width="1"/>
+<text x="558.00" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">20</text>
+<text x="440.0" y="506" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">Match</text>
+<text x="64" y="278.0" transform="rotate(-90 68 278.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">contexGD</text>
+</svg>

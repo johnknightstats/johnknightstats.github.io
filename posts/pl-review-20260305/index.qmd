@@ -16,7 +16,6 @@ warning: false
 engine: knitr
 editor: source
 image: ../pl_thumb.png
-draft: TRUE
 ---
 
 *ContexG is a model I created to reflect a composite score of each team's quality based on match data incorporating game state. For more information, see my [intro article.](https://substack.com/home/post/p-189499113)*

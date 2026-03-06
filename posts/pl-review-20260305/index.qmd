@@ -3,7 +3,7 @@ title: "Premier League Midweek Review"
 author: "John Knight"
 date: 2026-03-05
 date-format: "D MMMM YYYY"
-description: ""
+description: "Title race almost over, Villa thrashed, Spurs in huge trouble."
 format:
   html:
     title-block-categories: true

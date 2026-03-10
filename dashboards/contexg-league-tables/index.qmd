@@ -80,8 +80,20 @@ make_league_dt <- function(csv_path) {
       dom = "t",
       paging = FALSE,
       scrollX = TRUE,
-      autoWidth = TRUE,
+      autoWidth = FALSE,
       fixedColumns = list(leftColumns = 1),
+      initComplete = JS(
+        "function(settings) {",
+        "  setTimeout(function() {",
+        "    $(settings.nTable).DataTable().columns.adjust();",
+        "  }, 0);",
+        "}"
+      ),
+      drawCallback = JS(
+        "function(settings) {",
+        "  $(settings.nTable).DataTable().columns.adjust();",
+        "}"
+      ),
       headerCallback = JS(
         "function(thead) {",
         "  $(thead).find('th').css({",
@@ -93,7 +105,10 @@ make_league_dt <- function(csv_path) {
         "}"
       ),
       columnDefs = list(
-        list(width = "210px", targets = 0),
+        list(width = "260px", targets = 0),
+        list(width = "48px", targets = c(1, 2, 3)),
+        list(width = "96px", targets = c(4, 5, 6)),
+        list(width = "130px", targets = c(7, 8, 9)),
         list(className = "dt-nowrap", targets = 0),
         list(className = "dt-right", targets = 1:(ncol(df) - 1))
       )

@@ -350,18 +350,11 @@
     "text": "About me\nWelcome to my website!\nI’m John Knight, an applied statistician currently working in healthcare research. I have a B.S. in Statistics and M.S. in Applied Statistics and Data Science, and wrote my thesis on Clustering 24-Hour Ambulatory Blood Pressure Time Series with Dynamic Time Warping and Time Warp Edit Distance. My healthcare research focuses on areas such as clinical trials, trauma, pharmacy, and retrospective observational studies for journal publication.\nI also have a lifelong passion for statistics and sport, in particular football (soccer) and golf, and often find myself at the intersection of sport and numbers. This has naturally drawn me to the gambling industry and I have worked as a professional gambler across many different sports, plus poker, as well as working for the betting exchange Betfair in London. More recently, prior to entering the healthcare industry I additionally worked in mathematics education research.\nI started this website as a place to collate my work. In the Articles section you will find articles I have written that will also be published via my Substack. The Projects section contains various final projects from the courses I have taken during my studies, and in Papers you can find links to published academic papers I have co-authored. I will be building other sections as I develop the website, such as Tools and Dashboard.\nI’m excited to build up this website and I hope you find something interesting. Feel free to email me with any questions, comments, or professional opportunities.\n\nEmail | LinkedIn | GitHub | Substack"
   },
   {
-    "objectID": "dashboards/pl-table/index.html",
-    "href": "dashboards/pl-table/index.html",
-    "title": "League Tables & Metrics",
+    "objectID": "dashboards/contexg-league-tables/index.html",
+    "href": "dashboards/contexg-league-tables/index.html",
+    "title": "ContexG League Tables",
     "section": "",
-    "text": "This dashboard has stopped updating because of problems with the data source. Apologies for the inconvenience while I try to arrange a new source.\n2025–2026 season (data from FotMob)\nTurn to landscape on phone for better viewing.\n\nPremier LeagueChampionshipLeague OneLeague TwoSerie ALa LigaLigue 1Bundesliga\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotes\n\n\n\nBookie Pts = Expected number of points based on Pinnacle closing match odds throughout the season.\n\n\nxG = Expected Goals (all, non-penalty, open-play, or set-pieces).\n\n\nField Tilt = Share of touches inside opposition’s penalty box.\n\n\nShot Share = Share of total shots."
-  },
-  {
-    "objectID": "dashboards/managers-table-2/index.html",
-    "href": "dashboards/managers-table-2/index.html",
-    "title": "Premier League Manager Metrics 2",
-    "section": "",
-    "text": "This dashboard has stopped updating because of problems with the data source. Apologies for the inconvenience while I try to arrange a new source.\nSince 2020-2021 season.\nTurn to landscape on phone for better viewing.\n\n\n\n\n\n\n\nNotes\nMinimum 10 games.\nxG = Expected Goals.\nField Tilt = Share of touches inside opposition’s penalty box.\nShot Share = Share of total shots."
+    "text": "2025-2026 season. Metrics are shown on a per-game basis.\nTurn to landscape on phone for better viewing.\n\nPremier LeagueSerie ALa LigaLigue 1Bundesliga\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotes\n\n\n\nContexG For and ContexG Against are per-game averages.\n\n\nHome-Away Gap = home per-game contexG difference minus away per-game contexG difference.\n\n\nTables are ordered like a league table: points, goal difference, then contexG difference."
   },
   {
     "objectID": "about.html",
@@ -376,20 +369,6 @@
     "title": "Dashboards",
     "section": "",
     "text": "ContexG League Tables\n\n\nBig 5 league tables with contexG for, against, and home-away splits.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "dashboards/managers-table/index.html",
-    "href": "dashboards/managers-table/index.html",
-    "title": "Premier League Manager Metrics 1",
-    "section": "",
-    "text": "This dashboard has stopped updating because of problems with the data source. Apologies for the inconvenience while I try to arrange a new source.\nSince 2020-2021 season.\nTurn to landscape on phone for better viewing.\n\n\n\n\n\n\n\nNotes\nMinimum 10 games.\nxG = Expected Goals."
-  },
-  {
-    "objectID": "dashboards/pl-xg-sources/index.html",
-    "href": "dashboards/pl-xg-sources/index.html",
-    "title": "Premier League xG by situation",
-    "section": "",
-    "text": "This dashboard has stopped updating because of problems with the data source. Apologies for the inconvenience while I try to arrange a new source.\n2025-2026 season (data from FotMob)\nTurn to landscape on phone for betting viewing.\n\nxG ForxG Against"
   },
   {
     "objectID": "papers/index.html",
@@ -635,12 +614,5 @@
     "title": "Betting Strategy Variance Tool",
     "section": "",
     "text": "A tool to visualize the variance inherent in betting strategies."
-  },
-  {
-    "objectID": "dashboards/contexg-league-tables/index.html",
-    "href": "dashboards/contexg-league-tables/index.html",
-    "title": "ContexG League Tables",
-    "section": "",
-    "text": "2025-2026 season. Metrics are shown on a per-game basis.\nTurn to landscape on phone for better viewing.\n\nPremier LeagueSerie ALa LigaLigue 1Bundesliga\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotes\n\n\n\nContexG For and ContexG Against are per-game averages.\n\n\nHome-Away Gap = home per-game contexG difference minus away per-game contexG difference.\n\n\nTables are ordered like a league table: points, goal difference, then contexG difference."
   }
 ]

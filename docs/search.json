@@ -375,7 +375,7 @@
     "href": "dashboards/index.html",
     "title": "Dashboards",
     "section": "",
-    "text": "League Tables & Metrics\n\n\nBig 5 European leagues plus English lower leagues.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League xG by situation\n\n\nTotals by shot situation for the 2025-2026 Premier League.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 1\n\n\nPoints per game and goals versus expected goals.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPremier League Manager Metrics 2\n\n\nExpected goals by situation, field tilt and shot share.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "ContexG League Tables\n\n\nBig 5 league tables with contexG for, against, and home-away splits.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2020 U.S. Election Counties by Race and Education\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "dashboards/managers-table/index.html",
@@ -635,5 +635,12 @@
     "title": "Betting Strategy Variance Tool",
     "section": "",
     "text": "A tool to visualize the variance inherent in betting strategies."
+  },
+  {
+    "objectID": "dashboards/contexg-league-tables/index.html",
+    "href": "dashboards/contexg-league-tables/index.html",
+    "title": "ContexG League Tables",
+    "section": "",
+    "text": "2025-2026 season. Metrics are shown on a per-game basis.\nTurn to landscape on phone for better viewing.\n\nPremier LeagueSerie ALa LigaLigue 1Bundesliga\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotes\n\n\n\nContexG For and ContexG Against are per-game averages.\n\n\nHome-Away Gap = home per-game contexG difference minus away per-game contexG difference.\n\n\nTables are ordered like a league table: points, goal difference, then contexG difference."
   }
 ]

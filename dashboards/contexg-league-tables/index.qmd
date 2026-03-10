@@ -1,0 +1,163 @@
+---
+title: "ContexG League Tables"
+description: "Big 5 league tables with contexG for, against, and home-away splits."
+categories: [football]
+format:
+  html:
+    toc: false
+execute:
+  echo: false
+  warning: false
+  message: false
+dashboard_order: 5
+---
+
+2025-2026 season. Metrics are shown on a per-game basis.
+
+Turn to landscape on phone for better viewing.
+
+```{r}
+library(readr)
+library(dplyr)
+library(DT)
+
+style_grad <- function(x, base_pal, n=101) {
+  rng <- range(x, na.rm=TRUE)
+  if (!is.finite(rng[1]) || !is.finite(rng[2]) || rng[1] == rng[2]) return(NULL)
+  cols <- grDevices::colorRampPalette(base_pal)(n)
+  cuts <- seq(rng[1], rng[2], length.out=n)[-1]
+  list(cuts=cuts, cols=cols)
+}
+
+pal_g2r <- c("#1a9850","#66bd63","#a6d96a","#d9ef8b","#fee08b","#fdae61","#d73027")
+pal_r2g <- rev(pal_g2r)
+
+make_league_dt <- function(csv_path) {
+  if (!file.exists(csv_path)) {
+    return(
+      DT::datatable(
+        data.frame(Message = paste0("Missing file: ", csv_path)),
+        rownames = FALSE,
+        options = list(dom = "t", paging = FALSE)
+      )
+    )
+  }
+
+  df_raw <- read_csv(csv_path, show_col_types = FALSE)
+
+  df <- df_raw |>
+    mutate(
+      contexg_for = as.numeric(contexg_for),
+      contexg_against = as.numeric(contexg_against),
+      contexg_difference = as.numeric(contexg_difference),
+      home_contexg_difference = as.numeric(home_contexg_difference),
+      away_contexg_difference = as.numeric(away_contexg_difference),
+      home_away_contexg_difference_gap = as.numeric(home_away_contexg_difference_gap)
+    ) |>
+    rename(
+      Team = team_name,
+      P = played,
+      Pts = points,
+      GD = goal_difference,
+      `ContexG<br>For` = contexg_for,
+      `ContexG<br>Against` = contexg_against,
+      `ContexG<br>Diff` = contexg_difference,
+      `Home<br>ContexG Diff` = home_contexg_difference,
+      `Away<br>ContexG Diff` = away_contexg_difference,
+      `Home-Away<br>Gap` = home_away_contexg_difference_gap
+    ) |>
+    arrange(desc(Pts), desc(GD), desc(`ContexG<br>Diff`))
+
+  g2r_cols <- c("Pts", "GD", "ContexG<br>For", "ContexG<br>Diff", "Home<br>ContexG Diff", "Away<br>ContexG Diff", "Home-Away<br>Gap")
+  r2g_cols <- c("ContexG<br>Against")
+
+  dt <- datatable(
+    df,
+    rownames = FALSE,
+    escape = FALSE,
+    extensions = "FixedColumns",
+    options = list(
+      dom = "t",
+      paging = FALSE,
+      scrollX = TRUE,
+      autoWidth = TRUE,
+      fixedColumns = list(leftColumns = 1),
+      headerCallback = JS(
+        "function(thead) {",
+        "  $(thead).find('th').css({",
+        "    'font-size': '11px',",
+        "    'padding': '4px 6px',",
+        "    'white-space': 'normal',",
+        "    'line-height': '1.05'",
+        "  });",
+        "}"
+      ),
+      columnDefs = list(
+        list(width = "210px", targets = 0),
+        list(className = "dt-nowrap", targets = 0),
+        list(className = "dt-right", targets = 1:(ncol(df) - 1))
+      )
+    )
+  )
+
+  round_cols <- setdiff(names(df), c("Team", "P", "Pts", "GD"))
+  dt <- dt |>
+    formatRound(round_cols, digits = 2) |>
+    formatStyle(names(df), fontSize = "12px", padding = "2px 6px") |>
+    formatStyle("Team", whiteSpace = "nowrap")
+
+  for (col in g2r_cols) {
+    s <- style_grad(df[[col]], pal_r2g)
+    if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
+  }
+  for (col in r2g_cols) {
+    s <- style_grad(df[[col]], pal_g2r)
+    if (!is.null(s)) dt <- dt |> formatStyle(col, backgroundColor = styleInterval(s$cuts, s$cols))
+  }
+
+  dt
+}
+```
+
+:::{.panel-tabset}
+
+## Premier League
+
+```{r}
+make_league_dt("contexg_attack_defence_league_table_premier_league.csv")
+```
+
+## Serie A
+
+```{r}
+make_league_dt("contexg_attack_defence_league_table_serie_a.csv")
+```
+
+## La Liga
+
+```{r}
+make_league_dt("contexg_attack_defence_league_table_la_liga.csv")
+```
+
+## Ligue 1
+
+```{r}
+make_league_dt("contexg_attack_defence_league_table_ligue_1.csv")
+```
+
+## Bundesliga
+
+```{r}
+make_league_dt("contexg_attack_defence_league_table_bundesliga.csv")
+```
+
+:::
+
+<div style="font-size: 0.85em; line-height: 1.25; margin-top: 0.75rem;">
+  <h3 style="margin-bottom: 0.25rem;">Notes</h3>
+  <ul style="margin-top: 0;">
+    <li><b>ContexG For</b> and <b>ContexG Against</b> are per-game averages.</li>
+    <li><b>Home-Away Gap</b> = home per-game contexG difference minus away per-game contexG difference.</li>
+    <li>Tables are ordered like a league table: points, goal difference, then contexG difference.</li>
+  </ul>
+</div>

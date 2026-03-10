@@ -1,6 +1,7 @@
 ---
 title: "ContexG League Tables"
 description: "Big 5 league tables with contexG for, against, and home-away splits."
+image: thumb.jpg
 categories: [football]
 format:
   html:

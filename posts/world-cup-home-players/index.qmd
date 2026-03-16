@@ -1,0 +1,69 @@
+---
+title: "World Cup squads from 1930 to 2022: When did all the Argentinians move to Europe?"
+author: "John Knight"
+date: 2026-03-13
+date-format: "D MMMM YYYY"
+description: "Looking at the squads from each World Cup to see how many players play for clubs in their home country."
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "statistics", "World Cup"]
+execute: 
+  echo: false
+eval: true
+message: false
+warning: false
+engine: knitr
+editor: source
+draft: true
+---
+
+The 1978 World Cup is among the most iconic in the history of the competition. It was the first ever World Cup win for Argentina, in front of their home fans amid a murky political backdrop and a huge amount of ticker tape.
+
+One aspect of this World Cup that is almost unthinkable in today's game is that the Argentinian squad all played for Argentinean clubs, with the exception of star striker Mario Kempes who played for Valencia in Spain.
+
+::: {.centered-block .max-70}
+<img src="argentina_1978_squad_table.png"/>
+:::
+
+This was largely how football had always been; other than the occasional superstar like John Charles, Ferenc Puskas or Jimmy Greaves, players stayed in their own country. When Tottenham Hotspur signed Osvaldo Ardiles and Ricardo Villa shortly after their World Cup triumph it was a stunning transfer. The players' talent was not in question but it involved a [difficult transition and questions about whether or not they were tough enough for English football.](https://the1888letter.com/argentina-foreign-players-in-the-football-league/) *Find a better source*
+
+Ardiles & Villa were outliers at the time, but it was the start of a trend. The dramatic change from the 1980s onward can be illustrated by the fact that the 2002 Argentina squad contained only TWO home-based players.
+
+::: {.centered-block}
+<img src="argentina_2002_squad_table.png"/>
+:::
+
+And it wasn't just Argentinian players migrating. The overall percentage of home-based players was at least 87% in every World Cup from 1930 to 1978. Then it started dropping consistently, hitting a low of just 21.8% in 2018.
+
+::: {.centered-block}
+<img src="overall_home_country_share.png"/>
+:::
+
+But this doesn't tell the full story, of course. It's not simply a case of players from all countries moving abroad in equal numbers. The below chart shows the home player percentage for each of the eight nations who have won a World Cup. The three South American teams - Argentina, Brazil, and Uruguay - had a total of just seven home-based players COMBINED at the last World Cup. Aside from France, the major European nations have all retained at least 60% of their squad playing at home in every edition.
+
+::: {.centered-block}
+<img src="major_nations_home_country_share.png"/>
+:::
+
+## Why did this happen? Money, laws, TV.
+
+- Early years: no financial incentive, not much coverage, hard to scout players, hard to get deals done (language barriers), league limits on foreign players (research this), moving to a new continent daunting.
+- Economic crises and inflation in South America, increasing TV coverage and commercialization in Europe meant higher wages on offer. Italy dominate the 1990s (why?)
+- Satellite TV and the rebranding of Division One/European Cup as Premier League & Champions League are emblematic of new era in Europe. 
+- Bosman ruling allows free movement of EU citizens. This created a loophole for Spanish, Italian and Portuguese clubs who could get passports using South American players' ancestry (give examples). Pipelines and scouting networks were established.
+- Snowball effect, Europe had all the best players and so had clearly become the NBA of football - it's where you go if you want to maximise your potential. 
+
+Today, a footballer moving to Europe from another continent is obviously making a step up. That wasn't always the case. When South American players played in their home countries, they had strong club sides and more than held their own in the Intercontinental Cup. Not to mention, with gate receipts the primary driver of club revenue, Latin American teams drew huge crowds and the money on offer wasn't drastically higher in Europe.
+
+::: {.centered-block}
+<img src="home_continent_share_by_continent.png"/>
+:::
+
+It's like a talent:wealth ratio. 
+
+::: {.centered-block}
+<img src="world_cup_2022_club_countries.png"/>
+:::
+
+*Conclusion...the future? Decline of Europe, USA growing soccer interest, Middle East wealth, Asia, Brazil club in Deloitte list, can they maintain their talent?*

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="828" height="556" viewBox="0 0 828 556">
+<rect x="0" y="0" width="100%" height="100%" fill="white"/>
+<text x="414.0" y="36" text-anchor="middle" font-family="Arial, sans-serif" font-size="20">Brighton contexGD by Match (Opponent-Adjusted)</text>
+<line x1="92" y1="56" x2="92" y2="476" stroke="#333" stroke-width="1"/>
+<line x1="92" y1="476" x2="812" y2="476" stroke="#333" stroke-width="1"/>
+<line x1="92" y1="98.00" x2="812" y2="98.00" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="92" y1="182.00" x2="812" y2="182.00" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="92" y1="266.00" x2="812" y2="266.00" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="92" y1="350.00" x2="812" y2="350.00" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="92" y1="434.00" x2="812" y2="434.00" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="88" y1="476.00" x2="92" y2="476.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="479.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-2.5</text>
+<line x1="88" y1="434.00" x2="92" y2="434.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="437.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-2.0</text>
+<line x1="88" y1="392.00" x2="92" y2="392.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="395.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-1.5</text>
+<line x1="88" y1="350.00" x2="92" y2="350.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="353.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-1.0</text>
+<line x1="88" y1="308.00" x2="92" y2="308.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="311.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">-0.5</text>
+<line x1="88" y1="266.00" x2="92" y2="266.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="269.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0</text>
+<line x1="88" y1="224.00" x2="92" y2="224.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="227.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.5</text>
+<line x1="88" y1="182.00" x2="92" y2="182.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="185.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">1.0</text>
+<line x1="88" y1="140.00" x2="92" y2="140.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="143.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">1.5</text>
+<line x1="88" y1="98.00" x2="92" y2="98.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="101.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">2.0</text>
+<line x1="88" y1="56.00" x2="92" y2="56.00" stroke="#333" stroke-width="1"/>
+<text x="86" y="59.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">2.5</text>
+<rect x="92" y="257.28" width="20" height="8.72" fill="#2f855a"/>
+<rect x="116" y="266.00" width="20" height="21.11" fill="#c53030"/>
+<rect x="140" y="248.67" width="20" height="17.33" fill="#2f855a"/>
+<rect x="164" y="266.00" width="20" height="23.08" fill="#c53030"/>
+<rect x="188" y="266.00" width="20" height="63.88" fill="#c53030"/>
+<rect x="212" y="212.34" width="20" height="53.66" fill="#2f855a"/>
+<rect x="236" y="266.00" width="20" height="46.26" fill="#c53030"/>
+<rect x="260" y="266.00" width="20" height="12.59" fill="#c53030"/>
+<rect x="284" y="266.00" width="20" height="18.83" fill="#c53030"/>
+<rect x="308" y="167.04" width="20" height="98.96" fill="#2f855a"/>
+<rect x="332" y="266.00" width="20" height="6.73" fill="#c53030"/>
+<rect x="356" y="245.47" width="20" height="20.53" fill="#2f855a"/>
+<rect x="380" y="217.78" width="20" height="48.22" fill="#2f855a"/>
+<rect x="404" y="266.00" width="20" height="44.79" fill="#c53030"/>
+<rect x="428" y="266.00" width="20" height="18.36" fill="#c53030"/>
+<rect x="452" y="263.61" width="20" height="2.39" fill="#2f855a"/>
+<rect x="476" y="266.00" width="20" height="67.71" fill="#c53030"/>
+<rect x="500" y="266.00" width="20" height="5.06" fill="#c53030"/>
+<rect x="524" y="266.00" width="20" height="27.39" fill="#c53030"/>
+<rect x="548" y="266.00" width="20" height="3.70" fill="#c53030"/>
+<rect x="572" y="266.00" width="20" height="42.01" fill="#c53030"/>
+<rect x="596" y="266.00" width="20" height="14.58" fill="#c53030"/>
+<rect x="620" y="215.44" width="20" height="50.56" fill="#2f855a"/>
+<rect x="644" y="249.99" width="20" height="16.01" fill="#2f855a"/>
+<rect x="668" y="266.00" width="20" height="43.53" fill="#c53030"/>
+<rect x="692" y="254.07" width="20" height="11.93" fill="#2f855a"/>
+<rect x="716" y="201.14" width="20" height="64.86" fill="#2f855a"/>
+<rect x="740" y="217.99" width="20" height="48.01" fill="#2f855a"/>
+<rect x="764" y="208.03" width="20" height="57.97" fill="#2f855a"/>
+<rect x="788" y="227.42" width="20" height="38.58" fill="#2f855a"/>
+<polyline points="102.00,257.28 126.00,272.19 150.00,264.35 174.00,270.53 198.00,282.40 222.00,270.73 246.00,276.66 270.00,276.90 294.00,277.78 318.00,266.71 342.00,268.25 366.00,264.09 390.00,261.00 414.00,263.17 438.00,258.62 462.00,263.75 486.00,265.89 510.00,265.14 534.00,265.99 558.00,276.26 582.00,279.79 606.00,283.30 630.00,283.07 654.00,276.98 678.00,279.50 702.00,278.55 726.00,265.29 750.00,259.98 774.00,251.45 798.00,247.22" fill="none" stroke="black" stroke-width="3"/>
+<line x1="592" y1="76" x2="628" y2="76" stroke="black" stroke-width="3"/>
+<text x="636" y="80" font-family="Arial, sans-serif" font-size="12">10-match rolling average</text>
+<line x1="102.00" y1="476" x2="102.00" y2="480" stroke="#333" stroke-width="1"/>
+<text x="102.00" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">1</text>
+<line x1="318.00" y1="476" x2="318.00" y2="480" stroke="#333" stroke-width="1"/>
+<text x="318.00" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">10</text>
+<line x1="558.00" y1="476" x2="558.00" y2="480" stroke="#333" stroke-width="1"/>
+<text x="558.00" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">20</text>
+<text x="452.0" y="506" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">Match</text>
+<text x="64" y="278.0" transform="rotate(-90 68 278.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">contexGD</text>
+</svg>

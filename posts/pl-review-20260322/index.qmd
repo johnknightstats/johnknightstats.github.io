@@ -18,7 +18,7 @@ editor: source
 image: pl_thumb.png
 ---
 
-*Spurs sink to new low, impressive derby win for Sunderland, and Chelsea lose 4 in-a-row.*
+*Spurs sink to new low, impressive derby win for Sunderland, and Chelsea lose 4th in-a-row.*
 
 *See my [intro article](https://substack.com/home/post/p-189499113) for more information on contexG.*
 

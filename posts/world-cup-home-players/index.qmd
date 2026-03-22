@@ -1,7 +1,7 @@
 ---
 title: "World Cup squads from 1930 to 2022: When did all the Argentinians move to Europe?"
 author: "John Knight"
-date: 2026-03-13
+date: 2026-03-20
 date-format: "D MMMM YYYY"
 description: "Looking at the squads from each World Cup to see how many players play for clubs in their home country."
 format:
@@ -26,7 +26,7 @@ One aspect of this World Cup that is almost unthinkable in today's game is that 
 <img src="argentina_1978_squad_table.png"/>
 :::
 
-This was largely how football had always been; other than the occasional superstar like John Charles, Ferenc Puskas or Jimmy Greaves, players stayed in their own country. When Tottenham Hotspur signed Osvaldo Ardiles and Ricardo Villa shortly after their World Cup triumph it was a stunning transfer. The players' talent was not in question but it involved a [difficult transition and questions about whether or not they were tough enough for English football.](https://the1888letter.com/argentina-foreign-players-in-the-football-league/) *Find a better source*
+This was largely how football had always been; other than the occasional superstar like John Charles, Ferenc Puskas or Jimmy Greaves, players stayed in their own country. When Tottenham Hotspur signed Osvaldo Ardiles and Ricardo Villa shortly after their World Cup triumph it was a [stunning transfer](https://www.mirror.co.uk/sport/football/news/ossie-ardiles-joining-tottenham-ricky-13218137).
 
 Ardiles & Villa were outliers at the time, but it was the start of a trend. The dramatic change from the 1980s onward can be illustrated by the fact that the 2002 Argentina squad contained only TWO home-based players.
 
@@ -48,7 +48,9 @@ But this doesn't tell the full story, of course. It's not simply a case of playe
 
 ## Why did this happen? Money, laws, TV.
 
-- Early years: no financial incentive, not much coverage, hard to scout players, hard to get deals done (language barriers), league limits on foreign players (research this), moving to a new continent daunting.
+So why the abrupt change? For a long time, there were several barriers to player migration, and no massive incentive for them to do so.
+
+- Early years: no financial incentive, not much coverage, hard to scout players, hard to get deals done (language barriers), league limits on foreign players (research this; England allowed foreigners from 1978 due to EC ruling?), moving to a new continent daunting.
 - Economic crises and inflation in South America, increasing TV coverage and commercialization in Europe meant higher wages on offer. Italy dominate the 1990s (why?)
 - Satellite TV and the rebranding of Division One/European Cup as Premier League & Champions League are emblematic of new era in Europe. 
 - Bosman ruling allows free movement of EU citizens. This created a loophole for Spanish, Italian and Portuguese clubs who could get passports using South American players' ancestry (give examples). Pipelines and scouting networks were established.

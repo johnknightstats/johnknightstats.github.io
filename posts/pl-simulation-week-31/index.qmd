@@ -3,7 +3,7 @@ title: "Simulating the remainder of the Premier League after Matchweek 31"
 author: "John Knight"
 date: 2026-03-27
 date-format: "D MMMM YYYY"
-description: "Using Monte Carlo simulation to calculate all teams' probabilities for the title race, European qualification and relegation."
+description: "Using Monte Carlo simulation to estimate all teams' probabilities for the title race, European qualification and relegation."
 format:
   html:
     title-block-categories: true
@@ -293,11 +293,11 @@ styled_tbl %>%
   {\(tbl_html)
     tagList(
       div(
-    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;",
     "Remaining Fixtures"
   ),
   div(
-    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;",
     "27 Mar 2026"
   ),
       div(
@@ -360,11 +360,11 @@ tbl<- europe_race %>%
 
 tagList(
   div(
-    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;",
     "Premier League European Qualification"
   ),
   div(
-    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;",
     "27 Mar 2026 · 10,000 simulations"
   ),
   div(
@@ -595,11 +595,11 @@ styled_tbl %>%
   {\(tbl_html)
     tagList(
       div(
-    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;",
     "Remaining Fixtures"
   ),
   div(
-    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;",
     "27 Mar 2026"
   ),
       div(
@@ -645,11 +645,11 @@ tbl<- releg_race %>%
 
 tagList(
   div(
-    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;",
     "Premier League Relegation"
   ),
   div(
-    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;",
     "27 Mar 2026 · 10,000 simulations"
   ),
   div(
@@ -874,11 +874,11 @@ styled_tbl %>%
   {\(tbl_html)
     tagList(
       div(
-    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;",
     "Remaining Fixtures"
   ),
   div(
-    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;",
     "27 Mar 2026"
   ),
       div(
@@ -936,11 +936,11 @@ tbl<- releg_race %>%
 
 tagList(
   div(
-    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;",
     "Premier League Relegation (ratings and fixtures neutralised)"
   ),
   div(
-    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;",
     "27 Mar 2026 · 10,000 simulations"
   ),
   div(

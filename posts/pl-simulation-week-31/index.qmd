@@ -1,0 +1,968 @@
+---
+title: "Simulating the remainder of the Premier League after Matchweek 31"
+author: "John Knight"
+date: 2026-03-27
+date-format: "D MMMM YYYY"
+description: "Using Monte Carlo simulation to calculate all teams' probabilities for the title race, European qualification and relegation."
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "statistics", "Premier League"]
+execute: 
+  echo: false
+eval: true
+message: false
+warning: false
+engine: knitr
+editor: source
+---
+
+With the Premier League taking a couple of weeks off for the international break and FA Cup, it seems like a good time to assess the state of play. I simulated the remainder of the season 10,000 times to estimate the probabilities for each team in the title race, European qualification and the relegation battle.
+
+Monte Carlo simulation can be overused and has its weaknesses, but it is well-suited to situations like this where you have a relatively small number of games, tiebreakers and European qualification criteria that make every situation unique and complex. I tried to balance the team ratings to match the general consensus and betting markets rather than just plugging in my own ratings—that approach will generally just lead to "which team do I rate higher/lower than everyone else", which sort of defeats the object.
+
+## The title race: City probably need to run the table
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+library(htmltools)
+library(scales)
+
+ALL_TEAM_PROBABILITIES <- path.expand("~/projects/pl-simulation/outputs/team_outcome_probabilities.csv")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/pl-simulation-week-31/datawrapper")
+OUT_CSV <- file.path(OUT_DIR, "title_race.csv")
+
+dir.create(OUT_DIR, recursive=TRUE, showWarnings=FALSE)
+
+all_probs <- read.csv(ALL_TEAM_PROBABILITIES)
+
+title_race <- all_probs %>%
+  select(team, title_probability) %>%
+  filter(title_probability > 0) %>%
+  arrange(desc(title_probability)) %>%
+  mutate(title_probability=percent(title_probability, accuracy=0.1))
+
+write_csv(title_race, OUT_CSV)
+
+tbl <- title_race %>%
+  kbl(
+    col.names=c("Team", "Probability"),
+    align=c("l", "r")
+  ) %>%
+  kable_styling(
+    full_width=FALSE,
+    position="center"
+  ) %>%
+  row_spec(0, bold=TRUE) %>%
+  column_spec(1, width="180px") %>%
+  column_spec(2, width="140px")
+
+tagList(
+  div(
+    style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;",
+    "Premier League Winner"
+  ),
+  div(
+    style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;",
+    "27 Mar 2026 · 10,000 simulations"
+  ),
+  div(
+    style="text-align:center;",
+    div(
+      style="display:inline-block;",
+      HTML(as.character(tbl))
+    )
+  )
+)
+```
+
+It's no surprise that **Arsenal** are heavy favourites to win the league, roughly in line with the betting markets at **92.4%**. They are currently nine points clear and have a fairly soft run-in, so it looks like Manchester City will probably have to win all their remaining matches to overhaul them.
+
+City's game against Crystal Palace game was postponed due to the Carabao Cup final and will be rearranged later in the season. This means City's next two fixtures are their most difficult: Chelsea away and Arsenal at home. Meanwhile, aside from their visit to Manchester, Arsenal have a very soft run-in. 
+
+```{r}
+library(scales)
+
+# --- input files ---
+season_csv <- path.expand("~/projects/pl-simulation/data/contexg_attack_defence_team_by_match_premier_league.csv")
+fixtures_csv <- path.expand("~/projects/pl-simulation/data/remaining_fixtures.csv")
+
+teams_of_interest <- c("Arsenal", "Manchester City")
+
+# --- season data ---
+season_df <- read_csv(season_csv, show_col_types=FALSE) %>%
+  mutate(
+    date=as.Date(date),
+    is_home=as.integer(is_home)
+  )
+
+# mean home advantage across the season
+home_advantage <- season_df %>%
+  filter(is_home==1) %>%
+  summarise(home_advantage=mean(contexg_diff, na.rm=TRUE)) %>%
+  pull(home_advantage)
+
+# opponent season-long contexg_diff
+team_strength <- season_df %>%
+  group_by(team_name) %>%
+  summarise(
+    season_contexg=mean(contexg_diff, na.rm=TRUE),
+    .groups="drop"
+  )
+
+# --- abbreviation map ---
+team_abbrev <- c(
+  "Crystal Palace"="C Palace",
+  "Nottingham Forest"="N Forest",
+  "Aston Villa"="A Villa",
+  "Manchester City"="Man City",
+  "Manchester United"="Man Utd",
+  "Newcastle United"="Newcastle",
+  "Wolverhampton Wanderers"="Wolves"
+)
+
+# --- remaining fixtures ---
+fixtures_df <- read_csv(fixtures_csv, show_col_types=FALSE) %>%
+  mutate(match_date_utc=as.Date(match_date_utc))
+
+
+# Set Man C-Palace to May 13 (most likely date based on Palace fixtures)
+# my_row <- which(fixtures_df$home_team=="Manchester City" & fixtures_df$away_team=="Crystal Palace")
+# fixtures_df$match_date_utc <- "2026-05-13 20:00:00"
+
+home_rows <- fixtures_df %>%
+  filter(home_team_name %in% teams_of_interest) %>%
+  transmute(
+    match_date_utc,
+    team_name=home_team_name,
+    opponent_name=away_team_name,
+    is_home=1L
+  )
+
+away_rows <- fixtures_df %>%
+  filter(away_team_name %in% teams_of_interest) %>%
+  transmute(
+    match_date_utc,
+    team_name=away_team_name,
+    opponent_name=home_team_name,
+    is_home=0L
+  )
+
+remaining_long <- bind_rows(home_rows, away_rows) %>%
+  left_join(
+    team_strength %>%
+      rename(opponent_name=team_name, opponent_season_contexg=season_contexg),
+    by="opponent_name"
+  ) %>%
+  mutate(
+    difficulty=if_else(
+      is_home==1L,
+      opponent_season_contexg - home_advantage,
+      opponent_season_contexg + home_advantage
+    ),
+    opponent_label=recode(opponent_name, !!!team_abbrev, .default=opponent_name),
+    opponent_label=paste0(opponent_label, if_else(is_home==1L, " (H)", " (A)"))
+  ) %>%
+  arrange(team_name, match_date_utc, opponent_name) %>%
+  group_by(team_name) %>%
+  mutate(
+    n_matches=n(),
+    match_num=(38L - n_matches) + row_number()
+  ) %>%
+  ungroup() %>%
+  select(-n_matches)
+
+# --- wide display and numeric tables ---
+display_wide <- remaining_long %>%
+  select(match_num, team_name, opponent_label) %>%
+  pivot_wider(names_from=team_name, values_from=opponent_label)
+
+diff_wide <- remaining_long %>%
+  select(match_num, team_name, difficulty) %>%
+  pivot_wider(names_from=team_name, values_from=difficulty)
+
+max_matches <- max(remaining_long$match_num, na.rm=TRUE)
+
+start_match <- min(remaining_long$match_num, na.rm=TRUE)
+
+display_wide <- tibble(`Match #`=start_match:38) %>%
+  left_join(display_wide, by=c("Match #"="match_num"))
+
+diff_wide <- tibble(`Match #`=start_match:38) %>%
+  left_join(diff_wide, by=c("Match #"="match_num"))
+
+# --- mean row ---
+mean_display <- remaining_long %>%
+  group_by(team_name) %>%
+  summarise(mean_difficulty=mean(difficulty, na.rm=TRUE), .groups="drop") %>%
+  mutate(label=sprintf("%.2f", mean_difficulty)) %>%
+  select(team_name, label) %>%
+  pivot_wider(names_from=team_name, values_from=label) %>%
+  mutate(`Match #`="Average") %>%
+  relocate(`Match #`)
+
+mean_diff <- remaining_long %>%
+  group_by(team_name) %>%
+  summarise(mean_difficulty=mean(difficulty, na.rm=TRUE), .groups="drop") %>%
+  select(team_name, mean_difficulty) %>%
+  pivot_wider(names_from=team_name, values_from=mean_difficulty) %>%
+  mutate(`Match #`="Average") %>%
+  relocate(`Match #`)
+
+display_tbl <- display_wide %>%
+  mutate(`Match #`=as.character(`Match #`)) %>%
+  bind_rows(mean_display) %>%
+  select(`Match #`, all_of(teams_of_interest))
+
+color_tbl <- diff_wide %>%
+  mutate(`Match #`=as.character(`Match #`)) %>%
+  bind_rows(mean_diff) %>%
+  select(`Match #`, all_of(teams_of_interest))
+
+# --- color function ---
+all_vals <- unlist(color_tbl[,teams_of_interest], use.names=FALSE)
+all_vals <- all_vals[is.finite(all_vals)]
+
+fill_fn <- col_numeric(
+  palette=c("#2E7D32", "#F7F7F7", "#C62828"),
+  domain=c(-1.3, 1.3)
+)
+
+# --- helper to color cells ---
+style_cell <- function(label, value, bold=FALSE) {
+  if (is.na(label)) return("")
+  bg <- if (is.na(value)) "#FFFFFF" else fill_fn(value)
+  fw <- if (bold) "bold" else "normal"
+  cell_spec(
+    label,
+    format="html",
+    background=bg,
+    color="black",
+    bold=bold,
+    extra_css=paste0(
+      "display:block;",
+      "padding:4px 6px;",
+      "border-radius:4px;",
+      "font-weight:", fw, ";"
+    )
+  )
+}
+
+# --- build styled table ---
+styled_tbl <- display_tbl
+
+for (team in teams_of_interest) {
+  styled_tbl[[team]] <- map2_chr(
+    display_tbl[[team]],
+    color_tbl[[team]],
+    ~ style_cell(.x, .y, bold=(display_tbl$`Match #`[which(display_tbl[[team]]==.x & color_tbl[[team]]==.y)[1]]=="Average"))
+  )
+}
+
+# safer explicit mean-row restyle
+mean_row_idx <- which(styled_tbl$`Match #`=="Average")
+
+for (team in teams_of_interest) {
+  styled_tbl[[team]][mean_row_idx] <- style_cell(
+    display_tbl[[team]][mean_row_idx],
+    color_tbl[[team]][mean_row_idx],
+    bold=TRUE
+  )
+}
+
+# --- render table ---
+# --- build styled table (unchanged) ---
+styled_tbl %>%
+  kbl(
+    escape=FALSE,
+    align=c("c","c","c"),
+    col.names=c("Match #","Arsenal", "Man City")
+  ) %>%
+  kable_styling(
+    full_width=FALSE,
+    bootstrap_options="condensed",
+    position="center"
+  ) %>%
+  row_spec(0, bold=TRUE) %>%
+  column_spec(1, width="70px") %>%
+  as.character() %>%
+  # --- FORCE NON-STRETCH TABLE ---
+  sub("<table", "<table style='width:auto !important;'", .) %>%
+  # --- CENTER WITHOUT STRETCH ---
+  {\(tbl_html)
+    tagList(
+      div(
+    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    "Remaining Fixtures"
+  ),
+  div(
+    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    "27 Mar 2026"
+  ),
+      div(
+        style="text-align:center;",
+        div(
+          style="display:inline-block;",
+          HTML(tbl_html)
+        )
+      )
+    )
+  }()
+```
+
+<div style="max-width:600px; margin-left:auto; margin-right:auto; font-size:14px">
+*Note that the colours and averages in the above table are taken from my contexG ratings, with a league-wide home advantage parameter. As described earlier, the actual simulations used consensus ratings.*
+</div>
+
+To demonstrate the magnitude of the task facing Manchester City, I reran the simulations with their next two games against Chelsea and Arsenal fixed as City victories—this would put them three points behind Arsenal having played a game more (I left the Arsenal v Bournemouth result to be generated by the sims). After this very favourable couple of results for City, Arsenal would nonetheless still be 79% favourites to win the league. In fact, even when I fixed all Manchester City's remaining eight matches as victories, City were only 66% favourites; in other words, City could win out from here and Arsenal would still win the league a third of the time.
+
+The average number of points for the champions in my simulations was 84.7. This is higher than Liverpool's 84-point total last year, although it's fair to point out that Liverpool wrapped up the title early and got only 2 points from their final 4 games. Evidently we are seeing a lower level of dominance from Premier League winners when compared to previous seasons. Going backwards chronologically from Liverpool, the winning tallies were 91, 89, 93, 86, 99, 98, 100, and 93 before we get to Leicester's unlikely 2016 triumph on 81 points. Depending on your slant, this could be viewed as a lack of elite teams or as evidence of the Premier League's current depth.
+
+## Race for Europe: almost everyone still has a chance!
+
+The thing that stands out when we look at each team's chances of qualifying for each European competition is the sheer number of teams still in with a chance of Europe. Only Spurs, Wolves and Burnley did not qualify for Europe in any of the 10,000 simulations.
+
+```{r}
+OUT_CSV <- file.path(OUT_DIR, "europe_qualification.csv")
+
+europe_race <- all_probs %>%
+  select(team, top_five_probability, champions_league_probability,
+         europa_league_probability, conference_league_probability) %>%
+  filter(top_five_probability > 0 | champions_league_probability > 0 |
+         europa_league_probability > 0 | conference_league_probability > 0) %>%
+  mutate(
+    any_europe=champions_league_probability +
+      europa_league_probability + conference_league_probability
+  ) %>%
+  arrange(desc(any_europe), desc(top_five_probability), desc(champions_league_probability), 
+          desc(europa_league_probability), desc(conference_league_probability)) %>%
+  mutate(
+    top_five_probability=percent(top_five_probability, accuracy=0.1),
+    champions_league_probability=percent(champions_league_probability, accuracy=0.1),
+    europa_league_probability=percent(europa_league_probability, accuracy=0.1),
+    conference_league_probability=percent(conference_league_probability, accuracy=0.1),
+    any_europe=percent(any_europe, accuracy=0.1)
+  )
+
+write_csv(europe_race, OUT_CSV)
+
+tbl<- europe_race %>%
+  kbl(
+    col.names=c("Team", "Top Five", "Champions League", "Europa League", "Conference League", "Any UEFA Competition"),
+    align=c("l", "c", "c", "c", "c", "c")
+  ) %>%
+  kable_styling(
+    full_width=FALSE,
+    position="center"
+  ) %>%
+  row_spec(0, bold=TRUE)
+
+tagList(
+  div(
+    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    "Premier League European Qualification"
+  ),
+  div(
+    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    "27 Mar 2026 · 10,000 simulations"
+  ),
+  div(
+    style="text-align:center;",
+    div(
+      style="display:inline-block;",
+      HTML(as.character(tbl))
+    )
+  )
+)
+```
+
+There are, of course, various ways to qualify for Europe. With the Premier League [almost certain](https://www.nytimes.com/athletic/7133568/2026/03/20/premier-league-champions-league-fifth-spot-coefficients/) to win an extra Champions League spot next season, the top 5 enter the Champions League, then 6th place gets a Europa League spot and 7th goes into the Conference League (because Manchester City won the Carabao Cup). If the FA Cup winners finish in the top 6 then those last two spots will drop down to 7th and 8th, but Leeds or West Ham play each other in the quarter finals and they could still qualify for the Europa League if they go all the way. 
+
+Crystal Palace can also grab an additional Europa League spot if they win this year's Conference League. Liverpool could finish outside the top 5 and still qualify for the Champions League if they win this year's Champions League, while Aston Villa and Nottingham Forest could do the same if they win the Europa League. Finally, there is a scenario where 6th place could qualify for the Champions League if Aston Villa finish in 5th place and win the Europa League. This is because the Premier League's bonus CL place is only awarded to the highest non-qualified team after all other considerations have been applied. 
+
+Adding up the probabilities, we can see the expected number of English teams in each competition: 5.27 in the Champions League, 2.25 in the Europa League and just 1 in the Conference League as there's no special qualifying for that.
+
+Arsenal and Man City have obviously sewn up a top 5 place, and Man Utd look pretty safe at 96.8% based on the simulations. Although it's not strictly a three-horse race, it looks like the remaining two places will be between **Aston Villa** (88.4%), **Liverpool** (62.6%) and **Chelsea** (39.0%), so let's take a look at their remaining fixtures.
+
+```{r}
+# --- input files ---
+season_csv <- path.expand("~/projects/pl-simulation/data/contexg_attack_defence_team_by_match_premier_league.csv")
+fixtures_csv <- path.expand("~/projects/pl-simulation/data/remaining_fixtures.csv")
+
+teams_of_interest <- c("Aston Villa", "Liverpool", "Chelsea")
+
+# --- season data ---
+season_df <- read_csv(season_csv, show_col_types=FALSE) %>%
+  mutate(
+    date=as.Date(date),
+    is_home=as.integer(is_home)
+  )
+
+# mean home advantage across the season
+home_advantage <- season_df %>%
+  filter(is_home==1) %>%
+  summarise(home_advantage=mean(contexg_diff, na.rm=TRUE)) %>%
+  pull(home_advantage)
+
+# opponent season-long contexg_diff
+team_strength <- season_df %>%
+  group_by(team_name) %>%
+  summarise(
+    season_contexg=mean(contexg_diff, na.rm=TRUE),
+    .groups="drop"
+  )
+
+# --- abbreviation map ---
+team_abbrev <- c(
+  "Crystal Palace"="C Palace",
+  "Nottingham Forest"="N Forest",
+  "Aston Villa"="A Villa",
+  "Manchester City"="Man City",
+  "Manchester United"="Man Utd",
+  "Newcastle United"="Newcastle",
+  "Wolverhampton Wanderers"="Wolves"
+)
+
+# --- remaining fixtures ---
+fixtures_df <- read_csv(fixtures_csv, show_col_types=FALSE) %>%
+  mutate(match_date_utc=as.Date(match_date_utc))
+
+
+# Set Man C-Palace to May 13 (most likely date based on Palace fixtures)
+# my_row <- which(fixtures_df$home_team=="Manchester City" & fixtures_df$away_team=="Crystal Palace")
+# fixtures_df$match_date_utc <- "2026-05-13 20:00:00"
+
+home_rows <- fixtures_df %>%
+  filter(home_team_name %in% teams_of_interest) %>%
+  transmute(
+    match_date_utc,
+    team_name=home_team_name,
+    opponent_name=away_team_name,
+    is_home=1L
+  )
+
+away_rows <- fixtures_df %>%
+  filter(away_team_name %in% teams_of_interest) %>%
+  transmute(
+    match_date_utc,
+    team_name=away_team_name,
+    opponent_name=home_team_name,
+    is_home=0L
+  )
+
+remaining_long <- bind_rows(home_rows, away_rows) %>%
+  left_join(
+    team_strength %>%
+      rename(opponent_name=team_name, opponent_season_contexg=season_contexg),
+    by="opponent_name"
+  ) %>%
+  mutate(
+    difficulty=if_else(
+      is_home==1L,
+      opponent_season_contexg - home_advantage,
+      opponent_season_contexg + home_advantage
+    ),
+    opponent_label=recode(opponent_name, !!!team_abbrev, .default=opponent_name),
+    opponent_label=paste0(opponent_label, if_else(is_home==1L, " (H)", " (A)"))
+  ) %>%
+  arrange(team_name, match_date_utc, opponent_name) %>%
+  group_by(team_name) %>%
+  mutate(
+    n_matches=n(),
+    match_num=(38L - n_matches) + row_number()
+  ) %>%
+  ungroup() %>%
+  select(-n_matches)
+
+# --- wide display and numeric tables ---
+display_wide <- remaining_long %>%
+  select(match_num, team_name, opponent_label) %>%
+  pivot_wider(names_from=team_name, values_from=opponent_label)
+
+diff_wide <- remaining_long %>%
+  select(match_num, team_name, difficulty) %>%
+  pivot_wider(names_from=team_name, values_from=difficulty)
+
+max_matches <- max(remaining_long$match_num, na.rm=TRUE)
+
+start_match <- min(remaining_long$match_num, na.rm=TRUE)
+
+display_wide <- tibble(`Match #`=start_match:38) %>%
+  left_join(display_wide, by=c("Match #"="match_num"))
+
+diff_wide <- tibble(`Match #`=start_match:38) %>%
+  left_join(diff_wide, by=c("Match #"="match_num"))
+
+# --- mean row ---
+mean_display <- remaining_long %>%
+  group_by(team_name) %>%
+  summarise(mean_difficulty=mean(difficulty, na.rm=TRUE), .groups="drop") %>%
+  mutate(label=sprintf("%.2f", mean_difficulty)) %>%
+  select(team_name, label) %>%
+  pivot_wider(names_from=team_name, values_from=label) %>%
+  mutate(`Match #`="Average") %>%
+  relocate(`Match #`)
+
+mean_diff <- remaining_long %>%
+  group_by(team_name) %>%
+  summarise(mean_difficulty=mean(difficulty, na.rm=TRUE), .groups="drop") %>%
+  select(team_name, mean_difficulty) %>%
+  pivot_wider(names_from=team_name, values_from=mean_difficulty) %>%
+  mutate(`Match #`="Average") %>%
+  relocate(`Match #`)
+
+display_tbl <- display_wide %>%
+  mutate(`Match #`=as.character(`Match #`)) %>%
+  bind_rows(mean_display) %>%
+  select(`Match #`, all_of(teams_of_interest))
+
+color_tbl <- diff_wide %>%
+  mutate(`Match #`=as.character(`Match #`)) %>%
+  bind_rows(mean_diff) %>%
+  select(`Match #`, all_of(teams_of_interest))
+
+# --- color function ---
+all_vals <- unlist(color_tbl[,teams_of_interest], use.names=FALSE)
+all_vals <- all_vals[is.finite(all_vals)]
+
+fill_fn <- col_numeric(
+  palette=c("#2E7D32", "#F7F7F7", "#C62828"),
+  domain=c(-1.3, 1.3)
+)
+
+# --- helper to color cells ---
+style_cell <- function(label, value, bold=FALSE) {
+  if (is.na(label)) return("")
+  bg <- if (is.na(value)) "#FFFFFF" else fill_fn(value)
+  fw <- if (bold) "bold" else "normal"
+  cell_spec(
+    label,
+    format="html",
+    background=bg,
+    color="black",
+    bold=bold,
+    extra_css=paste0(
+      "display:block;",
+      "padding:4px 6px;",
+      "border-radius:4px;",
+      "font-weight:", fw, ";"
+    )
+  )
+}
+
+# --- build styled table ---
+styled_tbl <- display_tbl
+
+for (team in teams_of_interest) {
+  styled_tbl[[team]] <- map2_chr(
+    display_tbl[[team]],
+    color_tbl[[team]],
+    ~ style_cell(.x, .y, bold=(display_tbl$`Match #`[which(display_tbl[[team]]==.x & color_tbl[[team]]==.y)[1]]=="Average"))
+  )
+}
+
+# safer explicit mean-row restyle
+mean_row_idx <- which(styled_tbl$`Match #`=="Average")
+
+for (team in teams_of_interest) {
+  styled_tbl[[team]][mean_row_idx] <- style_cell(
+    display_tbl[[team]][mean_row_idx],
+    color_tbl[[team]][mean_row_idx],
+    bold=TRUE
+  )
+}
+
+# --- render table ---
+# --- build styled table (unchanged) ---
+styled_tbl %>%
+  kbl(
+    escape=FALSE,
+    align=c("c","c","c"),
+    col.names=c("Match #","Aston Villa", "Liverpool", "Chelsea")
+  ) %>%
+  kable_styling(
+    full_width=FALSE,
+    bootstrap_options="condensed",
+    position="center"
+  ) %>%
+  row_spec(0, bold=TRUE) %>%
+  column_spec(1, width="70px") %>%
+  as.character() %>%
+  # --- FORCE NON-STRETCH TABLE ---
+  sub("<table", "<table style='width:auto !important;'", .) %>%
+  # --- CENTER WITHOUT STRETCH ---
+  {\(tbl_html)
+    tagList(
+      div(
+    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    "Remaining Fixtures"
+  ),
+  div(
+    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    "27 Mar 2026"
+  ),
+      div(
+        style="text-align:center;",
+        div(
+          style="display:inline-block;",
+          HTML(tbl_html)
+        )
+      )
+    )
+  }()
+```
+
+Villa seem to have the easiest run-in, especially if that final game becomes a dead rubber for Man City. Liverpool play both Chelsea and Villa in the last three weeks so we can hopefully look forward to some crucial head-to-head matches there.
+
+The average number of points for 5th place in my simulations was 61.5. This is much lower than last season when Aston Villa and Nottingham Forest both finish outside the top 5 on 66 and 65 points respectively. The last time a team finished 5th in the Premier League with fewer than 62 points was Spurs in 2007 (60 pts).
+
+## Relegation: West Ham in trouble
+
+```{r}
+OUT_CSV <- file.path(OUT_DIR, "releg_race.csv")
+
+releg_race <- all_probs %>%
+  select(team, relegation_probability) %>%
+  filter(relegation_probability > 0) %>%
+  arrange(desc(relegation_probability)) %>%
+  mutate(
+    relegation_probability=percent(relegation_probability, accuracy=0.1)
+  )
+
+write_csv(releg_race, OUT_CSV)
+
+tbl<- releg_race %>%
+  kbl(
+    col.names=c("Team", "Relegation"),
+    align=c("l", "c")
+  ) %>%
+  kable_styling(
+    full_width=FALSE,
+    position="center"
+  ) %>%
+  row_spec(0, bold=TRUE)
+
+tagList(
+  div(
+    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    "Premier League Relegation"
+  ),
+  div(
+    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    "27 Mar 2026 · 10,000 simulations"
+  ),
+  div(
+    style="text-align:center;",
+    div(
+      style="display:inline-block;",
+      HTML(as.character(tbl))
+    )
+  )
+)
+```
+
+The vibes were feeling relatively positive at West Ham after they dragged themselves back into the relegation race having looked dead & buried at one stage. But an injury to in-form **Crysencio Summerville** followed by poor performances against Man City and Villa, albeit in difficult fixtures, has brought the mood back down a bit. The simulations have them going down 58.6% of the time, notably higher than the betting markets where they are around 44%.
+
+```{r}
+# --- input files ---
+season_csv <- path.expand("~/projects/pl-simulation/data/contexg_attack_defence_team_by_match_premier_league.csv")
+fixtures_csv <- path.expand("~/projects/pl-simulation/data/remaining_fixtures.csv")
+
+teams_of_interest <- c("Leeds", "Nottingham Forest", "Tottenham", "West Ham")
+
+# --- season data ---
+season_df <- read_csv(season_csv, show_col_types=FALSE) %>%
+  mutate(
+    date=as.Date(date),
+    is_home=as.integer(is_home)
+  )
+
+# mean home advantage across the season
+home_advantage <- season_df %>%
+  filter(is_home==1) %>%
+  summarise(home_advantage=mean(contexg_diff, na.rm=TRUE)) %>%
+  pull(home_advantage)
+
+# opponent season-long contexg_diff
+team_strength <- season_df %>%
+  group_by(team_name) %>%
+  summarise(
+    season_contexg=mean(contexg_diff, na.rm=TRUE),
+    .groups="drop"
+  )
+
+# --- abbreviation map ---
+team_abbrev <- c(
+  "Crystal Palace"="C Palace",
+  "Nottingham Forest"="N Forest",
+  "Aston Villa"="A Villa",
+  "Manchester City"="Man City",
+  "Manchester United"="Man Utd",
+  "Newcastle United"="Newcastle",
+  "Wolverhampton Wanderers"="Wolves"
+)
+
+# --- remaining fixtures ---
+fixtures_df <- read_csv(fixtures_csv, show_col_types=FALSE) %>%
+  mutate(match_date_utc=as.Date(match_date_utc))
+
+
+# Set Man C-Palace to May 13 (most likely date based on Palace fixtures)
+# my_row <- which(fixtures_df$home_team=="Manchester City" & fixtures_df$away_team=="Crystal Palace")
+# fixtures_df$match_date_utc <- "2026-05-13 20:00:00"
+
+home_rows <- fixtures_df %>%
+  filter(home_team_name %in% teams_of_interest) %>%
+  transmute(
+    match_date_utc,
+    team_name=home_team_name,
+    opponent_name=away_team_name,
+    is_home=1L
+  )
+
+away_rows <- fixtures_df %>%
+  filter(away_team_name %in% teams_of_interest) %>%
+  transmute(
+    match_date_utc,
+    team_name=away_team_name,
+    opponent_name=home_team_name,
+    is_home=0L
+  )
+
+remaining_long <- bind_rows(home_rows, away_rows) %>%
+  left_join(
+    team_strength %>%
+      rename(opponent_name=team_name, opponent_season_contexg=season_contexg),
+    by="opponent_name"
+  ) %>%
+  mutate(
+    difficulty=if_else(
+      is_home==1L,
+      opponent_season_contexg - home_advantage,
+      opponent_season_contexg + home_advantage
+    ),
+    opponent_label=recode(opponent_name, !!!team_abbrev, .default=opponent_name),
+    opponent_label=paste0(opponent_label, if_else(is_home==1L, " (H)", " (A)"))
+  ) %>%
+  arrange(team_name, match_date_utc, opponent_name) %>%
+  group_by(team_name) %>%
+  mutate(
+    n_matches=n(),
+    match_num=(38L - n_matches) + row_number()
+  ) %>%
+  ungroup() %>%
+  select(-n_matches)
+
+# --- wide display and numeric tables ---
+display_wide <- remaining_long %>%
+  select(match_num, team_name, opponent_label) %>%
+  pivot_wider(names_from=team_name, values_from=opponent_label)
+
+diff_wide <- remaining_long %>%
+  select(match_num, team_name, difficulty) %>%
+  pivot_wider(names_from=team_name, values_from=difficulty)
+
+max_matches <- max(remaining_long$match_num, na.rm=TRUE)
+
+start_match <- min(remaining_long$match_num, na.rm=TRUE)
+
+display_wide <- tibble(`Match #`=start_match:38) %>%
+  left_join(display_wide, by=c("Match #"="match_num"))
+
+diff_wide <- tibble(`Match #`=start_match:38) %>%
+  left_join(diff_wide, by=c("Match #"="match_num"))
+
+# --- mean row ---
+mean_display <- remaining_long %>%
+  group_by(team_name) %>%
+  summarise(mean_difficulty=mean(difficulty, na.rm=TRUE), .groups="drop") %>%
+  mutate(label=sprintf("%.2f", mean_difficulty)) %>%
+  select(team_name, label) %>%
+  pivot_wider(names_from=team_name, values_from=label) %>%
+  mutate(`Match #`="Average") %>%
+  relocate(`Match #`)
+
+mean_diff <- remaining_long %>%
+  group_by(team_name) %>%
+  summarise(mean_difficulty=mean(difficulty, na.rm=TRUE), .groups="drop") %>%
+  select(team_name, mean_difficulty) %>%
+  pivot_wider(names_from=team_name, values_from=mean_difficulty) %>%
+  mutate(`Match #`="Average") %>%
+  relocate(`Match #`)
+
+display_tbl <- display_wide %>%
+  mutate(`Match #`=as.character(`Match #`)) %>%
+  bind_rows(mean_display) %>%
+  select(`Match #`, all_of(teams_of_interest))
+
+color_tbl <- diff_wide %>%
+  mutate(`Match #`=as.character(`Match #`)) %>%
+  bind_rows(mean_diff) %>%
+  select(`Match #`, all_of(teams_of_interest))
+
+# --- color function ---
+all_vals <- unlist(color_tbl[,teams_of_interest], use.names=FALSE)
+all_vals <- all_vals[is.finite(all_vals)]
+
+fill_fn <- col_numeric(
+  palette=c("#2E7D32", "#F7F7F7", "#C62828"),
+  domain=c(-1.3, 1.3)
+)
+
+# --- helper to color cells ---
+style_cell <- function(label, value, bold=FALSE) {
+  if (is.na(label)) return("")
+  bg <- if (is.na(value)) "#FFFFFF" else fill_fn(value)
+  fw <- if (bold) "bold" else "normal"
+  cell_spec(
+    label,
+    format="html",
+    background=bg,
+    color="black",
+    bold=bold,
+    extra_css=paste0(
+      "display:block;",
+      "padding:4px 6px;",
+      "border-radius:4px;",
+      "font-weight:", fw, ";"
+    )
+  )
+}
+
+# --- build styled table ---
+styled_tbl <- display_tbl
+
+for (team in teams_of_interest) {
+  styled_tbl[[team]] <- map2_chr(
+    display_tbl[[team]],
+    color_tbl[[team]],
+    ~ style_cell(.x, .y, bold=(display_tbl$`Match #`[which(display_tbl[[team]]==.x & color_tbl[[team]]==.y)[1]]=="Average"))
+  )
+}
+
+# safer explicit mean-row restyle
+mean_row_idx <- which(styled_tbl$`Match #`=="Average")
+
+for (team in teams_of_interest) {
+  styled_tbl[[team]][mean_row_idx] <- style_cell(
+    display_tbl[[team]][mean_row_idx],
+    color_tbl[[team]][mean_row_idx],
+    bold=TRUE
+  )
+}
+
+# --- render table ---
+# --- build styled table (unchanged) ---
+styled_tbl %>%
+  kbl(
+    escape=FALSE,
+    align=c("c","c","c"),
+    col.names=c("Match #", "Leeds", "Nottingham Forest", "Tottenham", "West Ham")
+  ) %>%
+  kable_styling(
+    full_width=FALSE,
+    bootstrap_options="condensed",
+    position="center"
+  ) %>%
+  row_spec(0, bold=TRUE) %>%
+  column_spec(1, width="70px") %>%
+  as.character() %>%
+  # --- FORCE NON-STRETCH TABLE ---
+  sub("<table", "<table style='width:auto !important;'", .) %>%
+  # --- CENTER WITHOUT STRETCH ---
+  {\(tbl_html)
+    tagList(
+      div(
+    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    "Remaining Fixtures"
+  ),
+  div(
+    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    "27 Mar 2026"
+  ),
+      div(
+        style="text-align:center;",
+        div(
+          style="display:inline-block;",
+          HTML(tbl_html)
+        )
+      )
+    )
+  }()
+```
+
+West Ham have the hardest run-in of the four relegation contenders and their easiest game is up next, a Friday night match at home to **Wolves**. The term "must-win" will be thrown around, and it certainly feels like a crucial game for the Hammers, but how does the result change their relegation odds? According to my simulations, with a 1-0 win their relegation probability would drop from 59% down to 49%. A 1-1 draw would increase it to 69% and a 0-1 defeat moves their relegation chances to 76%. So in decimal odds terms, according to my model West Ham could range from **1.32** to **2.04** for relegation based solely on the result of the Wolves match.
+
+The average number of points for 18th place was 35.8. This is much higher than the last two seasons when Leicester finished 18th with 25 points and Luton the year before that with 26. West Ham would be safe already this year based on those totals even if they lose all their remaining games, but this year is clearly a different animal. This reflects the increasing depth of the Premier League, but **Sunderland** have also thrown a cat among the pigeons by massively overperforming their underlying numbers, which have consistently portrayed them as a relegation-calibre side.
+
+Since there is such a large deviation between my numbers and the betting markets with regard to Spurs and West Ham's relegation odds, it is worth drilling down a bit to see what's going on. As mentioned above, I used consensus ratings for this model based on how teams seem to be generally rated in the betting lines. This meant I have Spurs rated slightly better than West Ham—that may be debatable over the last few months, but the prices for forthcoming games have Spurs as a coin flip at Sunderland and then slight favourites at home to Brighton. Rightly or wrongly, the markets seem to be pricing in a potential improvement from Spurs, whether that's via a new manager bounce or just the squad getting their act together with various players back from injury. But what would happen if we change the ratings?
+
+## Sensitivity analysis and end-of-season motivation
+
+We can test the effect of the ratings on the results of the model by varying the inputs and seeing how much that changes the outputs. In academic studies this would be called a **sensitivity analysis**. First, if we change the team ratings of Spurs and West Ham to be equal, the relegation probabilities change to 30% Spurs, 54% West Ham. Second, for the most pessimistic Spurs case we can switch Spurs and West Ham's original ratings around so that Spurs are the worst of the four relegation candidates. In this case the simulations give us Spurs 32% and West Ham 52%.
+
+This gives us an idea of how much the price is driven by the team ratings and how much is driven by the league table and remaining fixtures. The probabilities don't seem to shift dramatically when we change the ratings, implying it is the bad predicament driving West Ham's higher likelihood of relegation. When I say bad predicament, West Ham face three clear disadvantages:
+
+- They are a point behind Spurs.
+- They have a goal difference that is 11 worse than Spurs.
+- They have harder remaining fixtures than Spurs.
+
+That last point is subjective, but the first two aren't. West Ham effectively have to beat Tottenham's total by two points over the last seven games; this could of course be overturned via one good weekend, but they are also only one bad weekend away from needing multiple wins to catch up. To isolate the effect of the current league table, independent of ratings and remaining fixtures, I ran the simulations with all 20 teams set to the same rating and with no home advantage.
+
+```{r}
+OUT_CSV <- file.path(OUT_DIR, "releg_alt.csv")
+
+releg_race <- data.frame(
+  Team=c("Wolves","Burnley","West Ham","Tottenham","Nottm Forest","Leeds"),
+  relegation_probability=c(0.999,0.993,0.504,0.281,0.127,0.096)
+) %>%
+  mutate(
+    relegation_probability=percent(relegation_probability, accuracy=0.1)
+  )
+
+write_csv(releg_race, OUT_CSV)
+
+tbl<- releg_race %>%
+  kbl(
+    col.names=c("Team", "Relegation"),
+    align=c("l", "c")
+  ) %>%
+  kable_styling(
+    full_width=FALSE,
+    position="center"
+  ) %>%
+  row_spec(0, bold=TRUE)
+
+tagList(
+  div(
+    style="text-align:center; margin-bottom:8px; font-size:1.05em; font-weight:600;",
+    "Premier League Relegation (ratings and fixtures neutralised)"
+  ),
+  div(
+    style="text-align:center; margin-bottom:14px; color:#666; font-size:0.95em;",
+    "27 Mar 2026 · 10,000 simulations"
+  ),
+  div(
+    style="text-align:center;",
+    div(
+      style="display:inline-block;",
+      HTML(as.character(tbl))
+    )
+  )
+)
+```
+
+So if West Ham and Spurs are rated exactly the same, with seven identical fixtures remaining, West Ham would have a 50.4% chance of going down compared to 28.1% for Spurs. The actual current betting odds (44% West Ham, 35% Spurs) seem to be factoring in Spurs being significantly worse than West Ham. I don't think this is reflected in the betting lines for forthcoming games, but it's something worth watching as the markets become more liquid and prices adjust nearer to the days of the matches. From a betting point of view, I'm not going to tell people which way to bet but it seems to me that if you want to oppose Spurs you are better off doing it in individual matches than by backing them to go down. Conversely, if you want to oppose West Ham, the relegation price looks reasonable.
+
+One potential wrinkle in end-of-season games is **motivation**. This can manifest in different ways: good teams with nothing to play for, bad teams with a huge amount to play for, teams in cup finals, and so forth. One of the obvious advantages a team can receive is by playing a team that has already wrapped up the title—as mentioned earlier, Liverpool only got 2 points from their final 4 games after sealing the championship last season. 
+
+West Ham are due to play Arsenal on the 9th of May which, ordinarily, would be a very difficult fixture. But if Arsenal have wrapped up the title by then, they might be a bit less motivated. The match also comes off the back of the Champions League semi-final second leg, in which Arsenal are likely to be involved given their kind draw against Sporting Lisbon in the quarters.
+
+I originally wanted to dynamically include the probability that the title would be decided before the West Ham v Arsenal fixture, but given the possibility of further matches being rearranged as City and Arsenal progress in the FA Cup, it all seemed too difficult so I will just take a simple look at the difference if Arsenal put out a weakened team in that match—I will arbitrarily value this weakened Arsenal side as an average PL team. This single change reduces West Ham's relegation probability from 59% to 53%, so it could be quite an important factor and Spurs fans will be hoping (for multiple reasons) that the title race can stay alive as long as possible. 
+
+Last year's Premier League was a little anticlimactic with both the title race and relegation decided early. The title race may go the same way this year but relegation looks like it should be a nail-biter, and there are all sorts of teams involved in the European races so we should have lots to analyse over the coming weeks. I will redo the simulations after each set of matches and see how each race has changed. If you have any feedback or thoughts on my results or methodology, please feel free to comment or send me a message!
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2026 John Knight. All rights reserved.

@@ -4,6 +4,7 @@ author: "John Knight"
 date: 2026-04-12
 date-format: "D MMMM YYYY"
 description: "Nightmare in North London as Spurs and Arsenal lose while West Ham and Manchester City win."
+draft: false
 format:
   html:
     title-block-categories: true

@@ -1,0 +1,21 @@
+---
+title: "How much is home advantage worth in the World Cup?"
+author: "John Knight"
+draft: TRUE
+---
+
+*Intro & recap of last article. But how much is it worth, and has it changed over time?*
+
+*Some basic overall stats re WC home adv. Real examples.*
+
+*Introduce Elo model with calibration to show it works, and use that to show more accurate home adv overall and per WC.*
+
+*What is driving this? List possible factors.*
+
+*Compare with other major competitions. Does this suggest travel distance or time zones may be a factor? Use real examples.*
+
+*Look at confederation home advantage.*
+
+*More directly analyse travel distance, time zones, climate etc.*
+
+*What does this suggest for this summer? USA/Canada/Mexico hosts.*

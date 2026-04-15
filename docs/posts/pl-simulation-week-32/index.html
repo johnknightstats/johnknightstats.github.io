@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-03-27">
+<meta name="dcterms.date" content="2026-04-14">
 <meta name="description" content="Using Monte Carlo simulation to estimate all teams’ probabilities for the title race, European qualification and relegation.">
 
-<title>Simulating the remainder of the Premier League after Matchweek 31 – John Knight Stats</title>
+<title>Premier League probabilities after Matchweek 32: we are approaching flip-flop territory! – John Knight Stats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -302,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Simulating the remainder of the Premier League after Matchweek 31</h1>
+<h1 class="title">Premier League probabilities after Matchweek 32: we are approaching flip-flop territory!</h1>
   <div class="quarto-categories">
     <div class="quarto-category">football</div>
     <div class="quarto-category">statistics</div>
@@ -329,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">27 March 2026</p>
+      <p class="date">14 April 2026</p>
     </div>
   </div>
   
@@ -341,14 +341,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>With the Premier League taking a couple of weeks off for the international break and FA Cup, it seems like a good time to assess the state of play. I simulated the remainder of the season 10,000 times to estimate the probabilities for each team in the title race, European qualification and the relegation battle.</p>
-<p>Monte Carlo simulation can be overused and has its weaknesses, but it is well-suited to situations like this where you have a relatively small number of games, tiebreakers and European qualification criteria that make every situation unique and complex. I tried to balance the team ratings to match the general consensus and betting markets rather than just plugging in my own ratings—that approach will generally just lead to “which team do I rate higher/lower than everyone else”, which sort of defeats the object.</p>
-<section id="the-title-race-city-probably-need-to-run-the-table" class="level2">
-<h2 class="anchored" data-anchor-id="the-title-race-city-probably-need-to-run-the-table">The title race: City probably need to run the table</h2>
+<p>A few weeks ago, I published an <a href="https://substack.com/home/post/p-192331593">article</a> containing the results of my Premier League simulations after Matchweek 31. Although only one round of league fixtures has been played since then, a lot has changed. Let’s take a look at the new numbers.</p>
+<p>Again, I have tried to use consensus team ratings based on how the markets are pricing teams in matches. I could use my own ratings but that’s not very interesting because the forecasts will then be driven by whichever teams I have higher or lower than the public.</p>
+<section id="the-title-race-flip-flop-imminent" class="level2">
+<h2 class="anchored" data-anchor-id="the-title-race-flip-flop-imminent">The title race: flip-flop imminent?</h2>
+<p>My previous article was published on the 27th of March. <strong>Arsenal</strong> still held a commanding lead at the top but they had just lost to <strong>Manchester City</strong> in the Carabao Cup final, and there was speculation about whether that would be a psychological blow. Since then, Arsenal have additionally lost to Southampton in the FA Cup, secured a fortunate late win after an uninspiring performance at Sporting Lisbon, and then surprisingly lost at home to Bournemouth in the Premier League where they created just <a href="https://www.fotmob.com/matches/afc-bournemouth-vs-arsenal/2txefx#4813685:tab=stats">0.18 xG</a> from open play.</p>
+<p>For City, meanwhile, the trend couldn’t be more different. They followed up their cup final victory over the Gunners by thrashing Liverpool 4-0 in the FA Cup quarter final, and then produced a commanding performance to win 3-0 at Chelsea. My <a href="https://substack.com/home/post/p-193998289">contexG</a> ratings scored this as City’s best performance of the season, on the same weekend as Arsenal produced their worst.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;">Premier League Winner</div>
-<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">27 Mar 2026 · 10,000 simulations</div>
+<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">14 Apr 2026 · 10,000 simulations</div>
 <div style="text-align:center;">
 <div style="display:inline-block;">
 <table class="table caption-top table-sm table-striped small">
@@ -361,11 +363,11 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">Arsenal</td>
-<td style="text-align: right; width: 140px;">92.4%</td>
+<td style="text-align: right; width: 140px;">65.0%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">Manchester City</td>
-<td style="text-align: right; width: 140px;">7.6%</td>
+<td style="text-align: right; width: 140px;">35.0%</td>
 </tr>
 </tbody>
 </table>
@@ -373,12 +375,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>It’s no surprise that <strong>Arsenal</strong> are heavy favourites to win the league, roughly in line with the betting markets at <strong>92.4%</strong>. They are currently nine points clear and have a fairly soft run-in, so it looks like Manchester City will probably have to win all their remaining matches to overhaul them.</p>
-<p>City’s game against Crystal Palace game was postponed due to the Carabao Cup final and will be rearranged later in the season. This means City’s next two fixtures are their most difficult: Chelsea away and Arsenal at home. Meanwhile, aside from their visit to Manchester, Arsenal have a very soft run-in.</p>
+<p>In spite of City now being rated better than Arsenal, the Gunners still win the league in <strong>65%</strong> of my simulations compared to the markets which have them around 59%. So why the difference?</p>
+<p>Firstly, the <strong>vibes</strong> factor. There’s no doubt if you polled for public sentiment at the moment, an overwhelming amount of people will feel like the momentum is with City now and that’s going to continue. A casual view would be: you fancy City to beat Arsenal this weekend, and then you look at each of City’s remaining fixtures and you fancy them to win each one. And it’s City, it’s <strong>Pep Guardiola</strong>: they know how to get the job done, whereas Arsenal have developed a reputation for “the B word”.</p>
+<p>I can’t argue with any of that sentiment, but it’s important to anchor ourselves with numbers. The consensus ratings I used have City about 0.4 goals better than Arsenal. If we make Arsenal worse by about 0.2 more goals, which would put them on a similar level to Liverpool, then their title odds would decrease to 55.4%. So it seems like the markets are averaging Arsenal at something like half a goal worse than Man City at the moment. I’ll leave you to decide if that’s fair.</p>
+<p>Let’s remind ourselves of the remaining fixtures for the two teams. City’s postponed game at home to Crystal Palace is shown as Matchweek 32 here, but it will likely be rescheduled for something like the 13th of May.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;">Remaining Fixtures</div>
-<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">27 Mar 2026</div>
+<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">14 Apr 2026</div>
 <div style="text-align:center;">
 <div style="display:inline-block;">
 <table class="table table-condensed caption-top table-sm table-striped small">
@@ -391,49 +395,44 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center; width: 70px;">31</td>
+<td style="text-align: center; width: 70px;">32</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(209, 223, 207, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">C Palace (H)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center; width: 70px;">32</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(210, 224, 208, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Bournemouth (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(225, 118, 103, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Chelsea (A)</span></td>
-</tr>
-<tr class="odd">
 <td style="text-align: center; width: 70px;">33</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(200, 48, 45, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Man City (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(228, 128, 114, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Arsenal (H)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center; width: 70px;">34</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(228, 235, 227, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Newcastle (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(133, 176, 129, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Burnley (A)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center; width: 70px;">35</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(213, 226, 211, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Fulham (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(246, 246, 246, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Everton (A)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center; width: 70px;">36</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(193, 213, 190, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">West Ham (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(231, 237, 230, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Brentford (H)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center; width: 70px;">37</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(46, 125, 50, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Burnley (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 203, 195, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Bournemouth (A)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center; width: 70px;">38</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 203, 196, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">C Palace (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(209, 224, 207, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">A Villa (H)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center; width: 70px;">Average</td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(232, 238, 231, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.10</span></td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(247, 236, 234, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">0.08</span></td>
+<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(236, 240, 235, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.07</span></td>
+<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(241, 243, 241, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.04</span></td>
 </tr>
 </tbody>
 </table>
@@ -444,16 +443,17 @@ ul.task-list li input[type="checkbox"] {
 <div style="max-width:600px; margin-left:auto; margin-right:auto; font-size:14px">
 <p><em>Note that the colours and averages in the above table are taken from my contexG ratings, with a league-wide home advantage parameter. As described earlier, the actual simulations used consensus ratings.</em></p>
 </div>
-<p>To demonstrate the magnitude of the task facing Manchester City, I reran the simulations with their next two games against Chelsea and Arsenal fixed as City victories—this would put them three points behind Arsenal having played a game more (I left the Arsenal v Bournemouth result to be generated by the sims). After this very favourable couple of results for City, Arsenal would nonetheless still be 79% favourites to win the league. In fact, even when I fixed all Manchester City’s remaining eight matches as victories, City were only 66% favourites; in other words, City could win out from here and Arsenal would still win the league a third of the time.</p>
-<p>The average number of points for the champions in my simulations was 84.7. This is higher than Liverpool’s 84-point total last year, although it’s fair to point out that Liverpool wrapped up the title early and got only 2 points from their final 4 games. Evidently we are seeing a lower level of dominance from Premier League winners when compared to previous seasons. Going backwards chronologically from Liverpool, the winning tallies were 91, 89, 93, 86, 99, 98, 100, and 93 before we get to Leicester’s unlikely 2016 triumph on 81 points. Depending on your slant, this could be viewed as a lack of elite teams or as evidence of the Premier League’s current depth.</p>
+<p>This weekend’s title clash is a huge game, not only because the two rivals go head-to-head but because both teams’ run-ins are so soft that it is clear any lead becomes even more valuable. Using the same consensus ratings that made Arsenal 65% favourites, I plugged in three different results for the Man City v Arsenal game to see how they would change the forecast. A 1-0 Man City win would make Arsenal <strong>47.5%</strong> underdogs, a 1-1 draw would make Arsenal <strong>76%</strong> favourites, and a 1-0 Arsenal win would make them <strong>93.8%</strong> favourites. You can obviously make decent estimates of the relative chance based on slightly different ratings for Arsenal, based on whatever your view is.</p>
+<p>It depends how the game goes, and with goal difference potentially in play a score of, say, 3-0 is more significant than 1-0. But my estimate of the title prices after a City win would be something like <strong>1.6 City</strong> and <strong>2.66 Arsenal</strong>, which would be an incredible flip-flop after Arsenal have traded as short as 1.11.</p>
 </section>
-<section id="race-for-europe-almost-everyone-still-has-a-chance" class="level2">
-<h2 class="anchored" data-anchor-id="race-for-europe-almost-everyone-still-has-a-chance">Race for Europe: almost everyone still has a chance!</h2>
-<p>The thing that stands out when we look at each team’s chances of qualifying for each European competition is the sheer number of teams still in with a chance of Europe. Only Spurs, Wolves and Burnley did not qualify for Europe in any of the 10,000 simulations.</p>
+<section id="the-race-for-europe-a-good-week-for-liverpool" class="level2">
+<h2 class="anchored" data-anchor-id="the-race-for-europe-a-good-week-for-liverpool">The race for Europe: a good week for Liverpool</h2>
+<p>There wasn’t a dramatic amount of change in the European races off the back of last weekend’s results. It was a positive set of results for <strong>Liverpool</strong> whose Champions League odds grew from 66.8% to 82.3% after they saw off Fulham 2-0 while <strong>Chelsea</strong> got pumped at home by Man City. <strong>Manchester United</strong> had a disappointing loss at home to Leeds but thanks to Chelsea’s defeat they are still rated more than a 92% chance to make the Champions League.</p>
+<p>Chelsea’s odds have dropped to 28.8% and they are now slight odds-on (51%) to be playing in the Europa League next season. The week’s big winners were <strong>Bournemouth</strong>, whose shock 2-1 win at the Emirates (and accompanying ratings boost) saw their odds of qualifying for Europe climb from 8.7% to 26%.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;">Premier League European Qualification</div>
-<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">27 Mar 2026 · 10,000 simulations</div>
+<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">14 Apr 2026 · 10,000 simulations</div>
 <div style="text-align:center;">
 <div style="display:inline-block;">
 <table class="table caption-top table-sm table-striped small">
@@ -486,123 +486,115 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Manchester United</td>
-<td style="text-align: center;">96.8%</td>
-<td style="text-align: center;">97.0%</td>
-<td style="text-align: center;">2.8%</td>
-<td style="text-align: center;">0.1%</td>
-<td style="text-align: center;">100.0%</td>
+<td style="text-align: center;">92.4%</td>
+<td style="text-align: center;">92.7%</td>
+<td style="text-align: center;">6.7%</td>
+<td style="text-align: center;">0.5%</td>
+<td style="text-align: center;">99.9%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Aston Villa</td>
-<td style="text-align: center;">88.4%</td>
-<td style="text-align: center;">92.4%</td>
-<td style="text-align: center;">6.7%</td>
-<td style="text-align: center;">0.6%</td>
-<td style="text-align: center;">99.8%</td>
+<td style="text-align: center;">91.2%</td>
+<td style="text-align: center;">95.0%</td>
+<td style="text-align: center;">4.5%</td>
+<td style="text-align: center;">0.3%</td>
+<td style="text-align: center;">99.9%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Liverpool</td>
-<td style="text-align: center;">62.6%</td>
-<td style="text-align: center;">66.8%</td>
-<td style="text-align: center;">27.3%</td>
-<td style="text-align: center;">3.5%</td>
-<td style="text-align: center;">97.6%</td>
+<td style="text-align: center;">81.1%</td>
+<td style="text-align: center;">82.3%</td>
+<td style="text-align: center;">14.8%</td>
+<td style="text-align: center;">1.8%</td>
+<td style="text-align: center;">98.8%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Chelsea</td>
-<td style="text-align: center;">39.0%</td>
-<td style="text-align: center;">43.6%</td>
-<td style="text-align: center;">44.2%</td>
-<td style="text-align: center;">6.4%</td>
-<td style="text-align: center;">94.3%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Brentford</td>
-<td style="text-align: center;">4.3%</td>
-<td style="text-align: center;">5.4%</td>
-<td style="text-align: center;">28.7%</td>
-<td style="text-align: center;">18.1%</td>
-<td style="text-align: center;">52.2%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Everton</td>
-<td style="text-align: center;">4.1%</td>
-<td style="text-align: center;">5.2%</td>
-<td style="text-align: center;">25.7%</td>
-<td style="text-align: center;">17.7%</td>
-<td style="text-align: center;">48.6%</td>
+<td style="text-align: center;">23.1%</td>
+<td style="text-align: center;">28.8%</td>
+<td style="text-align: center;">51.0%</td>
+<td style="text-align: center;">8.7%</td>
+<td style="text-align: center;">88.5%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Brighton</td>
-<td style="text-align: center;">2.3%</td>
-<td style="text-align: center;">3.1%</td>
-<td style="text-align: center;">21.0%</td>
-<td style="text-align: center;">16.0%</td>
-<td style="text-align: center;">40.1%</td>
+<td style="text-align: center;">5.2%</td>
+<td style="text-align: center;">7.6%</td>
+<td style="text-align: center;">32.6%</td>
+<td style="text-align: center;">18.3%</td>
+<td style="text-align: center;">58.5%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Newcastle United</td>
-<td style="text-align: center;">0.9%</td>
-<td style="text-align: center;">1.4%</td>
-<td style="text-align: center;">14.7%</td>
-<td style="text-align: center;">14.1%</td>
-<td style="text-align: center;">30.2%</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Crystal Palace</td>
+<td style="text-align: center;">0.0%</td>
 <td style="text-align: center;">0.1%</td>
-<td style="text-align: center;">0.1%</td>
-<td style="text-align: center;">26.9%</td>
-<td style="text-align: center;">1.9%</td>
-<td style="text-align: center;">28.9%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Fulham</td>
-<td style="text-align: center;">0.8%</td>
-<td style="text-align: center;">1.0%</td>
-<td style="text-align: center;">9.2%</td>
-<td style="text-align: center;">10.7%</td>
-<td style="text-align: center;">20.9%</td>
+<td style="text-align: center;">43.5%</td>
+<td style="text-align: center;">1.6%</td>
+<td style="text-align: center;">45.1%</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Everton</td>
+<td style="text-align: center;">2.6%</td>
+<td style="text-align: center;">3.6%</td>
+<td style="text-align: center;">23.5%</td>
+<td style="text-align: center;">16.8%</td>
+<td style="text-align: center;">43.8%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brentford</td>
+<td style="text-align: center;">2.4%</td>
+<td style="text-align: center;">3.1%</td>
+<td style="text-align: center;">19.9%</td>
+<td style="text-align: center;">17.2%</td>
+<td style="text-align: center;">40.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bournemouth</td>
+<td style="text-align: center;">0.8%</td>
+<td style="text-align: center;">1.6%</td>
+<td style="text-align: center;">12.4%</td>
+<td style="text-align: center;">12.0%</td>
+<td style="text-align: center;">26.0%</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Sunderland</td>
-<td style="text-align: center;">0.5%</td>
-<td style="text-align: center;">0.7%</td>
-<td style="text-align: center;">4.7%</td>
-<td style="text-align: center;">6.1%</td>
-<td style="text-align: center;">11.5%</td>
+<td style="text-align: center;">0.9%</td>
+<td style="text-align: center;">1.5%</td>
+<td style="text-align: center;">9.4%</td>
+<td style="text-align: center;">9.0%</td>
+<td style="text-align: center;">19.8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fulham</td>
+<td style="text-align: center;">0.2%</td>
+<td style="text-align: center;">0.6%</td>
+<td style="text-align: center;">6.4%</td>
+<td style="text-align: center;">7.3%</td>
+<td style="text-align: center;">14.2%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Nottingham Forest</td>
 <td style="text-align: center;">0.0%</td>
-<td style="text-align: center;">9.9%</td>
+<td style="text-align: center;">12.2%</td>
 <td style="text-align: center;">0.0%</td>
 <td style="text-align: center;">0.0%</td>
-<td style="text-align: center;">9.9%</td>
+<td style="text-align: center;">12.2%</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Bournemouth</td>
+<td style="text-align: left;">Newcastle United</td>
 <td style="text-align: center;">0.1%</td>
-<td style="text-align: center;">0.2%</td>
-<td style="text-align: center;">3.6%</td>
-<td style="text-align: center;">4.8%</td>
-<td style="text-align: center;">8.7%</td>
+<td style="text-align: center;">0.4%</td>
+<td style="text-align: center;">4.9%</td>
+<td style="text-align: center;">6.4%</td>
+<td style="text-align: center;">11.6%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">West Ham</td>
-<td style="text-align: center;">0.0%</td>
-<td style="text-align: center;">0.0%</td>
-<td style="text-align: center;">4.9%</td>
-<td style="text-align: center;">0.0%</td>
-<td style="text-align: center;">4.9%</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Leeds</td>
 <td style="text-align: center;">0.0%</td>
 <td style="text-align: center;">0.0%</td>
-<td style="text-align: center;">4.8%</td>
-<td style="text-align: center;">0.0%</td>
-<td style="text-align: center;">4.8%</td>
+<td style="text-align: center;">9.3%</td>
+<td style="text-align: center;">0.2%</td>
+<td style="text-align: center;">9.5%</td>
 </tr>
 </tbody>
 </table>
@@ -610,89 +602,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>There are, of course, various ways to qualify for Europe. With the Premier League <a href="https://www.nytimes.com/athletic/7133568/2026/03/20/premier-league-champions-league-fifth-spot-coefficients/">almost certain</a> to win an extra Champions League spot next season, the top 5 enter the Champions League, then 6th place gets a Europa League spot and 7th goes into the Conference League (because Manchester City won the Carabao Cup). If the FA Cup winners finish in the top 6 then those last two spots will drop down to 7th and 8th, but Leeds or West Ham play each other in the quarter finals and they could still qualify for the Europa League if they go all the way.</p>
-<p>Crystal Palace can also grab an additional Europa League spot if they win this year’s Conference League. Liverpool could finish outside the top 5 and still qualify for the Champions League if they win this year’s Champions League, while Aston Villa and Nottingham Forest could do the same if they win the Europa League. Finally, there is a scenario where 6th place could qualify for the Champions League if Aston Villa finish in 5th place and win the Europa League. This is because the Premier League’s bonus CL place is only awarded to the highest non-qualified team after all other considerations have been applied.</p>
-<p>Adding up the probabilities, we can see the expected number of English teams in each competition: 5.27 in the Champions League, 2.25 in the Europa League and just 1 in the Conference League as there’s no special qualifying for that.</p>
-<p>Arsenal and Man City have obviously sewn up a top 5 place, and Man Utd look pretty safe at 96.8% based on the simulations. Although it’s not strictly a three-horse race, it looks like the remaining two places will be between <strong>Aston Villa</strong> (88.4%), <strong>Liverpool</strong> (62.6%) and <strong>Chelsea</strong> (39.0%), so let’s take a look at their remaining fixtures.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;">Remaining Fixtures</div>
-<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">27 Mar 2026</div>
-<div style="text-align:center;">
-<div style="display:inline-block;">
-<table class="table table-condensed caption-top table-sm table-striped small">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Match #</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Aston Villa</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Liverpool</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Chelsea</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center; width: 70px;">32</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(228, 235, 227, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">N Forest (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(213, 226, 211, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Fulham (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(232, 140, 126, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Man City (H)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center; width: 70px;">33</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(124, 170, 120, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Sunderland (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(246, 246, 246, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Everton (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(247, 234, 232, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Man Utd (H)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; width: 70px;">34</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 200, 192, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Fulham (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(209, 223, 207, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">C Palace (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 200, 192, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Brighton (A)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center; width: 70px;">35</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(154, 188, 150, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Tottenham (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(236, 154, 141, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Man Utd (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(147, 184, 142, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">N Forest (H)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; width: 70px;">36</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(133, 176, 129, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Burnley (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 199, 191, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Chelsea (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(225, 119, 104, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Liverpool (A)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center; width: 70px;">37</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 200, 192, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Liverpool (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 203, 196, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">A Villa (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(154, 188, 150, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Tottenham (H)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; width: 70px;">38</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(200, 48, 45, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Man City (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(231, 237, 230, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Brentford (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(206, 221, 203, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Sunderland (A)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center; width: 70px;">Average</td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(238, 241, 238, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.06</span></td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(247, 233, 230, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">0.09</span></td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(247, 238, 236, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">0.06</span></td>
-</tr>
-</tbody>
-</table>
+<div style="max-width:600px; margin-left:auto; margin-right:auto; font-size:14px">
+<p><em>Note that these probabilities were calculated prior to Liverpool’s defeat in the Champions League on Tuesday. However, they were only assigned a 2.5% probability of winning the tournament (and thus re-qualifying for the CL, in the event they did not already qualify via the top 5) and so the effect should be minimal.</em></p>
 </div>
-</div>
-</div>
-</div>
-<p>Villa seem to have the easiest run-in, especially if that final game becomes a dead rubber for Man City. Liverpool play both Chelsea and Villa in the last three weeks so we can hopefully look forward to some crucial head-to-head matches there.</p>
-<p>The average number of points for 5th place in my simulations was 61.5. This is much lower than last season when Aston Villa and Nottingham Forest both finish outside the top 5 on 66 and 65 points respectively. The last time a team finished 5th in the Premier League with fewer than 62 points was Spurs in 2007 (60 pts).</p>
+<p>The two big games in the European race this week see Everton v Liverpool in the Merseyside derby, while Chelsea host Manchester United in an 8pm Saturday night kick-off (still hard to get used to that). Both home teams could really do with a win to boost their European hopes, while both away sides would probably be ok with a draw. If I plug in a 1-0 Everton win, their Champions League odds jump from 3.6% to 10.3% and their Europa League odds from 23.5% to 36.1%. Meanwhile a 1-0 win for Chelsea would increase their CL chances from 28.8% to 40.8%.</p>
 </section>
-<section id="relegation-west-ham-in-trouble" class="level2">
-<h2 class="anchored" data-anchor-id="relegation-west-ham-in-trouble">Relegation: West Ham in trouble</h2>
+<section id="relegation-it-just-keeps-getting-worse-for-spurs" class="level2">
+<h2 class="anchored" data-anchor-id="relegation-it-just-keeps-getting-worse-for-spurs">Relegation: it just keeps getting worse for Spurs</h2>
+<p>Just a disastrous weekend all-around for <strong>Tottenham Hotspur</strong> as they lost at Sunderland with star captain Cristian Romero suffering a season-ending injury, while both <strong>West Ham</strong> and <strong>Leeds</strong> won while <strong>Nottingham Forest</strong> gained a point against Aston Villa.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;">Premier League Relegation</div>
-<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">27 Mar 2026 · 10,000 simulations</div>
+<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">14 Apr 2026 · 10,000 simulations</div>
 <div style="text-align:center;">
 <div style="display:inline-block;">
 <table class="table caption-top table-sm table-striped small">
@@ -712,24 +633,16 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;">100.0%</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">West Ham</td>
-<td style="text-align: center;">58.6%</td>
+<td style="text-align: left;">Tottenham</td>
+<td style="text-align: center;">52.0%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Tottenham</td>
-<td style="text-align: center;">25.6%</td>
+<td style="text-align: left;">West Ham</td>
+<td style="text-align: center;">36.4%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Nottingham Forest</td>
-<td style="text-align: center;">10.0%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Leeds</td>
-<td style="text-align: center;">5.8%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Crystal Palace</td>
-<td style="text-align: center;">0.1%</td>
+<td style="text-align: center;">10.3%</td>
 </tr>
 </tbody>
 </table>
@@ -737,11 +650,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>The vibes were feeling relatively positive at West Ham after they dragged themselves back into the relegation race having looked dead &amp; buried at one stage. But an injury to in-form <strong>Crysencio Summerville</strong> followed by poor performances against Man City and Villa, albeit in difficult fixtures, has brought the mood back down a bit. The simulations have them going down 58.6% of the time, notably higher than the betting markets where they are around 44%.</p>
+<p>Using the consensus ratings I now make Spurs a <strong>52%</strong> chance to get relegated, which is higher than the current market price of around 48%. This is interesting, because last time my simulations thought West Ham were good value. So what’s going on, exactly? There are a couple of possibilities:</p>
+<p><strong>1. The market underestimates the value of points on the board.</strong> Possible, but I was doing these sorts of simulations 25 years ago, and there are lots of clever people with very deep pockets betting in these markets, so I don’t know if it’s a simple case that punters don’t know how to plug a load of match odds into a simulation.</p>
+<p><strong>2. There is an implied extra incentive for teams who are in the bottom three.</strong> Imagine you were in a group of people being chased by a bear. You might be running very fast. You might even feel like you are running as fast as you possibly can. But if you suddenly became the backmarker of the group, the closest to the bear, perhaps you might find that little bit extra from somewhere?</p>
+<p>In scenario 2, given that Spurs are the biggest club to face a genuine threat of relegation in the Premier League era, it is fair to say that the effect of this incentive is potentially even greater as their struggles are more likely to be due to a lack of motivation and organisation than simply a lack of talent. That’s what Spurs fans will be clinging to anyway, because recent evidence from the eye test would give very little suggestion of an imminent uptick in form.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;">Remaining Fixtures</div>
-<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">27 Mar 2026</div>
+<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">14 Apr 2026</div>
 <div style="text-align:center;">
 <div style="display:inline-block;">
 <table class="table table-condensed caption-top table-sm table-striped small">
@@ -756,60 +672,53 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center; width: 70px;">32</td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(236, 154, 141, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Man Utd (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(209, 224, 207, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">A Villa (H)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(206, 221, 203, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Sunderland (A)</span></td>
-<td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(91, 150, 88, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Wolves (H)</span></td>
-</tr>
-<tr class="even">
 <td style="text-align: center; width: 70px;">33</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(91, 150, 88, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Wolves (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(46, 125, 50, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Burnley (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 225, 210, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Brighton (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 203, 196, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">C Palace (A)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center; width: 70px;">34</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 203, 195, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Bournemouth (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(206, 221, 203, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Sunderland (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(173, 200, 169, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Wolves (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(164, 195, 160, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Everton (H)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center; width: 70px;">35</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(46, 125, 50, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Burnley (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(225, 118, 103, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Chelsea (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 203, 196, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">A Villa (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(242, 182, 172, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Brentford (A)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center; width: 70px;">36</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(236, 240, 235, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Tottenham (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(228, 235, 227, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Newcastle (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(193, 213, 191, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Leeds (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(228, 128, 114, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Arsenal (H)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center; width: 70px;">37</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 225, 210, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Brighton (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(236, 154, 141, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Man Utd (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(225, 118, 103, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Chelsea (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(242, 185, 175, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Newcastle (A)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center; width: 70px;">38</td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(193, 213, 190, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">West Ham (A)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(210, 224, 208, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Bournemouth (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(164, 195, 160, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Everton (H)</span></td>
 <td style="text-align: center;"><span style="     color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(193, 213, 191, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:normal;">Leeds (H)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center; width: 70px;">Average</td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(202, 219, 200, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.29</span></td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(232, 238, 231, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.10</span></td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(231, 237, 230, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.10</span></td>
-<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(247, 247, 247, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">0.00</span></td>
+<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(179, 204, 176, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.45</span></td>
+<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(236, 240, 235, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.07</span></td>
+<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(235, 240, 235, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">-0.08</span></td>
+<td style="text-align: center;"><span style=" font-weight: bold;    color: black !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(247, 221, 217, 255) !important;display:block;padding:4px 6px;border-radius:4px;font-weight:bold;">0.17</span></td>
 </tr>
 </tbody>
 </table>
@@ -817,69 +726,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>West Ham have the hardest run-in of the four relegation contenders and their easiest game is up next, a Friday night match at home to <strong>Wolves</strong>. The term “must-win” will be thrown around, and it certainly feels like a crucial game for the Hammers, but how does the result change their relegation odds? According to my simulations, with a 1-0 win their relegation probability would drop from 59% down to 49%. A 1-1 draw would increase it to 69% and a 0-1 defeat moves their relegation chances to 76%. So in decimal odds terms, according to my model West Ham could range from <strong>1.32</strong> to <strong>2.04</strong> for relegation based solely on the result of the Wolves match.</p>
-<p>The average number of points for 18th place was 35.8. This is much higher than the last two seasons when Leicester finished 18th with 25 points and Luton the year before that with 26. West Ham would be safe already this year based on those totals even if they lose all their remaining games, but this year is clearly a different animal. This reflects the increasing depth of the Premier League, but <strong>Sunderland</strong> have also thrown a cat among the pigeons by massively overperforming their underlying numbers, which have consistently portrayed them as a relegation-calibre side.</p>
-<p>Since there is such a large deviation between my numbers and the betting markets with regard to Spurs and West Ham’s relegation odds, it is worth drilling down a bit to see what’s going on. As mentioned above, I used consensus ratings for this model based on how teams seem to be generally rated in the betting lines. This meant I have Spurs rated slightly better than West Ham—that may be debatable over the last few months, but the prices for forthcoming games have Spurs as a coin flip at Sunderland and then slight favourites at home to Brighton. Rightly or wrongly, the markets seem to be pricing in a potential improvement from Spurs, whether that’s via a new manager bounce or just the squad getting their act together with various players back from injury. But what would happen if we change the ratings?</p>
-</section>
-<section id="sensitivity-analysis-and-end-of-season-motivation" class="level2">
-<h2 class="anchored" data-anchor-id="sensitivity-analysis-and-end-of-season-motivation">Sensitivity analysis and end-of-season motivation</h2>
-<p>We can test the effect of the ratings on the results of the model by varying the inputs and seeing how much that changes the outputs. In academic studies this would be called a <strong>sensitivity analysis</strong>. First, if we change the team ratings of Spurs and West Ham to be equal, the relegation probabilities change to 30% Spurs, 54% West Ham. Second, for the most pessimistic Spurs case we can switch Spurs and West Ham’s original ratings around so that Spurs are the worst of the four relegation candidates. In this case the simulations give us Spurs 32% and West Ham 52%.</p>
-<p>This gives us an idea of how much the price is driven by the team ratings and how much is driven by the league table and remaining fixtures. The probabilities don’t seem to shift dramatically when we change the ratings, implying it is the bad predicament driving West Ham’s higher likelihood of relegation. When I say bad predicament, West Ham face three clear disadvantages:</p>
-<ul>
-<li>They are a point behind Spurs.</li>
-<li>They have a goal difference that is 11 worse than Spurs.</li>
-<li>They have harder remaining fixtures than Spurs.</li>
-</ul>
-<p>That last point is subjective, but the first two aren’t. West Ham effectively have to beat Tottenham’s total by two points over the last seven games; this could of course be overturned via one good weekend, but they are also only one bad weekend away from needing multiple wins to catch up. To isolate the effect of the current league table, independent of ratings and remaining fixtures, I ran the simulations with all 20 teams set to the same rating and with no home advantage.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;">Premier League Relegation (ratings and fixtures neutralised)</div>
-<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">27 Mar 2026 · 10,000 simulations</div>
-<div style="text-align:center;">
-<div style="display:inline-block;">
-<table class="table caption-top table-sm table-striped small">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Team</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Relegation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Wolves</td>
-<td style="text-align: center;">99.9%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Burnley</td>
-<td style="text-align: center;">99.3%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">West Ham</td>
-<td style="text-align: center;">50.4%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tottenham</td>
-<td style="text-align: center;">28.1%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Nottm Forest</td>
-<td style="text-align: center;">12.7%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Leeds</td>
-<td style="text-align: center;">9.6%</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<p>So if West Ham and Spurs are rated exactly the same, with seven identical fixtures remaining, West Ham would have a 50.4% chance of going down compared to 28.1% for Spurs. The actual current betting odds (44% West Ham, 35% Spurs) seem to be factoring in Spurs being significantly worse than West Ham. I don’t think this is reflected in the betting lines for forthcoming games, but it’s something worth watching as the markets become more liquid and prices adjust nearer to the days of the matches. From a betting point of view, I’m not going to tell people which way to bet but it seems to me that if you want to oppose Spurs you are better off doing it in individual matches than by backing them to go down. Conversely, if you want to oppose West Ham, the relegation price looks reasonable.</p>
-<p>One potential wrinkle in end-of-season games is <strong>motivation</strong>. This can manifest in different ways: good teams with nothing to play for, bad teams with a huge amount to play for, teams in cup finals, and so forth. One of the obvious advantages a team can receive is by playing a team that has already wrapped up the title—as mentioned earlier, Liverpool only got 2 points from their final 4 games after sealing the championship last season.</p>
-<p>West Ham are due to play Arsenal on the 9th of May which, ordinarily, would be a very difficult fixture. But if Arsenal have wrapped up the title by then, they might be a bit less motivated. The match also comes off the back of the Champions League semi-final second leg, in which Arsenal are likely to be involved given their kind draw against Sporting Lisbon in the quarters.</p>
-<p>I originally wanted to dynamically include the probability that the title would be decided before the West Ham v Arsenal fixture, but given the possibility of further matches being rearranged as City and Arsenal progress in the FA Cup, it all seemed too difficult so I will just take a simple look at the difference if Arsenal put out a weakened team in that match—I will arbitrarily value this weakened Arsenal side as an average PL team. This single change reduces West Ham’s relegation probability from 59% to 53%, so it could be quite an important factor and Spurs fans will be hoping (for multiple reasons) that the title race can stay alive as long as possible.</p>
-<p>Last year’s Premier League was a little anticlimactic with both the title race and relegation decided early. The title race may go the same way this year but relegation looks like it should be a nail-biter, and there are all sorts of teams involved in the European races so we should have lots to analyse over the coming weeks. I will redo the simulations after each set of matches and see how each race has changed. If you have any feedback or thoughts on my results or methodology, please feel free to comment or send me a message!</p>
+<p>The one positive bit of news for Spurs was Arsenal’s defeat to Bournemouth which—aside from local banter concerns—drastically increases the chances that Arsenal will go into their game at West Ham needing a result.</p>
+<p>I have been fairly bullish on Leeds’ survival chances given their performances this season and their still-to-play home matches against Burnley and Wolves, and they pretty much sealed their safety with a delicious win away to hated rivals Man Utd. It was an odd game as Leeds produced a fantastic first half performance to lead 2-0 but then ended up hanging on a bit against ten men after Lisandro Martinez was ridiculously sent off for a “hair pull”. Credit to Leeds who have really been a Premier League level club for a few years now but have suffered from narrow promotion misses and the handicap of having Ilian Meslier in goal for multiple years. But it feels like they should be in for a sustained run in the top flight now.</p>
+<p>This weekend Spurs face in-form Brighton while Nottingham Forest are at home to hapless Burnley and West Ham travel to Crystal Palace. If things carry on as they have been going then Spurs will be needing snookers pretty soon. But things don’t always carry on going as they have been going, which is why gambling often involves the loss of one’s money. Whatever happens, I’ll be back next week to pick up the pieces and review the new situation.</p>
 <div class="data-footer">
 <p><strong>Data Sources</strong><br>
 I gather match data from a variety of public sources. Please check out these excellent websites:</p>

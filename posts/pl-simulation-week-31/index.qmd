@@ -10,6 +10,7 @@ format:
 categories: ["football", "statistics", "Premier League"]
 execute: 
   echo: false
+  freeze: true
 eval: true
 message: false
 warning: false

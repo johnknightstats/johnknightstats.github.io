@@ -5,6 +5,7 @@ project:
     - "*.qmd"
     - "!**/drafts/**"
     - "!**/*draft*.qmd"
+    - "!posts/pl-simulation-week-31/index.qmd"
 
 resources:
   - images/

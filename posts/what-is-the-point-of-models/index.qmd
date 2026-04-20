@@ -24,6 +24,8 @@ A regular source of amusement when I am watching football is when the commentato
 
 When the Opta/Copilot model is different from the betting market, there are two possibilities. 1) The model is wrong. 2) The market is wrong, meaning the finest minds in betting, with very deep pockets, have somehow overlooked this publicly available model. (Spoiler alert, it's option 1).
 
+https://x.com/OptaAnalyst/status/2045928461663871407?s=20
+
 *Why do we make models?*
 
 *They are fun, and it's actually a great accomplishment to build a model that is even vaguely correct.*

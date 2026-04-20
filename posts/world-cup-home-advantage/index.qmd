@@ -1,21 +1,174 @@
 ---
 title: "How much is home advantage worth in the World Cup?"
 author: "John Knight"
+date: 2026-04-18
+date-format: "D MMMM YYYY"
+description: "." #Insert description here
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "statistics", "World Cup"]
+execute: 
+  echo: false
+eval: true
+message: false
+warning: false
+engine: knitr
+editor: source
+image: england_1966.jpg
 draft: TRUE
 ---
 
-*Intro & recap of last article. But how much is it worth, and has it changed over time?*
+::: {.centered-block}
+<img src="england_1966.jpg"/>
+<em>England and West Germany enter the pitch before the 1966 World Cup Final at Wembley. Source: Wikimedia Commons (public domain).</em>
+:::
 
-*Some basic overall stats re WC home adv. Real examples.*
+In my previous World Cup [article](https://substack.com/home/post/p-193417159) I wrote about the dramatic migration of international footballers to Europe since 1980. The Argentina squad of 1978 only contained one player who played for a club outside Argentina, whereas the 2002 Argentina squad contained only two players still based in Argentina.
 
-*Introduce Elo model with calibration to show it works, and use that to show more accurate home adv overall and per WC.*
+It is fair to hypothesise that this may have reduced the level of home advantage in World Cups in certain circumstances, since players may already be familiar with the culture and climate. And more generally, the modern world of first class travel and private chefs is quite different to the days when European teams would take a boat to South America. So, how much is home advantage worth for the host of a World Cup? And has this changed over time?
 
-*What is driving this? List possible factors.*
+## In the past, many home World Cup winners
 
-*Compare with other major competitions. Does this suggest travel distance or time zones may be a factor? Use real examples.*
+On the surface, home advantage seems pretty significant. There have been 22 World Cups played, and 6 of them have been won by the hosts (Uruguay 1930, Italy 1934, Englqnd 1966, West Germany 1974, Argentina 1978, France 1998).
 
-*Look at confederation home advantage.*
+If we loosely group the World Cups into old era (1978 and earlier) and modern era (1982 onwards) then there has only been one host winner in the modern era, France in 1998. This is confounded by the fact that FIFA have increasingly been awarding World Cup hosting duties to lesser footballing nations such as the United States, Japan, South Korea, South Africa and Qatar, none of whom were realistic contenders for the trophy—although South Korea did end up with an unexpected semi-final appearance.
 
-*More directly analyse travel distance, time zones, climate etc.*
+Aside from home advantage for the hosts, there is also the question of home confederation advantage. Do UEFA teams perform better in Europe than they do in South America, for example? Based on World Cup winners, that would appear to be the case as only one CONMEBOL team has ever won a World Cup in Europe (Brazil in 1958), while similarly only one UEFA team has won in South America (Germany in 2014).
 
-*What does this suggest for this summer? USA/Canada/Mexico hosts.*
+## Developing an Elo model to forecast international football matches
+
+It is too simplistic of course to just consider the winners of tournaments when trying to place a value on home advantage. It's not a big enough sample to overcome noise, and it doesn't account for the quality of the host and the teams from each continent.
+
+The [World Football Elo Ratings](https://www.eloratings.net) website, much like its [counterpart](https://clubelo.com) for club football, is a great website that is well-maintained and gives a reasonable overall view of current team ratings. 
+
+While a standard Elo system is relatively simple, elegant and transparent, I wanted to develop it a bit further to account for some of the realities of international football. I fit my own parameters such as competition weights, goal difference adjustments and the Elo formula denominator. I used team-specific home advantage ratings instead of a single, global home advantage, so after each result 87% of the rating change would go to the home team's overall rating and 13% would go to the home team's home advantage rating.
+
+*Use past tense here?*
+
+Similarly, for inter-confederation matches, 74% of the rating change goes to the two teams and the remaining 26% is applied to an overall confederation rating. I found that this improved the model because in a closed system such as world football you have the various confederations who largely play against their own teams, and then limited cross-pollination in World Cups and other friendlies. For example, if the United States perform badly at a World Cup and their rating decreases, then in theory that will decrease the rating across all CONCACAF teams as each of them play the United States. But it's not obvious that this adjustment will disseminate quickly enough across all the teams, and with standard Elo I found that weaker confederations were being systematically overestimated.
+
+*Calibration and current top teams.*
+
+*Show teams with biggest current home adv (need latest scores?). Make bar chart from the CSV.*
+
+Bolivia
+Ecuador
+Mexico
+Guinea
+Libya
+Algeria
+Chile
+Senegal
+Thailand
+Sierra Leone
+
+Something that immpediately leaps out is that the top three home advantages belong to teams who play their home games at a high altitude: Bolivia (La Paz, 13,412 feet), Ecuador (Quito, 9,350 feet) and Mexico (Mexico City, 7,200 feet). Many of the other highest home advantages are found in CAF (African) teams. Conversely, most of the smallest home advantages are found in UEFA teams, with Germany having the smallest and England the 4th-smallest. What could be causing this?
+
+- European nations are closer together meaning less travel distance for away teams.
+- Climates in Europe are more homogeneous when compared to larger continents like Asia or Africa.
+- Europe has high quality hotels and wealthy teams can afford their own private air travel, chefs and so forth.
+
+I also wondered about the relative quality and integrity of referees in different confederations, which may make them more vulnerable to the more nefarious aspects of home advantage, but that is a tricky area and I wouldn't want to speculate too much on a subject I am not familiar with. But it is sufficient to say that there are many other unmeasured factors that could be rolled up into the single measure of home advantage.
+
+## Has home advantage changed over time?
+
+home_advantage_time_series.csv. Make it a line graph. 
+
+It went up (maybe more inter-confederation matches) and then down more recently.
+
+*Use model to show more accurate home adv per WC. Express in both residual wins and GD (maybe not...space).*
+
+So we have a well-calibrated model that assigns an individual home advantage to each team. Now we can inspect past World Cups to see whether host teams generally have a higher or lower home advantage than would be expected from their normal home games. Below we can see the mean residual wins (observed wins minus expected wins) for the hosts of each World Cup, where each game has an expected win probability as forecast by the model using the team's regular home advantage, and draws are counted as 0.5 of a win.
+
+*Year, Host, Matches, Mean Residual Wins*
+
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+library(htmltools)
+library(scales)
+
+WC_RESIDUALS_PATH <- path.expand("~/projects/johnknightstats.github.io/posts/world-cup-home-advantage/world_cup_residuals_by_year.csv")
+OUT_DIR <- path.expand("~/projects/johnknightstats.github.io/posts/world-cup-home-advantage/datawrapper")
+OUT_CSV <- file.path(OUT_DIR, "world_cup_host_performance.csv")
+
+dir.create(OUT_DIR, recursive=TRUE, showWarnings=FALSE)
+
+wc_data <- read.csv(WC_RESIDUALS_PATH)
+
+# Add host team names
+hosts <- c("Uruguay", "Italy", "France", "Brazil", "Switzerland", "Sweden", "Chile", "England", "Mexico",
+           "West Germany", "Argentina", "Spain", "Mexico", "Italy", "United States", "France", "Japan & S Korea",
+           "Germany", "South Africa", "Brazil", "Russia", "Qatar")
+wc_data$`Host Team` <- hosts
+
+wc_table <- wc_data %>%
+  select(year, `Host Team`, matches, mean_residual) %>%
+  rename(
+    Matches=matches,
+    Year=year,
+    `Avg. Overperformance` = mean_residual
+  ) %>%
+  mutate(`Avg. Overperformance` = round(`Avg. Overperformance`, 2))
+
+write_csv(wc_table, OUT_CSV)
+
+# Keep numeric values for color scaling
+overperf_vals <- wc_table$`Avg. Overperformance`
+
+tbl <- wc_table %>%
+  kbl(
+    align=c("l", "l", "c", "r")
+  ) %>%
+  kable_styling(
+    full_width=FALSE,
+    position="center"
+  ) %>%
+  row_spec(0, bold=TRUE) %>%
+  column_spec(1, width="180px") %>%
+  column_spec(2, width="140px") %>%
+  column_spec(3, width="140px") %>%
+  column_spec(4, width="140px")
+
+tagList(
+  div(
+    style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;",
+    "World Cup Host Performance"
+  ),
+  div(
+    style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;",
+    "Overperformance = results vs. expectation (higher = better)"
+  ),
+  div(
+    style="text-align:center;",
+    div(
+      style="display:inline-block;",
+      HTML(as.character(tbl))
+    )
+  )
+)
+```
+
+*Compare old and new eras. Speculate why.*
+
+In the old era, hosts played a total of 57 matches with an average performance of 0.13 wins greater than expected. In the modern era, hosts have played 67 matches with an average overperformance of 0.01—in other words, bang in line with expectations.
+
+What can we draw from this? Firstly, it seems that home advantage in World Cups is at least as big as home advantage in normal matches. I don't think that was inevitable—it seems plausible that home advantage might have been reduced by the effect of away teams being based in the country for a prolonged period, rather than flying in for a single match.
+
+Secondly, from this sample at least, it seems like World Cup home advantage has been getting lower. But this is prone to a lot of noise. At the most recent World Cup in 2022, Qatar produced the worst ever performance by a host nation. But looking at Qatar's results since that tournament, they just seem like an unusual outlier as they have really gone to shit (but still qualified for 2026 due to loads of teams qualifying and dubious decision to give them home advantage).
+
+*Discuss some of the examples e.g. Japan & S Korea not as good as expected. Brazil! Biggest ever Chile. Biggest recent S Africa even though they went out.*
+
+One interesting year is 2002 where Japan and South Korea only outperformed their forecasted results by 0.02 per game. This is surprising, since both these unheralded footballing nations won their groups and South Korea went all the way to the semis, knocking out Italy and Spain. So how can it only be +0.02 per game? *Both had above-average home advantage rating. Maybe both better rated than people realise? ET/pen wins.*
+
+*Compare with other major competitions. Have they changed over time, collectively? Does this suggest travel distance or time zones may be a factor? Use real examples.*
+
+*Look at confederation home advantage in WCs (i.e. playing in home continent but not home country).*
+
+confederation_home_advantage.csv. Confederation, Matches, Mean Residual.
+
+*More directly analyse travel distance, time zones, climate etc. May need another part for this?*
+
+*What does this suggest for this summer? USA/Canada/Mexico hosts. Look at current ratings and apply home advantage. Show some forecasts for opening games. Home teams good value?*

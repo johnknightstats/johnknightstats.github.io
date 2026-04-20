@@ -1,21 +1,21 @@
 Team,Matches,contexGD,xGD
-Arsenal,32,1.03,1.17
-Manchester City,31,1.03,0.86
-Liverpool,32,0.61,0.47
-Chelsea,32,0.51,0.57
-Manchester United,32,0.34,0.54
-Brentford,32,0.17,0.32
-Newcastle United,32,0.14,0.12
-Brighton,32,0.08,0.08
-Bournemouth,32,0.03,0.2
-Aston Villa,32,0.03,-0.13
+Manchester City,32,1.03,0.84
+Arsenal,33,0.97,1.13
+Liverpool,33,0.61,0.46
+Chelsea,33,0.52,0.57
+Manchester United,33,0.31,0.5
+Brentford,33,0.17,0.35
+Newcastle United,33,0.12,0.06
+Brighton,33,0.08,0.06
+Aston Villa,33,0.07,-0.05
+Bournemouth,33,0.04,0.25
 Crystal Palace,31,0.03,0.2
-Fulham,32,0.01,-0.26
-Leeds,32,-0.07,0.04
-Everton,32,-0.29,-0.23
-Tottenham,32,-0.36,-0.37
-Nottingham Forest,32,-0.39,-0.49
-Sunderland,32,-0.5,-0.47
+Fulham,33,0.01,-0.3
+Leeds,33,-0.02,0.13
+Everton,33,-0.29,-0.22
+Tottenham,33,-0.35,-0.35
+Nottingham Forest,33,-0.36,-0.45
+Sunderland,33,-0.52,-0.52
 West Ham,32,-0.56,-0.53
-Wolves,32,-0.78,-0.86
-Burnley,32,-1.04,-1.19
+Wolves,33,-0.81,-0.92
+Burnley,33,-1.02,-1.18

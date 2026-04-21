@@ -8,8 +8,16 @@
     ]
   },
   {
+    "listing": "/dashboards/index.html",
+    "items": [
+      "/dashboards/contexg-league-tables/index.html",
+      "/dashboards/election-2020-tableau/index.html"
+    ]
+  },
+  {
     "listing": "/posts/index.html",
     "items": [
+      "/posts/world-cup-home-advantage/index.html",
       "/posts/pl-review-20260419/index.html",
       "/posts/pl-simulation-week-32/index.html",
       "/posts/pl-review-20260412/index.html",
@@ -34,13 +42,6 @@
       "/posts/game_state/index.html",
       "/posts/elo_sim_model/index.html",
       "/posts/title_collapses/index.html"
-    ]
-  },
-  {
-    "listing": "/dashboards/index.html",
-    "items": [
-      "/dashboards/contexg-league-tables/index.html",
-      "/dashboards/election-2020-tableau/index.html"
     ]
   }
 ]

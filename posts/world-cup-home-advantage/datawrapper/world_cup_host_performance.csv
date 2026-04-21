@@ -1,23 +1,23 @@
-Year,Host Team,Matches,Avg. Overperformance
-1930,Uruguay,4,0.2
-1934,Italy,5,0.22
-1938,France,2,0.04
-1950,Brazil,6,0.03
-1954,Switzerland,4,0.16
-1958,Sweden,6,0.14
-1962,Chile,6,0.27
-1966,England,6,0.12
-1970,Mexico,4,0.08
-1974,West Germany,7,0.03
-1978,Argentina,7,0.12
-1982,Spain,5,-0.25
-1986,Mexico,5,0.13
-1990,Italy,7,0.14
-1994,United States,4,0.06
-1998,France,7,0.15
-2002,Japan & S Korea,11,0.02
-2006,Germany,7,0.11
-2010,South Africa,3,0.16
-2014,Brazil,7,-0.25
-2018,Russia,5,0.05
-2022,Qatar,3,-0.39
+Year,Host Team,Matches,Result,Avg. Overperformance
+1930,Uruguay,4,WON,0.2
+1934,Italy,5,WON,0.22
+1938,France,2,QF,0.04
+1950,Brazil,6,Runners-up,0.03
+1954,Switzerland,4,QF,0.16
+1958,Sweden,6,Runners-up,0.14
+1962,Chile,6,3rd place,0.27
+1966,England,6,WON,0.12
+1970,Mexico,4,QF,0.08
+1974,West Germany,7,WON,0.03
+1978,Argentina,7,WON,0.12
+1982,Spain,5,2nd group stage,-0.25
+1986,Mexico,5,QF,0.13
+1990,Italy,7,3rd place,0.14
+1994,United States,4,R16,0.06
+1998,France,7,WON,0.15
+2002,Japan & S Korea,11,R16 (Japan) 4th place (S Korea),0.02
+2006,Germany,7,3rd place,0.11
+2010,South Africa,3,Group stage,0.16
+2014,Brazil,7,4th place,-0.25
+2018,Russia,5,QF,0.05
+2022,Qatar,3,Group stage,-0.39

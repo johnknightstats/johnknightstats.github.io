@@ -1,0 +1,49 @@
+---
+title: "Four amazing facts about the Leeds v Chelsea 1970 FA Cup Final"
+author: "John Knight"
+date: 2026-04-21
+date-format: "D MMMM YYYY"
+description: "description here."
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "FA Cup", "Chelsea", "Leeds United"]
+execute: 
+  echo: false
+eval: true
+message: false
+warning: false
+engine: knitr
+editor: source
+draft: true
+---
+
+Recently I was doing some research and stumbled across an unusual fact about the 1970 FA Cup Final between Leeds United and Chelsea. This took me down a Wikipedia rabbit hole where I found another interesting fact. And then another. And then another!
+
+Since Leeds and Chelsea face one another in the semi-final at Wembley this weekend, I thought it was a good time to share them with you. So here are four amazing facts about the 1970 FA Cup Final—and no, they are nothing to do with fouls or yellow cards.
+
+## 1. The final was played on the 11th of April.
+
+As we all know, the FA Cup Final is traditionally the showpiece event of the football season and has always been played after the end of the league season. When they stage it before the end of the Premier League season it is an abomination, truly a sign that the game has gone. So imagine my surprise when I discovered that the 1970 final took place at the start of April, with the replay on the 29th.
+
+Why was this? World Cup?
+
+## 2. It was the first replay since 1912.
+
+On the 15th of April 1912, the Titanic went down in the Atlantic Ocean after striking an iceberg. Five days later there was another grim event as Barnsley drew 0-0 with West Brom in the FA Cup Final. Incredibly, it was 58 years before the cup final saw another draw. 
+
+## 3. The replay wasn't played at Wembley.
+
+Only time for a Wembley final. Played at Old Trafford - why?
+
+## 4. There was a third-place playoff.
+
+This lasted from 1970-1974. Man Utd beat Watford 2-0 at Highbury! On 10 April. List the other years.
+
+## Conclusion
+
+Did you know any of these facts? Are you old enough to remember them? Can anyone throw in any more amazing facts about this game?
+
+{{< include ../../includes/_article_footer.qmd >}}
+
+© 2026 John Knight. All rights reserved.

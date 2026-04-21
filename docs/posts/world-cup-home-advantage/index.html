@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-04-18">
+<meta name="dcterms.date" content="2026-04-21">
 <meta name="description" content=".">
 
 <title>How much is home advantage worth in the World Cup? – John Knight Stats</title>
@@ -330,7 +330,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">18 April 2026</p>
+      <p class="date">21 April 2026</p>
     </div>
   </div>
   
@@ -345,43 +345,1244 @@ ul.task-list li input[type="checkbox"] {
 <div class="centered-block">
 <p><img src="england_1966.jpg"> <em>England and West Germany enter the pitch before the 1966 World Cup Final at Wembley. Source: Wikimedia Commons (public domain).</em></p>
 </div>
-<p>In my previous World Cup <a href="https://substack.com/home/post/p-193417159">article</a> I wrote about the dramatic migration of international footballers to Europe since 1980. The Argentina squad of 1978 only contained one player who played for a club outside Argentina, whereas the 2002 Argentina squad contained only two players still based in Argentina.</p>
-<p>It is fair to hypothesise that this may have reduced the level of home advantage in World Cups in certain circumstances, since players may already be familiar with the culture and climate. And more generally, the modern world of first class travel and private chefs is quite different to the days when European teams would take a boat to South America. So, how much is home advantage worth for the host of a World Cup? And has this changed over time?</p>
-<section id="in-the-past-many-home-world-cup-winners" class="level2">
-<h2 class="anchored" data-anchor-id="in-the-past-many-home-world-cup-winners">In the past, many home World Cup winners</h2>
-<p>On the surface, home advantage seems pretty significant. There have been 22 World Cups played, and 6 of them have been won by the hosts (Uruguay 1930, Italy 1934, Englqnd 1966, West Germany 1974, Argentina 1978, France 1998).</p>
-<p>If we loosely group the World Cups into old era (1978 and earlier) and modern era (1982 onwards) then there has only been one host winner in the modern era, France in 1998. This is confounded by the fact that FIFA have increasingly been awarding World Cup hosting duties to lesser footballing nations such as the United States, Japan, South Korea, South Africa and Qatar, none of whom were realistic contenders for the trophy—although South Korea did end up with an unexpected semi-final appearance.</p>
-<p>Aside from home advantage for the hosts, there is also the question of home confederation advantage. Do UEFA teams perform better in Europe than they do in South America, for example? Based on World Cup winners, that would appear to be the case as only one CONMEBOL team has ever won a World Cup in Europe (Brazil in 1958), while similarly only one UEFA team has won in South America (Germany in 2014).</p>
+<p>In my previous World Cup <a href="https://substack.com/home/post/p-193417159">article</a> I wrote about the dramatic migration of international footballers to Europe since 1980. This was illustrated by the Argentina squad of 1978 which contained only <strong>1 of 22</strong> players playing their club football outside Argentina; in the 2002 Argentina squad, this had increased to <strong>21 out of 23</strong> players.</p>
+<p>A reasonable hypothesis is that this may have reduced <strong>home advantage</strong> in Europe-based World Cups since players may already be familiar with the culture and climate. And more generally, the modern world of first class travel and private chefs is quite different to the days when teams would take a boat across the Atlantic. So let’s do some exploration: how much is home advantage worth for the host of a World Cup? Does this vary based on who is the host? And has it changed over time?</p>
+<section id="obvious-starting-point-lots-of-hosts-have-won-the-world-cup" class="level2">
+<h2 class="anchored" data-anchor-id="obvious-starting-point-lots-of-hosts-have-won-the-world-cup">Obvious starting point: lots of hosts have won the World Cup</h2>
+<p>If we simply look at the previous winners of the tournament, home advantage seems to be significant. There have been 22 World Cups played and 6 of them have been won by the hosts (Uruguay 1930, Italy 1934, England 1966, West Germany 1974, Argentina 1978, France 1998).</p>
+<p>Loosely grouping the World Cups into old era (1978 and earlier) and modern era (1982 onwards) there has only been one host winner in the modern era, France in 1998. This is confounded, however, by the fact that FIFA have increasingly been awarding World Cup hosting duties to lesser footballing nations such as the United States, Japan, South Korea, South Africa and Qatar, none of whom were realistic contenders for the trophy—although South Korea did end up with an unexpected semi-final appearance.</p>
+<p>Aside from home advantage for the hosts, there is also the question of <strong>home confederation advantage</strong>. Do UEFA teams perform better in Europe than they do in South America, for example? Based on World Cup winners, that would appear to be the case as only one CONMEBOL team has ever won a World Cup in Europe (Brazil in 1958), while similarly only one UEFA team has won in South America (Germany in 2014).</p>
 </section>
 <section id="developing-an-elo-model-to-forecast-international-football-matches" class="level2">
 <h2 class="anchored" data-anchor-id="developing-an-elo-model-to-forecast-international-football-matches">Developing an Elo model to forecast international football matches</h2>
-<p>It is too simplistic of course to just consider the winners of tournaments when trying to place a value on home advantage. It’s not a big enough sample to overcome noise, and it doesn’t account for the quality of the host and the teams from each continent.</p>
-<p>The <a href="https://www.eloratings.net">World Football Elo Ratings</a> website, much like its <a href="https://clubelo.com">counterpart</a> for club football, is a great website that is well-maintained and gives a reasonable overall view of current team ratings.</p>
-<p>While a standard Elo system is relatively simple, elegant and transparent, I wanted to develop it a bit further to account for some of the realities of international football. I fit my own parameters such as competition weights, goal difference adjustments and the Elo formula denominator. I used team-specific home advantage ratings instead of a single, global home advantage, so after each result 87% of the rating change would go to the home team’s overall rating and 13% would go to the home team’s home advantage rating.</p>
-<p><em>Use past tense here?</em></p>
-<p>Similarly, for inter-confederation matches, 74% of the rating change goes to the two teams and the remaining 26% is applied to an overall confederation rating. I found that this improved the model because in a closed system such as world football you have the various confederations who largely play against their own teams, and then limited cross-pollination in World Cups and other friendlies. For example, if the United States perform badly at a World Cup and their rating decreases, then in theory that will decrease the rating across all CONCACAF teams as each of them play the United States. But it’s not obvious that this adjustment will disseminate quickly enough across all the teams, and with standard Elo I found that weaker confederations were being systematically overestimated.</p>
-<p><em>Calibration and current top teams.</em></p>
-<p><em>Show teams with biggest current home adv (need latest scores?). Make bar chart from the CSV.</em></p>
-<p>Bolivia Ecuador Mexico Guinea Libya Algeria Chile Senegal Thailand Sierra Leone</p>
-<p>Something that immpediately leaps out is that the top three home advantages belong to teams who play their home games at a high altitude: Bolivia (La Paz, 13,412 feet), Ecuador (Quito, 9,350 feet) and Mexico (Mexico City, 7,200 feet). Many of the other highest home advantages are found in CAF (African) teams. Conversely, most of the smallest home advantages are found in UEFA teams, with Germany having the smallest and England the 4th-smallest. What could be causing this?</p>
+<p>It is too simplistic of course to just consider the winners of tournaments when trying to place a value on home advantage. 22 events is not a big enough sample to overcome noise, and it doesn’t account for the quality of the hosts and the teams from each continent.</p>
+<p>The <a href="https://www.eloratings.net">World Football Elo Ratings</a> website, much like its counterpart for <a href="https://clubelo.com">club football</a>, is a well-maintained website that gives a reasonable overall view of current international team ratings.</p>
+<p>While a standard Elo system is attractive because of its simplicity and transparency, I wanted to develop it a bit further to account for some of the nuances of international football. I fit my own parameters such as competition weights, goal difference adjustments and the Elo formula denominator, and I used <strong>team-specific home advantage</strong> ratings instead of a single, global home advantage, so after each result 87% of the rating change would go to the home team’s overall rating and 13% would go to the home team’s home advantage rating.</p>
+<p>Similarly, for inter-confederation matches, 74% of the rating change went to the two teams and the remaining 26% was applied to an <strong>overall confederation rating</strong>. I found that this improved the model because in a closed system such as world football you have the various confederations whose teams largely play against their fellow confederation teams, with limited cross-pollination in World Cups and other friendlies. This means, for example, that if the United States perform badly at a World Cup and their rating decreases, then in theory that will decrease the rating across all CONCACAF teams as the United States return to continental play. But it wasn’t clear whether such adjustments would disseminate quickly enough across all the CONCACAF teams, and with standard Elo I found that weaker confederations were being systematically overestimated.</p>
+<p>For a sanity check, here is a comparison of the current top 10 teams on eloratings.net alongside the top 10 teams in my model. Reassuringly, they are the same teams with a slightly different order, and in my model Germany get in the top 10 at the expense of Ecuador.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="qytqazdlye" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qytqazdlye table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#qytqazdlye thead, #qytqazdlye tbody, #qytqazdlye tfoot, #qytqazdlye tr, #qytqazdlye td, #qytqazdlye th {
+  border-style: none;
+}
+
+#qytqazdlye p {
+  margin: 0;
+  padding: 0;
+}
+
+#qytqazdlye .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#qytqazdlye .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qytqazdlye .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qytqazdlye .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qytqazdlye .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qytqazdlye .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qytqazdlye .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qytqazdlye .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qytqazdlye .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#qytqazdlye .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#qytqazdlye .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qytqazdlye .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qytqazdlye .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qytqazdlye .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qytqazdlye .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qytqazdlye .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qytqazdlye .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qytqazdlye .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#qytqazdlye .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qytqazdlye .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qytqazdlye .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qytqazdlye .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qytqazdlye .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qytqazdlye .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qytqazdlye .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qytqazdlye .gt_left {
+  text-align: left;
+}
+
+#qytqazdlye .gt_center {
+  text-align: center;
+}
+
+#qytqazdlye .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qytqazdlye .gt_font_normal {
+  font-weight: normal;
+}
+
+#qytqazdlye .gt_font_bold {
+  font-weight: bold;
+}
+
+#qytqazdlye .gt_font_italic {
+  font-style: italic;
+}
+
+#qytqazdlye .gt_super {
+  font-size: 65%;
+}
+
+#qytqazdlye .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#qytqazdlye .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qytqazdlye .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qytqazdlye .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qytqazdlye .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qytqazdlye .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qytqazdlye .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#qytqazdlye .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#qytqazdlye div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal">Top 10 International Football Teams</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">20 Apr, 2026</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Rank" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Rank</th>
+<th id="eloratings.net" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">eloratings.net</th>
+<th id="My-Model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">My Model</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Rank">1</td>
+<td class="gt_row gt_left" headers="eloratings.net">Spain</td>
+<td class="gt_row gt_left" headers="My Model">Spain</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Rank">2</td>
+<td class="gt_row gt_left" headers="eloratings.net">Argentina</td>
+<td class="gt_row gt_left" headers="My Model">Argentina</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Rank">3</td>
+<td class="gt_row gt_left" headers="eloratings.net">France</td>
+<td class="gt_row gt_left" headers="My Model">France</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Rank">4</td>
+<td class="gt_row gt_left" headers="eloratings.net">England</td>
+<td class="gt_row gt_left" headers="My Model">Brazil</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Rank">5</td>
+<td class="gt_row gt_left" headers="eloratings.net">Brazil</td>
+<td class="gt_row gt_left" headers="My Model">England</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Rank">6</td>
+<td class="gt_row gt_left" headers="eloratings.net">Portugal</td>
+<td class="gt_row gt_left" headers="My Model">Portugal</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Rank">7</td>
+<td class="gt_row gt_left" headers="eloratings.net">Colombia</td>
+<td class="gt_row gt_left" headers="My Model">Germany</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Rank">8</td>
+<td class="gt_row gt_left" headers="eloratings.net">Netherlands</td>
+<td class="gt_row gt_left" headers="My Model">Netherlands</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Rank">9</td>
+<td class="gt_row gt_left" headers="eloratings.net">Ecuador</td>
+<td class="gt_row gt_left" headers="My Model">Colombia</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Rank">10</td>
+<td class="gt_row gt_left" headers="eloratings.net">Croatia</td>
+<td class="gt_row gt_left" headers="My Model">Croatia</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We can also take a look at how my model differs from eloratings.net across the weaker confederations. The following table compares the rankings of each team that have qualified for this year’s World Cup. My model ranks CONCACAF teams lower and African teams higher, while the difference in Asian teams is mixed.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fmgwbsdtsr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fmgwbsdtsr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fmgwbsdtsr thead, #fmgwbsdtsr tbody, #fmgwbsdtsr tfoot, #fmgwbsdtsr tr, #fmgwbsdtsr td, #fmgwbsdtsr th {
+  border-style: none;
+}
+
+#fmgwbsdtsr p {
+  margin: 0;
+  padding: 0;
+}
+
+#fmgwbsdtsr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fmgwbsdtsr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fmgwbsdtsr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fmgwbsdtsr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fmgwbsdtsr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fmgwbsdtsr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fmgwbsdtsr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fmgwbsdtsr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fmgwbsdtsr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fmgwbsdtsr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fmgwbsdtsr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fmgwbsdtsr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fmgwbsdtsr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fmgwbsdtsr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fmgwbsdtsr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fmgwbsdtsr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fmgwbsdtsr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fmgwbsdtsr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fmgwbsdtsr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fmgwbsdtsr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fmgwbsdtsr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fmgwbsdtsr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fmgwbsdtsr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fmgwbsdtsr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fmgwbsdtsr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fmgwbsdtsr .gt_left {
+  text-align: left;
+}
+
+#fmgwbsdtsr .gt_center {
+  text-align: center;
+}
+
+#fmgwbsdtsr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fmgwbsdtsr .gt_font_normal {
+  font-weight: normal;
+}
+
+#fmgwbsdtsr .gt_font_bold {
+  font-weight: bold;
+}
+
+#fmgwbsdtsr .gt_font_italic {
+  font-style: italic;
+}
+
+#fmgwbsdtsr .gt_super {
+  font-size: 65%;
+}
+
+#fmgwbsdtsr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fmgwbsdtsr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fmgwbsdtsr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fmgwbsdtsr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fmgwbsdtsr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fmgwbsdtsr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fmgwbsdtsr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fmgwbsdtsr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fmgwbsdtsr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="5" class="gt_heading gt_title gt_font_normal">Comparison of World Cup team rankings</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">20 Apr, 2026</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
+<th id="Confederation" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Confederation</th>
+<th id="eloratings.net" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">eloratings.net</th>
+<th id="My-Model" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">My Model</th>
+<th id="Difference" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Difference</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Japan</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">13</td>
+<td class="gt_row gt_center" headers="My Model">15</td>
+<td class="gt_row gt_right" headers="Difference">-2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Senegal</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">17</td>
+<td class="gt_row gt_center" headers="My Model">12</td>
+<td class="gt_row gt_right" headers="Difference">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Mexico</td>
+<td class="gt_row gt_left" headers="Confederation">CONCACAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">20</td>
+<td class="gt_row gt_center" headers="My Model">25</td>
+<td class="gt_row gt_right" headers="Difference">-5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Morocco</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">24</td>
+<td class="gt_row gt_center" headers="My Model">18</td>
+<td class="gt_row gt_right" headers="Difference">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Canada</td>
+<td class="gt_row gt_left" headers="Confederation">CONCACAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">25</td>
+<td class="gt_row gt_center" headers="My Model">36</td>
+<td class="gt_row gt_right" headers="Difference">-11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Australia</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">26</td>
+<td class="gt_row gt_center" headers="My Model">31</td>
+<td class="gt_row gt_right" headers="Difference">-5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Iran</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">31</td>
+<td class="gt_row gt_center" headers="My Model">28</td>
+<td class="gt_row gt_right" headers="Difference">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">South Korea</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">32</td>
+<td class="gt_row gt_center" headers="My Model">33</td>
+<td class="gt_row gt_right" headers="Difference">-1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Algeria</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">35</td>
+<td class="gt_row gt_center" headers="My Model">22</td>
+<td class="gt_row gt_right" headers="Difference">13</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Panama</td>
+<td class="gt_row gt_left" headers="Confederation">CONCACAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">36</td>
+<td class="gt_row gt_center" headers="My Model">56</td>
+<td class="gt_row gt_right" headers="Difference">-20</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Uzbekistan</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">38</td>
+<td class="gt_row gt_center" headers="My Model">47</td>
+<td class="gt_row gt_right" headers="Difference">-9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">United States</td>
+<td class="gt_row gt_left" headers="Confederation">CONCACAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">41</td>
+<td class="gt_row gt_center" headers="My Model">54</td>
+<td class="gt_row gt_right" headers="Difference">-13</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Jordan</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">50</td>
+<td class="gt_row gt_center" headers="My Model">63</td>
+<td class="gt_row gt_right" headers="Difference">-13</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Egypt</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">51</td>
+<td class="gt_row gt_center" headers="My Model">29</td>
+<td class="gt_row gt_right" headers="Difference">22</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ivory Coast</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">52</td>
+<td class="gt_row gt_center" headers="My Model">37</td>
+<td class="gt_row gt_right" headers="Difference">15</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">DR Congo</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">54</td>
+<td class="gt_row gt_center" headers="My Model">48</td>
+<td class="gt_row gt_right" headers="Difference">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Tunisia</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">58</td>
+<td class="gt_row gt_center" headers="My Model">42</td>
+<td class="gt_row gt_right" headers="Difference">16</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Iraq</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">63</td>
+<td class="gt_row gt_center" headers="My Model">61</td>
+<td class="gt_row gt_right" headers="Difference">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">New Zealand</td>
+<td class="gt_row gt_left" headers="Confederation">OFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">68</td>
+<td class="gt_row gt_center" headers="My Model">88</td>
+<td class="gt_row gt_right" headers="Difference">-20</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Saudi Arabia</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">71</td>
+<td class="gt_row gt_center" headers="My Model">73</td>
+<td class="gt_row gt_right" headers="Difference">-2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Cape Verde</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">72</td>
+<td class="gt_row gt_center" headers="My Model">62</td>
+<td class="gt_row gt_right" headers="Difference">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Haiti</td>
+<td class="gt_row gt_left" headers="Confederation">CONCACAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">77</td>
+<td class="gt_row gt_center" headers="My Model">90</td>
+<td class="gt_row gt_right" headers="Difference">-13</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">South Africa</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">79</td>
+<td class="gt_row gt_center" headers="My Model">60</td>
+<td class="gt_row gt_right" headers="Difference">19</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Ghana</td>
+<td class="gt_row gt_left" headers="Confederation">CAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">82</td>
+<td class="gt_row gt_center" headers="My Model">70</td>
+<td class="gt_row gt_right" headers="Difference">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Curacao</td>
+<td class="gt_row gt_left" headers="Confederation">CONCACAF</td>
+<td class="gt_row gt_center" headers="eloratings.net">90</td>
+<td class="gt_row gt_center" headers="My Model">126</td>
+<td class="gt_row gt_right" headers="Difference">-36</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Qatar</td>
+<td class="gt_row gt_left" headers="Confederation">AFC</td>
+<td class="gt_row gt_center" headers="eloratings.net">95</td>
+<td class="gt_row gt_center" headers="My Model">98</td>
+<td class="gt_row gt_right" headers="Difference">-3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="which-nations-have-the-biggest-home-advantage" class="level2">
+<h2 class="anchored" data-anchor-id="which-nations-have-the-biggest-home-advantage">Which nations have the biggest home advantage?</h2>
+<p>As mentioned above, I fit a separate home advantage rating for every team based on its results. The bar chart below shows the top 10:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Something that immediately leaps out is that the biggest three home advantages belong to teams who play their home games at a high altitude: <strong>Bolivia</strong> (La Paz, 13,412 feet), <strong>Ecuador</strong> (Quito, 9,350 feet) and <strong>Mexico</strong> (Mexico City, 7,200 feet). Many of the other largest home advantages belong to CAF (African) teams. Conversely, most of the smallest home advantages are found in UEFA teams, with <strong>Germany</strong> having the smallest of any team and <strong>England</strong> the 4th-smallest. What could be causing this?</p>
 <ul>
 <li>European nations are closer together meaning less travel distance for away teams.</li>
 <li>Climates in Europe are more homogeneous when compared to larger continents like Asia or Africa.</li>
-<li>Europe has high quality hotels and wealthy teams can afford their own private air travel, chefs and so forth.</li>
+<li>Europe has high-quality infrastructure and wealthier football associations, meaning greater comfort for players in travel and accommodation.</li>
 </ul>
-<p>I also wondered about the relative quality and integrity of referees in different confederations, which may make them more vulnerable to the more nefarious aspects of home advantage, but that is a tricky area and I wouldn’t want to speculate too much on a subject I am not familiar with. But it is sufficient to say that there are many other unmeasured factors that could be rolled up into the single measure of home advantage.</p>
+<p>I also wondered about the relative quality and integrity of referees in different confederations, which may make them more vulnerable to the more nefarious aspects of home advantage. But that is a tricky area and I wouldn’t want to speculate too much on a subject I am not familiar with. Nonetheless, it is sufficient to say that there are many other unmeasured factors that could be rolled up into the single measure of home advantage.</p>
 </section>
 <section id="has-home-advantage-changed-over-time" class="level2">
 <h2 class="anchored" data-anchor-id="has-home-advantage-changed-over-time">Has home advantage changed over time?</h2>
-<p>home_advantage_time_series.csv. Make it a line graph.</p>
-<p>It went up (maybe more inter-confederation matches) and then down more recently.</p>
-<p><em>Use model to show more accurate home adv per WC. Express in both residual wins and GD (maybe not…space).</em></p>
-<p>So we have a well-calibrated model that assigns an individual home advantage to each team. Now we can inspect past World Cups to see whether host teams generally have a higher or lower home advantage than would be expected from their normal home games. Below we can see the mean residual wins (observed wins minus expected wins) for the hosts of each World Cup, where each game has an expected win probability as forecast by the model using the team’s regular home advantage, and draws are counted as 0.5 of a win.</p>
-<p><em>Year, Host, Matches, Mean Residual Wins</em></p>
+<p>The following line graph shows the mean home advantage across all teams in the model. It seems like there was an increase in home advantage between 1970 and 2000—possibly reflecting an increase in intercontinental matchups rather than mostly local ones—and has decreased since the turn of the millennium, in line with the general downward trend in home advantage in football.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="does-home-advantage-increase-or-decrease-at-world-cups" class="level1">
+<h1>Does home advantage increase or decrease at World Cups?</h1>
+<p>We have a well-calibrated model that assigns an individual home advantage to each team. Now we can inspect past World Cups to see whether host teams have generally had a higher or lower home advantage than would be expected from their normal home advantage rating.</p>
+<p>Below we can see the mean residual wins (observed wins minus expected wins) for the hosts of each World Cup, where each game has an expected win probability as forecast by the model using the team’s regular home advantage, and draws are counted as 0.5 of a win.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div style="text-align:center; margin-bottom:2px; font-size:1.05em; font-weight:600;">World Cup Host Performance</div>
-<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">Overperformance = results vs. expectation (higher = better)</div>
+<div style="text-align:center; margin-bottom:2px; color:#666; font-size:0.95em;">Overperformance = observed result - expected result (higher = better)</div>
 <div style="text-align:center;">
 <div style="display:inline-block;">
 <table class="table caption-top table-sm table-striped small">
@@ -390,6 +1591,7 @@ ul.task-list li input[type="checkbox"] {
 <th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Year</th>
 <th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Host Team</th>
 <th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Matches</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Result</th>
 <th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Avg. Overperformance</th>
 </tr>
 </thead>
@@ -398,132 +1600,154 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left; width: 180px;">1930</td>
 <td style="text-align: left; width: 140px;">Uruguay</td>
 <td style="text-align: center; width: 140px;">4</td>
+<td style="text-align: center; width: 140px;">WON</td>
 <td style="text-align: right; width: 140px;">0.20</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">1934</td>
 <td style="text-align: left; width: 140px;">Italy</td>
 <td style="text-align: center; width: 140px;">5</td>
+<td style="text-align: center; width: 140px;">WON</td>
 <td style="text-align: right; width: 140px;">0.22</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">1938</td>
 <td style="text-align: left; width: 140px;">France</td>
 <td style="text-align: center; width: 140px;">2</td>
+<td style="text-align: center; width: 140px;">QF</td>
 <td style="text-align: right; width: 140px;">0.04</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">1950</td>
 <td style="text-align: left; width: 140px;">Brazil</td>
 <td style="text-align: center; width: 140px;">6</td>
+<td style="text-align: center; width: 140px;">Runners-up</td>
 <td style="text-align: right; width: 140px;">0.03</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">1954</td>
 <td style="text-align: left; width: 140px;">Switzerland</td>
 <td style="text-align: center; width: 140px;">4</td>
+<td style="text-align: center; width: 140px;">QF</td>
 <td style="text-align: right; width: 140px;">0.16</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">1958</td>
 <td style="text-align: left; width: 140px;">Sweden</td>
 <td style="text-align: center; width: 140px;">6</td>
+<td style="text-align: center; width: 140px;">Runners-up</td>
 <td style="text-align: right; width: 140px;">0.14</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">1962</td>
 <td style="text-align: left; width: 140px;">Chile</td>
 <td style="text-align: center; width: 140px;">6</td>
+<td style="text-align: center; width: 140px;">3rd place</td>
 <td style="text-align: right; width: 140px;">0.27</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">1966</td>
 <td style="text-align: left; width: 140px;">England</td>
 <td style="text-align: center; width: 140px;">6</td>
+<td style="text-align: center; width: 140px;">WON</td>
 <td style="text-align: right; width: 140px;">0.12</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">1970</td>
 <td style="text-align: left; width: 140px;">Mexico</td>
 <td style="text-align: center; width: 140px;">4</td>
+<td style="text-align: center; width: 140px;">QF</td>
 <td style="text-align: right; width: 140px;">0.08</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">1974</td>
 <td style="text-align: left; width: 140px;">West Germany</td>
 <td style="text-align: center; width: 140px;">7</td>
+<td style="text-align: center; width: 140px;">WON</td>
 <td style="text-align: right; width: 140px;">0.03</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">1978</td>
 <td style="text-align: left; width: 140px;">Argentina</td>
 <td style="text-align: center; width: 140px;">7</td>
+<td style="text-align: center; width: 140px;">WON</td>
 <td style="text-align: right; width: 140px;">0.12</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">1982</td>
 <td style="text-align: left; width: 140px;">Spain</td>
 <td style="text-align: center; width: 140px;">5</td>
+<td style="text-align: center; width: 140px;">2nd group stage</td>
 <td style="text-align: right; width: 140px;">-0.25</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">1986</td>
 <td style="text-align: left; width: 140px;">Mexico</td>
 <td style="text-align: center; width: 140px;">5</td>
+<td style="text-align: center; width: 140px;">QF</td>
 <td style="text-align: right; width: 140px;">0.13</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">1990</td>
 <td style="text-align: left; width: 140px;">Italy</td>
 <td style="text-align: center; width: 140px;">7</td>
+<td style="text-align: center; width: 140px;">3rd place</td>
 <td style="text-align: right; width: 140px;">0.14</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">1994</td>
 <td style="text-align: left; width: 140px;">United States</td>
 <td style="text-align: center; width: 140px;">4</td>
+<td style="text-align: center; width: 140px;">R16</td>
 <td style="text-align: right; width: 140px;">0.06</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">1998</td>
 <td style="text-align: left; width: 140px;">France</td>
 <td style="text-align: center; width: 140px;">7</td>
+<td style="text-align: center; width: 140px;">WON</td>
 <td style="text-align: right; width: 140px;">0.15</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">2002</td>
 <td style="text-align: left; width: 140px;">Japan &amp; S Korea</td>
 <td style="text-align: center; width: 140px;">11</td>
+<td style="text-align: center; width: 140px;">R16 (Japan) 4th place (S Korea)</td>
 <td style="text-align: right; width: 140px;">0.02</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">2006</td>
 <td style="text-align: left; width: 140px;">Germany</td>
 <td style="text-align: center; width: 140px;">7</td>
+<td style="text-align: center; width: 140px;">3rd place</td>
 <td style="text-align: right; width: 140px;">0.11</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">2010</td>
 <td style="text-align: left; width: 140px;">South Africa</td>
 <td style="text-align: center; width: 140px;">3</td>
+<td style="text-align: center; width: 140px;">Group stage</td>
 <td style="text-align: right; width: 140px;">0.16</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">2014</td>
 <td style="text-align: left; width: 140px;">Brazil</td>
 <td style="text-align: center; width: 140px;">7</td>
+<td style="text-align: center; width: 140px;">4th place</td>
 <td style="text-align: right; width: 140px;">-0.25</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 180px;">2018</td>
 <td style="text-align: left; width: 140px;">Russia</td>
 <td style="text-align: center; width: 140px;">5</td>
+<td style="text-align: center; width: 140px;">QF</td>
 <td style="text-align: right; width: 140px;">0.05</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 180px;">2022</td>
 <td style="text-align: left; width: 140px;">Qatar</td>
 <td style="text-align: center; width: 140px;">3</td>
+<td style="text-align: center; width: 140px;">Group stage</td>
 <td style="text-align: right; width: 140px;">-0.39</td>
 </tr>
 </tbody>
@@ -532,19 +1756,564 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p><em>Compare old and new eras. Speculate why.</em></p>
-<p>In the old era, hosts played a total of 57 matches with an average performance of 0.13 wins greater than expected. In the modern era, hosts have played 67 matches with an average overperformance of 0.01—in other words, bang in line with expectations.</p>
-<p>What can we draw from this? Firstly, it seems that home advantage in World Cups is at least as big as home advantage in normal matches. I don’t think that was inevitable—it seems plausible that home advantage might have been reduced by the effect of away teams being based in the country for a prolonged period, rather than flying in for a single match.</p>
-<p>Secondly, from this sample at least, it seems like World Cup home advantage has been getting lower. But this is prone to a lot of noise. At the most recent World Cup in 2022, Qatar produced the worst ever performance by a host nation. But looking at Qatar’s results since that tournament, they just seem like an unusual outlier as they have really gone to shit (but still qualified for 2026 due to loads of teams qualifying and dubious decision to give them home advantage).</p>
-<p><em>Discuss some of the examples e.g.&nbsp;Japan &amp; S Korea not as good as expected. Brazil! Biggest ever Chile. Biggest recent S Africa even though they went out.</em></p>
-<p>One interesting year is 2002 where Japan and South Korea only outperformed their forecasted results by 0.02 per game. This is surprising, since both these unheralded footballing nations won their groups and South Korea went all the way to the semis, knocking out Italy and Spain. So how can it only be +0.02 per game? <em>Both had above-average home advantage rating. Maybe both better rated than people realise? ET/pen wins.</em></p>
-<p><em>Compare with other major competitions. Have they changed over time, collectively? Does this suggest travel distance or time zones may be a factor? Use real examples.</em></p>
-<p><em>Look at confederation home advantage in WCs (i.e.&nbsp;playing in home continent but not home country).</em></p>
-<p>confederation_home_advantage.csv. Confederation, Matches, Mean Residual.</p>
-<p><em>More directly analyse travel distance, time zones, climate etc. May need another part for this?</em></p>
-<p><em>What does this suggest for this summer? USA/Canada/Mexico hosts. Look at current ratings and apply home advantage. Show some forecasts for opening games. Home teams good value?</em></p>
+<p>To reiterate: this is a measure of host teams’ performance <strong>over and above</strong> what would be expected from the team’s home advantage in a normal game.</p>
+<p>In the old era, hosts played a total of 57 matches with an average performance of 0.13 wins greater than expected. In the modern era, hosts have played 67 matches with an average overperformance of 0.01, almost bang in line with expectations.</p>
+<p>What can we draw from this? Firstly, it seems that home advantage in World Cups is <strong>at least as big</strong> as home advantage in normal matches. I don’t think that was an inevitable result—it seemed plausible to me that home advantage might have been reduced by the effect of away teams being based in the country for a prolonged period rather than flying in for a single match.</p>
+<p>Secondly, from this sample at least, it seems like World Cup home advantage has been getting lower. But this is prone to a lot of noise. At the most recent World Cup in 2022 <strong>Qatar</strong> produced the worst ever performance by a host nation (average of -0.39 versus expected win probability). But looking at Qatar’s results since that tournament, it’s possible that they were just an outlier as they have continued to look like a really poor team: since the start of 2025 they have lost to Kyrgyzstan, Uzbekistan, Lebanon, Russia, Zimbabwe, Palestine and Tunisia. They still managed to qualify for 2026, thanks to Asia receiving 9 places in the newly-expanded competition format, and the surprising decision to base the AFC playoffs in Qatar rather than the usual neutral venue. I wonder what influenced that decision?</p>
+<p>One notable year in the table is 2002 where <strong>Japan</strong> and <strong>South Korea</strong> outperformed their forecast results by only 0.02 per game. This is surprising since both of these unheralded footballing nations won their groups and South Korea went all the way to the semis, knocking out Italy and Spain. So how can it only be +0.02 per game?</p>
+<p>One of the reasons is that both teams already had a large home advantage from the model: Japan 235 and South Korea 223. As you can see from the earlier line graph, these are above the average, although not on the level of the top 10. According to the model, Japan were actually favourites for all four of their games, drawing with Belgium (this was before Belgium’s golden era), and beating Russia and Tunisia before losing to Turkey in the round of 16. South Korea beat Poland and Portugal in their group as well as drawing with the United States, before they beat Italy, drew with Spain (winning on penalties) then lost to both Germany and Turkey. Collectively they played 11 games with 5 wins, 3 draws and 3 losses, having been favourites for 7 of the 11 games. So it was a good performance from the pair of hosts, but nothing crazy.</p>
+<p>The biggest overperformance in a World Cup was from unfancied <strong>Chile</strong> who finished 3rd in 1962 after beating Switzerland, Italy, the Soviet Union and Yugoslavia. Aside from Qatar, one of the biggest underperformances was from <strong>Brazil</strong> in 2014; their 7-1 defeat against Germany in the semi-final remains arguably the most incredible game of football I have ever watched.</p>
+<section id="how-do-other-international-competitions-compare-with-the-world-cup" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-other-international-competitions-compare-with-the-world-cup">How do other international competitions compare with the World Cup?</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Above we can see a comparison of host performance versus expectation in each of the major international tournaments. In all tournaments, the hosts have performed even better than would be expected from their normal home advantage, with the exception of the <strong>European Championship</strong> where hosts have performed an average of <strong>0.038 worse</strong>. In fact, the overall trend seems to be for a larger home advantage in tournaments where away teams are far from home (Asian Cup, World Cup, Confederations Cup) with a much smaller home advantage in tightly-packed Europe. And this is on top of the fact European teams already have the smallest home advantages in the model.</p>
+<p>So could it be that <strong>distance from home</strong> is a key factor in the amount of disadvantage an away team suffers? We need to be careful because there are other factors at play here—for example, there may be more disparity between teams in the Asian Cup, World Cup, Confederations Cup and CONCACAF Championship when compared to the Euros and Copa America, where away teams are of a higher calibre and have more experience of playing big games away from home.</p>
+</section>
+<section id="do-teams-have-a-home-continent-advantage" class="level2">
+<h2 class="anchored" data-anchor-id="do-teams-have-a-home-continent-advantage">Do teams have a ‘home continent’ advantage?</h2>
+<p>One way of shedding more light on the distance-from-home factor is by seeing how teams have performed in World Cups when they are playing in their home continent (but not in their own country). For example, Germany playing in a World Cup in France, or Mexico playing in the United States.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="czpryrcgxb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#czpryrcgxb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#czpryrcgxb thead, #czpryrcgxb tbody, #czpryrcgxb tfoot, #czpryrcgxb tr, #czpryrcgxb td, #czpryrcgxb th {
+  border-style: none;
+}
+
+#czpryrcgxb p {
+  margin: 0;
+  padding: 0;
+}
+
+#czpryrcgxb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#czpryrcgxb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#czpryrcgxb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#czpryrcgxb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#czpryrcgxb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#czpryrcgxb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#czpryrcgxb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#czpryrcgxb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#czpryrcgxb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#czpryrcgxb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#czpryrcgxb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#czpryrcgxb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#czpryrcgxb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#czpryrcgxb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#czpryrcgxb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#czpryrcgxb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#czpryrcgxb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#czpryrcgxb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#czpryrcgxb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#czpryrcgxb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#czpryrcgxb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#czpryrcgxb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#czpryrcgxb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#czpryrcgxb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#czpryrcgxb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#czpryrcgxb .gt_left {
+  text-align: left;
+}
+
+#czpryrcgxb .gt_center {
+  text-align: center;
+}
+
+#czpryrcgxb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#czpryrcgxb .gt_font_normal {
+  font-weight: normal;
+}
+
+#czpryrcgxb .gt_font_bold {
+  font-weight: bold;
+}
+
+#czpryrcgxb .gt_font_italic {
+  font-style: italic;
+}
+
+#czpryrcgxb .gt_super {
+  font-size: 65%;
+}
+
+#czpryrcgxb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#czpryrcgxb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#czpryrcgxb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#czpryrcgxb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#czpryrcgxb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#czpryrcgxb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#czpryrcgxb .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#czpryrcgxb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#czpryrcgxb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal">Non-Host Teams Playing in Home Continent at World Cups</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Inter-confederation matches 1930-2022</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Host-Confederation" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Host Confederation</th>
+<th id="Matches" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Matches</th>
+<th id="Avg.-Overperformance" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Avg. Overperformance</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Host Confederation">CONMEBOL</td>
+<td class="gt_row gt_center" headers="Matches">57</td>
+<td class="gt_row gt_center" headers="Avg. Overperformance">0.09</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Host Confederation">UEFA</td>
+<td class="gt_row gt_center" headers="Matches">214</td>
+<td class="gt_row gt_center" headers="Avg. Overperformance">0.03</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Host Confederation">AFC</td>
+<td class="gt_row gt_center" headers="Matches">24</td>
+<td class="gt_row gt_center" headers="Avg. Overperformance">0.00</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Host Confederation">CAF</td>
+<td class="gt_row gt_center" headers="Matches">17</td>
+<td class="gt_row gt_center" headers="Avg. Overperformance">-0.03</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Host Confederation">CONCACAF</td>
+<td class="gt_row gt_center" headers="Matches">9</td>
+<td class="gt_row gt_center" headers="Avg. Overperformance">-0.05</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>CONMEBOL and UEFA teams have tended to enjoy a continental home advantage, whereas other teams have not. The problem we have with the weaker confederations is a low sample size.</p>
+<p>There have been three CONCACAF-hosted World Cups, but since the hosts themselves do not count for this comparison, that only leaves El Salvador in 1970, Canada in 1986 and Mexico in 1994. In addition to the low sample size, you have Canada playing in Mexico which maybe isn’t a great example of benefitting from ‘local’ conditions. Mexico in 1994 did actually have a reasonable tournament, winning a group containing Italy, Ireland and Norway before losing on penalties to the Bulgarian team that would famously knock out Germany in the quarter finals.</p>
+<p>Africa has only hosted a single World Cup in 2010, on the southern tip of the continent in their winter which maybe didn’t provide the most hostile environment for visiting teams. Meanwhile the two Asian World Cups have been at opposite ends of the continent. When it was played in Japan &amp; South Korea, for example, Saudi Arabia were almost as far from home as the European teams; similarly, in 2022 the likes of Japan, South Korea and Australia (who moved to the AFC in 2006 to secure an easier qualification path) were further from home than any European or African team.</p>
+</section>
+<section id="what-does-all-this-mean-for-2026" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-all-this-mean-for-2026">What does all this mean for 2026?</h2>
+<p>This has just been an exploratory analysis, so by no means are any conclusions concrete. But here are some of the takeaways:</p>
+<ul>
+<li>In major international tournaments, host teams seem to have at least as big a home advantage as they do in regular games.</li>
+<li>The exception is the European Championship where host teams perform slightly worse than they would in usual home games.</li>
+<li>CONMEBOL and UEFA teams have historically enjoyed a “continental home advantage” when playing against teams from another continent. Other confederations are hard to analyse due to small and non-representative samples.</li>
+<li>It is possible that factors such as distance from home or climate may play a role in the disadvantage faced by away teams.</li>
+</ul>
+<p>I would like to drill down on that last point in a future article if I can find the time. But something that raises my eyebrows is that <strong>Mexico</strong> are one of the hosts of this year’s World Cup and they have the third-biggest home advantage in world football. They are currently ranked 25th by my model and 20th by the eloratings model. When I apply home advantage, they rise all the way to 5th place. If Mexico and England both win their groups then they could be scheduled to meet in the round of 16 in Mexico City, and according to my model Mexico would be slight favourites for this match. Yet, looking at the betting markets, England are about 7/1 to win the World Cup and Mexico are 80/1. Of course, Mexico don’t get to play at home the whole way because everything shifts to the United States from the quarter finals onward, but that still possibly gives Mexico some ‘home continent’ advantage, especially considering the huge Mexican population in U.S. cities that often gives their matches in the States a home feel anyway.</p>
+<p>Winning the tournament is a big ask, of course, but it will be interesting to follow the odds of the host nations in individual matches. Currently Mexico are 1.515 on Pinnacle for their opener against South Africa, while Canada are 1.862 against Bosnia &amp; Herzegovina and the U.S. are 1.884 versus Paraguay. My model prices the home wins as 1.18, 1.29 and 2.44.</p>
+<p>Now I’m not so naive as to think a simple Elo model is going to be sharper than the betting markets, but it’s interesting to observe the differences and find explanations for them. I don’t think home advantage is being priced in as much as perhaps it should be, which makes me believe there is scope for my Mexico and Canada prices at least being directionally-correct and perhaps offering some value on those two games. The United States are trickier because clearly some amount of improvement is being priced in relative to their poor results over the last couple of years. But Paraguay are significantly more difficult opponents than South Africa or Bosnia &amp; Herzegovina, so it seems wrong that USA should be essentially the same price as Canada for their respective home openers.</p>
+<p>Hopefully I’ll be able to add another part to this article where I try to model the effects of travel distance and climate. Either way, I will continue previewing the World Cup alongside the climax of the domestic football season. If anyone has any thoughts on World Cup home advantage, or if you can spot any flaws in my logic or methods, I am an open book and I always welcome feedback so feel free to comment or send me a message.</p>
+<div class="data-footer">
+<p><strong>Data Sources</strong><br>
+I gather match data from a variety of public sources. Please check out these excellent websites:</p>
+<ul>
+<li><a href="https://clubelo.com">Club Elo Ratings</a></li>
+<li><a href="https://www.espn.com/soccer/">ESPN</a></li>
+<li><a href="https://fbref.com">FBref</a></li>
+<li><a href="https://fotmob.com">FotMob</a></li>
+<li><a href="https://transfermarkt.com">Transfermarkt</a></li>
+<li><a href="https://understat.com">Understat</a></li>
+<li><a href="https://whoscored.com">WhoScored</a></li>
+<li><a href="http://eloratings.net/">World Football Elo Ratings</a></li>
+</ul>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+</div>
+<p>© 2026 John Knight. All rights reserved.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

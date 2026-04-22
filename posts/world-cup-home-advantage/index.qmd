@@ -3,7 +3,7 @@ title: "How much is home advantage worth in the World Cup?"
 author: "John Knight"
 date: 2026-04-21
 date-format: "D MMMM YYYY"
-description: "." #Insert description here
+description: "I created a model for international football to help measure home advantage in major tournaments." #Insert description here
 format:
   html:
     title-block-categories: true

@@ -84,7 +84,7 @@ top_10 %>%
   ) %>%
   tab_header(
     title = "Top 10 International Football Teams",
-    subtitle = "20 Apr, 2026"
+    subtitle = "21 Apr, 2026"
   )
 ```
 
@@ -135,7 +135,7 @@ rank_comparison %>%
   ) %>%
   tab_header(
     title = "Comparison of World Cup team rankings",
-    subtitle = "20 Apr, 2026"
+    subtitle = "21 Apr, 2026"
   )
 ```
 

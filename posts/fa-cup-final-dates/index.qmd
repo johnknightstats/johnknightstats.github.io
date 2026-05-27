@@ -1,0 +1,32 @@
+---
+title: "Turns out, the FA Cup Final hasn't always been played after the final league fixture"
+author: "John Knight"
+date: 2026-05-15
+date-format: "D MMMM YYYY"
+description: "Exploring the effect of travel distance, time zones and climate." 
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "statistics", "FA Cup"]
+execute: 
+  echo: false
+eval: true
+message: false
+warning: false
+engine: knitr
+editor: source
+image: azteca.jpg
+draft: true
+---
+
+*Intro. 2026. Abomination. Should be showpiece, always has been. But is this true?*
+
+*Show the big PNG. Can I make this more viewer-friendly?*
+
+*Discuss particular years or eras. Give examples and reasons e.g. postponements, Hillsborough.*
+
+*Also mention overall trend towards later finals.*
+
+*Mention the stats and show table.*
+
+*Conclusion; not true. Nelson Mandela effect?*

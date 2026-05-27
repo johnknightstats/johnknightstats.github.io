@@ -1,13 +1,13 @@
 ---
-title: "Four amazing facts about the Leeds v Chelsea 1970 FA Cup Final"
+title: "Four interesting facts about the Leeds v Chelsea 1970 FA Cup Final"
 author: "John Knight"
-date: 2026-04-21
+date: 2026-04-24
 date-format: "D MMMM YYYY"
 description: "description here."
 format:
   html:
     title-block-categories: true
-categories: ["football", "FA Cup", "Chelsea", "Leeds United"]
+categories: ["Football", "FA Cup", "Chelsea", "Leeds United"]
 execute: 
   echo: false
 eval: true
@@ -20,29 +20,37 @@ draft: true
 
 Recently I was doing some research and stumbled across an unusual fact about the 1970 FA Cup Final between Leeds United and Chelsea. This took me down a Wikipedia rabbit hole where I found another interesting fact. And then another. And then another!
 
-Since Leeds and Chelsea face one another in the semi-final at Wembley this weekend, I thought it was a good time to share them with you. So here are four amazing facts about the 1970 FA Cup Final—and no, they are nothing to do with fouls or yellow cards.
+Since Leeds and Chelsea face one another in the semi-final at Wembley this weekend, I thought it was a good time to share them with you. So here are four interesting facts about the 1970 FA Cup Final—and no, they are nothing to do with fouls or yellow cards.
 
-## 1. The final was played on the 11th of April.
+## 1. The final was played at the start of April.
 
 As we all know, the FA Cup Final is traditionally the showpiece event of the football season and has always been played after the end of the league season. When they stage it before the end of the Premier League season it is an abomination, truly a sign that the game has gone. So imagine my surprise when I discovered that the 1970 final took place at the start of April, with the replay on the 29th.
 
-Why was this? World Cup?
+*World Cup started on 31 May.*
+
+*Still 13 league games afterwards. Everton hosed up. Looks like catching up postponed games rather than full programme.*
 
 ## 2. It was the first replay since 1912.
 
 On the 15th of April 1912, the Titanic went down in the Atlantic Ocean after striking an iceberg. Five days later there was another grim event as Barnsley drew 0-0 with West Brom in the FA Cup Final. Incredibly, it was 58 years before the cup final saw another draw. 
 
+*Barnsley won the replay 1-0 in the last minute of extra time.*
+
+*But there were games that went to extra time.*
+
+*Second consecutive 0-0 after Bradford 0-0 Newcastle the year before. Wasn't another one until Arsenal 0-0 Man Utd in 2005. Liverpool 0-0 Chelsea in 2022 the only other one since.*
+
 ## 3. The replay wasn't played at Wembley.
 
-Only time for a Wembley final. Played at Old Trafford - why?
+Only time for a Wembley final. Played at Old Trafford because the Wembley pitch was so bad.
 
 ## 4. There was a third-place playoff.
 
-This lasted from 1970-1974. Man Utd beat Watford 2-0 at Highbury! On 10 April. List the other years.
+*This lasted from 1970-1974. Man Utd beat Watford 2-0 at Highbury! On 10 April, attendance 15,105. 1971 Stoke 3-2 Everton at Selhurst Park in front of 5,031. 1972 Birmingham 0-0 Stoke at St. Andrews, played before the next season on 5th of August. 1973 Arsenal 1-3 Wolves at Highbury on 18 August. 1974 Leicester 0-1 Burnley at Filbert Street on 9th May. Attendance 4,432.*
 
 ## Conclusion
 
-Did you know any of these facts? Are you old enough to remember them? Can anyone throw in any more amazing facts about this game?
+*Did you know any of these facts? Are you old enough to remember them? Can anyone throw in any more amazing facts about this game?*
 
 {{< include ../../includes/_article_footer.qmd >}}
 

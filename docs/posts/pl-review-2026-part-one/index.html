@@ -1,0 +1,4670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="John Knight">
+<meta name="dcterms.date" content="2026-05-27">
+<meta name="description" content="A statistical look at each of the teams who changed manager before or during the season.">
+
+<title>Premier League 2025-26: Which managerial changes worked, and which didn’t? – John Knight Stats</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0d4a9d19931feb4fee1ddab4b2489000.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">John Knight Stats</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/index.html"> 
+<span class="menu-text">Articles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../papers/index.html"> 
+<span class="menu-text">Papers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tools/index.html"> 
+<span class="menu-text">Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../dashboards/index.html"> 
+<span class="menu-text">Dashboards</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Premier League 2025-26: Which managerial changes worked, and which didn’t?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">football</div>
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">Premier League</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A statistical look at each of the teams who changed manager before or during the season.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Knight </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">27 May 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="centered-block">
+<p><img src="managers.png"> <em>Nuno Espirito Santo, Ruben Amorim and Roberto De Zerbi. Images from Wikimedia Commons.</em></p>
+</div>
+<p>I’m starting my review of the 2025-26 Premier League season by looking at managers. Specifically, teams that changed managers either before or during the season, and the associated change in performance or style.</p>
+<p>One of the performance measures you will see is <strong>contexG</strong>. For those who are not familiar with my <a href="https://open.substack.com/pub/johnknightstats/p/introducing-contexg">contexG</a> model, it is similar to expected goals (xG) but takes into account game state (score, time elapsed, red cards) and certain match stats, and it is trained on future team performance rather than the goals scored in that particular game.</p>
+<p>The value of such a model can be illustrated by looking at the closing table and contexG ratings from the <strong>2024-25</strong> season. The four worst teams who stayed up, according to contexG, were <strong>Tottenham</strong>, <strong>West Ham</strong>, <strong>Wolves</strong> and <strong>Nottingham Forest</strong>—all of whom became the main relegation protagonists in 2025-26.</p>
+<div class="centered-block">
+<p><img src="pl_2024_2025.jpg"></p>
+</div>
+<p>Followers of the model would also have been unsurprised by the high finishes for <strong>Brighton</strong>, <strong>Bournemouth</strong> and <strong>Brentford</strong> this season, as well as the resurgence of <strong>Manchester United</strong>. Speaking of whom, that’s where I will begin this review:</p>
+<section id="manchester-united-compared-to-amorim-carrick-was-more-defensive-more-effectivemore-fortunate" class="level1">
+<h1>Manchester United: Compared to Amorim, Carrick was more defensive, more effective…more fortunate?</h1>
+<p>As the above table demonstrates, United had finished the previous season more strongly than their 15th-place finish would indicate. Unfortunate to lose the Europa League final to Spurs after outshooting them 16-3, United returned home and took out their frustration on Aston Villa in a surprisingly one-sided home win (even before the Martinez red card) to deny in-form Villa a Champions League spot.</p>
+<p>Sesko, Mbeumo, Cunha and Lammens were then signed in the summer for more than £200 million and, with no European football, expectations for the league season were high. Performances were reasonable under <strong>Ruben Amorim</strong> but, despite big edges in shots and xG, he could only manage 1.6 goals per game for and against before being sacked after 20 games. The sacking was typically well-timed by the club’s board, coming just as Bryan Mbeumo, Amad Diallo and Noussair Mazraoui returned from AFCON and Bruno Fernandes returned from injury.</p>
+<p>Results under <strong>Michael Carrick</strong> were excellent with United getting 2.29 points per game (87 points over a full season). But the underlying stats were not drastically different: contexGD increased modestly from +0.30 to +0.39 and xGD from +0.53 to +0.6.</p>
+<div class="centered-block">
+<p><img src="Manchester United.svg"></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="blfcdlaedt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#blfcdlaedt table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#blfcdlaedt thead, #blfcdlaedt tbody, #blfcdlaedt tfoot, #blfcdlaedt tr, #blfcdlaedt td, #blfcdlaedt th {
+  border-style: none;
+}
+
+#blfcdlaedt p {
+  margin: 0;
+  padding: 0;
+}
+
+#blfcdlaedt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#blfcdlaedt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#blfcdlaedt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#blfcdlaedt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#blfcdlaedt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#blfcdlaedt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#blfcdlaedt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#blfcdlaedt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#blfcdlaedt .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#blfcdlaedt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#blfcdlaedt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#blfcdlaedt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#blfcdlaedt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#blfcdlaedt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#blfcdlaedt .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#blfcdlaedt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#blfcdlaedt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#blfcdlaedt .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#blfcdlaedt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#blfcdlaedt .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#blfcdlaedt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#blfcdlaedt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#blfcdlaedt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#blfcdlaedt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#blfcdlaedt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#blfcdlaedt .gt_left {
+  text-align: left;
+}
+
+#blfcdlaedt .gt_center {
+  text-align: center;
+}
+
+#blfcdlaedt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#blfcdlaedt .gt_font_normal {
+  font-weight: normal;
+}
+
+#blfcdlaedt .gt_font_bold {
+  font-weight: bold;
+}
+
+#blfcdlaedt .gt_font_italic {
+  font-style: italic;
+}
+
+#blfcdlaedt .gt_super {
+  font-size: 65%;
+}
+
+#blfcdlaedt .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#blfcdlaedt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#blfcdlaedt .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#blfcdlaedt .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#blfcdlaedt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#blfcdlaedt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#blfcdlaedt .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#blfcdlaedt .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#blfcdlaedt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Manchester United 2025-26</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="Ruben-Amorim" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ruben Amorim</th>
+<th id="Michael-Carrick" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Michael Carrick</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Matches</th>
+<td class="gt_row gt_right" headers="stub_1_1 Ruben Amorim">20</td>
+<td class="gt_row gt_right" headers="stub_1_1 Michael Carrick">17</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Points per game</th>
+<td class="gt_row gt_right" headers="stub_1_2 Ruben Amorim" style="background-color: #F1F4F0">1.55</td>
+<td class="gt_row gt_right" headers="stub_1_2 Michael Carrick" style="background-color: #D6E8D0">2.29</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">contexGD (opp-adjusted)</th>
+<td class="gt_row gt_right" headers="stub_1_3 Ruben Amorim" style="background-color: #EFF4ED">0.30</td>
+<td class="gt_row gt_right" headers="stub_1_3 Michael Carrick" style="background-color: #ECF2EA">0.39</td>
+</tr>
+<tr class="even">
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals for</th>
+<td class="gt_row gt_right" headers="stub_1_4 Ruben Amorim" style="background-color: #EBF2E9">1.60</td>
+<td class="gt_row gt_right" headers="stub_1_4 Michael Carrick" style="background-color: #D9EAD3">1.94</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals against</th>
+<td class="gt_row gt_right" headers="stub_1_5 Ruben Amorim" style="background-color: #F6E6E6">1.60</td>
+<td class="gt_row gt_right" headers="stub_1_5 Michael Carrick" style="background-color: #E7F0E4">1.06</td>
+</tr>
+<tr class="even">
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG for</th>
+<td class="gt_row gt_right" headers="stub_1_6 Ruben Amorim" style="background-color: #E7F0E4">1.94</td>
+<td class="gt_row gt_right" headers="stub_1_6 Michael Carrick" style="background-color: #F3F5F2">1.69</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG against</th>
+<td class="gt_row gt_right" headers="stub_1_7 Ruben Amorim" style="background-color: #F5F6F4">1.41</td>
+<td class="gt_row gt_right" headers="stub_1_7 Michael Carrick" style="background-color: #E7F0E3">1.09</td>
+</tr>
+<tr class="even">
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots for</th>
+<td class="gt_row gt_right" headers="stub_1_8 Ruben Amorim" style="background-color: #D5E7CE">16.1</td>
+<td class="gt_row gt_right" headers="stub_1_8 Michael Carrick" style="background-color: #E5EFE1">14.5</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots against</th>
+<td class="gt_row gt_right" headers="stub_1_9 Ruben Amorim" style="background-color: #EFF4EE">11.4</td>
+<td class="gt_row gt_right" headers="stub_1_9 Michael Carrick" style="background-color: #F5F6F4">12.2</td>
+</tr>
+<tr class="even">
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Possession %</th>
+<td class="gt_row gt_right" headers="stub_1_10 Ruben Amorim" style="background-color: #F3F5F2">52.3%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Michael Carrick" style="background-color: #F7EAEA">49.3%</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Field tilt</th>
+<td class="gt_row gt_right" headers="stub_1_11 Ruben Amorim" style="background-color: #F2F5F0">53.5%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Michael Carrick" style="background-color: #F7F6F6">50.1%</td>
+</tr>
+<tr class="even">
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Progressive passes</th>
+<td class="gt_row gt_right" headers="stub_1_12 Ruben Amorim" style="background-color: #D8E9D2">48.7</td>
+<td class="gt_row gt_right" headers="stub_1_12 Michael Carrick" style="background-color: #DFEDDB">47.3</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_13" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Crosses</th>
+<td class="gt_row gt_right" headers="stub_1_13 Ruben Amorim" style="background-color: #F7F2F2">17.9</td>
+<td class="gt_row gt_right" headers="stub_1_13 Michael Carrick" style="background-color: #F5D7D7">15.1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The obvious change Carrick made was a shift from Amorim’s 3-4-3, with Bruno Fernandes playing centre-mid, to a 4-2-3-1 with Fernandes in a more advanced role and Kobbie Mainoo forming a double pivot alongside Casemiro. The stats show that this led to a more defensive approach: total xG in games under Carrick was 2.78 compared to 3.35 under Amorim while United’s shots, possession and field tilt all decreased.</p>
+<p>The parallels between Carrick and <strong>Ole Gunnar Solskjaer</strong> are obvious and it is perhaps a surprise that United have repeated the same pattern of promoting an under-qualified interim to a permanent role after a short period of success. Massively overperforming your numbers, plus having a load of extra Champions League fixtures after a Europe-free season, is a recipe for potential regression. But sometimes football management is about timing, and if United can recruit well this summer (presumably they will spend another £200m or so) while avoiding injuries next season then maybe Carrick will preside over a new era of success. Overall though, it’s not hard to see this ending badly.</p>
+</section>
+<section id="tottenham-hotspur-from-bad-to-worse-to-just-about-good-enough" class="level1">
+<h1>Tottenham Hotspur: From bad, to worse, to just about good enough</h1>
+<p>Spurs were one of the more intriguing teams coming into the 2025-26 season. After a decent start in 2024-25, a huge injury crisis plus a focus on the Europa League saw them plummet like a stone and finish in 17th place. However, the fact their goal difference was still positive going into the final day is an indication that this was not like your ordinary 17th-placed team. The above 2024-25 table shows their contexGD over the season was -0.02, but when weighted towards recent results it was -0.54.</p>
+<p>So which version of Spurs were we going to see in 2025-26 under Thomas Frank? It felt like the possible range of outcomes was wider than most, but the reality under Frank was dismal, bottom-half football. 1.12 points per game (42.6 points over a full season), -0.18 contexGD and near the bottom of the league in shots and xG. In fact, Spurs’ results were artificially held up for a time thanks to positive finishing luck and Frank’s trademark set piece prowess—surprisingly, they ended the season with as many goals scored from corners as Arsenal.</p>
+<div class="centered-block">
+<p><img src="Tottenham.svg"></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="uljzzcafty" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uljzzcafty table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uljzzcafty thead, #uljzzcafty tbody, #uljzzcafty tfoot, #uljzzcafty tr, #uljzzcafty td, #uljzzcafty th {
+  border-style: none;
+}
+
+#uljzzcafty p {
+  margin: 0;
+  padding: 0;
+}
+
+#uljzzcafty .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uljzzcafty .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uljzzcafty .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uljzzcafty .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uljzzcafty .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uljzzcafty .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uljzzcafty .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uljzzcafty .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uljzzcafty .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uljzzcafty .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uljzzcafty .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uljzzcafty .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uljzzcafty .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uljzzcafty .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uljzzcafty .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uljzzcafty .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uljzzcafty .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uljzzcafty .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uljzzcafty .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uljzzcafty .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uljzzcafty .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uljzzcafty .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uljzzcafty .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uljzzcafty .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uljzzcafty .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uljzzcafty .gt_left {
+  text-align: left;
+}
+
+#uljzzcafty .gt_center {
+  text-align: center;
+}
+
+#uljzzcafty .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uljzzcafty .gt_font_normal {
+  font-weight: normal;
+}
+
+#uljzzcafty .gt_font_bold {
+  font-weight: bold;
+}
+
+#uljzzcafty .gt_font_italic {
+  font-style: italic;
+}
+
+#uljzzcafty .gt_super {
+  font-size: 65%;
+}
+
+#uljzzcafty .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uljzzcafty .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uljzzcafty .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uljzzcafty .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uljzzcafty .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uljzzcafty .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uljzzcafty .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uljzzcafty .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uljzzcafty div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border">Tottenham Hotspur 2025-26</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="Thomas-Frank" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Thomas Frank</th>
+<th id="Igor-Tudor" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Igor Tudor</th>
+<th id="Roberto-De-Zerbi" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Roberto De Zerbi</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Matches</th>
+<td class="gt_row gt_right" headers="stub_1_1 Thomas Frank">26</td>
+<td class="gt_row gt_right" headers="stub_1_1 Igor Tudor">5</td>
+<td class="gt_row gt_right" headers="stub_1_1 Roberto De Zerbi">7</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Points per game</th>
+<td class="gt_row gt_right" headers="stub_1_2 Thomas Frank" style="background-color: #F7EAE9">1.12</td>
+<td class="gt_row gt_right" headers="stub_1_2 Igor Tudor" style="background-color: #EEBABA">0.20</td>
+<td class="gt_row gt_right" headers="stub_1_2 Roberto De Zerbi" style="background-color: #F0F4EF">1.57</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">contexGD (opp-adjusted)</th>
+<td class="gt_row gt_right" headers="stub_1_3 Thomas Frank" style="background-color: #F7EEEE">−0.18</td>
+<td class="gt_row gt_right" headers="stub_1_3 Igor Tudor" style="background-color: #F3C8C8">−1.07</td>
+<td class="gt_row gt_right" headers="stub_1_3 Roberto De Zerbi" style="background-color: #F5F6F4">0.11</td>
+</tr>
+<tr class="even">
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals for</th>
+<td class="gt_row gt_right" headers="stub_1_4 Thomas Frank" style="background-color: #F7F5F5">1.35</td>
+<td class="gt_row gt_right" headers="stub_1_4 Igor Tudor" style="background-color: #F4CDCD">0.80</td>
+<td class="gt_row gt_right" headers="stub_1_4 Roberto De Zerbi" style="background-color: #F6E6E6">1.14</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals against</th>
+<td class="gt_row gt_right" headers="stub_1_5 Thomas Frank" style="background-color: #F7F0F0">1.46</td>
+<td class="gt_row gt_right" headers="stub_1_5 Igor Tudor" style="background-color: #E19896">2.60</td>
+<td class="gt_row gt_right" headers="stub_1_5 Roberto De Zerbi" style="background-color: #E4EFE0">1.00</td>
+</tr>
+<tr class="even">
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG for</th>
+<td class="gt_row gt_right" headers="stub_1_6 Thomas Frank" style="background-color: #F6DEDE">1.21</td>
+<td class="gt_row gt_right" headers="stub_1_6 Igor Tudor" style="background-color: #E6A4A3">0.38</td>
+<td class="gt_row gt_right" headers="stub_1_6 Roberto De Zerbi" style="background-color: #F7EAEA">1.40</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG against</th>
+<td class="gt_row gt_right" headers="stub_1_7 Thomas Frank" style="background-color: #F6F7F6">1.45</td>
+<td class="gt_row gt_right" headers="stub_1_7 Igor Tudor" style="background-color: #D7807F">3.32</td>
+<td class="gt_row gt_right" headers="stub_1_7 Roberto De Zerbi" style="background-color: #E6F0E2">1.07</td>
+</tr>
+<tr class="even">
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots for</th>
+<td class="gt_row gt_right" headers="stub_1_8 Thomas Frank" style="background-color: #F6E2E2">11.1</td>
+<td class="gt_row gt_right" headers="stub_1_8 Igor Tudor" style="background-color: #F7E9E9">11.6</td>
+<td class="gt_row gt_right" headers="stub_1_8 Roberto De Zerbi" style="background-color: #F4F6F4">12.9</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots against</th>
+<td class="gt_row gt_right" headers="stub_1_9 Thomas Frank" style="background-color: #F7F7F7">12.6</td>
+<td class="gt_row gt_right" headers="stub_1_9 Igor Tudor" style="background-color: #F6E4E4">14.4</td>
+<td class="gt_row gt_right" headers="stub_1_9 Roberto De Zerbi" style="background-color: #E4EFE0">9.9</td>
+</tr>
+<tr class="even">
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Possession %</th>
+<td class="gt_row gt_right" headers="stub_1_10 Thomas Frank" style="background-color: #F7F1F1">50.5%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Igor Tudor" style="background-color: #F5D7D7">46.2%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Roberto De Zerbi" style="background-color: #F2F5F1">52.5%</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Field tilt</th>
+<td class="gt_row gt_right" headers="stub_1_11 Thomas Frank" style="background-color: #F7F4F4">49.4%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Igor Tudor" style="background-color: #F6DADA">39.6%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Roberto De Zerbi" style="background-color: #E2EEDD">62.4%</td>
+</tr>
+<tr class="even">
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Progressive passes</th>
+<td class="gt_row gt_right" headers="stub_1_12 Thomas Frank" style="background-color: #F6E4E4">40.2</td>
+<td class="gt_row gt_right" headers="stub_1_12 Igor Tudor" style="background-color: #EAAFAE">33.4</td>
+<td class="gt_row gt_right" headers="stub_1_12 Roberto De Zerbi" style="background-color: #F5D7D7">38.4</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_13" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Crosses</th>
+<td class="gt_row gt_right" headers="stub_1_13 Thomas Frank" style="background-color: #E6EFE2">21.2</td>
+<td class="gt_row gt_right" headers="stub_1_13 Igor Tudor" style="background-color: #F7EDEC">17.4</td>
+<td class="gt_row gt_right" headers="stub_1_13 Roberto De Zerbi" style="background-color: #F0F4EF">19.6</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Another huge injury crisis didn’t help matters, but it had become pretty obvious Thomas Frank was not the right man for a club that is associated with attractive, passing football. Igor Tudor came in, ostensibly because of his prior experience with similar “firefighting” assignments in Italy. Tudor was an unexpected and uninspiring appointment but still, it couldn’t get any worse could it?</p>
+<p>Well actually, yes it could, and by a huge margin. In the five games under Tudor, Spurs were literally the worst team in the Premier League, gaining a solitary point and averaging -1.07 contexGD—worse than Burnley over the full season. At a time where simplicity seemed like a good idea, Tudor employed weird formations with players out of position: the Fulham away game was a good example as Xavi Simons was played at left-midfield and Conor Gallagher right-midfield in a 4-4-2, with both players completely ineffective and subsequently dropped by Tudor.</p>
+<p>Relegation had now become a very real possibility which meant Tudor was swiftly shown the exit, and Roberto De Zerbi was appointed for the final 7 matches. Early signs were not good as his opening defeat at Sunderland largely followed the Tudor performance trend. But interestingly, having started youngsters Archie Gray and Lucas Bergvall in midfield in that game, neither started again under De Zerbi who opted for the more seasoned Bentancur, Gallagher and Palhinha, as well as Xavi Simons prior to his ACL injury.</p>
+<p>Following that shift towards experience, Spurs were actually pretty good to finish the season. Their contexGD under De Zerbi was +0.11 and they were now back to dominating games (62.4% field tilt) largely thanks to a huge improvement defensively, conceding just 7 goals from 7.49 xG across the 7 games.</p>
+<p>Of course, part of that defensive improvement could be attributed to the desperation of a relegation fight, and there is no guarantee it will continue into next season. But signs are certainly more positive under De Zerbi than the absolute shambles he inherited.</p>
+</section>
+<section id="west-ham-they-just-couldnt-defend" class="level1">
+<h1>West Ham: They just couldn’t defend</h1>
+<p>The general narrative of West Ham this season is that Nuno took over a mess from Graham Potter and eventually turned it around but it was too late to avoid the drop. The season-long contexGD chart below would support that narrative as the first half of the season is dominated by large red bars before small green shoots emerged after the new year.</p>
+<p>It is no surprise that Nuno switched to a more counterattacking style relative to Graham Potter with possession dropping from 50.2% to 44.0% and field tilt down to just 40.7%. However, this change did not elicit a defensive improvement: in fact, both xG for and xG against increased dramatically under Nuno as the total xG in West Ham’s matches rose from 2.64 to 3.34.</p>
+<div class="centered-block">
+<p><img src="West Ham.svg"></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="oevgsozocn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oevgsozocn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#oevgsozocn thead, #oevgsozocn tbody, #oevgsozocn tfoot, #oevgsozocn tr, #oevgsozocn td, #oevgsozocn th {
+  border-style: none;
+}
+
+#oevgsozocn p {
+  margin: 0;
+  padding: 0;
+}
+
+#oevgsozocn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#oevgsozocn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#oevgsozocn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#oevgsozocn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#oevgsozocn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#oevgsozocn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#oevgsozocn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#oevgsozocn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#oevgsozocn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#oevgsozocn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#oevgsozocn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#oevgsozocn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#oevgsozocn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#oevgsozocn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#oevgsozocn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oevgsozocn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#oevgsozocn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#oevgsozocn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#oevgsozocn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oevgsozocn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#oevgsozocn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oevgsozocn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#oevgsozocn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oevgsozocn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#oevgsozocn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oevgsozocn .gt_left {
+  text-align: left;
+}
+
+#oevgsozocn .gt_center {
+  text-align: center;
+}
+
+#oevgsozocn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#oevgsozocn .gt_font_normal {
+  font-weight: normal;
+}
+
+#oevgsozocn .gt_font_bold {
+  font-weight: bold;
+}
+
+#oevgsozocn .gt_font_italic {
+  font-style: italic;
+}
+
+#oevgsozocn .gt_super {
+  font-size: 65%;
+}
+
+#oevgsozocn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#oevgsozocn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#oevgsozocn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#oevgsozocn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#oevgsozocn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#oevgsozocn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#oevgsozocn .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#oevgsozocn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#oevgsozocn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">West Ham United 2024-25 &amp; 2025-26</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="Graham-Potter" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Graham Potter</th>
+<th id="Nuno-Espirito-Santo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Nuno Espirito Santo</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Matches</th>
+<td class="gt_row gt_right" headers="stub_1_1 Graham Potter">23</td>
+<td class="gt_row gt_right" headers="stub_1_1 Nuno Espirito Santo">33</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Points per game</th>
+<td class="gt_row gt_right" headers="stub_1_2 Graham Potter" style="background-color: #F6E4E4">1.00</td>
+<td class="gt_row gt_right" headers="stub_1_2 Nuno Espirito Santo" style="background-color: #F7E8E8">1.09</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">contexGD (opp-adjusted)</th>
+<td class="gt_row gt_right" headers="stub_1_3 Graham Potter" style="background-color: #F6E1E1">−0.48</td>
+<td class="gt_row gt_right" headers="stub_1_3 Nuno Espirito Santo" style="background-color: #F6E0E0">−0.51</td>
+</tr>
+<tr class="even">
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals for</th>
+<td class="gt_row gt_right" headers="stub_1_4 Graham Potter" style="background-color: #F6E5E5">1.13</td>
+<td class="gt_row gt_right" headers="stub_1_4 Nuno Espirito Santo" style="background-color: #F7F0F0">1.27</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals against</th>
+<td class="gt_row gt_right" headers="stub_1_5 Graham Potter" style="background-color: #F6E5E5">1.61</td>
+<td class="gt_row gt_right" headers="stub_1_5 Nuno Espirito Santo" style="background-color: #F7EAEA">1.55</td>
+</tr>
+<tr class="even">
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG for</th>
+<td class="gt_row gt_right" headers="stub_1_6 Graham Potter" style="background-color: #F5D6D6">1.10</td>
+<td class="gt_row gt_right" headers="stub_1_6 Nuno Espirito Santo" style="background-color: #F6E7E7">1.35</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG against</th>
+<td class="gt_row gt_right" headers="stub_1_7 Graham Potter" style="background-color: #F7F3F3">1.54</td>
+<td class="gt_row gt_right" headers="stub_1_7 Nuno Espirito Santo" style="background-color: #F6DEDD">1.89</td>
+</tr>
+<tr class="even">
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots for</th>
+<td class="gt_row gt_right" headers="stub_1_8 Graham Potter" style="background-color: #F5D7D7">10.3</td>
+<td class="gt_row gt_right" headers="stub_1_8 Nuno Espirito Santo" style="background-color: #F6DEDE">10.8</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots against</th>
+<td class="gt_row gt_right" headers="stub_1_9 Graham Potter" style="background-color: #F7EAE9">13.9</td>
+<td class="gt_row gt_right" headers="stub_1_9 Nuno Espirito Santo" style="background-color: #F6DCDC">15.2</td>
+</tr>
+<tr class="even">
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Possession %</th>
+<td class="gt_row gt_right" headers="stub_1_10 Graham Potter" style="background-color: #F7F0F0">50.2%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Nuno Espirito Santo" style="background-color: #F3C9C9">44.0%</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Field tilt</th>
+<td class="gt_row gt_right" headers="stub_1_11 Graham Potter" style="background-color: #F6E3E2">42.7%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Nuno Espirito Santo" style="background-color: #F6DDDD">40.7%</td>
+</tr>
+<tr class="even">
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Progressive passes</th>
+<td class="gt_row gt_right" headers="stub_1_12 Graham Potter" style="background-color: #F6E6E6">40.5</td>
+<td class="gt_row gt_right" headers="stub_1_12 Nuno Espirito Santo" style="background-color: #F5D3D3">38.0</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_13" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Crosses</th>
+<td class="gt_row gt_right" headers="stub_1_13 Graham Potter" style="background-color: #F6E4E4">16.5</td>
+<td class="gt_row gt_right" headers="stub_1_13 Nuno Espirito Santo" style="background-color: #F6E5E5">16.6</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>I think this is why it seemed to many observers that West Ham were playing well on the “eye test” which is generally biased towards attacking play. In a game with many chances it seems that both teams have played well, and in a tight 0-0 we say both teams were poor, but that logic isn’t really justified—there have been plenty of dull finals between the very best teams in major tournaments.</p>
+<p>The notable improvement after the new year could be associated with a couple of personnel changes. Taty Castellanos arrived from Lazio and his all-around game seemed to immediately transform West Ham’s attack. Meanwhile, cynics might point to the departure of the much-maligned Lucas Paqueta as also giving the squad a boost.</p>
+<p>West Ham put themselves in position to escape but their final two away defeats seem emblematic: 3-0 at Brentford and 3-1 at Newcastle; with everything on the line they just got shredded open too easily.</p>
+<p>The club have announced that Nuno will be staying as manager, which feels like a plus, and despite the likelihood of losing Bowen, Summerville, Fernandes and Castellanos it still feels like West Ham should be able to bounce back at the first attempt. They finished the season with a recency-weighted contexGD of -0.41 which is the highest since Fulham were relegated in 2020-21 with -0.22. Encouragingly for West Ham, the Cottagers then won the Championship with 90 points and a +63 goal difference.</p>
+</section>
+<section id="chelsea-pretty-good-until-the-players-completely-gave-up-on-rosenior" class="level1">
+<h1>Chelsea: Pretty good until the players completely gave up on Rosenior</h1>
+<p>It’s hard setting expectations for Chelsea. They are among the biggest spenders in world football and yet under the new ownership they have gone 12th, 6th, 4th, 10th.</p>
+<p>Enzo Maresca had them in reasonable shape: a contexGD of +0.52 is not too far from a title challenge conversation, and a field tilt of 59.3% is much more in line with a team with title aspirations compared to, say, Carrick’s United.</p>
+<div class="centered-block">
+<p><img src="Chelsea.svg"></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="qouyrbfovf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qouyrbfovf table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#qouyrbfovf thead, #qouyrbfovf tbody, #qouyrbfovf tfoot, #qouyrbfovf tr, #qouyrbfovf td, #qouyrbfovf th {
+  border-style: none;
+}
+
+#qouyrbfovf p {
+  margin: 0;
+  padding: 0;
+}
+
+#qouyrbfovf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#qouyrbfovf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qouyrbfovf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qouyrbfovf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qouyrbfovf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qouyrbfovf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qouyrbfovf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qouyrbfovf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qouyrbfovf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#qouyrbfovf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#qouyrbfovf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qouyrbfovf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qouyrbfovf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qouyrbfovf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qouyrbfovf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qouyrbfovf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qouyrbfovf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qouyrbfovf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#qouyrbfovf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qouyrbfovf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qouyrbfovf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qouyrbfovf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qouyrbfovf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qouyrbfovf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qouyrbfovf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qouyrbfovf .gt_left {
+  text-align: left;
+}
+
+#qouyrbfovf .gt_center {
+  text-align: center;
+}
+
+#qouyrbfovf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qouyrbfovf .gt_font_normal {
+  font-weight: normal;
+}
+
+#qouyrbfovf .gt_font_bold {
+  font-weight: bold;
+}
+
+#qouyrbfovf .gt_font_italic {
+  font-style: italic;
+}
+
+#qouyrbfovf .gt_super {
+  font-size: 65%;
+}
+
+#qouyrbfovf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#qouyrbfovf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qouyrbfovf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qouyrbfovf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qouyrbfovf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qouyrbfovf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qouyrbfovf .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#qouyrbfovf .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#qouyrbfovf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border">Chelsea 2025-26</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="Enzo-Maresca" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Enzo Maresca</th>
+<th id="Liam-Rosenior" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Liam Rosenior</th>
+<th id="Calum-McFarlane-(interim)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Calum McFarlane</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Matches</th>
+<td class="gt_row gt_right" headers="stub_1_1 Enzo Maresca">19</td>
+<td class="gt_row gt_right" headers="stub_1_1 Liam Rosenior">13</td>
+<td class="gt_row gt_right" headers="stub_1_1 Calum McFarlane (interim)">6</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Points per game</th>
+<td class="gt_row gt_right" headers="stub_1_2 Enzo Maresca" style="background-color: #F0F4EF">1.58</td>
+<td class="gt_row gt_right" headers="stub_1_2 Liam Rosenior" style="background-color: #F7F3F3">1.31</td>
+<td class="gt_row gt_right" headers="stub_1_2 Calum McFarlane (interim)" style="background-color: #F6DBDB">0.83</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">contexGD (opp-adjusted)</th>
+<td class="gt_row gt_right" headers="stub_1_3 Enzo Maresca" style="background-color: #E8F1E5">0.52</td>
+<td class="gt_row gt_right" headers="stub_1_3 Liam Rosenior" style="background-color: #EFF4ED">0.29</td>
+<td class="gt_row gt_right" headers="stub_1_3 Calum McFarlane (interim)" style="background-color: #F7F4F4">−0.04</td>
+</tr>
+<tr class="even">
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals for</th>
+<td class="gt_row gt_right" headers="stub_1_4 Enzo Maresca" style="background-color: #E7F0E3">1.68</td>
+<td class="gt_row gt_right" headers="stub_1_4 Liam Rosenior" style="background-color: #F6F7F6">1.38</td>
+<td class="gt_row gt_right" headers="stub_1_4 Calum McFarlane (interim)" style="background-color: #F7F4F4">1.33</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals against</th>
+<td class="gt_row gt_right" headers="stub_1_5 Enzo Maresca" style="background-color: #E9F1E7">1.11</td>
+<td class="gt_row gt_right" headers="stub_1_5 Liam Rosenior" style="background-color: #F6DFDF">1.69</td>
+<td class="gt_row gt_right" headers="stub_1_5 Calum McFarlane (interim)" style="background-color: #F7EDED">1.50</td>
+</tr>
+<tr class="even">
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG for</th>
+<td class="gt_row gt_right" headers="stub_1_6 Enzo Maresca" style="background-color: #EBF2E8">1.87</td>
+<td class="gt_row gt_right" headers="stub_1_6 Liam Rosenior" style="background-color: #B3D4AC">2.81</td>
+<td class="gt_row gt_right" headers="stub_1_6 Calum McFarlane (interim)" style="background-color: #D9EAD3">2.24</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG against</th>
+<td class="gt_row gt_right" headers="stub_1_7 Enzo Maresca" style="background-color: #F7F4F4">1.52</td>
+<td class="gt_row gt_right" headers="stub_1_7 Liam Rosenior" style="background-color: #F7F5F5">1.51</td>
+<td class="gt_row gt_right" headers="stub_1_7 Calum McFarlane (interim)" style="background-color: #E5EFE1">1.05</td>
+</tr>
+<tr class="even">
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots for</th>
+<td class="gt_row gt_right" headers="stub_1_8 Enzo Maresca" style="background-color: #E8F0E4">14.2</td>
+<td class="gt_row gt_right" headers="stub_1_8 Liam Rosenior" style="background-color: #F0F4EF">13.3</td>
+<td class="gt_row gt_right" headers="stub_1_8 Calum McFarlane (interim)" style="background-color: #F6E3E3">11.2</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots against</th>
+<td class="gt_row gt_right" headers="stub_1_9 Enzo Maresca" style="background-color: #E9F1E6">10.5</td>
+<td class="gt_row gt_right" headers="stub_1_9 Liam Rosenior" style="background-color: #ECF2E9">10.9</td>
+<td class="gt_row gt_right" headers="stub_1_9 Calum McFarlane (interim)" style="background-color: #F6F6F5">12.3</td>
+</tr>
+<tr class="even">
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Possession %</th>
+<td class="gt_row gt_right" headers="stub_1_10 Enzo Maresca" style="background-color: #E0EDDB">56.8%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Liam Rosenior" style="background-color: #E0EDDC">56.6%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Calum McFarlane (interim)" style="background-color: #F7F4F4">50.9%</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Field tilt</th>
+<td class="gt_row gt_right" headers="stub_1_11 Enzo Maresca" style="background-color: #E7F0E4">59.3%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Liam Rosenior" style="background-color: #F4F6F4">52.0%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Calum McFarlane (interim)" style="background-color: #F6E3E3">42.9%</td>
+</tr>
+<tr class="even">
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Progressive passes</th>
+<td class="gt_row gt_right" headers="stub_1_12 Enzo Maresca" style="background-color: #E6F0E3">46.0</td>
+<td class="gt_row gt_right" headers="stub_1_12 Liam Rosenior" style="background-color: #F7EEEE">41.6</td>
+<td class="gt_row gt_right" headers="stub_1_12 Calum McFarlane (interim)" style="background-color: #ECB4B3">34.0</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_13" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Crosses</th>
+<td class="gt_row gt_right" headers="stub_1_13 Enzo Maresca" style="background-color: #F7F3F3">18.1</td>
+<td class="gt_row gt_right" headers="stub_1_13 Liam Rosenior" style="background-color: #F2F5F1">19.2</td>
+<td class="gt_row gt_right" headers="stub_1_13 Calum McFarlane (interim)" style="background-color: #F5D5D5">14.8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Maresca was sacked for apparently being in discussions to take over from Pep Guardiola at Manchester City, which tells you that a) City, who are fairly well-run, rate him highly, and b) Maresca was happy to jump ship from Chelsea despite the abundance of young talent and money sloshing about.</p>
+<p>After the questionable appointment of Liam Rosenior as Maresca’s replacement, performances didn’t suffer too badly at first. Rosenior experienced two unlikely home draws thanks to Leeds scoring twice from 4 shots and then a Fofana red card (a theme of the season) throwing away two points against Burnley. This was followed by a 4-1 away thrashing of Aston Villa at which point a Champions League spot looked probable.</p>
+<p>But then the wheels came off as Chelsea lost their next five matches, culminating in a pathetic defeat at Brighton which made clear the players had given up on the coach. Following Rosenior’s sacking, Cole Palmer posted an Instagram meme implying the players were now “free” from the apparently unpopular boss.</p>
+<p>Rosenior’s stint actually doesn’t look too bad overall, with a fair amount of bad luck including the aforementioned home draws plus a defeat to Manchester United after outshooting them 21 to 4. Unsurprisingly, after downing tools for Rosenior the players didn’t pick them back up again for interim manager Calum McFarlane and the season tailed off badly, resulting in a 10th-place finish. Xabi Alonso comes in to tidy up the mess, and it feels like there is plenty of potential to rally this talented squad to an immediate high finish next season as long as the financial situation isn’t too dire.</p>
+</section>
+<section id="nottingham-forest-a-mad-season-ended-in-safety-thanks-to-prolific-finishing-down-the-stretch" class="level1">
+<h1>Nottingham Forest: A mad season ended in safety thanks to prolific finishing down the stretch</h1>
+<p>A wild season for Nottingham Forest saw four managers, a relegation battle and a European semi-final. Despite flirting with a Champions League finish the previous season, Nuno Espirito Santo was sacked just three games into the season after his relationship with owner Evangelos Marinakis deteriorated. That was followed by the short but disastrous reign of Ange Postecoglou who managed just one point and one goal from his five league matches in charge before also being given the boot.</p>
+<p>Sean Dyche came in to steady the ship and did a reasonable job before being sacked after the 0-0 draw at home to Wolves. Ironically, as you can see from the large green bar in the chart below, contexG rated that as Forest’s best performance of the entire season. It was an absolute battering: 35 shots, 40 touches in the box, 3.69 xG on Understat…you could hardly blame the manager for those chances not going in.</p>
+<div class="centered-block">
+<p><img src="Nottingham Forest.svg"></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="pbbxkjdvfc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pbbxkjdvfc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pbbxkjdvfc thead, #pbbxkjdvfc tbody, #pbbxkjdvfc tfoot, #pbbxkjdvfc tr, #pbbxkjdvfc td, #pbbxkjdvfc th {
+  border-style: none;
+}
+
+#pbbxkjdvfc p {
+  margin: 0;
+  padding: 0;
+}
+
+#pbbxkjdvfc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pbbxkjdvfc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pbbxkjdvfc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pbbxkjdvfc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pbbxkjdvfc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pbbxkjdvfc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pbbxkjdvfc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pbbxkjdvfc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pbbxkjdvfc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pbbxkjdvfc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pbbxkjdvfc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pbbxkjdvfc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pbbxkjdvfc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pbbxkjdvfc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pbbxkjdvfc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pbbxkjdvfc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pbbxkjdvfc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pbbxkjdvfc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pbbxkjdvfc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pbbxkjdvfc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pbbxkjdvfc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pbbxkjdvfc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pbbxkjdvfc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pbbxkjdvfc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pbbxkjdvfc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pbbxkjdvfc .gt_left {
+  text-align: left;
+}
+
+#pbbxkjdvfc .gt_center {
+  text-align: center;
+}
+
+#pbbxkjdvfc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pbbxkjdvfc .gt_font_normal {
+  font-weight: normal;
+}
+
+#pbbxkjdvfc .gt_font_bold {
+  font-weight: bold;
+}
+
+#pbbxkjdvfc .gt_font_italic {
+  font-style: italic;
+}
+
+#pbbxkjdvfc .gt_super {
+  font-size: 65%;
+}
+
+#pbbxkjdvfc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pbbxkjdvfc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pbbxkjdvfc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pbbxkjdvfc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pbbxkjdvfc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pbbxkjdvfc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pbbxkjdvfc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pbbxkjdvfc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pbbxkjdvfc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border">Nottingham Forest 2025-26</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="Nuno-Espirito-Santo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Nuno Espirito Santo</th>
+<th id="Ange-Postecoglou" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ange Postecoglou</th>
+<th id="Sean-Dyche" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sean Dyche</th>
+<th id="Vitor-Pereira" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Vitor Pereira</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Matches</th>
+<td class="gt_row gt_right" headers="stub_1_1 Nuno Espirito Santo">3</td>
+<td class="gt_row gt_right" headers="stub_1_1 Ange Postecoglou">5</td>
+<td class="gt_row gt_right" headers="stub_1_1 Sean Dyche">18</td>
+<td class="gt_row gt_right" headers="stub_1_1 Vitor Pereira">12</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Points per game</th>
+<td class="gt_row gt_right" headers="stub_1_2 Nuno Espirito Santo" style="background-color: #F7F5F5">1.33</td>
+<td class="gt_row gt_right" headers="stub_1_2 Ange Postecoglou" style="background-color: #EEBABA">0.20</td>
+<td class="gt_row gt_right" headers="stub_1_2 Sean Dyche" style="background-color: #F7EFEF">1.22</td>
+<td class="gt_row gt_right" headers="stub_1_2 Vitor Pereira" style="background-color: #F6F6F6">1.42</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">contexGD (opp-adjusted)</th>
+<td class="gt_row gt_right" headers="stub_1_3 Nuno Espirito Santo" style="background-color: #F7F2F2">−0.10</td>
+<td class="gt_row gt_right" headers="stub_1_3 Ange Postecoglou" style="background-color: #F6E0E0">−0.52</td>
+<td class="gt_row gt_right" headers="stub_1_3 Sean Dyche" style="background-color: #F6E7E7">−0.35</td>
+<td class="gt_row gt_right" headers="stub_1_3 Vitor Pereira" style="background-color: #F6E3E3">−0.45</td>
+</tr>
+<tr class="even">
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals for</th>
+<td class="gt_row gt_right" headers="stub_1_4 Nuno Espirito Santo" style="background-color: #F7F4F4">1.33</td>
+<td class="gt_row gt_right" headers="stub_1_4 Ange Postecoglou" style="background-color: #E39D9B">0.20</td>
+<td class="gt_row gt_right" headers="stub_1_4 Sean Dyche" style="background-color: #F7ECEC">1.22</td>
+<td class="gt_row gt_right" headers="stub_1_4 Vitor Pereira" style="background-color: #DBEBD5">1.92</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals against</th>
+<td class="gt_row gt_right" headers="stub_1_5 Nuno Espirito Santo" style="background-color: #F6E1E1">1.67</td>
+<td class="gt_row gt_right" headers="stub_1_5 Ange Postecoglou" style="background-color: #F3C8C8">2.00</td>
+<td class="gt_row gt_right" headers="stub_1_5 Sean Dyche" style="background-color: #EDF2EA">1.17</td>
+<td class="gt_row gt_right" headers="stub_1_5 Vitor Pereira" style="background-color: #E8F1E5">1.08</td>
+</tr>
+<tr class="even">
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG for</th>
+<td class="gt_row gt_right" headers="stub_1_6 Nuno Espirito Santo" style="background-color: #F6E1E1">1.27</td>
+<td class="gt_row gt_right" headers="stub_1_6 Ange Postecoglou" style="background-color: #F4CFCF">0.99</td>
+<td class="gt_row gt_right" headers="stub_1_6 Sean Dyche" style="background-color: #F6E3E3">1.30</td>
+<td class="gt_row gt_right" headers="stub_1_6 Vitor Pereira" style="background-color: #F4CCCC">0.93</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG against</th>
+<td class="gt_row gt_right" headers="stub_1_7 Nuno Espirito Santo" style="background-color: #F7F2F2">1.55</td>
+<td class="gt_row gt_right" headers="stub_1_7 Ange Postecoglou" style="background-color: #EDB8B8">2.47</td>
+<td class="gt_row gt_right" headers="stub_1_7 Sean Dyche" style="background-color: #F7F6F6">1.49</td>
+<td class="gt_row gt_right" headers="stub_1_7 Vitor Pereira" style="background-color: #EFBDBD">2.40</td>
+</tr>
+<tr class="even">
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots for</th>
+<td class="gt_row gt_right" headers="stub_1_8 Nuno Espirito Santo" style="background-color: #F5D8D8">10.3</td>
+<td class="gt_row gt_right" headers="stub_1_8 Ange Postecoglou" style="background-color: #F7F2F2">12.2</td>
+<td class="gt_row gt_right" headers="stub_1_8 Sean Dyche" style="background-color: #EEF3ED">13.5</td>
+<td class="gt_row gt_right" headers="stub_1_8 Vitor Pereira" style="background-color: #F7EFEF">12.0</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots against</th>
+<td class="gt_row gt_right" headers="stub_1_9 Nuno Espirito Santo" style="background-color: #E5EFE2">10.0</td>
+<td class="gt_row gt_right" headers="stub_1_9 Ange Postecoglou" style="background-color: #F6E0E0">14.8</td>
+<td class="gt_row gt_right" headers="stub_1_9 Sean Dyche" style="background-color: #F6F7F6">12.4</td>
+<td class="gt_row gt_right" headers="stub_1_9 Vitor Pereira" style="background-color: #F6DFDF">14.9</td>
+</tr>
+<tr class="even">
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Possession %</th>
+<td class="gt_row gt_right" headers="stub_1_10 Nuno Espirito Santo" style="background-color: #E6F0E3">55.2%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Ange Postecoglou" style="background-color: #EFF3ED">53.3%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Sean Dyche" style="background-color: #F6DADA">46.8%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Vitor Pereira" style="background-color: #F4CFCF">44.9%</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Field tilt</th>
+<td class="gt_row gt_right" headers="stub_1_11 Nuno Espirito Santo" style="background-color: #EFF3ED">55.2%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Ange Postecoglou" style="background-color: #F7EEEE">47.1%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Sean Dyche" style="background-color: #F7EBEB">46.0%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Vitor Pereira" style="background-color: #F6E1E1">42.3%</td>
+</tr>
+<tr class="even">
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Progressive passes</th>
+<td class="gt_row gt_right" headers="stub_1_12 Nuno Espirito Santo" style="background-color: #B6D6B0">53.0</td>
+<td class="gt_row gt_right" headers="stub_1_12 Ange Postecoglou" style="background-color: #F6E5E5">40.4</td>
+<td class="gt_row gt_right" headers="stub_1_12 Sean Dyche" style="background-color: #E9F1E7">45.4</td>
+<td class="gt_row gt_right" headers="stub_1_12 Vitor Pereira" style="background-color: #F1C3C3">35.9</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_13" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Crosses</th>
+<td class="gt_row gt_right" headers="stub_1_13 Nuno Espirito Santo" style="background-color: #A7CDA1">28.3</td>
+<td class="gt_row gt_right" headers="stub_1_13 Ange Postecoglou" style="background-color: #CBE2C5">24.6</td>
+<td class="gt_row gt_right" headers="stub_1_13 Sean Dyche" style="background-color: #D4E7CE">23.7</td>
+<td class="gt_row gt_right" headers="stub_1_13 Vitor Pereira" style="background-color: #F6E3E2">16.3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>But Marinakis is unpredictable, so he replaced Dyche with Vitor Pereira who benefitted from a series of matches in which Forest were prolific finishers: 2 goals from 9 shots at Manchester City, 3 goals from 8 shots at Spurs, 4 goals from 10 shots versus Burnley, 5 goals from 10 shots at Sunderland, and 3 goals from 6 shots at Chelsea. In those five games alone, Forest scored 17 goals from 43 shots, whereas they had scored 0 from 35 in Dyche’s finale. As Jimmy Greaves would say, it’s a funny old game.</p>
+<p>The overall stats don’t really show a huge uptick under Pereira. His opponent-adjusted contexG was -0.45 which is the worst of any of the teams who stayed up. Expected goal difference is even worse (-1.47) with possession, field tilt, progressive passes and crosses all the lowest of Forest’s four managers.</p>
+<p>It’s hard to imagine Forest’s financial situation is especially healthy. Having already encountered previous PSR issues, last summer they spent north of £200m with questionable return. Star midfielder Elliot Anderson sounds like he is off to Manchester City and it feels like the outlook for Forest is gloomy. Like other clubs, they will be hoping the gulf between the Premier League and Championship means they could be pretty bad next season but not bad enough to go down as long as none of the promoted clubs “do a Sunderland”.</p>
+</section>
+<section id="brentford-andrews-replaces-frank-business-as-usual" class="level1">
+<h1>Brentford: Andrews replaces Frank, business as usual</h1>
+<p>Comparing the stats from Thomas Frank in 2024-25 to Keith Andrews in 2025-26, it looks like Brentford just sort of rumbled on doing the same thing under a different coach. They are clearly a well-run club and anyone thinking they will steal Brentford’s edge just by appointing their manager will be sorely disappointed. To be honest, I think if Dean Smith was still in charge for all these years, the Bees would probably be in a similar position to where they are now.</p>
+<p>The style of play is familiar: Brentford play a passive game, allowing opponents to have more shots than themselves but excelling at high-xg fast breaks and set pieces. After a flirtation with the Champions League race, a disappointing finish meant Brentford actually ended up with fewer points (53) than the previous season (56). Andrews wasn’t helped by quite a big finishing underperformance (1.47 goals scored per game from 1.78 xG), and overall it’s a creditable effort after losing Mbeumo &amp; Wissa and starting the season among the relegation favourites. Missing out on Europe was a blow, but it means they will get a clear run at the league next season. Another comfy mid-table finish seems likely, with some upside if they get better dice rolls.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="yzhkvmjmon" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yzhkvmjmon table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yzhkvmjmon thead, #yzhkvmjmon tbody, #yzhkvmjmon tfoot, #yzhkvmjmon tr, #yzhkvmjmon td, #yzhkvmjmon th {
+  border-style: none;
+}
+
+#yzhkvmjmon p {
+  margin: 0;
+  padding: 0;
+}
+
+#yzhkvmjmon .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yzhkvmjmon .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yzhkvmjmon .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yzhkvmjmon .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yzhkvmjmon .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yzhkvmjmon .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yzhkvmjmon .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yzhkvmjmon .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yzhkvmjmon .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yzhkvmjmon .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yzhkvmjmon .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yzhkvmjmon .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yzhkvmjmon .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yzhkvmjmon .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yzhkvmjmon .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzhkvmjmon .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yzhkvmjmon .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yzhkvmjmon .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yzhkvmjmon .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzhkvmjmon .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yzhkvmjmon .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzhkvmjmon .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yzhkvmjmon .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzhkvmjmon .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yzhkvmjmon .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzhkvmjmon .gt_left {
+  text-align: left;
+}
+
+#yzhkvmjmon .gt_center {
+  text-align: center;
+}
+
+#yzhkvmjmon .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yzhkvmjmon .gt_font_normal {
+  font-weight: normal;
+}
+
+#yzhkvmjmon .gt_font_bold {
+  font-weight: bold;
+}
+
+#yzhkvmjmon .gt_font_italic {
+  font-style: italic;
+}
+
+#yzhkvmjmon .gt_super {
+  font-size: 65%;
+}
+
+#yzhkvmjmon .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yzhkvmjmon .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yzhkvmjmon .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yzhkvmjmon .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yzhkvmjmon .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yzhkvmjmon .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yzhkvmjmon .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#yzhkvmjmon .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yzhkvmjmon div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Brentford 2024-25 &amp; 2025-26</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="Thomas-Frank" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Thomas Frank</th>
+<th id="Keith-Andrews" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Keith Andrews</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Matches</th>
+<td class="gt_row gt_right" headers="stub_1_1 Thomas Frank">38</td>
+<td class="gt_row gt_right" headers="stub_1_1 Keith Andrews">38</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Points per game</th>
+<td class="gt_row gt_right" headers="stub_1_2 Thomas Frank" style="background-color: #F4F6F3">1.47</td>
+<td class="gt_row gt_right" headers="stub_1_2 Keith Andrews" style="background-color: #F7F7F6">1.39</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">contexGD (opp-adjusted)</th>
+<td class="gt_row gt_right" headers="stub_1_3 Thomas Frank" style="background-color: #F7F2F2">−0.10</td>
+<td class="gt_row gt_right" headers="stub_1_3 Keith Andrews" style="background-color: #F6F7F6">0.06</td>
+</tr>
+<tr class="even">
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals for</th>
+<td class="gt_row gt_right" headers="stub_1_4 Thomas Frank" style="background-color: #E1EEDD">1.79</td>
+<td class="gt_row gt_right" headers="stub_1_4 Keith Andrews" style="background-color: #F2F5F0">1.47</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals against</th>
+<td class="gt_row gt_right" headers="stub_1_5 Thomas Frank" style="background-color: #F7F1F1">1.45</td>
+<td class="gt_row gt_right" headers="stub_1_5 Keith Andrews" style="background-color: #F6F6F5">1.34</td>
+</tr>
+<tr class="even">
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG for</th>
+<td class="gt_row gt_right" headers="stub_1_6 Thomas Frank" style="background-color: #EFF4ED">1.77</td>
+<td class="gt_row gt_right" headers="stub_1_6 Keith Andrews" style="background-color: #EEF3EC">1.78</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG against</th>
+<td class="gt_row gt_right" headers="stub_1_7 Thomas Frank" style="background-color: #F7EFEF">1.60</td>
+<td class="gt_row gt_right" headers="stub_1_7 Keith Andrews" style="background-color: #F7F7F7">1.47</td>
+</tr>
+<tr class="even">
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots for</th>
+<td class="gt_row gt_right" headers="stub_1_8 Thomas Frank" style="background-color: #F7EAEA">11.7</td>
+<td class="gt_row gt_right" headers="stub_1_8 Keith Andrews" style="background-color: #F6DEDD">10.7</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots against</th>
+<td class="gt_row gt_right" headers="stub_1_9 Thomas Frank" style="background-color: #F3C9C9">17.1</td>
+<td class="gt_row gt_right" headers="stub_1_9 Keith Andrews" style="background-color: #F7EFEF">13.3</td>
+</tr>
+<tr class="even">
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Possession %</th>
+<td class="gt_row gt_right" headers="stub_1_10 Thomas Frank" style="background-color: #F6E4E4">48.3%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Keith Andrews" style="background-color: #F6E3E3">48.2%</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Field tilt</th>
+<td class="gt_row gt_right" headers="stub_1_11 Thomas Frank" style="background-color: #F7E9E9">45.1%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Keith Andrews" style="background-color: #F7EFEF">47.6%</td>
+</tr>
+<tr class="even">
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Progressive passes</th>
+<td class="gt_row gt_right" headers="stub_1_12 Thomas Frank" style="background-color: #F7F0F0">41.9</td>
+<td class="gt_row gt_right" headers="stub_1_12 Keith Andrews" style="background-color: #F7F3F3">42.2</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_13" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Crosses</th>
+<td class="gt_row gt_right" headers="stub_1_13 Thomas Frank" style="background-color: #F7F0F0">17.8</td>
+<td class="gt_row gt_right" headers="stub_1_13 Keith Andrews" style="background-color: #F7F2F2">18.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="wolves-bad-but-unlucky-under-pereira-then-just-bad-under-edwards" class="level1">
+<h1>Wolves: Bad but unlucky under Pereira, then just bad under Edwards</h1>
+<p>It was an odd start to the season for Wolves as they were bad, but not <em>2 points from 11 games</em> bad. Nonetheless, out went Vitor Pereira and former Wolves player Rob Edwards arrived, adding some performative energy on the touchline but ultimately not improving the team. Under Edwards, Wolves retreated into a more defensive shape, with field tilt dipping below 40%. Even against woeful Burnley in the final game, they played on the break with 30% possession. Grim stuff.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="gxwnkaotsq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gxwnkaotsq table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gxwnkaotsq thead, #gxwnkaotsq tbody, #gxwnkaotsq tfoot, #gxwnkaotsq tr, #gxwnkaotsq td, #gxwnkaotsq th {
+  border-style: none;
+}
+
+#gxwnkaotsq p {
+  margin: 0;
+  padding: 0;
+}
+
+#gxwnkaotsq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gxwnkaotsq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gxwnkaotsq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gxwnkaotsq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gxwnkaotsq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gxwnkaotsq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gxwnkaotsq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gxwnkaotsq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gxwnkaotsq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gxwnkaotsq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gxwnkaotsq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gxwnkaotsq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gxwnkaotsq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gxwnkaotsq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gxwnkaotsq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnkaotsq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gxwnkaotsq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gxwnkaotsq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gxwnkaotsq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnkaotsq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gxwnkaotsq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnkaotsq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gxwnkaotsq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnkaotsq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gxwnkaotsq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnkaotsq .gt_left {
+  text-align: left;
+}
+
+#gxwnkaotsq .gt_center {
+  text-align: center;
+}
+
+#gxwnkaotsq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gxwnkaotsq .gt_font_normal {
+  font-weight: normal;
+}
+
+#gxwnkaotsq .gt_font_bold {
+  font-weight: bold;
+}
+
+#gxwnkaotsq .gt_font_italic {
+  font-style: italic;
+}
+
+#gxwnkaotsq .gt_super {
+  font-size: 65%;
+}
+
+#gxwnkaotsq .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gxwnkaotsq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gxwnkaotsq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gxwnkaotsq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gxwnkaotsq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gxwnkaotsq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gxwnkaotsq .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#gxwnkaotsq .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#gxwnkaotsq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Wolves 2025-26</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="Vitor-Pereira" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Vitor Pereira</th>
+<th id="Rob-Edwards" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Rob Edwards</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Matches</th>
+<td class="gt_row gt_right" headers="stub_1_1 Vitor Pereira">11</td>
+<td class="gt_row gt_right" headers="stub_1_1 Rob Edwards">27</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Points per game</th>
+<td class="gt_row gt_right" headers="stub_1_2 Vitor Pereira" style="background-color: #EEB9B8">0.18</td>
+<td class="gt_row gt_right" headers="stub_1_2 Rob Edwards" style="background-color: #F5D3D3">0.67</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">contexGD (opp-adjusted)</th>
+<td class="gt_row gt_right" headers="stub_1_3 Vitor Pereira" style="background-color: #F6DFDF">−0.53</td>
+<td class="gt_row gt_right" headers="stub_1_3 Rob Edwards" style="background-color: #F5D2D2">−0.84</td>
+</tr>
+<tr class="even">
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals for</th>
+<td class="gt_row gt_right" headers="stub_1_4 Vitor Pereira" style="background-color: #F2C7C7">0.73</td>
+<td class="gt_row gt_right" headers="stub_1_4 Rob Edwards" style="background-color: #F4CECE">0.81</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Goals against</th>
+<td class="gt_row gt_right" headers="stub_1_5 Vitor Pereira" style="background-color: #EEB9B8">2.18</td>
+<td class="gt_row gt_right" headers="stub_1_5 Rob Edwards" style="background-color: #F7ECEC">1.52</td>
+</tr>
+<tr class="even">
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG for</th>
+<td class="gt_row gt_right" headers="stub_1_6 Vitor Pereira" style="background-color: #F1C3C2">0.81</td>
+<td class="gt_row gt_right" headers="stub_1_6 Rob Edwards" style="background-color: #F4D0CF">0.99</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">xG against</th>
+<td class="gt_row gt_right" headers="stub_1_7 Vitor Pereira" style="background-color: #F7EAEA">1.68</td>
+<td class="gt_row gt_right" headers="stub_1_7 Rob Edwards" style="background-color: #F6E3E3">1.79</td>
+</tr>
+<tr class="even">
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots for</th>
+<td class="gt_row gt_right" headers="stub_1_8 Vitor Pereira" style="background-color: #F4D0D0">9.7</td>
+<td class="gt_row gt_right" headers="stub_1_8 Rob Edwards" style="background-color: #F5D2D2">9.9</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Shots against</th>
+<td class="gt_row gt_right" headers="stub_1_9 Vitor Pereira" style="background-color: #F7EFEF">13.4</td>
+<td class="gt_row gt_right" headers="stub_1_9 Rob Edwards" style="background-color: #F6E6E6">14.2</td>
+</tr>
+<tr class="even">
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Possession %</th>
+<td class="gt_row gt_right" headers="stub_1_10 Vitor Pereira" style="background-color: #F6E0E0">47.6%</td>
+<td class="gt_row gt_right" headers="stub_1_10 Rob Edwards" style="background-color: #F2C6C6">43.6%</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Field tilt</th>
+<td class="gt_row gt_right" headers="stub_1_11 Vitor Pereira" style="background-color: #F7EAEA">45.6%</td>
+<td class="gt_row gt_right" headers="stub_1_11 Rob Edwards" style="background-color: #F6DBDB">39.9%</td>
+</tr>
+<tr class="even">
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Progressive passes</th>
+<td class="gt_row gt_right" headers="stub_1_12 Vitor Pereira" style="background-color: #EDF3EB">44.6</td>
+<td class="gt_row gt_right" headers="stub_1_12 Rob Edwards" style="background-color: #F2C7C6">36.3</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_13" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Crosses</th>
+<td class="gt_row gt_right" headers="stub_1_13 Vitor Pereira" style="background-color: #E5EFE2">21.3</td>
+<td class="gt_row gt_right" headers="stub_1_13 Rob Edwards" style="background-color: #F7EBEB">17.3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="thumbs-up-thumbs-down" class="level1">
+<h1>Thumbs up, thumbs down</h1>
+<p>So which changes worked and which didn’t? First the good ones. It’s hard to argue that Carrick wasn’t good for United, at least in the short-term. The question is whether it was a good idea to keep him permanently, which I guess we will find out next year. Roberto De Zerbi—an appointment many criticised at the time—did an excellent job at Spurs and looks like a good fit to lead them into next season.</p>
+<p>On the flipside, Thomas Frank was never a good fit for Tottenham Hotspur, but he looks like Bill Nicholson in comparison to the hapless Igor Tudor who almost got the club relegated. Liam Rosenior, formerly of Strasbourg and Hull City, was an appointment that every man and his uncle knew would turn out poorly at Chelsea. Likewise, nobody expected Ange Postecoglou to come into Forest mid-season and successfully introduce a polar opposite playing style.</p>
+<p>The rest of the changes are much of a muchness. I often wonder: what if football teams didn’t have managers? Teams would still experience dramatic fluctuations due to good players arriving or leaving, dressing room harmony, injuries, luck, and other random factors. But there is a tendency to attribute all the success or failure of a football club to the manager, echoing the human comfort found in the <a href="https://en.wikipedia.org/wiki/Great_man_theory">Great Man Theory</a>. We like simple explanations for phenomena rather than putting things down to fluke, or a combination of smaller factors, or simply “I don’t know”.</p>
+<p>A paradox exists where good football managers seem like they are incredibly valuable, and yet simultaneously it is very hard to identify who is a good manager. The head coach from Team A does a brilliant job and is poached by the richer Team B, only to then look useless. I don’t need to give you an example because I’m sure you can think of 20 examples pretty easily.</p>
+<p>Even <strong>Pep Guardiola</strong> still gets the “but could he do it at a smaller club?” critique, which is fair enough because the challenge of coaching the world’s best players is very different to setting up a team to defend against superior opposition. And perhaps therein lies the answer: there aren’t necessarily good managers and bad managers, just the right manager for the right club at the right time.</p>
+<p>In my next review, I will take a look at which players have been associated with an increase or decrease in their teams’ performance levels. It’s a difficult area to find genuine effects, but it should still be interesting to explore.</p>
+<div class="data-footer">
+<p><strong>Data Sources</strong><br>
+I gather match data from a variety of public sources. Please check out these excellent websites:</p>
+<ul>
+<li><a href="https://clubelo.com">Club Elo Ratings</a></li>
+<li><a href="https://www.espn.com/soccer/">ESPN</a></li>
+<li><a href="https://fbref.com">FBref</a></li>
+<li><a href="https://fotmob.com">FotMob</a></li>
+<li><a href="https://transfermarkt.com">Transfermarkt</a></li>
+<li><a href="https://understat.com">Understat</a></li>
+<li><a href="https://whoscored.com">WhoScored</a></li>
+<li><a href="http://eloratings.net/">World Football Elo Ratings</a></li>
+</ul>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+</div>
+<p>© 2026 John Knight. All rights reserved.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/johnknightstats\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

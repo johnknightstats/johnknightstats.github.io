@@ -1,0 +1,73 @@
+---
+title: "Top 10 times England were robbed at the World Cup"
+author: "John Knight"
+date: 2026-06-06
+date-format: "D MMMM YYYY"
+description: "A possibly tongue-in-cheek look at the times England were robbed in football's biggest tournament." 
+format:
+  html:
+    title-block-categories: true
+categories: ["football", "England", "World Cup"]
+execute: 
+  echo: false
+eval: true
+message: false
+warning: false
+engine: knitr
+editor: source
+image: managers.png
+draft: true
+---
+
+On Monday I will be a guest on the [First Word in Sport](https://www.youtube.com/@FirstwordinSport) podcast to discuss the forthcoming World Cup and some memories of previous World Cups. While researching this assignment, I realised just how many times England have been robbed, either during qualifying or the competition proper:
+
+# 10. USA employ a Haitian who scores the winner (1950).
+
+Joe Gaetjens, never a U.S. citizen, capped for Haiti both before and after playing for USA.
+
+# 9. Ronaldinho flukes a cross into the top corner (2002).
+
+Because he was a great player and he reacted like he meant it, everyone has to play along with the idea that he meant it. No he didn't. Seaman.
+
+
+# 8. Qualifying comes down to who can thump Finland and Luxembourg by the most (1978).
+
+Finland 1-4 England
+England 2-1 Finland
+Luxembourg 1-4 Italy
+England 5-0 Luxembourg
+Finland 0-3 Italy
+Luxembourg 0-2 England
+Italy 6-1 Finland
+Italy 3-0 Luxembourg
+
+UEFA finally just changed its qualification format to include pre-qualifying like everyone else. 
+
+# 7. Poland keeper has the game of his life (1974).
+
+Mythical stories growing up. But this really was a pasting. Shots 36-2.
+
+# 6. Stupid format means England go home undefeated (1982).
+
+Maybe it's my age, but 1982 feels like a bit of a forgotten World Cup for England. 
+
+# 5. Koeman escapes red card then scores free kick (1994). 
+
+Do I not like that!
+
+# 4. Ronaldo gets Rooney sent off (2006).
+
+# 3. Simeone cheats to get Beckham sent off (1998). 
+
+# 2. Lampard goal miles over the line (2010).
+
+"Thanks a lot, Sepp Blatter!"
+
+# 1. Maradona hand of god (1986).
+
+
+
+We do "getting cheated" better than any country in the world!
+
+Add cheeky reference to 1966, definitely no dodgy decisions there (Rattin red card & dubious goal in final).
+

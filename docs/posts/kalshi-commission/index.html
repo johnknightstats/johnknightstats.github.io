@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2026-04-12">
-<meta name="description" content="Nightmare in North London as Spurs and Arsenal lose while West Ham and Manchester City win.">
+<meta name="dcterms.date" content="2026-08-01">
+<meta name="description" content="Does Kalshi’s 7% fee per bet make many strategies unworkable?">
 
-<title>Premier League Weekend Review: 10-12 April – John Knight Stats</title>
+<title>How does Kalshi’s commission structure compare to Betfair? – John Knight Stats</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,6 +78,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -304,17 +333,18 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Premier League Weekend Review: 10-12 April</h1>
+<h1 class="title">How does Kalshi’s commission structure compare to Betfair?</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">football</div>
-    <div class="quarto-category">Premier League</div>
-    <div class="quarto-category">contexG</div>
+    <div class="quarto-category">betting</div>
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">Kalshi</div>
+    <div class="quarto-category">Betfair</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Nightmare in North London as Spurs and Arsenal lose while West Ham and Manchester City win.
+    Does Kalshi’s 7% fee per bet make many strategies unworkable?
   </div>
 </div>
 
@@ -331,7 +361,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">12 April 2026</p>
+      <p class="date">1 August 2026</p>
     </div>
   </div>
   
@@ -343,698 +373,163 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Nightmare in North London as Spurs and Arsenal lose while West Ham and Manchester City win.</em></p>
-<p><em>See my <a href="https://substack.com/home/post/p-189499113">intro article</a> for more information on contexG.</em></p>
-<section id="west-ham-4---0-wolves" class="level2">
-<h2 class="anchored" data-anchor-id="west-ham-4---0-wolves">West Ham 4 - 0 Wolves</h2>
-<div class="centered-block max-70">
-<p><img src="29091_west_ham_vs_wolverhampton_wanderers.png"></p>
-</div>
-<p>A fantastic weekend for West Ham as they moved out of the relegation zone with an emphatic win over Wolves. This felt like Nuno-ball at its best: a fairly even first half with the Hammers going ahead from a corner just before the break, and then in the second half West Ham put on a counterattacking masterclass with 38% possession, two goals on the break and another from a set piece.</p>
-<p>There is no doubt West Ham have seen a distinct improvement since Christmas (see below). Last week’s performance at Villa was awful, but aside from that they have generally been playing more like a mid-table side than the shambolic early-season efforts. Perhaps a lesson that new manager bounce sometimes takes a bit of time to bear fruit?</p>
 <div class="centered-block">
-<p><img src="West Ham.svg"></p>
+<p><img src="kalshi_on_phone.png"></p>
 </div>
-</section>
-<section id="arsenal-1---2-bournemouth" class="level2">
-<h2 class="anchored" data-anchor-id="arsenal-1---2-bournemouth">Arsenal 1 - 2 Bournemouth</h2>
-<div class="centered-block max-70">
-<p><img src="29092_arsenal_vs_bournemouth.png"></p>
-</div>
-<p>ContexG has this as the worst performance of the season for Arsenal, surpassing the defeat at Aston Villa in December. The headline xG (Understat 3.16-1.39, Fotmob 2.32-1.19) may give the impression of an unlucky defeat but Arsenal benefitted from a comedy handball penalty and created just <strong>0.18 xG</strong> from open play in a game where they never led, playing at home to a Bournemouth side that has conceded the 5th-most goals in the league.</p>
-<p>Worryingly for Arsenal this was not out of the blue—for the last couple of months they have been playing more like a team challenging for the CL spots than a title-winner. In the last eight league games only the Spurs match was exceptional, and if we are being honest that game said more about Spurs and Igor Tudor than it did about Arsenal. Throw in the defeats in both domestic cups and some underwhelming performances in soft Champions League ties, and there has to be real concern whether the Gunners are playing well enough to get over the line.</p>
+<p><br> It is hard to escape the current ubiquity of the prediction market platform <strong>Kalshi</strong> in the United States. Given my extensive background with the world’s leading betting exchange, <strong>Betfair</strong>, I was naturally curious how Kalshi’s exchange model compares.</p>
+<p>Betfair’s arrival on the U.K. betting scene at the turn of the century was truly a game-changer for punters. Most obviously, the novel peer-to-peer format allowed better prices, trading in and out of positions, and more extensive in-running markets. But also, and perhaps more importantly, there actually existed the prospect that you could be a winning punter and not have your account promptly closed, as is the case with high street bookies like William Hill or Ladbrokes.</p>
+<p>The American betting landscape is a lot more complicated than Britain’s, with piecemeal laws existing across various states due to moral objections, political lobbying and vested interests. In fact, Kalshi just got <a href="https://finance.yahoo.com/markets/options/articles/york-sues-kalshi-illegal-gambling-172947684.html">sued by the state of New York</a> for running an illegal gambling operation. I’m not getting into all that stuff because I’m ultimately a numbers man; what I am interested in is how does Kalshi compare to Betfair in terms of pricing, liquidity and bet-matching?</p>
+<p>The first thing to note is that while Kalshi and Betfair are both betting exchanges, Kalshi frames its bets as <strong>contracts</strong>. I assume this is done to maintain the pretence that a prediction market is more like a financial market than sports betting, even when the contract is on whether or not a football team will win a match. Each contract pays out $1 if the bet wins, and the price of the contract is what is being agreed between the buyer and seller. Simple example: a 50¢ contract means the buyer pays 50 cents for the contract and doubles his money if it wins. So it is easiest to frame this in percentage terms: buying a 50¢ contract means you think the probability is greater than 50%, and selling the contract means you think it is lower than 50%.</p>
+<p>Originally, Kalshi offered all markets in price increments of 1¢ (51¢, 52¢, 53¢, etc). At some point, they decided to offer certain larger markets, like the World Cup, in smaller increments (51.1¢, 51.2¢, 51.3¢, etc).</p>
+<p>A quick glance at any major market on Kalshi shows that liquidity isn’t a problem and gross prices (i.e.&nbsp;before commission) are good. For example, I randomly opened a live baseball game between Philadelphia and Miami and saw that you can buy or sell Philly at 58¢ or 57¢ for large volume. This is equivalent to a spread of 1.724 - 1.754 in decimal prices, or a 101% book.</p>
 <div class="centered-block">
-<p><img src="Arsenal.svg"></p>
+<p><img src="philly_miami.jpg"></p>
 </div>
-<p>For context, in the eight previous seasons for which I have contexG ratings, the <strong>average</strong> contexGD of the Premier League champions has been <strong>+1.73</strong>. Arsenal have reached that level in a handful of games but their season-long average is +1.03 and this year’s PL does seem bereft of any elite teams.</p>
-<p>Man City got past their biggest hurdle with a comfy win at Chelsea and that sets up an epic head-to-head next weekend. In spite of everything, Arsenal are still six points ahead and if they win that game it is basically over.</p>
-</section>
-<section id="brentford-2---2-everton" class="level2">
-<h2 class="anchored" data-anchor-id="brentford-2---2-everton">Brentford 2 - 2 Everton</h2>
-<div class="centered-block max-70">
-<p><img src="29093_brentford_vs_everton.png"></p>
-</div>
-<p>The spoils were shared in a lively game between two unlikely European challengers. A point apiece does no harm to either team’s Europa League hopes but an outside shot at a Champions League place seems even less likely now.</p>
-<p>ContexG scored this game 1.82-1.32 in favour of Brentford and they will be frustrated to have conceded an injury-time equaliser. In fairness, both Brentford goals had a touch of fortune about them with Jordan Pickford conceding a penalty by needlessly scything down Kevin Schade as he was heading away from goal, while the second goal deflected in off Igor Thiago.</p>
-<p>Everton host Liverpool next week with the chance to go within two points of their local rivals. The Toffees have finished at least 12 points behind Liverpool every year since they last finished higher in 2012-13, and it’s always nice when the big local derbies have more at stake than just bragging rights. Should be a cracker.</p>
-</section>
-<section id="burnley-0---2-brighton" class="level2">
-<h2 class="anchored" data-anchor-id="burnley-0---2-brighton">Burnley 0 - 2 Brighton</h2>
-<div class="centered-block max-70">
-<p><img src="29094_burnley_vs_brighton.png"></p>
-</div>
-<p>I have been highlighting Brighton’s marked improvement in recent months—coinciding with the re-signing of <strong>Pascal Gross</strong>—and this run of form continued with a dominant win at Burnley as the Seagulls led for more than half the game and bossed territorially (penalty box touches 15-39; deep completions 3-11).</p>
-<p>Aside from the poor performance at home to Crystal Palace, Brighton have been playing at the level of Champions League challengers rather than the ropey form that had Fabian Hurzeler under pressure a few months ago.</p>
-<div class="centered-block">
-<p><img src="Brighton.svg"></p>
-</div>
-<p>Brighton did ride a bit of luck in this game with two Burnley goals being disallowed by inches. It was also an unusual day for Mats Wieffer who had one goal in 51 appearances for the Seagulls prior to today and ended up scoring both goals. But this is a very dangerous Brighton side that still has an outside chance of an unlikely Champions League spot.</p>
-<p>Brighton travel to Spurs next week and were slight underdogs prior to today’s significant injury to Cristian Romero. That moved them to favouritism (currently 2.46 on Pinnacle) but that still feels like a generous price given the current quality of their play, allied with Tottenham’s continuing struggles.</p>
-</section>
-<section id="liverpool-2---0-fulham" class="level2">
-<h2 class="anchored" data-anchor-id="liverpool-2---0-fulham">Liverpool 2 - 0 Fulham</h2>
-<div class="centered-block max-70">
-<p><img src="29097_liverpool_vs_fulham.png"></p>
-</div>
-<p>It’s been a disappointing season for Liverpool but that is only by Liverpool’s standards. They are still able to routinely dispatch a team like Fulham, amassing an impressive 21 deep completions against a side that can be dogged and hard to break down.</p>
-<p>The first half was dominant: 30 touches in the box, 10 shots to 5, and cracking finishes from the forwards on opposite flanks and at opposite ends of their careers, Ngumoha and Salah.</p>
-<p>Fulham dominated territory in the second half with 31 touches in the box compared to Liverpool’s 17, but they were trailing 2-0 and only managed one shot on target with 8 of their 15 second-half shots blocked. It’s a concern that Liverpool’s midfield is unable to kill off a game more convincingly but it was a big three points in the top 5 race with the Reds still facing trips to Everton, Man Utd and Aston Villa as well as the crunch clash against Chelsea at Anfield.</p>
-</section>
-<section id="crystal-palace-2---1-newcastle" class="level2">
-<h2 class="anchored" data-anchor-id="crystal-palace-2---1-newcastle">Crystal Palace 2 - 1 Newcastle</h2>
-<div class="centered-block max-70">
-<p><img src="29096_crystal_palace_vs_newcastle_united.png"></p>
-</div>
-<p>Palace leapfrogged Newcastle in the table thanks to an injury-time winner from the penalty spot after a shirt pull by Sven Botman. There’s a lot you can get away with as a defender but shirt pulling is difficult for officials to wave off—why do they do it?</p>
-<p>It was a tight game with only 2.31 total contexG and Newcastle, well-rested and out of all the cups, again left their three expensive forwards Woltemade, Elanga and Wissa on the bench. Amid some stiff competition from other clubs, Newcastle’s summer 2025 window looks especially disastrous and could set the club back years. It remains to be seen whether Eddie Howe will be back next season as the fans who made the long trip to Selhurst Park are surely losing patience with the team now lying in 14th place and unlikely to be playing European football next year.</p>
-</section>
-<section id="nottingham-forest-1---1-aston-villa" class="level2">
-<h2 class="anchored" data-anchor-id="nottingham-forest-1---1-aston-villa">Nottingham Forest 1 - 1 Aston Villa</h2>
-<div class="centered-block max-70">
-<p><img src="29089_nottingham_forest_vs_aston_villa.png"></p>
-</div>
-<p>Despite starting the day 22 points behind Villa in the table, Forest went off as the betting favourites for this Midlands derby, reflecting a general perception of Villa’s overperformance this season as well as Forest’s improvement under Vitor Pereira.</p>
-<p>ContexG scored this game 1.26-1.42 so it was a reasonable away performance from Villa as Youri Tielemans made his first league start since January. Given results elsewhere it can be seen as a decent point for both sides as it moves Forest further away from Spurs at the bottom, and Villa are now seven points clear of Chelsea in the top 5 race.</p>
-</section>
-<section id="sunderland-1---0-tottenham" class="level2">
-<h2 class="anchored" data-anchor-id="sunderland-1---0-tottenham">Sunderland 1 - 0 Tottenham</h2>
-<div class="centered-block max-70">
-<p><img src="29090_sunderland_vs_tottenham.png"></p>
-</div>
-<p>A new manager but it felt like more of the same for Spurs with some bad luck, a key injury and lots of toothless attacking play.</p>
-<p>It was a tight game that always felt like the first goal would be crucial, and Sunderland scored what proved to be the winner thanks to an enormous deflection on Nordi Mukiele’s shot. This was followed by a bad-looking injury for <strong>Cristian Romero</strong> who went off in tears, no doubt fearing his season is over and World Cup in jeopardy.</p>
-<p>In truth, Spurs never really looked like equalising and their contexG score of 0.86 reflects the fact they could only conjure three shots for 0.12 xG after going behind. It doesn’t reflect well on <strong>Xavi Simons</strong> that yet another manager has watched him in training and decided he wasn’t worth introducing until the 85th minute despite Spurs crying out for some creativity.</p>
-<p>With West Ham thrashing Wolves it was about as bad as the weekend could go for Spurs. I mentioned in my <a href="https://johnknightstats.substack.com/p/simulating-the-remainder-of-the-premier">recent article</a> that I felt like if you wanted to oppose Spurs it was better to do so in individual matches than in the relegation market. And I think this point is well-demonstrated by this weekend’s results where the West Ham-Sunderland double would have paid more than 4/1 and yet Spurs are still odds-against to go down. I will try and get an updated simulation out this week but it seems like anyone who opposed Spurs in the relegation market has an opportunity to escape with limited loss in a situation that is now drastically worse than it was before these fixtures.</p>
-</section>
-<section id="chelsea-0---3-man-city" class="level2">
-<h2 class="anchored" data-anchor-id="chelsea-0---3-man-city">Chelsea 0 - 3 Man City</h2>
-<div class="centered-block max-70">
-<p><img src="29095_chelsea_vs_manchester_city.png"></p>
-</div>
-<p>What a huge weekend at both ends of the table. Next week’s title six-pointer against Arsenal looms large but this was by far the toughest of City’s other fixtures and they won the game with three goals in a 17-minute spell just after half time.</p>
-<p>This was more like peak Man City as they comprehensively outplayed Chelsea on their own pitch: 64% possession, 46 penalty box touches to 14, and 15 deep completions to 2.</p>
-<p>I wrote in the aforementioned simulation article that even if City won out, Arsenal would still win the title a third of the time because the Gunners still needed to slip up in another fixture, none of which looked especially difficult. But with Arsenal losing to Bournemouth the title is now in City’s hands as well as Arsenal’s.</p>
-</section>
-<section id="season-long-contexg-ratings" class="level2">
-<h2 class="anchored" data-anchor-id="season-long-contexg-ratings">Season-long ContexG Ratings</h2>
-<p>This week I included each team’s contexGD in the second half of the season to illustrate how they are playing in recent months. It is clear that Man City are now the best team in the league while Brighton, as mentioned earlier, are now performing like Champions League contenders.</p>
-<p>Aston Villa and West Ham have also shown significant improvements in performance compared to the first half of the season. Trending in the opposite direction are Newcastle and Spurs. (Note that the ratings in this table are not opponent-adjusted.)</p>
+<p><br> The question is of course, how much do you then have to pay in commission on winning bets? On Betfair, you would have to pay <strong>2%</strong> of your net profit per market. What about Kalshi? The answer is, it depends!</p>
+<p>Kalshi uses different rates of commission — or <strong>fees</strong> as they call them — depending on whether you are a <strong>market-maker</strong> or a <strong>price-taker</strong> (I will henceforth refer to these as ‘maker’ and ‘taker’). Whenever a bet is matched between two parties on an exchange, naturally one party was in the market first with their order waiting to be matched (the maker), and the other party subsequently matched it (the taker).</p>
+<p>The fees are calculated using the formulae</p>
+<p><span class="math display">\[
+F_{\text{taker}} = 0.07\cdot C\cdot P(1-P)
+\]</span></p>
+<p><span class="math display">\[
+F_{\text{maker}} = 0.0175\cdot C \cdot P(1-P)
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> = number of contracts and <span class="math inline">\(P\)</span> = price in decimal form i.e.&nbsp;50¢ = 0.5.</p>
+<p>The formulae for calculating the maker’s fee and the taker’s fee look complicated but they actually aren’t. On Kalshi you pay the fee when the bet is matched, so you are paying commission whether you win or lose. But the <span class="math inline">\(P(1-P)\)</span> part of the formula ensures that your fee reflects both the amount you stand to win and the probability of winning. Fees are smaller nearer to 0¢ and 100¢ than near 50¢, but that’s because a) you stand to win a lot less when buying near 100¢ and b) you win less often when buying near 0¢. The end result is that that your long-term commission will be equivalent to a rate of 1.75% for makers and 7% for takers.</p>
+<p>To confirm this is correct, I calculated and compared the two methods using R software at three different price levels (see below). Note that this assumes each bet’s probability of winning is in line with the price. If you are a profitable bettor then your bets will win more often, meaning your fees paid will end up a bit lower than the equivalent Betfair commission rate, and vice versa for long-term losers.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ouldrvuspq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ouldrvuspq table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#ouldrvuspq thead, #ouldrvuspq tbody, #ouldrvuspq tfoot, #ouldrvuspq tr, #ouldrvuspq td, #ouldrvuspq th {
-  border-style: none;
-}
-
-#ouldrvuspq p {
-  margin: 0;
-  padding: 0;
-}
-
-#ouldrvuspq .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#ouldrvuspq .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#ouldrvuspq .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#ouldrvuspq .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#ouldrvuspq .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#ouldrvuspq .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#ouldrvuspq .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#ouldrvuspq .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#ouldrvuspq .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#ouldrvuspq .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#ouldrvuspq .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#ouldrvuspq .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#ouldrvuspq .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#ouldrvuspq .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#ouldrvuspq .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouldrvuspq .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#ouldrvuspq .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#ouldrvuspq .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#ouldrvuspq .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouldrvuspq .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#ouldrvuspq .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouldrvuspq .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#ouldrvuspq .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouldrvuspq .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ouldrvuspq .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouldrvuspq .gt_left {
-  text-align: left;
-}
-
-#ouldrvuspq .gt_center {
-  text-align: center;
-}
-
-#ouldrvuspq .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#ouldrvuspq .gt_font_normal {
-  font-weight: normal;
-}
-
-#ouldrvuspq .gt_font_bold {
-  font-weight: bold;
-}
-
-#ouldrvuspq .gt_font_italic {
-  font-style: italic;
-}
-
-#ouldrvuspq .gt_super {
-  font-size: 65%;
-}
-
-#ouldrvuspq .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#ouldrvuspq .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#ouldrvuspq .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#ouldrvuspq .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#ouldrvuspq .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#ouldrvuspq .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#ouldrvuspq .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#ouldrvuspq .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#ouldrvuspq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>So how bad is 7% commission? If a market is a coin flip (e.g.&nbsp;an NFL or NBA handicap market) then buying at 50¢ on Kalshi would be buying at 51.75¢ after the taker fee. This is equivalent to 1.932 decimal or -107 in American odds. It’s not amazing value, but it’s good enough that a recreational punter will accept it for the convenience of a single app where they can bet on seemingly anything — especially if they live in a large state like California or Texas where there are no other legal options.</p>
+<p>The proposition for makers is, of course, much more favourable, as the 1.75% commission makes the same bet equivalent to 1.983 decimal or -101.8 in American odds.</p>
+<p>To illustrate the long-term effect of commission, the below chart shows the profit distribution after 1,000 bets for a punter who has an edge: he is consistently buying bets at 50¢ that have a 52% chance of winning. This may not sound like much of an edge but this would put you in elite territory in any high-liquidity market!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 20%">
+<col style="width: 24%">
+<col style="width: 28%">
+</colgroup>
 <thead>
-<tr class="gt_heading header">
-<td colspan="4" class="gt_heading gt_title gt_font_normal">Premier League 2025-26 contexG Ratings</td>
-</tr>
-<tr class="gt_heading even">
-<td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">12 Apr, 2026</td>
-</tr>
-<tr class="gt_col_headings header">
-<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Team</th>
-<th id="Matches" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Matches</th>
-<th id="contexGD" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">contexGD</th>
-<th id="since-1-Jan" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">since 1 Jan</th>
+<tr class="header">
+<th style="text-align: left;">Fee structure</th>
+<th style="text-align: right;">Expected profit</th>
+<th style="text-align: right;">Standard deviation</th>
+<th style="text-align: right;">Probability of profit</th>
 </tr>
 </thead>
-<tbody class="gt_table_body">
+<tbody>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Team">Arsenal</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">1.03</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.88</td>
+<td style="text-align: left;">No fees</td>
+<td style="text-align: right;">$4,000</td>
+<td style="text-align: right;">$3,160</td>
+<td style="text-align: right;">89.1%</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Team">Manchester City</td>
-<td class="gt_row gt_center" headers="Matches">31</td>
-<td class="gt_row gt_center" headers="contexGD">1.03</td>
-<td class="gt_row gt_right" headers="since 1 Jan">1.18</td>
+<td style="text-align: left;">Kalshi maker (1.75%)</td>
+<td style="text-align: right;">$3,125</td>
+<td style="text-align: right;">$3,160</td>
+<td style="text-align: right;">83.7%</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Team">Liverpool</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">0.61</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.74</td>
+<td style="text-align: left;">Betfair (2%)</td>
+<td style="text-align: right;">$2,960</td>
+<td style="text-align: right;">$3,128</td>
+<td style="text-align: right;">82.1%</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Team">Chelsea</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">0.51</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.35</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Manchester United</td>
-<td class="gt_row gt_center" headers="Matches">31</td>
-<td class="gt_row gt_center" headers="contexGD">0.36</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.33</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Brentford</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">0.17</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.33</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Newcastle United</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">0.14</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.12</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Brighton</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">0.08</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.35</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Aston Villa</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">0.03</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.34</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Bournemouth</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">0.03</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.02</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Crystal Palace</td>
-<td class="gt_row gt_center" headers="Matches">31</td>
-<td class="gt_row gt_center" headers="contexGD">0.03</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.09</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Fulham</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">0.01</td>
-<td class="gt_row gt_right" headers="since 1 Jan">0.02</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Leeds</td>
-<td class="gt_row gt_center" headers="Matches">31</td>
-<td class="gt_row gt_center" headers="contexGD">−0.08</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.02</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Everton</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">−0.29</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.27</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Tottenham</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">−0.36</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.63</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Nottingham Forest</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">−0.39</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.57</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Sunderland</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">−0.50</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.46</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">West Ham</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">−0.56</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.15</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Team">Wolves</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">−0.78</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-0.86</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Team">Burnley</td>
-<td class="gt_row gt_center" headers="Matches">32</td>
-<td class="gt_row gt_center" headers="contexGD">−1.04</td>
-<td class="gt_row gt_right" headers="since 1 Jan">-1.27</td>
+<td style="text-align: left;">Kalshi taker (7%)</td>
+<td style="text-align: right;">$500</td>
+<td style="text-align: right;">$3,160</td>
+<td style="text-align: right;">56.3%</td>
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
+<p><br> In the fantasy scenario of zero fees, the expected profit after 1,000 bets is +$4,000 with an 89.1% probability of being in profit. At 1.75% the expected profit drops to +$3,125, and Betfair’s 2% commission eats up more than a quarter of your long-term profits as the expected +$4,000 drops to $2,960. But on Kalshi’s 7% fees your expected profit would be only +$500 with a 56.3% chance of being ahead and 43.7% probability of being down overall.</p>
+<p>So this begs the question: why ever be a taker?</p>
+<ol type="1">
+<li><p><strong>Recreational punters</strong>. Some people just aren’t price sensitive, or they can’t be bothered to waste time shopping around for the best price. If I’m being honest, this is my approach to lots of things in life! It would be exhausting to try and secure the best price every time I pay for something, so I totally understand this behaviour.</p></li>
+<li><p>You have a big edge thanks to some <strong>new information</strong>. If you found out about some major event (e.g.&nbsp;a goal or a big injury) more quickly than anyone else, then obviously you are happy to pay 7% fees if you know that the market is dramatically wrong and the price is likely to change imminently. Fill your boots!</p></li>
+<li><p>You have a special rebate deal (more on that shortly).</p></li>
+</ol>
+<p>In the absence of the above, it seems like anyone with the goal of making a long-term profit on Kalshi is forced into being a market-maker. The disadvantage for makers is that you may not get matched, or you may only get matched because of some new piece of information (see 2. above). Because of these factors, <strong>queue position</strong> becomes very important: if you are at the back of a very long queue then it becomes less likely that you get matched in the normal course of events, whereas if a goal or major injury occurs then you are absolutely definitely getting matched straight away, and you won’t be happy about it.</p>
+<p>There’s another major difference between Kalshi and Betfair’s commission that has a huge effect on strategy. Kalshi charges a fee on every single bet, whereas Betfair only charges commission on your <strong>net</strong> position when the market is settled. This makes trading or micro-trading strategies a lot more viable on Betfair than on Kalshi.</p>
+<p>For example, suppose you buy 10,000 contracts at 50¢ and sell them back at 53¢. Congratulations, you just made $300! On Betfair you would pay 2% commission on this $300, so your net win is $294. On Kalshi you would pay fees on both the buy AND the sell, so for makers the net win would be $300 - $43.75 - $43.59 = $212.66 while for takers it would be $300 - $175 - $174.37 = a net LOSS of $49.37!</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Commission structure</th>
+<th style="text-align: right;">Gross profit</th>
+<th style="text-align: right;">Fees</th>
+<th style="text-align: right;">Net profit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">No fees</td>
+<td style="text-align: right;">$300.00</td>
+<td style="text-align: right;">$0.00</td>
+<td style="text-align: right;">$300.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Betfair (2%)</td>
+<td style="text-align: right;">$300.00</td>
+<td style="text-align: right;">$6.00</td>
+<td style="text-align: right;">$294.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kalshi maker (1.75%)</td>
+<td style="text-align: right;">$300.00</td>
+<td style="text-align: right;">$87.34</td>
+<td style="text-align: right;">$212.66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kalshi taker (7%)</td>
+<td style="text-align: right;">$300.00</td>
+<td style="text-align: right;">$349.37</td>
+<td style="text-align: right;">-$49.37</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>There is still one match to be played on Monday as Manchester United host Leeds in a fixture that always has plenty of needle between the fans. United (Manchester, that is) are pretty much home and hosed in the top 5 race while Leeds will see this as something of a free hit as they still have home games against Wolves and Burnley up their sleeve.</p>
-<p>Next weekend is of course the big Man City v Arsenal clash as well as Everton v Liverpool and Chelsea v Man Utd. I will be back next Sunday with my review, but right now it’s time for one of my favourite days of the year: Sunday at the Masters! Enjoy.</p>
+</div>
+<p><br> Although on the face of it Betfair are leaving a lot of money on the table by only charging commission on net winnings, it does have a couple of advantages. Firstly, a trading strategy allows you to place much larger stakes as there is less of your bank at risk, assuming you can trade out if the price goes against you (this is a BIG assumption). And secondly, when you execute your second trade there is another party to that bet, so you are recycling money back into the market. It’s like the multiplier effect in economics. So maybe this approach is good for the ecosystem? I don’t have the answer to that, but I suspect it’s something that will vary depending on the liquidity and volatility of each particular market.</p>
+<p>Finally, let’s address the elephant in the room. There are big players operating in the market with a huge advantage: <strong>rebate deals</strong>. In exchange for adding large volume, some organizations sign Market Maker deals which effectively give them much lower fees per bet than the average punter. This obviously puts them in a strong position as they may be able to execute ‘taker’ trades without the prohibitive costs. I won’t pretend to know all the inner workings of these deals, and I should also point out that Kalshi has other <a href="https://help.kalshi.com/en/collections/18616618-programs-promotions">incentive programs</a> to encourage liquidity.</p>
+<p>Originally this was just some private research as I was considering whether Kalshi is worth my time &amp; effort to see if it could be a viable income source. I realised this might be of interest to others, so I turned it into this article. So, is Kalshi worth it? I’m going to say yes overall, simply because of the amount of money sloshing around from price-insensitive, inexperienced Americans. And there’s never any harm in keeping your tools sharp of course; I’ve been out of the game for a few years but it’s always good to be ready for the next opportunity.</p>
+<p>What about the Kalshi ecosystem? Is that amenable to long-term health? That’s not my area of expertise, but I’m sure Kalshi recruited people with industry experience and came up with this very deliberate two-tiered fee system. There’s obviously a first-mover advantage with these things and everyone is familiar with Kalshi now, so it feels like they will have to either mess it up or get banned by the government, otherwise the ceiling is very high. I’ve only had a few bets so far — fortunately (aftertiming alert) one of those was on Spain to win the World Cup — but I’m going to continue having a play around with it and see what happens. Small stakes to begin with, of course. Please bet responsibly! And if anyone with more experience of Kalshi has anything to add, I would love to hear it.</p>
 <div class="data-footer">
 <p><strong>Data Sources</strong><br>
 I gather match data from a variety of public sources. Please check out these excellent websites:</p>
@@ -1053,7 +548,6 @@ I gather match data from a variety of public sources. Please check out these exc
 <p>© 2026 John Knight. All rights reserved.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

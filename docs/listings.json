@@ -8,8 +8,16 @@
     ]
   },
   {
+    "listing": "/dashboards/index.html",
+    "items": [
+      "/dashboards/contexg-league-tables/index.html",
+      "/dashboards/election-2020-tableau/index.html"
+    ]
+  },
+  {
     "listing": "/posts/index.html",
     "items": [
+      "/posts/pl-auto-correlation/index.html",
       "/posts/kalshi-commission/index.html",
       "/posts/pl-review-2026-part-two/index.html",
       "/posts/pl-review-2026-part-one/index.html",
@@ -39,13 +47,6 @@
       "/posts/game_state/index.html",
       "/posts/elo_sim_model/index.html",
       "/posts/title_collapses/index.html"
-    ]
-  },
-  {
-    "listing": "/dashboards/index.html",
-    "items": [
-      "/dashboards/contexg-league-tables/index.html",
-      "/dashboards/election-2020-tableau/index.html"
     ]
   }
 ]

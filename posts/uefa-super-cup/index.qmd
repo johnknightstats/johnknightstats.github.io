@@ -15,7 +15,7 @@ message: false
 warning: false
 engine: knitr
 editor: source
-image: lpool_chelsea.jpeg
+image: lpool_chelsea.jpg
 ---
 
 The new Premier League season is still a couple of weeks away but on Wednesday night we have an hors d'oeuvre as **Paris Saint-Germain** take on **Aston Villa** in the **UEFA Super Cup** at the Red Bull Arena in Salzburg.

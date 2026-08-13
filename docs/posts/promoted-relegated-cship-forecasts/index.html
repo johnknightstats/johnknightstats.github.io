@@ -1,0 +1,2619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="John Knight">
+<meta name="dcterms.date" content="2026-08-12">
+<meta name="description" content="Statistical models forecasting promoted teams, relegated teams and the Championship.">
+
+<title>Will Hull City be the worst Premier League team of all-time? – John Knight Stats</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">John Knight Stats</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/index.html"> 
+<span class="menu-text">Articles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../papers/index.html"> 
+<span class="menu-text">Papers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tools/index.html"> 
+<span class="menu-text">Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../dashboards/index.html"> 
+<span class="menu-text">Dashboards</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Will Hull City be the worst Premier League team of all-time?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">Premier League</div>
+    <div class="quarto-category">Championship</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Statistical models forecasting promoted teams, relegated teams and the Championship.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Knight </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">12 August 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="centered-block">
+<p><img src="hull_201617.png"> <em>Hull City’s last venture into the top flight saw them relegated in 2016/17.</em></p>
+</div>
+<p>In last week’s <a href="https://johnknightstats.substack.com/p/which-statistics-best-predict-future">article</a> I looked at which statistics were the best predictors of future performance in the Premier League. One of the comments was from <a href="https://substack.com/@databetweenthelines">porterhouse26</a> who asked about modelling <strong>promoted teams</strong>, so I thought I would take a look at that along with doing the same for <strong>relegated teams</strong> and the <strong>Championship</strong>.</p>
+<p>Again we will start with a <strong>correlation matrix</strong> looking how each stat correlates with each other stat from one Championship season to the next; the black-outlined cells show how stats correlate with themselves.</p>
+<div class="centered-block">
+<p><img src="autocorrelation_matrix.png"></p>
+</div>
+<p>We can immediately see that there is less correlation from one year to the next in the Championship than in the Premier League. The highest correlation is once again found in <strong>possession</strong>, but it is only 0.67 for Championship teams compared to 0.88 in the Premier League. In fact the lowest correlation anywhere in the Premier League grid was 0.68, showing that the Premier League is a lot more stable and predictable than the Championship is.</p>
+<div class="centered-block">
+<p><img src="univariate_ppg_regressions.png"></p>
+</div>
+<p>Similar to the Premier League, the univariate regressions find <strong>xG</strong> and <strong>touches in the box</strong> to be the best predictors of the following year’s points-per-game (PPG) in the Championship. However, in the three multivariable models shown below, <strong>xG</strong> and <strong>possession</strong> are the two strongest predictors.</p>
+<p>I wouldn’t read too much into this because there is a lot of overlap between the variables. As a general rule it seems like if you include some measure of shot quality (goals or xG) and some measure of dominance (touches in the box orpossession) then you are most of the way there.</p>
+<div class="centered-block">
+<p><img src="multiple_ppg_regression.png"></p>
+</div>
+<div class="centered-block">
+<p><img src="ridge_ppg_regression.png"></p>
+</div>
+<div class="centered-block">
+<p><img src="stepwise_aic_ppg_regression.png"></p>
+</div>
+<p>Using an average of these three multivariable models, we can forecast the PPG for all Championship teams in previous seasons. Then, for those who got promoted, we can look at the difference between their PPG in the Premier League and the PPG forecast by the model, and calculate the average effect of promotion. We can also do the same for relegated Premier League teams using last week’s models. The net result is that relegated teams are expected to improve by <strong>0.71</strong> PPG and promoted teams are expected to get worse by <strong>0.77</strong> PPG.</p>
+<div class="centered-block">
+<p><img src="transition_baseline_adjustments.png"></p>
+</div>
+<p>Using these models and the baseline adjustments, we can forecast the number of points for the three promoted teams next season. <strong>Hull City</strong> fans may wish to look away now.</p>
+<div class="centered-block">
+<p><img src="promoted_pl_forecast_2026_27_baseline.png"></p>
+</div>
+<p>Why are Hull (15 points) rated so much worse than <strong>Coventry City</strong> (38) and <strong>Ipswich Town</strong> (38)? Let’s compare the stats of all the promoted Championship teams going back to 2016/17.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbyzdqwzva" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tbyzdqwzva table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#tbyzdqwzva thead, #tbyzdqwzva tbody, #tbyzdqwzva tfoot, #tbyzdqwzva tr, #tbyzdqwzva td, #tbyzdqwzva th {
+  border-style: none;
+}
+
+#tbyzdqwzva p {
+  margin: 0;
+  padding: 0;
+}
+
+#tbyzdqwzva .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tbyzdqwzva .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tbyzdqwzva .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tbyzdqwzva .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tbyzdqwzva .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tbyzdqwzva .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tbyzdqwzva .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tbyzdqwzva .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tbyzdqwzva .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#tbyzdqwzva .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#tbyzdqwzva .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tbyzdqwzva .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tbyzdqwzva .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tbyzdqwzva .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tbyzdqwzva .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tbyzdqwzva .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tbyzdqwzva .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#tbyzdqwzva .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#tbyzdqwzva .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tbyzdqwzva .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tbyzdqwzva .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tbyzdqwzva .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tbyzdqwzva .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tbyzdqwzva .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tbyzdqwzva .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tbyzdqwzva .gt_left {
+  text-align: left;
+}
+
+#tbyzdqwzva .gt_center {
+  text-align: center;
+}
+
+#tbyzdqwzva .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tbyzdqwzva .gt_font_normal {
+  font-weight: normal;
+}
+
+#tbyzdqwzva .gt_font_bold {
+  font-weight: bold;
+}
+
+#tbyzdqwzva .gt_font_italic {
+  font-style: italic;
+}
+
+#tbyzdqwzva .gt_super {
+  font-size: 65%;
+}
+
+#tbyzdqwzva .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#tbyzdqwzva .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tbyzdqwzva .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#tbyzdqwzva .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#tbyzdqwzva .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tbyzdqwzva .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tbyzdqwzva .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#tbyzdqwzva .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#tbyzdqwzva div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="season" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Season</th>
+<th id="team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Team</th>
+<th id="championship_ppg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">PPG</th>
+<th id="xg_differential_per_game" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">xG Diff</th>
+<th id="shot_differential_per_game" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Shot Diff</th>
+<th id="goal_differential_per_game" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Goal Diff</th>
+<th id="corner_differential_per_game" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Corner Diff</th>
+<th id="possession_percent" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Possession %</th>
+<th id="touches_in_box_percent" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Box-touch %</th>
+<th id="baseline_forecast_points" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Forecast</th>
+<th id="actual_points" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Actual</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2025/26</td>
+<td class="gt_row gt_left" headers="team">Leeds</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.17</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">1.27</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">9.80</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.41</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">4.15</td>
+<td class="gt_row gt_right" headers="possession_percent">58.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">72.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">50.8</td>
+<td class="gt_row gt_left" headers="actual_points">47</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2024/25</td>
+<td class="gt_row gt_left" headers="team">Southampton</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.92</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.63</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.08</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.55</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">3.12</td>
+<td class="gt_row gt_right" headers="possession_percent">61.9</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">61.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">46.3</td>
+<td class="gt_row gt_left" headers="actual_points">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2020/21</td>
+<td class="gt_row gt_left" headers="team">Leeds</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.02</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.92</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">7.28</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.91</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">3.70</td>
+<td class="gt_row gt_right" headers="possession_percent">59.6</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">68.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">45.9</td>
+<td class="gt_row gt_left" headers="actual_points">59</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2024/25</td>
+<td class="gt_row gt_left" headers="team">Leicester</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.11</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.78</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.78</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.04</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.28</td>
+<td class="gt_row gt_right" headers="possession_percent">59.5</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">62.4</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">45.8</td>
+<td class="gt_row gt_left" headers="actual_points">25</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2022/23</td>
+<td class="gt_row gt_left" headers="team">Fulham</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.96</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.96</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">7.20</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.37</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">2.22</td>
+<td class="gt_row gt_right" headers="possession_percent">58.1</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">66.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">44.8</td>
+<td class="gt_row gt_left" headers="actual_points">52</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2023/24</td>
+<td class="gt_row gt_left" headers="team">Burnley</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.20</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.49</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">5.00</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.13</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.96</td>
+<td class="gt_row gt_right" headers="possession_percent">61.1</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">59.8</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">41.6</td>
+<td class="gt_row gt_left" headers="actual_points">24</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2021/22</td>
+<td class="gt_row gt_left" headers="team">Brentford</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.90</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.70</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">5.00</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.82</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.90</td>
+<td class="gt_row gt_right" headers="possession_percent">54.1</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">61.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">38.6</td>
+<td class="gt_row gt_left" headers="actual_points">46</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2026/27</td>
+<td class="gt_row gt_left" headers="team">Coventry</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.00</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.82</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.60</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.11</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.04</td>
+<td class="gt_row gt_right" headers="possession_percent">53.7</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">58.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">38.3</td>
+<td class="gt_row gt_left" headers="actual_points">?</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2026/27</td>
+<td class="gt_row gt_left" headers="team">Ipswich</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.84</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.71</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.40</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.73</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.76</td>
+<td class="gt_row gt_right" headers="possession_percent">54.5</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">62.7</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">37.6</td>
+<td class="gt_row gt_left" headers="actual_points">?</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2021/22</td>
+<td class="gt_row gt_left" headers="team">Norwich</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.11</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.45</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.33</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.85</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">−0.02</td>
+<td class="gt_row gt_right" headers="possession_percent">58.2</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">58.1</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">37.1</td>
+<td class="gt_row gt_left" headers="actual_points">23</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2022/23</td>
+<td class="gt_row gt_left" headers="team">Bournemouth</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.91</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.58</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.46</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.76</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.33</td>
+<td class="gt_row gt_right" headers="possession_percent">55.2</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">60.4</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">35.2</td>
+<td class="gt_row gt_left" headers="actual_points">39</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2018/19</td>
+<td class="gt_row gt_left" headers="team">Fulham</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.92</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.43</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.71</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.71</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.63</td>
+<td class="gt_row gt_right" headers="possession_percent">57.8</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">58.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">34.3</td>
+<td class="gt_row gt_left" headers="actual_points">26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2023/24</td>
+<td class="gt_row gt_left" headers="team">Sheffield United</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.00</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.58</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.80</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.76</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.80</td>
+<td class="gt_row gt_right" headers="possession_percent">51.0</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">59.6</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">34.2</td>
+<td class="gt_row gt_left" headers="actual_points">16</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2019/20</td>
+<td class="gt_row gt_left" headers="team">Norwich</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.04</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.47</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.20</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.78</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">2.11</td>
+<td class="gt_row gt_right" headers="possession_percent">55.7</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">57.4</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">34.0</td>
+<td class="gt_row gt_left" headers="actual_points">21</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2024/25</td>
+<td class="gt_row gt_left" headers="team">Ipswich</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.09</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.58</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.91</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.76</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.17</td>
+<td class="gt_row gt_right" headers="possession_percent">52.0</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">59.1</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">34.0</td>
+<td class="gt_row gt_left" headers="actual_points">22</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2019/20</td>
+<td class="gt_row gt_left" headers="team">Sheffield United</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.94</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.57</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">1.26</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.80</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">2.33</td>
+<td class="gt_row gt_right" headers="possession_percent">51.0</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">60.7</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">33.5</td>
+<td class="gt_row gt_left" headers="actual_points">54</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2025/26</td>
+<td class="gt_row gt_left" headers="team">Burnley</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.17</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.33</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.76</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.15</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.48</td>
+<td class="gt_row gt_right" headers="possession_percent">55.0</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">56.2</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">32.9</td>
+<td class="gt_row gt_left" headers="actual_points">22</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2020/21</td>
+<td class="gt_row gt_left" headers="team">West Bromwich Albion</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.80</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.39</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.24</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.70</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.30</td>
+<td class="gt_row gt_right" headers="possession_percent">53.7</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">59.6</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">32.3</td>
+<td class="gt_row gt_left" headers="actual_points">26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2020/21</td>
+<td class="gt_row gt_left" headers="team">Fulham</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.78</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.17</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.33</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.37</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.10</td>
+<td class="gt_row gt_right" headers="possession_percent">58.3</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">55.4</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">32.1</td>
+<td class="gt_row gt_left" headers="actual_points">28</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2017/18</td>
+<td class="gt_row gt_left" headers="team">Newcastle</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.04</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.52</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">5.65</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.98</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.72</td>
+<td class="gt_row gt_right" headers="possession_percent">53.1</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">57.9</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">31.7</td>
+<td class="gt_row gt_left" headers="actual_points">44</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2021/22</td>
+<td class="gt_row gt_left" headers="team">Watford</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.98</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.38</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">0.76</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.72</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.17</td>
+<td class="gt_row gt_right" headers="possession_percent">52.7</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">53.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">31.2</td>
+<td class="gt_row gt_left" headers="actual_points">23</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2018/19</td>
+<td class="gt_row gt_left" headers="team">Wolves</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.15</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.50</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.41</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.94</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.35</td>
+<td class="gt_row gt_right" headers="possession_percent">53.3</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">57.6</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">30.2</td>
+<td class="gt_row gt_left" headers="actual_points">57</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2019/20</td>
+<td class="gt_row gt_left" headers="team">Aston Villa</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.67</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.33</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.25</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.45</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.08</td>
+<td class="gt_row gt_right" headers="possession_percent">53.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">52.3</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">29.0</td>
+<td class="gt_row gt_left" headers="actual_points">35</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2017/18</td>
+<td class="gt_row gt_left" headers="team">Brighton</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.02</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.48</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.00</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.74</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.37</td>
+<td class="gt_row gt_right" headers="possession_percent">50.8</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">56.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">28.8</td>
+<td class="gt_row gt_left" headers="actual_points">40</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2017/18</td>
+<td class="gt_row gt_left" headers="team">Huddersfield</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.71</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.12</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.06</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">−0.04</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">2.29</td>
+<td class="gt_row gt_right" headers="possession_percent">55.6</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">55.3</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">28.0</td>
+<td class="gt_row gt_left" headers="actual_points">37</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2022/23</td>
+<td class="gt_row gt_left" headers="team">Nottingham Forest</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.75</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.32</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">1.49</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.69</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.00</td>
+<td class="gt_row gt_right" headers="possession_percent">50.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">51.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">27.2</td>
+<td class="gt_row gt_left" headers="actual_points">38</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2023/24</td>
+<td class="gt_row gt_left" headers="team">Luton</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.71</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.32</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">1.37</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.39</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.96</td>
+<td class="gt_row gt_right" headers="possession_percent">46.8</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">55.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">26.5</td>
+<td class="gt_row gt_left" headers="actual_points">26</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2025/26</td>
+<td class="gt_row gt_left" headers="team">Sunderland</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.69</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.19</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">1.61</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.33</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.00</td>
+<td class="gt_row gt_right" headers="possession_percent">49.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">55.1</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">26.1</td>
+<td class="gt_row gt_left" headers="actual_points">54</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2018/19</td>
+<td class="gt_row gt_left" headers="team">Cardiff</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.96</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.53</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.80</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.65</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">−0.17</td>
+<td class="gt_row gt_right" headers="possession_percent">45.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">58.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">25.8</td>
+<td class="gt_row gt_left" headers="actual_points">34</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2026/27</td>
+<td class="gt_row gt_left" headers="team">Hull</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.59</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">−0.33</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">−3.67</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.09</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">−1.48</td>
+<td class="gt_row gt_right" headers="possession_percent">46.9</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">45.1</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">14.7</td>
+<td class="gt_row gt_left" headers="actual_points">?</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Hull’s stats really are astonishingly poor for a promoted side. They are the only team with a negative xG difference (-0.33 per game) and less than 50% of touches in the box in their games. This model forecasts them only <strong>14.7 points</strong>; the second-lowest projection was Cardiff City with 25.8 points in 2018/19.</p>
+<p>One question I raised in my reply to porterhouse26 was whether certain <em>types</em> of team are better-suited to doing well after promotion. I looked at four stats covering two characteristics:</p>
+<ol type="1">
+<li>How attack-minded is the team? (Total Goals, Total xG)</li>
+<li>Do they like to dominate the ball &amp; territory? (Possession %, Touches in the Box %)</li>
+</ol>
+<p>Each of these variables was added on its own to the existing model to see how it changed the PPG forecast.</p>
+<div class="centered-block">
+<p><img src="promoted_style_coefficients.png"></p>
+</div>
+<p>All four variables were associated with a decrease in PPG. The largest decrease was in teams with high possession %, and this was the only variable that improved the existing forecast when added to the model. This result is intuitive, because a team that is built to dominate possession against inferior teams may have to learn a completely new playing style when facing superior opposition.</p>
+<p>I’m always wary of overfitting, so I used a nested cross-validation to find a shrinkage-weighted coefficient to include this additional possession adjustment in an enhanced model version. Let’s see how this adjustment affects the three teams’ projections:</p>
+<div class="centered-block">
+<p><img src="promoted_pl_forecast_2026_27_possession_enhanced.png"></p>
+</div>
+<p>The possession-enhanced model drastically boosts Hull’s projection from 15 points up to 24, which is about where the betting markets have them. Ironically, the fact Hull were so bad last year may work in their favour to some extent because they are used to defending!</p>
+<p>We can also see how the possession adjustment changes the forecasts for all the promoted teams in previous seasons:</p>
+<div class="cell">
+<div id="tbl-promoted-teams-enhanced" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-promoted-teams-enhanced-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Promoted Premier League teams and their prior Championship statistics
+</figcaption>
+<div aria-describedby="tbl-promoted-teams-enhanced-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="masebzlpsw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#masebzlpsw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#masebzlpsw thead, #masebzlpsw tbody, #masebzlpsw tfoot, #masebzlpsw tr, #masebzlpsw td, #masebzlpsw th {
+  border-style: none;
+}
+
+#masebzlpsw p {
+  margin: 0;
+  padding: 0;
+}
+
+#masebzlpsw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#masebzlpsw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#masebzlpsw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#masebzlpsw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#masebzlpsw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#masebzlpsw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#masebzlpsw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#masebzlpsw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#masebzlpsw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#masebzlpsw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#masebzlpsw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#masebzlpsw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#masebzlpsw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#masebzlpsw .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#masebzlpsw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#masebzlpsw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#masebzlpsw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#masebzlpsw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#masebzlpsw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#masebzlpsw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#masebzlpsw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#masebzlpsw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#masebzlpsw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#masebzlpsw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#masebzlpsw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#masebzlpsw .gt_left {
+  text-align: left;
+}
+
+#masebzlpsw .gt_center {
+  text-align: center;
+}
+
+#masebzlpsw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#masebzlpsw .gt_font_normal {
+  font-weight: normal;
+}
+
+#masebzlpsw .gt_font_bold {
+  font-weight: bold;
+}
+
+#masebzlpsw .gt_font_italic {
+  font-style: italic;
+}
+
+#masebzlpsw .gt_super {
+  font-size: 65%;
+}
+
+#masebzlpsw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#masebzlpsw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#masebzlpsw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#masebzlpsw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#masebzlpsw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#masebzlpsw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#masebzlpsw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#masebzlpsw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#masebzlpsw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="season" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Season</th>
+<th id="team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Team</th>
+<th id="championship_ppg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">PPG</th>
+<th id="xg_differential_per_game" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">xG Diff</th>
+<th id="shot_differential_per_game" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Shot Diff</th>
+<th id="goal_differential_per_game" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Goal Diff</th>
+<th id="corner_differential_per_game" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Corner Diff</th>
+<th id="possession_percent" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Possession %</th>
+<th id="touches_in_box_percent" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Box-touch %</th>
+<th id="baseline_forecast_points" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Baseline Forecast</th>
+<th id="possession_enhanced_forecast_points" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">New Forecast</th>
+<th id="actual_points" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Actual</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2025/26</td>
+<td class="gt_row gt_left" headers="team">Leeds</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.17</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">1.27</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">9.80</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.41</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">4.15</td>
+<td class="gt_row gt_right" headers="possession_percent">58.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">72.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">50.8</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">46.4</td>
+<td class="gt_row gt_left" headers="actual_points">47</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2024/25</td>
+<td class="gt_row gt_left" headers="team">Leicester</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.11</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.78</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.78</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.04</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.28</td>
+<td class="gt_row gt_right" headers="possession_percent">59.5</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">62.4</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">45.8</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">42.7</td>
+<td class="gt_row gt_left" headers="actual_points">25</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2024/25</td>
+<td class="gt_row gt_left" headers="team">Southampton</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.92</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.63</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.08</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.55</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">3.12</td>
+<td class="gt_row gt_right" headers="possession_percent">61.9</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">61.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">46.3</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">41.7</td>
+<td class="gt_row gt_left" headers="actual_points">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2023/24</td>
+<td class="gt_row gt_left" headers="team">Sheffield United</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.00</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.58</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.80</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.76</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.80</td>
+<td class="gt_row gt_right" headers="possession_percent">51.0</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">59.6</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">34.2</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">39.5</td>
+<td class="gt_row gt_left" headers="actual_points">16</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2022/23</td>
+<td class="gt_row gt_left" headers="team">Fulham</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.96</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.96</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">7.20</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.37</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">2.22</td>
+<td class="gt_row gt_right" headers="possession_percent">58.1</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">66.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">44.8</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">39.4</td>
+<td class="gt_row gt_left" headers="actual_points">52</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2026/27</td>
+<td class="gt_row gt_left" headers="team">Coventry</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.00</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.82</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.60</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.11</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.04</td>
+<td class="gt_row gt_right" headers="possession_percent">53.7</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">58.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">38.3</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">38.3</td>
+<td class="gt_row gt_left" headers="actual_points">?</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2021/22</td>
+<td class="gt_row gt_left" headers="team">Brentford</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.90</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.70</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">5.00</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.82</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.90</td>
+<td class="gt_row gt_right" headers="possession_percent">54.1</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">61.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">38.6</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">38.0</td>
+<td class="gt_row gt_left" headers="actual_points">46</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2023/24</td>
+<td class="gt_row gt_left" headers="team">Luton</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.71</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.32</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">1.37</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.39</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.96</td>
+<td class="gt_row gt_right" headers="possession_percent">46.8</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">55.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">26.5</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">37.1</td>
+<td class="gt_row gt_left" headers="actual_points">26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2019/20</td>
+<td class="gt_row gt_left" headers="team">Sheffield United</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.94</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.57</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">1.26</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.80</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">2.33</td>
+<td class="gt_row gt_right" headers="possession_percent">51.0</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">60.7</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">33.5</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">37.0</td>
+<td class="gt_row gt_left" headers="actual_points">54</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2018/19</td>
+<td class="gt_row gt_left" headers="team">Cardiff</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.96</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.53</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.80</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.65</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">−0.17</td>
+<td class="gt_row gt_right" headers="possession_percent">45.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">58.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">25.8</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">36.5</td>
+<td class="gt_row gt_left" headers="actual_points">34</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2026/27</td>
+<td class="gt_row gt_left" headers="team">Ipswich</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.84</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.71</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.40</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.73</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.76</td>
+<td class="gt_row gt_right" headers="possession_percent">54.5</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">62.7</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">37.6</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">36.5</td>
+<td class="gt_row gt_left" headers="actual_points">?</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2020/21</td>
+<td class="gt_row gt_left" headers="team">Leeds</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.02</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.92</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">7.28</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.91</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">3.70</td>
+<td class="gt_row gt_right" headers="possession_percent">59.6</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">68.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">45.9</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">36.4</td>
+<td class="gt_row gt_left" headers="actual_points">59</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2024/25</td>
+<td class="gt_row gt_left" headers="team">Ipswich</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.09</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.58</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.91</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.76</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.17</td>
+<td class="gt_row gt_right" headers="possession_percent">52.0</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">59.1</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">34.0</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">36.0</td>
+<td class="gt_row gt_left" headers="actual_points">22</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2023/24</td>
+<td class="gt_row gt_left" headers="team">Burnley</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.20</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.49</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">5.00</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.13</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.96</td>
+<td class="gt_row gt_right" headers="possession_percent">61.1</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">59.8</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">41.6</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">34.0</td>
+<td class="gt_row gt_left" headers="actual_points">24</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2022/23</td>
+<td class="gt_row gt_left" headers="team">Bournemouth</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.91</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.58</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.46</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.76</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.33</td>
+<td class="gt_row gt_right" headers="possession_percent">55.2</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">60.4</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">35.2</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">33.6</td>
+<td class="gt_row gt_left" headers="actual_points">39</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2017/18</td>
+<td class="gt_row gt_left" headers="team">Brighton</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.02</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.48</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.00</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.74</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.37</td>
+<td class="gt_row gt_right" headers="possession_percent">50.8</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">56.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">28.8</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">32.7</td>
+<td class="gt_row gt_left" headers="actual_points">40</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2019/20</td>
+<td class="gt_row gt_left" headers="team">Norwich</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.04</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.47</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.20</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.78</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">2.11</td>
+<td class="gt_row gt_right" headers="possession_percent">55.7</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">57.4</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">34.0</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">32.7</td>
+<td class="gt_row gt_left" headers="actual_points">21</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2017/18</td>
+<td class="gt_row gt_left" headers="team">Newcastle</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.04</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.52</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">5.65</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.98</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.72</td>
+<td class="gt_row gt_right" headers="possession_percent">53.1</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">57.9</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">31.7</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">32.5</td>
+<td class="gt_row gt_left" headers="actual_points">44</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2020/21</td>
+<td class="gt_row gt_left" headers="team">West Bromwich Albion</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.80</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.39</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.24</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.70</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.30</td>
+<td class="gt_row gt_right" headers="possession_percent">53.7</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">59.6</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">32.3</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">32.4</td>
+<td class="gt_row gt_left" headers="actual_points">26</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2021/22</td>
+<td class="gt_row gt_left" headers="team">Watford</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.98</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.38</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">0.76</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.72</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.17</td>
+<td class="gt_row gt_right" headers="possession_percent">52.7</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">53.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">31.2</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">32.3</td>
+<td class="gt_row gt_left" headers="actual_points">23</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2025/26</td>
+<td class="gt_row gt_left" headers="team">Burnley</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.17</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.33</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.76</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">1.15</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.48</td>
+<td class="gt_row gt_right" headers="possession_percent">55.0</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">56.2</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">32.9</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">32.0</td>
+<td class="gt_row gt_left" headers="actual_points">22</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2022/23</td>
+<td class="gt_row gt_left" headers="team">Nottingham Forest</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.75</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.32</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">1.49</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.69</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.00</td>
+<td class="gt_row gt_right" headers="possession_percent">50.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">51.5</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">27.2</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">31.9</td>
+<td class="gt_row gt_left" headers="actual_points">38</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2021/22</td>
+<td class="gt_row gt_left" headers="team">Norwich</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.11</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.45</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.33</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.85</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">−0.02</td>
+<td class="gt_row gt_right" headers="possession_percent">58.2</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">58.1</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">37.1</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">31.5</td>
+<td class="gt_row gt_left" headers="actual_points">23</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2018/19</td>
+<td class="gt_row gt_left" headers="team">Wolves</td>
+<td class="gt_row gt_right" headers="championship_ppg">2.15</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.50</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">3.41</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.94</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">0.35</td>
+<td class="gt_row gt_right" headers="possession_percent">53.3</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">57.6</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">30.2</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">30.9</td>
+<td class="gt_row gt_left" headers="actual_points">57</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2025/26</td>
+<td class="gt_row gt_left" headers="team">Sunderland</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.69</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.19</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">1.61</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.33</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.00</td>
+<td class="gt_row gt_right" headers="possession_percent">49.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">55.1</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">26.1</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">30.7</td>
+<td class="gt_row gt_left" headers="actual_points">54</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2019/20</td>
+<td class="gt_row gt_left" headers="team">Aston Villa</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.67</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.33</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.25</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.45</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.08</td>
+<td class="gt_row gt_right" headers="possession_percent">53.4</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">52.3</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">29.0</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">30.1</td>
+<td class="gt_row gt_left" headers="actual_points">35</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2018/19</td>
+<td class="gt_row gt_left" headers="team">Fulham</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.92</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.43</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.71</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.71</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.63</td>
+<td class="gt_row gt_right" headers="possession_percent">57.8</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">58.0</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">34.3</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">29.4</td>
+<td class="gt_row gt_left" headers="actual_points">26</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2017/18</td>
+<td class="gt_row gt_left" headers="team">Huddersfield</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.71</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.12</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">4.06</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">−0.04</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">2.29</td>
+<td class="gt_row gt_right" headers="possession_percent">55.6</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">55.3</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">28.0</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">25.4</td>
+<td class="gt_row gt_left" headers="actual_points">37</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">2020/21</td>
+<td class="gt_row gt_left" headers="team">Fulham</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.78</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">0.17</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">2.33</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.37</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">1.10</td>
+<td class="gt_row gt_right" headers="possession_percent">58.3</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">55.4</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">32.1</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">24.8</td>
+<td class="gt_row gt_left" headers="actual_points">28</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2026/27</td>
+<td class="gt_row gt_left" headers="team">Hull</td>
+<td class="gt_row gt_right" headers="championship_ppg">1.59</td>
+<td class="gt_row gt_right" headers="xg_differential_per_game">−0.33</td>
+<td class="gt_row gt_right" headers="shot_differential_per_game">−3.67</td>
+<td class="gt_row gt_right" headers="goal_differential_per_game">0.09</td>
+<td class="gt_row gt_right" headers="corner_differential_per_game">−1.48</td>
+<td class="gt_row gt_right" headers="possession_percent">46.9</td>
+<td class="gt_row gt_right" headers="touches_in_box_percent">45.1</td>
+<td class="gt_row gt_right" headers="baseline_forecast_points">14.7</td>
+<td class="gt_row gt_right" headers="possession_enhanced_forecast_points">23.9</td>
+<td class="gt_row gt_left" headers="actual_points">?</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>It’s clear that some of the most possession-heavy Championship teams had disappointing seasons after getting promoted. The two highest possession teams were Russell Martin’s <strong>Southampton</strong> (61.9%) who got just 12 points, and Vincent Kompany’s <strong>Burnley</strong> (61.1%) who got 24 points. In fact, of the top 10 promoted teams with the highest possession % in the Championship, only <strong>Leeds</strong> in 2020/21 and <strong>Fulham</strong> in 2022/23 outperformed their baseline forecast.</p>
+<p>At the opposite end, recent evidence can point to <strong>Sunderland</strong> who got promoted through the playoffs with just <strong>49.4%</strong> average possession across the Championship season then stunned everyone by qualifying for the Europa League with 54 points.</p>
+<p>What about relegated teams? Is there a type of relegated team that tends to perform well in the Championship?</p>
+<div class="centered-block">
+<p><img src="relegated_style_coefficients.png"></p>
+</div>
+<p>The evidence would suggest not. The coefficients are much smaller than those for promoted teams, and none of these variables improves the model. This suggests that multiple playing styles can work well in the Championship. Or, more simply, it could be because relegated teams quite often change manager after a disappointing season so their style may be different anyway, whereas promoted teams generally stick with the same manager unless he is poached by a bigger club.</p>
+<p>Given that the playing style enhancements don’t add any value, we can use our baseline model to project next year’s Championship, including the three relegated teams. The teams promoted from League One are missing because I don’t yet have League One in my database, but I’m working on that.</p>
+<div class="centered-block">
+<p><img src="ppg_forecasts_2026_27.png"> <em>*Note that neither the projection nor the Sporting Index spread account for Southampton’s points deduction.</em></p>
+</div>
+<p>I don’t follow the Championship as closely as I follow the Premier League, so I’m not going to get into the weeds of why some of these teams have a projection higher or lower than the betting markets. <strong>Middlesbrough</strong> immediately leap out; one might expect that any team that is overprojected by the model has perhaps been weakened in the summer transfer market, but in Boro’s case it seems to be the opposite. According to <a href="https://www.transfermarkt.us/championship/transfers/wettbewerb/GB2?saison_id=2026&amp;s_w=s">Transfermarkt</a> they are the Championship’s third-biggest biggest net spenders, headlined by the arrival of centre-forward <strong>Will Lankshear</strong> from Spurs. Boro seem like a solid buy at 76.5 points and decent value at 10/1 to win the division.</p>
+<p>Two other teams where the model is bullish are <strong>West Brom</strong> and <strong>Watford</strong>. I’m not intending this newsletter to start being a tipping service, and I have no idea about these teams to be honest; I think it’s just interesting to take note and look for reasons in the disparity. I’d be interested if anyone who follows the Championship more closely than me can explain why the markets might differ from my model on these two teams.</p>
+<p>Conversely, <strong>Wrexham</strong> are hugely underrated by the model relative to the spreads. This could be due to a public overrating of the Hollywood-owned club, but they have some wealthy backers and one of my maxims is you should try not to swim against the tide. It seems much more likely that Wrexham’s next division change is upwards rather than downwards.</p>
+<p><strong>West Ham</strong> feel like a squad that are miles too good for this division but these can often be trappy mug bets and this is where a numeric model-driven projection is really good at giving you discipline. Are West Ham right to be sub-2/1 favourites for the Championship? Debatable. Could you justify backing them because you think they should be <em>even shorter</em> than that? It feels like a big leap, and while they have done well to clear up a large proportion of their financial deficit via the big-money sales of <strong>Mateus Fernandes</strong> and <strong>Crysencio Summerville</strong>, let’s not ignore the fact that those two players may have been a large reason why West Ham’s attack was pretty good in the latter half of last season. Not to mention, the window hasn’t closed yet and it would be no surprise if the impressive <strong>Taty Castellanos</strong> has departed by the end of August.</p>
+<p>The saying “all models are wrong, but some are useful” is often heard in statistical circles and it really is a phrase worth taking to heart. None of the projections in this article should be taken too literally because there are a ton of factors not accounted for (e.g.&nbsp;summer transfers). But often the most important part of modelling is not so much the projection but understanding how the model got to that projection, and then using your domain knowledge to assess whether or not that’s something the wider market may have missed. That’s what makes a model useful.</p>
+<div class="data-footer">
+<p><strong>Data Sources</strong><br>
+I gather match data from a variety of public sources. Please check out these excellent websites:</p>
+<ul>
+<li><a href="https://clubelo.com">Club Elo Ratings</a></li>
+<li><a href="https://www.espn.com/soccer/">ESPN</a></li>
+<li><a href="https://fbref.com">FBref</a></li>
+<li><a href="https://fotmob.com">FotMob</a></li>
+<li><a href="https://transfermarkt.com">Transfermarkt</a></li>
+<li><a href="https://understat.com">Understat</a></li>
+<li><a href="https://whoscored.com">WhoScored</a></li>
+<li><a href="http://eloratings.net/">World Football Elo Ratings</a></li>
+</ul>
+<p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
+</div>
+<p>© 2026 John Knight. All rights reserved.</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/johnknightstats\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

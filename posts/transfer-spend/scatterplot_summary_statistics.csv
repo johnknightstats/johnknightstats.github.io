@@ -1,0 +1,7 @@
+metric,window,n,pearson_r,ols_slope_ppg_per_gbp_million,plot_file
+fees_paid,summer,686,0.4408033716816561,0.0020516164605956897,scatter_ppg_vs_fees_paid_summer.png
+fees_paid,summer_plus_previous2,686,0.5820326143778948,0.0010313154856521286,scatter_ppg_vs_fees_paid_summer_plus_previous2.png
+fees_received,summer,686,0.2691994703697029,0.001841148244579096,scatter_ppg_vs_fees_received_summer.png
+fees_received,summer_plus_previous2,686,0.394021929862436,0.0012567444792135729,scatter_ppg_vs_fees_received_summer_plus_previous2.png
+net_spend,summer,686,0.2636290544376136,0.0012556711464133442,scatter_ppg_vs_net_spend_summer.png
+net_spend,summer_plus_previous2,686,0.4414486063921592,0.0009508994464553243,scatter_ppg_vs_net_spend_summer_plus_previous2.png

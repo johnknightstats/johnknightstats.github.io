@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -15,10 +15,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -42,14 +45,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -363,23 +366,23 @@ ul.task-list li input[type="checkbox"] {
 <p>For a sanity check, here is a comparison of the current top 10 teams on eloratings.net alongside the top 10 teams in my model. Reassuringly, they are the same teams with a slightly different order, and in my model Germany get in the top 10 at the expense of Ecuador.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="zynmqkvlxg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zynmqkvlxg table {
+<div id="hlsawwjstp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hlsawwjstp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zynmqkvlxg thead, #zynmqkvlxg tbody, #zynmqkvlxg tfoot, #zynmqkvlxg tr, #zynmqkvlxg td, #zynmqkvlxg th {
+#hlsawwjstp thead, #hlsawwjstp tbody, #hlsawwjstp tfoot, #hlsawwjstp tr, #hlsawwjstp td, #hlsawwjstp th {
   border-style: none;
 }
 
-#zynmqkvlxg p {
+#hlsawwjstp p {
   margin: 0;
   padding: 0;
 }
 
-#zynmqkvlxg .gt_table {
+#hlsawwjstp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -405,12 +408,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_caption {
+#hlsawwjstp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zynmqkvlxg .gt_title {
+#hlsawwjstp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -422,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#zynmqkvlxg .gt_subtitle {
+#hlsawwjstp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -434,7 +437,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#zynmqkvlxg .gt_heading {
+#hlsawwjstp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -446,13 +449,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_bottom_border {
+#hlsawwjstp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_col_headings {
+#hlsawwjstp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -467,7 +470,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_col_heading {
+#hlsawwjstp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -487,7 +490,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#zynmqkvlxg .gt_column_spanner_outer {
+#hlsawwjstp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -499,15 +502,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#zynmqkvlxg .gt_column_spanner_outer:first-child {
+#hlsawwjstp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zynmqkvlxg .gt_column_spanner_outer:last-child {
+#hlsawwjstp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zynmqkvlxg .gt_column_spanner {
+#hlsawwjstp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -519,11 +522,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#zynmqkvlxg .gt_spanner_row {
+#hlsawwjstp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zynmqkvlxg .gt_group_heading {
+#hlsawwjstp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -549,7 +552,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#zynmqkvlxg .gt_empty_group_heading {
+#hlsawwjstp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -564,15 +567,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#zynmqkvlxg .gt_from_md > :first-child {
+#hlsawwjstp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zynmqkvlxg .gt_from_md > :last-child {
+#hlsawwjstp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zynmqkvlxg .gt_row {
+#hlsawwjstp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -591,7 +594,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#zynmqkvlxg .gt_stub {
+#hlsawwjstp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -604,7 +607,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zynmqkvlxg .gt_stub_row_group {
+#hlsawwjstp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -618,15 +621,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#zynmqkvlxg .gt_row_group_first td {
+#hlsawwjstp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zynmqkvlxg .gt_row_group_first th {
+#hlsawwjstp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zynmqkvlxg .gt_summary_row {
+#hlsawwjstp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -636,16 +639,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zynmqkvlxg .gt_first_summary_row {
+#hlsawwjstp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_first_summary_row.thick {
+#hlsawwjstp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zynmqkvlxg .gt_last_summary_row {
+#hlsawwjstp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -655,7 +658,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_grand_summary_row {
+#hlsawwjstp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -665,7 +668,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zynmqkvlxg .gt_first_grand_summary_row {
+#hlsawwjstp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -675,7 +678,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_last_grand_summary_row_top {
+#hlsawwjstp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -685,11 +688,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_striped {
+#hlsawwjstp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zynmqkvlxg .gt_table_body {
+#hlsawwjstp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -698,7 +701,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_footnotes {
+#hlsawwjstp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -712,7 +715,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_footnote {
+#hlsawwjstp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -721,7 +724,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zynmqkvlxg .gt_sourcenotes {
+#hlsawwjstp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -735,7 +738,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zynmqkvlxg .gt_sourcenote {
+#hlsawwjstp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -743,72 +746,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zynmqkvlxg .gt_left {
+#hlsawwjstp .gt_left {
   text-align: left;
 }
 
-#zynmqkvlxg .gt_center {
+#hlsawwjstp .gt_center {
   text-align: center;
 }
 
-#zynmqkvlxg .gt_right {
+#hlsawwjstp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zynmqkvlxg .gt_font_normal {
+#hlsawwjstp .gt_font_normal {
   font-weight: normal;
 }
 
-#zynmqkvlxg .gt_font_bold {
+#hlsawwjstp .gt_font_bold {
   font-weight: bold;
 }
 
-#zynmqkvlxg .gt_font_italic {
+#hlsawwjstp .gt_font_italic {
   font-style: italic;
 }
 
-#zynmqkvlxg .gt_super {
+#hlsawwjstp .gt_super {
   font-size: 65%;
 }
 
-#zynmqkvlxg .gt_footnote_marks {
+#hlsawwjstp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zynmqkvlxg .gt_asterisk {
+#hlsawwjstp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zynmqkvlxg .gt_indent_1 {
+#hlsawwjstp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zynmqkvlxg .gt_indent_2 {
+#hlsawwjstp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zynmqkvlxg .gt_indent_3 {
+#hlsawwjstp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zynmqkvlxg .gt_indent_4 {
+#hlsawwjstp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zynmqkvlxg .gt_indent_5 {
+#hlsawwjstp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zynmqkvlxg .katex-display {
+#hlsawwjstp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zynmqkvlxg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hlsawwjstp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -887,23 +890,23 @@ ul.task-list li input[type="checkbox"] {
 <p>We can also take a look at how my model differs from eloratings.net across the weaker confederations. The following table compares the rankings of each team that have qualified for this year’s World Cup. My model ranks CONCACAF teams lower and African teams higher, while the difference in Asian teams is mixed.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="xzjiozpiql" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xzjiozpiql table {
+<div id="wjlnbceqmt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wjlnbceqmt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xzjiozpiql thead, #xzjiozpiql tbody, #xzjiozpiql tfoot, #xzjiozpiql tr, #xzjiozpiql td, #xzjiozpiql th {
+#wjlnbceqmt thead, #wjlnbceqmt tbody, #wjlnbceqmt tfoot, #wjlnbceqmt tr, #wjlnbceqmt td, #wjlnbceqmt th {
   border-style: none;
 }
 
-#xzjiozpiql p {
+#wjlnbceqmt p {
   margin: 0;
   padding: 0;
 }
 
-#xzjiozpiql .gt_table {
+#wjlnbceqmt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -929,12 +932,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_caption {
+#wjlnbceqmt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xzjiozpiql .gt_title {
+#wjlnbceqmt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -946,7 +949,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#xzjiozpiql .gt_subtitle {
+#wjlnbceqmt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -958,7 +961,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#xzjiozpiql .gt_heading {
+#wjlnbceqmt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -970,13 +973,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_bottom_border {
+#wjlnbceqmt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_col_headings {
+#wjlnbceqmt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -991,7 +994,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_col_heading {
+#wjlnbceqmt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1011,7 +1014,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#xzjiozpiql .gt_column_spanner_outer {
+#wjlnbceqmt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1023,15 +1026,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#xzjiozpiql .gt_column_spanner_outer:first-child {
+#wjlnbceqmt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xzjiozpiql .gt_column_spanner_outer:last-child {
+#wjlnbceqmt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xzjiozpiql .gt_column_spanner {
+#wjlnbceqmt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1043,11 +1046,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#xzjiozpiql .gt_spanner_row {
+#wjlnbceqmt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xzjiozpiql .gt_group_heading {
+#wjlnbceqmt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1073,7 +1076,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#xzjiozpiql .gt_empty_group_heading {
+#wjlnbceqmt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1088,15 +1091,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#xzjiozpiql .gt_from_md > :first-child {
+#wjlnbceqmt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xzjiozpiql .gt_from_md > :last-child {
+#wjlnbceqmt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xzjiozpiql .gt_row {
+#wjlnbceqmt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1115,7 +1118,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#xzjiozpiql .gt_stub {
+#wjlnbceqmt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1128,7 +1131,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xzjiozpiql .gt_stub_row_group {
+#wjlnbceqmt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1142,15 +1145,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#xzjiozpiql .gt_row_group_first td {
+#wjlnbceqmt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xzjiozpiql .gt_row_group_first th {
+#wjlnbceqmt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xzjiozpiql .gt_summary_row {
+#wjlnbceqmt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1160,16 +1163,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xzjiozpiql .gt_first_summary_row {
+#wjlnbceqmt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_first_summary_row.thick {
+#wjlnbceqmt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xzjiozpiql .gt_last_summary_row {
+#wjlnbceqmt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1179,7 +1182,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_grand_summary_row {
+#wjlnbceqmt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1189,7 +1192,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xzjiozpiql .gt_first_grand_summary_row {
+#wjlnbceqmt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1199,7 +1202,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_last_grand_summary_row_top {
+#wjlnbceqmt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1209,11 +1212,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_striped {
+#wjlnbceqmt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xzjiozpiql .gt_table_body {
+#wjlnbceqmt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1222,7 +1225,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_footnotes {
+#wjlnbceqmt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1236,7 +1239,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_footnote {
+#wjlnbceqmt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1245,7 +1248,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xzjiozpiql .gt_sourcenotes {
+#wjlnbceqmt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1259,7 +1262,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xzjiozpiql .gt_sourcenote {
+#wjlnbceqmt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1267,72 +1270,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xzjiozpiql .gt_left {
+#wjlnbceqmt .gt_left {
   text-align: left;
 }
 
-#xzjiozpiql .gt_center {
+#wjlnbceqmt .gt_center {
   text-align: center;
 }
 
-#xzjiozpiql .gt_right {
+#wjlnbceqmt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xzjiozpiql .gt_font_normal {
+#wjlnbceqmt .gt_font_normal {
   font-weight: normal;
 }
 
-#xzjiozpiql .gt_font_bold {
+#wjlnbceqmt .gt_font_bold {
   font-weight: bold;
 }
 
-#xzjiozpiql .gt_font_italic {
+#wjlnbceqmt .gt_font_italic {
   font-style: italic;
 }
 
-#xzjiozpiql .gt_super {
+#wjlnbceqmt .gt_super {
   font-size: 65%;
 }
 
-#xzjiozpiql .gt_footnote_marks {
+#wjlnbceqmt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xzjiozpiql .gt_asterisk {
+#wjlnbceqmt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xzjiozpiql .gt_indent_1 {
+#wjlnbceqmt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xzjiozpiql .gt_indent_2 {
+#wjlnbceqmt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xzjiozpiql .gt_indent_3 {
+#wjlnbceqmt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xzjiozpiql .gt_indent_4 {
+#wjlnbceqmt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xzjiozpiql .gt_indent_5 {
+#wjlnbceqmt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xzjiozpiql .katex-display {
+#wjlnbceqmt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xzjiozpiql div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wjlnbceqmt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1783,23 +1786,23 @@ ul.task-list li input[type="checkbox"] {
 <p>One way of shedding more light on the distance-from-home factor is by seeing how teams have performed in World Cups when they are playing in their home continent (but not in their own country). For example, Germany playing in a World Cup in France, or Mexico playing in the United States.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dciompgkua" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dciompgkua table {
+<div id="qkamowtyfc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qkamowtyfc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dciompgkua thead, #dciompgkua tbody, #dciompgkua tfoot, #dciompgkua tr, #dciompgkua td, #dciompgkua th {
+#qkamowtyfc thead, #qkamowtyfc tbody, #qkamowtyfc tfoot, #qkamowtyfc tr, #qkamowtyfc td, #qkamowtyfc th {
   border-style: none;
 }
 
-#dciompgkua p {
+#qkamowtyfc p {
   margin: 0;
   padding: 0;
 }
 
-#dciompgkua .gt_table {
+#qkamowtyfc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1825,12 +1828,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#dciompgkua .gt_caption {
+#qkamowtyfc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dciompgkua .gt_title {
+#qkamowtyfc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1842,7 +1845,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#dciompgkua .gt_subtitle {
+#qkamowtyfc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1854,7 +1857,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#dciompgkua .gt_heading {
+#qkamowtyfc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1866,13 +1869,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dciompgkua .gt_bottom_border {
+#qkamowtyfc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dciompgkua .gt_col_headings {
+#qkamowtyfc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1887,7 +1890,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dciompgkua .gt_col_heading {
+#qkamowtyfc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1907,7 +1910,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#dciompgkua .gt_column_spanner_outer {
+#qkamowtyfc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1919,15 +1922,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#dciompgkua .gt_column_spanner_outer:first-child {
+#qkamowtyfc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dciompgkua .gt_column_spanner_outer:last-child {
+#qkamowtyfc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dciompgkua .gt_column_spanner {
+#qkamowtyfc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1939,11 +1942,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#dciompgkua .gt_spanner_row {
+#qkamowtyfc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dciompgkua .gt_group_heading {
+#qkamowtyfc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1969,7 +1972,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#dciompgkua .gt_empty_group_heading {
+#qkamowtyfc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1984,15 +1987,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#dciompgkua .gt_from_md > :first-child {
+#qkamowtyfc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dciompgkua .gt_from_md > :last-child {
+#qkamowtyfc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dciompgkua .gt_row {
+#qkamowtyfc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2011,7 +2014,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#dciompgkua .gt_stub {
+#qkamowtyfc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2024,7 +2027,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dciompgkua .gt_stub_row_group {
+#qkamowtyfc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2038,15 +2041,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#dciompgkua .gt_row_group_first td {
+#qkamowtyfc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dciompgkua .gt_row_group_first th {
+#qkamowtyfc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dciompgkua .gt_summary_row {
+#qkamowtyfc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2056,16 +2059,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dciompgkua .gt_first_summary_row {
+#qkamowtyfc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dciompgkua .gt_first_summary_row.thick {
+#qkamowtyfc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dciompgkua .gt_last_summary_row {
+#qkamowtyfc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2075,7 +2078,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dciompgkua .gt_grand_summary_row {
+#qkamowtyfc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2085,7 +2088,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dciompgkua .gt_first_grand_summary_row {
+#qkamowtyfc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2095,7 +2098,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#dciompgkua .gt_last_grand_summary_row_top {
+#qkamowtyfc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2105,11 +2108,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dciompgkua .gt_striped {
+#qkamowtyfc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dciompgkua .gt_table_body {
+#qkamowtyfc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2118,7 +2121,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dciompgkua .gt_footnotes {
+#qkamowtyfc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2132,7 +2135,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dciompgkua .gt_footnote {
+#qkamowtyfc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2141,7 +2144,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dciompgkua .gt_sourcenotes {
+#qkamowtyfc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2155,7 +2158,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dciompgkua .gt_sourcenote {
+#qkamowtyfc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2163,72 +2166,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dciompgkua .gt_left {
+#qkamowtyfc .gt_left {
   text-align: left;
 }
 
-#dciompgkua .gt_center {
+#qkamowtyfc .gt_center {
   text-align: center;
 }
 
-#dciompgkua .gt_right {
+#qkamowtyfc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dciompgkua .gt_font_normal {
+#qkamowtyfc .gt_font_normal {
   font-weight: normal;
 }
 
-#dciompgkua .gt_font_bold {
+#qkamowtyfc .gt_font_bold {
   font-weight: bold;
 }
 
-#dciompgkua .gt_font_italic {
+#qkamowtyfc .gt_font_italic {
   font-style: italic;
 }
 
-#dciompgkua .gt_super {
+#qkamowtyfc .gt_super {
   font-size: 65%;
 }
 
-#dciompgkua .gt_footnote_marks {
+#qkamowtyfc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dciompgkua .gt_asterisk {
+#qkamowtyfc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dciompgkua .gt_indent_1 {
+#qkamowtyfc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dciompgkua .gt_indent_2 {
+#qkamowtyfc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dciompgkua .gt_indent_3 {
+#qkamowtyfc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dciompgkua .gt_indent_4 {
+#qkamowtyfc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dciompgkua .gt_indent_5 {
+#qkamowtyfc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dciompgkua .katex-display {
+#qkamowtyfc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dciompgkua div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qkamowtyfc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -15,10 +15,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -42,14 +45,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -377,23 +380,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Why are Hull (15 points) rated so much worse than <strong>Coventry City</strong> (38) and <strong>Ipswich Town</strong> (38)? Let’s compare the stats of all the promoted Championship teams going back to 2016/17.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="tbyzdqwzva" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tbyzdqwzva table {
+<div id="orobtlycwf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#orobtlycwf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tbyzdqwzva thead, #tbyzdqwzva tbody, #tbyzdqwzva tfoot, #tbyzdqwzva tr, #tbyzdqwzva td, #tbyzdqwzva th {
+#orobtlycwf thead, #orobtlycwf tbody, #orobtlycwf tfoot, #orobtlycwf tr, #orobtlycwf td, #orobtlycwf th {
   border-style: none;
 }
 
-#tbyzdqwzva p {
+#orobtlycwf p {
   margin: 0;
   padding: 0;
 }
 
-#tbyzdqwzva .gt_table {
+#orobtlycwf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -419,12 +422,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_caption {
+#orobtlycwf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tbyzdqwzva .gt_title {
+#orobtlycwf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -436,7 +439,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#tbyzdqwzva .gt_subtitle {
+#orobtlycwf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -448,7 +451,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#tbyzdqwzva .gt_heading {
+#orobtlycwf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -460,13 +463,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_bottom_border {
+#orobtlycwf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_col_headings {
+#orobtlycwf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -481,7 +484,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_col_heading {
+#orobtlycwf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -501,7 +504,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#tbyzdqwzva .gt_column_spanner_outer {
+#orobtlycwf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -513,15 +516,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#tbyzdqwzva .gt_column_spanner_outer:first-child {
+#orobtlycwf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tbyzdqwzva .gt_column_spanner_outer:last-child {
+#orobtlycwf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tbyzdqwzva .gt_column_spanner {
+#orobtlycwf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -533,11 +536,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#tbyzdqwzva .gt_spanner_row {
+#orobtlycwf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tbyzdqwzva .gt_group_heading {
+#orobtlycwf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -563,7 +566,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#tbyzdqwzva .gt_empty_group_heading {
+#orobtlycwf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -578,15 +581,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#tbyzdqwzva .gt_from_md > :first-child {
+#orobtlycwf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tbyzdqwzva .gt_from_md > :last-child {
+#orobtlycwf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tbyzdqwzva .gt_row {
+#orobtlycwf .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -605,7 +608,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#tbyzdqwzva .gt_stub {
+#orobtlycwf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -618,7 +621,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#tbyzdqwzva .gt_stub_row_group {
+#orobtlycwf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -632,15 +635,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#tbyzdqwzva .gt_row_group_first td {
+#orobtlycwf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tbyzdqwzva .gt_row_group_first th {
+#orobtlycwf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tbyzdqwzva .gt_summary_row {
+#orobtlycwf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -650,16 +653,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#tbyzdqwzva .gt_first_summary_row {
+#orobtlycwf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_first_summary_row.thick {
+#orobtlycwf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tbyzdqwzva .gt_last_summary_row {
+#orobtlycwf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -669,7 +672,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_grand_summary_row {
+#orobtlycwf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -679,7 +682,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#tbyzdqwzva .gt_first_grand_summary_row {
+#orobtlycwf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -689,7 +692,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_last_grand_summary_row_top {
+#orobtlycwf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -699,11 +702,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_striped {
+#orobtlycwf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tbyzdqwzva .gt_table_body {
+#orobtlycwf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -712,7 +715,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_footnotes {
+#orobtlycwf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -726,7 +729,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_footnote {
+#orobtlycwf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -735,7 +738,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#tbyzdqwzva .gt_sourcenotes {
+#orobtlycwf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -749,7 +752,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#tbyzdqwzva .gt_sourcenote {
+#orobtlycwf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -757,72 +760,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#tbyzdqwzva .gt_left {
+#orobtlycwf .gt_left {
   text-align: left;
 }
 
-#tbyzdqwzva .gt_center {
+#orobtlycwf .gt_center {
   text-align: center;
 }
 
-#tbyzdqwzva .gt_right {
+#orobtlycwf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tbyzdqwzva .gt_font_normal {
+#orobtlycwf .gt_font_normal {
   font-weight: normal;
 }
 
-#tbyzdqwzva .gt_font_bold {
+#orobtlycwf .gt_font_bold {
   font-weight: bold;
 }
 
-#tbyzdqwzva .gt_font_italic {
+#orobtlycwf .gt_font_italic {
   font-style: italic;
 }
 
-#tbyzdqwzva .gt_super {
+#orobtlycwf .gt_super {
   font-size: 65%;
 }
 
-#tbyzdqwzva .gt_footnote_marks {
+#orobtlycwf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tbyzdqwzva .gt_asterisk {
+#orobtlycwf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tbyzdqwzva .gt_indent_1 {
+#orobtlycwf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tbyzdqwzva .gt_indent_2 {
+#orobtlycwf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tbyzdqwzva .gt_indent_3 {
+#orobtlycwf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tbyzdqwzva .gt_indent_4 {
+#orobtlycwf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tbyzdqwzva .gt_indent_5 {
+#orobtlycwf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tbyzdqwzva .katex-display {
+#orobtlycwf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tbyzdqwzva div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#orobtlycwf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1265,23 +1268,23 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
 </figcaption>
 <div aria-describedby="tbl-promoted-teams-enhanced-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="masebzlpsw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#masebzlpsw table {
+<div id="hixtlptqwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hixtlptqwv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#masebzlpsw thead, #masebzlpsw tbody, #masebzlpsw tfoot, #masebzlpsw tr, #masebzlpsw td, #masebzlpsw th {
+#hixtlptqwv thead, #hixtlptqwv tbody, #hixtlptqwv tfoot, #hixtlptqwv tr, #hixtlptqwv td, #hixtlptqwv th {
   border-style: none;
 }
 
-#masebzlpsw p {
+#hixtlptqwv p {
   margin: 0;
   padding: 0;
 }
 
-#masebzlpsw .gt_table {
+#hixtlptqwv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1307,12 +1310,12 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-left-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_caption {
+#hixtlptqwv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#masebzlpsw .gt_title {
+#hixtlptqwv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1324,7 +1327,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-bottom-width: 0;
 }
 
-#masebzlpsw .gt_subtitle {
+#hixtlptqwv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1336,7 +1339,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-top-width: 0;
 }
 
-#masebzlpsw .gt_heading {
+#hixtlptqwv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1348,13 +1351,13 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-right-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_bottom_border {
+#hixtlptqwv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_col_headings {
+#hixtlptqwv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1369,7 +1372,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-right-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_col_heading {
+#hixtlptqwv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1389,7 +1392,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   overflow-x: hidden;
 }
 
-#masebzlpsw .gt_column_spanner_outer {
+#hixtlptqwv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1401,15 +1404,15 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 4px;
 }
 
-#masebzlpsw .gt_column_spanner_outer:first-child {
+#hixtlptqwv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#masebzlpsw .gt_column_spanner_outer:last-child {
+#hixtlptqwv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#masebzlpsw .gt_column_spanner {
+#hixtlptqwv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1421,11 +1424,11 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   width: 100%;
 }
 
-#masebzlpsw .gt_spanner_row {
+#hixtlptqwv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#masebzlpsw .gt_group_heading {
+#hixtlptqwv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1451,7 +1454,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   text-align: left;
 }
 
-#masebzlpsw .gt_empty_group_heading {
+#hixtlptqwv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1466,15 +1469,15 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   vertical-align: middle;
 }
 
-#masebzlpsw .gt_from_md > :first-child {
+#hixtlptqwv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#masebzlpsw .gt_from_md > :last-child {
+#hixtlptqwv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#masebzlpsw .gt_row {
+#hixtlptqwv .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -1493,7 +1496,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   overflow-x: hidden;
 }
 
-#masebzlpsw .gt_stub {
+#hixtlptqwv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1506,7 +1509,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#masebzlpsw .gt_stub_row_group {
+#hixtlptqwv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1520,15 +1523,15 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   vertical-align: top;
 }
 
-#masebzlpsw .gt_row_group_first td {
+#hixtlptqwv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#masebzlpsw .gt_row_group_first th {
+#hixtlptqwv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#masebzlpsw .gt_summary_row {
+#hixtlptqwv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1538,16 +1541,16 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#masebzlpsw .gt_first_summary_row {
+#hixtlptqwv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_first_summary_row.thick {
+#hixtlptqwv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#masebzlpsw .gt_last_summary_row {
+#hixtlptqwv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1557,7 +1560,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-bottom-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_grand_summary_row {
+#hixtlptqwv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1567,7 +1570,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#masebzlpsw .gt_first_grand_summary_row {
+#hixtlptqwv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1577,7 +1580,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-top-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_last_grand_summary_row_top {
+#hixtlptqwv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1587,11 +1590,11 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-bottom-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_striped {
+#hixtlptqwv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#masebzlpsw .gt_table_body {
+#hixtlptqwv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1600,7 +1603,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-bottom-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_footnotes {
+#hixtlptqwv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1614,7 +1617,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-right-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_footnote {
+#hixtlptqwv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1623,7 +1626,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#masebzlpsw .gt_sourcenotes {
+#hixtlptqwv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1637,7 +1640,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-right-color: #D3D3D3;
 }
 
-#masebzlpsw .gt_sourcenote {
+#hixtlptqwv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1645,72 +1648,72 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#masebzlpsw .gt_left {
+#hixtlptqwv .gt_left {
   text-align: left;
 }
 
-#masebzlpsw .gt_center {
+#hixtlptqwv .gt_center {
   text-align: center;
 }
 
-#masebzlpsw .gt_right {
+#hixtlptqwv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#masebzlpsw .gt_font_normal {
+#hixtlptqwv .gt_font_normal {
   font-weight: normal;
 }
 
-#masebzlpsw .gt_font_bold {
+#hixtlptqwv .gt_font_bold {
   font-weight: bold;
 }
 
-#masebzlpsw .gt_font_italic {
+#hixtlptqwv .gt_font_italic {
   font-style: italic;
 }
 
-#masebzlpsw .gt_super {
+#hixtlptqwv .gt_super {
   font-size: 65%;
 }
 
-#masebzlpsw .gt_footnote_marks {
+#hixtlptqwv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#masebzlpsw .gt_asterisk {
+#hixtlptqwv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#masebzlpsw .gt_indent_1 {
+#hixtlptqwv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#masebzlpsw .gt_indent_2 {
+#hixtlptqwv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#masebzlpsw .gt_indent_3 {
+#hixtlptqwv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#masebzlpsw .gt_indent_4 {
+#hixtlptqwv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#masebzlpsw .gt_indent_5 {
+#hixtlptqwv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#masebzlpsw .katex-display {
+#hixtlptqwv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#masebzlpsw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hixtlptqwv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

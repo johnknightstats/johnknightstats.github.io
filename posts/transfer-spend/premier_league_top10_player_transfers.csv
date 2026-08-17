@@ -1,0 +1,11 @@
+rank,transfer_event_id,source_transfer_id,season_start_year,season,transfer_date,tm_player_id,player_name,from_club,to_club,nominal_fee_gbp,method1_adjusted_fee_gbp_2025_26,adjustment_factor_to_2025_26
+1,18683,5249,2002,2002-03,2002-07-22,3235,Rio Ferdinand,Leeds United,Manchester United,39316239,228408628,5.809524
+2,19367,5284,2001,2001-02,2001-07-13,3143,Juan Sebastián Verón,SS Lazio,Manchester United,36410256,211526252,5.809524
+3,12201,535052,2010,2010-11,2011-01-31,7767,Fernando Torres,Liverpool FC,Chelsea FC,50000000,200657895,4.013158
+4,16946,35191,2004,2004-05,2004-07-20,3924,Didier Drogba,Olympique Marseille,Chelsea FC,32905983,191168091,5.809524
+5,22723,5079,1996,1996-97,1996-07-30,3110,Alan Shearer,Blackburn Rovers,Newcastle United,15384615,185466707,12.055336
+6,16992,40513,2004,2004-05,2004-08-31,3332,Wayne Rooney,Everton FC,Manchester United,31623932,183719984,5.809524
+7,15287,91282,2006,2006-07,2006-07-01,3522,Andriy Shevchenko,AC Milan,Chelsea FC,37504274,177345789,4.728682
+8,16127,67346,2005,2005-06,2005-08-19,5588,Michael Essien,Olympique Lyon,Chelsea FC,32478632,173789174,5.350877
+9,6797,1563900,2016,2016-17,2016-08-09,122153,Paul Pogba,Juventus FC,Manchester United,89743590,159835299,1.781022
+10,19923,5248,2000,2000-01,2000-11-26,3235,Rio Ferdinand,West Ham United,Leeds United,22222222,150617284,6.777778

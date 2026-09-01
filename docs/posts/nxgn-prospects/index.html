@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Knight">
-<meta name="dcterms.date" content="2025-07-12">
-<meta name="description" content="I demonstrate how the Poisson and negative binomial distributions compare to actual football scores from the English top flight, and how we can convert Elo ratings into correct score probabilities.">
+<meta name="dcterms.date" content="2026-09-01">
+<meta name="description" content="If clubs could choose from the best youngsters in the world, how much would each pick be worth?">
 
-<title>Building a model to simulate football scores from Elo ratings – John Knight Stats</title>
+<title>What if football had a draft? – John Knight Stats</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -307,16 +307,16 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Building a model to simulate football scores from Elo ratings</h1>
+<h1 class="title">What if football had a draft?</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">football</div>
     <div class="quarto-category">statistics</div>
+    <div class="quarto-category">football</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    I demonstrate how the Poisson and negative binomial distributions compare to actual football scores from the English top flight, and how we can convert Elo ratings into correct score probabilities.
+    If clubs could choose from the best youngsters in the world, how much would each pick be worth?
   </div>
 </div>
 
@@ -333,7 +333,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">12 July 2025</p>
+      <p class="date">1 September 2026</p>
     </div>
   </div>
   
@@ -345,128 +345,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>I demonstrate how the Poisson and negative binomial distributions compare to actual football scores from the English top flight, and how we can convert Elo ratings into correct score probabilities.</em></p>
-<hr>
-<section id="background" class="level3">
-<h3 class="anchored" data-anchor-id="background">Background</h3>
-<p>I hope you enjoyed my recent article looking at the worst league title collapses in English football history. If not, you can read it <a href="https://johnknightstats.com/posts/title_collapses/">here</a>.</p>
-<p>Now I will go into a little more depth on the model I used to simulate scores using daily Elo ratings from <a href="http://clubelo.com/">Club Elo</a>. You can find all my code and data files for this project in my <a href="https://github.com/johnknightstats/elo-league-sims">GitHub repo</a>.</p>
-<p>Since the Elo ratings only begin in 1940, we will have to ignore results prior to World War Two. Our first task, as always, is to do some data inspection.</p>
-</section>
-<section id="how-football-has-changed-since-1946" class="level3">
-<h3 class="anchored" data-anchor-id="how-football-has-changed-since-1946">How Football Has Changed Since 1946</h3>
-<p>First, let’s look at the changes in goalscoring rate through the years. Now, I decided not to account for varying goal rates in this model, because it adds a fair amount of complexity and I didn’t think it would be necessary given the task at hand. Nonetheless, it is still interesting to see how the game has changed over the last 80 years, especially the huge decrease in the latter half of the 1960s:</p>
-<div class="centered-block max-70">
-<p><img src="viz/goals_pg_seasons.png"></p>
+<div class="centered-block">
+<p><img src="haaland_salzburg.png"> <em>Erling Haaland playing for RB Salzburg (Wikimedia Commons)</em></p>
 </div>
-<p>We can also take a look at how <strong>home supremacy</strong> has changed in the English top flight. This has shown a steady downward trend, presumably due to improved travel and accommodation for away sides. Not many teams took their own chef on the road in the 1950s.</p>
-<p>And to help answer the question “how much of home advantage is due to the fans?” we can look at the 2021 COVID season, played in empty stadia, where home supremacy dropped to almost <strong>zero</strong>.</p>
-<div class="centered-block max-70">
-<p><img src="viz/home_suprem_seasons.png"></p>
-</div>
-<p>Finally, we can summarise the mean Elo rating of English top flight teams over the same time period. The overall trend is upward, and it is also notable that the standard deviation (shown by the light blue band) gets wider as time goes on. The spread of team quality in the modern Premier League, as I’m sure you are aware, is much wider than it used to be.</p>
-<div class="centered-block max-70">
-<p><img src="viz/elo_mean_seasons.png"></p>
-</div>
-</section>
-<section id="how-do-elo-ratings-work" class="level3">
-<h3 class="anchored" data-anchor-id="how-do-elo-ratings-work">How Do Elo Ratings Work?</h3>
-<p>Now we can look at the Elo rating system itself. It was originally designed by Arpad Elo to rank chess players, but can be extended to any zero-sum game with two players or teams.</p>
-<p>When two teams play against one another, they are effectively gambling a portion of their points, with the better team (according to their Elo ratings) putting more of their points at stake than the inferior team.</p>
-<p>Since the winner gains the same number of points as the loser loses (the definition of ‘zero-sum’), the population of ratings sits around a consistent long-term average - typically 1500, but any arbitrary number can be chosen.</p>
-<p>You can find a full explanation of how Club Elo calculates its ratings <a href="http://clubelo.com/System">here</a>. There are adjustments for margin of victory, home advantage, and what they call “tilt” (whether a team’s games are higher or lower scoring than average).</p>
-<p>We can use Club Elo’s formula to calculate the predicted probability for each game in the data, with 0.5 awarded for a draw. Below I have plotted the deciles of teams’ predicted probability to see how they match up with actual results.</p>
-<div class="centered-block max-70">
-<p><img src="viz/elo_deciles.png"></p>
-</div>
-<p>The plotted points should approximately follow the dashed line but as you can see, Elo seems to overestimate favourites’ chances and underestimate underdogs’ chances.</p>
-<p>To reiterate, this is when allotting 0.5 points for a draw. I don’t know how it would fare when trying to predict actual win-draw-lose results instead, or if it’s possible to derive that simply from the Elo difference.</p>
-<p>But that is our next task!</p>
-</section>
-<section id="generating-realistic-football-scores" class="level3">
-<h3 class="anchored" data-anchor-id="generating-realistic-football-scores">Generating Realistic Football Scores</h3>
-<p>Clearly if we are going to simulate league tables, we need actual scores rather than just results. And we certainly need some draws and not “half wins”. So how can we simulate realistic football scores?</p>
-<p>Now let me make it clear at this point, I am not breaking any new ground here. There is a large body of work dedicated to the distribution of football scores going back as far as the 1950s. For further reading I recommend <a href="https://academic.oup.com/jrsssa/article/134/4/623/7104572">Reep</a>, <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9574.1982.tb00782.x">Maher</a>, <a href="https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/1467-9876.00065">Dixon-Coles</a>, and others.</p>
-<p>But I find it useful and educational to try and build these things yourself step by step, so here we go. I promise to try and keep the maths (math for American readers) as light as possible.</p>
-</section>
-<section id="useful-probability-distributions" class="level3">
-<h3 class="anchored" data-anchor-id="useful-probability-distributions">Useful Probability Distributions</h3>
-<p>In statistics, when we have an event that will happen some random number of times during a time interval, it is common to use the <strong>Poisson</strong> distribution. Given that we know the average number of goals scored by teams in our dataset (1.42), we can simply plug that into R’s <code>dpois</code> function and it will give us the probability of 0 goals, 1 goal, 2 goals, and so forth.</p>
-<p>Then we can compare these probabilities with the actual observed relative frequency of each score:</p>
-<div class="centered-block max-70">
-<p><img src="viz/poisson_v_obs.png"></p>
-</div>
-<p>So what’s going on? Poisson is overpredicting scores of 1, 2 and 3, but underpredicting 0, 4, 5, and all higher scores up to infinity. This is a problem known as <strong>overdispersion</strong>.</p>
-<p>The Poisson distribution relies on an assumption that the <strong>mean</strong> is equal to the <strong>variance</strong>. In reality, this assumption is often not satisfied.</p>
-<p>Indeed, the variance of our football scores is <strong>1.65</strong> compared to the mean of <strong>1.42</strong>. That’s why the actual scores are more spread out (more 0s, more 5s and 6s) compared to the Poisson predictions (more 1s and 2s).</p>
-<p>This is where the <strong>negative binomial</strong> distribution comes to our rescue! The negative binomial distribution in its most common form would be used to model things like “if I have a 70% chance of making each free throw, what is the probability that I miss exactly 5 free throws before I make my 10th successful free throw?” Anyone who took a probability class at university will be familiar with fun questions like that.</p>
-<p>But the negative binomial distribution can also be expressed in a different way to make it very similar to the Poisson distribution, with a mean but also an additional parameter θ which is known (amongst other things) as the <strong>dispersion</strong> parameter. This allows us to build a Poisson-like distribution but to toggle the shape by changing θ. The two distributions are related - in fact, if you keep increasing θ, the negative binomial gets closer and closer to Poisson.</p>
-<p>Below I have added the negative binomial distribution (with θ = 10) alongside the Poisson and the actual observed results:</p>
-<div class="centered-block max-70">
-<p><img src="viz/poisson_v_nb_v_obs.png"></p>
-</div>
-<p>Not bad! We instantly see that this is a huge improvement over Poisson, and honestly does a pretty good job of fitting the actual observed scores. To demonstrate how increasing θ affects the negative binomial distribution, here is the same plot with θ = 10,000. It is now indistinguishable from the Poisson distribution:</p>
-<div class="centered-block max-70">
-<p><img src="viz/poisson_v_nb_v_obs_10k.png"></p>
-</div>
-<p>So we’re done, right? Just use a negative binomial distribution with θ = 10 to model football scores. Not so simple, I’m afraid! That would be making an assumption that you can generate a score for team A, and then generate a score for team B, as if the two things happen independently. But is that a fair assumption?</p>
-</section>
-<section id="are-team-scores-independent" class="level3">
-<h3 class="anchored" data-anchor-id="are-team-scores-independent">Are Team Scores Independent?</h3>
-<p>To test that assumption we need to look at the <em>conditional</em> distribution of a team once we know how many goals their opponents have scored:</p>
-<div class="centered-block max-70">
-<p><img src="viz/cond_plots.png"></p>
-</div>
-<p>So now we can see there is a problem. When the opponent has scored 0, the distribution underestimates 0. When the opponent has scored 1, the distribution underestimates 1. When the opponent has scored 2, the distribution underestimates 2, and so on.</p>
-<p>What this means is, in actual football, there are more draws than would be expected by generating two independent scores. This is not hard to explain: when a game is level, teams will take relatively fewer risks. When a team is trailing by one goal, they will throw men forward and make the game more open in pursuit of an equaliser. So the overall effect is that final scores are slightly more likely to be draws.</p>
-</section>
-<section id="accounting-for-team-strength" class="level3">
-<h3 class="anchored" data-anchor-id="accounting-for-team-strength">Accounting for Team Strength</h3>
-<p>We also have another problem that we haven’t addressed yet. We are generating scores for an aggregate of all teams in our dataset. But teams’ abilities can vary significantly! So we need an algorithm that gives us the mean and distribution for one team, based on the difference in the teams’ Elo ratings, and then the mean and distribution for the second team, based not only on the Elo ratings but also on the score of the first team!</p>
-<p>The simplest way to approach this is by first generating the score of the favourite (i.e.&nbsp;the team with the higher Elo rating after home advantage has been applied). I fit this with a simple quadratic model of the difference in Elo ratings. Below we can see how this compares with the negative binomial with θ = 35. Remember, this is now an aggregation of different predictions across all of the games in the dataset.</p>
-<div class="centered-block max-70">
-<p><img src="viz/fav_goals_fitted.png"></p>
-</div>
-<p>It’s a good fit. So the favourites at least seem to be sorted, and we can see that the negative binomial with θ = 35 is superior to Poisson.</p>
-<p>But what about the underdog? It’s slightly more complex to fit the underdog’s mean goals scored because now we have to account for the number of goals scored by the favourite.</p>
-<p>In addition, I added <strong>interaction</strong> terms to the quadratic model. What are interactions? A simple way to explain this is, if Real Madrid were playing against Tranmere Rovers and I told you Real Madrid scored 3 goals, would it change your prediction of how many Tranmere scored? Probably not. If I told you Tranmere scored 3? Clearly your estimates for Real Madrid scoring 3+ should increase. That is an interaction between two variables, because the first variable (number of goals scored by the opposition) has a different effect on the outcome depending on a second variable (quality of the opposition).</p>
-<p>So let’s see how the underdog scores come out, conditional on the goals scored by the favourite:</p>
-<div class="centered-block max-70">
-<p><img src="viz/underdog_cond_plots_dispersion_5.png"></p>
-</div>
-<p>Clearly there is a problem. I tried a few different values of θ - the above plots are with θ = 5 because that’s a good fit when the favourite scores 0. But it’s a poor fit for the other scores. So what we probably need is a different θ depending on the favourite’s score!</p>
-<p>I trained a function to find the optimal θ for each value of the favourite’s score, and these were the results:</p>
-<div class="centered-block max-70">
+<p>As a football (soccer) fan, one aspect of American sports that I’m a bit jealous of is the <strong>draft</strong>. Not because I want bad teams to be rewarded – that part is ridiculous – but I think the annual speculation would be a lot of fun. Who would have been the top picks in years gone by? Who would be the huge busts and the undrafted superstars? And how much would a high draft pick be worth in trades?</p>
+<p>For the last decade, <a href="https://www.goal.com/">goal.com</a> has been publishing its <strong>NXGN</strong> list containing the top 50 players aged 18 or younger on the 1st of January. This is just their subjective ranking, of course, but it does give us a snapshot of how each player was seen at the time rather than with the benefit of hindsight.</p>
+<p><em>(Note that some players can be aged 19 by the time the list is published around March).</em></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dljobxlgnt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:500px;height:auto;">
-<style>#dljobxlgnt table {
+<div id="mcglxeylky" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mcglxeylky table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dljobxlgnt thead, #dljobxlgnt tbody, #dljobxlgnt tfoot, #dljobxlgnt tr, #dljobxlgnt td, #dljobxlgnt th {
+#mcglxeylky thead, #mcglxeylky tbody, #mcglxeylky tfoot, #mcglxeylky tr, #mcglxeylky td, #mcglxeylky th {
   border-style: none;
 }
 
-#dljobxlgnt p {
+#mcglxeylky p {
   margin: 0;
   padding: 0;
 }
 
-#dljobxlgnt .gt_table {
+#mcglxeylky .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
-  width: auto;
+  width: 100%;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
@@ -481,12 +395,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_caption {
+#mcglxeylky .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dljobxlgnt .gt_title {
+#mcglxeylky .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -498,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#dljobxlgnt .gt_subtitle {
+#mcglxeylky .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -510,7 +424,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#dljobxlgnt .gt_heading {
+#mcglxeylky .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -522,13 +436,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_bottom_border {
+#mcglxeylky .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_col_headings {
+#mcglxeylky .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -543,7 +457,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_col_heading {
+#mcglxeylky .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -563,7 +477,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#dljobxlgnt .gt_column_spanner_outer {
+#mcglxeylky .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -575,15 +489,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#dljobxlgnt .gt_column_spanner_outer:first-child {
+#mcglxeylky .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dljobxlgnt .gt_column_spanner_outer:last-child {
+#mcglxeylky .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dljobxlgnt .gt_column_spanner {
+#mcglxeylky .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -595,11 +509,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#dljobxlgnt .gt_spanner_row {
+#mcglxeylky .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dljobxlgnt .gt_group_heading {
+#mcglxeylky .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -625,7 +539,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#dljobxlgnt .gt_empty_group_heading {
+#mcglxeylky .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -640,17 +554,17 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#dljobxlgnt .gt_from_md > :first-child {
+#mcglxeylky .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dljobxlgnt .gt_from_md > :last-child {
+#mcglxeylky .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dljobxlgnt .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#mcglxeylky .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -667,7 +581,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#dljobxlgnt .gt_stub {
+#mcglxeylky .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -680,7 +594,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_stub_row_group {
+#mcglxeylky .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -694,15 +608,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#dljobxlgnt .gt_row_group_first td {
+#mcglxeylky .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dljobxlgnt .gt_row_group_first th {
+#mcglxeylky .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dljobxlgnt .gt_summary_row {
+#mcglxeylky .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -712,16 +626,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_first_summary_row {
+#mcglxeylky .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_first_summary_row.thick {
+#mcglxeylky .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dljobxlgnt .gt_last_summary_row {
+#mcglxeylky .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -731,7 +645,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_grand_summary_row {
+#mcglxeylky .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -741,7 +655,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_first_grand_summary_row {
+#mcglxeylky .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -751,7 +665,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_last_grand_summary_row_top {
+#mcglxeylky .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -761,11 +675,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_striped {
+#mcglxeylky .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dljobxlgnt .gt_table_body {
+#mcglxeylky .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -774,7 +688,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_footnotes {
+#mcglxeylky .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -788,7 +702,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_footnote {
+#mcglxeylky .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -797,7 +711,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_sourcenotes {
+#mcglxeylky .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -811,7 +725,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_sourcenote {
+#mcglxeylky .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -819,99 +733,154 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_left {
+#mcglxeylky .gt_left {
   text-align: left;
 }
 
-#dljobxlgnt .gt_center {
+#mcglxeylky .gt_center {
   text-align: center;
 }
 
-#dljobxlgnt .gt_right {
+#mcglxeylky .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dljobxlgnt .gt_font_normal {
+#mcglxeylky .gt_font_normal {
   font-weight: normal;
 }
 
-#dljobxlgnt .gt_font_bold {
+#mcglxeylky .gt_font_bold {
   font-weight: bold;
 }
 
-#dljobxlgnt .gt_font_italic {
+#mcglxeylky .gt_font_italic {
   font-style: italic;
 }
 
-#dljobxlgnt .gt_super {
+#mcglxeylky .gt_super {
   font-size: 65%;
 }
 
-#dljobxlgnt .gt_footnote_marks {
+#mcglxeylky .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dljobxlgnt .gt_asterisk {
+#mcglxeylky .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dljobxlgnt .gt_indent_1 {
+#mcglxeylky .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dljobxlgnt .gt_indent_2 {
+#mcglxeylky .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dljobxlgnt .gt_indent_3 {
+#mcglxeylky .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dljobxlgnt .gt_indent_4 {
+#mcglxeylky .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dljobxlgnt .gt_indent_5 {
+#mcglxeylky .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dljobxlgnt .katex-display {
+#mcglxeylky .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dljobxlgnt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mcglxeylky div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
-<tr class="gt_col_headings header">
-<th id="Fav_Goals" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Fav_Goals</th>
-<th id="Dispersion" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Dispersion</th>
+<tr class="gt_heading header">
+<td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border">#1-Ranked Player in NXGN Top Prospects List 2016-2026</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="edition" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Year</th>
+<th id="player" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Player</th>
+<th id="club" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Club</th>
+<th id="age" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Age</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_center" headers="Fav_Goals">0</td>
-<td class="gt_row gt_center" headers="Dispersion">8</td>
+<td class="gt_row gt_right" headers="edition">2026</td>
+<td class="gt_row gt_left" headers="player">Lamine Yamal</td>
+<td class="gt_row gt_left" headers="club">Barcelona</td>
+<td class="gt_row gt_left" headers="age">18 years, 254 days</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center" headers="Fav_Goals">1</td>
-<td class="gt_row gt_center" headers="Dispersion">35</td>
+<td class="gt_row gt_right" headers="edition">2025</td>
+<td class="gt_row gt_left" headers="player">Lamine Yamal</td>
+<td class="gt_row gt_left" headers="club">Barcelona</td>
+<td class="gt_row gt_left" headers="age">17 years, 248 days</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_center" headers="Fav_Goals">2</td>
-<td class="gt_row gt_center" headers="Dispersion">61</td>
+<td class="gt_row gt_right" headers="edition">2024</td>
+<td class="gt_row gt_left" headers="player">Lamine Yamal</td>
+<td class="gt_row gt_left" headers="club">Barcelona</td>
+<td class="gt_row gt_left" headers="age">16 years, 250 days</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center" headers="Fav_Goals">3</td>
-<td class="gt_row gt_center" headers="Dispersion">10000</td>
+<td class="gt_row gt_right" headers="edition">2023</td>
+<td class="gt_row gt_left" headers="player">List unranked</td>
+<td class="gt_row gt_left" headers="club">—</td>
+<td class="gt_row gt_left" headers="age">—</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="edition">2022</td>
+<td class="gt_row gt_left" headers="player">Jude Bellingham</td>
+<td class="gt_row gt_left" headers="club">Borussia Dortmund</td>
+<td class="gt_row gt_left" headers="age">18 years, 266 days</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="edition">2021</td>
+<td class="gt_row gt_left" headers="player">Ansu Fati</td>
+<td class="gt_row gt_left" headers="club">Barcelona</td>
+<td class="gt_row gt_left" headers="age">18 years, 143 days</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="edition">2020</td>
+<td class="gt_row gt_left" headers="player">Rodrygo</td>
+<td class="gt_row gt_left" headers="club">Real Madrid</td>
+<td class="gt_row gt_left" headers="age">19 years, 82 days</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="edition">2019</td>
+<td class="gt_row gt_left" headers="player">Jadon Sancho</td>
+<td class="gt_row gt_left" headers="club">Borussia Dortmund</td>
+<td class="gt_row gt_left" headers="age">18 years, 359 days</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="edition">2018</td>
+<td class="gt_row gt_left" headers="player">Justin Kluivert</td>
+<td class="gt_row gt_left" headers="club">Ajax</td>
+<td class="gt_row gt_left" headers="age">18 years, 327 days</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="edition">2017</td>
+<td class="gt_row gt_left" headers="player">Gianluigi Donnarumma</td>
+<td class="gt_row gt_left" headers="club">AC Milan</td>
+<td class="gt_row gt_left" headers="age">18 years, 25 days</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="edition">2016</td>
+<td class="gt_row gt_left" headers="player">Youri Tielemans</td>
+<td class="gt_row gt_left" headers="club">Anderlecht</td>
+<td class="gt_row gt_left" headers="age">18 years, 328 days</td>
 </tr>
 </tbody>
 </table>
@@ -919,48 +888,94 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>It’s a mixed list containing superstars (Yamal, Bellingham, Donnarumma), disappointments (Fati, Sancho) and some that fall in-between (Rodrygo, Tielemans).</p>
+<p>Ignoring the specifics of how an actual global draft would work, let’s pretend that the NXGN list represents the first 50 picks in a draft each year. 18 seems like the right age for a football draft – players are still largely just young prospects with potential rather than established first-teamers at the top level.</p>
+<p>To get a sense of the value of each pick I used the last published <a href="https://www.transfermarkt.co.uk">Transfermarkt</a> values prior to each year’s publication. These were inflation-adjusted to 2026 equivalents by taking the median of the top 500 Transfermarkt values each year and fitting a cublic smoothing spline to the logarithm of the medians.</p>
+<p>Below we can see the median and mean value when we group picks 1-50 into various bands. Immediately we can see that a top 5 pick is worth dramatically more than lower picks.</p>
+<div class="centered-block">
+<p><img src="02_publication_value_by_band.png"></p>
 </div>
-<p><br></p>
-<p>Let’s see how the conditional plots look with these fitted dispersions:</p>
-<div class="centered-block max-70">
-<p><img src="viz/underdog_cond_plots_fitted_dispersion.png"></p>
+<p>But those are the valuations at the time the list was published – it would be reasonable to think NXGN’s order will just reflect the same consensus used to generate Transfermarkt values. What we are really interested in for these young players is their <em>future</em> value. The following plot compares two curves: one models the value of each pick at time of publication, and the other models the value of the player five years later. To emphasise, these values are all normalised to 2026 levels, so an increase doesn’t simply reflect inflation.</p>
+<div class="centered-block">
+<p><img src="12_publication_and_five_year_draft_curves.png"></p>
 </div>
-<p>As Roy Walker would say: “It’s good, but it’s not the one.” So now it’s time to use some brute force. We know that the underdog’s score is more likely to match the favourite’s score, so let’s do exactly that.</p>
+<p>It appears that a top-5 pick is very valuable, with a forecast value of more than €125m after five years. After the top 5 the value drops off quite quickly, and beyond the 15th pick the curve is relatively flat – having the 40th pick isn’t worth much more than the 20th pick.</p>
+<p>It’s also noticeable that players at all levels are expected to be more valuable after five years. An obvious conclusion would be that young players are undervalued, so just buy all the young players! But this misses an important point: football recruitment is not a free market. Smaller clubs do not have the leverage to simply hold onto a player forever, and among buying clubs there is often a “preferred bidder” that the player wishes to join, or a small group of rich &amp; successful clubs that would be considered. So the big clubs are in a strong position and can sign the best young talent for relatively good value.</p>
+<section id="which-picks-were-the-biggest-busts" class="level2">
+<h2 class="anchored" data-anchor-id="which-picks-were-the-biggest-busts">Which picks were the biggest busts?</h2>
+<ul>
+<li><strong>Reinier Jesus</strong> (#4 pick in 2020). Just after his 18th birthday, signed with Real Madrid for €30 million. Bounced around Europe on various loans before moving back to Brazil on a free transfer in 2025. Currently valued at only €2m.</li>
+<li><strong>Gio Reyna</strong> (#3 pick in 2021). Another <em>great American hope</em> who broke into the Dortmund side at the age of 17. Struggled to follow that up and after a disappointing season with Borussia Monchengladbach he has just joined Strasbourg for the grand fee of €3m.</li>
+<li><strong>Ansu Fati</strong> (#2 pick in 2020, #1 pick in 2021). Seemingly the next Barcelona phenom when he debuted for the club at 16 years of age. Injuries have blighted his career and he recently joined Monaco for €11m after a mediocre loan season.</li>
+<li><strong>Alban Lafont</strong> (#4 pick in 2017). Became a regular starter in Ligue 1 at the age of 16, which is absurdly young for a goalkeeper. Has had a respectable career with more than 300 starts in Ligue 1 and Serie A, as well as 4 caps for the Ivory Coast, but never kicked on to the anticipated levels. Now playing in Turkey with Amedspor.</li>
+<li>Other notables: <strong>Justin Kluivert</strong> (#1 in 2018), <strong>Callum Hudson-Odoi</strong> (#3 in 2019), <strong>Breel Embolo</strong> (#2 in 2016) and <strong>Mason Greenwood</strong> (#3 in 2020). Not dreadful players by any means, but none of them reached the anticipated heights for a variety of reasons.</li>
+</ul>
 </section>
-<section id="inflating-draw-probabilities" class="level3">
-<h3 class="anchored" data-anchor-id="inflating-draw-probabilities">Inflating Draw Probabilities</h3>
-<p>I repeated the last optimization, but this time with an extra parameter that inflates the probability of the underdog getting the same score as the favourite. All values were adjusted proportionally to ensure the total probability was still 1, of course. Here are the results:</p>
-<div class="centered-block max-70">
+<section id="which-low-picks-were-steals" class="level2">
+<h2 class="anchored" data-anchor-id="which-low-picks-were-steals">Which low picks were steals?</h2>
+<ul>
+<li><strong>Erling Haaland</strong> (#33 pick in 2019). It feels like someone with Haaland’s physical tools was always an inevitable superstar, but NXGN ranked him well down the list in 33rd, just behind Rhian Brewster and Emile Smith-Rowe.</li>
+<li><strong>Bukayo Saka</strong> (#15 pick in 2020). Saka was starting regularly for Unai Emery’s Arsenal at 18, which nowadays would mark you as an elite prospect, but it was a poor Arsenal side which perhaps dampened the hype a bit.</li>
+<li><strong>Julian Alvarez</strong> (#37 pick in 2019). Alvarez was a relatively late bloomer, not establishing himself in the River Plate XI until the age of 20. Even at Manchester City he had to play second fiddle to Haaland, and it is only now that he is being viewed on the elite level as he tries to force a move away from Atletico Madrid.</li>
+</ul>
+</section>
+<section id="undrafted-players" class="level2">
+<h2 class="anchored" data-anchor-id="undrafted-players">Undrafted players</h2>
+<p>There are also a large number of valuable players who didn’t make the top 50, reinforcing the idea that beyond the top handful of prospects player-development is a bit of a lottery. Here are the most valuable undrafted players (using their value five years later) from each of the NXGN editions from 2016 to 2021. I restricted this to players aged 18, because it’s a bit harsh to expect them to include someone at age 15 who became a star player by 20.</p>
+<div class="centered-block">
+<p><img src="09_best_omissions_by_edition.png"></p>
+</div>
+<p>It’s surprising to see that players like <strong>Frenkie De Jong</strong>, <strong>Declan Rice</strong> or <strong>Joao Felix</strong> did not make the top 50 because they all feel like they emerged at a young age. But it just shows, when we strip away the benefit of hindsight, it is not inevitable which 18-year-olds will be the next generation’s best players. Felix is especially surprising because by the age of 19 he had already broken into the Benfica team and been transferred to Atletico Madrid for €126 million! Things can develop very quickly.</p>
+</section>
+<section id="what-about-actual-transfers-of-young-prospects" class="level2">
+<h2 class="anchored" data-anchor-id="what-about-actual-transfers-of-young-prospects">What about actual transfers of young prospects?</h2>
+<p>As mentioned earlier, the NXGN ranking is just a subjective list. Let’s take a look at some actual players who were bought for large fees before the age of 19, and whether their Transfermarkt value five years later was higher or lower than the transfer fee.</p>
+<div class="centered-block">
+<p><img src="10b_largest_u19_transfers_dumbbell.png"></p>
+</div>
+<p>It’s a mixed bag: of the 20 players shown, half decreased in value and half increased. In fairness, Oxlade-Chamberlain and Pjanic <em>barely</em> decreased, while some of the increases were very large, so it does seem like the 20 purchases were successful in the aggregate.</p>
+<p>The most expensive 18-year-old was <strong>Luke Shaw</strong> whose move from Southampton to Manchester United is equivalent to more than €100m in 2026. Shaw has had a respectable career: over 200 appearances for United and 34 caps for England. But he has struggled with injuries and it’s not the return you hope for when investing such a huge amount in a left-back.</p>
+<p>The NXGN prospects list only dates back to 2016 but if we use Transfermarkt values to determine our “pick” order, we can go back a little further. We can also assess who the top pick would have been each year, not only in a global draft, but also in a draft among England-based players only.</p>
+<div class="centered-block">
+<p><img src="11_u19_number_one_picks.png"></p>
+</div>
+<p>Surprisingly, Luke Shaw is the only England-based player since 2009 who has been the most valuable 18-year-old in the world. The overall list of English #1 picks is underwhelming; Shaw is actually one of the more successful outcomes compared to the other youngsters, some of whom didn’t even establish themselves at the top level.</p>
+<p>One prominent aspect of this chart is just what an outlier <strong>Lamine Yamal</strong> is. As the Messi &amp; Ronaldo era comes to an end, it seems nicely set up for Yamal to take over as the world’s clear superstar. It’s also notable that Chelsea’s <strong>Estevao</strong> is the most valuable young prospect in English football for some time; at time of writing it’s not easy to see where he will fit into Xabi Alonso’s formation, but talent has a way of finding its way to the top and it will be a surprise if Chelsea decide to let him go.</p>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<p>So it seems like if you can get one of the top 5 prospects in world football, great. You are probably onto a winner. Beyond that, it becomes a bit more of a lottery: just get as many tickets as you can, and see which ones win.</p>
+<p>NXGN’s 2026 top five are therefore interesting to watch. Email your club, and tell them to snap these players up! Except, bad news…the big clubs already have them:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="gopdmwxzmt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:500px;height:auto;">
-<style>#gopdmwxzmt table {
+<div id="fqpniylyft" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fqpniylyft table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gopdmwxzmt thead, #gopdmwxzmt tbody, #gopdmwxzmt tfoot, #gopdmwxzmt tr, #gopdmwxzmt td, #gopdmwxzmt th {
+#fqpniylyft thead, #fqpniylyft tbody, #fqpniylyft tfoot, #fqpniylyft tr, #fqpniylyft td, #fqpniylyft th {
   border-style: none;
 }
 
-#gopdmwxzmt p {
+#fqpniylyft p {
   margin: 0;
   padding: 0;
 }
 
-#gopdmwxzmt .gt_table {
+#fqpniylyft .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
-  width: auto;
+  width: 100%;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
@@ -975,12 +990,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_caption {
+#fqpniylyft .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gopdmwxzmt .gt_title {
+#fqpniylyft .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -992,7 +1007,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#gopdmwxzmt .gt_subtitle {
+#fqpniylyft .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1004,7 +1019,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#gopdmwxzmt .gt_heading {
+#fqpniylyft .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1016,13 +1031,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_bottom_border {
+#fqpniylyft .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_col_headings {
+#fqpniylyft .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1037,7 +1052,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_col_heading {
+#fqpniylyft .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1057,7 +1072,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#gopdmwxzmt .gt_column_spanner_outer {
+#fqpniylyft .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1069,15 +1084,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#gopdmwxzmt .gt_column_spanner_outer:first-child {
+#fqpniylyft .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gopdmwxzmt .gt_column_spanner_outer:last-child {
+#fqpniylyft .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gopdmwxzmt .gt_column_spanner {
+#fqpniylyft .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1089,11 +1104,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#gopdmwxzmt .gt_spanner_row {
+#fqpniylyft .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gopdmwxzmt .gt_group_heading {
+#fqpniylyft .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1119,7 +1134,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#gopdmwxzmt .gt_empty_group_heading {
+#fqpniylyft .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1134,17 +1149,17 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#gopdmwxzmt .gt_from_md > :first-child {
+#fqpniylyft .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gopdmwxzmt .gt_from_md > :last-child {
+#fqpniylyft .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gopdmwxzmt .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#fqpniylyft .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -1161,7 +1176,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#gopdmwxzmt .gt_stub {
+#fqpniylyft .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1174,7 +1189,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_stub_row_group {
+#fqpniylyft .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1188,15 +1203,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#gopdmwxzmt .gt_row_group_first td {
+#fqpniylyft .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gopdmwxzmt .gt_row_group_first th {
+#fqpniylyft .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gopdmwxzmt .gt_summary_row {
+#fqpniylyft .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1206,16 +1221,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_first_summary_row {
+#fqpniylyft .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_first_summary_row.thick {
+#fqpniylyft .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gopdmwxzmt .gt_last_summary_row {
+#fqpniylyft .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1225,7 +1240,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_grand_summary_row {
+#fqpniylyft .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1235,7 +1250,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_first_grand_summary_row {
+#fqpniylyft .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1245,7 +1260,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_last_grand_summary_row_top {
+#fqpniylyft .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1255,11 +1270,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_striped {
+#fqpniylyft .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gopdmwxzmt .gt_table_body {
+#fqpniylyft .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1268,7 +1283,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_footnotes {
+#fqpniylyft .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1282,7 +1297,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_footnote {
+#fqpniylyft .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1291,7 +1306,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_sourcenotes {
+#fqpniylyft .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1305,7 +1320,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_sourcenote {
+#fqpniylyft .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1313,104 +1328,124 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_left {
+#fqpniylyft .gt_left {
   text-align: left;
 }
 
-#gopdmwxzmt .gt_center {
+#fqpniylyft .gt_center {
   text-align: center;
 }
 
-#gopdmwxzmt .gt_right {
+#fqpniylyft .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gopdmwxzmt .gt_font_normal {
+#fqpniylyft .gt_font_normal {
   font-weight: normal;
 }
 
-#gopdmwxzmt .gt_font_bold {
+#fqpniylyft .gt_font_bold {
   font-weight: bold;
 }
 
-#gopdmwxzmt .gt_font_italic {
+#fqpniylyft .gt_font_italic {
   font-style: italic;
 }
 
-#gopdmwxzmt .gt_super {
+#fqpniylyft .gt_super {
   font-size: 65%;
 }
 
-#gopdmwxzmt .gt_footnote_marks {
+#fqpniylyft .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gopdmwxzmt .gt_asterisk {
+#fqpniylyft .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gopdmwxzmt .gt_indent_1 {
+#fqpniylyft .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gopdmwxzmt .gt_indent_2 {
+#fqpniylyft .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gopdmwxzmt .gt_indent_3 {
+#fqpniylyft .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gopdmwxzmt .gt_indent_4 {
+#fqpniylyft .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gopdmwxzmt .gt_indent_5 {
+#fqpniylyft .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gopdmwxzmt .katex-display {
+#fqpniylyft .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gopdmwxzmt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fqpniylyft div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
-<tr class="gt_col_headings header">
-<th id="Opp_Goals" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Opp_Goals</th>
-<th id="Dispersion" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Dispersion</th>
-<th id="Inflation" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Inflation</th>
+<tr class="gt_heading header">
+<td colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border">NXG Top 5 Prospects 2026</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="rank" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Rank</th>
+<th id="player" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Player</th>
+<th id="club" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Club</th>
+<th id="age" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Age</th>
+<th id="value_at_publication_eur" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Transfermarkt Value</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_center" headers="Opp_Goals">0</td>
-<td class="gt_row gt_center" headers="Dispersion">569</td>
-<td class="gt_row gt_center" headers="Inflation">0.093</td>
+<td class="gt_row gt_right" headers="rank">1</td>
+<td class="gt_row gt_left" headers="player">Lamine Yamal</td>
+<td class="gt_row gt_left" headers="club">Barcelona</td>
+<td class="gt_row gt_left" headers="age">18 years, 254 days</td>
+<td class="gt_row gt_right" headers="value_at_publication_eur">€200,000,000</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center" headers="Opp_Goals">1</td>
-<td class="gt_row gt_center" headers="Dispersion">14</td>
-<td class="gt_row gt_center" headers="Inflation">0.050</td>
+<td class="gt_row gt_right" headers="rank">2</td>
+<td class="gt_row gt_left" headers="player">Estevao</td>
+<td class="gt_row gt_left" headers="club">Chelsea</td>
+<td class="gt_row gt_left" headers="age">18 years, 334 days</td>
+<td class="gt_row gt_right" headers="value_at_publication_eur">€80,000,000</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_center" headers="Opp_Goals">2</td>
-<td class="gt_row gt_center" headers="Dispersion">321</td>
-<td class="gt_row gt_center" headers="Inflation">0.009</td>
+<td class="gt_row gt_right" headers="rank">3</td>
+<td class="gt_row gt_left" headers="player">Pau Cubarsi</td>
+<td class="gt_row gt_left" headers="club">Barcelona</td>
+<td class="gt_row gt_left" headers="age">19 years, 61 days</td>
+<td class="gt_row gt_right" headers="value_at_publication_eur">€80,000,000</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center" headers="Opp_Goals">3</td>
-<td class="gt_row gt_center" headers="Dispersion">198</td>
-<td class="gt_row gt_center" headers="Inflation">0.006</td>
+<td class="gt_row gt_right" headers="rank">4</td>
+<td class="gt_row gt_left" headers="player">Franco Mastantuono</td>
+<td class="gt_row gt_left" headers="club">Real Madrid</td>
+<td class="gt_row gt_left" headers="age">18 years, 222 days</td>
+<td class="gt_row gt_right" headers="value_at_publication_eur">€45,000,000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="rank">5</td>
+<td class="gt_row gt_left" headers="player">Lennart Karl</td>
+<td class="gt_row gt_left" headers="club">Bayern Munich</td>
+<td class="gt_row gt_left" headers="age">18 years, 30 days</td>
+<td class="gt_row gt_right" headers="value_at_publication_eur">€60,000,000</td>
 </tr>
 </tbody>
 </table>
@@ -1418,31 +1453,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-</div>
-<p><br></p>
-<p>So when the favourite scores 0, there is a big boost to the probability of the underdog scoring 0. When the favourite scores 1, the effect reduces by almost half. For 2 or more goals, the inflation is minimal.</p>
-<p>Now how does that look in the conditional distribution?</p>
-<div class="centered-block max-70">
-<p><img src="viz/underdog_cond_pointmass.png"></p>
-</div>
-<p>I’m pretty happy with that overall. The scores seem to track reality quite well, so we can now generate a probability of every scoreline (0-0, 2-1, 3-3, etc) for each game in the dataset and derive probabilities of win-draw-loss for each team. Let’s calibrate our model by comparing these probabilities with the actual results and scores:</p>
-<div class="centered-block max-70">
-<p><img src="viz/deciles_new.png"></p>
-</div>
-<div class="centered-block max-70">
-<p><img src="viz/wdl.png"></p>
-</div>
-<div class="centered-block max-70">
-<p><img src="viz/model_v_scores.png"></p>
-</div>
-<p>The deciles track pretty nicely as the dashed line falls inside all the error bars except one. Note that the probabilities are different to the earlier decile plot because that one was using “half wins” when a game was drawn, whereas this plot assumes a draw is not a win (i.e.&nbsp;it is 0, the same as a loss).</p>
-<p>The W-D-L plot and correct scores plot are close; there just seems to be a stubborn difference in the 1-1 predictions for some reason. But for the task at hand, this should easily be adequate.</p>
-</section>
-<section id="summary" class="level3">
-<h3 class="anchored" data-anchor-id="summary">Summary</h3>
-<p>Via this process we have ended up with something similar to the Dixon-Coles model, which uses a Poisson distribution with inflated probabilities of low scores (0-0, 0-1, 1-1, 1-0).</p>
-<p>By fitting scores conditionally and inflating the probability of draws, we have a system that can generate realistic match outcomes from Elo ratings alone. This forms a solid foundation for simulating league tables and other competitions, although for advanced analysis I would always advise users to be conscious of the <a href="https://en.wikipedia.org/wiki/Garbage_in,_garbage_out">GIGO</a> problem.</p>
-<p>Thanks for reading, and as I mentioned earlier, you can find all the code relating to this project at my <a href="https://github.com/johnknightstats/elo-league-sims">GitHub repo</a>.</p>
 <div class="data-footer">
 <p><strong>Data Sources</strong><br>
 I gather match data from a variety of public sources. Please check out these excellent websites:</p>
@@ -1458,7 +1468,7 @@ I gather match data from a variety of public sources. Please check out these exc
 </ul>
 <p>I welcome feedback! Feel free to contact me at <a href="mailto:knightjohn2@gmail.com">knightjohn2@gmail.com</a>.</p>
 </div>
-<p>© 2025 John Knight. All rights reserved.</p>
+<p>© 2026 John Knight. All rights reserved.</p>
 
 
 </section>

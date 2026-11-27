@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,18 +41,19 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c1afb647e6504aed1ecd096a1ed45b6d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -108,6 +109,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -137,13 +139,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -237,6 +245,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -251,15 +260,14 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -291,8 +299,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -302,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -352,23 +361,23 @@ ul.task-list li input[type="checkbox"] {
 <p>I looked at data from the fantastic website <a href="https://www.transfermarkt.co.uk">Transfermarkt</a> to compare all transfers in the Premier League since 1992/93. The first challenge was to adjust all transfers for <strong>inflation</strong>. There are different ways to approach this, and they are all fairly arbitrary, but I normalized each transfer as a proportion of the total Premier League signings in that season and then added some smoothing in case there were outlier seasons that skewed the results. The top 10 biggest inflation-adjusted signings by Premier League clubs were as follows:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qrzhbwayjr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qrzhbwayjr table {
+<div id="rpgkiqqrpo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rpgkiqqrpo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qrzhbwayjr thead, #qrzhbwayjr tbody, #qrzhbwayjr tfoot, #qrzhbwayjr tr, #qrzhbwayjr td, #qrzhbwayjr th {
+#rpgkiqqrpo thead, #rpgkiqqrpo tbody, #rpgkiqqrpo tfoot, #rpgkiqqrpo tr, #rpgkiqqrpo td, #rpgkiqqrpo th {
   border-style: none;
 }
 
-#qrzhbwayjr p {
+#rpgkiqqrpo p {
   margin: 0;
   padding: 0;
 }
 
-#qrzhbwayjr .gt_table {
+#rpgkiqqrpo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -394,12 +403,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_caption {
+#rpgkiqqrpo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qrzhbwayjr .gt_title {
+#rpgkiqqrpo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -411,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#qrzhbwayjr .gt_subtitle {
+#rpgkiqqrpo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -423,7 +432,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#qrzhbwayjr .gt_heading {
+#rpgkiqqrpo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -435,13 +444,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_bottom_border {
+#rpgkiqqrpo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_col_headings {
+#rpgkiqqrpo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -456,7 +465,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_col_heading {
+#rpgkiqqrpo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -476,7 +485,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qrzhbwayjr .gt_column_spanner_outer {
+#rpgkiqqrpo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -488,15 +497,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#qrzhbwayjr .gt_column_spanner_outer:first-child {
+#rpgkiqqrpo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qrzhbwayjr .gt_column_spanner_outer:last-child {
+#rpgkiqqrpo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qrzhbwayjr .gt_column_spanner {
+#rpgkiqqrpo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -508,11 +517,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#qrzhbwayjr .gt_spanner_row {
+#rpgkiqqrpo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qrzhbwayjr .gt_group_heading {
+#rpgkiqqrpo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -538,7 +547,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#qrzhbwayjr .gt_empty_group_heading {
+#rpgkiqqrpo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -553,15 +562,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#qrzhbwayjr .gt_from_md > :first-child {
+#rpgkiqqrpo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qrzhbwayjr .gt_from_md > :last-child {
+#rpgkiqqrpo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qrzhbwayjr .gt_row {
+#rpgkiqqrpo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -580,7 +589,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qrzhbwayjr .gt_stub {
+#rpgkiqqrpo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -593,7 +602,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qrzhbwayjr .gt_stub_row_group {
+#rpgkiqqrpo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -607,15 +616,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#qrzhbwayjr .gt_row_group_first td {
+#rpgkiqqrpo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qrzhbwayjr .gt_row_group_first th {
+#rpgkiqqrpo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qrzhbwayjr .gt_summary_row {
+#rpgkiqqrpo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -625,16 +634,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qrzhbwayjr .gt_first_summary_row {
+#rpgkiqqrpo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_first_summary_row.thick {
+#rpgkiqqrpo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qrzhbwayjr .gt_last_summary_row {
+#rpgkiqqrpo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -644,7 +653,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_grand_summary_row {
+#rpgkiqqrpo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -654,7 +663,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qrzhbwayjr .gt_first_grand_summary_row {
+#rpgkiqqrpo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -664,7 +673,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_last_grand_summary_row_top {
+#rpgkiqqrpo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -674,11 +683,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_striped {
+#rpgkiqqrpo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qrzhbwayjr .gt_table_body {
+#rpgkiqqrpo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -687,7 +696,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_footnotes {
+#rpgkiqqrpo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -701,7 +710,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_footnote {
+#rpgkiqqrpo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -710,7 +719,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qrzhbwayjr .gt_sourcenotes {
+#rpgkiqqrpo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -724,7 +733,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qrzhbwayjr .gt_sourcenote {
+#rpgkiqqrpo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -732,72 +741,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qrzhbwayjr .gt_left {
+#rpgkiqqrpo .gt_left {
   text-align: left;
 }
 
-#qrzhbwayjr .gt_center {
+#rpgkiqqrpo .gt_center {
   text-align: center;
 }
 
-#qrzhbwayjr .gt_right {
+#rpgkiqqrpo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qrzhbwayjr .gt_font_normal {
+#rpgkiqqrpo .gt_font_normal {
   font-weight: normal;
 }
 
-#qrzhbwayjr .gt_font_bold {
+#rpgkiqqrpo .gt_font_bold {
   font-weight: bold;
 }
 
-#qrzhbwayjr .gt_font_italic {
+#rpgkiqqrpo .gt_font_italic {
   font-style: italic;
 }
 
-#qrzhbwayjr .gt_super {
+#rpgkiqqrpo .gt_super {
   font-size: 65%;
 }
 
-#qrzhbwayjr .gt_footnote_marks {
+#rpgkiqqrpo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qrzhbwayjr .gt_asterisk {
+#rpgkiqqrpo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qrzhbwayjr .gt_indent_1 {
+#rpgkiqqrpo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qrzhbwayjr .gt_indent_2 {
+#rpgkiqqrpo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qrzhbwayjr .gt_indent_3 {
+#rpgkiqqrpo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qrzhbwayjr .gt_indent_4 {
+#rpgkiqqrpo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qrzhbwayjr .gt_indent_5 {
+#rpgkiqqrpo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qrzhbwayjr .katex-display {
+#rpgkiqqrpo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qrzhbwayjr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rpgkiqqrpo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -901,23 +910,23 @@ ul.task-list li input[type="checkbox"] {
 <p>I’m sure many of you are curious how other big signings stack up when adjusted for inflation. Below is a table showing the biggest adjusted fee paid by each of the 51 clubs who have competed in the Premier League. This will be a head-in-hands moment for fans of certain teams.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fptyxgaqaf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fptyxgaqaf table {
+<div id="vakkvrxclh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vakkvrxclh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fptyxgaqaf thead, #fptyxgaqaf tbody, #fptyxgaqaf tfoot, #fptyxgaqaf tr, #fptyxgaqaf td, #fptyxgaqaf th {
+#vakkvrxclh thead, #vakkvrxclh tbody, #vakkvrxclh tfoot, #vakkvrxclh tr, #vakkvrxclh td, #vakkvrxclh th {
   border-style: none;
 }
 
-#fptyxgaqaf p {
+#vakkvrxclh p {
   margin: 0;
   padding: 0;
 }
 
-#fptyxgaqaf .gt_table {
+#vakkvrxclh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -943,12 +952,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_caption {
+#vakkvrxclh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fptyxgaqaf .gt_title {
+#vakkvrxclh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -960,7 +969,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#fptyxgaqaf .gt_subtitle {
+#vakkvrxclh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -972,7 +981,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#fptyxgaqaf .gt_heading {
+#vakkvrxclh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -984,13 +993,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_bottom_border {
+#vakkvrxclh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_col_headings {
+#vakkvrxclh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1005,7 +1014,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_col_heading {
+#vakkvrxclh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1025,7 +1034,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#fptyxgaqaf .gt_column_spanner_outer {
+#vakkvrxclh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1037,15 +1046,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#fptyxgaqaf .gt_column_spanner_outer:first-child {
+#vakkvrxclh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fptyxgaqaf .gt_column_spanner_outer:last-child {
+#vakkvrxclh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fptyxgaqaf .gt_column_spanner {
+#vakkvrxclh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1057,11 +1066,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#fptyxgaqaf .gt_spanner_row {
+#vakkvrxclh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fptyxgaqaf .gt_group_heading {
+#vakkvrxclh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1087,7 +1096,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#fptyxgaqaf .gt_empty_group_heading {
+#vakkvrxclh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1102,15 +1111,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#fptyxgaqaf .gt_from_md > :first-child {
+#vakkvrxclh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fptyxgaqaf .gt_from_md > :last-child {
+#vakkvrxclh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fptyxgaqaf .gt_row {
+#vakkvrxclh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1129,7 +1138,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#fptyxgaqaf .gt_stub {
+#vakkvrxclh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1142,7 +1151,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fptyxgaqaf .gt_stub_row_group {
+#vakkvrxclh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1156,15 +1165,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#fptyxgaqaf .gt_row_group_first td {
+#vakkvrxclh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fptyxgaqaf .gt_row_group_first th {
+#vakkvrxclh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fptyxgaqaf .gt_summary_row {
+#vakkvrxclh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1174,16 +1183,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fptyxgaqaf .gt_first_summary_row {
+#vakkvrxclh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_first_summary_row.thick {
+#vakkvrxclh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fptyxgaqaf .gt_last_summary_row {
+#vakkvrxclh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1193,7 +1202,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_grand_summary_row {
+#vakkvrxclh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1203,7 +1212,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fptyxgaqaf .gt_first_grand_summary_row {
+#vakkvrxclh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1213,7 +1222,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_last_grand_summary_row_top {
+#vakkvrxclh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1223,11 +1232,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_striped {
+#vakkvrxclh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fptyxgaqaf .gt_table_body {
+#vakkvrxclh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1236,7 +1245,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_footnotes {
+#vakkvrxclh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1250,7 +1259,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_footnote {
+#vakkvrxclh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1259,7 +1268,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fptyxgaqaf .gt_sourcenotes {
+#vakkvrxclh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1273,7 +1282,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fptyxgaqaf .gt_sourcenote {
+#vakkvrxclh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1281,72 +1290,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fptyxgaqaf .gt_left {
+#vakkvrxclh .gt_left {
   text-align: left;
 }
 
-#fptyxgaqaf .gt_center {
+#vakkvrxclh .gt_center {
   text-align: center;
 }
 
-#fptyxgaqaf .gt_right {
+#vakkvrxclh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fptyxgaqaf .gt_font_normal {
+#vakkvrxclh .gt_font_normal {
   font-weight: normal;
 }
 
-#fptyxgaqaf .gt_font_bold {
+#vakkvrxclh .gt_font_bold {
   font-weight: bold;
 }
 
-#fptyxgaqaf .gt_font_italic {
+#vakkvrxclh .gt_font_italic {
   font-style: italic;
 }
 
-#fptyxgaqaf .gt_super {
+#vakkvrxclh .gt_super {
   font-size: 65%;
 }
 
-#fptyxgaqaf .gt_footnote_marks {
+#vakkvrxclh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fptyxgaqaf .gt_asterisk {
+#vakkvrxclh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fptyxgaqaf .gt_indent_1 {
+#vakkvrxclh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fptyxgaqaf .gt_indent_2 {
+#vakkvrxclh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fptyxgaqaf .gt_indent_3 {
+#vakkvrxclh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fptyxgaqaf .gt_indent_4 {
+#vakkvrxclh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fptyxgaqaf .gt_indent_5 {
+#vakkvrxclh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fptyxgaqaf .katex-display {
+#vakkvrxclh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fptyxgaqaf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vakkvrxclh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1734,23 +1743,23 @@ ul.task-list li input[type="checkbox"] {
 <p>I mentioned <strong>Roman Abramovich</strong> above, and his arrival into English football truly was a game-changer. In Abramovich’s first two seasons, Chelsea’s net spend was equivalent to about £1.5 billion today. The table below shows the top 10 net-spend seasons by Premier League clubs, with Chelsea &amp; Abu Dhabi-owned Manchester City occupying all of the top 8 spots.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="iqvfookkgz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iqvfookkgz table {
+<div id="kejghfcrhy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kejghfcrhy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iqvfookkgz thead, #iqvfookkgz tbody, #iqvfookkgz tfoot, #iqvfookkgz tr, #iqvfookkgz td, #iqvfookkgz th {
+#kejghfcrhy thead, #kejghfcrhy tbody, #kejghfcrhy tfoot, #kejghfcrhy tr, #kejghfcrhy td, #kejghfcrhy th {
   border-style: none;
 }
 
-#iqvfookkgz p {
+#kejghfcrhy p {
   margin: 0;
   padding: 0;
 }
 
-#iqvfookkgz .gt_table {
+#kejghfcrhy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1776,12 +1785,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_caption {
+#kejghfcrhy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iqvfookkgz .gt_title {
+#kejghfcrhy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1793,7 +1802,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#iqvfookkgz .gt_subtitle {
+#kejghfcrhy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1805,7 +1814,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#iqvfookkgz .gt_heading {
+#kejghfcrhy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1817,13 +1826,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_bottom_border {
+#kejghfcrhy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_col_headings {
+#kejghfcrhy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1838,7 +1847,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_col_heading {
+#kejghfcrhy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1858,7 +1867,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#iqvfookkgz .gt_column_spanner_outer {
+#kejghfcrhy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1870,15 +1879,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#iqvfookkgz .gt_column_spanner_outer:first-child {
+#kejghfcrhy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iqvfookkgz .gt_column_spanner_outer:last-child {
+#kejghfcrhy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iqvfookkgz .gt_column_spanner {
+#kejghfcrhy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1890,11 +1899,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#iqvfookkgz .gt_spanner_row {
+#kejghfcrhy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iqvfookkgz .gt_group_heading {
+#kejghfcrhy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1920,7 +1929,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#iqvfookkgz .gt_empty_group_heading {
+#kejghfcrhy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1935,15 +1944,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#iqvfookkgz .gt_from_md > :first-child {
+#kejghfcrhy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iqvfookkgz .gt_from_md > :last-child {
+#kejghfcrhy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iqvfookkgz .gt_row {
+#kejghfcrhy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1962,7 +1971,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#iqvfookkgz .gt_stub {
+#kejghfcrhy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1975,7 +1984,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#iqvfookkgz .gt_stub_row_group {
+#kejghfcrhy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1989,15 +1998,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#iqvfookkgz .gt_row_group_first td {
+#kejghfcrhy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iqvfookkgz .gt_row_group_first th {
+#kejghfcrhy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iqvfookkgz .gt_summary_row {
+#kejghfcrhy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2007,16 +2016,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#iqvfookkgz .gt_first_summary_row {
+#kejghfcrhy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_first_summary_row.thick {
+#kejghfcrhy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iqvfookkgz .gt_last_summary_row {
+#kejghfcrhy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2026,7 +2035,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_grand_summary_row {
+#kejghfcrhy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2036,7 +2045,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#iqvfookkgz .gt_first_grand_summary_row {
+#kejghfcrhy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2046,7 +2055,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_last_grand_summary_row_top {
+#kejghfcrhy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2056,11 +2065,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_striped {
+#kejghfcrhy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iqvfookkgz .gt_table_body {
+#kejghfcrhy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2069,7 +2078,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_footnotes {
+#kejghfcrhy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2083,7 +2092,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_footnote {
+#kejghfcrhy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2092,7 +2101,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#iqvfookkgz .gt_sourcenotes {
+#kejghfcrhy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2106,7 +2115,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#iqvfookkgz .gt_sourcenote {
+#kejghfcrhy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2114,72 +2123,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#iqvfookkgz .gt_left {
+#kejghfcrhy .gt_left {
   text-align: left;
 }
 
-#iqvfookkgz .gt_center {
+#kejghfcrhy .gt_center {
   text-align: center;
 }
 
-#iqvfookkgz .gt_right {
+#kejghfcrhy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iqvfookkgz .gt_font_normal {
+#kejghfcrhy .gt_font_normal {
   font-weight: normal;
 }
 
-#iqvfookkgz .gt_font_bold {
+#kejghfcrhy .gt_font_bold {
   font-weight: bold;
 }
 
-#iqvfookkgz .gt_font_italic {
+#kejghfcrhy .gt_font_italic {
   font-style: italic;
 }
 
-#iqvfookkgz .gt_super {
+#kejghfcrhy .gt_super {
   font-size: 65%;
 }
 
-#iqvfookkgz .gt_footnote_marks {
+#kejghfcrhy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iqvfookkgz .gt_asterisk {
+#kejghfcrhy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iqvfookkgz .gt_indent_1 {
+#kejghfcrhy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iqvfookkgz .gt_indent_2 {
+#kejghfcrhy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iqvfookkgz .gt_indent_3 {
+#kejghfcrhy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iqvfookkgz .gt_indent_4 {
+#kejghfcrhy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iqvfookkgz .gt_indent_5 {
+#kejghfcrhy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#iqvfookkgz .katex-display {
+#kejghfcrhy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#iqvfookkgz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kejghfcrhy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2265,23 +2274,23 @@ ul.task-list li input[type="checkbox"] {
 <p>As expected, higher net spend is associated with higher PPG, with a Pearson correlation coefficient of 0.26. But is net spend a useful metric? What if we take a separate look at the total fees paid and received by each club? Also, rather than just looking at summer spending, I considered the summer window <em>plus</em> the previous two seasons’ transfer activity to account for the overall investment in the team rather than just the most recent window. The correlation coefficients for the six combinations of these two variables can be seen below.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qpcrkhfxli" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qpcrkhfxli table {
+<div id="kqgwdjmgzi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kqgwdjmgzi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qpcrkhfxli thead, #qpcrkhfxli tbody, #qpcrkhfxli tfoot, #qpcrkhfxli tr, #qpcrkhfxli td, #qpcrkhfxli th {
+#kqgwdjmgzi thead, #kqgwdjmgzi tbody, #kqgwdjmgzi tfoot, #kqgwdjmgzi tr, #kqgwdjmgzi td, #kqgwdjmgzi th {
   border-style: none;
 }
 
-#qpcrkhfxli p {
+#kqgwdjmgzi p {
   margin: 0;
   padding: 0;
 }
 
-#qpcrkhfxli .gt_table {
+#kqgwdjmgzi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2307,12 +2316,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_caption {
+#kqgwdjmgzi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qpcrkhfxli .gt_title {
+#kqgwdjmgzi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2324,7 +2333,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#qpcrkhfxli .gt_subtitle {
+#kqgwdjmgzi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2336,7 +2345,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#qpcrkhfxli .gt_heading {
+#kqgwdjmgzi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2348,13 +2357,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_bottom_border {
+#kqgwdjmgzi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_col_headings {
+#kqgwdjmgzi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2369,7 +2378,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_col_heading {
+#kqgwdjmgzi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2389,7 +2398,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qpcrkhfxli .gt_column_spanner_outer {
+#kqgwdjmgzi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2401,15 +2410,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#qpcrkhfxli .gt_column_spanner_outer:first-child {
+#kqgwdjmgzi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qpcrkhfxli .gt_column_spanner_outer:last-child {
+#kqgwdjmgzi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qpcrkhfxli .gt_column_spanner {
+#kqgwdjmgzi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2421,11 +2430,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#qpcrkhfxli .gt_spanner_row {
+#kqgwdjmgzi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qpcrkhfxli .gt_group_heading {
+#kqgwdjmgzi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2451,7 +2460,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#qpcrkhfxli .gt_empty_group_heading {
+#kqgwdjmgzi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2466,15 +2475,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#qpcrkhfxli .gt_from_md > :first-child {
+#kqgwdjmgzi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qpcrkhfxli .gt_from_md > :last-child {
+#kqgwdjmgzi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qpcrkhfxli .gt_row {
+#kqgwdjmgzi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2493,7 +2502,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qpcrkhfxli .gt_stub {
+#kqgwdjmgzi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2506,7 +2515,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qpcrkhfxli .gt_stub_row_group {
+#kqgwdjmgzi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2520,15 +2529,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#qpcrkhfxli .gt_row_group_first td {
+#kqgwdjmgzi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qpcrkhfxli .gt_row_group_first th {
+#kqgwdjmgzi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qpcrkhfxli .gt_summary_row {
+#kqgwdjmgzi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2538,16 +2547,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qpcrkhfxli .gt_first_summary_row {
+#kqgwdjmgzi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_first_summary_row.thick {
+#kqgwdjmgzi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qpcrkhfxli .gt_last_summary_row {
+#kqgwdjmgzi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2557,7 +2566,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_grand_summary_row {
+#kqgwdjmgzi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2567,7 +2576,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qpcrkhfxli .gt_first_grand_summary_row {
+#kqgwdjmgzi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2577,7 +2586,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_last_grand_summary_row_top {
+#kqgwdjmgzi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2587,11 +2596,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_striped {
+#kqgwdjmgzi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qpcrkhfxli .gt_table_body {
+#kqgwdjmgzi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2600,7 +2609,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_footnotes {
+#kqgwdjmgzi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2614,7 +2623,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_footnote {
+#kqgwdjmgzi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2623,7 +2632,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qpcrkhfxli .gt_sourcenotes {
+#kqgwdjmgzi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2637,7 +2646,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qpcrkhfxli .gt_sourcenote {
+#kqgwdjmgzi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2645,72 +2654,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qpcrkhfxli .gt_left {
+#kqgwdjmgzi .gt_left {
   text-align: left;
 }
 
-#qpcrkhfxli .gt_center {
+#kqgwdjmgzi .gt_center {
   text-align: center;
 }
 
-#qpcrkhfxli .gt_right {
+#kqgwdjmgzi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qpcrkhfxli .gt_font_normal {
+#kqgwdjmgzi .gt_font_normal {
   font-weight: normal;
 }
 
-#qpcrkhfxli .gt_font_bold {
+#kqgwdjmgzi .gt_font_bold {
   font-weight: bold;
 }
 
-#qpcrkhfxli .gt_font_italic {
+#kqgwdjmgzi .gt_font_italic {
   font-style: italic;
 }
 
-#qpcrkhfxli .gt_super {
+#kqgwdjmgzi .gt_super {
   font-size: 65%;
 }
 
-#qpcrkhfxli .gt_footnote_marks {
+#kqgwdjmgzi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qpcrkhfxli .gt_asterisk {
+#kqgwdjmgzi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qpcrkhfxli .gt_indent_1 {
+#kqgwdjmgzi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qpcrkhfxli .gt_indent_2 {
+#kqgwdjmgzi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qpcrkhfxli .gt_indent_3 {
+#kqgwdjmgzi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qpcrkhfxli .gt_indent_4 {
+#kqgwdjmgzi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qpcrkhfxli .gt_indent_5 {
+#kqgwdjmgzi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qpcrkhfxli .katex-display {
+#kqgwdjmgzi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qpcrkhfxli div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kqgwdjmgzi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2764,23 +2773,23 @@ ul.task-list li input[type="checkbox"] {
 <p>There is also the question of whether the cumulative sum of fees is the best metric; it is possible to sign a large quantity of players who don’t improve the team. What if we instead look at the biggest fee paid?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="cqarnhtrae" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cqarnhtrae table {
+<div id="tvemiqdtld" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tvemiqdtld table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cqarnhtrae thead, #cqarnhtrae tbody, #cqarnhtrae tfoot, #cqarnhtrae tr, #cqarnhtrae td, #cqarnhtrae th {
+#tvemiqdtld thead, #tvemiqdtld tbody, #tvemiqdtld tfoot, #tvemiqdtld tr, #tvemiqdtld td, #tvemiqdtld th {
   border-style: none;
 }
 
-#cqarnhtrae p {
+#tvemiqdtld p {
   margin: 0;
   padding: 0;
 }
 
-#cqarnhtrae .gt_table {
+#tvemiqdtld .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2806,12 +2815,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_caption {
+#tvemiqdtld .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cqarnhtrae .gt_title {
+#tvemiqdtld .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2823,7 +2832,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#cqarnhtrae .gt_subtitle {
+#tvemiqdtld .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2835,7 +2844,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#cqarnhtrae .gt_heading {
+#tvemiqdtld .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2847,13 +2856,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_bottom_border {
+#tvemiqdtld .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_col_headings {
+#tvemiqdtld .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2868,7 +2877,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_col_heading {
+#tvemiqdtld .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2888,7 +2897,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#cqarnhtrae .gt_column_spanner_outer {
+#tvemiqdtld .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2900,15 +2909,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#cqarnhtrae .gt_column_spanner_outer:first-child {
+#tvemiqdtld .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cqarnhtrae .gt_column_spanner_outer:last-child {
+#tvemiqdtld .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cqarnhtrae .gt_column_spanner {
+#tvemiqdtld .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2920,11 +2929,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#cqarnhtrae .gt_spanner_row {
+#tvemiqdtld .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cqarnhtrae .gt_group_heading {
+#tvemiqdtld .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2950,7 +2959,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#cqarnhtrae .gt_empty_group_heading {
+#tvemiqdtld .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2965,15 +2974,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#cqarnhtrae .gt_from_md > :first-child {
+#tvemiqdtld .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cqarnhtrae .gt_from_md > :last-child {
+#tvemiqdtld .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cqarnhtrae .gt_row {
+#tvemiqdtld .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2992,7 +3001,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#cqarnhtrae .gt_stub {
+#tvemiqdtld .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3005,7 +3014,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cqarnhtrae .gt_stub_row_group {
+#tvemiqdtld .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3019,15 +3028,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#cqarnhtrae .gt_row_group_first td {
+#tvemiqdtld .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cqarnhtrae .gt_row_group_first th {
+#tvemiqdtld .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cqarnhtrae .gt_summary_row {
+#tvemiqdtld .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3037,16 +3046,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cqarnhtrae .gt_first_summary_row {
+#tvemiqdtld .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_first_summary_row.thick {
+#tvemiqdtld .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cqarnhtrae .gt_last_summary_row {
+#tvemiqdtld .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3056,7 +3065,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_grand_summary_row {
+#tvemiqdtld .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3066,7 +3075,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cqarnhtrae .gt_first_grand_summary_row {
+#tvemiqdtld .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3076,7 +3085,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_last_grand_summary_row_top {
+#tvemiqdtld .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3086,11 +3095,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_striped {
+#tvemiqdtld .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cqarnhtrae .gt_table_body {
+#tvemiqdtld .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3099,7 +3108,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_footnotes {
+#tvemiqdtld .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3113,7 +3122,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_footnote {
+#tvemiqdtld .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3122,7 +3131,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cqarnhtrae .gt_sourcenotes {
+#tvemiqdtld .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3136,7 +3145,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#cqarnhtrae .gt_sourcenote {
+#tvemiqdtld .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3144,72 +3153,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cqarnhtrae .gt_left {
+#tvemiqdtld .gt_left {
   text-align: left;
 }
 
-#cqarnhtrae .gt_center {
+#tvemiqdtld .gt_center {
   text-align: center;
 }
 
-#cqarnhtrae .gt_right {
+#tvemiqdtld .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cqarnhtrae .gt_font_normal {
+#tvemiqdtld .gt_font_normal {
   font-weight: normal;
 }
 
-#cqarnhtrae .gt_font_bold {
+#tvemiqdtld .gt_font_bold {
   font-weight: bold;
 }
 
-#cqarnhtrae .gt_font_italic {
+#tvemiqdtld .gt_font_italic {
   font-style: italic;
 }
 
-#cqarnhtrae .gt_super {
+#tvemiqdtld .gt_super {
   font-size: 65%;
 }
 
-#cqarnhtrae .gt_footnote_marks {
+#tvemiqdtld .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cqarnhtrae .gt_asterisk {
+#tvemiqdtld .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cqarnhtrae .gt_indent_1 {
+#tvemiqdtld .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cqarnhtrae .gt_indent_2 {
+#tvemiqdtld .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cqarnhtrae .gt_indent_3 {
+#tvemiqdtld .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cqarnhtrae .gt_indent_4 {
+#tvemiqdtld .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cqarnhtrae .gt_indent_5 {
+#tvemiqdtld .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cqarnhtrae .katex-display {
+#tvemiqdtld .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cqarnhtrae div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tvemiqdtld div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3313,15 +3322,50 @@ I gather match data from a variety of public sources. Please check out these exc
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -3400,7 +3444,8 @@ I gather match data from a variety of public sources. Please check out these exc
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -3409,8 +3454,69 @@ I gather match data from a variety of public sources. Please check out these exc
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -3424,6 +3530,7 @@ I gather match data from a variety of public sources. Please check out these exc
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -3586,44 +3693,54 @@ I gather match data from a variety of public sources. Please check out these exc
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -3721,6 +3838,9 @@ I gather match data from a variety of public sources. Please check out these exc
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,18 +41,19 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c1afb647e6504aed1ecd096a1ed45b6d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -108,6 +109,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -137,13 +139,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -237,6 +245,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -251,15 +260,14 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -291,8 +299,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -302,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -354,23 +363,23 @@ ul.task-list li input[type="checkbox"] {
 <p>So here we go. Based on the current match odds, here are the probabilities for each team to finish in the top 8 or the top 24.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fwvvxkxlki" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fwvvxkxlki table {
+<div id="igslmevbiu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#igslmevbiu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fwvvxkxlki thead, #fwvvxkxlki tbody, #fwvvxkxlki tfoot, #fwvvxkxlki tr, #fwvvxkxlki td, #fwvvxkxlki th {
+#igslmevbiu thead, #igslmevbiu tbody, #igslmevbiu tfoot, #igslmevbiu tr, #igslmevbiu td, #igslmevbiu th {
   border-style: none;
 }
 
-#fwvvxkxlki p {
+#igslmevbiu p {
   margin: 0;
   padding: 0;
 }
 
-#fwvvxkxlki .gt_table {
+#igslmevbiu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -396,12 +405,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_caption {
+#igslmevbiu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fwvvxkxlki .gt_title {
+#igslmevbiu .gt_title {
   color: #333333;
   font-size: 16px;
   font-weight: initial;
@@ -413,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#fwvvxkxlki .gt_subtitle {
+#igslmevbiu .gt_subtitle {
   color: #333333;
   font-size: 12px;
   font-weight: initial;
@@ -425,7 +434,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#fwvvxkxlki .gt_heading {
+#igslmevbiu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -437,13 +446,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_bottom_border {
+#igslmevbiu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_col_headings {
+#igslmevbiu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -458,7 +467,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_col_heading {
+#igslmevbiu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -478,7 +487,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#fwvvxkxlki .gt_column_spanner_outer {
+#igslmevbiu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -490,15 +499,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#fwvvxkxlki .gt_column_spanner_outer:first-child {
+#igslmevbiu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fwvvxkxlki .gt_column_spanner_outer:last-child {
+#igslmevbiu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fwvvxkxlki .gt_column_spanner {
+#igslmevbiu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -510,11 +519,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#fwvvxkxlki .gt_spanner_row {
+#igslmevbiu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fwvvxkxlki .gt_group_heading {
+#igslmevbiu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -540,7 +549,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#fwvvxkxlki .gt_empty_group_heading {
+#igslmevbiu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -555,15 +564,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#fwvvxkxlki .gt_from_md > :first-child {
+#igslmevbiu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fwvvxkxlki .gt_from_md > :last-child {
+#igslmevbiu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fwvvxkxlki .gt_row {
+#igslmevbiu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -582,7 +591,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#fwvvxkxlki .gt_stub {
+#igslmevbiu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -595,7 +604,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fwvvxkxlki .gt_stub_row_group {
+#igslmevbiu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -609,15 +618,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#fwvvxkxlki .gt_row_group_first td {
+#igslmevbiu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fwvvxkxlki .gt_row_group_first th {
+#igslmevbiu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fwvvxkxlki .gt_summary_row {
+#igslmevbiu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -627,16 +636,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fwvvxkxlki .gt_first_summary_row {
+#igslmevbiu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_first_summary_row.thick {
+#igslmevbiu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fwvvxkxlki .gt_last_summary_row {
+#igslmevbiu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -646,7 +655,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_grand_summary_row {
+#igslmevbiu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -656,7 +665,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fwvvxkxlki .gt_first_grand_summary_row {
+#igslmevbiu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -666,7 +675,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_last_grand_summary_row_top {
+#igslmevbiu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -676,11 +685,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_striped {
+#igslmevbiu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fwvvxkxlki .gt_table_body {
+#igslmevbiu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -689,7 +698,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_footnotes {
+#igslmevbiu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -703,7 +712,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_footnote {
+#igslmevbiu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -712,7 +721,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fwvvxkxlki .gt_sourcenotes {
+#igslmevbiu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -726,7 +735,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fwvvxkxlki .gt_sourcenote {
+#igslmevbiu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -734,72 +743,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fwvvxkxlki .gt_left {
+#igslmevbiu .gt_left {
   text-align: left;
 }
 
-#fwvvxkxlki .gt_center {
+#igslmevbiu .gt_center {
   text-align: center;
 }
 
-#fwvvxkxlki .gt_right {
+#igslmevbiu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fwvvxkxlki .gt_font_normal {
+#igslmevbiu .gt_font_normal {
   font-weight: normal;
 }
 
-#fwvvxkxlki .gt_font_bold {
+#igslmevbiu .gt_font_bold {
   font-weight: bold;
 }
 
-#fwvvxkxlki .gt_font_italic {
+#igslmevbiu .gt_font_italic {
   font-style: italic;
 }
 
-#fwvvxkxlki .gt_super {
+#igslmevbiu .gt_super {
   font-size: 65%;
 }
 
-#fwvvxkxlki .gt_footnote_marks {
+#igslmevbiu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fwvvxkxlki .gt_asterisk {
+#igslmevbiu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fwvvxkxlki .gt_indent_1 {
+#igslmevbiu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fwvvxkxlki .gt_indent_2 {
+#igslmevbiu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fwvvxkxlki .gt_indent_3 {
+#igslmevbiu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fwvvxkxlki .gt_indent_4 {
+#igslmevbiu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fwvvxkxlki .gt_indent_5 {
+#igslmevbiu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fwvvxkxlki .katex-display {
+#igslmevbiu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fwvvxkxlki div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#igslmevbiu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1161,23 +1170,23 @@ ul.task-list li input[type="checkbox"] {
 <p>For Liverpool, Tottenham, and Newcastle thanks to their goal difference, the brief is simple: win and you’re in. But what if they don’t win? What are their chances? And what about Chelsea and City? The following table shows the probability of each team reaching the top eight conditional upon their result in the final match.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="lnorfldlvw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lnorfldlvw table {
+<div id="fppznwrgjq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fppznwrgjq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lnorfldlvw thead, #lnorfldlvw tbody, #lnorfldlvw tfoot, #lnorfldlvw tr, #lnorfldlvw td, #lnorfldlvw th {
+#fppznwrgjq thead, #fppznwrgjq tbody, #fppznwrgjq tfoot, #fppznwrgjq tr, #fppznwrgjq td, #fppznwrgjq th {
   border-style: none;
 }
 
-#lnorfldlvw p {
+#fppznwrgjq p {
   margin: 0;
   padding: 0;
 }
 
-#lnorfldlvw .gt_table {
+#fppznwrgjq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1203,12 +1212,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_caption {
+#fppznwrgjq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lnorfldlvw .gt_title {
+#fppznwrgjq .gt_title {
   color: #333333;
   font-size: 16px;
   font-weight: initial;
@@ -1220,7 +1229,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#lnorfldlvw .gt_subtitle {
+#fppznwrgjq .gt_subtitle {
   color: #333333;
   font-size: 12px;
   font-weight: initial;
@@ -1232,7 +1241,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#lnorfldlvw .gt_heading {
+#fppznwrgjq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1244,13 +1253,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_bottom_border {
+#fppznwrgjq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_col_headings {
+#fppznwrgjq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1265,7 +1274,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_col_heading {
+#fppznwrgjq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1285,7 +1294,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#lnorfldlvw .gt_column_spanner_outer {
+#fppznwrgjq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1297,15 +1306,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#lnorfldlvw .gt_column_spanner_outer:first-child {
+#fppznwrgjq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lnorfldlvw .gt_column_spanner_outer:last-child {
+#fppznwrgjq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lnorfldlvw .gt_column_spanner {
+#fppznwrgjq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1317,11 +1326,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#lnorfldlvw .gt_spanner_row {
+#fppznwrgjq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lnorfldlvw .gt_group_heading {
+#fppznwrgjq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1347,7 +1356,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#lnorfldlvw .gt_empty_group_heading {
+#fppznwrgjq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1362,15 +1371,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#lnorfldlvw .gt_from_md > :first-child {
+#fppznwrgjq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lnorfldlvw .gt_from_md > :last-child {
+#fppznwrgjq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lnorfldlvw .gt_row {
+#fppznwrgjq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1389,7 +1398,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#lnorfldlvw .gt_stub {
+#fppznwrgjq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1402,7 +1411,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lnorfldlvw .gt_stub_row_group {
+#fppznwrgjq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1416,15 +1425,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#lnorfldlvw .gt_row_group_first td {
+#fppznwrgjq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lnorfldlvw .gt_row_group_first th {
+#fppznwrgjq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lnorfldlvw .gt_summary_row {
+#fppznwrgjq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1434,16 +1443,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lnorfldlvw .gt_first_summary_row {
+#fppznwrgjq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_first_summary_row.thick {
+#fppznwrgjq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lnorfldlvw .gt_last_summary_row {
+#fppznwrgjq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1453,7 +1462,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_grand_summary_row {
+#fppznwrgjq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1463,7 +1472,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lnorfldlvw .gt_first_grand_summary_row {
+#fppznwrgjq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1473,7 +1482,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_last_grand_summary_row_top {
+#fppznwrgjq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1483,11 +1492,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_striped {
+#fppznwrgjq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lnorfldlvw .gt_table_body {
+#fppznwrgjq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1496,7 +1505,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_footnotes {
+#fppznwrgjq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1510,7 +1519,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_footnote {
+#fppznwrgjq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1519,7 +1528,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lnorfldlvw .gt_sourcenotes {
+#fppznwrgjq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1533,7 +1542,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#lnorfldlvw .gt_sourcenote {
+#fppznwrgjq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1541,72 +1550,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#lnorfldlvw .gt_left {
+#fppznwrgjq .gt_left {
   text-align: left;
 }
 
-#lnorfldlvw .gt_center {
+#fppznwrgjq .gt_center {
   text-align: center;
 }
 
-#lnorfldlvw .gt_right {
+#fppznwrgjq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lnorfldlvw .gt_font_normal {
+#fppznwrgjq .gt_font_normal {
   font-weight: normal;
 }
 
-#lnorfldlvw .gt_font_bold {
+#fppznwrgjq .gt_font_bold {
   font-weight: bold;
 }
 
-#lnorfldlvw .gt_font_italic {
+#fppznwrgjq .gt_font_italic {
   font-style: italic;
 }
 
-#lnorfldlvw .gt_super {
+#fppznwrgjq .gt_super {
   font-size: 65%;
 }
 
-#lnorfldlvw .gt_footnote_marks {
+#fppznwrgjq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lnorfldlvw .gt_asterisk {
+#fppznwrgjq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lnorfldlvw .gt_indent_1 {
+#fppznwrgjq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lnorfldlvw .gt_indent_2 {
+#fppznwrgjq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lnorfldlvw .gt_indent_3 {
+#fppznwrgjq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lnorfldlvw .gt_indent_4 {
+#fppznwrgjq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lnorfldlvw .gt_indent_5 {
+#fppznwrgjq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lnorfldlvw .katex-display {
+#fppznwrgjq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lnorfldlvw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fppznwrgjq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1677,23 +1686,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Arsenal are through, and Liverpool really should be through, so first we will look at Tottenham’s potential opponents.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wnmtfwhrew" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wnmtfwhrew table {
+<div id="sfkxduwhnk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sfkxduwhnk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wnmtfwhrew thead, #wnmtfwhrew tbody, #wnmtfwhrew tfoot, #wnmtfwhrew tr, #wnmtfwhrew td, #wnmtfwhrew th {
+#sfkxduwhnk thead, #sfkxduwhnk tbody, #sfkxduwhnk tfoot, #sfkxduwhnk tr, #sfkxduwhnk td, #sfkxduwhnk th {
   border-style: none;
 }
 
-#wnmtfwhrew p {
+#sfkxduwhnk p {
   margin: 0;
   padding: 0;
 }
 
-#wnmtfwhrew .gt_table {
+#sfkxduwhnk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1719,12 +1728,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_caption {
+#sfkxduwhnk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wnmtfwhrew .gt_title {
+#sfkxduwhnk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1736,7 +1745,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#wnmtfwhrew .gt_subtitle {
+#sfkxduwhnk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1748,7 +1757,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#wnmtfwhrew .gt_heading {
+#sfkxduwhnk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1760,13 +1769,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_bottom_border {
+#sfkxduwhnk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_col_headings {
+#sfkxduwhnk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1781,7 +1790,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_col_heading {
+#sfkxduwhnk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1801,7 +1810,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#wnmtfwhrew .gt_column_spanner_outer {
+#sfkxduwhnk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1813,15 +1822,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#wnmtfwhrew .gt_column_spanner_outer:first-child {
+#sfkxduwhnk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wnmtfwhrew .gt_column_spanner_outer:last-child {
+#sfkxduwhnk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wnmtfwhrew .gt_column_spanner {
+#sfkxduwhnk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1833,11 +1842,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#wnmtfwhrew .gt_spanner_row {
+#sfkxduwhnk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wnmtfwhrew .gt_group_heading {
+#sfkxduwhnk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1863,7 +1872,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#wnmtfwhrew .gt_empty_group_heading {
+#sfkxduwhnk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1878,15 +1887,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#wnmtfwhrew .gt_from_md > :first-child {
+#sfkxduwhnk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wnmtfwhrew .gt_from_md > :last-child {
+#sfkxduwhnk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wnmtfwhrew .gt_row {
+#sfkxduwhnk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1905,7 +1914,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#wnmtfwhrew .gt_stub {
+#sfkxduwhnk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1918,7 +1927,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#wnmtfwhrew .gt_stub_row_group {
+#sfkxduwhnk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1932,15 +1941,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#wnmtfwhrew .gt_row_group_first td {
+#sfkxduwhnk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wnmtfwhrew .gt_row_group_first th {
+#sfkxduwhnk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wnmtfwhrew .gt_summary_row {
+#sfkxduwhnk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1950,16 +1959,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#wnmtfwhrew .gt_first_summary_row {
+#sfkxduwhnk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_first_summary_row.thick {
+#sfkxduwhnk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wnmtfwhrew .gt_last_summary_row {
+#sfkxduwhnk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1969,7 +1978,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_grand_summary_row {
+#sfkxduwhnk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1979,7 +1988,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#wnmtfwhrew .gt_first_grand_summary_row {
+#sfkxduwhnk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1989,7 +1998,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_last_grand_summary_row_top {
+#sfkxduwhnk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1999,11 +2008,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_striped {
+#sfkxduwhnk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wnmtfwhrew .gt_table_body {
+#sfkxduwhnk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2012,7 +2021,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_footnotes {
+#sfkxduwhnk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2026,7 +2035,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_footnote {
+#sfkxduwhnk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2035,7 +2044,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#wnmtfwhrew .gt_sourcenotes {
+#sfkxduwhnk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2049,7 +2058,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#wnmtfwhrew .gt_sourcenote {
+#sfkxduwhnk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2057,72 +2066,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#wnmtfwhrew .gt_left {
+#sfkxduwhnk .gt_left {
   text-align: left;
 }
 
-#wnmtfwhrew .gt_center {
+#sfkxduwhnk .gt_center {
   text-align: center;
 }
 
-#wnmtfwhrew .gt_right {
+#sfkxduwhnk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wnmtfwhrew .gt_font_normal {
+#sfkxduwhnk .gt_font_normal {
   font-weight: normal;
 }
 
-#wnmtfwhrew .gt_font_bold {
+#sfkxduwhnk .gt_font_bold {
   font-weight: bold;
 }
 
-#wnmtfwhrew .gt_font_italic {
+#sfkxduwhnk .gt_font_italic {
   font-style: italic;
 }
 
-#wnmtfwhrew .gt_super {
+#sfkxduwhnk .gt_super {
   font-size: 65%;
 }
 
-#wnmtfwhrew .gt_footnote_marks {
+#sfkxduwhnk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wnmtfwhrew .gt_asterisk {
+#sfkxduwhnk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wnmtfwhrew .gt_indent_1 {
+#sfkxduwhnk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wnmtfwhrew .gt_indent_2 {
+#sfkxduwhnk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wnmtfwhrew .gt_indent_3 {
+#sfkxduwhnk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wnmtfwhrew .gt_indent_4 {
+#sfkxduwhnk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wnmtfwhrew .gt_indent_5 {
+#sfkxduwhnk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wnmtfwhrew .katex-display {
+#sfkxduwhnk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wnmtfwhrew div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sfkxduwhnk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2218,23 +2227,23 @@ ul.task-list li input[type="checkbox"] {
 <p>The good news for Spurs fans is it’s not the scariest set of teams. Qarabag are the most likely - their approximate league phase position is one of the most predictable, since they are assured of qualification but are likely to lose at Anfield in the final game. It is debatable whether Spurs would be underdogs against any of those teams, and would be solid favourites against many of them.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="piqayxgefp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#piqayxgefp table {
+<div id="hxcjgdaqge" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hxcjgdaqge table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#piqayxgefp thead, #piqayxgefp tbody, #piqayxgefp tfoot, #piqayxgefp tr, #piqayxgefp td, #piqayxgefp th {
+#hxcjgdaqge thead, #hxcjgdaqge tbody, #hxcjgdaqge tfoot, #hxcjgdaqge tr, #hxcjgdaqge td, #hxcjgdaqge th {
   border-style: none;
 }
 
-#piqayxgefp p {
+#hxcjgdaqge p {
   margin: 0;
   padding: 0;
 }
 
-#piqayxgefp .gt_table {
+#hxcjgdaqge .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2260,12 +2269,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_caption {
+#hxcjgdaqge .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#piqayxgefp .gt_title {
+#hxcjgdaqge .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2277,7 +2286,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#piqayxgefp .gt_subtitle {
+#hxcjgdaqge .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2289,7 +2298,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#piqayxgefp .gt_heading {
+#hxcjgdaqge .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2301,13 +2310,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_bottom_border {
+#hxcjgdaqge .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_col_headings {
+#hxcjgdaqge .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2322,7 +2331,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_col_heading {
+#hxcjgdaqge .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2342,7 +2351,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#piqayxgefp .gt_column_spanner_outer {
+#hxcjgdaqge .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2354,15 +2363,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#piqayxgefp .gt_column_spanner_outer:first-child {
+#hxcjgdaqge .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#piqayxgefp .gt_column_spanner_outer:last-child {
+#hxcjgdaqge .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#piqayxgefp .gt_column_spanner {
+#hxcjgdaqge .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2374,11 +2383,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#piqayxgefp .gt_spanner_row {
+#hxcjgdaqge .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#piqayxgefp .gt_group_heading {
+#hxcjgdaqge .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2404,7 +2413,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#piqayxgefp .gt_empty_group_heading {
+#hxcjgdaqge .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2419,15 +2428,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#piqayxgefp .gt_from_md > :first-child {
+#hxcjgdaqge .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#piqayxgefp .gt_from_md > :last-child {
+#hxcjgdaqge .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#piqayxgefp .gt_row {
+#hxcjgdaqge .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2446,7 +2455,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#piqayxgefp .gt_stub {
+#hxcjgdaqge .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2459,7 +2468,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#piqayxgefp .gt_stub_row_group {
+#hxcjgdaqge .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2473,15 +2482,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#piqayxgefp .gt_row_group_first td {
+#hxcjgdaqge .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#piqayxgefp .gt_row_group_first th {
+#hxcjgdaqge .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#piqayxgefp .gt_summary_row {
+#hxcjgdaqge .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2491,16 +2500,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#piqayxgefp .gt_first_summary_row {
+#hxcjgdaqge .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_first_summary_row.thick {
+#hxcjgdaqge .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#piqayxgefp .gt_last_summary_row {
+#hxcjgdaqge .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2510,7 +2519,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_grand_summary_row {
+#hxcjgdaqge .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2520,7 +2529,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#piqayxgefp .gt_first_grand_summary_row {
+#hxcjgdaqge .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2530,7 +2539,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_last_grand_summary_row_top {
+#hxcjgdaqge .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2540,11 +2549,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_striped {
+#hxcjgdaqge .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#piqayxgefp .gt_table_body {
+#hxcjgdaqge .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2553,7 +2562,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_footnotes {
+#hxcjgdaqge .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2567,7 +2576,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_footnote {
+#hxcjgdaqge .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2576,7 +2585,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#piqayxgefp .gt_sourcenotes {
+#hxcjgdaqge .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2590,7 +2599,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#piqayxgefp .gt_sourcenote {
+#hxcjgdaqge .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2598,72 +2607,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#piqayxgefp .gt_left {
+#hxcjgdaqge .gt_left {
   text-align: left;
 }
 
-#piqayxgefp .gt_center {
+#hxcjgdaqge .gt_center {
   text-align: center;
 }
 
-#piqayxgefp .gt_right {
+#hxcjgdaqge .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#piqayxgefp .gt_font_normal {
+#hxcjgdaqge .gt_font_normal {
   font-weight: normal;
 }
 
-#piqayxgefp .gt_font_bold {
+#hxcjgdaqge .gt_font_bold {
   font-weight: bold;
 }
 
-#piqayxgefp .gt_font_italic {
+#hxcjgdaqge .gt_font_italic {
   font-style: italic;
 }
 
-#piqayxgefp .gt_super {
+#hxcjgdaqge .gt_super {
   font-size: 65%;
 }
 
-#piqayxgefp .gt_footnote_marks {
+#hxcjgdaqge .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#piqayxgefp .gt_asterisk {
+#hxcjgdaqge .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#piqayxgefp .gt_indent_1 {
+#hxcjgdaqge .gt_indent_1 {
   text-indent: 5px;
 }
 
-#piqayxgefp .gt_indent_2 {
+#hxcjgdaqge .gt_indent_2 {
   text-indent: 10px;
 }
 
-#piqayxgefp .gt_indent_3 {
+#hxcjgdaqge .gt_indent_3 {
   text-indent: 15px;
 }
 
-#piqayxgefp .gt_indent_4 {
+#hxcjgdaqge .gt_indent_4 {
   text-indent: 20px;
 }
 
-#piqayxgefp .gt_indent_5 {
+#hxcjgdaqge .gt_indent_5 {
   text-indent: 25px;
 }
 
-#piqayxgefp .katex-display {
+#hxcjgdaqge .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#piqayxgefp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hxcjgdaqge div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2764,23 +2773,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Meanwhile, Newcastle are most likely to be in a playoff against Galatasaray or Qarabag. Rack up those air miles!</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fxwelalgrk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fxwelalgrk table {
+<div id="yoxnmvafdy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yoxnmvafdy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fxwelalgrk thead, #fxwelalgrk tbody, #fxwelalgrk tfoot, #fxwelalgrk tr, #fxwelalgrk td, #fxwelalgrk th {
+#yoxnmvafdy thead, #yoxnmvafdy tbody, #yoxnmvafdy tfoot, #yoxnmvafdy tr, #yoxnmvafdy td, #yoxnmvafdy th {
   border-style: none;
 }
 
-#fxwelalgrk p {
+#yoxnmvafdy p {
   margin: 0;
   padding: 0;
 }
 
-#fxwelalgrk .gt_table {
+#yoxnmvafdy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2806,12 +2815,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_caption {
+#yoxnmvafdy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fxwelalgrk .gt_title {
+#yoxnmvafdy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2823,7 +2832,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#fxwelalgrk .gt_subtitle {
+#yoxnmvafdy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2835,7 +2844,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#fxwelalgrk .gt_heading {
+#yoxnmvafdy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2847,13 +2856,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_bottom_border {
+#yoxnmvafdy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_col_headings {
+#yoxnmvafdy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2868,7 +2877,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_col_heading {
+#yoxnmvafdy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2888,7 +2897,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#fxwelalgrk .gt_column_spanner_outer {
+#yoxnmvafdy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2900,15 +2909,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#fxwelalgrk .gt_column_spanner_outer:first-child {
+#yoxnmvafdy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fxwelalgrk .gt_column_spanner_outer:last-child {
+#yoxnmvafdy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fxwelalgrk .gt_column_spanner {
+#yoxnmvafdy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2920,11 +2929,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#fxwelalgrk .gt_spanner_row {
+#yoxnmvafdy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fxwelalgrk .gt_group_heading {
+#yoxnmvafdy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2950,7 +2959,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#fxwelalgrk .gt_empty_group_heading {
+#yoxnmvafdy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2965,15 +2974,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#fxwelalgrk .gt_from_md > :first-child {
+#yoxnmvafdy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fxwelalgrk .gt_from_md > :last-child {
+#yoxnmvafdy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fxwelalgrk .gt_row {
+#yoxnmvafdy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2992,7 +3001,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#fxwelalgrk .gt_stub {
+#yoxnmvafdy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3005,7 +3014,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fxwelalgrk .gt_stub_row_group {
+#yoxnmvafdy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3019,15 +3028,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#fxwelalgrk .gt_row_group_first td {
+#yoxnmvafdy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fxwelalgrk .gt_row_group_first th {
+#yoxnmvafdy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fxwelalgrk .gt_summary_row {
+#yoxnmvafdy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3037,16 +3046,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fxwelalgrk .gt_first_summary_row {
+#yoxnmvafdy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_first_summary_row.thick {
+#yoxnmvafdy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fxwelalgrk .gt_last_summary_row {
+#yoxnmvafdy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3056,7 +3065,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_grand_summary_row {
+#yoxnmvafdy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3066,7 +3075,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fxwelalgrk .gt_first_grand_summary_row {
+#yoxnmvafdy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3076,7 +3085,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_last_grand_summary_row_top {
+#yoxnmvafdy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3086,11 +3095,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_striped {
+#yoxnmvafdy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fxwelalgrk .gt_table_body {
+#yoxnmvafdy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3099,7 +3108,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_footnotes {
+#yoxnmvafdy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3113,7 +3122,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_footnote {
+#yoxnmvafdy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3122,7 +3131,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fxwelalgrk .gt_sourcenotes {
+#yoxnmvafdy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3136,7 +3145,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#fxwelalgrk .gt_sourcenote {
+#yoxnmvafdy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3144,72 +3153,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#fxwelalgrk .gt_left {
+#yoxnmvafdy .gt_left {
   text-align: left;
 }
 
-#fxwelalgrk .gt_center {
+#yoxnmvafdy .gt_center {
   text-align: center;
 }
 
-#fxwelalgrk .gt_right {
+#yoxnmvafdy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fxwelalgrk .gt_font_normal {
+#yoxnmvafdy .gt_font_normal {
   font-weight: normal;
 }
 
-#fxwelalgrk .gt_font_bold {
+#yoxnmvafdy .gt_font_bold {
   font-weight: bold;
 }
 
-#fxwelalgrk .gt_font_italic {
+#yoxnmvafdy .gt_font_italic {
   font-style: italic;
 }
 
-#fxwelalgrk .gt_super {
+#yoxnmvafdy .gt_super {
   font-size: 65%;
 }
 
-#fxwelalgrk .gt_footnote_marks {
+#yoxnmvafdy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fxwelalgrk .gt_asterisk {
+#yoxnmvafdy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fxwelalgrk .gt_indent_1 {
+#yoxnmvafdy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fxwelalgrk .gt_indent_2 {
+#yoxnmvafdy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fxwelalgrk .gt_indent_3 {
+#yoxnmvafdy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fxwelalgrk .gt_indent_4 {
+#yoxnmvafdy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fxwelalgrk .gt_indent_5 {
+#yoxnmvafdy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fxwelalgrk .katex-display {
+#yoxnmvafdy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fxwelalgrk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yoxnmvafdy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3347,15 +3356,50 @@ I gather match data from a variety of public sources. Please check out these exc
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -3434,7 +3478,8 @@ I gather match data from a variety of public sources. Please check out these exc
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -3443,8 +3488,69 @@ I gather match data from a variety of public sources. Please check out these exc
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -3458,6 +3564,7 @@ I gather match data from a variety of public sources. Please check out these exc
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -3620,44 +3727,54 @@ I gather match data from a variety of public sources. Please check out these exc
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -3755,6 +3872,9 @@ I gather match data from a variety of public sources. Please check out these exc
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

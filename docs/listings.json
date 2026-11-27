@@ -8,15 +8,9 @@
     ]
   },
   {
-    "listing": "/dashboards/index.html",
-    "items": [
-      "/dashboards/contexg-league-tables/index.html",
-      "/dashboards/election-2020-tableau/index.html"
-    ]
-  },
-  {
     "listing": "/posts/index.html",
     "items": [
+      "/posts/red-card-punishment/index.html",
       "/posts/nxgn-prospects/index.html",
       "/posts/transfer-spend/index.html",
       "/posts/promoted-relegated-cship-forecasts/index.html",
@@ -51,6 +45,13 @@
       "/posts/game_state/index.html",
       "/posts/elo_sim_model/index.html",
       "/posts/title_collapses/index.html"
+    ]
+  },
+  {
+    "listing": "/dashboards/index.html",
+    "items": [
+      "/dashboards/contexg-league-tables/index.html",
+      "/dashboards/election-2020-tableau/index.html"
     ]
   }
 ]

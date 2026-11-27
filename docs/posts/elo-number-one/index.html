@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,18 +41,19 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c1afb647e6504aed1ecd096a1ed45b6d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -108,6 +109,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -137,13 +139,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -237,6 +245,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -251,15 +260,14 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -291,8 +299,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -302,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -354,23 +363,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Why so low? Because Villa had finished no better than 7th in the three seasons before their title, and finished 11th the following year - still the lowest ever league position for any winner of the European Cup or Champions League in the 70 years of the competition.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="eqjywvqtpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#eqjywvqtpf table {
+<div id="zakjgvimqr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zakjgvimqr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#eqjywvqtpf thead, #eqjywvqtpf tbody, #eqjywvqtpf tfoot, #eqjywvqtpf tr, #eqjywvqtpf td, #eqjywvqtpf th {
+#zakjgvimqr thead, #zakjgvimqr tbody, #zakjgvimqr tfoot, #zakjgvimqr tr, #zakjgvimqr td, #zakjgvimqr th {
   border-style: none;
 }
 
-#eqjywvqtpf p {
+#zakjgvimqr p {
   margin: 0;
   padding: 0;
 }
 
-#eqjywvqtpf .gt_table {
+#zakjgvimqr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -396,12 +405,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_caption {
+#zakjgvimqr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#eqjywvqtpf .gt_title {
+#zakjgvimqr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -413,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#eqjywvqtpf .gt_subtitle {
+#zakjgvimqr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -425,7 +434,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#eqjywvqtpf .gt_heading {
+#zakjgvimqr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -437,13 +446,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_bottom_border {
+#zakjgvimqr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_col_headings {
+#zakjgvimqr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -458,7 +467,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_col_heading {
+#zakjgvimqr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -478,7 +487,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#eqjywvqtpf .gt_column_spanner_outer {
+#zakjgvimqr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -490,15 +499,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#eqjywvqtpf .gt_column_spanner_outer:first-child {
+#zakjgvimqr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#eqjywvqtpf .gt_column_spanner_outer:last-child {
+#zakjgvimqr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#eqjywvqtpf .gt_column_spanner {
+#zakjgvimqr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -510,11 +519,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#eqjywvqtpf .gt_spanner_row {
+#zakjgvimqr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#eqjywvqtpf .gt_group_heading {
+#zakjgvimqr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -540,7 +549,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#eqjywvqtpf .gt_empty_group_heading {
+#zakjgvimqr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -555,15 +564,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#eqjywvqtpf .gt_from_md > :first-child {
+#zakjgvimqr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#eqjywvqtpf .gt_from_md > :last-child {
+#zakjgvimqr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#eqjywvqtpf .gt_row {
+#zakjgvimqr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -582,7 +591,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#eqjywvqtpf .gt_stub {
+#zakjgvimqr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -595,7 +604,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#eqjywvqtpf .gt_stub_row_group {
+#zakjgvimqr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -609,15 +618,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#eqjywvqtpf .gt_row_group_first td {
+#zakjgvimqr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#eqjywvqtpf .gt_row_group_first th {
+#zakjgvimqr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#eqjywvqtpf .gt_summary_row {
+#zakjgvimqr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -627,16 +636,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#eqjywvqtpf .gt_first_summary_row {
+#zakjgvimqr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_first_summary_row.thick {
+#zakjgvimqr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#eqjywvqtpf .gt_last_summary_row {
+#zakjgvimqr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -646,7 +655,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_grand_summary_row {
+#zakjgvimqr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -656,7 +665,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#eqjywvqtpf .gt_first_grand_summary_row {
+#zakjgvimqr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -666,7 +675,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_last_grand_summary_row_top {
+#zakjgvimqr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -676,11 +685,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_striped {
+#zakjgvimqr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#eqjywvqtpf .gt_table_body {
+#zakjgvimqr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -689,7 +698,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_footnotes {
+#zakjgvimqr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -703,7 +712,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_footnote {
+#zakjgvimqr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -712,7 +721,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#eqjywvqtpf .gt_sourcenotes {
+#zakjgvimqr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -726,7 +735,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#eqjywvqtpf .gt_sourcenote {
+#zakjgvimqr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -734,72 +743,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#eqjywvqtpf .gt_left {
+#zakjgvimqr .gt_left {
   text-align: left;
 }
 
-#eqjywvqtpf .gt_center {
+#zakjgvimqr .gt_center {
   text-align: center;
 }
 
-#eqjywvqtpf .gt_right {
+#zakjgvimqr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#eqjywvqtpf .gt_font_normal {
+#zakjgvimqr .gt_font_normal {
   font-weight: normal;
 }
 
-#eqjywvqtpf .gt_font_bold {
+#zakjgvimqr .gt_font_bold {
   font-weight: bold;
 }
 
-#eqjywvqtpf .gt_font_italic {
+#zakjgvimqr .gt_font_italic {
   font-style: italic;
 }
 
-#eqjywvqtpf .gt_super {
+#zakjgvimqr .gt_super {
   font-size: 65%;
 }
 
-#eqjywvqtpf .gt_footnote_marks {
+#zakjgvimqr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#eqjywvqtpf .gt_asterisk {
+#zakjgvimqr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#eqjywvqtpf .gt_indent_1 {
+#zakjgvimqr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#eqjywvqtpf .gt_indent_2 {
+#zakjgvimqr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#eqjywvqtpf .gt_indent_3 {
+#zakjgvimqr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#eqjywvqtpf .gt_indent_4 {
+#zakjgvimqr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#eqjywvqtpf .gt_indent_5 {
+#zakjgvimqr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#eqjywvqtpf .katex-display {
+#zakjgvimqr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#eqjywvqtpf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zakjgvimqr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -865,23 +874,23 @@ European champions who finished 5th or lower in their domestic league that seaso
 <p>Villa fans won’t care about that, of course, because the purpose of sport is to win matches and trophies; the notion of being a “good team” is an abstract concept. Nonetheless, I like the Club Elo ratings as they provide an objective measure to compare teams, and they generally pass the eye test. In fact, Villa fans will be pleased to know the current side are ranked in 8th place, just two points behind Real Madrid.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="enulrgvivt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#enulrgvivt table {
+<div id="iqlzybpbwb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iqlzybpbwb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#enulrgvivt thead, #enulrgvivt tbody, #enulrgvivt tfoot, #enulrgvivt tr, #enulrgvivt td, #enulrgvivt th {
+#iqlzybpbwb thead, #iqlzybpbwb tbody, #iqlzybpbwb tfoot, #iqlzybpbwb tr, #iqlzybpbwb td, #iqlzybpbwb th {
   border-style: none;
 }
 
-#enulrgvivt p {
+#iqlzybpbwb p {
   margin: 0;
   padding: 0;
 }
 
-#enulrgvivt .gt_table {
+#iqlzybpbwb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -907,12 +916,12 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-left-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_caption {
+#iqlzybpbwb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#enulrgvivt .gt_title {
+#iqlzybpbwb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -924,7 +933,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-bottom-width: 0;
 }
 
-#enulrgvivt .gt_subtitle {
+#iqlzybpbwb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -936,7 +945,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-top-width: 0;
 }
 
-#enulrgvivt .gt_heading {
+#iqlzybpbwb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -948,13 +957,13 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-right-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_bottom_border {
+#iqlzybpbwb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_col_headings {
+#iqlzybpbwb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -969,7 +978,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-right-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_col_heading {
+#iqlzybpbwb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -989,7 +998,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   overflow-x: hidden;
 }
 
-#enulrgvivt .gt_column_spanner_outer {
+#iqlzybpbwb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1001,15 +1010,15 @@ European champions who finished 5th or lower in their domestic league that seaso
   padding-right: 4px;
 }
 
-#enulrgvivt .gt_column_spanner_outer:first-child {
+#iqlzybpbwb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#enulrgvivt .gt_column_spanner_outer:last-child {
+#iqlzybpbwb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#enulrgvivt .gt_column_spanner {
+#iqlzybpbwb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1021,11 +1030,11 @@ European champions who finished 5th or lower in their domestic league that seaso
   width: 100%;
 }
 
-#enulrgvivt .gt_spanner_row {
+#iqlzybpbwb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#enulrgvivt .gt_group_heading {
+#iqlzybpbwb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1051,7 +1060,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   text-align: left;
 }
 
-#enulrgvivt .gt_empty_group_heading {
+#iqlzybpbwb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1066,15 +1075,15 @@ European champions who finished 5th or lower in their domestic league that seaso
   vertical-align: middle;
 }
 
-#enulrgvivt .gt_from_md > :first-child {
+#iqlzybpbwb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#enulrgvivt .gt_from_md > :last-child {
+#iqlzybpbwb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#enulrgvivt .gt_row {
+#iqlzybpbwb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1093,7 +1102,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   overflow-x: hidden;
 }
 
-#enulrgvivt .gt_stub {
+#iqlzybpbwb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1106,7 +1115,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   padding-right: 5px;
 }
 
-#enulrgvivt .gt_stub_row_group {
+#iqlzybpbwb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1120,15 +1129,15 @@ European champions who finished 5th or lower in their domestic league that seaso
   vertical-align: top;
 }
 
-#enulrgvivt .gt_row_group_first td {
+#iqlzybpbwb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#enulrgvivt .gt_row_group_first th {
+#iqlzybpbwb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#enulrgvivt .gt_summary_row {
+#iqlzybpbwb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1138,16 +1147,16 @@ European champions who finished 5th or lower in their domestic league that seaso
   padding-right: 5px;
 }
 
-#enulrgvivt .gt_first_summary_row {
+#iqlzybpbwb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_first_summary_row.thick {
+#iqlzybpbwb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#enulrgvivt .gt_last_summary_row {
+#iqlzybpbwb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1157,7 +1166,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-bottom-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_grand_summary_row {
+#iqlzybpbwb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1167,7 +1176,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   padding-right: 5px;
 }
 
-#enulrgvivt .gt_first_grand_summary_row {
+#iqlzybpbwb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1177,7 +1186,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-top-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_last_grand_summary_row_top {
+#iqlzybpbwb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1187,11 +1196,11 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-bottom-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_striped {
+#iqlzybpbwb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#enulrgvivt .gt_table_body {
+#iqlzybpbwb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1200,7 +1209,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-bottom-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_footnotes {
+#iqlzybpbwb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1214,7 +1223,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-right-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_footnote {
+#iqlzybpbwb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1223,7 +1232,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   padding-right: 5px;
 }
 
-#enulrgvivt .gt_sourcenotes {
+#iqlzybpbwb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1237,7 +1246,7 @@ European champions who finished 5th or lower in their domestic league that seaso
   border-right-color: #D3D3D3;
 }
 
-#enulrgvivt .gt_sourcenote {
+#iqlzybpbwb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1245,72 +1254,72 @@ European champions who finished 5th or lower in their domestic league that seaso
   padding-right: 5px;
 }
 
-#enulrgvivt .gt_left {
+#iqlzybpbwb .gt_left {
   text-align: left;
 }
 
-#enulrgvivt .gt_center {
+#iqlzybpbwb .gt_center {
   text-align: center;
 }
 
-#enulrgvivt .gt_right {
+#iqlzybpbwb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#enulrgvivt .gt_font_normal {
+#iqlzybpbwb .gt_font_normal {
   font-weight: normal;
 }
 
-#enulrgvivt .gt_font_bold {
+#iqlzybpbwb .gt_font_bold {
   font-weight: bold;
 }
 
-#enulrgvivt .gt_font_italic {
+#iqlzybpbwb .gt_font_italic {
   font-style: italic;
 }
 
-#enulrgvivt .gt_super {
+#iqlzybpbwb .gt_super {
   font-size: 65%;
 }
 
-#enulrgvivt .gt_footnote_marks {
+#iqlzybpbwb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#enulrgvivt .gt_asterisk {
+#iqlzybpbwb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#enulrgvivt .gt_indent_1 {
+#iqlzybpbwb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#enulrgvivt .gt_indent_2 {
+#iqlzybpbwb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#enulrgvivt .gt_indent_3 {
+#iqlzybpbwb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#enulrgvivt .gt_indent_4 {
+#iqlzybpbwb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#enulrgvivt .gt_indent_5 {
+#iqlzybpbwb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#enulrgvivt .katex-display {
+#iqlzybpbwb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#enulrgvivt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iqlzybpbwb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1403,23 +1412,23 @@ Current Elo ratings (27 Jan, 2026).
 <p>It may not be a surprise that Spurs have reached the top of the rankings, but it’s a surprise <em>when</em> this happened. The all-time great Spurs side of the 1960s actually never made it to the top spot, as English teams still had to catch up on the great European sides like Real Madrid and Benfica. But Spurs did sneak into top spot in January 1985.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dqprtrgfxs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dqprtrgfxs table {
+<div id="tjwnyivqlu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tjwnyivqlu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dqprtrgfxs thead, #dqprtrgfxs tbody, #dqprtrgfxs tfoot, #dqprtrgfxs tr, #dqprtrgfxs td, #dqprtrgfxs th {
+#tjwnyivqlu thead, #tjwnyivqlu tbody, #tjwnyivqlu tfoot, #tjwnyivqlu tr, #tjwnyivqlu td, #tjwnyivqlu th {
   border-style: none;
 }
 
-#dqprtrgfxs p {
+#tjwnyivqlu p {
   margin: 0;
   padding: 0;
 }
 
-#dqprtrgfxs .gt_table {
+#tjwnyivqlu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1445,12 +1454,12 @@ Current Elo ratings (27 Jan, 2026).
   border-left-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_caption {
+#tjwnyivqlu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dqprtrgfxs .gt_title {
+#tjwnyivqlu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1462,7 +1471,7 @@ Current Elo ratings (27 Jan, 2026).
   border-bottom-width: 0;
 }
 
-#dqprtrgfxs .gt_subtitle {
+#tjwnyivqlu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1474,7 +1483,7 @@ Current Elo ratings (27 Jan, 2026).
   border-top-width: 0;
 }
 
-#dqprtrgfxs .gt_heading {
+#tjwnyivqlu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1486,13 +1495,13 @@ Current Elo ratings (27 Jan, 2026).
   border-right-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_bottom_border {
+#tjwnyivqlu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_col_headings {
+#tjwnyivqlu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1507,7 +1516,7 @@ Current Elo ratings (27 Jan, 2026).
   border-right-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_col_heading {
+#tjwnyivqlu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1527,7 +1536,7 @@ Current Elo ratings (27 Jan, 2026).
   overflow-x: hidden;
 }
 
-#dqprtrgfxs .gt_column_spanner_outer {
+#tjwnyivqlu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1539,15 +1548,15 @@ Current Elo ratings (27 Jan, 2026).
   padding-right: 4px;
 }
 
-#dqprtrgfxs .gt_column_spanner_outer:first-child {
+#tjwnyivqlu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dqprtrgfxs .gt_column_spanner_outer:last-child {
+#tjwnyivqlu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dqprtrgfxs .gt_column_spanner {
+#tjwnyivqlu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1559,11 +1568,11 @@ Current Elo ratings (27 Jan, 2026).
   width: 100%;
 }
 
-#dqprtrgfxs .gt_spanner_row {
+#tjwnyivqlu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dqprtrgfxs .gt_group_heading {
+#tjwnyivqlu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1589,7 +1598,7 @@ Current Elo ratings (27 Jan, 2026).
   text-align: left;
 }
 
-#dqprtrgfxs .gt_empty_group_heading {
+#tjwnyivqlu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1604,15 +1613,15 @@ Current Elo ratings (27 Jan, 2026).
   vertical-align: middle;
 }
 
-#dqprtrgfxs .gt_from_md > :first-child {
+#tjwnyivqlu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dqprtrgfxs .gt_from_md > :last-child {
+#tjwnyivqlu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dqprtrgfxs .gt_row {
+#tjwnyivqlu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1631,7 +1640,7 @@ Current Elo ratings (27 Jan, 2026).
   overflow-x: hidden;
 }
 
-#dqprtrgfxs .gt_stub {
+#tjwnyivqlu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1644,7 +1653,7 @@ Current Elo ratings (27 Jan, 2026).
   padding-right: 5px;
 }
 
-#dqprtrgfxs .gt_stub_row_group {
+#tjwnyivqlu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1658,15 +1667,15 @@ Current Elo ratings (27 Jan, 2026).
   vertical-align: top;
 }
 
-#dqprtrgfxs .gt_row_group_first td {
+#tjwnyivqlu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dqprtrgfxs .gt_row_group_first th {
+#tjwnyivqlu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dqprtrgfxs .gt_summary_row {
+#tjwnyivqlu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1676,16 +1685,16 @@ Current Elo ratings (27 Jan, 2026).
   padding-right: 5px;
 }
 
-#dqprtrgfxs .gt_first_summary_row {
+#tjwnyivqlu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_first_summary_row.thick {
+#tjwnyivqlu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dqprtrgfxs .gt_last_summary_row {
+#tjwnyivqlu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1695,7 +1704,7 @@ Current Elo ratings (27 Jan, 2026).
   border-bottom-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_grand_summary_row {
+#tjwnyivqlu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1705,7 +1714,7 @@ Current Elo ratings (27 Jan, 2026).
   padding-right: 5px;
 }
 
-#dqprtrgfxs .gt_first_grand_summary_row {
+#tjwnyivqlu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1715,7 +1724,7 @@ Current Elo ratings (27 Jan, 2026).
   border-top-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_last_grand_summary_row_top {
+#tjwnyivqlu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1725,11 +1734,11 @@ Current Elo ratings (27 Jan, 2026).
   border-bottom-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_striped {
+#tjwnyivqlu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dqprtrgfxs .gt_table_body {
+#tjwnyivqlu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1738,7 +1747,7 @@ Current Elo ratings (27 Jan, 2026).
   border-bottom-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_footnotes {
+#tjwnyivqlu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1752,7 +1761,7 @@ Current Elo ratings (27 Jan, 2026).
   border-right-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_footnote {
+#tjwnyivqlu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1761,7 +1770,7 @@ Current Elo ratings (27 Jan, 2026).
   padding-right: 5px;
 }
 
-#dqprtrgfxs .gt_sourcenotes {
+#tjwnyivqlu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1775,7 +1784,7 @@ Current Elo ratings (27 Jan, 2026).
   border-right-color: #D3D3D3;
 }
 
-#dqprtrgfxs .gt_sourcenote {
+#tjwnyivqlu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1783,72 +1792,72 @@ Current Elo ratings (27 Jan, 2026).
   padding-right: 5px;
 }
 
-#dqprtrgfxs .gt_left {
+#tjwnyivqlu .gt_left {
   text-align: left;
 }
 
-#dqprtrgfxs .gt_center {
+#tjwnyivqlu .gt_center {
   text-align: center;
 }
 
-#dqprtrgfxs .gt_right {
+#tjwnyivqlu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dqprtrgfxs .gt_font_normal {
+#tjwnyivqlu .gt_font_normal {
   font-weight: normal;
 }
 
-#dqprtrgfxs .gt_font_bold {
+#tjwnyivqlu .gt_font_bold {
   font-weight: bold;
 }
 
-#dqprtrgfxs .gt_font_italic {
+#tjwnyivqlu .gt_font_italic {
   font-style: italic;
 }
 
-#dqprtrgfxs .gt_super {
+#tjwnyivqlu .gt_super {
   font-size: 65%;
 }
 
-#dqprtrgfxs .gt_footnote_marks {
+#tjwnyivqlu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dqprtrgfxs .gt_asterisk {
+#tjwnyivqlu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dqprtrgfxs .gt_indent_1 {
+#tjwnyivqlu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dqprtrgfxs .gt_indent_2 {
+#tjwnyivqlu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dqprtrgfxs .gt_indent_3 {
+#tjwnyivqlu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dqprtrgfxs .gt_indent_4 {
+#tjwnyivqlu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dqprtrgfxs .gt_indent_5 {
+#tjwnyivqlu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dqprtrgfxs .katex-display {
+#tjwnyivqlu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dqprtrgfxs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tjwnyivqlu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1910,23 +1919,23 @@ Elo ratings on 2 Jan, 1985.
 <p>For all his domestic success at Arsenal, <strong>Arsene Wenger</strong> never really cracked Europe, and he only reached #1 for four days in 2004. So it is Mikel Arteta, with a current run of 146 days that doesn’t look like ending any time soon, who has by far the longest spell in top spot. Can he now add the trophies to match?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="gzvxioftdj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gzvxioftdj table {
+<div id="dlhycpxwle" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dlhycpxwle table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gzvxioftdj thead, #gzvxioftdj tbody, #gzvxioftdj tfoot, #gzvxioftdj tr, #gzvxioftdj td, #gzvxioftdj th {
+#dlhycpxwle thead, #dlhycpxwle tbody, #dlhycpxwle tfoot, #dlhycpxwle tr, #dlhycpxwle td, #dlhycpxwle th {
   border-style: none;
 }
 
-#gzvxioftdj p {
+#dlhycpxwle p {
   margin: 0;
   padding: 0;
 }
 
-#gzvxioftdj .gt_table {
+#dlhycpxwle .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1952,12 +1961,12 @@ Elo ratings on 2 Jan, 1985.
   border-left-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_caption {
+#dlhycpxwle .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gzvxioftdj .gt_title {
+#dlhycpxwle .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1969,7 +1978,7 @@ Elo ratings on 2 Jan, 1985.
   border-bottom-width: 0;
 }
 
-#gzvxioftdj .gt_subtitle {
+#dlhycpxwle .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1981,7 +1990,7 @@ Elo ratings on 2 Jan, 1985.
   border-top-width: 0;
 }
 
-#gzvxioftdj .gt_heading {
+#dlhycpxwle .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1993,13 +2002,13 @@ Elo ratings on 2 Jan, 1985.
   border-right-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_bottom_border {
+#dlhycpxwle .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_col_headings {
+#dlhycpxwle .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2014,7 +2023,7 @@ Elo ratings on 2 Jan, 1985.
   border-right-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_col_heading {
+#dlhycpxwle .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2034,7 +2043,7 @@ Elo ratings on 2 Jan, 1985.
   overflow-x: hidden;
 }
 
-#gzvxioftdj .gt_column_spanner_outer {
+#dlhycpxwle .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2046,15 +2055,15 @@ Elo ratings on 2 Jan, 1985.
   padding-right: 4px;
 }
 
-#gzvxioftdj .gt_column_spanner_outer:first-child {
+#dlhycpxwle .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gzvxioftdj .gt_column_spanner_outer:last-child {
+#dlhycpxwle .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gzvxioftdj .gt_column_spanner {
+#dlhycpxwle .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2066,11 +2075,11 @@ Elo ratings on 2 Jan, 1985.
   width: 100%;
 }
 
-#gzvxioftdj .gt_spanner_row {
+#dlhycpxwle .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gzvxioftdj .gt_group_heading {
+#dlhycpxwle .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2096,7 +2105,7 @@ Elo ratings on 2 Jan, 1985.
   text-align: left;
 }
 
-#gzvxioftdj .gt_empty_group_heading {
+#dlhycpxwle .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2111,15 +2120,15 @@ Elo ratings on 2 Jan, 1985.
   vertical-align: middle;
 }
 
-#gzvxioftdj .gt_from_md > :first-child {
+#dlhycpxwle .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gzvxioftdj .gt_from_md > :last-child {
+#dlhycpxwle .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gzvxioftdj .gt_row {
+#dlhycpxwle .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2138,7 +2147,7 @@ Elo ratings on 2 Jan, 1985.
   overflow-x: hidden;
 }
 
-#gzvxioftdj .gt_stub {
+#dlhycpxwle .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2151,7 +2160,7 @@ Elo ratings on 2 Jan, 1985.
   padding-right: 5px;
 }
 
-#gzvxioftdj .gt_stub_row_group {
+#dlhycpxwle .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2165,15 +2174,15 @@ Elo ratings on 2 Jan, 1985.
   vertical-align: top;
 }
 
-#gzvxioftdj .gt_row_group_first td {
+#dlhycpxwle .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gzvxioftdj .gt_row_group_first th {
+#dlhycpxwle .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gzvxioftdj .gt_summary_row {
+#dlhycpxwle .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2183,16 +2192,16 @@ Elo ratings on 2 Jan, 1985.
   padding-right: 5px;
 }
 
-#gzvxioftdj .gt_first_summary_row {
+#dlhycpxwle .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_first_summary_row.thick {
+#dlhycpxwle .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gzvxioftdj .gt_last_summary_row {
+#dlhycpxwle .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2202,7 +2211,7 @@ Elo ratings on 2 Jan, 1985.
   border-bottom-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_grand_summary_row {
+#dlhycpxwle .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2212,7 +2221,7 @@ Elo ratings on 2 Jan, 1985.
   padding-right: 5px;
 }
 
-#gzvxioftdj .gt_first_grand_summary_row {
+#dlhycpxwle .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2222,7 +2231,7 @@ Elo ratings on 2 Jan, 1985.
   border-top-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_last_grand_summary_row_top {
+#dlhycpxwle .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2232,11 +2241,11 @@ Elo ratings on 2 Jan, 1985.
   border-bottom-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_striped {
+#dlhycpxwle .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gzvxioftdj .gt_table_body {
+#dlhycpxwle .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2245,7 +2254,7 @@ Elo ratings on 2 Jan, 1985.
   border-bottom-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_footnotes {
+#dlhycpxwle .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2259,7 +2268,7 @@ Elo ratings on 2 Jan, 1985.
   border-right-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_footnote {
+#dlhycpxwle .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2268,7 +2277,7 @@ Elo ratings on 2 Jan, 1985.
   padding-right: 5px;
 }
 
-#gzvxioftdj .gt_sourcenotes {
+#dlhycpxwle .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2282,7 +2291,7 @@ Elo ratings on 2 Jan, 1985.
   border-right-color: #D3D3D3;
 }
 
-#gzvxioftdj .gt_sourcenote {
+#dlhycpxwle .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2290,72 +2299,72 @@ Elo ratings on 2 Jan, 1985.
   padding-right: 5px;
 }
 
-#gzvxioftdj .gt_left {
+#dlhycpxwle .gt_left {
   text-align: left;
 }
 
-#gzvxioftdj .gt_center {
+#dlhycpxwle .gt_center {
   text-align: center;
 }
 
-#gzvxioftdj .gt_right {
+#dlhycpxwle .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gzvxioftdj .gt_font_normal {
+#dlhycpxwle .gt_font_normal {
   font-weight: normal;
 }
 
-#gzvxioftdj .gt_font_bold {
+#dlhycpxwle .gt_font_bold {
   font-weight: bold;
 }
 
-#gzvxioftdj .gt_font_italic {
+#dlhycpxwle .gt_font_italic {
   font-style: italic;
 }
 
-#gzvxioftdj .gt_super {
+#dlhycpxwle .gt_super {
   font-size: 65%;
 }
 
-#gzvxioftdj .gt_footnote_marks {
+#dlhycpxwle .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gzvxioftdj .gt_asterisk {
+#dlhycpxwle .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gzvxioftdj .gt_indent_1 {
+#dlhycpxwle .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gzvxioftdj .gt_indent_2 {
+#dlhycpxwle .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gzvxioftdj .gt_indent_3 {
+#dlhycpxwle .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gzvxioftdj .gt_indent_4 {
+#dlhycpxwle .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gzvxioftdj .gt_indent_5 {
+#dlhycpxwle .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gzvxioftdj .katex-display {
+#dlhycpxwle .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gzvxioftdj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dlhycpxwle div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2406,23 +2415,23 @@ Arsenal managers who have reached Elo #1.
 <p>Everton followed this up with second place in 1986 (Gary Lineker’s only season at the club) and then won the league again in 1987. Sadly, Everton were big losers from English clubs’ European ban following the Heysel disaster. In an era where England had won seven of the previous nine European Cup finals, they obviously would have had a great chance in both 1986 and 1988 - finalists in those years included Steaua Bucharest and Benfica.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="vumcyeevlq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vumcyeevlq table {
+<div id="mripdsrblz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mripdsrblz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vumcyeevlq thead, #vumcyeevlq tbody, #vumcyeevlq tfoot, #vumcyeevlq tr, #vumcyeevlq td, #vumcyeevlq th {
+#mripdsrblz thead, #mripdsrblz tbody, #mripdsrblz tfoot, #mripdsrblz tr, #mripdsrblz td, #mripdsrblz th {
   border-style: none;
 }
 
-#vumcyeevlq p {
+#mripdsrblz p {
   margin: 0;
   padding: 0;
 }
 
-#vumcyeevlq .gt_table {
+#mripdsrblz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2448,12 +2457,12 @@ Arsenal managers who have reached Elo #1.
   border-left-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_caption {
+#mripdsrblz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vumcyeevlq .gt_title {
+#mripdsrblz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2465,7 +2474,7 @@ Arsenal managers who have reached Elo #1.
   border-bottom-width: 0;
 }
 
-#vumcyeevlq .gt_subtitle {
+#mripdsrblz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2477,7 +2486,7 @@ Arsenal managers who have reached Elo #1.
   border-top-width: 0;
 }
 
-#vumcyeevlq .gt_heading {
+#mripdsrblz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2489,13 +2498,13 @@ Arsenal managers who have reached Elo #1.
   border-right-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_bottom_border {
+#mripdsrblz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_col_headings {
+#mripdsrblz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2510,7 +2519,7 @@ Arsenal managers who have reached Elo #1.
   border-right-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_col_heading {
+#mripdsrblz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2530,7 +2539,7 @@ Arsenal managers who have reached Elo #1.
   overflow-x: hidden;
 }
 
-#vumcyeevlq .gt_column_spanner_outer {
+#mripdsrblz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2542,15 +2551,15 @@ Arsenal managers who have reached Elo #1.
   padding-right: 4px;
 }
 
-#vumcyeevlq .gt_column_spanner_outer:first-child {
+#mripdsrblz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vumcyeevlq .gt_column_spanner_outer:last-child {
+#mripdsrblz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vumcyeevlq .gt_column_spanner {
+#mripdsrblz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2562,11 +2571,11 @@ Arsenal managers who have reached Elo #1.
   width: 100%;
 }
 
-#vumcyeevlq .gt_spanner_row {
+#mripdsrblz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vumcyeevlq .gt_group_heading {
+#mripdsrblz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2592,7 +2601,7 @@ Arsenal managers who have reached Elo #1.
   text-align: left;
 }
 
-#vumcyeevlq .gt_empty_group_heading {
+#mripdsrblz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2607,15 +2616,15 @@ Arsenal managers who have reached Elo #1.
   vertical-align: middle;
 }
 
-#vumcyeevlq .gt_from_md > :first-child {
+#mripdsrblz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vumcyeevlq .gt_from_md > :last-child {
+#mripdsrblz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vumcyeevlq .gt_row {
+#mripdsrblz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2634,7 +2643,7 @@ Arsenal managers who have reached Elo #1.
   overflow-x: hidden;
 }
 
-#vumcyeevlq .gt_stub {
+#mripdsrblz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2647,7 +2656,7 @@ Arsenal managers who have reached Elo #1.
   padding-right: 5px;
 }
 
-#vumcyeevlq .gt_stub_row_group {
+#mripdsrblz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2661,15 +2670,15 @@ Arsenal managers who have reached Elo #1.
   vertical-align: top;
 }
 
-#vumcyeevlq .gt_row_group_first td {
+#mripdsrblz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vumcyeevlq .gt_row_group_first th {
+#mripdsrblz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vumcyeevlq .gt_summary_row {
+#mripdsrblz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2679,16 +2688,16 @@ Arsenal managers who have reached Elo #1.
   padding-right: 5px;
 }
 
-#vumcyeevlq .gt_first_summary_row {
+#mripdsrblz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_first_summary_row.thick {
+#mripdsrblz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vumcyeevlq .gt_last_summary_row {
+#mripdsrblz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2698,7 +2707,7 @@ Arsenal managers who have reached Elo #1.
   border-bottom-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_grand_summary_row {
+#mripdsrblz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2708,7 +2717,7 @@ Arsenal managers who have reached Elo #1.
   padding-right: 5px;
 }
 
-#vumcyeevlq .gt_first_grand_summary_row {
+#mripdsrblz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2718,7 +2727,7 @@ Arsenal managers who have reached Elo #1.
   border-top-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_last_grand_summary_row_top {
+#mripdsrblz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2728,11 +2737,11 @@ Arsenal managers who have reached Elo #1.
   border-bottom-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_striped {
+#mripdsrblz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vumcyeevlq .gt_table_body {
+#mripdsrblz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2741,7 +2750,7 @@ Arsenal managers who have reached Elo #1.
   border-bottom-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_footnotes {
+#mripdsrblz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2755,7 +2764,7 @@ Arsenal managers who have reached Elo #1.
   border-right-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_footnote {
+#mripdsrblz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2764,7 +2773,7 @@ Arsenal managers who have reached Elo #1.
   padding-right: 5px;
 }
 
-#vumcyeevlq .gt_sourcenotes {
+#mripdsrblz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2778,7 +2787,7 @@ Arsenal managers who have reached Elo #1.
   border-right-color: #D3D3D3;
 }
 
-#vumcyeevlq .gt_sourcenote {
+#mripdsrblz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2786,72 +2795,72 @@ Arsenal managers who have reached Elo #1.
   padding-right: 5px;
 }
 
-#vumcyeevlq .gt_left {
+#mripdsrblz .gt_left {
   text-align: left;
 }
 
-#vumcyeevlq .gt_center {
+#mripdsrblz .gt_center {
   text-align: center;
 }
 
-#vumcyeevlq .gt_right {
+#mripdsrblz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vumcyeevlq .gt_font_normal {
+#mripdsrblz .gt_font_normal {
   font-weight: normal;
 }
 
-#vumcyeevlq .gt_font_bold {
+#mripdsrblz .gt_font_bold {
   font-weight: bold;
 }
 
-#vumcyeevlq .gt_font_italic {
+#mripdsrblz .gt_font_italic {
   font-style: italic;
 }
 
-#vumcyeevlq .gt_super {
+#mripdsrblz .gt_super {
   font-size: 65%;
 }
 
-#vumcyeevlq .gt_footnote_marks {
+#mripdsrblz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vumcyeevlq .gt_asterisk {
+#mripdsrblz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vumcyeevlq .gt_indent_1 {
+#mripdsrblz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vumcyeevlq .gt_indent_2 {
+#mripdsrblz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vumcyeevlq .gt_indent_3 {
+#mripdsrblz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vumcyeevlq .gt_indent_4 {
+#mripdsrblz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vumcyeevlq .gt_indent_5 {
+#mripdsrblz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vumcyeevlq .katex-display {
+#mripdsrblz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vumcyeevlq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mripdsrblz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2921,23 +2930,23 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
 </p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="jwvseorgen" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jwvseorgen table {
+<div id="jqgpyxevun" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jqgpyxevun table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jwvseorgen thead, #jwvseorgen tbody, #jwvseorgen tfoot, #jwvseorgen tr, #jwvseorgen td, #jwvseorgen th {
+#jqgpyxevun thead, #jqgpyxevun tbody, #jqgpyxevun tfoot, #jqgpyxevun tr, #jqgpyxevun td, #jqgpyxevun th {
   border-style: none;
 }
 
-#jwvseorgen p {
+#jqgpyxevun p {
   margin: 0;
   padding: 0;
 }
 
-#jwvseorgen .gt_table {
+#jqgpyxevun .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2963,12 +2972,12 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-left-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_caption {
+#jqgpyxevun .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jwvseorgen .gt_title {
+#jqgpyxevun .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2980,7 +2989,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-bottom-width: 0;
 }
 
-#jwvseorgen .gt_subtitle {
+#jqgpyxevun .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2992,7 +3001,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-top-width: 0;
 }
 
-#jwvseorgen .gt_heading {
+#jqgpyxevun .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3004,13 +3013,13 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-right-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_bottom_border {
+#jqgpyxevun .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_col_headings {
+#jqgpyxevun .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3025,7 +3034,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-right-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_col_heading {
+#jqgpyxevun .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3045,7 +3054,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   overflow-x: hidden;
 }
 
-#jwvseorgen .gt_column_spanner_outer {
+#jqgpyxevun .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3057,15 +3066,15 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   padding-right: 4px;
 }
 
-#jwvseorgen .gt_column_spanner_outer:first-child {
+#jqgpyxevun .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jwvseorgen .gt_column_spanner_outer:last-child {
+#jqgpyxevun .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jwvseorgen .gt_column_spanner {
+#jqgpyxevun .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3077,11 +3086,11 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   width: 100%;
 }
 
-#jwvseorgen .gt_spanner_row {
+#jqgpyxevun .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jwvseorgen .gt_group_heading {
+#jqgpyxevun .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3107,7 +3116,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   text-align: left;
 }
 
-#jwvseorgen .gt_empty_group_heading {
+#jqgpyxevun .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3122,15 +3131,15 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   vertical-align: middle;
 }
 
-#jwvseorgen .gt_from_md > :first-child {
+#jqgpyxevun .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jwvseorgen .gt_from_md > :last-child {
+#jqgpyxevun .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jwvseorgen .gt_row {
+#jqgpyxevun .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3149,7 +3158,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   overflow-x: hidden;
 }
 
-#jwvseorgen .gt_stub {
+#jqgpyxevun .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3162,7 +3171,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   padding-right: 5px;
 }
 
-#jwvseorgen .gt_stub_row_group {
+#jqgpyxevun .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3176,15 +3185,15 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   vertical-align: top;
 }
 
-#jwvseorgen .gt_row_group_first td {
+#jqgpyxevun .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jwvseorgen .gt_row_group_first th {
+#jqgpyxevun .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jwvseorgen .gt_summary_row {
+#jqgpyxevun .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3194,16 +3203,16 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   padding-right: 5px;
 }
 
-#jwvseorgen .gt_first_summary_row {
+#jqgpyxevun .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_first_summary_row.thick {
+#jqgpyxevun .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jwvseorgen .gt_last_summary_row {
+#jqgpyxevun .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3213,7 +3222,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-bottom-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_grand_summary_row {
+#jqgpyxevun .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3223,7 +3232,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   padding-right: 5px;
 }
 
-#jwvseorgen .gt_first_grand_summary_row {
+#jqgpyxevun .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3233,7 +3242,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-top-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_last_grand_summary_row_top {
+#jqgpyxevun .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3243,11 +3252,11 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-bottom-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_striped {
+#jqgpyxevun .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jwvseorgen .gt_table_body {
+#jqgpyxevun .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3256,7 +3265,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-bottom-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_footnotes {
+#jqgpyxevun .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3270,7 +3279,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-right-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_footnote {
+#jqgpyxevun .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3279,7 +3288,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   padding-right: 5px;
 }
 
-#jwvseorgen .gt_sourcenotes {
+#jqgpyxevun .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3293,7 +3302,7 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   border-right-color: #D3D3D3;
 }
 
-#jwvseorgen .gt_sourcenote {
+#jqgpyxevun .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3301,72 +3310,72 @@ Elo ratings on 6 May, 1986, the day before the European Cup final (Steaua Buchar
   padding-right: 5px;
 }
 
-#jwvseorgen .gt_left {
+#jqgpyxevun .gt_left {
   text-align: left;
 }
 
-#jwvseorgen .gt_center {
+#jqgpyxevun .gt_center {
   text-align: center;
 }
 
-#jwvseorgen .gt_right {
+#jqgpyxevun .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jwvseorgen .gt_font_normal {
+#jqgpyxevun .gt_font_normal {
   font-weight: normal;
 }
 
-#jwvseorgen .gt_font_bold {
+#jqgpyxevun .gt_font_bold {
   font-weight: bold;
 }
 
-#jwvseorgen .gt_font_italic {
+#jqgpyxevun .gt_font_italic {
   font-style: italic;
 }
 
-#jwvseorgen .gt_super {
+#jqgpyxevun .gt_super {
   font-size: 65%;
 }
 
-#jwvseorgen .gt_footnote_marks {
+#jqgpyxevun .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jwvseorgen .gt_asterisk {
+#jqgpyxevun .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jwvseorgen .gt_indent_1 {
+#jqgpyxevun .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jwvseorgen .gt_indent_2 {
+#jqgpyxevun .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jwvseorgen .gt_indent_3 {
+#jqgpyxevun .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jwvseorgen .gt_indent_4 {
+#jqgpyxevun .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jwvseorgen .gt_indent_5 {
+#jqgpyxevun .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jwvseorgen .katex-display {
+#jqgpyxevun .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jwvseorgen div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jqgpyxevun div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3452,23 +3461,23 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
 <p>Ironically, it was the equally pragmatic <strong>Rafa Benitez</strong> at Liverpool who proved to be Mourinho’s nemesis. In all three of Mourinho’s seasons at Chelsea, Benitez knocked them out of Europe: twice directly (in the semi-finals in 2005 and 2007) and once indirectly in 2005-06, when they were drawn in the same group. Liverpool finished top of the group, leaving runners-up with Chelsea a difficult draw versus eventual winners Barcelona in the second round, to whom they lost.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="zubfrtylyc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zubfrtylyc table {
+<div id="qeutmvzwau" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qeutmvzwau table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zubfrtylyc thead, #zubfrtylyc tbody, #zubfrtylyc tfoot, #zubfrtylyc tr, #zubfrtylyc td, #zubfrtylyc th {
+#qeutmvzwau thead, #qeutmvzwau tbody, #qeutmvzwau tfoot, #qeutmvzwau tr, #qeutmvzwau td, #qeutmvzwau th {
   border-style: none;
 }
 
-#zubfrtylyc p {
+#qeutmvzwau p {
   margin: 0;
   padding: 0;
 }
 
-#zubfrtylyc .gt_table {
+#qeutmvzwau .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3494,12 +3503,12 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-left-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_caption {
+#qeutmvzwau .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zubfrtylyc .gt_title {
+#qeutmvzwau .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3511,7 +3520,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-bottom-width: 0;
 }
 
-#zubfrtylyc .gt_subtitle {
+#qeutmvzwau .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3523,7 +3532,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-top-width: 0;
 }
 
-#zubfrtylyc .gt_heading {
+#qeutmvzwau .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3535,13 +3544,13 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-right-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_bottom_border {
+#qeutmvzwau .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_col_headings {
+#qeutmvzwau .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3556,7 +3565,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-right-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_col_heading {
+#qeutmvzwau .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3576,7 +3585,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   overflow-x: hidden;
 }
 
-#zubfrtylyc .gt_column_spanner_outer {
+#qeutmvzwau .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3588,15 +3597,15 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   padding-right: 4px;
 }
 
-#zubfrtylyc .gt_column_spanner_outer:first-child {
+#qeutmvzwau .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zubfrtylyc .gt_column_spanner_outer:last-child {
+#qeutmvzwau .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zubfrtylyc .gt_column_spanner {
+#qeutmvzwau .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3608,11 +3617,11 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   width: 100%;
 }
 
-#zubfrtylyc .gt_spanner_row {
+#qeutmvzwau .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zubfrtylyc .gt_group_heading {
+#qeutmvzwau .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3638,7 +3647,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   text-align: left;
 }
 
-#zubfrtylyc .gt_empty_group_heading {
+#qeutmvzwau .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3653,15 +3662,15 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   vertical-align: middle;
 }
 
-#zubfrtylyc .gt_from_md > :first-child {
+#qeutmvzwau .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zubfrtylyc .gt_from_md > :last-child {
+#qeutmvzwau .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zubfrtylyc .gt_row {
+#qeutmvzwau .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3680,7 +3689,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   overflow-x: hidden;
 }
 
-#zubfrtylyc .gt_stub {
+#qeutmvzwau .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3693,7 +3702,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   padding-right: 5px;
 }
 
-#zubfrtylyc .gt_stub_row_group {
+#qeutmvzwau .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3707,15 +3716,15 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   vertical-align: top;
 }
 
-#zubfrtylyc .gt_row_group_first td {
+#qeutmvzwau .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zubfrtylyc .gt_row_group_first th {
+#qeutmvzwau .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zubfrtylyc .gt_summary_row {
+#qeutmvzwau .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3725,16 +3734,16 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   padding-right: 5px;
 }
 
-#zubfrtylyc .gt_first_summary_row {
+#qeutmvzwau .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_first_summary_row.thick {
+#qeutmvzwau .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zubfrtylyc .gt_last_summary_row {
+#qeutmvzwau .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3744,7 +3753,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-bottom-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_grand_summary_row {
+#qeutmvzwau .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3754,7 +3763,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   padding-right: 5px;
 }
 
-#zubfrtylyc .gt_first_grand_summary_row {
+#qeutmvzwau .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3764,7 +3773,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-top-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_last_grand_summary_row_top {
+#qeutmvzwau .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3774,11 +3783,11 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-bottom-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_striped {
+#qeutmvzwau .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zubfrtylyc .gt_table_body {
+#qeutmvzwau .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3787,7 +3796,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-bottom-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_footnotes {
+#qeutmvzwau .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3801,7 +3810,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-right-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_footnote {
+#qeutmvzwau .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3810,7 +3819,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   padding-right: 5px;
 }
 
-#zubfrtylyc .gt_sourcenotes {
+#qeutmvzwau .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3824,7 +3833,7 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   border-right-color: #D3D3D3;
 }
 
-#zubfrtylyc .gt_sourcenote {
+#qeutmvzwau .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3832,72 +3841,72 @@ Elo ratings on 24 May, 1988, the day before the European Cup final (PSV Eindhove
   padding-right: 5px;
 }
 
-#zubfrtylyc .gt_left {
+#qeutmvzwau .gt_left {
   text-align: left;
 }
 
-#zubfrtylyc .gt_center {
+#qeutmvzwau .gt_center {
   text-align: center;
 }
 
-#zubfrtylyc .gt_right {
+#qeutmvzwau .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zubfrtylyc .gt_font_normal {
+#qeutmvzwau .gt_font_normal {
   font-weight: normal;
 }
 
-#zubfrtylyc .gt_font_bold {
+#qeutmvzwau .gt_font_bold {
   font-weight: bold;
 }
 
-#zubfrtylyc .gt_font_italic {
+#qeutmvzwau .gt_font_italic {
   font-style: italic;
 }
 
-#zubfrtylyc .gt_super {
+#qeutmvzwau .gt_super {
   font-size: 65%;
 }
 
-#zubfrtylyc .gt_footnote_marks {
+#qeutmvzwau .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zubfrtylyc .gt_asterisk {
+#qeutmvzwau .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zubfrtylyc .gt_indent_1 {
+#qeutmvzwau .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zubfrtylyc .gt_indent_2 {
+#qeutmvzwau .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zubfrtylyc .gt_indent_3 {
+#qeutmvzwau .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zubfrtylyc .gt_indent_4 {
+#qeutmvzwau .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zubfrtylyc .gt_indent_5 {
+#qeutmvzwau .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zubfrtylyc .katex-display {
+#qeutmvzwau .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zubfrtylyc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qeutmvzwau div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3963,23 +3972,23 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
 <p>After dominating the 1990s in England, United finally cracked the Elo top spot after winning the European Cup in dramatic fashion in 1999 to add to the league and FA Cup they had won that year. They flirted with top spot over the next few seasons, but it was from 2007 to 2009 where they amassed the most days at #1, with the <strong>Rooney &amp; Ronaldo</strong> team that many observers consider Fergie’s best.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="pcqjyovqnp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pcqjyovqnp table {
+<div id="beypwjwtyt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#beypwjwtyt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pcqjyovqnp thead, #pcqjyovqnp tbody, #pcqjyovqnp tfoot, #pcqjyovqnp tr, #pcqjyovqnp td, #pcqjyovqnp th {
+#beypwjwtyt thead, #beypwjwtyt tbody, #beypwjwtyt tfoot, #beypwjwtyt tr, #beypwjwtyt td, #beypwjwtyt th {
   border-style: none;
 }
 
-#pcqjyovqnp p {
+#beypwjwtyt p {
   margin: 0;
   padding: 0;
 }
 
-#pcqjyovqnp .gt_table {
+#beypwjwtyt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4005,12 +4014,12 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-left-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_caption {
+#beypwjwtyt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pcqjyovqnp .gt_title {
+#beypwjwtyt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4022,7 +4031,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-bottom-width: 0;
 }
 
-#pcqjyovqnp .gt_subtitle {
+#beypwjwtyt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4034,7 +4043,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-top-width: 0;
 }
 
-#pcqjyovqnp .gt_heading {
+#beypwjwtyt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4046,13 +4055,13 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-right-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_bottom_border {
+#beypwjwtyt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_col_headings {
+#beypwjwtyt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4067,7 +4076,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-right-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_col_heading {
+#beypwjwtyt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4087,7 +4096,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   overflow-x: hidden;
 }
 
-#pcqjyovqnp .gt_column_spanner_outer {
+#beypwjwtyt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4099,15 +4108,15 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   padding-right: 4px;
 }
 
-#pcqjyovqnp .gt_column_spanner_outer:first-child {
+#beypwjwtyt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pcqjyovqnp .gt_column_spanner_outer:last-child {
+#beypwjwtyt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pcqjyovqnp .gt_column_spanner {
+#beypwjwtyt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4119,11 +4128,11 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   width: 100%;
 }
 
-#pcqjyovqnp .gt_spanner_row {
+#beypwjwtyt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pcqjyovqnp .gt_group_heading {
+#beypwjwtyt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4149,7 +4158,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   text-align: left;
 }
 
-#pcqjyovqnp .gt_empty_group_heading {
+#beypwjwtyt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4164,15 +4173,15 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   vertical-align: middle;
 }
 
-#pcqjyovqnp .gt_from_md > :first-child {
+#beypwjwtyt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pcqjyovqnp .gt_from_md > :last-child {
+#beypwjwtyt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pcqjyovqnp .gt_row {
+#beypwjwtyt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4191,7 +4200,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   overflow-x: hidden;
 }
 
-#pcqjyovqnp .gt_stub {
+#beypwjwtyt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4204,7 +4213,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   padding-right: 5px;
 }
 
-#pcqjyovqnp .gt_stub_row_group {
+#beypwjwtyt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4218,15 +4227,15 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   vertical-align: top;
 }
 
-#pcqjyovqnp .gt_row_group_first td {
+#beypwjwtyt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pcqjyovqnp .gt_row_group_first th {
+#beypwjwtyt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pcqjyovqnp .gt_summary_row {
+#beypwjwtyt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4236,16 +4245,16 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   padding-right: 5px;
 }
 
-#pcqjyovqnp .gt_first_summary_row {
+#beypwjwtyt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_first_summary_row.thick {
+#beypwjwtyt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pcqjyovqnp .gt_last_summary_row {
+#beypwjwtyt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4255,7 +4264,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-bottom-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_grand_summary_row {
+#beypwjwtyt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4265,7 +4274,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   padding-right: 5px;
 }
 
-#pcqjyovqnp .gt_first_grand_summary_row {
+#beypwjwtyt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4275,7 +4284,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-top-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_last_grand_summary_row_top {
+#beypwjwtyt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4285,11 +4294,11 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-bottom-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_striped {
+#beypwjwtyt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pcqjyovqnp .gt_table_body {
+#beypwjwtyt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4298,7 +4307,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-bottom-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_footnotes {
+#beypwjwtyt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4312,7 +4321,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-right-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_footnote {
+#beypwjwtyt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4321,7 +4330,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   padding-right: 5px;
 }
 
-#pcqjyovqnp .gt_sourcenotes {
+#beypwjwtyt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4335,7 +4344,7 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   border-right-color: #D3D3D3;
 }
 
-#pcqjyovqnp .gt_sourcenote {
+#beypwjwtyt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4343,72 +4352,72 @@ Elo ratings on 26 April, 2005, before the Chelsea vs.&nbsp;Liverpool Champions L
   padding-right: 5px;
 }
 
-#pcqjyovqnp .gt_left {
+#beypwjwtyt .gt_left {
   text-align: left;
 }
 
-#pcqjyovqnp .gt_center {
+#beypwjwtyt .gt_center {
   text-align: center;
 }
 
-#pcqjyovqnp .gt_right {
+#beypwjwtyt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pcqjyovqnp .gt_font_normal {
+#beypwjwtyt .gt_font_normal {
   font-weight: normal;
 }
 
-#pcqjyovqnp .gt_font_bold {
+#beypwjwtyt .gt_font_bold {
   font-weight: bold;
 }
 
-#pcqjyovqnp .gt_font_italic {
+#beypwjwtyt .gt_font_italic {
   font-style: italic;
 }
 
-#pcqjyovqnp .gt_super {
+#beypwjwtyt .gt_super {
   font-size: 65%;
 }
 
-#pcqjyovqnp .gt_footnote_marks {
+#beypwjwtyt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pcqjyovqnp .gt_asterisk {
+#beypwjwtyt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pcqjyovqnp .gt_indent_1 {
+#beypwjwtyt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pcqjyovqnp .gt_indent_2 {
+#beypwjwtyt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pcqjyovqnp .gt_indent_3 {
+#beypwjwtyt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pcqjyovqnp .gt_indent_4 {
+#beypwjwtyt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pcqjyovqnp .gt_indent_5 {
+#beypwjwtyt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pcqjyovqnp .katex-display {
+#beypwjwtyt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pcqjyovqnp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#beypwjwtyt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4488,23 +4497,23 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
 <p>Much like Chelsea, you can’t really assess the history of Manchester City without thinking of a Before Abu Dhabi era and an After Abu Dhabi era. On the day of the takeover, City hadn’t won any trophy since the 1976 League Cup, and were ranked <strong>39th</strong> in the Club Elo ratings.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ooqqcgiqfw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ooqqcgiqfw table {
+<div id="krfvnjfptk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#krfvnjfptk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ooqqcgiqfw thead, #ooqqcgiqfw tbody, #ooqqcgiqfw tfoot, #ooqqcgiqfw tr, #ooqqcgiqfw td, #ooqqcgiqfw th {
+#krfvnjfptk thead, #krfvnjfptk tbody, #krfvnjfptk tfoot, #krfvnjfptk tr, #krfvnjfptk td, #krfvnjfptk th {
   border-style: none;
 }
 
-#ooqqcgiqfw p {
+#krfvnjfptk p {
   margin: 0;
   padding: 0;
 }
 
-#ooqqcgiqfw .gt_table {
+#krfvnjfptk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4530,12 +4539,12 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-left-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_caption {
+#krfvnjfptk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ooqqcgiqfw .gt_title {
+#krfvnjfptk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4547,7 +4556,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-bottom-width: 0;
 }
 
-#ooqqcgiqfw .gt_subtitle {
+#krfvnjfptk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4559,7 +4568,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-top-width: 0;
 }
 
-#ooqqcgiqfw .gt_heading {
+#krfvnjfptk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4571,13 +4580,13 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-right-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_bottom_border {
+#krfvnjfptk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_col_headings {
+#krfvnjfptk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4592,7 +4601,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-right-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_col_heading {
+#krfvnjfptk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4612,7 +4621,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   overflow-x: hidden;
 }
 
-#ooqqcgiqfw .gt_column_spanner_outer {
+#krfvnjfptk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4624,15 +4633,15 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   padding-right: 4px;
 }
 
-#ooqqcgiqfw .gt_column_spanner_outer:first-child {
+#krfvnjfptk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ooqqcgiqfw .gt_column_spanner_outer:last-child {
+#krfvnjfptk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ooqqcgiqfw .gt_column_spanner {
+#krfvnjfptk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4644,11 +4653,11 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   width: 100%;
 }
 
-#ooqqcgiqfw .gt_spanner_row {
+#krfvnjfptk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ooqqcgiqfw .gt_group_heading {
+#krfvnjfptk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4674,7 +4683,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   text-align: left;
 }
 
-#ooqqcgiqfw .gt_empty_group_heading {
+#krfvnjfptk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4689,15 +4698,15 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   vertical-align: middle;
 }
 
-#ooqqcgiqfw .gt_from_md > :first-child {
+#krfvnjfptk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ooqqcgiqfw .gt_from_md > :last-child {
+#krfvnjfptk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ooqqcgiqfw .gt_row {
+#krfvnjfptk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4716,7 +4725,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   overflow-x: hidden;
 }
 
-#ooqqcgiqfw .gt_stub {
+#krfvnjfptk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4729,7 +4738,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   padding-right: 5px;
 }
 
-#ooqqcgiqfw .gt_stub_row_group {
+#krfvnjfptk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4743,15 +4752,15 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   vertical-align: top;
 }
 
-#ooqqcgiqfw .gt_row_group_first td {
+#krfvnjfptk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ooqqcgiqfw .gt_row_group_first th {
+#krfvnjfptk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ooqqcgiqfw .gt_summary_row {
+#krfvnjfptk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4761,16 +4770,16 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   padding-right: 5px;
 }
 
-#ooqqcgiqfw .gt_first_summary_row {
+#krfvnjfptk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_first_summary_row.thick {
+#krfvnjfptk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ooqqcgiqfw .gt_last_summary_row {
+#krfvnjfptk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4780,7 +4789,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-bottom-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_grand_summary_row {
+#krfvnjfptk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4790,7 +4799,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   padding-right: 5px;
 }
 
-#ooqqcgiqfw .gt_first_grand_summary_row {
+#krfvnjfptk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4800,7 +4809,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-top-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_last_grand_summary_row_top {
+#krfvnjfptk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4810,11 +4819,11 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-bottom-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_striped {
+#krfvnjfptk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ooqqcgiqfw .gt_table_body {
+#krfvnjfptk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4823,7 +4832,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-bottom-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_footnotes {
+#krfvnjfptk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4837,7 +4846,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-right-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_footnote {
+#krfvnjfptk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4846,7 +4855,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   padding-right: 5px;
 }
 
-#ooqqcgiqfw .gt_sourcenotes {
+#krfvnjfptk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4860,7 +4869,7 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   border-right-color: #D3D3D3;
 }
 
-#ooqqcgiqfw .gt_sourcenote {
+#krfvnjfptk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4868,72 +4877,72 @@ Elo ratings on 26 August, 1999. After a decade of Italian dominance, United fina
   padding-right: 5px;
 }
 
-#ooqqcgiqfw .gt_left {
+#krfvnjfptk .gt_left {
   text-align: left;
 }
 
-#ooqqcgiqfw .gt_center {
+#krfvnjfptk .gt_center {
   text-align: center;
 }
 
-#ooqqcgiqfw .gt_right {
+#krfvnjfptk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ooqqcgiqfw .gt_font_normal {
+#krfvnjfptk .gt_font_normal {
   font-weight: normal;
 }
 
-#ooqqcgiqfw .gt_font_bold {
+#krfvnjfptk .gt_font_bold {
   font-weight: bold;
 }
 
-#ooqqcgiqfw .gt_font_italic {
+#krfvnjfptk .gt_font_italic {
   font-style: italic;
 }
 
-#ooqqcgiqfw .gt_super {
+#krfvnjfptk .gt_super {
   font-size: 65%;
 }
 
-#ooqqcgiqfw .gt_footnote_marks {
+#krfvnjfptk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ooqqcgiqfw .gt_asterisk {
+#krfvnjfptk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ooqqcgiqfw .gt_indent_1 {
+#krfvnjfptk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ooqqcgiqfw .gt_indent_2 {
+#krfvnjfptk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ooqqcgiqfw .gt_indent_3 {
+#krfvnjfptk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ooqqcgiqfw .gt_indent_4 {
+#krfvnjfptk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ooqqcgiqfw .gt_indent_5 {
+#krfvnjfptk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ooqqcgiqfw .katex-display {
+#krfvnjfptk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ooqqcgiqfw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#krfvnjfptk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5064,23 +5073,23 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
 <p>It all started with <strong>Bill Shankly</strong> who took over the club in the second division in 1959, when Everton were the undisputed best team on Merseyside. Progress was swift: promotion in 1962 was followed by league titles in 1964 and 1966, and Liverpool have basically been a fixture near the top of the league table ever since. They have still never finished lower than 8th place since Shankly first got them promoted.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="vpjbtlwcnm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vpjbtlwcnm table {
+<div id="hotvqkevpt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hotvqkevpt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vpjbtlwcnm thead, #vpjbtlwcnm tbody, #vpjbtlwcnm tfoot, #vpjbtlwcnm tr, #vpjbtlwcnm td, #vpjbtlwcnm th {
+#hotvqkevpt thead, #hotvqkevpt tbody, #hotvqkevpt tfoot, #hotvqkevpt tr, #hotvqkevpt td, #hotvqkevpt th {
   border-style: none;
 }
 
-#vpjbtlwcnm p {
+#hotvqkevpt p {
   margin: 0;
   padding: 0;
 }
 
-#vpjbtlwcnm .gt_table {
+#hotvqkevpt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5106,12 +5115,12 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-left-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_caption {
+#hotvqkevpt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vpjbtlwcnm .gt_title {
+#hotvqkevpt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5123,7 +5132,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-bottom-width: 0;
 }
 
-#vpjbtlwcnm .gt_subtitle {
+#hotvqkevpt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5135,7 +5144,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-top-width: 0;
 }
 
-#vpjbtlwcnm .gt_heading {
+#hotvqkevpt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5147,13 +5156,13 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-right-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_bottom_border {
+#hotvqkevpt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_col_headings {
+#hotvqkevpt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5168,7 +5177,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-right-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_col_heading {
+#hotvqkevpt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5188,7 +5197,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   overflow-x: hidden;
 }
 
-#vpjbtlwcnm .gt_column_spanner_outer {
+#hotvqkevpt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5200,15 +5209,15 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   padding-right: 4px;
 }
 
-#vpjbtlwcnm .gt_column_spanner_outer:first-child {
+#hotvqkevpt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vpjbtlwcnm .gt_column_spanner_outer:last-child {
+#hotvqkevpt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vpjbtlwcnm .gt_column_spanner {
+#hotvqkevpt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5220,11 +5229,11 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   width: 100%;
 }
 
-#vpjbtlwcnm .gt_spanner_row {
+#hotvqkevpt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vpjbtlwcnm .gt_group_heading {
+#hotvqkevpt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5250,7 +5259,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   text-align: left;
 }
 
-#vpjbtlwcnm .gt_empty_group_heading {
+#hotvqkevpt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5265,15 +5274,15 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   vertical-align: middle;
 }
 
-#vpjbtlwcnm .gt_from_md > :first-child {
+#hotvqkevpt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vpjbtlwcnm .gt_from_md > :last-child {
+#hotvqkevpt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vpjbtlwcnm .gt_row {
+#hotvqkevpt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5292,7 +5301,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   overflow-x: hidden;
 }
 
-#vpjbtlwcnm .gt_stub {
+#hotvqkevpt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5305,7 +5314,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   padding-right: 5px;
 }
 
-#vpjbtlwcnm .gt_stub_row_group {
+#hotvqkevpt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5319,15 +5328,15 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   vertical-align: top;
 }
 
-#vpjbtlwcnm .gt_row_group_first td {
+#hotvqkevpt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vpjbtlwcnm .gt_row_group_first th {
+#hotvqkevpt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vpjbtlwcnm .gt_summary_row {
+#hotvqkevpt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5337,16 +5346,16 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   padding-right: 5px;
 }
 
-#vpjbtlwcnm .gt_first_summary_row {
+#hotvqkevpt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_first_summary_row.thick {
+#hotvqkevpt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vpjbtlwcnm .gt_last_summary_row {
+#hotvqkevpt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5356,7 +5365,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-bottom-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_grand_summary_row {
+#hotvqkevpt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5366,7 +5375,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   padding-right: 5px;
 }
 
-#vpjbtlwcnm .gt_first_grand_summary_row {
+#hotvqkevpt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5376,7 +5385,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-top-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_last_grand_summary_row_top {
+#hotvqkevpt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5386,11 +5395,11 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-bottom-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_striped {
+#hotvqkevpt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vpjbtlwcnm .gt_table_body {
+#hotvqkevpt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5399,7 +5408,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-bottom-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_footnotes {
+#hotvqkevpt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5413,7 +5422,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-right-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_footnote {
+#hotvqkevpt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5422,7 +5431,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   padding-right: 5px;
 }
 
-#vpjbtlwcnm .gt_sourcenotes {
+#hotvqkevpt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5436,7 +5445,7 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   border-right-color: #D3D3D3;
 }
 
-#vpjbtlwcnm .gt_sourcenote {
+#hotvqkevpt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5444,72 +5453,72 @@ Elo ratings on 1 September, 2008, when the Abu Dhabi group agreed to purchase Ma
   padding-right: 5px;
 }
 
-#vpjbtlwcnm .gt_left {
+#hotvqkevpt .gt_left {
   text-align: left;
 }
 
-#vpjbtlwcnm .gt_center {
+#hotvqkevpt .gt_center {
   text-align: center;
 }
 
-#vpjbtlwcnm .gt_right {
+#hotvqkevpt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vpjbtlwcnm .gt_font_normal {
+#hotvqkevpt .gt_font_normal {
   font-weight: normal;
 }
 
-#vpjbtlwcnm .gt_font_bold {
+#hotvqkevpt .gt_font_bold {
   font-weight: bold;
 }
 
-#vpjbtlwcnm .gt_font_italic {
+#hotvqkevpt .gt_font_italic {
   font-style: italic;
 }
 
-#vpjbtlwcnm .gt_super {
+#hotvqkevpt .gt_super {
   font-size: 65%;
 }
 
-#vpjbtlwcnm .gt_footnote_marks {
+#hotvqkevpt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vpjbtlwcnm .gt_asterisk {
+#hotvqkevpt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vpjbtlwcnm .gt_indent_1 {
+#hotvqkevpt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vpjbtlwcnm .gt_indent_2 {
+#hotvqkevpt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vpjbtlwcnm .gt_indent_3 {
+#hotvqkevpt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vpjbtlwcnm .gt_indent_4 {
+#hotvqkevpt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vpjbtlwcnm .gt_indent_5 {
+#hotvqkevpt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vpjbtlwcnm .katex-display {
+#hotvqkevpt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vpjbtlwcnm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hotvqkevpt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5573,23 +5582,23 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
 <p>Liverpool once again became a major force under Klopp, but surprisingly they did also sneak into #1 spot for four days in April 2009 under Rafa Benitez after an impressive run of results that included a 4-1 win at Manchester United, a 5-0 win over 5th-placed Aston Villa, and a 5-0 aggregate win over Real Madrid in the Champions League.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="amyumiqcub" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#amyumiqcub table {
+<div id="qszzjudumf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qszzjudumf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#amyumiqcub thead, #amyumiqcub tbody, #amyumiqcub tfoot, #amyumiqcub tr, #amyumiqcub td, #amyumiqcub th {
+#qszzjudumf thead, #qszzjudumf tbody, #qszzjudumf tfoot, #qszzjudumf tr, #qszzjudumf td, #qszzjudumf th {
   border-style: none;
 }
 
-#amyumiqcub p {
+#qszzjudumf p {
   margin: 0;
   padding: 0;
 }
 
-#amyumiqcub .gt_table {
+#qszzjudumf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5615,12 +5624,12 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-left-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_caption {
+#qszzjudumf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#amyumiqcub .gt_title {
+#qszzjudumf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5632,7 +5641,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-bottom-width: 0;
 }
 
-#amyumiqcub .gt_subtitle {
+#qszzjudumf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5644,7 +5653,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-top-width: 0;
 }
 
-#amyumiqcub .gt_heading {
+#qszzjudumf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5656,13 +5665,13 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-right-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_bottom_border {
+#qszzjudumf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_col_headings {
+#qszzjudumf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5677,7 +5686,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-right-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_col_heading {
+#qszzjudumf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5697,7 +5706,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   overflow-x: hidden;
 }
 
-#amyumiqcub .gt_column_spanner_outer {
+#qszzjudumf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5709,15 +5718,15 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   padding-right: 4px;
 }
 
-#amyumiqcub .gt_column_spanner_outer:first-child {
+#qszzjudumf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#amyumiqcub .gt_column_spanner_outer:last-child {
+#qszzjudumf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#amyumiqcub .gt_column_spanner {
+#qszzjudumf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5729,11 +5738,11 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   width: 100%;
 }
 
-#amyumiqcub .gt_spanner_row {
+#qszzjudumf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#amyumiqcub .gt_group_heading {
+#qszzjudumf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5759,7 +5768,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   text-align: left;
 }
 
-#amyumiqcub .gt_empty_group_heading {
+#qszzjudumf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5774,15 +5783,15 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   vertical-align: middle;
 }
 
-#amyumiqcub .gt_from_md > :first-child {
+#qszzjudumf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#amyumiqcub .gt_from_md > :last-child {
+#qszzjudumf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#amyumiqcub .gt_row {
+#qszzjudumf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5801,7 +5810,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   overflow-x: hidden;
 }
 
-#amyumiqcub .gt_stub {
+#qszzjudumf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5814,7 +5823,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   padding-right: 5px;
 }
 
-#amyumiqcub .gt_stub_row_group {
+#qszzjudumf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5828,15 +5837,15 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   vertical-align: top;
 }
 
-#amyumiqcub .gt_row_group_first td {
+#qszzjudumf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#amyumiqcub .gt_row_group_first th {
+#qszzjudumf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#amyumiqcub .gt_summary_row {
+#qszzjudumf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5846,16 +5855,16 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   padding-right: 5px;
 }
 
-#amyumiqcub .gt_first_summary_row {
+#qszzjudumf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_first_summary_row.thick {
+#qszzjudumf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#amyumiqcub .gt_last_summary_row {
+#qszzjudumf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5865,7 +5874,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-bottom-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_grand_summary_row {
+#qszzjudumf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5875,7 +5884,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   padding-right: 5px;
 }
 
-#amyumiqcub .gt_first_grand_summary_row {
+#qszzjudumf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5885,7 +5894,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-top-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_last_grand_summary_row_top {
+#qszzjudumf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5895,11 +5904,11 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-bottom-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_striped {
+#qszzjudumf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#amyumiqcub .gt_table_body {
+#qszzjudumf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5908,7 +5917,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-bottom-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_footnotes {
+#qszzjudumf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5922,7 +5931,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-right-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_footnote {
+#qszzjudumf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5931,7 +5940,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   padding-right: 5px;
 }
 
-#amyumiqcub .gt_sourcenotes {
+#qszzjudumf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5945,7 +5954,7 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   border-right-color: #D3D3D3;
 }
 
-#amyumiqcub .gt_sourcenote {
+#qszzjudumf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5953,72 +5962,72 @@ Elo ratings on 2 October, 1972. Liverpool reach #1 for the first time.
   padding-right: 5px;
 }
 
-#amyumiqcub .gt_left {
+#qszzjudumf .gt_left {
   text-align: left;
 }
 
-#amyumiqcub .gt_center {
+#qszzjudumf .gt_center {
   text-align: center;
 }
 
-#amyumiqcub .gt_right {
+#qszzjudumf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#amyumiqcub .gt_font_normal {
+#qszzjudumf .gt_font_normal {
   font-weight: normal;
 }
 
-#amyumiqcub .gt_font_bold {
+#qszzjudumf .gt_font_bold {
   font-weight: bold;
 }
 
-#amyumiqcub .gt_font_italic {
+#qszzjudumf .gt_font_italic {
   font-style: italic;
 }
 
-#amyumiqcub .gt_super {
+#qszzjudumf .gt_super {
   font-size: 65%;
 }
 
-#amyumiqcub .gt_footnote_marks {
+#qszzjudumf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#amyumiqcub .gt_asterisk {
+#qszzjudumf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#amyumiqcub .gt_indent_1 {
+#qszzjudumf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#amyumiqcub .gt_indent_2 {
+#qszzjudumf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#amyumiqcub .gt_indent_3 {
+#qszzjudumf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#amyumiqcub .gt_indent_4 {
+#qszzjudumf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#amyumiqcub .gt_indent_5 {
+#qszzjudumf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#amyumiqcub .katex-display {
+#qszzjudumf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#amyumiqcub div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qszzjudumf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -6100,15 +6109,50 @@ I gather match data from a variety of public sources. Please check out these exc
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -6187,7 +6231,8 @@ I gather match data from a variety of public sources. Please check out these exc
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -6196,8 +6241,69 @@ I gather match data from a variety of public sources. Please check out these exc
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -6211,6 +6317,7 @@ I gather match data from a variety of public sources. Please check out these exc
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -6373,44 +6480,54 @@ I gather match data from a variety of public sources. Please check out these exc
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -6508,6 +6625,9 @@ I gather match data from a variety of public sources. Please check out these exc
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

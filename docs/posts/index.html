@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,18 +40,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c1afb647e6504aed1ecd096a1ed45b6d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,12 +103,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -143,7 +138,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -166,6 +161,7 @@ window.Quarto = {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -195,13 +191,19 @@ window.Quarto = {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -295,6 +297,7 @@ window.Quarto = {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -309,15 +312,14 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -349,8 +351,9 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -360,7 +363,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -388,748 +391,840 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="c3RhdGlzdGljcyUyQ2Zvb3RiYWxs" data-listing-date-sort="1788238800000" data-listing-file-modified-sort="1788272934937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2029">
-<div class="thumbnail"><a href="../posts/nxgn-prospects/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="0" data-categories="c3RhdGlzdGljcyUyQ2Zvb3RiYWxs" data-listing-date-sort="1795759200000" data-listing-file-modified-sort="1795818955890" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1149">
+<div class="thumbnail"><a href="../posts/red-card-punishment/index.html" class="no-external-icon">
+
+<img loading="lazy" src="../posts/red-card-punishment/vidic_red.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../posts/red-card-punishment/index.html" class="no-external-icon">Football needs to rethink the red card</a>
+</h3>
+<div class="listing-description">
+<a href="../posts/red-card-punishment/index.html" class="no-external-icon">
+<p>Too many games are decided by a punishment that is inconsistent and draconian.</p>
+</a>
+</div>
+</div>
+<div class="metadata">
+<a href="../posts/red-card-punishment/index.html" class="no-external-icon">
+<div class="listing-date">
+Nov 27, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="c3RhdGlzdGljcyUyQ2Zvb3RiYWxs" data-listing-date-sort="1788238800000" data-listing-file-modified-sort="1788272934937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2029">
+<div class="thumbnail"><a href="../posts/nxgn-prospects/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/nxgn-prospects/haaland_salzburg.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/nxgn-prospects/index.html" class="no-external">What if football had a draft?</a>
+<a href="../posts/nxgn-prospects/index.html" class="no-external-icon">What if football had a draft?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/nxgn-prospects/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/nxgn-prospects/index.html" class="no-external-icon">
 <p>If clubs could choose from the best youngsters in the world, how much would each pick be worth?</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/nxgn-prospects/index.html" class="no-external">
+<a href="../posts/nxgn-prospects/index.html" class="no-external-icon">
 <div class="listing-date">
 Sep 1, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="c3RhdGlzdGljcyUyQ1ByZW1pZXIlMjBMZWFndWU=" data-listing-date-sort="1786942800000" data-listing-file-modified-sort="1786999531932" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3591">
-<div class="thumbnail"><a href="../posts/transfer-spend/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="2" data-categories="c3RhdGlzdGljcyUyQ1ByZW1pZXIlMjBMZWFndWU=" data-listing-date-sort="1786942800000" data-listing-file-modified-sort="1786999531932" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3591">
+<div class="thumbnail"><a href="../posts/transfer-spend/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/transfer-spend/torres.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/transfer-spend/index.html" class="no-external">How does Premier League transfer spending affect performance?</a>
+<a href="../posts/transfer-spend/index.html" class="no-external-icon">How does Premier League transfer spending affect performance?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/transfer-spend/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/transfer-spend/index.html" class="no-external-icon">
 <p>Inflation adjustments for historical transfers, and an assessment of net spend as a predictive metric.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/transfer-spend/index.html" class="no-external">
+<a href="../posts/transfer-spend/index.html" class="no-external-icon">
 <div class="listing-date">
 Aug 17, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="c3RhdGlzdGljcyUyQ1ByZW1pZXIlMjBMZWFndWUlMkNDaGFtcGlvbnNoaXA=" data-listing-date-sort="1786510800000" data-listing-file-modified-sort="1786995823772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2083">
-<div class="thumbnail"><a href="../posts/promoted-relegated-cship-forecasts/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="3" data-categories="c3RhdGlzdGljcyUyQ1ByZW1pZXIlMjBMZWFndWUlMkNDaGFtcGlvbnNoaXA=" data-listing-date-sort="1786510800000" data-listing-file-modified-sort="1786995823772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2083">
+<div class="thumbnail"><a href="../posts/promoted-relegated-cship-forecasts/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/promoted-relegated-cship-forecasts/hull_201617.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/promoted-relegated-cship-forecasts/index.html" class="no-external">Will Hull City be the worst Premier League team of all-time?</a>
+<a href="../posts/promoted-relegated-cship-forecasts/index.html" class="no-external-icon">Will Hull City be the worst Premier League team of all-time?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/promoted-relegated-cship-forecasts/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/promoted-relegated-cship-forecasts/index.html" class="no-external-icon">
 <p>Statistical models forecasting promoted teams, relegated teams and the Championship.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/promoted-relegated-cship-forecasts/index.html" class="no-external">
+<a href="../posts/promoted-relegated-cship-forecasts/index.html" class="no-external-icon">
 <div class="listing-date">
 Aug 12, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="c3RhdGlzdGljcyUyQ1VFRkElMjBTdXBlciUyMEN1cCUyQ0FzdG9uJTIwVmlsbGElMkNQYXJpcyUyMFNhaW50LUdlcm1haW4=" data-listing-date-sort="1786338000000" data-listing-file-modified-sort="1786388336766" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="682">
-<div class="thumbnail"><a href="../posts/uefa-super-cup/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="4" data-categories="c3RhdGlzdGljcyUyQ1VFRkElMjBTdXBlciUyMEN1cCUyQ0FzdG9uJTIwVmlsbGElMkNQYXJpcyUyMFNhaW50LUdlcm1haW4=" data-listing-date-sort="1786338000000" data-listing-file-modified-sort="1786388336766" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="682">
+<div class="thumbnail"><a href="../posts/uefa-super-cup/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/uefa-super-cup/lpool_chelsea.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/uefa-super-cup/index.html" class="no-external">Paris Saint-Germain versus Aston Villa is the most competitive UEFA Super Cup since 2012</a>
+<a href="../posts/uefa-super-cup/index.html" class="no-external-icon">Paris Saint-Germain versus Aston Villa is the most competitive UEFA Super Cup since 2012</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/uefa-super-cup/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/uefa-super-cup/index.html" class="no-external-icon">
 <p>It may seem one-sided, but the Elo ratings are closer than in other recent Super Cups.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/uefa-super-cup/index.html" class="no-external">
+<a href="../posts/uefa-super-cup/index.html" class="no-external-icon">
 <div class="listing-date">
 Aug 10, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="c3RhdGlzdGljcyUyQ1ByZW1pZXIlMjBMZWFndWU=" data-listing-date-sort="1786165200000" data-listing-file-modified-sort="1786235945042" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1688">
-<div class="thumbnail"><a href="../posts/pl-auto-correlation/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="5" data-categories="c3RhdGlzdGljcyUyQ1ByZW1pZXIlMjBMZWFndWU=" data-listing-date-sort="1786165200000" data-listing-file-modified-sort="1786235945042" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1688">
+<div class="thumbnail"><a href="../posts/pl-auto-correlation/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-auto-correlation/autocorrelation_matrix.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-auto-correlation/index.html" class="no-external">Which statistics best predict future performance for Premier League teams?</a>
+<a href="../posts/pl-auto-correlation/index.html" class="no-external-icon">Which statistics best predict future performance for Premier League teams?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-auto-correlation/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-auto-correlation/index.html" class="no-external-icon">
 <p>Comparing xG, GD, points, shots, et al.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-auto-correlation/index.html" class="no-external">
+<a href="../posts/pl-auto-correlation/index.html" class="no-external-icon">
 <div class="listing-date">
 Aug 8, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="YmV0dGluZyUyQ3N0YXRpc3RpY3MlMkNLYWxzaGklMkNCZXRmYWly" data-listing-date-sort="1785560400000" data-listing-file-modified-sort="1785605800809" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="25" data-listing-word-count-sort="4877">
-<div class="thumbnail"><a href="../posts/kalshi-commission/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="6" data-categories="YmV0dGluZyUyQ3N0YXRpc3RpY3MlMkNLYWxzaGklMkNCZXRmYWly" data-listing-date-sort="1785560400000" data-listing-file-modified-sort="1785605800809" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="25" data-listing-word-count-sort="4877">
+<div class="thumbnail"><a href="../posts/kalshi-commission/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/kalshi-commission/kalshi_on_phone.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/kalshi-commission/index.html" class="no-external">How does Kalshi’s commission structure compare to Betfair?</a>
+<a href="../posts/kalshi-commission/index.html" class="no-external-icon">How does Kalshi’s commission structure compare to Betfair?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/kalshi-commission/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/kalshi-commission/index.html" class="no-external-icon">
 <p>Does Kalshi’s 7% fee per bet make many strategies unworkable?</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/kalshi-commission/index.html" class="no-external">
+<a href="../posts/kalshi-commission/index.html" class="no-external-icon">
 <div class="listing-date">
 Aug 1, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1785214800000" data-listing-file-modified-sort="1785293518440" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1635">
-<div class="thumbnail"><a href="../posts/pl-review-2026-part-two/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="7" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1785214800000" data-listing-file-modified-sort="1785293518440" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1635">
+<div class="thumbnail"><a href="../posts/pl-review-2026-part-two/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-review-2026-part-two/pl_players.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-review-2026-part-two/index.html" class="no-external">Premier League 2025-26: Who were the best and worst players for each team?</a>
+<a href="../posts/pl-review-2026-part-two/index.html" class="no-external-icon">Premier League 2025-26: Who were the best and worst players for each team?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-review-2026-part-two/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-review-2026-part-two/index.html" class="no-external-icon">
 <p>Using contexG to estimate each player’s effect on team performance.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-review-2026-part-two/index.html" class="no-external">
+<a href="../posts/pl-review-2026-part-two/index.html" class="no-external-icon">
 <div class="listing-date">
 Jul 28, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1779858000000" data-listing-file-modified-sort="1779924829191" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4369">
-<div class="thumbnail"><a href="../posts/pl-review-2026-part-one/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="8" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1779858000000" data-listing-file-modified-sort="1779924829191" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4369">
+<div class="thumbnail"><a href="../posts/pl-review-2026-part-one/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-review-2026-part-one/managers.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-review-2026-part-one/index.html" class="no-external">Premier League 2025-26: Which managerial changes worked, and which didn’t?</a>
+<a href="../posts/pl-review-2026-part-one/index.html" class="no-external-icon">Premier League 2025-26: Which managerial changes worked, and which didn’t?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-review-2026-part-one/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-review-2026-part-one/index.html" class="no-external-icon">
 <p>A statistical look at each of the teams who changed manager before or during the season.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-review-2026-part-one/index.html" class="no-external">
+<a href="../posts/pl-review-2026-part-one/index.html" class="no-external-icon">
 <div class="listing-date">
 May 27, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDVUVGQQ==" data-listing-date-sort="1779166800000" data-listing-file-modified-sort="1779239908543" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1134">
-<div class="thumbnail"><a href="../posts/uefa-finalist-strength/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="9" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDVUVGQQ==" data-listing-date-sort="1779166800000" data-listing-file-modified-sort="1779239908543" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1134">
+<div class="thumbnail"><a href="../posts/uefa-finalist-strength/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/uefa-finalist-strength/panathinaikos.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/uefa-finalist-strength/index.html" class="no-external">Has the new format made UEFA Europa League finals weaker?</a>
+<a href="../posts/uefa-finalist-strength/index.html" class="no-external-icon">Has the new format made UEFA Europa League finals weaker?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/uefa-finalist-strength/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/uefa-finalist-strength/index.html" class="no-external-icon">
 <p>Using Elo ratings to compare Freiburg with finalists from previous eras.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/uefa-finalist-strength/index.html" class="no-external">
+<a href="../posts/uefa-finalist-strength/index.html" class="no-external-icon">
 <div class="listing-date">
 May 19, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDV29ybGQlMjBDdXA=" data-listing-date-sort="1776747600000" data-listing-file-modified-sort="1777164837452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3814">
-<div class="thumbnail"><a href="../posts/world-cup-home-advantage/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="10" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDV29ybGQlMjBDdXA=" data-listing-date-sort="1776747600000" data-listing-file-modified-sort="1777164837452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3814">
+<div class="thumbnail"><a href="../posts/world-cup-home-advantage/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/world-cup-home-advantage/england_1966.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/world-cup-home-advantage/index.html" class="no-external">How much is home advantage worth in the World Cup?</a>
+<a href="../posts/world-cup-home-advantage/index.html" class="no-external-icon">How much is home advantage worth in the World Cup?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/world-cup-home-advantage/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/world-cup-home-advantage/index.html" class="no-external-icon">
 <p>I created a model for international football to help measure home advantage in major tournaments.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/world-cup-home-advantage/index.html" class="no-external">
+<a href="../posts/world-cup-home-advantage/index.html" class="no-external-icon">
 <div class="listing-date">
 Apr 21, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1776574800000" data-listing-file-modified-sort="1776649795947" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2504">
-<div class="thumbnail"><a href="../posts/pl-review-20260419/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="11" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1776574800000" data-listing-file-modified-sort="1776649795947" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2504">
+<div class="thumbnail"><a href="../posts/pl-review-20260419/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-review-20260419/pl_thumb.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-review-20260419/index.html" class="no-external">Premier League Weekend Review: 18-19 April</a>
+<a href="../posts/pl-review-20260419/index.html" class="no-external-icon">Premier League Weekend Review: 18-19 April</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-review-20260419/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-review-20260419/index.html" class="no-external-icon">
 <p>City odds-on for the league, Spurs odds-on for the drop.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-review-20260419/index.html" class="no-external">
+<a href="../posts/pl-review-20260419/index.html" class="no-external-icon">
 <div class="listing-date">
 Apr 19, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1776142800000" data-listing-file-modified-sort="1776223055932" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3632">
-<div class="thumbnail"><a href="../posts/pl-simulation-week-32/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="12" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1776142800000" data-listing-file-modified-sort="1776223055932" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3632">
+<div class="thumbnail"><a href="../posts/pl-simulation-week-32/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-simulation-week-32/etihad_league_table.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-simulation-week-32/index.html" class="no-external">Premier League probabilities after Matchweek 32: we are approaching flip-flop territory!</a>
+<a href="../posts/pl-simulation-week-32/index.html" class="no-external-icon">Premier League probabilities after Matchweek 32: we are approaching flip-flop territory!</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-simulation-week-32/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-simulation-week-32/index.html" class="no-external-icon">
 <p>Using Monte Carlo simulation to estimate all teams’ probabilities for the title race, European qualification and relegation.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-simulation-week-32/index.html" class="no-external">
+<a href="../posts/pl-simulation-week-32/index.html" class="no-external-icon">
 <div class="listing-date">
 Apr 14, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1775970000000" data-listing-file-modified-sort="1776023931272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2082">
-<div class="thumbnail"><a href="../posts/pl-review-20260412/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="13" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1775970000000" data-listing-file-modified-sort="1776023931272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2082">
+<div class="thumbnail"><a href="../posts/pl-review-20260412/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-review-20260412/pl_thumb.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-review-20260412/index.html" class="no-external">Premier League Weekend Review: 10-12 April</a>
+<a href="../posts/pl-review-20260412/index.html" class="no-external-icon">Premier League Weekend Review: 10-12 April</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-review-20260412/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-review-20260412/index.html" class="no-external-icon">
 <p>Nightmare in North London as Spurs and Arsenal lose while West Ham and Manchester City win.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-review-20260412/index.html" class="no-external">
+<a href="../posts/pl-review-20260412/index.html" class="no-external-icon">
 <div class="listing-date">
 Apr 12, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDV29ybGQlMjBDdXA=" data-listing-date-sort="1775451600000" data-listing-file-modified-sort="1775521813248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1140">
-<div class="thumbnail"><a href="../posts/world-cup-home-players/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="14" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDV29ybGQlMjBDdXA=" data-listing-date-sort="1775451600000" data-listing-file-modified-sort="1775521813248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1140">
+<div class="thumbnail"><a href="../posts/world-cup-home-players/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/world-cup-home-players/arg_hol.jpeg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/world-cup-home-players/index.html" class="no-external">World Cup squads from 1930 to 2022: When did all the Argentinians move to Europe?</a>
+<a href="../posts/world-cup-home-players/index.html" class="no-external-icon">World Cup squads from 1930 to 2022: When did all the Argentinians move to Europe?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/world-cup-home-players/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/world-cup-home-players/index.html" class="no-external-icon">
 <p>Charting the migration of players throughout World Cup history.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/world-cup-home-players/index.html" class="no-external">
+<a href="../posts/world-cup-home-players/index.html" class="no-external-icon">
 <div class="listing-date">
 Apr 6, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1774155600000" data-listing-file-modified-sort="1774208974713" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1978">
-<div class="thumbnail"><a href="../posts/pl-review-20260322/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="15" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1774155600000" data-listing-file-modified-sort="1774208974713" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1978">
+<div class="thumbnail"><a href="../posts/pl-review-20260322/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-review-20260322/pl_thumb.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-review-20260322/index.html" class="no-external">Premier League Weekend Review: 20-22 March</a>
+<a href="../posts/pl-review-20260322/index.html" class="no-external-icon">Premier League Weekend Review: 20-22 March</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-review-20260322/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-review-20260322/index.html" class="no-external-icon">
 <p>Spurs sink to new low, impressive derby win for Sunderland, and Chelsea lose 4th in-a-row.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-review-20260322/index.html" class="no-external">
+<a href="../posts/pl-review-20260322/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 22, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1773550800000" data-listing-file-modified-sort="1773632178462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2047">
-<div class="thumbnail"><a href="../posts/pl-review-20260315/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="16" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1773550800000" data-listing-file-modified-sort="1773632178462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2047">
+<div class="thumbnail"><a href="../posts/pl-review-20260315/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-review-20260315/pl_thumb.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-review-20260315/index.html" class="no-external">Premier League Weekend Review: 14-15 March</a>
+<a href="../posts/pl-review-20260315/index.html" class="no-external-icon">Premier League Weekend Review: 14-15 March</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-review-20260315/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-review-20260315/index.html" class="no-external-icon">
 <p>Arsenal are almost over the line, West Ham score from their only shot against Man City, and Spurs’ walking wounded grab an unlikely point at Anfield.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-review-20260315/index.html" class="no-external">
+<a href="../posts/pl-review-20260315/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 15, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1772949600000" data-listing-file-modified-sort="1774627433929" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3900">
-<div class="thumbnail"><a href="../posts/relegation-candidates/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="17" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1772949600000" data-listing-file-modified-sort="1774627433929" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3900">
+<div class="thumbnail"><a href="../posts/relegation-candidates/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/relegation-candidates/cliff_edge.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/relegation-candidates/index.html" class="no-external">Who will be relegated from this year’s Premier League?</a>
+<a href="../posts/relegation-candidates/index.html" class="no-external-icon">Who will be relegated from this year’s Premier League?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/relegation-candidates/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/relegation-candidates/index.html" class="no-external-icon">
 <p>Assessing the outlook for West Ham, Tottenham, Nottingham Forest and Leeds United.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/relegation-candidates/index.html" class="no-external">
+<a href="../posts/relegation-candidates/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 8, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1772690400000" data-listing-file-modified-sort="1772762124761" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2736">
-<div class="thumbnail"><a href="../posts/pl-review-20260305/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="18" data-categories="Zm9vdGJhbGwlMkNQcmVtaWVyJTIwTGVhZ3VlJTJDY29udGV4Rw==" data-listing-date-sort="1772690400000" data-listing-file-modified-sort="1772762124761" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2736">
+<div class="thumbnail"><a href="../posts/pl-review-20260305/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl_thumb.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-review-20260305/index.html" class="no-external">Premier League Midweek Review</a>
+<a href="../posts/pl-review-20260305/index.html" class="no-external-icon">Premier League Midweek Review</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-review-20260305/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-review-20260305/index.html" class="no-external-icon">
 <p>Title race almost over, Villa thrashed, Spurs in huge trouble.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-review-20260305/index.html" class="no-external">
+<a href="../posts/pl-review-20260305/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 5, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="Zm9vdGJhbGwlMkNUb3R0ZW5oYW0lMjBIb3RzcHVy" data-listing-date-sort="1772431200000" data-listing-file-modified-sort="1772487250311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2478">
-<div class="thumbnail"><a href="../posts/spurs-relegation/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="19" data-categories="Zm9vdGJhbGwlMkNUb3R0ZW5oYW0lMjBIb3RzcHVy" data-listing-date-sort="1772431200000" data-listing-file-modified-sort="1772487250311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2478">
+<div class="thumbnail"><a href="../posts/spurs-relegation/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/spurs-relegation/spurs_stadium.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/spurs-relegation/index.html" class="no-external">How does Spurs’ relegation battle compare with previous Spurs relegation battles?</a>
+<a href="../posts/spurs-relegation/index.html" class="no-external-icon">How does Spurs’ relegation battle compare with previous Spurs relegation battles?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/spurs-relegation/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/spurs-relegation/index.html" class="no-external-icon">
 <p>Using an R Shiny tool to view the league table when Spurs have been in previous peril.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/spurs-relegation/index.html" class="no-external">
+<a href="../posts/spurs-relegation/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 2, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1772344800000" data-listing-file-modified-sort="1772762204121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2140">
-<div class="thumbnail"><a href="../posts/pl-review-20260301/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="20" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1772344800000" data-listing-file-modified-sort="1772762204121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2140">
+<div class="thumbnail"><a href="../posts/pl-review-20260301/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/pl-review-20260301/pl_thumb.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-review-20260301/index.html" class="no-external">Premier League Weekend Review</a>
+<a href="../posts/pl-review-20260301/index.html" class="no-external-icon">Premier League Weekend Review</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-review-20260301/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-review-20260301/index.html" class="no-external-icon">
 <p>Arsenal clear another hurdle, United go third, and Spurs continue to spiral.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-review-20260301/index.html" class="no-external">
+<a href="../posts/pl-review-20260301/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 1, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1772258400000" data-listing-file-modified-sort="1772324668765" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2826">
-<div class="thumbnail"><a href="../posts/contexg-intro/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="21" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1772258400000" data-listing-file-modified-sort="1772324668765" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2826">
+<div class="thumbnail"><a href="../posts/contexg-intro/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/contexg-intro/29057_wolverhampton_wanderers_vs_aston_villa.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/contexg-intro/index.html" class="no-external">Introducing contexG</a>
+<a href="../posts/contexg-intro/index.html" class="no-external-icon">Introducing contexG</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/contexg-intro/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/contexg-intro/index.html" class="no-external-icon">
 <p>A composite, context-adjusted rating to summarise each team’s performance in a football match.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/contexg-intro/index.html" class="no-external">
+<a href="../posts/contexg-intro/index.html" class="no-external-icon">
 <div class="listing-date">
 Feb 28, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDRWxvJTIwcmF0aW5ncyUyQ2NoYW1waW9ucyUyMGxlYWd1ZQ==" data-listing-date-sort="1770184800000" data-listing-file-modified-sort="1770244327897" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3758">
-<div class="thumbnail"><a href="../posts/cl-draw-fairness/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="22" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDRWxvJTIwcmF0aW5ncyUyQ2NoYW1waW9ucyUyMGxlYWd1ZQ==" data-listing-date-sort="1770184800000" data-listing-file-modified-sort="1770244327897" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3758">
+<div class="thumbnail"><a href="../posts/cl-draw-fairness/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/cl-draw-fairness/cl_logo_with_table.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/cl-draw-fairness/index.html" class="no-external">Does the Champions League draw give English teams an unfair advantage?</a>
+<a href="../posts/cl-draw-fairness/index.html" class="no-external-icon">Does the Champions League draw give English teams an unfair advantage?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/cl-draw-fairness/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/cl-draw-fairness/index.html" class="no-external-icon">
 <p>Calculating each team’s strength of schedule and a proposal to improve the format</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/cl-draw-fairness/index.html" class="no-external">
+<a href="../posts/cl-draw-fairness/index.html" class="no-external-icon">
 <div class="listing-date">
 Feb 4, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDRWxvJTIwcmF0aW5ncw==" data-listing-date-sort="1769493600000" data-listing-file-modified-sort="1769554181178" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4733">
-<div class="thumbnail"><a href="../posts/elo-number-one/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="23" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDRWxvJTIwcmF0aW5ncw==" data-listing-date-sort="1769493600000" data-listing-file-modified-sort="1769554181178" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4733">
+<div class="thumbnail"><a href="../posts/elo-number-one/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/elo-number-one/Liverpool_6_ucl_trophies.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/elo-number-one/index.html" class="no-external">Which British teams have reached #1 in the Elo rankings?</a>
+<a href="../posts/elo-number-one/index.html" class="no-external-icon">Which British teams have reached #1 in the Elo rankings?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/elo-number-one/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/elo-number-one/index.html" class="no-external-icon">
 <p>A review of the teams ranked number one in the Elo rating system over the last 85 years.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/elo-number-one/index.html" class="no-external">
+<a href="../posts/elo-number-one/index.html" class="no-external-icon">
 <div class="listing-date">
 Jan 27, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="23" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDQ2hhbXBpb25zJTIwTGVhZ3Vl" data-listing-date-sort="1769061600000" data-listing-file-modified-sort="1769392497197" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2787">
-<div class="thumbnail"><a href="../posts/cl-simulation/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="24" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDQ2hhbXBpb25zJTIwTGVhZ3Vl" data-listing-date-sort="1769061600000" data-listing-file-modified-sort="1769392497197" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2787">
+<div class="thumbnail"><a href="../posts/cl-simulation/index.html" class="no-external-icon">
 
 <img loading="lazy" src="../posts/cl-simulation/cl.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/cl-simulation/index.html" class="no-external">What are the probabilities of each team qualifying for the next phase of the Champions League?</a>
+<a href="../posts/cl-simulation/index.html" class="no-external-icon">What are the probabilities of each team qualifying for the next phase of the Champions League?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/cl-simulation/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/cl-simulation/index.html" class="no-external-icon">
 <p>Using bookmaker odds and simulation to find the probability of each team qualifying, and their potential opponents in the next round.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/cl-simulation/index.html" class="no-external">
+<a href="../posts/cl-simulation/index.html" class="no-external-icon">
 <div class="listing-date">
 Jan 22, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="24" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZSUyQ3JlZmVyZWVz" data-listing-date-sort="1768888800000" data-listing-file-modified-sort="1769392409458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1922">
-<div class="thumbnail"><a href="../posts/set-pieces/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="25" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZSUyQ3JlZmVyZWVz" data-listing-date-sort="1768888800000" data-listing-file-modified-sort="1769392409458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1922">
+<div class="thumbnail"><a href="../posts/set-pieces/index.html" class="no-external-icon">
 
-<img loading="lazy" src="../posts/set-pieces/wolves_mancity_corner.jpg" class="thumbnail-image">
+<img loading="lazy" data-src="../posts/set-pieces/wolves_mancity_corner.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/set-pieces/index.html" class="no-external">Set pieces are on the rise in football - but is this a good thing?</a>
+<a href="../posts/set-pieces/index.html" class="no-external-icon">Set pieces are on the rise in football - but is this a good thing?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/set-pieces/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/set-pieces/index.html" class="no-external-icon">
 <p>A look at recent set piece trends in England and Europe, and a rant about refereeing.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/set-pieces/index.html" class="no-external">
+<a href="../posts/set-pieces/index.html" class="no-external-icon">
 <div class="listing-date">
 Jan 20, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="25" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1768370400000" data-listing-file-modified-sort="1769392391230" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1682">
-<div class="thumbnail"><a href="../posts/pl-kmi-panel/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="26" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDUHJlbWllciUyMExlYWd1ZQ==" data-listing-date-sort="1768370400000" data-listing-file-modified-sort="1769392391230" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1682">
+<div class="thumbnail"><a href="../posts/pl-kmi-panel/index.html" class="no-external-icon">
 
 <img loading="lazy" data-src="../posts/pl-kmi-panel/var.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl-kmi-panel/index.html" class="no-external">Are referees judged harshly with respect to VAR?</a>
+<a href="../posts/pl-kmi-panel/index.html" class="no-external-icon">Are referees judged harshly with respect to VAR?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl-kmi-panel/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl-kmi-panel/index.html" class="no-external-icon">
 <p>Examining the futility of the Premier League’s Key Match Incident Panel using Bayesian probability.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl-kmi-panel/index.html" class="no-external">
+<a href="../posts/pl-kmi-panel/index.html" class="no-external-icon">
 <div class="listing-date">
 Jan 14, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="26" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDVW5haSUyMEVtZXJ5JTJDQXN0b24lMjBWaWxsYSUyQ1ByZW1pZXIlMjBMZWFndWU=" data-listing-date-sort="1768024800000" data-listing-file-modified-sort="1769392341129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2540">
-<div class="thumbnail"><a href="../posts/emery-xg-overperformance-2/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="27" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDVW5haSUyMEVtZXJ5JTJDQXN0b24lMjBWaWxsYSUyQ1ByZW1pZXIlMjBMZWFndWU=" data-listing-date-sort="1768024800000" data-listing-file-modified-sort="1769392341129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2540">
+<div class="thumbnail"><a href="../posts/emery-xg-overperformance-2/index.html" class="no-external-icon">
 
 <img loading="lazy" data-src="../posts/emery-xg-overperformance-2/emery2.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/emery-xg-overperformance-2/index.html" class="no-external">Unai Emery: the xG whisperer</a>
+<a href="../posts/emery-xg-overperformance-2/index.html" class="no-external-icon">Unai Emery: the xG whisperer</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/emery-xg-overperformance-2/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/emery-xg-overperformance-2/index.html" class="no-external-icon">
 <p>Part two: Breaking down Emery’s xG performance by club, and looking at player effects and game state.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/emery-xg-overperformance-2/index.html" class="no-external">
+<a href="../posts/emery-xg-overperformance-2/index.html" class="no-external-icon">
 <div class="listing-date">
 Jan 10, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="27" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDVW5haSUyMEVtZXJ5JTJDQXN0b24lMjBWaWxsYSUyQ1ByZW1pZXIlMjBMZWFndWU=" data-listing-date-sort="1767592800000" data-listing-file-modified-sort="1769392322881" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2173">
-<div class="thumbnail"><a href="../posts/emery-xg-overperformance/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="28" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNzJTJDVW5haSUyMEVtZXJ5JTJDQXN0b24lMjBWaWxsYSUyQ1ByZW1pZXIlMjBMZWFndWU=" data-listing-date-sort="1767592800000" data-listing-file-modified-sort="1769392322881" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2173">
+<div class="thumbnail"><a href="../posts/emery-xg-overperformance/index.html" class="no-external-icon">
 
 <img loading="lazy" data-src="../posts/emery-xg-overperformance/emery.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/emery-xg-overperformance/index.html" class="no-external">Unai Emery: the xG whisperer</a>
+<a href="../posts/emery-xg-overperformance/index.html" class="no-external-icon">Unai Emery: the xG whisperer</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/emery-xg-overperformance/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/emery-xg-overperformance/index.html" class="no-external-icon">
 <p>Part one: Why should anyone care about xG, and which managers consistently outperform xG?</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/emery-xg-overperformance/index.html" class="no-external">
+<a href="../posts/emery-xg-overperformance/index.html" class="no-external-icon">
 <div class="listing-date">
 Jan 5, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="28" data-categories="Zm9vdGJhbGwlMkNiZXR0aW5nJTJDc3RhdGlzdGljcw==" data-listing-date-sort="1754715600000" data-listing-file-modified-sort="1767143161878" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1403">
-<div class="thumbnail"><a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="29" data-categories="Zm9vdGJhbGwlMkNiZXR0aW5nJTJDc3RhdGlzdGljcw==" data-listing-date-sort="1754715600000" data-listing-file-modified-sort="1767143161878" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1403">
+<div class="thumbnail"><a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external-icon">
 
 <img loading="lazy" data-src="../posts/pl_bookie_ratings_2425/plot_snip.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external">How did bookmakers rate each Premier League team across the 2024-2025 season?</a>
+<a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external-icon">How did bookmakers rate each Premier League team across the 2024-2025 season?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external-icon">
 <p>I use Python to derive team ratings from Pinnacle Sports Asian handicaps, and visualize how each team’s rating changed throughout the 2024-2025 Premier League season.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external">
+<a href="../posts/pl_bookie_ratings_2425/index.html" class="no-external-icon">
 <div class="listing-date">
 Aug 9, 2025
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="29" data-categories="YmV0dGluZyUyQ3N0YXRpc3RpY3M=" data-listing-date-sort="1754370000000" data-listing-file-modified-sort="1767143161862" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1472">
-<div class="thumbnail"><a href="../posts/betting_variance/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="30" data-categories="YmV0dGluZyUyQ3N0YXRpc3RpY3M=" data-listing-date-sort="1754370000000" data-listing-file-modified-sort="1767143161862" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1472">
+<div class="thumbnail"><a href="../posts/betting_variance/index.html" class="no-external-icon">
 
 <img loading="lazy" data-src="../posts/betting_variance/viz/bet_record_plot_405.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/betting_variance/index.html" class="no-external">How can you know if your betting system really works?</a>
+<a href="../posts/betting_variance/index.html" class="no-external-icon">How can you know if your betting system really works?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/betting_variance/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/betting_variance/index.html" class="no-external-icon">
 <p>How to understand the role of variance and evaluate your betting strategy.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/betting_variance/index.html" class="no-external">
+<a href="../posts/betting_variance/index.html" class="no-external-icon">
 <div class="listing-date">
 Aug 5, 2025
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="30" data-categories="dHJhbnNwb3J0JTJDcHJvcGVydHklMkNweXRob24=" data-listing-date-sort="1753506000000" data-listing-file-modified-sort="1767143161877" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="634">
-<div class="thumbnail"><a href="../posts/london_rail_stations/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="31" data-categories="dHJhbnNwb3J0JTJDcHJvcGVydHklMkNweXRob24=" data-listing-date-sort="1753506000000" data-listing-file-modified-sort="1767143161877" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="634">
+<div class="thumbnail"><a href="../posts/london_rail_stations/index.html" class="no-external-icon">
 
 <img loading="lazy" data-src="../posts/london_rail_stations/woking.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/london_rail_stations/index.html" class="no-external">Commuting times from London railway terminals</a>
+<a href="../posts/london_rail_stations/index.html" class="no-external-icon">Commuting times from London railway terminals</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/london_rail_stations/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/london_rail_stations/index.html" class="no-external-icon">
 <p>Visualizing rail travel times from the centre of London to surrounding stations with the use of Python, SQLite and the folium package.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/london_rail_stations/index.html" class="no-external">
+<a href="../posts/london_rail_stations/index.html" class="no-external-icon">
 <div class="listing-date">
 Jul 26, 2025
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="31" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1753160400000" data-listing-file-modified-sort="1767143161873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
-<div class="thumbnail"><a href="../posts/game_state/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="32" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1753160400000" data-listing-file-modified-sort="1767143161873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
+<div class="thumbnail"><a href="../posts/game_state/index.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' data-src="game_state/viz/mean_goals_by_minute.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/game_state/index.html" class="no-external">How does scoring rate change in a football match based on time elapsed and game state?</a>
+<a href="../posts/game_state/index.html" class="no-external-icon">How does scoring rate change in a football match based on time elapsed and game state?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/game_state/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/game_state/index.html" class="no-external-icon">
 <p>Creating a logistic regression model to predict the chance of scoring a goal in each minute of a football match based on the pre-match odds, current score, minutes elapsed, and any red cards.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/game_state/index.html" class="no-external">
+<a href="../posts/game_state/index.html" class="no-external-icon">
 <div class="listing-date">
 Jul 22, 2025
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="32" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1752296400000" data-listing-file-modified-sort="1767143161864" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2326">
-<div class="thumbnail"><a href="../posts/elo_sim_model/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="33" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1752296400000" data-listing-file-modified-sort="1767143161864" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2326">
+<div class="thumbnail"><a href="../posts/elo_sim_model/index.html" class="no-external-icon">
 
 <img loading="lazy" data-src="../posts/elo_sim_model/viz/cond_plots.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/elo_sim_model/index.html" class="no-external">Building a model to simulate football scores from Elo ratings</a>
+<a href="../posts/elo_sim_model/index.html" class="no-external-icon">Building a model to simulate football scores from Elo ratings</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/elo_sim_model/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/elo_sim_model/index.html" class="no-external-icon">
 <p>I demonstrate how the Poisson and negative binomial distributions compare to actual football scores from the English top flight, and how we can convert Elo ratings into correct score probabilities.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/elo_sim_model/index.html" class="no-external">
+<a href="../posts/elo_sim_model/index.html" class="no-external-icon">
 <div class="listing-date">
 Jul 12, 2025
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="33" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1751605200000" data-listing-file-modified-sort="1767143161884" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2995">
-<div class="thumbnail"><a href="../posts/title_collapses/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="34" data-categories="Zm9vdGJhbGwlMkNzdGF0aXN0aWNz" data-listing-date-sort="1751605200000" data-listing-file-modified-sort="1767143161884" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2995">
+<div class="thumbnail"><a href="../posts/title_collapses/index.html" class="no-external-icon">
 
 <img loading="lazy" data-src="../posts/title_collapses/viz/gerrard_slip_screenshot.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../posts/title_collapses/index.html" class="no-external">What are the worst league title collapses in English football history?</a>
+<a href="../posts/title_collapses/index.html" class="no-external-icon">What are the worst league title collapses in English football history?</a>
 </h3>
-<div class="delink listing-description"><a href="../posts/title_collapses/index.html" class="no-external">
+<div class="listing-description">
+<a href="../posts/title_collapses/index.html" class="no-external-icon">
 <p>Using an Elo-derived simulation model, I ranked the five biggest late-season collapses in the English top flight since World War Two. Liverpool and Manchester United fans may wish to proceed with caution.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="../posts/title_collapses/index.html" class="no-external">
+<a href="../posts/title_collapses/index.html" class="no-external-icon">
 <div class="listing-date">
 Jul 4, 2025
 </div>
@@ -1146,15 +1241,50 @@ Jul 4, 2025
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1233,7 +1363,8 @@ Jul 4, 2025
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1242,8 +1373,69 @@ Jul 4, 2025
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1257,6 +1449,7 @@ Jul 4, 2025
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1419,44 +1612,54 @@ Jul 4, 2025
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1554,6 +1757,9 @@ Jul 4, 2025
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

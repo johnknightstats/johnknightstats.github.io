@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,18 +41,19 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c1afb647e6504aed1ecd096a1ed45b6d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -108,6 +109,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -137,13 +139,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -237,6 +245,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -251,15 +260,14 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -291,8 +299,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -302,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -380,23 +389,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Why are Hull (15 points) rated so much worse than <strong>Coventry City</strong> (38) and <strong>Ipswich Town</strong> (38)? Let’s compare the stats of all the promoted Championship teams going back to 2016/17.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ewapcdeepr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ewapcdeepr table {
+<div id="nfuethrtym" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nfuethrtym table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ewapcdeepr thead, #ewapcdeepr tbody, #ewapcdeepr tfoot, #ewapcdeepr tr, #ewapcdeepr td, #ewapcdeepr th {
+#nfuethrtym thead, #nfuethrtym tbody, #nfuethrtym tfoot, #nfuethrtym tr, #nfuethrtym td, #nfuethrtym th {
   border-style: none;
 }
 
-#ewapcdeepr p {
+#nfuethrtym p {
   margin: 0;
   padding: 0;
 }
 
-#ewapcdeepr .gt_table {
+#nfuethrtym .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -422,12 +431,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_caption {
+#nfuethrtym .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ewapcdeepr .gt_title {
+#nfuethrtym .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -439,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#ewapcdeepr .gt_subtitle {
+#nfuethrtym .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -451,7 +460,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#ewapcdeepr .gt_heading {
+#nfuethrtym .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -463,13 +472,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_bottom_border {
+#nfuethrtym .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_col_headings {
+#nfuethrtym .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -484,7 +493,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_col_heading {
+#nfuethrtym .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -504,7 +513,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ewapcdeepr .gt_column_spanner_outer {
+#nfuethrtym .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -516,15 +525,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#ewapcdeepr .gt_column_spanner_outer:first-child {
+#nfuethrtym .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ewapcdeepr .gt_column_spanner_outer:last-child {
+#nfuethrtym .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ewapcdeepr .gt_column_spanner {
+#nfuethrtym .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -536,11 +545,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#ewapcdeepr .gt_spanner_row {
+#nfuethrtym .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ewapcdeepr .gt_group_heading {
+#nfuethrtym .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -566,7 +575,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#ewapcdeepr .gt_empty_group_heading {
+#nfuethrtym .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -581,15 +590,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#ewapcdeepr .gt_from_md > :first-child {
+#nfuethrtym .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ewapcdeepr .gt_from_md > :last-child {
+#nfuethrtym .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ewapcdeepr .gt_row {
+#nfuethrtym .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -608,7 +617,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ewapcdeepr .gt_stub {
+#nfuethrtym .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -621,7 +630,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ewapcdeepr .gt_stub_row_group {
+#nfuethrtym .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -635,15 +644,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#ewapcdeepr .gt_row_group_first td {
+#nfuethrtym .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ewapcdeepr .gt_row_group_first th {
+#nfuethrtym .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ewapcdeepr .gt_summary_row {
+#nfuethrtym .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -653,16 +662,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ewapcdeepr .gt_first_summary_row {
+#nfuethrtym .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_first_summary_row.thick {
+#nfuethrtym .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ewapcdeepr .gt_last_summary_row {
+#nfuethrtym .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -672,7 +681,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_grand_summary_row {
+#nfuethrtym .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -682,7 +691,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ewapcdeepr .gt_first_grand_summary_row {
+#nfuethrtym .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -692,7 +701,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_last_grand_summary_row_top {
+#nfuethrtym .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -702,11 +711,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_striped {
+#nfuethrtym .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ewapcdeepr .gt_table_body {
+#nfuethrtym .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -715,7 +724,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_footnotes {
+#nfuethrtym .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -729,7 +738,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_footnote {
+#nfuethrtym .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -738,7 +747,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ewapcdeepr .gt_sourcenotes {
+#nfuethrtym .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -752,7 +761,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ewapcdeepr .gt_sourcenote {
+#nfuethrtym .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -760,72 +769,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ewapcdeepr .gt_left {
+#nfuethrtym .gt_left {
   text-align: left;
 }
 
-#ewapcdeepr .gt_center {
+#nfuethrtym .gt_center {
   text-align: center;
 }
 
-#ewapcdeepr .gt_right {
+#nfuethrtym .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ewapcdeepr .gt_font_normal {
+#nfuethrtym .gt_font_normal {
   font-weight: normal;
 }
 
-#ewapcdeepr .gt_font_bold {
+#nfuethrtym .gt_font_bold {
   font-weight: bold;
 }
 
-#ewapcdeepr .gt_font_italic {
+#nfuethrtym .gt_font_italic {
   font-style: italic;
 }
 
-#ewapcdeepr .gt_super {
+#nfuethrtym .gt_super {
   font-size: 65%;
 }
 
-#ewapcdeepr .gt_footnote_marks {
+#nfuethrtym .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ewapcdeepr .gt_asterisk {
+#nfuethrtym .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ewapcdeepr .gt_indent_1 {
+#nfuethrtym .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ewapcdeepr .gt_indent_2 {
+#nfuethrtym .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ewapcdeepr .gt_indent_3 {
+#nfuethrtym .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ewapcdeepr .gt_indent_4 {
+#nfuethrtym .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ewapcdeepr .gt_indent_5 {
+#nfuethrtym .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ewapcdeepr .katex-display {
+#nfuethrtym .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ewapcdeepr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nfuethrtym div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1268,23 +1277,23 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
 </figcaption>
 <div aria-describedby="tbl-promoted-teams-enhanced-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="qdfutonqoq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qdfutonqoq table {
+<div id="ygsldhpfys" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ygsldhpfys table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qdfutonqoq thead, #qdfutonqoq tbody, #qdfutonqoq tfoot, #qdfutonqoq tr, #qdfutonqoq td, #qdfutonqoq th {
+#ygsldhpfys thead, #ygsldhpfys tbody, #ygsldhpfys tfoot, #ygsldhpfys tr, #ygsldhpfys td, #ygsldhpfys th {
   border-style: none;
 }
 
-#qdfutonqoq p {
+#ygsldhpfys p {
   margin: 0;
   padding: 0;
 }
 
-#qdfutonqoq .gt_table {
+#ygsldhpfys .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1310,12 +1319,12 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-left-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_caption {
+#ygsldhpfys .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qdfutonqoq .gt_title {
+#ygsldhpfys .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1327,7 +1336,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-bottom-width: 0;
 }
 
-#qdfutonqoq .gt_subtitle {
+#ygsldhpfys .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1339,7 +1348,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-top-width: 0;
 }
 
-#qdfutonqoq .gt_heading {
+#ygsldhpfys .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1351,13 +1360,13 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-right-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_bottom_border {
+#ygsldhpfys .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_col_headings {
+#ygsldhpfys .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1372,7 +1381,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-right-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_col_heading {
+#ygsldhpfys .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1392,7 +1401,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   overflow-x: hidden;
 }
 
-#qdfutonqoq .gt_column_spanner_outer {
+#ygsldhpfys .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1404,15 +1413,15 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 4px;
 }
 
-#qdfutonqoq .gt_column_spanner_outer:first-child {
+#ygsldhpfys .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qdfutonqoq .gt_column_spanner_outer:last-child {
+#ygsldhpfys .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qdfutonqoq .gt_column_spanner {
+#ygsldhpfys .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1424,11 +1433,11 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   width: 100%;
 }
 
-#qdfutonqoq .gt_spanner_row {
+#ygsldhpfys .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qdfutonqoq .gt_group_heading {
+#ygsldhpfys .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1454,7 +1463,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   text-align: left;
 }
 
-#qdfutonqoq .gt_empty_group_heading {
+#ygsldhpfys .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1469,15 +1478,15 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   vertical-align: middle;
 }
 
-#qdfutonqoq .gt_from_md > :first-child {
+#ygsldhpfys .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qdfutonqoq .gt_from_md > :last-child {
+#ygsldhpfys .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qdfutonqoq .gt_row {
+#ygsldhpfys .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -1496,7 +1505,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   overflow-x: hidden;
 }
 
-#qdfutonqoq .gt_stub {
+#ygsldhpfys .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1509,7 +1518,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#qdfutonqoq .gt_stub_row_group {
+#ygsldhpfys .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1523,15 +1532,15 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   vertical-align: top;
 }
 
-#qdfutonqoq .gt_row_group_first td {
+#ygsldhpfys .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qdfutonqoq .gt_row_group_first th {
+#ygsldhpfys .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qdfutonqoq .gt_summary_row {
+#ygsldhpfys .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1541,16 +1550,16 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#qdfutonqoq .gt_first_summary_row {
+#ygsldhpfys .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_first_summary_row.thick {
+#ygsldhpfys .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qdfutonqoq .gt_last_summary_row {
+#ygsldhpfys .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1560,7 +1569,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-bottom-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_grand_summary_row {
+#ygsldhpfys .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1570,7 +1579,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#qdfutonqoq .gt_first_grand_summary_row {
+#ygsldhpfys .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1580,7 +1589,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-top-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_last_grand_summary_row_top {
+#ygsldhpfys .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1590,11 +1599,11 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-bottom-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_striped {
+#ygsldhpfys .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qdfutonqoq .gt_table_body {
+#ygsldhpfys .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1603,7 +1612,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-bottom-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_footnotes {
+#ygsldhpfys .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1617,7 +1626,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-right-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_footnote {
+#ygsldhpfys .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1626,7 +1635,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#qdfutonqoq .gt_sourcenotes {
+#ygsldhpfys .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1640,7 +1649,7 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   border-right-color: #D3D3D3;
 }
 
-#qdfutonqoq .gt_sourcenote {
+#ygsldhpfys .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1648,72 +1657,72 @@ Table&nbsp;1: Promoted Premier League teams and their prior Championship statist
   padding-right: 5px;
 }
 
-#qdfutonqoq .gt_left {
+#ygsldhpfys .gt_left {
   text-align: left;
 }
 
-#qdfutonqoq .gt_center {
+#ygsldhpfys .gt_center {
   text-align: center;
 }
 
-#qdfutonqoq .gt_right {
+#ygsldhpfys .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qdfutonqoq .gt_font_normal {
+#ygsldhpfys .gt_font_normal {
   font-weight: normal;
 }
 
-#qdfutonqoq .gt_font_bold {
+#ygsldhpfys .gt_font_bold {
   font-weight: bold;
 }
 
-#qdfutonqoq .gt_font_italic {
+#ygsldhpfys .gt_font_italic {
   font-style: italic;
 }
 
-#qdfutonqoq .gt_super {
+#ygsldhpfys .gt_super {
   font-size: 65%;
 }
 
-#qdfutonqoq .gt_footnote_marks {
+#ygsldhpfys .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qdfutonqoq .gt_asterisk {
+#ygsldhpfys .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qdfutonqoq .gt_indent_1 {
+#ygsldhpfys .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qdfutonqoq .gt_indent_2 {
+#ygsldhpfys .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qdfutonqoq .gt_indent_3 {
+#ygsldhpfys .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qdfutonqoq .gt_indent_4 {
+#ygsldhpfys .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qdfutonqoq .gt_indent_5 {
+#ygsldhpfys .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qdfutonqoq .katex-display {
+#ygsldhpfys .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qdfutonqoq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ygsldhpfys div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2205,15 +2214,50 @@ I gather match data from a variety of public sources. Please check out these exc
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -2292,7 +2336,8 @@ I gather match data from a variety of public sources. Please check out these exc
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -2301,8 +2346,69 @@ I gather match data from a variety of public sources. Please check out these exc
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -2316,6 +2422,7 @@ I gather match data from a variety of public sources. Please check out these exc
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -2478,44 +2585,54 @@ I gather match data from a variety of public sources. Please check out these exc
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -2613,6 +2730,9 @@ I gather match data from a variety of public sources. Please check out these exc
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

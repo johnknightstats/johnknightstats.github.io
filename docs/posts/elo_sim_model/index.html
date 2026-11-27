@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,18 +41,19 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c1afb647e6504aed1ecd096a1ed45b6d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -108,6 +109,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -137,13 +139,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -237,6 +245,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -251,15 +260,14 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -291,8 +299,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -302,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -439,23 +448,23 @@ ul.task-list li input[type="checkbox"] {
 <div class="centered-block max-70">
 <div class="cell">
 <div class="cell-output-display">
-<div id="dljobxlgnt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:500px;height:auto;">
-<style>#dljobxlgnt table {
+<div id="hwdapxychr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:500px;height:auto;">
+<style>#hwdapxychr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dljobxlgnt thead, #dljobxlgnt tbody, #dljobxlgnt tfoot, #dljobxlgnt tr, #dljobxlgnt td, #dljobxlgnt th {
+#hwdapxychr thead, #hwdapxychr tbody, #hwdapxychr tfoot, #hwdapxychr tr, #hwdapxychr td, #hwdapxychr th {
   border-style: none;
 }
 
-#dljobxlgnt p {
+#hwdapxychr p {
   margin: 0;
   padding: 0;
 }
 
-#dljobxlgnt .gt_table {
+#hwdapxychr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -481,12 +490,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_caption {
+#hwdapxychr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dljobxlgnt .gt_title {
+#hwdapxychr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -498,7 +507,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#dljobxlgnt .gt_subtitle {
+#hwdapxychr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -510,7 +519,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#dljobxlgnt .gt_heading {
+#hwdapxychr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -522,13 +531,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_bottom_border {
+#hwdapxychr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_col_headings {
+#hwdapxychr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -543,7 +552,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_col_heading {
+#hwdapxychr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -563,7 +572,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#dljobxlgnt .gt_column_spanner_outer {
+#hwdapxychr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -575,15 +584,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#dljobxlgnt .gt_column_spanner_outer:first-child {
+#hwdapxychr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dljobxlgnt .gt_column_spanner_outer:last-child {
+#hwdapxychr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dljobxlgnt .gt_column_spanner {
+#hwdapxychr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -595,11 +604,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#dljobxlgnt .gt_spanner_row {
+#hwdapxychr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dljobxlgnt .gt_group_heading {
+#hwdapxychr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -625,7 +634,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#dljobxlgnt .gt_empty_group_heading {
+#hwdapxychr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -640,15 +649,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#dljobxlgnt .gt_from_md > :first-child {
+#hwdapxychr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dljobxlgnt .gt_from_md > :last-child {
+#hwdapxychr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dljobxlgnt .gt_row {
+#hwdapxychr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -667,7 +676,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#dljobxlgnt .gt_stub {
+#hwdapxychr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -680,7 +689,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_stub_row_group {
+#hwdapxychr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -694,15 +703,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#dljobxlgnt .gt_row_group_first td {
+#hwdapxychr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dljobxlgnt .gt_row_group_first th {
+#hwdapxychr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dljobxlgnt .gt_summary_row {
+#hwdapxychr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -712,16 +721,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_first_summary_row {
+#hwdapxychr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_first_summary_row.thick {
+#hwdapxychr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dljobxlgnt .gt_last_summary_row {
+#hwdapxychr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -731,7 +740,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_grand_summary_row {
+#hwdapxychr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -741,7 +750,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_first_grand_summary_row {
+#hwdapxychr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -751,7 +760,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_last_grand_summary_row_top {
+#hwdapxychr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -761,11 +770,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_striped {
+#hwdapxychr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dljobxlgnt .gt_table_body {
+#hwdapxychr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -774,7 +783,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_footnotes {
+#hwdapxychr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -788,7 +797,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_footnote {
+#hwdapxychr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -797,7 +806,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_sourcenotes {
+#hwdapxychr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -811,7 +820,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#dljobxlgnt .gt_sourcenote {
+#hwdapxychr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -819,72 +828,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#dljobxlgnt .gt_left {
+#hwdapxychr .gt_left {
   text-align: left;
 }
 
-#dljobxlgnt .gt_center {
+#hwdapxychr .gt_center {
   text-align: center;
 }
 
-#dljobxlgnt .gt_right {
+#hwdapxychr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dljobxlgnt .gt_font_normal {
+#hwdapxychr .gt_font_normal {
   font-weight: normal;
 }
 
-#dljobxlgnt .gt_font_bold {
+#hwdapxychr .gt_font_bold {
   font-weight: bold;
 }
 
-#dljobxlgnt .gt_font_italic {
+#hwdapxychr .gt_font_italic {
   font-style: italic;
 }
 
-#dljobxlgnt .gt_super {
+#hwdapxychr .gt_super {
   font-size: 65%;
 }
 
-#dljobxlgnt .gt_footnote_marks {
+#hwdapxychr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dljobxlgnt .gt_asterisk {
+#hwdapxychr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dljobxlgnt .gt_indent_1 {
+#hwdapxychr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dljobxlgnt .gt_indent_2 {
+#hwdapxychr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dljobxlgnt .gt_indent_3 {
+#hwdapxychr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dljobxlgnt .gt_indent_4 {
+#hwdapxychr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dljobxlgnt .gt_indent_5 {
+#hwdapxychr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dljobxlgnt .katex-display {
+#hwdapxychr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dljobxlgnt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hwdapxychr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -933,23 +942,23 @@ ul.task-list li input[type="checkbox"] {
 <div class="centered-block max-70">
 <div class="cell">
 <div class="cell-output-display">
-<div id="gopdmwxzmt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:500px;height:auto;">
-<style>#gopdmwxzmt table {
+<div id="niasbjulbq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:500px;height:auto;">
+<style>#niasbjulbq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gopdmwxzmt thead, #gopdmwxzmt tbody, #gopdmwxzmt tfoot, #gopdmwxzmt tr, #gopdmwxzmt td, #gopdmwxzmt th {
+#niasbjulbq thead, #niasbjulbq tbody, #niasbjulbq tfoot, #niasbjulbq tr, #niasbjulbq td, #niasbjulbq th {
   border-style: none;
 }
 
-#gopdmwxzmt p {
+#niasbjulbq p {
   margin: 0;
   padding: 0;
 }
 
-#gopdmwxzmt .gt_table {
+#niasbjulbq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -975,12 +984,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_caption {
+#niasbjulbq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gopdmwxzmt .gt_title {
+#niasbjulbq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -992,7 +1001,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#gopdmwxzmt .gt_subtitle {
+#niasbjulbq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1004,7 +1013,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#gopdmwxzmt .gt_heading {
+#niasbjulbq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1016,13 +1025,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_bottom_border {
+#niasbjulbq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_col_headings {
+#niasbjulbq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1037,7 +1046,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_col_heading {
+#niasbjulbq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1057,7 +1066,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#gopdmwxzmt .gt_column_spanner_outer {
+#niasbjulbq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1069,15 +1078,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#gopdmwxzmt .gt_column_spanner_outer:first-child {
+#niasbjulbq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gopdmwxzmt .gt_column_spanner_outer:last-child {
+#niasbjulbq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gopdmwxzmt .gt_column_spanner {
+#niasbjulbq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1089,11 +1098,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#gopdmwxzmt .gt_spanner_row {
+#niasbjulbq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gopdmwxzmt .gt_group_heading {
+#niasbjulbq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1119,7 +1128,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#gopdmwxzmt .gt_empty_group_heading {
+#niasbjulbq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1134,15 +1143,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#gopdmwxzmt .gt_from_md > :first-child {
+#niasbjulbq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gopdmwxzmt .gt_from_md > :last-child {
+#niasbjulbq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gopdmwxzmt .gt_row {
+#niasbjulbq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1161,7 +1170,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#gopdmwxzmt .gt_stub {
+#niasbjulbq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1174,7 +1183,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_stub_row_group {
+#niasbjulbq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1188,15 +1197,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#gopdmwxzmt .gt_row_group_first td {
+#niasbjulbq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gopdmwxzmt .gt_row_group_first th {
+#niasbjulbq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gopdmwxzmt .gt_summary_row {
+#niasbjulbq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1206,16 +1215,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_first_summary_row {
+#niasbjulbq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_first_summary_row.thick {
+#niasbjulbq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gopdmwxzmt .gt_last_summary_row {
+#niasbjulbq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1225,7 +1234,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_grand_summary_row {
+#niasbjulbq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1235,7 +1244,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_first_grand_summary_row {
+#niasbjulbq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1245,7 +1254,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_last_grand_summary_row_top {
+#niasbjulbq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1255,11 +1264,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_striped {
+#niasbjulbq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gopdmwxzmt .gt_table_body {
+#niasbjulbq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1268,7 +1277,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_footnotes {
+#niasbjulbq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1282,7 +1291,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_footnote {
+#niasbjulbq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1291,7 +1300,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_sourcenotes {
+#niasbjulbq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1305,7 +1314,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gopdmwxzmt .gt_sourcenote {
+#niasbjulbq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1313,72 +1322,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gopdmwxzmt .gt_left {
+#niasbjulbq .gt_left {
   text-align: left;
 }
 
-#gopdmwxzmt .gt_center {
+#niasbjulbq .gt_center {
   text-align: center;
 }
 
-#gopdmwxzmt .gt_right {
+#niasbjulbq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gopdmwxzmt .gt_font_normal {
+#niasbjulbq .gt_font_normal {
   font-weight: normal;
 }
 
-#gopdmwxzmt .gt_font_bold {
+#niasbjulbq .gt_font_bold {
   font-weight: bold;
 }
 
-#gopdmwxzmt .gt_font_italic {
+#niasbjulbq .gt_font_italic {
   font-style: italic;
 }
 
-#gopdmwxzmt .gt_super {
+#niasbjulbq .gt_super {
   font-size: 65%;
 }
 
-#gopdmwxzmt .gt_footnote_marks {
+#niasbjulbq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gopdmwxzmt .gt_asterisk {
+#niasbjulbq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gopdmwxzmt .gt_indent_1 {
+#niasbjulbq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gopdmwxzmt .gt_indent_2 {
+#niasbjulbq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gopdmwxzmt .gt_indent_3 {
+#niasbjulbq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gopdmwxzmt .gt_indent_4 {
+#niasbjulbq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gopdmwxzmt .gt_indent_5 {
+#niasbjulbq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gopdmwxzmt .katex-display {
+#niasbjulbq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gopdmwxzmt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#niasbjulbq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1468,15 +1477,50 @@ I gather match data from a variety of public sources. Please check out these exc
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1555,7 +1599,8 @@ I gather match data from a variety of public sources. Please check out these exc
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1564,8 +1609,69 @@ I gather match data from a variety of public sources. Please check out these exc
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1579,6 +1685,7 @@ I gather match data from a variety of public sources. Please check out these exc
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1741,44 +1848,54 @@ I gather match data from a variety of public sources. Please check out these exc
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1876,6 +1993,9 @@ I gather match data from a variety of public sources. Please check out these exc
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

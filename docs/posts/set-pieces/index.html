@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,18 +41,19 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9d96f532d65220ca877c0304385df42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c1afb647e6504aed1ecd096a1ed45b6d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-2204aace14fee31056958f356ac18f57.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -108,6 +109,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -137,13 +139,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -237,6 +245,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -251,15 +260,14 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">John Knight Stats</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -291,8 +299,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -302,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -376,23 +385,23 @@ ul.task-list li input[type="checkbox"] {
 <p>That’s not quite the case, but Arsenal do lead the way with 14 goals, followed by <strong>Manchester United</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="oqtxxjznnv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oqtxxjznnv table {
+<div id="gcqibyospa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gcqibyospa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oqtxxjznnv thead, #oqtxxjznnv tbody, #oqtxxjznnv tfoot, #oqtxxjznnv tr, #oqtxxjznnv td, #oqtxxjznnv th {
+#gcqibyospa thead, #gcqibyospa tbody, #gcqibyospa tfoot, #gcqibyospa tr, #gcqibyospa td, #gcqibyospa th {
   border-style: none;
 }
 
-#oqtxxjznnv p {
+#gcqibyospa p {
   margin: 0;
   padding: 0;
 }
 
-#oqtxxjznnv .gt_table {
+#gcqibyospa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -418,12 +427,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_caption {
+#gcqibyospa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oqtxxjznnv .gt_title {
+#gcqibyospa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -435,7 +444,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#oqtxxjznnv .gt_subtitle {
+#gcqibyospa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -447,7 +456,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#oqtxxjznnv .gt_heading {
+#gcqibyospa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -459,13 +468,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_bottom_border {
+#gcqibyospa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_col_headings {
+#gcqibyospa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -480,7 +489,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_col_heading {
+#gcqibyospa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -500,7 +509,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#oqtxxjznnv .gt_column_spanner_outer {
+#gcqibyospa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -512,15 +521,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#oqtxxjznnv .gt_column_spanner_outer:first-child {
+#gcqibyospa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oqtxxjznnv .gt_column_spanner_outer:last-child {
+#gcqibyospa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oqtxxjznnv .gt_column_spanner {
+#gcqibyospa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -532,11 +541,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#oqtxxjznnv .gt_spanner_row {
+#gcqibyospa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oqtxxjznnv .gt_group_heading {
+#gcqibyospa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -562,7 +571,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#oqtxxjznnv .gt_empty_group_heading {
+#gcqibyospa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -577,15 +586,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#oqtxxjznnv .gt_from_md > :first-child {
+#gcqibyospa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oqtxxjznnv .gt_from_md > :last-child {
+#gcqibyospa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oqtxxjznnv .gt_row {
+#gcqibyospa .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -604,7 +613,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#oqtxxjznnv .gt_stub {
+#gcqibyospa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -617,7 +626,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#oqtxxjznnv .gt_stub_row_group {
+#gcqibyospa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -631,15 +640,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#oqtxxjznnv .gt_row_group_first td {
+#gcqibyospa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oqtxxjznnv .gt_row_group_first th {
+#gcqibyospa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oqtxxjznnv .gt_summary_row {
+#gcqibyospa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -649,16 +658,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#oqtxxjznnv .gt_first_summary_row {
+#gcqibyospa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_first_summary_row.thick {
+#gcqibyospa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oqtxxjznnv .gt_last_summary_row {
+#gcqibyospa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -668,7 +677,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_grand_summary_row {
+#gcqibyospa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -678,7 +687,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#oqtxxjznnv .gt_first_grand_summary_row {
+#gcqibyospa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -688,7 +697,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_last_grand_summary_row_top {
+#gcqibyospa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -698,11 +707,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_striped {
+#gcqibyospa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oqtxxjznnv .gt_table_body {
+#gcqibyospa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -711,7 +720,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_footnotes {
+#gcqibyospa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -725,7 +734,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_footnote {
+#gcqibyospa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -734,7 +743,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#oqtxxjznnv .gt_sourcenotes {
+#gcqibyospa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -748,7 +757,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#oqtxxjznnv .gt_sourcenote {
+#gcqibyospa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -756,72 +765,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#oqtxxjznnv .gt_left {
+#gcqibyospa .gt_left {
   text-align: left;
 }
 
-#oqtxxjznnv .gt_center {
+#gcqibyospa .gt_center {
   text-align: center;
 }
 
-#oqtxxjznnv .gt_right {
+#gcqibyospa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oqtxxjznnv .gt_font_normal {
+#gcqibyospa .gt_font_normal {
   font-weight: normal;
 }
 
-#oqtxxjznnv .gt_font_bold {
+#gcqibyospa .gt_font_bold {
   font-weight: bold;
 }
 
-#oqtxxjznnv .gt_font_italic {
+#gcqibyospa .gt_font_italic {
   font-style: italic;
 }
 
-#oqtxxjznnv .gt_super {
+#gcqibyospa .gt_super {
   font-size: 65%;
 }
 
-#oqtxxjznnv .gt_footnote_marks {
+#gcqibyospa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oqtxxjznnv .gt_asterisk {
+#gcqibyospa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oqtxxjznnv .gt_indent_1 {
+#gcqibyospa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oqtxxjznnv .gt_indent_2 {
+#gcqibyospa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oqtxxjznnv .gt_indent_3 {
+#gcqibyospa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oqtxxjznnv .gt_indent_4 {
+#gcqibyospa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oqtxxjznnv .gt_indent_5 {
+#gcqibyospa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oqtxxjznnv .katex-display {
+#gcqibyospa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oqtxxjznnv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gcqibyospa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -953,23 +962,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Long throws are the new hot thing, but which team is leading the way? The answer probably won’t surprise you.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ceejjovqpv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ceejjovqpv table {
+<div id="adgagdaxms" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#adgagdaxms table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ceejjovqpv thead, #ceejjovqpv tbody, #ceejjovqpv tfoot, #ceejjovqpv tr, #ceejjovqpv td, #ceejjovqpv th {
+#adgagdaxms thead, #adgagdaxms tbody, #adgagdaxms tfoot, #adgagdaxms tr, #adgagdaxms td, #adgagdaxms th {
   border-style: none;
 }
 
-#ceejjovqpv p {
+#adgagdaxms p {
   margin: 0;
   padding: 0;
 }
 
-#ceejjovqpv .gt_table {
+#adgagdaxms .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -995,12 +1004,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_caption {
+#adgagdaxms .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ceejjovqpv .gt_title {
+#adgagdaxms .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1012,7 +1021,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#ceejjovqpv .gt_subtitle {
+#adgagdaxms .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1024,7 +1033,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#ceejjovqpv .gt_heading {
+#adgagdaxms .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1036,13 +1045,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_bottom_border {
+#adgagdaxms .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_col_headings {
+#adgagdaxms .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1057,7 +1066,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_col_heading {
+#adgagdaxms .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1077,7 +1086,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ceejjovqpv .gt_column_spanner_outer {
+#adgagdaxms .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1089,15 +1098,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#ceejjovqpv .gt_column_spanner_outer:first-child {
+#adgagdaxms .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ceejjovqpv .gt_column_spanner_outer:last-child {
+#adgagdaxms .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ceejjovqpv .gt_column_spanner {
+#adgagdaxms .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1109,11 +1118,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#ceejjovqpv .gt_spanner_row {
+#adgagdaxms .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ceejjovqpv .gt_group_heading {
+#adgagdaxms .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1139,7 +1148,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#ceejjovqpv .gt_empty_group_heading {
+#adgagdaxms .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1154,15 +1163,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#ceejjovqpv .gt_from_md > :first-child {
+#adgagdaxms .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ceejjovqpv .gt_from_md > :last-child {
+#adgagdaxms .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ceejjovqpv .gt_row {
+#adgagdaxms .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1181,7 +1190,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ceejjovqpv .gt_stub {
+#adgagdaxms .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1194,7 +1203,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ceejjovqpv .gt_stub_row_group {
+#adgagdaxms .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1208,15 +1217,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#ceejjovqpv .gt_row_group_first td {
+#adgagdaxms .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ceejjovqpv .gt_row_group_first th {
+#adgagdaxms .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ceejjovqpv .gt_summary_row {
+#adgagdaxms .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1226,16 +1235,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ceejjovqpv .gt_first_summary_row {
+#adgagdaxms .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_first_summary_row.thick {
+#adgagdaxms .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ceejjovqpv .gt_last_summary_row {
+#adgagdaxms .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1245,7 +1254,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_grand_summary_row {
+#adgagdaxms .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1255,7 +1264,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ceejjovqpv .gt_first_grand_summary_row {
+#adgagdaxms .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1265,7 +1274,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_last_grand_summary_row_top {
+#adgagdaxms .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1275,11 +1284,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_striped {
+#adgagdaxms .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ceejjovqpv .gt_table_body {
+#adgagdaxms .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1288,7 +1297,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_footnotes {
+#adgagdaxms .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1302,7 +1311,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_footnote {
+#adgagdaxms .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1311,7 +1320,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ceejjovqpv .gt_sourcenotes {
+#adgagdaxms .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1325,7 +1334,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ceejjovqpv .gt_sourcenote {
+#adgagdaxms .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1333,72 +1342,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ceejjovqpv .gt_left {
+#adgagdaxms .gt_left {
   text-align: left;
 }
 
-#ceejjovqpv .gt_center {
+#adgagdaxms .gt_center {
   text-align: center;
 }
 
-#ceejjovqpv .gt_right {
+#adgagdaxms .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ceejjovqpv .gt_font_normal {
+#adgagdaxms .gt_font_normal {
   font-weight: normal;
 }
 
-#ceejjovqpv .gt_font_bold {
+#adgagdaxms .gt_font_bold {
   font-weight: bold;
 }
 
-#ceejjovqpv .gt_font_italic {
+#adgagdaxms .gt_font_italic {
   font-style: italic;
 }
 
-#ceejjovqpv .gt_super {
+#adgagdaxms .gt_super {
   font-size: 65%;
 }
 
-#ceejjovqpv .gt_footnote_marks {
+#adgagdaxms .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ceejjovqpv .gt_asterisk {
+#adgagdaxms .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ceejjovqpv .gt_indent_1 {
+#adgagdaxms .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ceejjovqpv .gt_indent_2 {
+#adgagdaxms .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ceejjovqpv .gt_indent_3 {
+#adgagdaxms .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ceejjovqpv .gt_indent_4 {
+#adgagdaxms .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ceejjovqpv .gt_indent_5 {
+#adgagdaxms .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ceejjovqpv .katex-display {
+#adgagdaxms .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ceejjovqpv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#adgagdaxms div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1574,15 +1583,50 @@ I gather match data from a variety of public sources. Please check out these exc
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1661,7 +1705,8 @@ I gather match data from a variety of public sources. Please check out these exc
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1670,8 +1715,69 @@ I gather match data from a variety of public sources. Please check out these exc
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1685,6 +1791,7 @@ I gather match data from a variety of public sources. Please check out these exc
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1847,44 +1954,54 @@ I gather match data from a variety of public sources. Please check out these exc
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1982,6 +2099,9 @@ I gather match data from a variety of public sources. Please check out these exc
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 
